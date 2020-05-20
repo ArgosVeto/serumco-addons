@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<record model="ir.ui.menu" id="res_brand_menu">
+			<field name="name">Brands</field>
+			<field name="parent_id" ref="base.menu_users"/>
+			<field name="action" ref="res_brand_act_window"/>
+		</record>
+		
+	</data>
+</odoo>
