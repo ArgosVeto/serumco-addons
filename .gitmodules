@@ -1,0 +1,3 @@
+[submodule "ou-addons"]
+	path = ou-addons
+	url = https://github.com/OCA/operating-unit.git
