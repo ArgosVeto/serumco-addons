@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="bi_medical_inpatient_registration_form_view" model="ir.ui.view">
+            <field name="name">medical.inpatient.registration.form.view
+            </field>
+            <field name="model">medical.inpatient.registration</field>
+            <field name="arch" type="xml">
+                <form string="Inpatient Registration Information">
+                    <header>
+                        <button name="registration_confirm"
+                            states="free" string="Confirm Registration"
+                            type="object"
+                            modifiers="{'invisible': [['state', 'not in', ['free']]]}" />
+                        <button name="registration_cancel"
+                            states="confirmed" string="Cancel Registration"
+                            type="object"
+                            modifiers="{'invisible': [['state', 'not in', ['confirmed']]]}" />
+                        <button name="registration_admission"
+                            states="confirmed" string="Patient Admission"
+                            type="object"
+                            modifiers="{'invisible': [['state', 'not in', ['confirmed']]]}" />
+                        <button name="patient_discharge" states="hospitalized"
+                            string="Discharge Patient" type="object"
+                            modifiers="{'invisible': [['state', 'not in', ['hospitalized']]]}" />
+                        <field name="state" readonly="1" widget="statusbar"
+                            statusbar_visible="free,confirmed,hospitalized"
+                            modifiers="{'readonly': true}" />
+                    </header>
+                    <notebook>
+                        <page string="Administrative data">
+                            <group colspan="4">
+                                <group colspan="6" col="6">
+                                    <field name="name" />
+                                    <field name="patient_id" />
+                                    <field name="bed_id"
+                                        attrs="{'readonly':[('name','!=',False)],'required':[('name','=',False)]}" domain="[('state','=','free')]" />
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="hospitalization_date" />
+                                    <field name="discharge_date" />
+                                    <field name="attending_physician_id" />
+                                    <field name="operating_physician_id" />
+                                    <field name="admission_type" />
+                                    <field name="admission_reason_id" />
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="info" colspan="4" />
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="bed_transfers_ids"
+                                        colspan="4">
+                                        <tree editable="bottom">
+                                            <field name="date" />
+                                            <field name="bed_from" />
+                                            <field name="bed_to" />
+                                            <field name="reason" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <newline />
+                        </page>
+                        <page string="Nutrition">
+                            <group colspan="4" col="4">
+                                <field name="diet_belief_id" />
+                                <field name="diet_vegetarian" />
+                                <field name="therapeutic_diets_ids"
+                                    colspan="4" string="Therapeutic Diets">
+                                    <tree>
+                                        <field name="medical_diet_therapeutic_id" />
+                                        <field name="remarks" />
+                                    </tree>
+                                </field>
+                                <field name="nutrition_notes"
+                                    colspan="4" />
+                            </group>
+                        </page>
+                        <page string="Medication">
+                            <field name="medication_ids" nolabel="1"
+                                colspan="4">
+                                <tree editable="bottom">
+                                    <field name='medical_medicament_id' />
+                                    <field name='start_treatment' />
+                                    <field name='end_treatment' />
+                                    <field name='course_completed' />
+                                    <field name='discontinued' />
+                                    <field name='is_active' />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Care Plan">
+                            <group colspan="4" col="4">
+                                <field name="nursing_plan" />
+                                <field name="discharge_plan" />
+                            </group>
+                        </page>
+                        <page string="ICU">
+                            <group>
+                                <field name="icu" />
+                            </group>
+                            <field name="icu_admissions_ids"
+                                attrs="{'invisible': [('icu','!=',True)]}"
+                                modifiers="{'invisible': [['icu', '!=', true]], 'readonly': true}">
+                                <tree editable="bottom">
+                                    <field name="name" />
+                                    <field name="admitted" />
+                                    <field name="icu_admission_date" />
+                                    <field name="icu_stay" />
+                                    <field name="discharged_from_icu" />
+                                    <field name="icu_discharge_date" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="medical_inpatient_registration_tree_view" model="ir.ui.view">
+            <field name="name">medical.inpatient.registration.tree.view
+            </field>
+            <field name="model">medical.inpatient.registration</field>
+            <field name="arch" type="xml">
+                <tree
+
+                    string="Inpatient Registration Info">
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <field name="hospitalization_date" />
+                    <field name="discharge_date" />
+                    <field name="bed_id" />
+                    <field name="admission_type" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_medical_inpatient_registration" model="ir.actions.act_window">
+            <field name="name">Patient Hospitalization Administration
+            </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.inpatient.registration</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <act_window id="bi_action_bed_transfer" name="Bed Transfer"
+            binding_model="medical.inpatient.registration" res_model="medical.bed.transfer.wizard"
+            view_mode="form" target="new" />
+
+        <menuitem id="menu_inpatient_administration" name="Inpatient Administration"
+            parent="bi_veterinary_management.main_menu_veterinary"
+            sequence="2" />
+
+        <menuitem id="menu_patient_hospitalization_administration"
+            parent="menu_inpatient_administration" action="action_medical_inpatient_registration"
+            sequence="0" />
+
+</odoo>

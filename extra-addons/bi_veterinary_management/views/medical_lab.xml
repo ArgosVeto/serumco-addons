@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    	<record id="bi_view_medical_lab_tree" model="ir.ui.view">
+			<field name="name">view.medical.lab.tree</field>
+            <field name="model">medical.lab</field>
+            <field name="arch" type="xml">
+            <tree>
+            		<field name="name"/>
+            		<field name="medical_test_type_id"/>
+            		<field name="patient_id"/>
+            		<field name="date_requested"/>
+            </tree>
+            </field>
+        </record>
+	
+    	
+				
+		<record id="view_medical_lab_form" model="ir.ui.view">
+			<field name="name">view.medical.lab.form</field>
+            <field name="model">medical.lab</field>
+            <field name="arch" type="xml">
+                <form string="Laboratory Test">
+					<notebook>
+						<page string="Main Info">
+							<group colspan="4" col="4">
+								<field name="name" readonly="1"/>
+								<field name="medical_test_type_id" required="1"/>
+								<field name="date_analysis"/>
+								<newline/>
+								<field name="patient_id" required="1"/>
+								<field name="pathologist_id"/>
+								<newline/>
+								<field name="date_requested"/>
+								<field name="requestor_physician_id" required="1"/>
+							</group>
+							<field name="critearea_ids" colspan="4" nolabel="1">
+								<tree string="Test Cases" >
+									<field name="seq"/>
+									<field name="warning"/>
+									<field name="excluded"/>
+									<field name="test_id" invisible="1"/>
+									<field name="test_name" required="1"/>
+									<field name="lower_limit"/>
+									<field name="upper_limit"/>
+									<field name="lab_test_unit_id"/>
+									<field name="remark"/>
+									<field name="result"/>
+								</tree>
+								<form string="Test Cases">
+									<group colspan="4" col="4">
+										<field name="seq"/>
+										<field name="warning"/>
+										<field name="test_name" required="1"/>
+										<field name="excluded"/>
+										<field name="lower_limit"/>
+										<field name="test_id" invisible="1"/>
+										<field name="upper_limit"/>
+										<field name="lab_test_unit_id"/>
+										<field name="result" />
+										<field name="remark"/>
+									</group>
+								</form>
+							</field>
+
+						</page>
+						<page string="Extra Info">
+							<group>
+								<field name="results"/>
+								<field name="diagnosis"/>
+							</group>
+						</page>
+					</notebook>
+				</form>
+			
+             </field>
+          </record>
+          
+         <record id="action_medical_lab" model="ir.actions.act_window">
+            <field name="name">Lab Tests Results</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.lab</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record id="action_view_lab_results_tree" model="ir.actions.act_window">
+            <field name="name">Lab Tests Results</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.lab</field>
+            <field name="binding_view_types">tree</field>
+            <field name="view_mode">tree</field>
+        </record>
+        
+            
+        	<menuitem name="Lab Tests Results"
+            	id="menu_lab_test_result"
+            	parent = "bi_veterinary_management.main_menu_laboratory"
+            	action = "action_medical_lab"/>
+</odoo>

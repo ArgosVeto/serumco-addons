@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="bi_medical_appointment_view_form" model="ir.ui.view">
+            <field name="name">medical.appointment.view.form</field>
+            <field name="model">medical.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Appointment" version="9.0">
+                    <header>
+                        <button name="confirm" string="Confirm"
+                            type="object" states="draft" />
+                        <button name="done" string="Done" type="object"
+                            states="confirmed" />
+                        <button name="cancel" string="Cancel"
+                            type="object" states="draft,confirmed" />
+                        <button name="view_patient_invoice"
+                            string="View Invoice" type="object"
+                            attrs="{'invisible': [('validity_status', '=', 'tobe')]}"
+                            modifiers="{'invisible': [['validity_status', '=', 'tobe']]}" />
+                        <button name="create_invoice" string="Create Invoice"
+                            type="object"
+                            attrs="{'invisible': ['|',('validity_status', '=', 'invoiced'),('state', '=', 'draft')]}" />
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="draft,confirmed,done" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="4">
+                                <field name="name" />
+                                <field name="institution_id" />
+                                <field name="inpatient_registration_code_id" />
+                                <field name="patient_status" />
+                                <field name="patient_id" required="1" />
+                                <field name="urgency" />
+                                <field name="appointment_start_date" />
+                                <field name="appointment_end_date" />
+                                <field name="doctor_id" />
+                                <field name="speciality_id" />
+                                <field name="no_invoice" />
+                                <field name="owner_name" />
+                                <field name="validity_status" />
+                                <field name="appointment_validity_date" />
+                                <field name="consultation_id" />
+                            </group>
+                            <separator colspan="4" string="Information" />
+                        </group>
+
+                        <notebook colspan='4' cols='4'>
+                            <page string="Info">
+                                <field name="comments" />
+                            </page>
+
+                            <page string="Pediatric Symptoms Checklist">
+                                <field name="pediatrics_ids" can_create="true"
+                                    can_write="true" modifiers="{}">
+                                    <tree>
+                                        <field name="patient_id" />
+                                        <field name="evaluation_start" />
+                                        <field name="psc_total" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Prescription">
+                                <field name="prescription_ids"
+                                    context="{'default_patient_id':patient_id, 'default_doctor_id':doctor_id, 'default_pid1_id':name, 'default_prescription_date':appointment_start_date, 'default_apt_id':True} " />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="bi_medical_appointment_view_calendar" model="ir.ui.view">
+            <field name="name">medical.appointment.view.calendar</field>
+            <field name="model">medical.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Appointments" color="doctor_id"
+                    date_start="appointment_start_date">
+                    <field name="patient_id" />
+                    <field name="doctor_id" />
+                </calendar>
+            </field>
+        </record>
+
+        <record id="bi_medical_appointment_view_tree" model="ir.ui.view">
+            <field name="name">medical.appointment.view.tree</field>
+            <field name="model">medical.appointment</field>
+            <field name="arch" type="xml">
+                <tree string="Appointment Information">
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <field name="patient_status" />
+                    <field name="urgency" />
+                    <field name="appointment_start_date" />
+                    <field name="speciality_id" />
+                    <field name="doctor_id" />
+                    <field name="institution_id" />
+                </tree>
+            </field>
+        </record>
+
+
+
+
+        <record id="bi_action_medical_appointment" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="res_model">medical.appointment</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+
+        <record id="bi_action_appointment_to_invoice" model="ir.actions.act_window">
+            <field name="name">Appointments to be invoiced</field>
+            <field name="res_model">medical.appointment</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_appointment" string="Appointments"
+            name='Appointments' parent="main_menu_veterinary" sequence="0" />
+        <menuitem id="menu_medical_appointment" action="bi_action_medical_appointment"
+            string="Appointments" parent="bi_veterinary_management.menu_appointment"
+            sequence="1" />
+        
+
+        <menuitem id="app_to_invoice" action="bi_action_appointment_to_invoice"
+            string="Appointment To Be Invoice" parent="Invoice"
+            sequence="3" />
+
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="appointment_evaluation_per_doctorwizard_view" model="ir.ui.view">
+            <field name="name">appointment.evaluation.per.doctorwizard.view</field>
+            <field name="model">appointment.start.end.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Appointment Evaluation Per Medical Health Services">
+                    <group>
+                        <field name="physician_ids" widget="many2many_tags"/>
+                        <field name="speciality_ids" widget="many2many_tags"/> 
+                    </group>
+                    <group colspan="4" col="4">
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                    	<button name="show_record" string="Show" class="oe_highlight" type="object"/>
+                        or
+                        <button string="Cancel" class="oe_highlight" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_appointment_evaluation_start_end_wizard" model="ir.actions.act_window">
+            <field name="name">Appointment Evaluation Per Doctor</field>
+            <field name="res_model">appointment.start.end.wizard</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+   <menuitem id="menu_reporting"
+                  string="Reporting"
+                  name ='Reporting'
+                  parent="bi_veterinary_management.main_menu_veterinary"
+                  sequence="11"/>
+        
+        
+        <menuitem id="menu_appointment_evaluation_per_doctor_wizard"
+                  action="action_appointment_evaluation_start_end_wizard"
+                  parent="menu_reporting"
+                  sequence="3"/>
+        
+      
+
+</odoo>

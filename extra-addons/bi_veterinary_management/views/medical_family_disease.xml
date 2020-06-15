@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_medical_family_disease_tree" model="ir.ui.view">
+            <field name="name">view.medical.family.disease.tree</field>
+            <field name="model">medical.family.disease</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="medial_pathology_id"/>
+                    <field name="relative"/>
+                    <field name="maternal_paternal"/>
+                </tree>
+            </field>
+        </record>
+
+</odoo>

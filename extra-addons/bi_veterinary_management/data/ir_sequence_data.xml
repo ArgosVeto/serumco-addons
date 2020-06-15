@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="bi_imaging_sequence" model="ir.sequence">
+            <field name="name">Imaging Request</field>
+            <field name="code">imaging_seq</field>
+            <field name="prefix">IMG</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_inpatient_registration_sequence" model="ir.sequence">
+            <field name="name">Patients</field>
+            <field name="code">medical.inpatient.registration</field>
+            <field name="prefix">INPAC</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_appointment_sequence" model="ir.sequence">
+            <field name="name">Appointment</field>
+            <field name="code">medical.appointment</field>
+            <field name="prefix">APT</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_health_service_sequence" model="ir.sequence">
+            <field name="name">Service</field>
+            <field name="code">medical.health_service</field>
+            <field name="prefix">SERV%(year)s/</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_patient_sequence" model="ir.sequence">
+            <field name="name">Patient Sequence</field>
+            <field name="code">medical.patient</field>
+            <field name="prefix">PAC</field>
+            <field name="padding">2</field>
+        </record>
+
+        <record id="bi_medical_test_sequence" model="ir.sequence">
+            <field name="name">Medical Lab Test</field>
+            <field name="code">ltest_seq</field>
+            <field name="prefix">TEST</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_lab_test_sequence" model="ir.sequence">
+            <field name="name">Lab Test</field>
+            <field name="code">test_seq</field>
+            <field name="prefix">LABT</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_new_born_sequence" model="ir.sequence">
+            <field name="name">New Born</field>
+            <field name="code">new_born_seq</field>
+            <field name="prefix">NEW</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_heath_service_sequence" model="ir.sequence">
+            <field name="name">Medical Health Service</field>
+            <field name="code">medical_health_ser</field>
+            <field name="prefix">MEDSR</field>
+            <field name="padding">3</field>
+        </record>
+
+        <record id="bi_medical_prescription_order_sequence" model="ir.sequence">
+            <field name="name">Prescriptions</field>
+            <field name="code">medical.prescription.order</field>
+            <field name="prefix">PRES%(year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="bi_medical_paper_archive_sequence" model="ir.sequence">
+            <field name="name">Archive</field>
+            <field name="code">medical.paper.archive</field>
+            <field name="prefix">PAC</field>
+            <field name="padding">3</field>
+        </record>
+
+</odoo>

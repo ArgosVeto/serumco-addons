@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <menuitem id="main_menu_veterinary" name="Veterinary"
+
+            web_icon="bi_veterinary_management/static/veter.png" />
+
+        <menuitem name="Configuration" id="main_menu_configartion"
+            parent="main_menu_veterinary" sequence="14" />
+
+        <menuitem id="Invoice" string="Invoice"
+            parent="main_menu_veterinary" />
+
+        <menuitem name="Pediatrics" id="main_menu_pediatrics"
+            parent="main_menu_veterinary"
+            sequence="7" />
+
+        <menuitem id="menu_nursing" name="Nursing"
+            parent="main_menu_veterinary"
+            sequence="8" />
+        
+
+        <menuitem name="Laboratory"
+            id="main_menu_conf_laboratory"
+            parent = "main_menu_configartion"
+            
+           />
+
+        <menuitem id="menu_general_information" name="General Information"
+            parent="main_menu_configartion" />
+
+</odoo>

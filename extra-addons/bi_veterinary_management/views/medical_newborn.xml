@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record id="bi_medical_newborn_view_form" model="ir.ui.view">
+            <field name="name">medical.newborn.view.form</field>
+            <field name="model">medical.newborn</field>
+            <field name="arch" type="xml">
+                <form string="Newborn Info" version="9.0">
+                    <header>
+                    </header>
+                    <sheet string="Basic Info">
+                        <group colspan="6" col="6">
+                            <group colspan="4" col="4">
+                                <field name="name" />
+                                <field name="baby_name" />
+                                <field name="mother_id" domain="[('sex', '=', 'f')]" />
+                                <field name="sex" />
+                                <field name="birth_date" />
+
+                                <field name="discharge_date" />
+                                <field name="length" />
+                                <field name="weight" />
+                                <field name="cephalic_perimeter" />
+                                <field name="physician_id" />
+                            </group>
+                            <group colspan="2" col="2">
+                                <field name="photo" widget="image" />
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Findings and Tests">
+                                <group string="Neonatal Signs and Symptoms"
+                                    colspan="8" col="8">
+                                    <field name="meconium" />
+                                    <field name="neonatal_ortolani" />
+                                    <field name="neonatal_barlow" />
+                                    <field name="neonatal_hernia" />
+                                    <field
+                                        name="neonatal_ambiguous_genitalia" />
+                                    <field name="neonatal_erbs_palsy" />
+                                    <field name="neonatal_hematoma" />
+                                    <field
+                                        name="neonatal_talipes_equinovarus" />
+                                    <field name="neonatal_palmar_crease" />
+                                    <field name="neonatal_polydactyly" />
+                                    <field name="neonatal_syndactyly" />
+                                </group>
+                                <newline />
+                                <group string="Neonatal Reflex Check"
+                                    colspan="8" col="8">
+                                    <field name="neonatal_moro_reflex" />
+                                    <field name="neonatal_grasp_reflex" />
+                                    <field name="neonatal_stepping_reflex" />
+                                    <field name="neonatal_babinski_reflex" />
+                                    <field name="neonatal_blink_reflex" />
+                                    <field name="neonatal_sucking_reflex" />
+                                    <field name="neonatal_swimming_reflex" />
+                                    <field name="neonatal_tonic_neck_reflex" />
+                                </group>
+                                <newline />
+                                <field name="congenital_disease_ids" >
+                                    <tree>
+                                        <field name="new_born_id" string="Newborn Id" required="1" />
+                                        <field name="treatment_description" />
+                                    </tree>
+                                </field>
+                                <field name="medication_ids" >
+                                    <tree>
+                                        <field name="medicament_id" required="True"/>
+                                        <field name="start_treatment" required="True"/>
+                                        <field name="end_treatment" required="True"/>
+                                        <field name="doctor_id" />
+                                    </tree>
+                                </field>
+                                <newline />
+                                <group colspan="6" col="6" string="Tests">
+                                    <field name="test_vdrl" />
+                                    <field name="test_toxo" />
+                                    <field name="test_chagas" />
+                                    <field name="test_billirubin" />
+                                    <field name="test_audition" />
+                                    <field name="test_metabolic" />
+                                </group>
+                            </page>
+                            <page string="Other">
+                                <group string="Deceased" colspan="4"
+                                    col="4">
+                                    <field name="still_birth" />
+                                    <field name="died_at_delivery" />
+                                    <field name="died_at_the_hospital" />
+                                    <field name="died_being_transferred" />
+                                    <field name="time_of_death" />
+                                    <field name="cause_of_death_id" />
+                                    <field name="apgar_score_ids"
+                                        colspan="4" nolabel="1">
+                                        <form>
+                                            <group colspan="4"
+                                                col="4">
+                                                <field name="apgar_minute" />
+                                                <field name="apgar_scores" />
+                                                <field
+                                                    name="apgar_appearance" />
+                                                <field name="apgar_pulse" />
+                                                <field name="apgar_grimace" />
+                                                <field name="apgar_activity" />
+                                                <field
+                                                    name="apgar_respiration" />
+                                            </group>
+                                        </form>
+                                        <tree string="APGAR Score">
+                                            <field name="apgar_minute" />
+                                            <field name="apgar_scores" />
+                                            <field name="apgar_appearance" />
+                                            <field name="apgar_pulse" />
+                                            <field name="apgar_grimace" />
+                                            <field name="apgar_activity" />
+                                            <field name="apgar_respiration" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group colspan="6" col="6"
+                                    id="group_newborn_reanimation">
+                                    <field name="reanimation_stimulation" />
+                                    <field name="reanimation_aspiration" />
+                                    <field name="reanimation_intubation" />
+                                    <field name="reanimation_mask" />
+                                    <field name="reanimation_oxygen" />
+                                </group>
+                                <group string="Notes" colspan="4">
+                                    <field colspan="4" name="notes"
+                                        nolabel="1" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+
+        <record id="bi_medical_newborn_view_tree" model="ir.ui.view">
+            <field name="name">medical.newborn.view.tree</field>
+            <field name="model">medical.newborn</field>
+            <field name="arch" type="xml">
+                <tree string="Newborn Info">
+                    <field name="name" />
+                    <field name="baby_name" />
+                    <field name="mother_id" />
+                    <field name="birth_date" />
+                    <field name="sex" />
+                    <field name="length" />
+                    <field name="weight" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="bi_medical_newborn_view_search" model="ir.ui.view">
+            <field name="name">medical.newborn.view.search</field>
+            <field name="model">medical.newborn</field>
+            <field name="arch" type="xml">
+                <search string="Search Newborn">
+                    <group expand="1" string="Group By...">
+                        <filter string="Date" name="Date" icon="terp-go-month"
+                            domain="[]" context="{'group_by':'birth_date'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+
+        <record id="bi_action_medical_newborn" model="ir.actions.act_window">
+            <field name="name">Newborn</field>
+            <field name="res_model">medical.newborn</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="New Born" id="new_born_menuitem"
+            action="bi_action_medical_newborn" parent="bi_veterinary_management.main_menu_pediatrics"
+            sequence="1" />
+
+</odoo>
+

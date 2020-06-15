@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="medical_imaging_test_request_wizard_view" model="ir.ui.view">
+            <field name="name">medical.imaging.test.request.wizard.view</field>
+            <field name="model">medical.imaging.test.request.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Sales Order">
+                    <footer>
+                        <button name="create_lab_imaging_request" class="oe_highlight" string="Create Request" type="object"/>
+                            or
+                        <button class="oe_highlight" string="Cancel" special="cancel" />
+    		        </footer>
+                    <group colspan="4" col="4">
+                        <field name="test_date"/>
+                        <field name="patient_id"/>
+                        <field name="physician_id"/>
+                        <field name="urgent"/>
+                    </group>
+                    <field name="test_ids"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_medical_imaging_test_request_wizard" model="ir.actions.act_window">
+            <field name="name">Create Imaging Request</field>
+            <field name="res_model">medical.imaging.test.request.wizard</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_imaging"
+                  string="Imaging"
+                  name ='Imaging'
+                  parent="main_menu_veterinary"
+                  />
+
+        <menuitem id="menu_imaging_configaration" name="Imaging" parent="main_menu_configartion" sequence="2"/>
+		
+        <menuitem id="menu_medical_imaging_test_request_wizard"
+                  action="action_medical_imaging_test_request_wizard"
+                  string="Create Imaging Request"
+                  parent="menu_imaging"
+                  sequence="0"/>
+
+         <menuitem id="menu_medical_imaging_test_request"
+                  string="Imaging Test Request"
+                  name ='Imaging Test Request'
+                   parent="menu_imaging"
+                  sequence="1"/>
+
+</odoo>

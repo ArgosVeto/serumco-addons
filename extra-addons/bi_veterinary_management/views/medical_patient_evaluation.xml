@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="medical_patient_evaluation_view_form" model="ir.ui.view">
+            <field name="name">medical.patient.evaluation.view.form</field>
+            <field name="model">medical.patient.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="Patient">
+                    <notebook>
+                        <page string="Main Info">
+                            <group colspan="4" col="4">
+                                <field name="medical_patient_id" string="Patient"/>
+                                <field name="evaluation_type" />
+                                <field name="specialty_id" />
+                                <field name="physicians_id" />
+                                <field name="start_evaluation" />
+                                <field name="end_evaluation" />
+                                <field name="chief_complaint"
+                                    required="1" />
+                                <newline />
+                                <separator string="Present Illness"
+                                    colspan="4" />
+                                <field name="present_illness"
+                                    nolabel="1" colspan="4" />
+                                <separator string="Evaluation Summary"
+                                    colspan="4" />
+                                <field name="evaluation_summary"
+                                    nolabel="1" colspan="4" />
+                                <newline />
+                                <field name="information_source" />
+                                <field name="reliable_info" />
+                                <field name="visit_type" />
+                                <field name="urgency" />
+                            </group>
+                        </page>
+
+                        <page string="Clinical">
+                            <group colspan="4" col="4" string="Vital Signs">
+                                <field name="temperature" />
+                                <field name="systolic" />
+                                <field name="diastolic" />
+                                <field name="bpm" />
+                                <field name="respiratory_rate" />
+                                <field name="osat" />
+                            </group>
+                            <newline />
+                            <group colspan="4" col="4" string="Anthropometry">
+                                <field name="weight" />
+                                <field name="height" />
+                                <field name="abdominal_circ" />
+                                <field name="hip" />
+                                <field name="whr" />
+                                <field name="bmi" />
+                                <field name="head_circumference" />
+                            </group>
+                            <newline />
+                            <group colspan="4" col="4" string="Nutrition">
+                                <field name="malnutrition" />
+                                <field name="dehydration" />
+                            </group>
+                            <newline />
+                            <separator string="Signs and Symptoms"
+                                colspan="4" />
+                            <field name="signs_and_symptoms_ids"
+                                colspan="4" nolabel="1" widget="one2many_list" >
+                                <tree>
+                                    <field name="clinical_id" required="1"/>
+                                    <field name="patient_evaluation_id" />
+                                    <field name="sign_or_symptom" />
+                                    <field name="comments" />
+                                </tree>
+                            </field>
+                            <newline />
+                            <group colspan="4" col="4"
+                                string="Glucose and Lipids Profile">
+                                <field name="glycemia" />
+                                <field name="hba1c" />
+                                <field name="cholesterol_total" />
+                                <field name="last_hdl" />
+                                <field name="last_ldl" />
+                                <field name="last_tags" />
+                            </group>
+
+                        </page>
+                        <page string="Mental Status">
+                            <group string="Glasgow Coma Scale"
+                                colspan="4" col="4">
+
+                                <field name="last_level_of_consciousness" />
+                                <field name="glasgow_eyes" />
+                                <field name="glasgow_verbal" />
+                                <field name="glasgow_motor" />
+                            </group>
+                            <newline />
+                            <group string="Mental Assessment and Impairments"
+                                colspan="4" col="4">
+                                <field name="violent" />
+                                <field name="mood" />
+                                <field name="orientation" />
+                                <field name="memory" />
+                                <field name="knowledge_current_events" />
+                                <field name="judgment" />
+                                <field name="abstraction" />
+                                <field name="vocabulary" />
+                                <field name="calculation_ability" />
+                                <field name="object_recognition" />
+                                <field name="praxis" />
+                            </group>
+
+                        </page>
+                        <page string="Diagnosis">
+                            <group>
+                                <field name="diagnosis_id"
+                                    colspan="4" />
+                                <separator string="Secondary Conditions"
+                                    colspan="4" />
+                                <field name="secondary_conditions_ids"
+                                    colspan="4" nolabel="1" >
+                                    <tree editable="bottom">
+                                        <field name="patient_evaluation_id" required="1" />
+                                        <field name="pathology_id" />
+                                        <field name="comments" />
+                                    </tree>
+                                </field>
+                                <newline />
+                                <group colspan="4">
+                                    <group>
+                                        <separator
+                                            string="Information on Diagnosis"
+                                            colspan="2" />
+                                        <field name="info_diagnosis"
+                                            colspan="2" nolabel="1" />
+                                    </group>
+                                    <group>
+                                        <separator string="Treatment Plan"
+                                            colspan="2" />
+                                        <field name="directions"
+                                            nolabel="1" colspan="2" />
+                                    </group>
+                                </group>
+                                <group colspan="4">
+                                    <group>
+                                        <separator string="Hypotheses / DDx"
+                                            colspan="2" />
+                                        <field
+                                            name="diagnostic_hypothesis_ids"
+                                            nolabel="1" colspan="2" >
+                                            <tree editable="bottom">
+                                                <field name="patient_evaluation_id" required="1"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <separator string="Procedures"
+                                            colspan="2" />
+                                        <field name="action_ids"
+                                            nolabel="1" colspan="2" >
+                                            <tree editable="bottom">
+                                                <field name="patient_evaluation_id" required="1" />
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                                <newline />
+
+                                <field name="user_id" string="Doctor user ID" />
+                                <field name="appointment_date_id"
+                                    domain="[('patient_id', '=', medical_patient_id)]" />
+                                <field name="from_physician_id" />
+                                <field name="next_appointment_date_id"
+                                    domain="[('patient_id', '=',medical_patient_id)]" />
+
+                                <field name="to_physician_id" />
+                            </group>
+                        </page>
+
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="medical_patient_evaluation_view_tree" model="ir.ui.view">
+            <field name="name">medical.patient.evaluation.view.tree</field>
+            <field name="model">medical.patient.evaluation</field>
+            <field name="arch" type="xml">
+                <tree  string="Evaluations">
+                    <field name="medical_patient_id" string="Patient"/>
+                    <field name="end_evaluation" />
+                    <field name="start_evaluation" />
+                    <field name="physicians_id" />
+                    <field name="chief_complaint" />
+                    <field name="bmi" />
+                    <field name="systolic" />
+                    <field name="diastolic" />
+                    <field name="diagnosis_id" />
+                    <field name="next_appointment_date_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="bi_action_medical_patient_evaluation_reporting"
+            model="ir.actions.act_window">
+            <field name="name">Patient Evaluation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.patient.evaluation</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_medical_evaluation_reporting"
+            action="bi_action_medical_patient_evaluation_reporting" parent="menu_reporting"
+            sequence="1" />
+
+</odoo>

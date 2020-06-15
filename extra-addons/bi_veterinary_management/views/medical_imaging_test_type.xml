@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="action_medical_imaging_test_type" model="ir.actions.act_window">
+            <field name="name">Imaging Test Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.imaging.test.type</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_medical_imaging_test_type" action="action_medical_imaging_test_type"
+            parent="menu_imaging_configaration" sequence="0" />
+
+</odoo>

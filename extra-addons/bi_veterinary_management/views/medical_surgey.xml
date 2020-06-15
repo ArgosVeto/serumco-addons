@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+        <record id="medical_surgery_view_form" model="ir.ui.view">
+            <field name="name">medical.surgery.view.form</field>
+            <field name="model">medical.surgery</field>
+            <field name="arch" type="xml">
+				<form string="Surgery">
+					<header>
+                           <button name="done" string="Done" type="object" states="in_progress"/>
+					       <field name="state" widget="statusbar" statusbar_visible="in_progress,done"/>
+            		 </header>
+            		 <sheet>
+					<group colspan="4" col="4">
+						<field name="patient_id"/>
+						<field name="name"/>
+						<field name="description" required="1"/>
+						<field name="pathology_id"/>
+						<field name="classification"/>
+						<field name="date"/>
+						<field name="age"/>
+						<field name="surgeon_id"/>
+						<field name="anesthetist_physician_id"/>
+						<field name="hospital_operating_room_id"/>
+						<field name="surgery_end_date"/>
+						<field name="surgery_length"/>
+						<field name="signed_by_physician_id"/>
+					</group>
+						<group colspan="4" col="4" string="Surgical Safety Checklist">
+							<field name="preop_bleeding_risk"/>
+							<field name="preop_oximeter"/>
+							<field name="preop_site_marking"/>
+							<field name="preop_antibiotics"/>
+							<field name="preop_sterility"/>
+						</group>
+						 <group>
+						 <field name="preop_mallampati" colspan="4"/>
+						 <field name="rcri_id" colspan="4"/>
+						 <field name="preop_asa" colspan="4"/>
+						 </group>
+						<separator string="Procedures"/>
+						<field name="medical_operation_ids" nolabel="1" colspan="4"/>
+						<group colspan="4" col="4">
+							<group string="Details/Incidents">
+							<field name="extra_info" nolabel="1"/>
+							</group>
+							<group string="Anesthesia Report">
+							<field name="anesthesia_report" nolabel="1"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+            </field>
+        </record>
+
+
+
+		<record id="medical_surgery_view_tree" model="ir.ui.view">
+            <field name="name">medical.surgery.view.tree</field>
+            <field name="model">medical.surgery</field>
+            <field name="arch" type="xml">
+              <tree string="Surgery">
+					<field name="name"/>
+					<field name="description"/>
+					<field name="pathology_id"/>
+					<field name="classification"/>
+					<field name="date"/>
+				</tree>
+            </field>
+        </record>
+
+
+
+
+		<record id="bi_action_medical_surgery" model="ir.actions.act_window">
+            <field name="name">Surgery</field>
+            <field name="res_model">medical.surgery</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+		<menuitem id="menu_medical_surgery"
+                  string="Surgery"
+                  name ='Surgery'
+                  parent="bi_veterinary_management.main_menu_veterinary"
+                  sequence="10"/>
+		
+		
+		
+		<menuitem id="menu_surgery"
+                  action="bi_action_medical_surgery"
+                  string="Surgery"
+                  parent="menu_medical_surgery"
+                  sequence="1"/>
+                 
+</odoo>
+

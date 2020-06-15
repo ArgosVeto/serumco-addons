@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="bi_view_prescription_invice_wizard_view" model="ir.ui.view">
+            <field name="name">prescription.invice.wizard.view</field>
+            <field name="model">create.prescription.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Create prescription invoices">
+                    <separator colspan="4" 
+                        string="Do you want to create the prescription invoice(s) ?" />
+                    <newline />
+                    <separator string="                  "
+                        colspan="6" />
+                    <footer>
+                        <button name="create_prescription_invoice"
+                            class="oe_highlight" string="Create Prescription Invoices"
+                            type="object" />
+                        or
+                        <button special="cancel" string="Cancel"
+                            class="oe_highlight" />
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <act_window id="bi_action_create_prescription_invoice"
+            name="Create Prescription Invoice" res_model="create.prescription.invoice"
+            binding_model="medical.prescription.order" view_mode="form"
+            target="new" />
+
+</odoo>
