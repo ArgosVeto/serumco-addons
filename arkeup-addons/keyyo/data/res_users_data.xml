@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		
+		<record id="keyyo_cti_partner" model="res.partner">
+			<field name="name">KEYYO CTI PARTNER</field>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="country_id" ref="base.fr"/>
+		</record>
+		
+		<record id="keyyo_cti_user" model="res.users">
+			<field name="partner_id" ref="keyyo_cti_partner"/>
+			<field name="login">keyyo_cti</field>
+			<field name="email">keyyo_cti@prodeal.fr</field>
+			<field name="password">keYYo@2019!</field>
+			<field name="active" eval="True"/>
+			<field name="company_id" ref="base.main_company"/>
+			<field name="groups_id" eval="[(6,0,[ref('base.group_user')])]"/>
+		</record>
+	
+	</data>
+</odoo>

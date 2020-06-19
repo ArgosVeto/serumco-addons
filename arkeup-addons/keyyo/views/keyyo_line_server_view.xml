@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<record id="keyyo_line_server_tree_view" model="ir.ui.view">
+			<field name="name">keyyo.line.server.tree.view</field>
+			<field name="model">keyyo.line.server</field>
+			<field name="arch" type="xml">
+				<tree string="Keyyo Lines">
+					<field name="name"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="keyyo_line_server_form_view" model="ir.ui.view">
+			<field name="name">eyyo.line.server.form.view</field>
+			<field name="model">keyyo.line.server</field>
+			<field name="arch" type="xml">
+				<form string="Keyyo Line">
+					<sheet>
+						<div class="oe_title">
+							<h1>
+								<field name="name" default_focus="1" placeholder="Keyyo Line"/>
+							</h1>
+						</div>
+						<group>
+							<field name="active"/>
+						</group>
+						<group name="internal_lines" string="Users">
+							<field name="user_ids" nolabel="1">
+								<tree>
+									<field name="name"/>
+									<field name="sip"/>
+								</tree>
+							</field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="keyyo_line_server_action" model="ir.actions.act_window">
+			<field name="name">Keyyo Lines</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">keyyo.line.server</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					<!-- Add Text Here -->
+				</p>
+				<p>
+					<!-- More details about what a user can do with this object will be OK -->
+				</p>
+			</field>
+		</record>
+		
+		<!-- This Menu Item must have a parent and an action -->
+		<menuitem id="keyyo_line_server_categ" name="Keyyo Lines" parent="keyyo_cti_categ" action="keyyo_line_server_action" sequence="20"/>
+	
+	</data>
+</odoo>
