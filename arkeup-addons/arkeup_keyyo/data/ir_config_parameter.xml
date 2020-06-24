@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		
+		<record id="keyyo_makecall_endpoint" model="ir.config_parameter">
+			<field name="key">keyyo.makecall.endpoint</field>
+			<field name="value">https://ssl.keyyo.com/makecall.html</field>
+		</record>
+	
+	</data>
+</odoo>

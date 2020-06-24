@@ -1,0 +1,256 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* arkeup_keyyo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-17 11:05+0000\n"
+"PO-Revision-Date: 2019-12-17 11:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/models/res_partner.py:0
+#, python-format
+msgid "<a href=\"%s\">%s</a> has contacted you"
+msgstr "<a href=\"%s\">%s</a> vous a contacté."
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__active
+msgid "Active"
+msgstr "Active"
+
+#. module: arkeup_keyyo
+#. openerp-web
+#: code:addons/arkeup_keyyo/static/src/js/keyyo_phone.js:0
+#, python-format
+msgid "Answer"
+msgstr "Réponse"
+
+#. module: arkeup_keyyo
+#: model:ir.model,name:arkeup_keyyo.model_call_log
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.call_log_form_view
+msgid "Call Log"
+msgstr "Journal d'appel"
+
+#. module: arkeup_keyyo
+#: model:ir.actions.act_window,name:arkeup_keyyo.call_log_action
+#: model:ir.ui.menu,name:arkeup_keyyo.call_log_keyyo_categ
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.call_log_tree_view
+msgid "Call Logs"
+msgstr "Journal d'appels"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#, python-format
+msgid "Call in progress to %s"
+msgstr "Appel en cours de %s"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__callee_number
+msgid "Callee Number"
+msgstr "Numéro appelé"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__caller_number
+msgid "Caller Number"
+msgstr "Numéro appelant"
+
+#. module: arkeup_keyyo
+#: model:ir.model,name:arkeup_keyyo.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__partner_id
+msgid "Contact Callee"
+msgstr "Contact appelé"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__create_uid
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__create_date
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__date
+msgid "Date"
+msgstr "Date"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__display_name
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__id
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__id
+msgid "ID"
+msgstr "ID"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields.selection,name:arkeup_keyyo.selection__call_log__type__incoming
+msgid "Incoming"
+msgstr "Entrant"
+
+#. module: arkeup_keyyo
+#: model:ir.ui.menu,name:arkeup_keyyo.keyyo_cti_categ
+msgid "Keyyo CTI"
+msgstr "Keyyo CTI"
+
+#. module: arkeup_keyyo
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.res_users_view_form_inherit
+msgid "Keyyo Configuration"
+msgstr "Configuration KEYYO"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_res_users__keyyo_line_server_id
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.keyyo_line_server_form_view
+msgid "Keyyo Line"
+msgstr "Ligne Keyyo"
+
+#. module: arkeup_keyyo
+#: model:ir.model,name:arkeup_keyyo.model_keyyo_line_server
+msgid "Keyyo Line Server"
+msgstr "Ligne Keyyo"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/models/keyyo_line_server.py:0
+#, python-format
+msgid "Keyyo Line must be unique!"
+msgstr "Ligne Keyyo doit être unique."
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#, python-format
+msgid "Keyyo Line not defined!"
+msgstr "Ligne Keyyo est introuvable."
+
+#. module: arkeup_keyyo
+#: model:ir.actions.act_window,name:arkeup_keyyo.keyyo_line_server_action
+#: model:ir.ui.menu,name:arkeup_keyyo.keyyo_line_server_categ
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.keyyo_line_server_tree_view
+msgid "Keyyo Lines"
+msgstr "Lignes Keyyo"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log____last_update
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__write_uid
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__write_date
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__message
+msgid "Message"
+msgstr "Message"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__name
+msgid "Name"
+msgstr "Ligne Keyyo"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields.selection,name:arkeup_keyyo.selection__call_log__type__outgoing
+msgid "Outgoing"
+msgstr "Sortant"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_res_users__sip
+msgid "SIP Login"
+msgstr "Identifiant SIP"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/models/res_users.py:0
+#, python-format
+msgid "SIP must be unique!"
+msgstr "Identifiant SIP doit être unique."
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__status
+msgid "Status"
+msgstr "Statut"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#, python-format
+msgid ""
+"The keyyo EndPoint is not defined. Please fill it in system parameters or "
+"contact the system administrator!"
+msgstr ""
+"L'URL Keyyo n'est pas définie. Merci de renseigner l'URL dans les paramètres"
+" systèmes oucontacter votre administrateur système."
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/models/res_partner.py:0
+#, python-format
+msgid "This number %s has contacted you but does not have a contact sheet."
+msgstr "Ce numéro %s vous a contacté mais n'a pas encore de fiche contact."
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__type
+msgid "Type"
+msgstr "Type d'appel"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__url
+msgid "URL"
+msgstr "URL"
+
+#. module: arkeup_keyyo
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.call_log_form_view
+msgid "URL & Parameters"
+msgstr "URL & Paramètres"
+
+#. module: arkeup_keyyo
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_call_log__user_id
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#, python-format
+msgid "User callee not found."
+msgstr "Commercial appelé est introuvable."
+
+#. module: arkeup_keyyo
+#: model:ir.model,name:arkeup_keyyo.model_res_users
+#: model:ir.model.fields,field_description:arkeup_keyyo.field_keyyo_line_server__user_ids
+#: model_terms:ir.ui.view,arch_db:arkeup_keyyo.keyyo_line_server_form_view
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: arkeup_keyyo
+#: code:addons/arkeup_keyyo/controllers/main.py:0
+#, python-format
+msgid ""
+"Your keyyo line is not defined. Please fill your keyyo line in preferences!"
+msgstr ""
+"La ligne keyyo n'est pas définie. Veuillez définir une ligne keyoo dans vos "
+"préférences."
