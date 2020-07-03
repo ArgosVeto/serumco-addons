@@ -13,7 +13,7 @@
                             <group>
                                 <field name="is_remote_import"/>
                             </group>
-                            <group attrs="{'invisible': [('is_remote_import', '=', False)]}">
+                            <group attrs="{'invisible': [('is_remote_import', '=', False)], 'required': [('is_remote_import', '=', False)]}">
                                 <field name="remote_url"/>
                                 <field name="remote_login"/>
                                 <field name="remote_pwd"/>
