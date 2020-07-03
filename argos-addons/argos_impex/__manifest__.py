@@ -44,7 +44,6 @@
         'security/ir.model.access.csv',
 
         # data
-        'data/data_ir_model_import.xml',
 
         # views
         'views/ir_model_import_template.xml',
