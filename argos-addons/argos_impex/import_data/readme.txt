@@ -1,0 +1,1 @@
+This folder is used to temporarily store the product files to be imported into Odoo and which will be deleted automatically after import.

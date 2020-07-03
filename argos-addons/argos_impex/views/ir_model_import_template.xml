@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="ir_model_import_template_form_inherit" model="ir.ui.view">
+            <field name="name">ir.model.import.template.view.form.inherit</field>
+            <field name="model">ir.model.import.template</field>
+            <field name="inherit_id" ref="smile_impex.view_import_template_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Remote Imports">
+                        <group>
+                            <group>
+                                <field name="is_remote_import"/>
+                            </group>
+                            <group attrs="{'invisible': [('is_remote_import', '=', False)]}">
+                                <field name="remote_url"/>
+                                <field name="remote_login"/>
+                                <field name="remote_pwd"/>
+                                <field name="remote_directory"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
