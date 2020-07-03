@@ -13,10 +13,10 @@
                             <group>
                                 <field name="is_remote_import"/>
                             </group>
-                            <group attrs="{'invisible': [('is_remote_import', '=', False)], 'required': [('is_remote_import', '=', False)]}">
-                                <field name="remote_url"/>
-                                <field name="remote_login"/>
-                                <field name="remote_pwd"/>
+                            <group attrs="{'invisible': [('is_remote_import', '=', False)]}">
+                                <field name="remote_url" attrs="{'required': [('is_remote_import', '=', True)]}"/>
+                                <field name="remote_login" attrs="{'required': [('is_remote_import', '=', True)]}"/>
+                                <field name="remote_pwd" attrs="{'required': [('is_remote_import', '=', True)]}"/>
                                 <field name="remote_directory"/>
                             </group>
                         </group>
