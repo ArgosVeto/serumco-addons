@@ -37,11 +37,17 @@
     'version': '0.1',
     'sequence': -12,
 
-    'depends': ['arkeup_impex', 'base', 'web', 'l10n_fr', 'product'],
+    'depends': ['arkeup_impex', 'argos_base'],
 
     'data': [
+        # security
         'security/ir.model.access.csv',
+
+        # data
         'data/data_ir_model_import.xml',
+
+        # views
+        'views/ir_model_import_template.xml',
     ],
 
 }
