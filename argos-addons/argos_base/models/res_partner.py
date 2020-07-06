@@ -10,10 +10,10 @@ class ResPartner(models.Model):
     tutor_curator_id = fields.Many2one('res.partner', 'Tutor/Curator')
     clinic_id = fields.Many2one('res.partner', 'Main Clinic')
     animal_ids = fields.Many2many('animal.animal', string='Animal List')
-    send_letter = fields.Boolean('Letter')
-    send_email = fields.Boolean('Email')
-    send_sms = fields.Boolean('Sms')
-    to_call = fields.Boolean('Phone')
+    send_letter = fields.Boolean('Send Letter')
+    send_email = fields.Boolean('Send Email')
+    send_sms = fields.Boolean('Send Sms')
+    to_call = fields.Boolean('Call')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):

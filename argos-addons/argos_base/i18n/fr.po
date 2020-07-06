@@ -1,0 +1,551 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-06 07:23+0000\n"
+"PO-Revision-Date: 2020-07-06 07:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__active
+msgid "Active"
+msgstr "Active"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__age
+msgid "Age"
+msgstr "Age"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_animal_animal
+#: model:ir.ui.menu,name:argos_base.menu_animal_config
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Animal"
+msgstr "Animal"
+
+#. module: argos_base
+#: model:ir.ui.menu,name:argos_base.argos_animal_menu_contacts
+msgid "Animal"
+msgstr "Animaux"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_animal_category
+msgid "Animal Category"
+msgstr "Espèce"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_animal_diet
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_diet_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_diet_tree
+msgid "Animal Diet"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_animal_insurance
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_insurance_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_insurance_tree
+msgid "Animal Insurance"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__animal_ids
+#: model:ir.model.fields,field_description:argos_base.field_res_users__animal_ids
+msgid "Animal List"
+msgstr "Liste des animaux"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_animal_pathology
+#: model:ir.ui.menu,name:argos_base.menu_animal_pathology
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_pathology_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_pathology_tree
+#: model:ir.actions.act_window,name:argos_base.open_animal_pathology_list
+msgid "Animal Pathology"
+msgstr "Pathologie"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_animal_race_list
+#: model:ir.model,name:argos_base.model_animal_race
+#: model:ir.ui.menu,name:argos_base.menu_animal_race
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_race_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_race_tree
+msgid "Animal Race"
+msgstr "Race"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_animal_robe_list
+#: model:ir.model,name:argos_base.model_animal_robe
+#: model:ir.ui.menu,name:argos_base.menu_animal_robe
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_robe_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_robe_tree
+msgid "Animal Robe"
+msgstr "Robe"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_animal_category_list
+#: model:ir.ui.menu,name:argos_base.menu_animal_category
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_category_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_category_tree
+msgid "Animal Species"
+msgstr "Espèce"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_category_form
+msgid "Animal Species"
+msgstr "Espèce"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_view_animal_list
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_tree
+msgid "Animals"
+msgstr "Animaux"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__veterinary_id
+msgid "Attending Veterinarian"
+msgstr "Vétérinaire traitant"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
+msgid "Authorized Channels"
+msgstr "Canaux de communication autorisés"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__birth_date
+msgid "Birth Date"
+msgstr "Date de naissance"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__cip
+#: model:ir.model.fields,field_description:argos_base.field_product_template__cip
+msgid "CIP Code"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__name
+msgid "Category Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_identification
+msgid "Chip Identification"
+msgstr "Identification de la puce"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_location
+msgid "Chip Location"
+msgstr "Lieu de la puce"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__mother_class
+#: model:ir.model.fields,field_description:argos_base.field_product_template__mother_class
+msgid "Class"
+msgstr ""
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
+msgid "Communication"
+msgstr "Communication"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_res_partner
+#: model:ir.ui.menu,name:argos_base.argos_res_partner_menu_contacts
+msgid "Contact"
+msgstr "Contacts"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_family_family__create_uid
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__create_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__create_date
+#: model:ir.model.fields,field_description:argos_base.field_family_family__create_date
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_dangerous
+msgid "Dangerous"
+msgstr "Dangereux"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_dead
+msgid "Dead"
+msgstr "Décédé"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__display_name
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__display_name
+#: model:ir.model.fields,field_description:argos_base.field_family_family__display_name
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__ean
+#: model:ir.model.fields,field_description:argos_base.field_product_template__ean
+msgid "EAN Code"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__email
+msgid "Email"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__send_email
+#: model:ir.model.fields,field_description:argos_base.field_res_users__send_email
+msgid "Send Email"
+msgstr "E-mail"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_family_family
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__family_id
+#: model_terms:ir.ui.view,arch_db:argos_base.view_family_form
+msgid "Family"
+msgstr "Famille"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_view_family_list
+#: model:ir.ui.menu,name:argos_base.argos_family_menu_contacts
+#: model_terms:ir.ui.view,arch_db:argos_base.view_family_tree
+msgid "Family"
+msgstr "Familles"
+
+#. module: argos_base
+#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__sex__female
+msgid "Female"
+msgstr "Femelle"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__gtin
+#: model:ir.model.fields,field_description:argos_base.field_product_template__gtin
+msgid "GTIN Code"
+msgstr ""
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Hospitalization"
+msgstr "Hospitalisations"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__id
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__id
+#: model:ir.model.fields,field_description:argos_base.field_family_family__id
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__id
+msgid "ID"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__image
+msgid "Image"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_date
+msgid "Insertion Date"
+msgstr "Date de l'insertion"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_animal_insurance_list
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__insurance_id
+#: model:ir.ui.menu,name:argos_base.menu_animal_insurance
+msgid "Insurance"
+msgstr "Assurance"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__name
+msgid "Insurance Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Internal Notes"
+msgstr "Notes internes"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__issue_date
+msgid "Issue Date"
+msgstr "Date d'émission"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_category____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_race____last_update
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe____last_update
+#: model:ir.model.fields,field_description:argos_base.field_family_family____last_update
+#: model:ir.model.fields,field_description:argos_base.field_living_environment____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_family_family__write_uid
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_category__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__write_date
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__write_date
+#: model:ir.model.fields,field_description:argos_base.field_family_family__write_date
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__send_letter
+#: model:ir.model.fields,field_description:argos_base.field_res_users__send_letter
+msgid "Send Letter"
+msgstr "Courrier"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_living_environment_list
+#: model:ir.model,name:argos_base.model_living_environment
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__environment_ids
+#: model:ir.ui.menu,name:argos_base.menu_living_environment
+#: model_terms:ir.ui.view,arch_db:argos_base.view_living_environment_form
+#: model_terms:ir.ui.view,arch_db:argos_base.view_living_environment_tree
+msgid "Living Environment"
+msgstr "Milieu de vie"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__location
+msgid "Location"
+msgstr "Lieu"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__clinic_id
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__clinic_id
+#: model:ir.model.fields,field_description:argos_base.field_res_users__clinic_id
+msgid "Main Clinic"
+msgstr "Clinique principale"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__partner_id
+msgid "Main Owner"
+msgstr "Propriétaire principal"
+
+#. module: argos_base
+#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__sex__male
+msgid "Male"
+msgstr "Mâle"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Medical Events"
+msgstr "Evènements médicaux"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_missing
+msgid "Missing"
+msgstr "Disparu"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__name
+#: model:ir.model.fields,field_description:argos_base.field_animal_diet__name
+#: model:ir.model.fields,field_description:argos_base.field_family_family__name
+#: model:ir.model.fields,field_description:argos_base.field_living_environment__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__note
+msgid "Notes"
+msgstr "Notes"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_operating_unit
+msgid "Operating Unit"
+msgstr ""
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Outside Events"
+msgstr "Evènements extérieurs"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__passport
+msgid "Passport"
+msgstr "Passeport"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__pathology_ids
+msgid "Pathology"
+msgstr "Pathologies"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__name
+msgid "Pathology Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__phone
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__to_call
+#: model:ir.model.fields,field_description:argos_base.field_res_users__to_call
+msgid "Call"
+msgstr "Téléphone"
+
+#. module: argos_base
+#: model:ir.model,name:argos_base.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__race_id
+msgid "Race"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_race__name
+msgid "Race Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model:ir.actions.act_window,name:argos_base.open_animal_diet_list
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__diet_ids
+#: model:ir.ui.menu,name:argos_base.menu_animal_diet
+msgid "Recommended Diet"
+msgstr "Alimentation préconisée"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_reproductive
+msgid "Reproductive"
+msgstr "Reproducteur"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__robe_id
+msgid "Robe"
+msgstr "Robe"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_robe__name
+msgid "Robe Name"
+msgstr "Nom"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__sex
+msgid "Sex"
+msgstr "Sexe"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__send_sms
+#: model:ir.model.fields,field_description:argos_base.field_res_users__send_sms
+msgid "Send Sms"
+msgstr "SMS"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__category_id
+msgid "Species"
+msgstr "Espèce"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_sterilized
+msgid "Sterilized"
+msgstr "Stérilisé"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__child_class
+#: model:ir.model.fields,field_description:argos_base.field_product_template__child_class
+msgid "Sub Class"
+msgstr ""
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_product_product__sub_child_class
+#: model:ir.model.fields,field_description:argos_base.field_product_template__sub_child_class
+msgid "Sub child class"
+msgstr ""
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Surgery"
+msgstr "Chirurgies"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__tattoo
+msgid "Tattoo"
+msgstr "Tatouage"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__tattoo_date
+msgid "Tattoo Date"
+msgstr "Date du tatouage"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_animal_animal__tattoo_location
+msgid "Tattoo Location"
+msgstr "Lieu du tatouage"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__tutor_curator_id
+#: model:ir.model.fields,field_description:argos_base.field_res_users__tutor_curator_id
+msgid "Tutor/Curator"
+msgstr "Tuteur/Curateur"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__has_tutor_curator
+#: model:ir.model.fields,field_description:argos_base.field_res_users__has_tutor_curator
+msgid "Tutorship/Curatorship"
+msgstr "Tutelle/Curatelle"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Vaccination"
+msgstr "Vaccinations"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
+msgid "Weight"
+msgstr "Poids"
