@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_living_environment_tree" model="ir.ui.view">
+      <field name="name">living.environment.tree</field>
+      <field name="model">living.environment</field>
+      <field name="arch" type="xml">
+        <tree string="Living Environment">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_living_environment_form" model="ir.ui.view">
+      <field name="name">living.environment.form</field>
+      <field name="model">living.environment</field>
+      <field name="arch" type="xml">
+        <form string="Living Environment">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="open_living_environment_list" model="ir.actions.act_window">
+      <field name="name">Living Environment</field>
+      <field name="res_model">living.environment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_living_environment"
+        action="open_living_environment_list"
+        name="Living Environment"
+        sequence="5" parent="argos_base.menu_animal_config"/>
+
+  </data>
+</odoo>

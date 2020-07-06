@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_partner_inherit_form" model="ir.ui.view">
+      <field name="name">res.partner.inherit.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <field name="vat" position="after">
+          <field name="has_tutor_curator"/>
+          <field name="tutor_curator_id"/>
+        </field>
+        <field name="website" position="after">
+          <field name="clinic_id"/>
+          <field name="animal_ids" widget="many2many_tags"/>
+        </field>
+        <page name="internal_notes" position="before">
+          <page name="communication" string="Communication">
+            <label for="send_letter" string="Authorized Channels"/>
+            <group>
+              <field name="send_letter"/>
+              <field name="send_email"/>
+              <field name="send_sms"/>
+              <field name="to_call"/>
+            </group>
+          </page>
+        </page>
+      </field>
+    </record>
+
+    <menuitem id="argos_res_partner_menu_contacts"
+              name="Contact"
+              action="contacts.action_contacts"
+              parent="contacts.res_partner_menu_contacts"
+              sequence="1"/>
+  </data>
+</odoo>

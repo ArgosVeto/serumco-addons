@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="planning_view_form_quickcreate_inherit" model="ir.ui.view">
+      <field name="name">planning.slot.form.quickcreate.inherit</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_view_form_quickcreate"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="operating_unit_id"/>
+          <field name="animal_id"/>
+          <field name="partner_id"/>
+          <field name="consultation_type_id"/>
+          <field name="more_info"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="planning_view_calendar_inherit" model="ir.ui.view">
+      <field name="name">planning.slot.calendar.inherit</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_view_calendar"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="operating_unit_id"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="planning_view_inherit_form" model="ir.ui.view">
+      <field name="name">planning.slot.form.inherit</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="planning.planning_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@role='alert']" position="after">
+          <header>
+            <button name="set_to_draft" type="object" class="btn btn-primary" string="Set to Draft"
+                    attrs="{'invisible': [('state', 'not in', ['cancel'])]}"/>
+            <button name="validate" type="object" class="btn btn-primary" string="Validate"
+                    attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+            <button name="cancel" type="object" string="Cancel"
+                    attrs="{'invisible': [('state', 'not in', ['draft', 'validated'])]}"/>
+            <field name="state" widget="statusbar"/>
+          </header>
+        </xpath>
+        <xpath expr="//field[@name='role_id']" position="after">
+          <field name="operating_unit_id"/>
+          <field name="active" invisible="1"/>
+        </xpath>
+        <xpath expr="//field[@name='template_autocomplete_ids']" position="before">
+          <group>
+            <group>
+              <field name="source"/>
+              <field name="mrdv_event_id"/>
+              <field name="mrdv_job_id"/>
+            </group>
+            <group>
+              <field name="animal_id"/>
+              <field name="partner_id"/>
+              <field name="consultation_type_id"/>
+              <field name="more_info"/>
+            </group>
+          </group>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

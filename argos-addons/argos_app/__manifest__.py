@@ -11,6 +11,7 @@
     'description': '',
     'depends': [
         'argos_calendar',
+        'argos_planning',
     ],
     'data': [],
     'application': True,

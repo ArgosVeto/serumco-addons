@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_animal_robe_tree" model="ir.ui.view">
+      <field name="name">animal.robe.tree</field>
+      <field name="model">animal.robe</field>
+      <field name="arch" type="xml">
+        <tree string="Animal Robe">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_animal_robe_form" model="ir.ui.view">
+      <field name="name">animal.robe.form</field>
+      <field name="model">animal.robe</field>
+      <field name="arch" type="xml">
+        <form string="Animal Robe">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="open_animal_robe_list" model="ir.actions.act_window">
+      <field name="name">Animal Robe</field>
+      <field name="res_model">animal.robe</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_animal_robe"
+        action="open_animal_robe_list"
+        name="Animal Robe"
+        sequence="3" parent="argos_base.menu_animal_config"/>
+
+  </data>
+</odoo>

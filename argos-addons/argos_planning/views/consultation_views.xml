@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="consultation_type_view_tree" model="ir.ui.view">
+      <field name="name">consultation.type.tree</field>
+      <field name="model">consultation.type</field>
+      <field name="arch" type="xml">
+        <tree string="Consultation types">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="consultation_type_view_form" model="ir.ui.view">
+      <field name="name">consultation.type.form</field>
+      <field name="model">consultation.type</field>
+      <field name="arch" type="xml">
+        <form string="Consultation type">
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_open_consultation_type" model="ir.actions.act_window">
+      <field name="name">Consultation types</field>
+      <field name="res_model">consultation.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+          id="menu_settings_consultation_type"
+          name="Consultation types"
+          parent="planning.planning_menu_settings"
+          sequence="32"
+          action="action_open_consultation_type"/>
+  </data>
+</odoo>
