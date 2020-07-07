@@ -11,6 +11,8 @@
     'description': '',
     'depends': [
         'argos_calendar',
+        'argos_impex',
+        'arkeup_keyyo',
     ],
     'data': [],
     'application': True,
