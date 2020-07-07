@@ -9,7 +9,7 @@
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
-    'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit', 'arkeup_keyyo'],
+    'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit'],
     'data': [
         'security/ir.model.access.csv',
         # views
