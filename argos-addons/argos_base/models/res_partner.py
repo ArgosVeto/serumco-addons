@@ -20,8 +20,4 @@ class ResPartner(models.Model):
         partner = self.search([('name', '=', name), ('phone', '=', phone)], limit=1)
         if partner:
             return partner
-        else:
-            return self.create({
-                'name': name,
-                'phone': phone
-            })
+        return self.create({'name': name, 'phone': phone})

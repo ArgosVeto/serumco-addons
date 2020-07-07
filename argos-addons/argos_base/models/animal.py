@@ -44,15 +44,9 @@ class Animal(models.Model):
 
     @api.model
     def _get_animal_by_name(self, name=False, category=False, customer_name=False, phone=False):
-        partner_id = self.env['res.partner']._get_partner_by_name(customer_name, phone).id
-        category_id = self.env['animal.category']._get_animal_category(category).id
-        animal = self.search([('name', '=', name), ('category_id', '=', category_id), ('partner_id', '=', partner_id)],
-                             limit=1)
+        partner = self.env['res.partner']._get_partner_by_name(customer_name, phone)
+        category = self.env['animal.category']._get_animal_category(category)
+        animal = self.search([('name', '=', name), ('category_id', '=', category.id), ('partner_id', '=', partner.id)], limit=1)
         if animal:
             return animal
-        else:
-            return self.create({
-                'name': name,
-                'category_id': category_id,
-                'partner_id': partner_id
-            })
+        return self.create({'name': name, 'category_id': category.id, 'partner_id': partner.id})
