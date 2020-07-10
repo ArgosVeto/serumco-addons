@@ -9,7 +9,7 @@ class ResPartner(models.Model):
     has_tutor_curator = fields.Boolean('Tutorship/Curatorship')
     tutor_curator_id = fields.Many2one('res.partner', 'Tutor/Curator')
     clinic_id = fields.Many2one('res.partner', 'Main Clinic')
-    animal_ids = fields.Many2many('animal.animal', string='Animal List')
+    animal_ids = fields.One2many('animal.animal', 'partner_id', string='Animal List')
     send_letter = fields.Boolean('Send Letter')
     send_email = fields.Boolean('Send Email')
     send_sms = fields.Boolean('Send Sms')
