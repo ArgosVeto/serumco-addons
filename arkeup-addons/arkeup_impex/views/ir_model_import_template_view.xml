@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record id="ir_model_import_template_view_form_inherit" model="ir.ui.view">
+      <field name="name">ir.model.import.template.view.form.inherit</field>
+      <field name="model">ir.model.import.template</field>
+      <field name="inherit_id" ref="smile_impex.view_import_template_form"/>
+      <field name="arch" type="xml">
+        <group name="method" position="after">
+          <group name="file_grp">
+            <group name="import_file_option_grp">
+              <field name="file_name" invisible="1"/>
+              <field name="import_file" filename="file_name" required="True" widget='file_filter' options="{'accept': '.csv'}"/>
+              <field name="export_xls"/>
+            </group>
+          </group>
+        </group>
+      </field>
+    </record>
+
+  </data>
+</odoo>

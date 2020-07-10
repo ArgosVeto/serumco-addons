@@ -19,4 +19,5 @@
 #
 ##############################################################################
 
-from . import import_template
+from . import ir_model_import_template
+from . import ir_model_export_template

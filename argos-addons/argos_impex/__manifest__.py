@@ -20,33 +20,20 @@
 ##############################################################################
 
 {
-    'name': "argos_impex",
-
-    'summary': """
-        Manage import / export file from interface using smile_impex and arkeup_impex
-    """,
-
-    'description': """
-        Manage import / export file from interface using smile_impex and arkeup_impex
-    """,
-
-    'author': "ArkeUp",
-    'website': "http://www.arkeup.fr",
-
+    'name': 'ARGOS IMPEX',
+    'summary': 'Manage Import/Export file from web interface',
+    'description': '',
+    'author': 'ArkeUp',
+    'website': 'https://arkeup.fr',
     'category': 'Tools',
     'version': '0.1',
-    'sequence': -12,
-
-    'depends': ['arkeup_impex', 'argos_base'],
-
+    'sequence': -94,
+    'depends': ['arkeup_impex', 'arkeup_ftp', 'argos_base'],
     'data': [
+        # data
         # security
         'security/ir.model.access.csv',
-
-        # data
-
         # views
         'views/ir_model_import_template.xml',
     ],
-
 }
