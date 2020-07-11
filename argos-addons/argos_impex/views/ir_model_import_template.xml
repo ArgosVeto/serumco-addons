@@ -5,7 +5,7 @@
     <record id="ir_model_import_template_view_form_inherit" model="ir.ui.view">
       <field name="name">ir.model.import.template.view.form.inherit</field>
       <field name="model">ir.model.import.template</field>
-      <field name="inherit_id" ref="arkeup_impex.import_template_view_form_inherit"/>
+      <field name="inherit_id" ref="arkeup_impex.ir_model_import_template_view_form_inherit"/>
       <field name="arch" type="xml">
         <field name="file_name" position="before">
           <field name="is_remote_import"/>
