@@ -15,9 +15,7 @@ class ProductCategory(models.Model):
         """
         if not name:
             return False
-
         category = self.search([('name', '=', name)], limit=1)
         if not category:
             category = self.create({'name': name})
-
-        return category
+        return category.id

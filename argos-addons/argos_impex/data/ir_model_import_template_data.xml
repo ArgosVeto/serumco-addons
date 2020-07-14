@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="ir_model_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_process</field>
+    </record>
+
+    <record id="ir_model_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_import_template_data')}"/>
+    </record>
+
+  </data>
+</odoo>

@@ -9,3 +9,5 @@ class IrModelImportTemplate(models.Model):
     import_file = fields.Binary('File', attachment=True)
     file_name = fields.Char('Filename')
     export_xls = fields.Boolean('Generate errors file')
+    attachment_ids = fields.Many2many('ir.attachment', 'model_import_template_attachment_rel', 'template_id',
+                                      'attachment_id', 'Documents', readonly=True)
