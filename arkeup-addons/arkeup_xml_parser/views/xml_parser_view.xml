@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="xml_parser_form_view" model="ir.ui.view">
+      <field name="name">xml.parser.form.view</field>
+      <field name="model">xml.parser</field>
+      <field name="arch" type="xml">
+        <form string="Xml Parser">
+          <header>
+            <button name="button_parse_xml" string="Import data" type="object" class="btn-primary"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                <field name="name" placeholder="Xml parser name"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="file_name" invisible="1"/>
+                <field name="file" filename="file_name" required="True" widget='file_filter' options="{'accept': '.xml'}"/>
+                <field name="node"/>
+                <field name="specific_domain"/>
+              </group>
+              <group>
+                <field name="model_id"/>
+                <field name="fields_ids">
+                  <tree>
+                    <field name="name"/>
+                    <field name="model_id" invisible="1"/>
+                    <field name="destination" domain="[('model_id', '=', model_id)]"/>
+                  </tree>
+                </field>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="xml_parser_tree_view" model="ir.ui.view">
+      <field name="name">xml.parser.tree.view</field>
+      <field name="model">xml.parser</field>
+      <field name="arch" type="xml">
+        <tree string="Xml parser">
+          <field name="name"/>
+          <field name="model_id"/>
+          <field name="fields_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="xml_parser_search_view" model="ir.ui.view">
+      <field name="name">xml.parser.search.view</field>
+      <field name="model">xml.parser</field>
+      <field name="arch" type="xml">
+        <search string="Xml Parser">
+          <field name="name"/>
+          <field name="model_id"/>
+          <group expand="1" string="Group By"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="xml_parser_act_window" model="ir.actions.act_window">
+      <field name="name">Xml parser</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">xml.parser</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to create xml parser
+        </p>
+      </field>
+    </record>
+
+    <menuitem name="Xml Parser"
+              id="xml_parser_menu"
+              sequence="4"
+              parent="base.menu_custom"
+              action="xml_parser_act_window"/>
+  </data>
+</odoo>

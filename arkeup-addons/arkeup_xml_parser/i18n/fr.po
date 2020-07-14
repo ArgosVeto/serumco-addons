@@ -1,0 +1,159 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* arkeup_xml_parser
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-14 09:36+0000\n"
+"PO-Revision-Date: 2020-07-14 09:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: arkeup_xml_parser
+#: code:addons/arkeup_xml_parser/models/xml_parser.py:0
+#, python-format
+msgid "Can't import image URL: %(url)s :  %(error)s"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model_terms:ir.actions.act_window,help:arkeup_xml_parser.xml_parser_act_window
+msgid "Click to create xml parser"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__create_uid
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__create_date
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__destination
+msgid "Destination fields"
+msgstr "Champs destination"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__display_name
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__specific_domain
+msgid "Domain"
+msgstr "Domaine"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__fields_ids
+msgid "Fields"
+msgstr "Champs"
+
+#. module: arkeup_xml_parser
+#: model:ir.model,name:arkeup_xml_parser.model_fields_mapping
+msgid "Fields Mapping"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.fields_mapping_form_view
+msgid "Fields mapping"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__file
+msgid "File"
+msgstr "Fichier"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__file_name
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#. module: arkeup_xml_parser
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_search_view
+msgid "Group By"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__id
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__id
+msgid "ID"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_form_view
+msgid "Import data"
+msgstr "Importer données"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping____last_update
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__write_uid
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__write_date
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__model_id
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__model_id
+msgid "Model"
+msgstr "Modèle"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__parser_id
+msgid "Parser"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_xml_parser__node
+msgid "Reference node"
+msgstr "Node"
+
+#. module: arkeup_xml_parser
+#: model:ir.model.fields,field_description:arkeup_xml_parser.field_fields_mapping__name
+msgid "Source fields"
+msgstr "Champs source"
+
+#. module: arkeup_xml_parser
+#: model:ir.ui.menu,name:arkeup_xml_parser.xml_parser_menu
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_form_view
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_search_view
+msgid "Xml Parser"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model:ir.actions.act_window,name:arkeup_xml_parser.xml_parser_act_window
+#: model:ir.model,name:arkeup_xml_parser.model_xml_parser
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_tree_view
+msgid "Xml parser"
+msgstr ""
+
+#. module: arkeup_xml_parser
+#: model_terms:ir.ui.view,arch_db:arkeup_xml_parser.xml_parser_form_view
+msgid "Xml parser name"
+msgstr ""
