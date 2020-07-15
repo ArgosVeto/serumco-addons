@@ -9,12 +9,13 @@ from odoo.exceptions import Warning
 
 _logger = logging.getLogger(__name__)
 
+datas = []
 
 class ServerFTP(models.Model):
     _name = 'server.ftp'
     _description = 'Server FTP'
 
-    name = fields.Char()
+    name = fields.Char(copy=False)
     url = fields.Char('URL', required=True)
     login = fields.Char('Login')
     password = fields.Char('Password')
@@ -39,19 +40,15 @@ class ServerFTP(models.Model):
         return ftp
 
     def retrieve_data(self):
-        self.ensure_one()
-        ftp = self.connect()
-        ftp.retrbinary('RETR ' + self.filename, self.callback)
-        return True
-
-    def callback(self, data=None):
         """
-        To be overrided to process retrieved data
-        :param data:
+        retrieve data in memory
         :return:
         """
         self.ensure_one()
-        pass
+        ftp = self.connect()
+        datas = []
+        ftp.retrbinary('RETR ' + self.filename, lambda block: datas.append(block))
+        return b''.join(datas)
 
     def button_check_connection(self):
         """

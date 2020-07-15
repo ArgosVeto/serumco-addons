@@ -31,6 +31,7 @@
     'depends': ['arkeup_impex', 'arkeup_ftp', 'argos_base'],
     'data': [
         # data
+        'data/server_ftp_data.xml',
         'data/ir_model_import_template_data.xml',
         # security
         'security/ir.model.access.csv',

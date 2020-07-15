@@ -68,6 +68,7 @@ class ProductTemplate(models.Model):
         reader = csv.DictReader(csvfile, delimiter=';')
         logger = logger or self._context['logger']
         errors = []
+        lines = []
         for row in reader:
             try:
                 if not row.get('code'):
@@ -100,10 +101,10 @@ class ProductTemplate(models.Model):
                         product.write(vals)
                     else:
                         product = self.create(vals)
-                    if reader.line_num % 10 == 0:
+                    if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
                     product.manage_supinfo(row)
-                    logger.info(str(row))
+                    lines.append(reader.line_num)
                     self._cr.commit()
                 except Exception as e:
                     logger.error(repr(e))
@@ -113,9 +114,14 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
+        if lines:
+            logger.info(_('Liste of lines imported successfully: %s') % str(lines))
         if errors and template.export_xls:
             self.generate_errors_file(template, errors)
+            logger.info(_('Import finish with errors.\nGo to History Error Files tab to show the list of stranded lines.'))
+            return False
         logger.info(_('Import done successfully.'))
+        return
 
     @api.model
     def generate_errors_file(self, template=False, data=[]):

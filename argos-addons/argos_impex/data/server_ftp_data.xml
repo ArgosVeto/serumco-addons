@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="server_ftp_argos_data" model="server.ftp">
+      <field name="url">ftp1.centravet.net</field>
+      <field name="login">ARGOS</field>
+      <field name="password">k1Ifi0qsVZqPnj39hBnd</field>
+      <field name="filename">/ARGOS/General/produit-general.csv</field>
+    </record>
+
+  </data>
+</odoo>
