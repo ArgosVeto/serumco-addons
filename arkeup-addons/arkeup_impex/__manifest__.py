@@ -8,6 +8,7 @@
     'website': 'https://arkeup.com',
     'category': 'Tools',
     'version': '0.1',
+    'sequence': -51,
     'depends': [
         'smile_impex',
         'web_widget_binary_filter',

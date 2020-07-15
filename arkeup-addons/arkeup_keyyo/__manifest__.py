@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
 {
-	'name': 'Keyyo CTI',
+	'name': 'ArkeUp Keyyo CTI',
 	'version': '1.0',
 	'category': 'Tools',
-	'sequence': -2,
+	'sequence': -52,
 	'summary': 'Manage Keyyo API',
-
 	'author': 'Arkeup',
 	'website': 'www.arkeup.com',
 	'description': """

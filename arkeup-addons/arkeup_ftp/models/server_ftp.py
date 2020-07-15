@@ -34,7 +34,7 @@ class ServerFTP(models.Model):
         self.ensure_one()
         _logger.info(_('starting ftp connection ...'))
         ftp = FTP(self.url)
-        ftp.set_pasv(False)
+        ftp.set_pasv(True)
         ftp.login(self.login, self.password)
         _logger.info(_('connection established succesfully.'))
         return ftp

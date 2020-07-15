@@ -4,9 +4,8 @@
 	'name': 'ArkeUp FTP Connector',
 	'version': '1.0',
 	'category': 'Tools',
-	'sequence': -2,
+	'sequence': -50,
 	'summary': 'Manage FTP Connection',
-
 	'author': 'Arkeup',
 	'website': 'https://arkeup.com',
 	'description': """
