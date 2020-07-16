@@ -278,7 +278,7 @@ class ProductTemplate(models.Model):
     @api.model
     def processing_import_association_data(self, content=None, template=False, logger=False):
         """
-        Import price list of products
+        Import association of products
         :param content:
         :param template:
         :param logger:
@@ -354,7 +354,7 @@ class ProductTemplate(models.Model):
     @api.model
     def processing_import_documentation_data(self, content=None, template=False, logger=False):
         """
-        Import price list of products
+        Import documention of products
         :param content:
         :param template:
         :param logger:
@@ -431,7 +431,7 @@ class ProductTemplate(models.Model):
     @api.model
     def processing_import_regroupment_data(self, content=None, template=False, logger=False):
         """
-        Import price list of products
+        Import regroupment of products
         :param content:
         :param template:
         :param logger:
