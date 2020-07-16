@@ -20,7 +20,7 @@
               <group>
                 <field name="url"/>
                 <field name="login"/>
-                <field name="password" widget="password"/>
+                <field name="password" password="True"/>
               </group>
               <group>
                 <field name="filename"/>
@@ -39,7 +39,7 @@
         <tree string="Server FTP">
           <field name="name"/>
           <field name="login"/>
-          <field name="password" widget="password"/>
+          <field name="password" password="True"/>
           <field name="active"/>
         </tree>
       </field>
