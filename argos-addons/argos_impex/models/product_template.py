@@ -46,7 +46,7 @@ class ProductTemplate(models.Model):
                     if template.is_remote_import:
                         if not template.server_ftp_id:
                             return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger).retrieve_data()
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='produit-general').retrieve_data()
                     elif template.import_file:
                         scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
                         self.processing_import_data(scsv, template)
@@ -114,37 +114,35 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        if lines:
-            logger.info(_('Liste of lines imported successfully: %s') % str(lines))
-        if errors and template.export_xls:
-            self.generate_errors_file(template, errors)
-            logger.info(_('Import finish with errors.\nGo to History Error Files tab to show the list of stranded lines.'))
-            return False
-        logger.info(_('Import done successfully.'))
-        return
+        self.manage_import_report('produit-general', lines, template, errors, logger)
+        return True
 
     @api.model
-    def generate_errors_file(self, template=False, data=[]):
+    def generate_errors_file(self, source=False, template=False, data=[]):
         """
         Generate the file with all error lines
         :param template:
         :param data:
         :return:
         """
-        if not data or not template:
+        if not data or not template or not source:
             return
         csv_data = io.StringIO()
         csv_writer = csv.writer(csv_data, delimiter =';')
-        csv_header = ['code', 'libelle', 'presentation', 'fournisseur', 'poids', 'classe', 'ssClasse', 'sClasse', 'categorie', 'sCategorie',
-                      'ssCategorie', 'gtin', 'ean', 'cip', 'error detail']
-        csv_writer.writerow(csv_header)
-        for row, error in data:
-            csv_writer.writerow([row.get('code'), row.get('libelle'), row.get('presentation'), row.get('fournisseur'), row.get('poids'),
-                                 row.get('classe'), row.get('ssClasse'), row.get('sClasse'), row.get('categorie'), row.get('sCategorie'),
-                                 row.get('ssCategorie'), row.get('gtin'), row.get('ean'), row.get('cip'), error])
+        if source == 'produit-general':
+            csv_writer.writerow(['code', 'libelle', 'presentation', 'fournisseur', 'poids', 'classe', 'ssClasse', 'sClasse', 'categorie',
+                                 'sCategorie', 'ssCategorie', 'gtin', 'ean', 'cip', 'error detail'])
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('libelle'), row.get('presentation'), row.get('fournisseur'), row.get('poids'),
+                                     row.get('classe'), row.get('ssClasse'), row.get('sClasse'), row.get('categorie'), row.get('sCategorie'),
+                                     row.get('ssCategorie'), row.get('gtin'), row.get('ean'), row.get('cip'), error])
+        else:
+            csv_writer.writerow(['code', 'tarif'])
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('tarif'), error])
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
-        filename = 'PRODUCT_ERREURS_%s.csv' % date
+        filename = '%s_%s.csv' % (source, date)
         self.create_attachment(template, content, filename)
 
     @api.model
@@ -161,4 +159,94 @@ class ProductTemplate(models.Model):
         model = 'ir.model.import.template'
         template.attachment_ids = [(0, 0, {'type': 'binary', 'res_model': model,
                                            'res_id': template.id, 'datas': content, 'name': filename})]
+        return True
+
+    @api.model
+    def schedule_import_list_price_process(self, **kwargs):
+        with api.Environment.manage():
+            with registry(self._cr.dbname).cursor() as new_cr:
+                self = self.with_env(self.env(cr=new_cr))
+                logger = self._context['logger']
+                model_import_obj = self.env['ir.model.import.template']
+                try:
+                    template = model_import_obj.browse(kwargs.get('template_id'))
+                    if not template:
+                        logger.error(_('There is nothing to import.'))
+                        return
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='tarif').retrieve_data()
+                    elif template.import_file:
+                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        self.processing_import_list_price_data(scsv, template)
+                except Exception as e:
+                    logger.error(repr(e))
+                    self._cr.rollback()
+
+    @api.model
+    def processing_import_list_price_data(self, content=None, template=False, logger=False):
+        """
+        Import price list of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                if not row.get('code'):
+                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The code column is missed!')))
+                    continue
+                vals = {
+                    'default_code': row.get('code'),
+                    'list_price': row.get('tarif')
+                }
+                product = self.search([('default_code', '=', row.get('code'))], limit=1)
+                try:
+                    if product:
+                        product.write(vals)
+                    else:
+                        logger.info(_('No product with code %s found.') % row.get('code'))
+                        errors.append((row, _('No product with code %s found.') % row.get('code')))
+                    if reader.line_num % 150 == 0:
+                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                    lines.append(reader.line_num)
+                    self._cr.commit()
+                except Exception as e:
+                    logger.error(repr(e))
+                    errors.append((row, repr(e)))
+                    self._cr.rollback()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report('tarif', lines, template, errors, logger)
+        return True
+
+    @api.model
+    def manage_import_report(self, source=False, lines=[], template=False, errors=[], logger=None):
+        """
+        :param lines:
+        :param template:
+        :param errors:
+        :param logger:
+        :return:
+        """
+        if lines:
+            logger.info(_('Liste of lines imported successfully: %s') % str(lines))
+        if errors and template.export_xls:
+            self.generate_errors_file(source, template, errors)
+            logger.info(_('Import finish with errors.\nGo to History Error Files tab to show the list of stranded lines.'))
+            return False
+        if not errors:
+            logger.info(_('Import done successfully.'))
         return True
