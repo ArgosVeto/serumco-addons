@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_xml_parser_all,access_xml_parser all,model_xml_parser,,1,0,0,0
-access_xml_parser_user,access_xml_parser user,model_xml_parser,base.group_user,1,1,1,0
-access_xml_parser_manager,access_xml_parser manager,model_xml_parser,base.group_erp_manager,1,1,1,1
-access_fields_mapping_all,access_fields_mapping all,model_fields_mapping,,1,0,0,0
-access_fields_mapping_user,access_fields_mapping user,model_fields_mapping,base.group_user,1,1,1,0
-access_fields_mapping_manager,access_fields_mapping manager,model_fields_mapping,base.group_erp_manager,1,1,1,1
