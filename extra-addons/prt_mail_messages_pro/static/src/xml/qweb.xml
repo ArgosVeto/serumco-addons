@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <!--  Show/hide messages by type  -->
+    <t t-extend="mail.chatter.Buttons">
+        <t t-jquery="button:last" t-operation="after">
+            <t t-if="newMessageButton"> <!-- We will not show it unless other buttons are shown -->
+                <span class="btn btn-link" title="Message Filter">
+                    <i class="fa fa-info-circle" role="img" title="Show Notifications"/>
+                    <input type="checkbox" class="btn btn-link notif_checkbox" style="margin-bottom:0px;"  title="Show Notifications"/>
+
+                    <i class="fa fa-edit" role="img" title="Show Notes"/>
+                    <input type="checkbox" class="btn btn-link note_checkbox" style="margin-bottom:0px;"  title="Show Notes"/>
+
+                    <i class="fa fa-envelope" role="img" title="Show Messages"/>
+                    <input type="checkbox" class="btn btn-link message_checkbox" style="margin-bottom:0px;"  title="Show Messages"/>
+                </span>
+            </t>
+        </t>
+    </t>
+
+
+    <!-- Show buttons in chatter -->
+    <t t-extend="mail.widget.Thread.Message">
+        <t t-jquery="span:last" t-operation="append">
+            <i class="fa fa-quote-left o_thread_icon o_thread_message_prt_button o_thread_message_reply_composer_quote"
+               t-att-data-message-id="message.getID()" id="quote_message" title="Quote"/>
+            <i class="fa fa-copy o_thread_icon o_thread_message_prt_button o_thread_message_reply_composer_forward"
+               t-att-data-message-id="message.getID()" id="forward_message" title="Forward"/>
+            <i class="fa fa-arrow-right o_thread_icon o_thread_message_prt_button o_thread_message_reply_composer_move"
+               t-att-data-message-id="message.getID()" id="move_message" title="Move"/>
+            <i class='fa fa-trash o_thread_icon o_thread_message_prt_button o_thread_message_reply_composer_delete'
+               t-att-data-message-id="message.getID()" id="delete_message" title="Delete"/>
+            <i t-if="message._type !== 'notification'" class='fa fa-edit o_thread_icon o_thread_message_prt_button o_thread_message_reply_composer_edit'
+               t-att-data-message-id="message.getID()" id="edit_message" title="Edit"/>
+        </t>
+        <!-- Show 'edited' notification instantly -->
+        <t t-jquery=".o_mail_info" t-operation="append">
+            <p t-if="message._cx_edit_message"
+               t-att-title="message._cx_edit_message"
+               style="font-size:x-small;color:#1D8348;font-style:italic;">
+                <t t-esc="message._cx_edit_message"/>
+            </p>
+        </t>
+    </t>
+
+    <!-- Render message thread for pre-filtered messages -->
+    <t t-name="mail.widget.Thread.Content">
+        <t t-if="is_cetmix_thread">
+            <t t-set="messages" t-value="messages"/>
+            <t t-call="mail.widget.Thread.Content.DESC"/>
+        </t>
+        <t t-else="">
+            <t t-set="messages" t-value="thread.getMessages({ 'domain': options.domain || [] })"/>
+            <t t-if="options.displayOrder === ORDER.ASC" t-call="mail.widget.Thread.Content.ASC"/>
+            <t t-else="" t-call="mail.widget.Thread.Content.DESC"/>
+        </t>
+    </t>
+</templates>

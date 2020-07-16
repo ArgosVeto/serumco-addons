@@ -1,0 +1,47 @@
+<odoo>
+    <template id="jitsi_room" name="Jitsi Room">
+        <t t-call="website.layout">
+            <div id="wrap"
+                 data-jitsi="1"
+                 t-att-data-server="jitsi_server"
+                 t-att-data-password="event.jitsi_password"
+                 t-att-data-subject="event.name"
+                 t-att-data-company="request.env.user.company_id.name"
+                 t-att-data-eventid="event.id"
+                 t-att-data-attendeeid="attendee and attendee.id or 0"
+                 t-att-data-autostart="autostart"
+                 t-att-data-room="event.jitsi_room"
+                 t-att-data-email="attendee and attendee.email or request.env.user.email"
+                 t-att-data-name="attendee and attendee.partner_id and attendee.partner_id.name or request.env.user.name"
+                 t-att-data-public="request.env.user._is_public() and 1 or 0">
+            </div>
+        </t>
+    </template>
+
+    <template id="jitsi_not_enabled" name="Jitsi Not Enabled">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="alert alert-danger">
+                        <h1>Jitsi is not enabled for this Meeting!</h1>
+                        <p>Jump to backend and enable Jitsi Remote Meeting for this this event.</p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="jitsi_not_open" name="Jitsi Not Open">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="alert alert-warning mt32">
+                        <h3>The Meeting Room is not yet open</h3>
+                        <p>Please try again later...</p>
+                        <a class="btn btn-default" href="#" onclick="window.location.reload(true);">Retry</a>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
