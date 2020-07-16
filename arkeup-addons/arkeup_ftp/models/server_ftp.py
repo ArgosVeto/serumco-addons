@@ -19,8 +19,7 @@ class ServerFTP(models.Model):
     url = fields.Char('URL', required=True)
     login = fields.Char('Login')
     password = fields.Char('Password')
-    filename = fields.Char('Filename', default='/', required=True,
-                           help="Complete remote path of the file to be downloaded")
+    filename = fields.Char('Filename', default='/', required=True, help='Complete remote path of the file to be downloaded')
     active = fields.Boolean(default=True)
 
     @api.model
@@ -56,8 +55,8 @@ class ServerFTP(models.Model):
         :return:
         """
         if self.connect():
-            title = _("Connection Test Succeeded!")
-            message = _("Everything seems properly set up!")
+            title = _('Connection Test Succeeded!')
+            message = _('Everything seems properly set up!')
             return {
                 'type': 'ir.actions.client',
                 'tag': 'display_notification',
