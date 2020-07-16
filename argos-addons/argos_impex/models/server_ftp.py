@@ -21,5 +21,14 @@ class ServerFTP(models.Model):
         model_import_obj = self.env['ir.model.import.template']
         template = model_import_obj.browse(self._context.get('template'))
         logger = self._context.get('logger')
-        product_tmpl_obj.processing_import_data(datas.decode('utf-8'), template, logger)
+        if self._context.get('source') == 'produit-general':
+            product_tmpl_obj.processing_import_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'tarif':
+            product_tmpl_obj.processing_import_list_price_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'association':
+            product_tmpl_obj.processing_import_association_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'documentation':
+            product_tmpl_obj.processing_import_documentation_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'regroupement':
+            product_tmpl_obj.processing_import_regroupment_data(datas.decode('utf-8'), template, logger)
         return True

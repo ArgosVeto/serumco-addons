@@ -12,5 +12,45 @@
       <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_import_template_data')}"/>
     </record>
 
+    <record id="ir_model_list_price_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Tarifs</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_list_price_process</field>
+    </record>
+
+    <record id="ir_model_list_price_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_list_price_import_template_data')}"/>
+    </record>
+
+    <record id="ir_model_association_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits Association</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_association_process</field>
+    </record>
+
+    <record id="ir_model_association_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_association_import_template_data')}"/>
+    </record>
+
+    <record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits Documentation</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_documentation_process</field>
+    </record>
+
+    <record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_documentation_import_template_data')}"/>
+    </record>
+
+    <record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits Regroupement</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_regroupment_process</field>
+    </record>
+
+    <record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_regroupment_import_template_data')}"/>
+    </record>
+
   </data>
 </odoo>
