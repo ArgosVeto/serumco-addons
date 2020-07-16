@@ -12,6 +12,12 @@ from odoo.addons.argos_base.models import tools
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    regroupment_code = fields.Char('Regroupment Code', required=False)
+    regroupment_order = fields.Char('Regroupment Order', required=False)
+    assoc_code = fields.Char('Association Code', required=False)
+    doc_type = fields.Char('Documentation Type', required=False)
+    doc_url = fields.Char('Documentation URL', required=False)
+
     def manage_supinfo(self, row={}):
         self.ensure_one()
         if not row.get('fournisseur'):
@@ -136,10 +142,25 @@ class ProductTemplate(models.Model):
                 csv_writer.writerow([row.get('code'), row.get('libelle'), row.get('presentation'), row.get('fournisseur'), row.get('poids'),
                                      row.get('classe'), row.get('ssClasse'), row.get('sClasse'), row.get('categorie'), row.get('sCategorie'),
                                      row.get('ssCategorie'), row.get('gtin'), row.get('ean'), row.get('cip'), error])
-        else:
-            csv_writer.writerow(['code', 'tarif'])
+        elif source == 'tarif':
+            csv_writer.writerow(['code', 'tarif', 'error detail'])
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('tarif'), error])
+        elif source == 'association':
+            csv_header = ['code', 'codeA', 'error detail']
+            csv_writer.writerow(csv_header)
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('codeA'), error])
+        elif source == 'documentation':
+            csv_header = ['code', 'type', 'doc', 'error detail']
+            csv_writer.writerow(csv_header)
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('type'), row.get('doc'), error])
+        elif source == 'regroupement':
+            csv_header = ['code', 'regroupement', 'ordre', 'error detail']
+            csv_writer.writerow(csv_header)
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('regroupement'), row.get('ordre'), error])
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
         filename = '%s_%s.csv' % (source, date)
@@ -230,6 +251,232 @@ class ProductTemplate(models.Model):
                 errors.append((row, repr(e)))
                 self._cr.rollback()
         self.manage_import_report('tarif', lines, template, errors, logger)
+        return True
+
+    @api.model
+    def schedule_import_association_process(self, **kwargs):
+        with api.Environment.manage():
+            with registry(self._cr.dbname).cursor() as new_cr:
+                self = self.with_env(self.env(cr=new_cr))
+                logger = self._context['logger']
+                model_import_obj = self.env['ir.model.import.template']
+                try:
+                    template = model_import_obj.browse(kwargs.get('template_id'))
+                    if not template:
+                        logger.error(_('There is nothing to import.'))
+                        return
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        template.server_ftp_id.with_context(template=template.id, logger=logger,
+                                                            source='association').retrieve_data()
+                    elif template.import_file:
+                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        self.processing_import_association_data(scsv, template)
+                except Exception as e:
+                    logger.error(repr(e))
+                    self._cr.rollback()
+
+    @api.model
+    def processing_import_association_data(self, content=None, template=False, logger=False):
+        """
+        Import association of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                if not row.get('code'):
+                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The code column is missed!')))
+                    continue
+                if not row.get('codeA'):
+                    logger.error(
+                        _('The codeA is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The codeA column is missed!')))
+                    continue
+                vals = {
+                    'default_code': row.get('code'),
+                    'assoc_code': row.get('codeA'),
+                }
+                product = self.search([('default_code', '=', row.get('code'))], limit=1)
+                try:
+                    if product:
+                        product.write(vals)
+                    else:
+                        logger.info(_('No product with code %s found.') % row.get('code'))
+                        errors.append((row, _('No product with code %s found.') % row.get('code')))
+                    if reader.line_num % 150 == 0:
+                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                    lines.append(reader.line_num)
+                    self._cr.commit()
+                except Exception as e:
+                    logger.error(repr(e))
+                    errors.append((row, repr(e)))
+                    self._cr.rollback()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report('association', lines, template, errors, logger)
+        return True
+
+    @api.model
+    def schedule_import_documentation_process(self, **kwargs):
+        with api.Environment.manage():
+            with registry(self._cr.dbname).cursor() as new_cr:
+                self = self.with_env(self.env(cr=new_cr))
+                logger = self._context['logger']
+                model_import_obj = self.env['ir.model.import.template']
+                try:
+                    template = model_import_obj.browse(kwargs.get('template_id'))
+                    if not template:
+                        logger.error(_('There is nothing to import.'))
+                        return
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='documentation').retrieve_data()
+                    elif template.import_file:
+                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        self.processing_import_documentation_data(scsv, template)
+                except Exception as e:
+                    logger.error(repr(e))
+                    self._cr.rollback()
+
+    @api.model
+    def processing_import_documentation_data(self, content=None, template=False, logger=False):
+        """
+        Import documention of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                if not row.get('code'):
+                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The code column is missed!')))
+                    continue
+                if not row.get('type'):
+                    logger.error(
+                        _('The type is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The type column is missed!')))
+                    continue
+                vals = {
+                    'default_code': row.get('code'),
+                    'doc_type': row.get('type'),
+                    'doc_url': row.get('doc'),
+                }
+                product = self.search([('default_code', '=', row.get('code'))], limit=1)
+                try:
+                    if product:
+                        product.write(vals)
+                    else:
+                        logger.info(_('No product with code %s found.') % row.get('code'))
+                        errors.append((row, _('No product with code %s found.') % row.get('code')))
+                    if reader.line_num % 150 == 0:
+                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                    lines.append(reader.line_num)
+                    self._cr.commit()
+                except Exception as e:
+                    logger.error(repr(e))
+                    errors.append((row, repr(e)))
+                    self._cr.rollback()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report('documentation', lines, template, errors, logger)
+        return True
+
+    @api.model
+    def schedule_import_regroupment_process(self, **kwargs):
+        with api.Environment.manage():
+            with registry(self._cr.dbname).cursor() as new_cr:
+                self = self.with_env(self.env(cr=new_cr))
+                logger = self._context['logger']
+                model_import_obj = self.env['ir.model.import.template']
+                try:
+                    template = model_import_obj.browse(kwargs.get('template_id'))
+                    if not template:
+                        logger.error(_('There is nothing to import.'))
+                        return
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='regroupement').retrieve_data()
+                    elif template.import_file:
+                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        self.processing_import_regroupment_data(scsv, template)
+                except Exception as e:
+                    logger.error(repr(e))
+                    self._cr.rollback()
+
+    @api.model
+    def processing_import_regroupment_data(self, content=None, template=False, logger=False):
+        """
+        Import regroupment of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                if not row.get('code'):
+                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    errors.append((row, _('The code column is missed!')))
+                    continue
+                vals = {
+                    'default_code': row.get('code'),
+                    'regroupment_code': row.get('regroupement'),
+                    'regroupment_order': row.get('ordre'),
+                }
+                product = self.search([('default_code', '=', row.get('code'))], limit=1)
+                try:
+                    if product:
+                        product.write(vals)
+                    else:
+                        logger.info(_('No product with code %s found.') % row.get('code'))
+                        errors.append((row, _('No product with code %s found.') % row.get('code')))
+                    if reader.line_num % 150 == 0:
+                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                    lines.append(reader.line_num)
+                    self._cr.commit()
+                except Exception as e:
+                    logger.error(repr(e))
+                    errors.append((row, repr(e)))
+                    self._cr.rollback()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report('regroupement', lines, template, errors, logger)
         return True
 
     @api.model

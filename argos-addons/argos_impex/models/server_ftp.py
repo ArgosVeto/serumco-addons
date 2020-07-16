@@ -15,7 +15,7 @@ class ServerFTP(models.Model):
         :return:
         """
         datas = super(ServerFTP, self).retrieve_data()
-        if not self._contexprodut.get('template') or not datas:
+        if not self._context.get('template') or not datas:
             return False
         product_tmpl_obj = self.env['product.template']
         model_import_obj = self.env['ir.model.import.template']
@@ -25,4 +25,10 @@ class ServerFTP(models.Model):
             product_tmpl_obj.processing_import_data(datas.decode('utf-8'), template, logger)
         elif self._context.get('source') == 'tarif':
             product_tmpl_obj.processing_import_list_price_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'association':
+            product_tmpl_obj.processing_import_association_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'documentation':
+            product_tmpl_obj.processing_import_documentation_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'regroupement':
+            product_tmpl_obj.processing_import_regroupment_data(datas.decode('utf-8'), template, logger)
         return True
