@@ -14,6 +14,7 @@
         'argos_impex',
         'arkeup_keyyo',
         'argos_planning',
+        'argos_website',
     ],
     'data': [],
     'application': True,
