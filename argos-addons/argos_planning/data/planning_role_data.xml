@@ -10,4 +10,9 @@
     <field name="role_type">rdv</field>
     <field name="color">4</field>
   </record>
+  <record id="planning_role_presence" model="planning.role">
+    <field name="name">Presence</field>
+    <field name="role_type">presence</field>
+    <field name="color">3</field>
+  </record>
 </odoo>
