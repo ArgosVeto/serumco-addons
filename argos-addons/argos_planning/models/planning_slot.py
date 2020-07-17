@@ -26,11 +26,11 @@ class PlanningSlot(models.Model):
 
     @api.model
     def _recover_away(self):
-        print('Tafiditra away')
+        print('Away')
 
     @api.model
     def _recover_presence(self):
-        print('Tafiditra presence')
+        print('Presence')
 
     @api.model
     def _prepare_slot_data(self, post={}):

@@ -14,4 +14,4 @@ class PlanningAssignment(models.Model):
 
     @api.model
     def _recover_assignment(self):
-        print('Tafiditra affectation')
+        print('Assignment')
