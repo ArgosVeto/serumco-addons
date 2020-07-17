@@ -4,14 +4,11 @@
 
     <template id="mrdv_home" name="Mrdv Home">
       <t t-call="web.layout">
-        <t t-set="head">
-          <script data-widget-clinic="7335" src="http://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js"></script>
-        </t>
         <div id="wrap">
           <div class="container">
-            <div id="vetowidget">
-              Hello World!
-            </div>
+            <div id="vetowidget"></div>
+            <script data-widget-clinic="7335"
+                    src="http://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js"></script>
           </div>
         </div>
       </t>
