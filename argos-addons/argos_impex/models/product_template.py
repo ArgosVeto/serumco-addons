@@ -546,7 +546,7 @@ class ProductTemplate(models.Model):
         if not content or not template:
             return False
         products = ET.fromstring(content)
-        index = 0
+        index = 1
         lines = []
         errors = []
         logger = logger or self._context['logger']
@@ -573,12 +573,12 @@ class ProductTemplate(models.Model):
             try:
                 if product:
                     product.write(vals)
+                    lines.append(default_code)
                 else:
                     logger.info(_('No product with code %s found.') % default_code)
                     errors.append((vals, _('No product with code %s found.') % default_code))
                 if index % 150 == 0:
                     logger.info(_('Import in progress ... %s lines treated.' % index))
-                lines.append(index)
                 self._cr.commit()
                 index += 1
             except Exception as e:
