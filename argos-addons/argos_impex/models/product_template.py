@@ -243,7 +243,6 @@ class ProductTemplate(models.Model):
                     if product:
                         product.write(vals)
                     else:
-                        logger.info(_('No product with code %s found.') % row.get('code'))
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
@@ -296,7 +295,6 @@ class ProductTemplate(models.Model):
                     if product:
                         product.write(vals)
                     else:
-                        logger.info(_('No product with code %s found.') % row.get('code'))
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
@@ -350,7 +348,6 @@ class ProductTemplate(models.Model):
                     if product:
                         product.write(vals)
                     else:
-                        logger.info(_('No product with code %s found.') % row.get('code'))
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
@@ -399,7 +396,6 @@ class ProductTemplate(models.Model):
                     if product:
                         product.write(vals)
                     else:
-                        logger.info(_('No product with code %s found.') % row.get('code'))
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
@@ -426,10 +422,14 @@ class ProductTemplate(models.Model):
         :return:
         """
         if lines:
-            logger.info(_('Liste of lines imported successfully: %s') % str(lines))
+            logger.info(_('List of lines imported successfully: %s') % str(lines))
         if errors and template.export_xls:
             self.generate_errors_file(source, template, errors)
-            logger.info(_('Import finish with errors.\nGo to History Error Files tab to show the list of stranded lines.'))
+            logger.info(_('Import finish with errors. Go to History Error Files tab to show the list of stranded lines.'))
+            return False
+        if errors:
+            logger.info(_("List of stranded lines: ['%s']" % "', '".join(str(row[0].get('code', row[0].get('default_code')))
+                                                                         for row in errors if row and isinstance(row[0], dict))))
             return False
         if not errors:
             logger.info(_('Import done successfully.'))
@@ -476,12 +476,10 @@ class ProductTemplate(models.Model):
                     product.write(vals)
                     lines.append(default_code)
                 else:
-                    logger.info(_('No product with code %s found.') % default_code)
                     errors.append((vals, _('No product with code %s found.') % default_code))
                 if index % 150 == 0:
                     logger.info(_('Import in progress ... %s lines treated.' % index))
                 self._cr.commit()
-                index += 1
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((vals, repr(e)))
@@ -509,15 +507,15 @@ class ProductTemplate(models.Model):
         return True
 
     @api.model
-    def get_xml_structure(self, source=False):
+    def get_xml_structure(self, source=False, data=False):
         """
-
         :param source:
+        :param data:
         :return:
         """
-        if not source:
+        if not source or not data:
             return False
-        if source == 'regulation':
+        if source == 'produit-reglementation':
             root = ET.Element('Produits')
             for tag, error_msg in data:
                 product = ET.SubElement(root, 'produit')
@@ -545,7 +543,7 @@ class ProductTemplate(models.Model):
                 teneurEnEau.text = tag.get('waters_content')
                 error.text = error_msg
             return root
-        if source == 'enriched_product':
+        if source == 'produit-enrichi':
             root = ET.Element('Produits')
             for tag, error_msg in data:
                 product = ET.SubElement(root, 'produit')
@@ -561,6 +559,7 @@ class ProductTemplate(models.Model):
                 photo.text = tag.get('photo')
                 error.text = error_msg
             return root
+        return False
 
     @api.model
     def processing_import_product_enrichi_data(self, content=None, template=False, source=False, logger=False):
@@ -597,12 +596,10 @@ class ProductTemplate(models.Model):
                     product.write(vals)
                     lines.append(default_code)
                 else:
-                    logger.info(_('No product with code %s found.') % default_code)
                     errors.append((vals, _('No product with code %s found.') % default_code))
                 if index % 150 == 0:
                     logger.info(_('Import in progress ... %s lines treated.' % index))
                 self._cr.commit()
-                index += 1
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((vals, repr(e)))

@@ -71,7 +71,7 @@ class IrModelImpexTemplate(models.AbstractModel):
                 vals = rec._get_cron_vals(**kwargs)
                 cron_id = rec.env['ir.cron'].create(vals)
                 rec.write({'cron_id': cron_id.id})
-            return True
+        return True
 
     def _get_server_action_vals(self, **kwargs):
         model = self.env['ir.model'].search(
@@ -89,7 +89,7 @@ class IrModelImpexTemplate(models.AbstractModel):
             if not rec.server_action_id:
                 vals = rec._get_server_action_vals(**kwargs)
                 rec.server_action_id = rec.env['ir.actions.server'].create(vals)
-            return True
+        return True
 
     def unlink_server_action(self):
         for rec in self:
