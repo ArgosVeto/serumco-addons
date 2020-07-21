@@ -5,6 +5,8 @@ import csv
 import io
 import base64
 
+import xml.etree.ElementTree as ET
+
 from odoo import models, fields, registry, api, _
 from odoo.addons.argos_base.models import tools
 
@@ -17,6 +19,15 @@ class ProductTemplate(models.Model):
     assoc_code = fields.Char('Association Code', required=False)
     doc_type = fields.Char('Documentation Type', required=False)
     doc_url = fields.Char('Documentation URL', required=False)
+    aliment_type = fields.Char('Aliment Type', required=False)
+    utilization = fields.Char('Utilization', required=False)
+    composition = fields.Char('Composition', required=False)
+    analytic_constitution = fields.Char('Analytic Constitution', required=False)
+    additives = fields.Char('Additives', required=False)
+    energetic_value = fields.Char('Energetic Value', required=False)
+    daily_ratio_recommended = fields.Char('Daily Ratio Recommended', required=False)
+    indications = fields.Char('Indications', required=False)
+    waters_content = fields.Char('Waters Content', required=False)
 
     def manage_supinfo(self, row={}):
         self.ensure_one()
@@ -161,6 +172,8 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('regroupement'), row.get('ordre'), error])
+        elif source == 'regulation':
+            return self.generate_xml_error_file(source, template, data)
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
         filename = '%s_%s.csv' % (source, date)
@@ -497,3 +510,126 @@ class ProductTemplate(models.Model):
         if not errors:
             logger.info(_('Import done successfully.'))
         return True
+
+    @api.model
+    def schedule_import_regulation_process(self, **kwargs):
+        with api.Environment.manage():
+            with registry(self._cr.dbname).cursor() as new_cr:
+                self = self.with_env(self.env(cr=new_cr))
+                logger = self._context['logger']
+                model_import_obj = self.env['ir.model.import.template']
+                try:
+                    template = model_import_obj.browse(kwargs.get('template_id'))
+                    if not template:
+                        logger.error(_('There is nothing to import.'))
+                        return
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='regulation').retrieve_data()
+                    elif template.import_file:
+                        xml = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        self.processing_import_regulation_data(xml, template)
+                except Exception as e:
+                    logger.error(repr(e))
+                    self._cr.rollback()
+
+    @api.model
+    def processing_import_regulation_data(self, content=None, template=False, logger=False):
+        """
+        Import regulations of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        products = ET.fromstring(content)
+        index = 0
+        lines = []
+        errors = []
+        logger = logger or self._context['logger']
+        for child in products:
+            default_code = child[0].text.strip()
+            vals = {
+                'default_code': default_code,
+                'aliment_type': child[1].text,
+                'utilization': child[2].text,
+                'composition': child[3].text,
+                'analytic_constitution': child[5].text,
+                'additives': child[5].text,
+                'energetic_value': child[6].text,
+                'daily_ratio_recommended': child[7].text,
+                'indications': child[8].text,
+                'waters_content': child[9].text,
+            }
+            if not default_code:
+                logger.error(_('The code is needed to continue processing this article. Line %s' % index))
+                errors.append((vals, _('The code is needed to continue processing this article!')))
+                index += 1
+                continue
+            product = self.search([('default_code', '=', default_code)], limit=1)
+            try:
+                if product:
+                    product.write(vals)
+                else:
+                    logger.info(_('No product with code %s found.') % default_code)
+                    errors.append((vals, _('No product with code %s found.') % default_code))
+                if index % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.' % index))
+                lines.append(index)
+                self._cr.commit()
+                index += 1
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((vals, repr(e)))
+                self._cr.rollback()
+            finally:
+                index += 1
+        self.manage_import_report('regulation', lines, template, errors, logger)
+
+    @api.model
+    def generate_xml_error_file(self, source=False, template=False, data=False):
+        """
+        :param data:
+        :param template:
+        :param source:
+        :return:
+        """
+        if not data or not template or not source:
+            return False
+        root = ET.Element('Produits')
+        for tag, error_msg in data:
+            product = ET.SubElement(root, 'produit')
+            code = ET.SubElement(product, 'code')
+            typeAliment = ET.SubElement(product, 'typeAliment')
+            utilisation = ET.SubElement(product, 'utilization')
+            composition = ET.SubElement(product, 'composition')
+            constitutantsAnalytiques = ET.SubElement(product, 'constitutantsAnalytiques')
+            additifs = ET.SubElement(product, 'additifs')
+            valeurEnergetique = ET.SubElement(product, 'valeurEnergetique')
+            rationJournaliereRecommandee = ET.SubElement(product, 'rationJournaliereRecommandee')
+            indications = ET.SubElement(product, 'indications')
+            teneurEnEau = ET.SubElement(product, 'teneurEnEau')
+            error = ET.SubElement(product, 'errorDetails')
+            # add text to tags
+            code.text = tag.get('default_code')
+            typeAliment.text = tag.get('aliment_type')
+            utilisation.text = tag.get('utilisation')
+            composition.text = tag.get('composition')
+            constitutantsAnalytiques.text = tag.get('analytic_constitution')
+            additifs.text = tag.get('additives')
+            valeurEnergetique.text = tag.get('energetic_value')
+            rationJournaliereRecommandee.text = tag.get('daily_ratio_recommended')
+            indications.text = tag.get('indications')
+            teneurEnEau.text = tag.get('waters_content')
+            error.text = error_msg
+        xml_data = ET.tostring(root)
+        content = base64.b64encode(xml_data)
+        date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
+        filename = '%s_%s.xml' % (source, date)
+        self.create_attachment(template, content, filename)
+        return True
+
+

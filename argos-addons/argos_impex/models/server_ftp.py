@@ -31,4 +31,6 @@ class ServerFTP(models.Model):
             product_tmpl_obj.processing_import_documentation_data(datas.decode('utf-8'), template, logger)
         elif self._context.get('source') == 'regroupement':
             product_tmpl_obj.processing_import_regroupment_data(datas.decode('utf-8'), template, logger)
+        elif self._context.get('source') == 'regulation':
+            product_tmpl_obj.processing_import_regulation_data(datas.decode('utf-8'), template, logger)
         return True

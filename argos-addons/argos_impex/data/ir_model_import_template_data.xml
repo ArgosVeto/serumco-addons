@@ -67,5 +67,18 @@
       <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_regroupment_import_template_data')}"/>
     </record>
 
+    <record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits Réglementation</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_regulation_process</field>
+      <field name="is_remote_import">True</field>
+      <field name="export_xls">True</field>
+      <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regulation_data"/>
+    </record>
+
+    <record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
+      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_regulation_import_template_data')}"/>
+    </record>
+
   </data>
 </odoo>
