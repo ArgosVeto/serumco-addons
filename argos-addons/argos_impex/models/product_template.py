@@ -57,22 +57,36 @@ class ProductTemplate(models.Model):
                 model_import_obj = self.env['ir.model.import.template']
                 try:
                     template = model_import_obj.browse(kwargs.get('template_id'))
+                    source = kwargs.get('source')
                     if not template:
                         logger.error(_('There is nothing to import.'))
                         return True
                     if template.is_remote_import:
                         if not template.server_ftp_id:
                             return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='produit-general').retrieve_data()
+                        template.server_ftp_id.with_context(template=template.id, logger=logger, source=source).retrieve_data()
                     elif template.import_file:
-                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_data(scsv, template)
+                        content = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        if source == 'produit-general':
+                            return self.processing_import_data(content, template, source)
+                        if source == 'tarif':
+                            return self.processing_import_list_price_data(content, template, source)
+                        if source == 'produit-association':
+                            return self.processing_import_product_association_data(content, template, source)
+                        if source == 'produit-documentation':
+                            return self.processing_import_product_documentation_data(content, template, source)
+                        if source == 'produit-regroupement':
+                            return self.processing_import_product_regroupement_data(content, template, source)
+                        if source == 'produit-reglementation':
+                            return self.processing_import_product_reglementation_data(content, template, source)
+                        if source == 'produit-enrichi':
+                            return self.processing_import_product_enrichi_data(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()
 
     @api.model
-    def processing_import_data(self, content=None, template=False, logger=False):
+    def processing_import_data(self, content=None, template=False, source=False, logger=False):
         """
         :param content:
         :param template:
@@ -131,7 +145,7 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        self.manage_import_report('produit-general', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
@@ -145,34 +159,37 @@ class ProductTemplate(models.Model):
         if not data or not template or not source:
             return
         csv_data = io.StringIO()
-        csv_writer = csv.writer(csv_data, delimiter =';')
+        csv_writer = csv.writer(csv_data, delimiter=';')
         if source == 'produit-general':
             csv_writer.writerow(['code', 'libelle', 'presentation', 'fournisseur', 'poids', 'classe', 'ssClasse', 'sClasse', 'categorie',
                                  'sCategorie', 'ssCategorie', 'gtin', 'ean', 'cip', 'error detail'])
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('libelle'), row.get('presentation'), row.get('fournisseur'), row.get('poids'),
-                                     row.get('classe'), row.get('ssClasse'), row.get('sClasse'), row.get('categorie'), row.get('sCategorie'),
+                                     row.get('classe'), row.get('ssClasse'), row.get('sClasse'), row.get('categorie'),
+                                     row.get('sCategorie'),
                                      row.get('ssCategorie'), row.get('gtin'), row.get('ean'), row.get('cip'), error])
         elif source == 'tarif':
             csv_writer.writerow(['code', 'tarif', 'error detail'])
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('tarif'), error])
-        elif source == 'association':
+        elif source == 'produit-association':
             csv_header = ['code', 'codeA', 'error detail']
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('codeA'), error])
-        elif source == 'documentation':
+        elif source == 'produit-documentation':
             csv_header = ['code', 'type', 'doc', 'error detail']
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('type'), row.get('doc'), error])
-        elif source == 'regroupement':
+        elif source == 'produit-regroupement':
             csv_header = ['code', 'regroupement', 'ordre', 'error detail']
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('regroupement'), row.get('ordre'), error])
-        elif source == 'regulation':
+        elif source == 'produit-reglementation':
+            return self.generate_xml_error_file(source, template, data)
+        elif source == 'produit-enrichi':
             return self.generate_xml_error_file(source, template, data)
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
@@ -196,30 +213,7 @@ class ProductTemplate(models.Model):
         return True
 
     @api.model
-    def schedule_import_list_price_process(self, **kwargs):
-        with api.Environment.manage():
-            with registry(self._cr.dbname).cursor() as new_cr:
-                self = self.with_env(self.env(cr=new_cr))
-                logger = self._context['logger']
-                model_import_obj = self.env['ir.model.import.template']
-                try:
-                    template = model_import_obj.browse(kwargs.get('template_id'))
-                    if not template:
-                        logger.error(_('There is nothing to import.'))
-                        return
-                    if template.is_remote_import:
-                        if not template.server_ftp_id:
-                            return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='tarif').retrieve_data()
-                    elif template.import_file:
-                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_list_price_data(scsv, template)
-                except Exception as e:
-                    logger.error(repr(e))
-                    self._cr.rollback()
-
-    @api.model
-    def processing_import_list_price_data(self, content=None, template=False, logger=False):
+    def processing_import_list_price_data(self, content=None, template=False, source=False, logger=False):
         """
         Import price list of products
         :param content:
@@ -263,35 +257,11 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        self.manage_import_report('tarif', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
-    def schedule_import_association_process(self, **kwargs):
-        with api.Environment.manage():
-            with registry(self._cr.dbname).cursor() as new_cr:
-                self = self.with_env(self.env(cr=new_cr))
-                logger = self._context['logger']
-                model_import_obj = self.env['ir.model.import.template']
-                try:
-                    template = model_import_obj.browse(kwargs.get('template_id'))
-                    if not template:
-                        logger.error(_('There is nothing to import.'))
-                        return
-                    if template.is_remote_import:
-                        if not template.server_ftp_id:
-                            return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger,
-                                                            source='association').retrieve_data()
-                    elif template.import_file:
-                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_association_data(scsv, template)
-                except Exception as e:
-                    logger.error(repr(e))
-                    self._cr.rollback()
-
-    @api.model
-    def processing_import_association_data(self, content=None, template=False, logger=False):
+    def processing_import_product_association_data(self, content=None, template=False, source=False, logger=False):
         """
         Import association of products
         :param content:
@@ -340,34 +310,11 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        self.manage_import_report('association', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
-    def schedule_import_documentation_process(self, **kwargs):
-        with api.Environment.manage():
-            with registry(self._cr.dbname).cursor() as new_cr:
-                self = self.with_env(self.env(cr=new_cr))
-                logger = self._context['logger']
-                model_import_obj = self.env['ir.model.import.template']
-                try:
-                    template = model_import_obj.browse(kwargs.get('template_id'))
-                    if not template:
-                        logger.error(_('There is nothing to import.'))
-                        return
-                    if template.is_remote_import:
-                        if not template.server_ftp_id:
-                            return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='documentation').retrieve_data()
-                    elif template.import_file:
-                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_documentation_data(scsv, template)
-                except Exception as e:
-                    logger.error(repr(e))
-                    self._cr.rollback()
-
-    @api.model
-    def processing_import_documentation_data(self, content=None, template=False, logger=False):
+    def processing_import_product_documentation_data(self, content=None, template=False, source=False, logger=False):
         """
         Import documention of products
         :param content:
@@ -417,34 +364,11 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        self.manage_import_report('documentation', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
-    def schedule_import_regroupment_process(self, **kwargs):
-        with api.Environment.manage():
-            with registry(self._cr.dbname).cursor() as new_cr:
-                self = self.with_env(self.env(cr=new_cr))
-                logger = self._context['logger']
-                model_import_obj = self.env['ir.model.import.template']
-                try:
-                    template = model_import_obj.browse(kwargs.get('template_id'))
-                    if not template:
-                        logger.error(_('There is nothing to import.'))
-                        return
-                    if template.is_remote_import:
-                        if not template.server_ftp_id:
-                            return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='regroupement').retrieve_data()
-                    elif template.import_file:
-                        scsv = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_regroupment_data(scsv, template)
-                except Exception as e:
-                    logger.error(repr(e))
-                    self._cr.rollback()
-
-    @api.model
-    def processing_import_regroupment_data(self, content=None, template=False, logger=False):
+    def processing_import_product_regroupment_data(self, content=None, template=False, source=False, logger=False):
         """
         Import regroupment of products
         :param content:
@@ -489,7 +413,7 @@ class ProductTemplate(models.Model):
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
-        self.manage_import_report('regroupement', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
@@ -512,30 +436,7 @@ class ProductTemplate(models.Model):
         return True
 
     @api.model
-    def schedule_import_regulation_process(self, **kwargs):
-        with api.Environment.manage():
-            with registry(self._cr.dbname).cursor() as new_cr:
-                self = self.with_env(self.env(cr=new_cr))
-                logger = self._context['logger']
-                model_import_obj = self.env['ir.model.import.template']
-                try:
-                    template = model_import_obj.browse(kwargs.get('template_id'))
-                    if not template:
-                        logger.error(_('There is nothing to import.'))
-                        return
-                    if template.is_remote_import:
-                        if not template.server_ftp_id:
-                            return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source='regulation').retrieve_data()
-                    elif template.import_file:
-                        xml = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                        self.processing_import_regulation_data(xml, template)
-                except Exception as e:
-                    logger.error(repr(e))
-                    self._cr.rollback()
-
-    @api.model
-    def processing_import_regulation_data(self, content=None, template=False, logger=False):
+    def processing_import_product_reglementation_data(self, content=None, template=False, source=False, logger=False):
         """
         Import regulations of products
         :param content:
@@ -587,7 +488,7 @@ class ProductTemplate(models.Model):
                 self._cr.rollback()
             finally:
                 index += 1
-        self.manage_import_report('regulation', lines, template, errors, logger)
+        self.manage_import_report(source, lines, template, errors, logger)
 
     @api.model
     def generate_xml_error_file(self, source=False, template=False, data=False):
@@ -599,32 +500,7 @@ class ProductTemplate(models.Model):
         """
         if not data or not template or not source:
             return False
-        root = ET.Element('Produits')
-        for tag, error_msg in data:
-            product = ET.SubElement(root, 'produit')
-            code = ET.SubElement(product, 'code')
-            typeAliment = ET.SubElement(product, 'typeAliment')
-            utilisation = ET.SubElement(product, 'utilization')
-            composition = ET.SubElement(product, 'composition')
-            constitutantsAnalytiques = ET.SubElement(product, 'constitutantsAnalytiques')
-            additifs = ET.SubElement(product, 'additifs')
-            valeurEnergetique = ET.SubElement(product, 'valeurEnergetique')
-            rationJournaliereRecommandee = ET.SubElement(product, 'rationJournaliereRecommandee')
-            indications = ET.SubElement(product, 'indications')
-            teneurEnEau = ET.SubElement(product, 'teneurEnEau')
-            error = ET.SubElement(product, 'errorDetails')
-            # add text to tags
-            code.text = tag.get('default_code')
-            typeAliment.text = tag.get('aliment_type')
-            utilisation.text = tag.get('utilisation')
-            composition.text = tag.get('composition')
-            constitutantsAnalytiques.text = tag.get('analytic_constitution')
-            additifs.text = tag.get('additives')
-            valeurEnergetique.text = tag.get('energetic_value')
-            rationJournaliereRecommandee.text = tag.get('daily_ratio_recommended')
-            indications.text = tag.get('indications')
-            teneurEnEau.text = tag.get('waters_content')
-            error.text = error_msg
+        root = self.get_xml_structure(source, data)
         xml_data = ET.tostring(root)
         content = base64.b64encode(xml_data)
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
@@ -632,4 +508,105 @@ class ProductTemplate(models.Model):
         self.create_attachment(template, content, filename)
         return True
 
+    @api.model
+    def get_xml_structure(self, source=False):
+        """
 
+        :param source:
+        :return:
+        """
+        if not source:
+            return False
+        if source == 'regulation':
+            root = ET.Element('Produits')
+            for tag, error_msg in data:
+                product = ET.SubElement(root, 'produit')
+                code = ET.SubElement(product, 'code')
+                typeAliment = ET.SubElement(product, 'typeAliment')
+                utilisation = ET.SubElement(product, 'utilization')
+                composition = ET.SubElement(product, 'composition')
+                constitutantsAnalytiques = ET.SubElement(product, 'constitutantsAnalytiques')
+                additifs = ET.SubElement(product, 'additifs')
+                valeurEnergetique = ET.SubElement(product, 'valeurEnergetique')
+                rationJournaliereRecommandee = ET.SubElement(product, 'rationJournaliereRecommandee')
+                indications = ET.SubElement(product, 'indications')
+                teneurEnEau = ET.SubElement(product, 'teneurEnEau')
+                error = ET.SubElement(product, 'errorDetails')
+                # add text to tags
+                code.text = tag.get('default_code')
+                typeAliment.text = tag.get('aliment_type')
+                utilisation.text = tag.get('utilisation')
+                composition.text = tag.get('composition')
+                constitutantsAnalytiques.text = tag.get('analytic_constitution')
+                additifs.text = tag.get('additives')
+                valeurEnergetique.text = tag.get('energetic_value')
+                rationJournaliereRecommandee.text = tag.get('daily_ratio_recommended')
+                indications.text = tag.get('indications')
+                teneurEnEau.text = tag.get('waters_content')
+                error.text = error_msg
+            return root
+        if source == 'enriched_product':
+            root = ET.Element('Produits')
+            for tag, error_msg in data:
+                product = ET.SubElement(root, 'produit')
+                code = ET.SubElement(product, 'code')
+                description = ET.SubElement(product, 'description')
+                vignette = ET.SubElement(product, 'vignette')
+                photo = ET.SubElement(product, 'photo')
+                error = ET.SubElement(product, 'error_detail')
+                # add text to tags
+                code.text = tag.get('default_code')
+                description.text = tag.get('description')
+                vignette.text = tag.get('vignette')
+                photo.text = tag.get('photo')
+                error.text = error_msg
+            return root
+
+    @api.model
+    def processing_import_product_enrichi_data(self, content=None, template=False, source=False, logger=False):
+        """
+        Import enriched_products of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        products = ET.fromstring(content)
+        index = 1
+        lines = []
+        errors = []
+        logger = logger or self._context['logger']
+        for child in products:
+            default_code = child[0].text.strip()
+            vals = {
+                'default_code': default_code,
+                'description': child[1].text,
+                'image_1024': tools.get_image_url_as_base64(child[2].text),
+                'image_1920': tools.get_image_url_as_base64(child[3].text)
+            }
+            if not default_code:
+                logger.error(_('The code is needed to continue processing this article. Line %s' % index))
+                errors.append((vals, _('The code is needed to continue processing this article!')))
+                index += 1
+                continue
+            product = self.search([('default_code', '=', default_code)], limit=1)
+            try:
+                if product:
+                    product.write(vals)
+                    lines.append(default_code)
+                else:
+                    logger.info(_('No product with code %s found.') % default_code)
+                    errors.append((vals, _('No product with code %s found.') % default_code))
+                if index % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.' % index))
+                self._cr.commit()
+                index += 1
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((vals, repr(e)))
+                self._cr.rollback()
+            finally:
+                index += 1
+        return self.manage_import_report(source, lines, template, errors, logger)

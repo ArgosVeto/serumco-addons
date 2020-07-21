@@ -12,72 +12,92 @@
     </record>
 
     <record id="ir_model_import_template_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_import_template_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_import_template_data'), 'source': 'produit-general'}"/>
     </record>
 
     <record id="ir_model_import_template_list_price_data" model="ir.model.import.template">
       <field name="name">Import Tarifs</field>
       <field name="model_id" ref="product.model_product_template"/>
-      <field name="method">schedule_import_list_price_process</field>
+      <field name="method">schedule_import_process</field>
       <field name="is_remote_import">True</field>
       <field name="export_xls">True</field>
       <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_tarif_data"/>
     </record>
 
     <record id="ir_model_import_template_list_price_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_import_template_list_price_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_import_template_list_price_data'), 'source': 'tarif'}"/>
     </record>
 
     <record id="ir_model_association_import_template_data" model="ir.model.import.template">
       <field name="name">Import Produits Association</field>
       <field name="model_id" ref="product.model_product_template"/>
-      <field name="method">schedule_import_association_process</field>
+      <field name="method">schedule_import_process</field>
       <field name="is_remote_import">True</field>
       <field name="export_xls">True</field>
       <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_association_data"/>
     </record>
 
     <record id="ir_model_association_import_template_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_association_import_template_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_association_import_template_data'), 'source': 'produit-association'}"/>
     </record>
 
     <record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
       <field name="name">Import Produits Documentation</field>
       <field name="model_id" ref="product.model_product_template"/>
-      <field name="method">schedule_import_documentation_process</field>
+      <field name="method">schedule_import_process</field>
       <field name="is_remote_import">True</field>
       <field name="export_xls">True</field>
       <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_documentation_data"/>
     </record>
 
     <record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_documentation_import_template_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_documentation_import_template_data'), 'source': 'produit-documentation'}"/>
     </record>
 
     <record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
       <field name="name">Import Produits Regroupement</field>
       <field name="model_id" ref="product.model_product_template"/>
-      <field name="method">schedule_import_regroupment_process</field>
+      <field name="method">schedule_import_process</field>
       <field name="is_remote_import">True</field>
       <field name="export_xls">True</field>
       <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regroupment_data"/>
     </record>
 
     <record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_regroupment_import_template_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_regroupment_import_template_data'), 'source': 'produit-regroupement'}"/>
     </record>
 
     <record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
       <field name="name">Import Produits Réglementation</field>
       <field name="model_id" ref="product.model_product_template"/>
-      <field name="method">schedule_import_regulation_process</field>
+      <field name="method">schedule_import_process</field>
       <field name="is_remote_import">True</field>
       <field name="export_xls">True</field>
       <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regulation_data"/>
     </record>
 
     <record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
-      <field name="method_args" eval="{'template_id': ref('argos_impex.ir_model_regulation_import_template_data')}"/>
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_regulation_import_template_data'), 'source': 'produit-reglementation'}"/>
+    </record>
+
+    <record id="ir_model_enriched_product_import_template_data" model="ir.model.import.template">
+      <field name="name">Import Produits Enrichis</field>
+      <field name="model_id" ref="product.model_product_template"/>
+      <field name="method">schedule_import_process</field>
+      <field name="is_remote_import">True</field>
+      <field name="export_xls">True</field>
+      <field name="server_ftp_id" ref="argos_impex.server_ftp_argos_enriched_product_data"/>
+    </record>
+
+    <record id="ir_model_enriched_product_import_template_data" model="ir.model.import.template">
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_enriched_product_import_template_data'), 'source': 'produit-enrichi'}"/>
     </record>
 
   </data>
