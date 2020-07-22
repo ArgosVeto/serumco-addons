@@ -8,3 +8,7 @@ access_animal_insurance,animal.insurance,model_animal_insurance,base.group_user,
 access_animal_pathology,animal.pathology,model_animal_pathology,base.group_user,1,1,1,1
 access_living_environment,living.environment,model_living_environment,base.group_user,1,1,1,1
 access_animal_diet,animal.diet,model_animal_diet,base.group_user,1,1,1,1
+
+access_res_users_mrdv_user,access_res_users mrdv user,base.model_res_users,mrdv_group_user,0,1,1,0
+access_res_partner_mrdv_user,access_res_partner mrdv user,base.model_res_partner,mrdv_group_user,0,1,1,0
+

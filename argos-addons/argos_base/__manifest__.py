@@ -11,6 +11,10 @@
     'description': '',
     'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit'],
     'data': [
+        # data
+        'data/res_users_data.xml',
+        # security
+        'security/res_groups.xml',
         'security/ir.model.access.csv',
         # views
         'views/product_template.xml',
