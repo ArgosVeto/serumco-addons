@@ -18,6 +18,8 @@
         'data/planning_role_data.xml',
         'views/consultation_views.xml',
         'views/planning_views.xml',
+        'views/assignment_views.xml',
+        'data/planning_cron.xml',
     ],
     'application': False,
     'installable': True,

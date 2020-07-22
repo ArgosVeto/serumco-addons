@@ -18,6 +18,20 @@ class PlanningSlot(models.Model):
     more_info = fields.Text('More Information')
 
     @api.model
+    def _cron_recover_planning(self):
+        self._recover_away()
+        self._recover_presence()
+        self.env['planning.assignment']._recover_assignment()
+
+    @api.model
+    def _recover_away(self):
+        print('Away')
+
+    @api.model
+    def _recover_presence(self):
+        print('Presence')
+
+    @api.model
     def _prepare_slot_data(self, post={}):
         if not post:
             return {}
