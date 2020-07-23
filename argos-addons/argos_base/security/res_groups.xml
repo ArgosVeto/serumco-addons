@@ -3,7 +3,7 @@
   <data>
 
     <record id="mrdv_group_user" model="res.groups">
-      <field name="name">User</field>
+      <field name="name">MRDV User</field>
     </record>
 
     <record id="mrdv_user" model="res.users">

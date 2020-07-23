@@ -13,6 +13,7 @@
         'argos_calendar',
         'argos_impex',
         'arkeup_keyyo',
+        'argos_stock',
         'argos_planning',
         'argos_website',
     ],
