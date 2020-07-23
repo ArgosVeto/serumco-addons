@@ -125,6 +125,7 @@ class ProductTemplate(models.Model):
                     'sale_ok': True,
                     'purchase_ok': True,
                     'type': 'product',
+                    'is_published': True,
                 }
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 try:
