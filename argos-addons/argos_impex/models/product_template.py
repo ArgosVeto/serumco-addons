@@ -16,7 +16,6 @@ class ProductTemplate(models.Model):
 
     regroupment_code = fields.Char('Regroupment Code', required=False)
     regroupment_order = fields.Char('Regroupment Order', required=False)
-    assoc_code = fields.Char('Association Code', required=False)
     doc_type = fields.Char('Documentation Type', required=False)
     doc_url = fields.Char('Documentation URL', required=False)
     aliment_type = fields.Char('Aliment Type', required=False)
@@ -282,24 +281,19 @@ class ProductTemplate(models.Model):
                     logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
                     errors.append((row, _('The code column is missed!')))
                     continue
-                if not row.get('codeA'):
-                    logger.error(
-                        _('The codeA is needed to continue processing this article. Line %s' % reader.line_num))
-                    errors.append((row, _('The codeA column is missed!')))
-                    continue
-                vals = {
-                    'default_code': row.get('code'),
-                    'assoc_code': row.get('codeA'),
-                }
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 try:
                     if product:
-                        product.write(vals)
+                        alternative = self.search([('default_code', '=', row.get('codeA')), ('default_code', '!=', False)], limit=1)
+                        if alternative:
+                            product.write({'alternative_product_ids': [(4, alternative.id)]})
+                            lines.append(reader.line_num)
+                        else:
+                            errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
                     else:
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
                         logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
-                    lines.append(reader.line_num)
                     self._cr.commit()
                 except Exception as e:
                     logger.error(repr(e))

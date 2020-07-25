@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-16 16:43+0000\n"
-"PO-Revision-Date: 2020-07-16 16:43+0000\n"
+"POT-Creation-Date: 2020-07-25 12:04+0000\n"
+"PO-Revision-Date: 2020-07-25 12:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,10 +16,34 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__assoc_code
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__assoc_code
-msgid "Association Code"
-msgstr "Code association"
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__additives
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__additives
+msgid "Additives"
+msgstr "Additifs"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__aliment_type
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__aliment_type
+msgid "Aliment Type"
+msgstr "Type alimentaire"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__analytic_constitution
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__analytic_constitution
+msgid "Analytic Constitution"
+msgstr "Constitutants analytiques"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__composition
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__composition
+msgid "Composition"
+msgstr "Composition"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__daily_ratio_recommended
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__daily_ratio_recommended
+msgid "Daily Ratio Recommended"
+msgstr "Ration journalière recommandée"
 
 #. module: argos_impex
 #: model:ir.model.fields,field_description:argos_impex.field_product_product__doc_type
@@ -32,6 +56,12 @@ msgstr "Type documentation"
 #: model:ir.model.fields,field_description:argos_impex.field_product_template__doc_url
 msgid "Documentation URL"
 msgstr "Url documentation"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__energetic_value
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__energetic_value
+msgid "Energetic Value"
+msgstr "Valeur énergétique"
 
 #. module: argos_impex
 #: model:ir.model,name:argos_impex.model_ir_model_import_template
@@ -48,11 +78,9 @@ msgstr "Import terminé avec succès."
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid ""
-"Import finish with errors.\n"
-"Go to History Error Files tab to show the list of stranded lines."
-msgstr ""
-"Import terminé avec des erreurs.\n"
-"Aller dans l'onglet Historique pour retrouver la liste de toutes lignes eronnées."
+"Import finish with errors. Go to History Error Files tab to show the list of"
+" stranded lines."
+msgstr "Import terminé avec des erreurs. Aller dans l'onglet Historique pour retrouver la liste de toutes lignes eronnées."
 
 #. module: argos_impex
 #: model:ir.model.fields,field_description:argos_impex.field_ir_model_import_template__is_remote_import
@@ -65,19 +93,37 @@ msgstr "Importer à partir de FTP"
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "Import in progress ... %s lines treated."
 msgstr "Import en cours ... %s lignes ont été traitées."
 
 #. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__indications
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__indications
+msgid "Indications"
+msgstr "Indications"
+
+#. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
-msgid "Liste of lines imported successfully: %s"
+msgid "List of lines imported successfully: %s"
 msgstr ""
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "List of stranded lines: ['%s']', '"
+msgstr "Liste des lignes échouées : ['%s']', '"
+
+#. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No associated product with code %s found."
+msgstr "Aucun produit associé avec le code %s n'a été trouvé."
+
+#. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
@@ -129,24 +175,22 @@ msgstr "La colonne Code est introuvable!"
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The code is needed to continue processing this article!"
+msgstr "Le code est nécessaire pour continuer l'import de ce produit !"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "The code is needed to continue processing this article. Line %s"
-msgstr "Le code est nécessaire pour continuer l'import de ce produit. Ligne %s"
-
-#. module: argos_impex
-#: code:addons/argos_impex/models/product_template.py:0
-#, python-format
-msgid "The codeA column is missed!"
-msgstr "La colone codeA est n'est pas renseignée."
-
-#. module: argos_impex
-#: code:addons/argos_impex/models/product_template.py:0
-#, python-format
-msgid "The codeA is needed to continue processing this article. Line %s"
-msgstr "Le code est nécessaire pour continuer l'import de ce produit. Ligne %s"
+msgstr ""
+"Le code est nécessaire pour continuer l'import de ce produit. Ligne %s"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -158,7 +202,8 @@ msgstr "La colonne libelle n'est pas renseignée!"
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "The libelle is needed to continue processing this article. Line %s"
-msgstr "Le libelle est nécessaire pour continuer l'import de ce produit. Ligne %s"
+msgstr ""
+"Le libellé est nécessaire pour continuer l'import de ce produit. Ligne %s"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -170,14 +215,23 @@ msgstr "La colone type est introuvable!"
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "The type is needed to continue processing this article. Line %s"
-msgstr "Le type est nécessaire pour continuer l'import de ce produit. Ligne %s"
+msgstr ""
+"Le type est nécessaire pour continuer l'import de ce produit. Ligne %s"
 
 #. module: argos_impex
-#: code:addons/argos_impex/models/product_template.py:0
-#: code:addons/argos_impex/models/product_template.py:0
-#: code:addons/argos_impex/models/product_template.py:0
-#: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "There is nothing to import."
 msgstr "Le modèle d'import n'est pas trouvé. Rien à importer!"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__utilization
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__utilization
+msgid "Utilization"
+msgstr "Utilisation"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_product__waters_content
+#: model:ir.model.fields,field_description:argos_impex.field_product_template__waters_content
+msgid "Waters Content"
+msgstr "Teneur en eau"
