@@ -284,9 +284,9 @@ class ProductTemplate(models.Model):
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 try:
                     if product:
-                        alternative = self.search([('default_code', '=', row.get('codeA')), ('default_code', '!=', False)], limit=1)
-                        if alternative:
-                            product.write({'alternative_product_ids': [(4, alternative.id)]})
+                        accessory = self.search([('default_code', '=', row.get('codeA')), ('default_code', '!=', False)], limit=1)
+                        if accessory:
+                            product.write({'accessory_product_ids': [(4, accessory.id)]})
                             lines.append(reader.line_num)
                         else:
                             errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
