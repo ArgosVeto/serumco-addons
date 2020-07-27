@@ -112,7 +112,7 @@ class ProductTemplate(models.Model):
                 vals = {
                     'default_code': row.get('code'),
                     'name': row.get('libelle'),
-                    'description': row.get('presentation'),
+                    'description_sale': row.get('presentation'),
                     'weight': row.get('poids'),
                     'mother_class': row.get('classe'),
                     'sub_child_class': row.get('ssClasse'),
