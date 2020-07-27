@@ -112,7 +112,7 @@ class ProductTemplate(models.Model):
                 vals = {
                     'default_code': row.get('code'),
                     'name': row.get('libelle'),
-                    'description_sale': row.get('presentation'),
+                    'description': row.get('presentation'),
                     'weight': row.get('poids'),
                     'mother_class': row.get('classe'),
                     'sub_child_class': row.get('ssClasse'),
@@ -576,7 +576,7 @@ class ProductTemplate(models.Model):
             default_code = child[0].text.strip()
             vals = {
                 'default_code': default_code,
-                'description': child[1].text,
+                'description_sale': child[1].text,
                 'image_1024': tools.get_image_url_as_base64(child[2].text),
                 'image_1920': tools.get_image_url_as_base64(child[3].text)
             }
