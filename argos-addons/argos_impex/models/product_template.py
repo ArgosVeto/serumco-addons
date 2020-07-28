@@ -48,6 +48,7 @@ class ProductTemplate(models.Model):
             return True
         return True
 
+    @api.model
     def schedule_import_process(self, **kwargs):
         with api.Environment.manage():
             with registry(self._cr.dbname).cursor() as new_cr:
@@ -80,6 +81,8 @@ class ProductTemplate(models.Model):
                             return self.processing_import_product_reglementation_data(content, template, source)
                         if source == 'produit-enrichi':
                             return self.processing_import_product_enrichi_data(content, template, source)
+                        if source == 'referentiel-filtre':
+                            return self.processing_import_referentiel_filtre_data(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()

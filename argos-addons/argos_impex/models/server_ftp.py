@@ -18,6 +18,7 @@ class ServerFTP(models.Model):
         if not self._context.get('template') or not datas:
             return False
         product_tmpl_obj = self.env['product.template']
+        product_attr_obj = self.env['product.attribute']
         model_import_obj = self.env['ir.model.import.template']
         template = model_import_obj.browse(self._context.get('template'))
         logger = self._context.get('logger')
@@ -36,4 +37,6 @@ class ServerFTP(models.Model):
             return product_tmpl_obj.processing_import_product_reglementation_data(datas.decode('utf-8'), template, source, logger)
         if source == 'produit-enrichi':
             return product_tmpl_obj.processing_import_product_enrichi_data(datas.decode('utf-8'), template, source, logger)
+        if source == 'referentiel-filtre':
+            return product_attr_obj.processing_import_referentiel_filtre_data(datas.decode('utf-8'), template, source, logger)
         return False
