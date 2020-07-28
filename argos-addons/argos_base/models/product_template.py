@@ -11,4 +11,4 @@ class ProductTemplate(models.Model):
     sub_child_class = fields.Char('Sub child class')
     gtin = fields.Char('GTIN Code')
     ean = fields.Char('EAN Code')
-    cip = fields.Integer('CIP Code')
+    cip = fields.Char('CIP Code')
