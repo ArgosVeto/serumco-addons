@@ -6,14 +6,17 @@ from odoo import api, fields, models, _, tools
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    last_name = fields.Char('Last Name')
+    first_name = fields.Char('First Name')
     has_tutor_curator = fields.Boolean('Tutorship/Curatorship')
     tutor_curator_id = fields.Many2one('res.partner', 'Tutor/Curator')
     clinic_id = fields.Many2one('res.partner', 'Main Clinic')
-    animal_ids = fields.One2many('animal.animal', 'partner_id', string='Animal List')
+    animal_ids = fields.Many2many('animal.animal', string='Animal List')
     send_letter = fields.Boolean('Send Letter')
     send_email = fields.Boolean('Send Email')
     send_sms = fields.Boolean('Send Sms')
     to_call = fields.Boolean('Call')
+    origin_id = fields.Many2one('connection.origin', 'Connection Origin')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):

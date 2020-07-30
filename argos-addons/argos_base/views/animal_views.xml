@@ -19,6 +19,14 @@
       <field name="model">animal.animal</field>
       <field name="arch" type="xml">
         <form string="Animal">
+          <header>
+            <button string="Edit Convention" name="edit_convention" type="object" class="oe_highlight"
+                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
+            <button string="Reprint Convention" name="reprint_convention" type="object" class="oe_highlight"
+                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
+            <button string="Delete Convention" name="delete_convention" type="object"
+                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
+          </header>
           <sheet>
             <field name="image" widget="image" class="oe_avatar"/>
             <div class="oe_title">
@@ -29,8 +37,6 @@
             <group>
               <group>
                 <field name="active" invisible="1"/>
-                <field name="is_dead"/>
-                <field name="is_missing"/>
                 <field name="category_id"/>
                 <field name="race_id"/>
                 <field name="sex"/>
@@ -40,27 +46,29 @@
                 <field name="is_sterilized"/>
                 <field name="is_reproductive"/>
                 <field name="is_dangerous"/>
-                <field name="tattoo"/>
-                <field name="tattoo_date"/>
                 <field name="tattoo_location"/>
+                <field name="tattoo_date"/>
                 <field name="chip_identification"/>
-                <field name="chip_date"/>
                 <field name="chip_location"/>
+                <field name="chip_date"/>
               </group>
               <group>
                 <field name="passport"/>
                 <field name="issue_date"/>
                 <field name="location"/>
-                <field name="partner_id"/>
-                <field name="family_id"/>
-                <field name="phone" widget="phone"/>
-                <field name="email" widget="email"/>
-                <field name="clinic_id"/>
-                <field name="veterinary_id"/>
+                <field name="partner_id" required="True"/>
+                <field name="clinic_id" required="True"/>
+                <field name="veterinary_id" required="True"/>
                 <field name="insurance_id"/>
                 <field name="environment_ids" widget="many2many_tags"/>
                 <field name="diet_ids" widget="many2many_tags"/>
                 <field name="pathology_ids" widget="many2many_tags"/>
+                <field name="is_dead"/>
+                <field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
+                <field name="death_reason"
+                       attrs="{'invisible': [('is_dead', '=', False)], 'required': [('is_dead', '=', True)]}"/>
+                <field name="is_missing"/>
+                <field name="missing_date" attrs="{'invisible': [('is_missing', '=', False)]}"/>
               </group>
             </group>
             <notebook>
@@ -76,6 +84,9 @@
                     <field name="note"/>
                   </group>
                 </group>
+              </page>
+              <page string="Owners">
+                <field name="owner_ids"/>
               </page>
             </notebook>
           </sheet>

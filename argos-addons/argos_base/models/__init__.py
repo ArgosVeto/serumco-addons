@@ -12,3 +12,4 @@ from . import product_template
 from . import animal_insurance
 from . import animal_pathology
 from . import living_environment
+from . import connection_origin
