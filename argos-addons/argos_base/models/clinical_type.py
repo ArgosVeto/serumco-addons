@@ -3,8 +3,8 @@
 from odoo import api, fields, models, _, tools
 
 
-class Family(models.Model):
-    _name = "family.family"
-    _description = "Family"
+class Animal(models.Model):
+    _name = "clinical.type"
+    _description = "Clinical Type"
 
     name = fields.Char('Name', required=True)

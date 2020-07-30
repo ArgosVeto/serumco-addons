@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from . import animal
-from . import family
 from . import animal_race
 from . import animal_robe
 from . import animal_diet
@@ -13,3 +12,5 @@ from . import animal_insurance
 from . import animal_pathology
 from . import living_environment
 from . import connection_origin
+from . import clinical
+from . import clinical_type

@@ -7,9 +7,16 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
+        <field name="name" position="attributes">
+          <attribute name="readonly">1</attribute>
+          <attribute name="force_save">1</attribute>
+        </field>
         <field name="type" position="before">
-          <field name="last_name"/>
+          <field name="last_name" required="True"/>
           <field name="first_name"/>
+        </field>
+        <field name="function" position="before">
+          <field name="gmvet_id"/>
         </field>
         <field name="vat" position="after">
           <field name="has_tutor_curator"/>

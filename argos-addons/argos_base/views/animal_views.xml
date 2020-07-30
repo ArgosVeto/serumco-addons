@@ -8,7 +8,6 @@
         <tree string="Animals">
           <field name="name"/>
           <field name="category_id"/>
-          <field name="partner_id"/>
           <field name="clinic_id"/>
         </tree>
       </field>
@@ -19,14 +18,6 @@
       <field name="model">animal.animal</field>
       <field name="arch" type="xml">
         <form string="Animal">
-          <header>
-            <button string="Edit Convention" name="edit_convention" type="object" class="oe_highlight"
-                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
-            <button string="Reprint Convention" name="reprint_convention" type="object" class="oe_highlight"
-                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
-            <button string="Delete Convention" name="delete_convention" type="object"
-                    attrs="{'invisible': [('is_dead', '=', False)]}"/>
-          </header>
           <sheet>
             <field name="image" widget="image" class="oe_avatar"/>
             <div class="oe_title">
@@ -56,9 +47,8 @@
                 <field name="passport"/>
                 <field name="issue_date"/>
                 <field name="location"/>
-                <field name="partner_id" required="True"/>
-                <field name="clinic_id" required="True"/>
-                <field name="veterinary_id" required="True"/>
+                <field name="clinic_id"/>
+                <field name="veterinary_id"/>
                 <field name="insurance_id"/>
                 <field name="environment_ids" widget="many2many_tags"/>
                 <field name="diet_ids" widget="many2many_tags"/>
@@ -66,7 +56,7 @@
                 <field name="is_dead"/>
                 <field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
                 <field name="death_reason"
-                       attrs="{'invisible': [('is_dead', '=', False)], 'required': [('is_dead', '=', True)]}"/>
+                       attrs="{'invisible': [('is_dead', '=', False)]}"/>
                 <field name="is_missing"/>
                 <field name="missing_date" attrs="{'invisible': [('is_missing', '=', False)]}"/>
               </group>

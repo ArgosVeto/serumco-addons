@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_family_family,family.family,model_family_family,base.group_user,1,1,1,1
 access_animal_animal,animal.animal,model_animal_animal,base.group_user,1,1,1,1
 access_animal_category,animal.category,model_animal_category,base.group_user,1,1,1,1
 access_animal_race,animal.race,model_animal_race,base.group_user,1,1,1,1
@@ -9,6 +8,8 @@ access_animal_pathology,animal.pathology,model_animal_pathology,base.group_user,
 access_living_environment,living.environment,model_living_environment,base.group_user,1,1,1,1
 access_animal_diet,animal.diet,model_animal_diet,base.group_user,1,1,1,1
 access_connection_origin,connection.origin,model_connection_origin,base.group_user,1,1,1,1
+access_clinical_clinical,clinical.clinical,model_clinical_clinical,base.group_user,1,1,1,1
+access_clinical_type,clinical.type,model_clinical_type,base.group_user,1,1,1,1
 
 access_res_users_mrdv_user,access_res_users mrdv user,base.model_res_users,mrdv_group_user,0,1,1,0
 access_res_partner_mrdv_user,access_res_partner mrdv user,base.model_res_partner,mrdv_group_user,0,1,1,0

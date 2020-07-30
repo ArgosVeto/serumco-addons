@@ -9,7 +9,7 @@
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
-    'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit'],
+    'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance'],
     'data': [
         # data
         'data/res_users_data.xml',
@@ -26,8 +26,8 @@
         'views/living_environment_views.xml',
         'views/animal_diet_views.xml',
         'views/animal_pathology_views.xml',
-        'views/family_views.xml',
         'views/res_partner_views.xml',
+        'views/clinical_views.xml',
     ],
     'application': False,
     'installable': True,

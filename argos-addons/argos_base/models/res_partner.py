@@ -17,6 +17,7 @@ class ResPartner(models.Model):
     send_sms = fields.Boolean('Send Sms')
     to_call = fields.Boolean('Call')
     origin_id = fields.Many2one('connection.origin', 'Connection Origin')
+    gmvet_id = fields.Char('GmVet ID')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):
@@ -24,3 +25,9 @@ class ResPartner(models.Model):
         if partner:
             return partner
         return self.create({'name': name, 'phone': phone})
+
+    @api.onchange('last_name', 'first_name')
+    def _onchange_last_first_name(self):
+        lastname = self.last_name if self.last_name else ''
+        firstname = ' ' + self.first_name if self.first_name else ''
+        self.name = '%s%s' %(lastname, firstname)
