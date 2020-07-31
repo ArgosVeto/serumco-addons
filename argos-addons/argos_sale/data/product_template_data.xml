@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_incineration" model="product.template">
+        <field name="name">Incineration</field>
+        <field name="type">consu</field>
+    </record>
+
+</odoo>

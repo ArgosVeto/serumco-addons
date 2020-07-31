@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="consultation_view_order_form" model="ir.ui.view">
+      <field name="name">consultation.sale.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="priority">20</field>
+      <field name="arch" type="xml">
+        <form string="Consultation">
+          <header>
+            <field name="argos_state" widget="statusbar" statusbar_visible="in_progress,consultation_done"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="state" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <field name="animal_id"/>
+                <field name="category_id"/>
+                <field name="sex"/>
+                <field name="age"/>
+                <field name="weight"/>
+                <field name="pathology_ids" widget="many2many_tags"/>
+                <field name="consultation_type" string="Reason For Appointment"/>
+                <field name="referent_partner_id"/>
+                <field name="customer_observation"/>
+                <field name="observation"/>
+              </group>
+              <group>
+                <field name="consultation_date"/>
+                <field name="veterinary_id" string="Seen By"/>
+                <field name="partner_id"/>
+                <field name="partner_animal_ids" widget="many2many_tags"/>
+                <field name="operating_unit_id" string="Clinical"/>
+                <field name="diagnostic_ids" widget="many2many_tags"/>
+                <field name="hypothese_ids" widget="many2many_tags"/>
+              </group>
+            </group>
+            <notebook>
+              <page name="command_lines" string="Command Lines">
+                <field name="order_line">
+                  <tree editable="bottom">
+                    <field name="company_id" invisible="1"/>
+                    <field name="product_uom_category_id" invisible="1"/>
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="product_uom_qty"/>
+                    <field name="qty_delivered"/>
+                    <field name="product_packaging" invisible="1"/>
+                    <field name="product_uom"/>
+                    <field name="price_unit"/>
+                    <field name="discount"/>
+                    <field name="price_subtotal" sum="Total" widget="monetary"/>
+                  </tree>
+                </field>
+              </page>
+              <page name="analysis_lines" string="Analysis"/>
+              <page name="imagery_lines" string="Imagery"/>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="consultation_view_order_tree" model="ir.ui.view">
+      <field name="name">consultation.sale.order.tree</field>
+      <field name="model">sale.order</field>
+      <field name="priority">20</field>
+      <field name="arch" type="xml">
+        <tree string="Consultations">
+          <field name="name"/>
+          <field name="state" invisible="1"/>
+          <field name="argos_state" invisible="1"/>
+          <field name="company_id" invisible="1"/>
+          <field name="partner_id"/>
+          <field name="consultation_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="model_sale_order_action_create_convention" model="ir.actions.server">
+      <field name="name">Incineris Convention</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="binding_model_id" ref="sale.model_sale_order"/>
+      <field name="binding_view_types">form</field>
+      <field name="state">code</field>
+      <field name="code">action = records.action_edit_incineris()</field>
+    </record>
+
+    <record id="model_sale_order_action_reprint_convention" model="ir.actions.server">
+      <field name="name">Reprint Convention</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="binding_model_id" ref="sale.model_sale_order"/>
+      <field name="binding_view_types">form</field>
+      <field name="state">code</field>
+      <field name="code">action = records.reprint_convention()</field>
+    </record>
+
+    <record id="model_sale_order_action_delete_convention" model="ir.actions.server">
+      <field name="name">Delete Convention</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="binding_model_id" ref="sale.model_sale_order"/>
+      <field name="binding_view_types">form</field>
+      <field name="state">code</field>
+      <field name="code">action = records.delete_convention()</field>
+    </record>
+
+    <record id="action_consultations" model="ir.actions.act_window">
+      <field name="name">Consultations</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.order</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_is_consultation': True,
+                             'default_argos_state': 'in_progress',
+                             'tree_view_ref': 'argos_sale.consultation_view_order_tree',
+                             'form_view_ref': 'argos_sale.consultation_view_order_form'}</field>
+      <field name="domain">[('is_consultation', '=', True)]</field>
+    </record>
+
+    <menuitem id="menu_consultation"
+              name="Consultations"
+              action="action_consultations"
+              parent="sale.sale_order_menu"
+              sequence="2"/>
+
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+      <field name="domain">[('is_consultation', '=', False)]</field>
+    </record>
+
+    <record id="sale.action_orders" model="ir.actions.act_window">
+      <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel')), ('is_consultation', '=', False)]</field>
+    </record>
+
+  </data>
+</odoo>
