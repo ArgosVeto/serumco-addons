@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-25 12:04+0000\n"
-"PO-Revision-Date: 2020-07-25 12:04+0000\n"
+"POT-Creation-Date: 2020-08-01 19:35+0000\n"
+"PO-Revision-Date: 2020-08-01 19:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,11 @@ msgstr "Type alimentaire"
 #: model:ir.model.fields,field_description:argos_impex.field_product_template__analytic_constitution
 msgid "Analytic Constitution"
 msgstr "Constitutants analytiques"
+
+#. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_product_attribute__centravet_id
+msgid "Centravet Id"
+msgstr "Identifiant CentraVet"
 
 #. module: argos_impex
 #: model:ir.model.fields,field_description:argos_impex.field_product_product__composition
@@ -80,7 +85,9 @@ msgstr "Import terminé avec succès."
 msgid ""
 "Import finish with errors. Go to History Error Files tab to show the list of"
 " stranded lines."
-msgstr "Import terminé avec des erreurs. Aller dans l'onglet Historique pour retrouver la liste de toutes lignes eronnées."
+msgstr ""
+"Import terminé avec des erreurs. Aller dans l'onglet Historique pour "
+"retrouver la liste de toutes lignes eronnées."
 
 #. module: argos_impex
 #: model:ir.model.fields,field_description:argos_impex.field_ir_model_import_template__is_remote_import
@@ -88,7 +95,6 @@ msgid "Import from FTP"
 msgstr "Importer à partir de FTP"
 
 #. module: argos_impex
-#: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
@@ -109,13 +115,13 @@ msgstr "Indications"
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "List of lines imported successfully: %s"
-msgstr ""
+msgstr "Liste des lignes importées avec succès : %s"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
-msgid "List of stranded lines: ['%s']', '"
-msgstr "Liste des lignes échouées : ['%s']', '"
+msgid "List of stranded lines: ['%s']"
+msgstr "Liste des lignes échouées : ['%s']"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -135,6 +141,17 @@ msgid "No product with code %s found."
 msgstr "Aucun produit avec ce code %s n'a été trouvé."
 
 #. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "Pleas fill the code column!"
+msgstr "Veuillez renseigner la colonne Code"
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_product_attribute
+msgid "Product Attribute"
+msgstr "Caractéristique de l'article"
+
+#. module: argos_impex
 #: model:ir.model,name:argos_impex.model_product_category
 msgid "Product Category"
 msgstr "Catégorie d'article"
@@ -145,25 +162,12 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__regroupment_code
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__regroupment_code
-msgid "Regroupment Code"
-msgstr ""
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__regroupment_order
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__regroupment_order
-msgid "Regroupment Order"
-msgstr "Order de regroupement"
-
-#. module: argos_impex
 #: model:ir.model,name:argos_impex.model_server_ftp
 #: model:ir.model.fields,field_description:argos_impex.field_ir_model_import_template__server_ftp_id
 msgid "Server FTP"
 msgstr "Serveur FTP"
 
 #. module: argos_impex
-#: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
@@ -195,6 +199,18 @@ msgstr ""
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
+msgid "The is no regroupement to treat!"
+msgstr "Aucun regroupement à traiter"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The is no regroupement to treat. Line %s"
+msgstr "Aucun regroupment à traiter. Ligne %s"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
 msgid "The libelle column is missed!"
 msgstr "La colonne libelle n'est pas renseignée!"
 
@@ -219,6 +235,7 @@ msgstr ""
 "Le type est nécessaire pour continuer l'import de ce produit. Ligne %s"
 
 #. module: argos_impex
+#: code:addons/argos_impex/models/product_attribute.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "There is nothing to import."

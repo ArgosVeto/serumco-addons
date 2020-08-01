@@ -20,7 +20,7 @@
 ##############################################################################
 
 {
-    'name': 'ARGOS IMPEX',
+    'name': 'Argos Impex',
     'summary': 'Manage Import/Export file from web interface',
     'description': '',
     'author': 'ArkeUp',

@@ -10,12 +10,23 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, registry, api, _
 from odoo.addons.argos_base.models import tools
 
+def transform_tuple_to_dict(data_tuple=()):
+    """
+    Transform data tuple to dict
+    :param data_tuple:
+    :return:
+    """
+    if not data_tuple:
+        return {}
+    return {
+        'code': data_tuple[1],
+        'regroupement': data_tuple[3],
+        'ordre': data_tuple[2]
+    }
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    regroupment_code = fields.Char('Regroupment Code', required=False)
-    regroupment_order = fields.Char('Regroupment Order', required=False)
     doc_type = fields.Char('Documentation Type', required=False)
     doc_url = fields.Char('Documentation URL', required=False)
     aliment_type = fields.Char('Aliment Type', required=False)
@@ -76,7 +87,7 @@ class ProductTemplate(models.Model):
                         if source == 'produit-documentation':
                             return self.processing_import_product_documentation_data(content, template, source)
                         if source == 'produit-regroupement':
-                            return self.processing_import_product_regroupement_data(content, template, source)
+                            return self.processing_import_product_regroupment_data(content, template, source)
                         if source == 'produit-reglementation':
                             return self.processing_import_product_reglementation_data(content, template, source)
                         if source == 'produit-enrichi':
@@ -105,11 +116,11 @@ class ProductTemplate(models.Model):
         for row in reader:
             try:
                 if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
                 if not row.get('libelle'):
-                    logger.error(_('The libelle is needed to continue processing this article. Line %s' % reader.line_num))
+                    logger.error(_('The libelle is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The libelle column is missed!')))
                     continue
                 vals = {
@@ -136,7 +147,7 @@ class ProductTemplate(models.Model):
                     else:
                         product = self.create(vals)
                     if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
                     product.manage_supinfo(row)
                     lines.append(reader.line_num)
                     self._cr.commit()
@@ -234,7 +245,7 @@ class ProductTemplate(models.Model):
         for row in reader:
             try:
                 if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
                 vals = {
@@ -248,7 +259,7 @@ class ProductTemplate(models.Model):
                     else:
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
                     lines.append(reader.line_num)
                     self._cr.commit()
                 except Exception as e:
@@ -281,7 +292,7 @@ class ProductTemplate(models.Model):
         for row in reader:
             try:
                 if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
@@ -296,7 +307,7 @@ class ProductTemplate(models.Model):
                     else:
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
                     self._cr.commit()
                 except Exception as e:
                     logger.error(repr(e))
@@ -328,12 +339,12 @@ class ProductTemplate(models.Model):
         for row in reader:
             try:
                 if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
+                    logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
                 if not row.get('type'):
                     logger.error(
-                        _('The type is needed to continue processing this article. Line %s' % reader.line_num))
+                        _('The type is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The type column is missed!')))
                     continue
                 vals = {
@@ -348,7 +359,7 @@ class ProductTemplate(models.Model):
                     else:
                         errors.append((row, _('No product with code %s found.') % row.get('code')))
                     if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
+                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
                     lines.append(reader.line_num)
                     self._cr.commit()
                 except Exception as e:
@@ -378,34 +389,35 @@ class ProductTemplate(models.Model):
         logger = logger or self._context['logger']
         errors = []
         lines = []
+        product_summary = {}
         for row in reader:
+            product_summary.setdefault(row.get('regroupement'), []).\
+                append((reader.line_num, row.get('code'), row.get('ordre'), row.get('regroupement')))
+        for key, values in product_summary.items():
             try:
-                if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s' % reader.line_num))
-                    errors.append((row, _('The code column is missed!')))
-                    continue
-                vals = {
-                    'default_code': row.get('code'),
-                    'regroupment_code': row.get('regroupement'),
-                    'regroupment_order': row.get('ordre'),
-                }
-                product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        product.write(vals)
-                    else:
-                        errors.append((row, _('No product with code %s found.') % row.get('code')))
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.' % reader.line_num))
-                    lines.append(reader.line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                products = self
+                for item in values:
+                    if len(values) == 1:
+                        logger.error(_('The is no regroupement to treat. Line %s') % item[0])
+                        errors.append((transform_tuple_to_dict(item), _('The is no regroupement to treat!')))
+                        continue
+                    if not item[1]:
+                        logger.error(_('The code is needed to continue processing this article. Line %s') % item[0])
+                        errors.append((transform_tuple_to_dict(item), _('Pleas fill the code column!')))
+                        continue
+                    product = self.search([('default_code', '=', item[1])], limit=1)
+                    if not product:
+                        errors.append((transform_tuple_to_dict(item), _('No product with code %s found.') % item[1]))
+                        continue
+                    products |= product
+                    product.write({'sequence': int(item[2])})
+                    lines.append(item[0])
+                for product in products:
+                    product.write({'alternative_product_ids': [(4, idx) for idx in (products - product).ids]})
+                self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
-                errors.append((row, repr(e)))
+                errors.append((transform_tuple_to_dict(item), repr(e)))
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
@@ -426,8 +438,8 @@ class ProductTemplate(models.Model):
             logger.info(_('Import finish with errors. Go to History Error Files tab to show the list of stranded lines.'))
             return False
         if errors:
-            logger.info(_("List of stranded lines: ['%s']" % "', '".join(str(row[0].get('code', row[0].get('default_code')))
-                                                                         for row in errors if row and isinstance(row[0], dict))))
+            logger.info(_("List of stranded lines: ['%s']") % "', '".join(str(row[0].get('code', row[0].get('default_code')))
+                                                                         for row in errors if row and isinstance(row[0], dict)))
             return False
         if not errors:
             logger.info(_('Import done successfully.'))
@@ -464,7 +476,7 @@ class ProductTemplate(models.Model):
                 'waters_content': child[9].text,
             }
             if not default_code:
-                logger.error(_('The code is needed to continue processing this article. Line %s' % index))
+                logger.error(_('The code is needed to continue processing this article. Line %s') % index)
                 errors.append((vals, _('The code is needed to continue processing this article!')))
                 index += 1
                 continue
@@ -476,7 +488,7 @@ class ProductTemplate(models.Model):
                 else:
                     errors.append((vals, _('No product with code %s found.') % default_code))
                 if index % 150 == 0:
-                    logger.info(_('Import in progress ... %s lines treated.' % index))
+                    logger.info(_('Import in progress ... %s lines treated.') % index)
                 self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
@@ -584,7 +596,7 @@ class ProductTemplate(models.Model):
                 'image_1920': tools.get_image_url_as_base64(child[3].text)
             }
             if not default_code:
-                logger.error(_('The code is needed to continue processing this article. Line %s' % index))
+                logger.error(_('The code is needed to continue processing this article. Line %s') % index)
                 errors.append((vals, _('The code is needed to continue processing this article!')))
                 index += 1
                 continue
@@ -596,7 +608,7 @@ class ProductTemplate(models.Model):
                 else:
                     errors.append((vals, _('No product with code %s found.') % default_code))
                 if index % 150 == 0:
-                    logger.info(_('Import in progress ... %s lines treated.' % index))
+                    logger.info(_('Import in progress ... %s lines treated.') % index)
                 self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
