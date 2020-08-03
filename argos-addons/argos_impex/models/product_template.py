@@ -637,7 +637,8 @@ class ProductTemplate(models.Model):
         reader = csv.DictReader(csvfile, delimiter=';')
         logger = logger or self._context['logger']
         product_attribute_summary = {}
-        errors = lines = []
+        errors = []
+        lines = []
         product_attr_obj = self.env['product.attribute']
         product_attr_value_obj = self.env['product.attribute.value']
         for row in reader:
@@ -683,7 +684,8 @@ class ProductTemplate(models.Model):
                 else:
                     product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
                                                                   'value_ids': [(6, 0, attribute_values.ids)]})]})
-                lines.append(line[0] for line in values)
+                for item in values:
+                    lines.append(item[0])
                 self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
