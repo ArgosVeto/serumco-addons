@@ -57,6 +57,7 @@ class ProductAttribute(models.Model):
                 vals = {
                     'centravet_id': row.get('filtre'),
                     'name': row.get('libelle'),
+                    'create_variant': 'dynamic',
                 }
                 if not self.search([('centravet_id', '=', row.get('filtre'))], limit=1):
                     self.create(vals)
@@ -64,3 +65,12 @@ class ProductAttribute(models.Model):
                 logger.error(repr(e))
                 self._cr.rollback()
         return True
+
+    @api.model
+    def get_attribute_by_name(self, name=False):
+        """
+        Get attribute by centravet Id
+        :param name:
+        :return:
+        """
+        return self.search([('centravet_id', '=', name)], limit=1)

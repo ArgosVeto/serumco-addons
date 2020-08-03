@@ -39,4 +39,6 @@ class ServerFTP(models.Model):
             return product_tmpl_obj.processing_import_product_enrichi_data(datas.decode('utf-8'), template, source, logger)
         if source == 'referentiel-filtre':
             return product_attr_obj.processing_import_referentiel_filtre_data(datas.decode('utf-8'), template, source, logger)
+        if source == 'produit-filtre':
+            return product_tmpl_obj.processing_import_produit_filtre_data(datas.decode('utf-8'), template, source, logger)
         return False

@@ -10,19 +10,17 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, registry, api, _
 from odoo.addons.argos_base.models import tools
 
-def transform_tuple_to_dict(data_tuple=()):
+def transform_tuple_to_dict(data_tuple=(), source=False):
     """
     Transform data tuple to dict
     :param data_tuple:
     :return:
     """
-    if not data_tuple:
+    if not data_tuple or not source:
         return {}
-    return {
-        'code': data_tuple[1],
-        'regroupement': data_tuple[3],
-        'ordre': data_tuple[2]
-    }
+    if source == 'produit-regroupement':
+        return {'code': data_tuple[1], 'regroupement': data_tuple[3], 'ordre': data_tuple[2]}
+    return {'code': data_tuple[1], 'filtre': data_tuple[2], 'valeur': data_tuple[3]}
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -92,8 +90,8 @@ class ProductTemplate(models.Model):
                             return self.processing_import_product_reglementation_data(content, template, source)
                         if source == 'produit-enrichi':
                             return self.processing_import_product_enrichi_data(content, template, source)
-                        if source == 'referentiel-filtre':
-                            return self.processing_import_referentiel_filtre_data(content, template, source)
+                        if source == 'produit-filtre':
+                            return self.processing_import_produit_filtre_data(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()
@@ -201,6 +199,11 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('regroupement'), row.get('ordre'), error])
+        elif source == 'produit-filtre':
+            csv_header = ['code', 'filtre', 'valeur', 'error detail']
+            csv_writer.writerow(csv_header)
+            for row, error in data:
+                csv_writer.writerow([row.get('code'), row.get('filtre'), row.get('valeur'), error])
         elif source == 'produit-reglementation':
             return self.generate_xml_error_file(source, template, data)
         elif source == 'produit-enrichi':
@@ -399,15 +402,15 @@ class ProductTemplate(models.Model):
                 for item in values:
                     if len(values) == 1:
                         logger.error(_('The is no regroupement to treat. Line %s') % item[0])
-                        errors.append((transform_tuple_to_dict(item), _('The is no regroupement to treat!')))
+                        errors.append((transform_tuple_to_dict(item, source), _('The is no regroupement to treat!')))
                         continue
                     if not item[1]:
                         logger.error(_('The code is needed to continue processing this article. Line %s') % item[0])
-                        errors.append((transform_tuple_to_dict(item), _('Pleas fill the code column!')))
+                        errors.append((transform_tuple_to_dict(item, source), _('Pleas fill the code column!')))
                         continue
                     product = self.search([('default_code', '=', item[1])], limit=1)
                     if not product:
-                        errors.append((transform_tuple_to_dict(item), _('No product with code %s found.') % item[1]))
+                        errors.append((transform_tuple_to_dict(item, source), _('No product with code %s found.') % item[1]))
                         continue
                     products |= product
                     product.write({'sequence': int(item[2])})
@@ -417,7 +420,7 @@ class ProductTemplate(models.Model):
                 self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
-                errors.append((transform_tuple_to_dict(item), repr(e)))
+                errors.append((transform_tuple_to_dict(item, source), repr(e)))
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
@@ -617,3 +620,74 @@ class ProductTemplate(models.Model):
             finally:
                 index += 1
         return self.manage_import_report(source, lines, template, errors, logger)
+
+    @api.model
+    def processing_import_produit_filtre_data(self, content=None, template=False, source=False, logger=False):
+        """
+        Import variant attributes/value
+        :param content:
+        :param template:
+        :param source:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        product_attribute_summary = {}
+        errors = lines = []
+        product_attr_obj = self.env['product.attribute']
+        product_attr_value_obj = self.env['product.attribute.value']
+        for row in reader:
+            if not row.get('code'):
+                logger.error(_('The code column is needed to continue processing this article. Line %s') % reader.line_num)
+                errors.append((row, _('The code column is needed to continue processing this article!')))
+                continue
+            if not row.get('filtre'):
+                logger.error(_('The filtre column is needed to continue processing this article. Line %s') % reader.line_num)
+                errors.append((row, _('The filtre column is needed to continue processing this article!')))
+                continue
+            if not row.get('valeur'):
+                logger.error(_('The value column is needed to continue processing this article. Line %s') % reader.line_num)
+                errors.append((row, _('The value column is needed to continue processing this article!')))
+                continue
+            code = row.get('code')
+            product = self.search([('default_code', '=', code)], limit=1)
+            if not product:
+                logger.error(_('No product with code %s found. Line %s') % (code, reader.line_num))
+                errors.append((row, _('No product with code %s found.') % code))
+                continue
+            filter = row.get('filtre')
+            attribute = product_attr_obj.get_attribute_by_name(filter)
+            if not attribute:
+                logger.error(_('No attribute %s found. Line %s') % (filter, reader.line_num))
+                errors.append((row, _('No attribute %s found.') % filter))
+                continue
+            product_attribute_summary.setdefault((product, attribute), []).append((reader.line_num, code, filter, row.get('valeur')))
+        index = 0
+        for key, values in product_attribute_summary.items():
+            try:
+                product = key[0]
+                attribute = key[1]
+                index += 1
+                if index % 500 == 0:
+                    progression = round(index * 100/len(product_attribute_summary))
+                    logger.info(_('Import in progress ... %s %%%%') % str(progression))
+                attribute_lines = product.attribute_line_ids.filtered(lambda attr: attr.attribute_id == attribute)
+                attribute_values = product_attr_value_obj.manage_attribute_values(values, attribute, logger)
+                if attribute_lines:
+                    attribute_lines.write({'value_ids': [(4, idx) for idx in attribute_values.ids]})
+                    #TODO: manage attribute value deletion
+                else:
+                    product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
+                                                                  'value_ids': [(6, 0, attribute_values.ids)]})]})
+                lines.append(line[0] for line in values)
+                self._cr.commit()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((transform_tuple_to_dict(values, source), _('No attribute %s found.') % filter))
+                self._cr.rollback()
+        self.manage_import_report(source, lines, template, errors, logger)
+        return True
