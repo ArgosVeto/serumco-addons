@@ -9,7 +9,8 @@
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
-    'depends': ['base', 'web', 'l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance'],
+    'depends': ['web', 'l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance', 'partner_firstname',
+                'jitsi_meet_integration', 'prt_mail_messages_pro'],
     'data': [
         # data
         'data/res_users_data.xml',
