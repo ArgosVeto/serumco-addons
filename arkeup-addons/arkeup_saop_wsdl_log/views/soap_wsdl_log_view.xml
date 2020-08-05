@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="soap_wsdl_log_view_from" model="ir.ui.view">
+      <field name="name">soap.wsdl.log.view.from</field>
+      <field name="model">soap.wsdl.log</field>
+      <field name="arch" type="xml">
+        <form string="Soap Wsdl Request" create="0">
+          <header>
+            <button name="button_send_msg_soap" type="object" string="Send Request" states="new" classe="oe_highlight"/>
+            <button name="button_send_msg_soap" type="object" string="Reset To New" states="successful,error" classe="oe_highlight"
+                    context="{'retry': True}"/>
+            <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name" default_focus="1" placeholder="Name" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="partner_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+                <field name="model_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+                <field name="res_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+                <field name="date" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+                <field name="create_date" string="Create Date" readonly="1"/>
+              </group>
+              <group>
+                <field name="user_id"/>
+                <field name="msg" attrs="{'readonly': [('state', '!=', 'new')]}" groups="base.group_system"/>
+              </group>
+            </group>
+            <group name="reason_grp" string="Detailed Reason" groups="base.group_system">
+              <field name="reason" nolabel="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="soap_wsdl_log_view_tree" model="ir.ui.view">
+      <field name="name">soap.wsdl.log.view.tree</field>
+      <field name="model">soap.wsdl.log</field>
+      <field name="arch" type="xml">
+        <tree string="Soap Wsdl Requests" create="0">
+          <field name="name"/>
+          <field name="create_date" string="Create Date"/>
+          <field name="partner_id"/>
+          <field name="res_id"/>
+          <field name="model_id"/>
+          <field name="msg"/>
+          <field name="date"/>
+          <field name="state"/>
+          <field name="reason" groups="base.group_system"/>
+          <button name="button_send_msg_soap" type="object" string="Send Request" states="new" icon="fa-paper-plane text-success"/>
+          <button name="button_send_msg_soap" type="object" string="Re-Send Request" states="error" context="{'re-try': True}"
+                  icon="fa-repeat text-success"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="soap_wsdl_log_view_action" model="ir.actions.act_window">
+      <field name="name">Soap Wsdl Requests</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">soap.wsdl.log</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          <!--  Add Text Here  -->
+        </p>
+        <p>
+          <!--  More details about what a user can do with this object will be OK  -->
+        </p>
+      </field>
+    </record>
+
+  </data>
+</odoo>
