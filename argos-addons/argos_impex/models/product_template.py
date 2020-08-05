@@ -413,7 +413,7 @@ class ProductTemplate(models.Model):
                         errors.append((transform_tuple_to_dict(item, source), _('No product with code %s found.') % item[1]))
                         continue
                     products |= product
-                    product.write({'sequence': int(item[2])})
+                    product.write({'website_sequence': int(item[2])})
                     lines.append(item[0])
                 for product in products:
                     product.write({'alternative_product_ids': [(4, idx) for idx in (products - product).ids]})
