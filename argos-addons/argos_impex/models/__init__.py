@@ -6,3 +6,4 @@ from . import product_category
 from . import product_attribute
 from . import product_attribute_value
 from . import ir_model_import_template
+from . import res_partner
