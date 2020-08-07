@@ -135,5 +135,17 @@
                       ref('ir_model_import_template_data'),ref('ir_model_referentiel_filtre_import_template_data'),
                       ref('ir_model_produit_filtre_import_template_data')]]"/>
 
+    <record id="ir_model_import_res_partner_template_data" model="ir.model.import.template">
+      <field name="name">Import Contact</field>
+      <field name="model_id" ref="base.model_res_partner"/>
+      <field name="method">process_import</field>
+      <field name="export_xls">True</field>
+    </record>
+
+    <record id="ir_model_import_res_partner_template_data" model="ir.model.import.template">
+      <field name="method_args"
+             eval="{'template_id': ref('argos_impex.ir_model_import_res_partner_template_data')}"/>
+    </record>
+
   </data>
 </odoo>

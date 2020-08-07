@@ -237,6 +237,7 @@ msgstr ""
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_attribute.py:0
 #: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/res_partner.py:0
 #, python-format
 msgid "There is nothing to import."
 msgstr "Le modèle d'import n'est pas trouvé. Rien à importer!"
@@ -252,3 +253,15 @@ msgstr "Utilisation"
 #: model:ir.model.fields,field_description:argos_impex.field_product_template__waters_content
 msgid "Waters Content"
 msgstr "Teneur en eau"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The numero column is missed!"
+msgstr "La colonne numero est introuvable!"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The numero is needed to continue processing this contact. Line %s"
+msgstr "Le numero est nécessaire pour impoerter ce contact. Ligne %s"
