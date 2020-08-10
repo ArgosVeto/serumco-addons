@@ -187,7 +187,6 @@ msgid "Click And Collect"
 msgstr "Click and Collect"
 
 #. module: argos_base
-#: model:ir.model,name:argos_base.model_clinical_clinical
 #: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_form
 msgid "Clinical"
 msgstr "Clinique"

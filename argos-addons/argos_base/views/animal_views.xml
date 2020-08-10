@@ -8,7 +8,6 @@
         <tree string="Animals">
           <field name="name"/>
           <field name="category_id"/>
-          <field name="clinic_id"/>
         </tree>
       </field>
     </record>
@@ -48,7 +47,6 @@
                 <field name="passport"/>
                 <field name="issue_date"/>
                 <field name="location"/>
-                <field name="clinic_id"/>
                 <field name="veterinary_id"/>
                 <field name="insurance_id"/>
                 <field name="environment_ids" widget="many2many_tags"/>

@@ -2,13 +2,15 @@
 
 from odoo import api, fields, models, _, tools
 
+class Clinic(models.Model):
+    _name = 'clinical.clinical'
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     has_tutor_curator = fields.Boolean('Tutorship/Curatorship')
     tutor_curator_id = fields.Many2one('res.partner', 'Tutor/Curator')
-    clinic_id = fields.Many2one('res.partner', 'Main Clinic')
     animal_ids = fields.Many2many('animal.animal', string='Animal List')
     send_letter = fields.Boolean('Send Letter')
     send_email = fields.Boolean('Send Email')

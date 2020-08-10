@@ -20,9 +20,6 @@
           <field name="has_tutor_curator"/>
           <field name="tutor_curator_id" attrs="{'invisible': [('has_tutor_curator', '=', False)]}"/>
         </field>
-        <field name="website" position="after">
-          <field name="clinic_id" placeholder="e.g. Clinic ..."/>
-        </field>
         <page name="internal_notes" position="before">
           <page name="communication" string="Communication">
             <label for="send_letter" string="Authorized Channels"/>

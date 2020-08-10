@@ -33,7 +33,6 @@ class Animal(models.Model):
     passport = fields.Char('Passport')
     issue_date = fields.Date('Issue Date')
     location = fields.Char('Location')
-    clinic_id = fields.Many2one('res.partner', 'Main Clinic')
     veterinary_id = fields.Many2one('res.partner', 'Attending Veterinarian')
     insurance_id = fields.Many2one('animal.insurance', 'Insurance')
     environment_ids = fields.Many2many('living.environment', string='Living Environment')

@@ -2,31 +2,28 @@
 <odoo>
   <data>
 
-    <record id="view_clinical_tree" model="ir.ui.view">
-      <field name="name">clinical.clinical.tree</field>
-      <field name="model">clinical.clinical</field>
+    <record id="operating_unit_view_form" model="ir.ui.view">
+      <field name="name">operating.unit.view.form</field>
+      <field name="model">operating.unit</field>
+      <field name="inherit_id" ref="operating_unit.view_operating_unit_form"/>
       <field name="arch" type="xml">
-        <tree string="Clinicals">
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
-
-    <record id="view_clinical_form" model="ir.ui.view">
-      <field name="name">clinical.clinical.form</field>
-      <field name="model">clinical.clinical</field>
-      <field name="arch" type="xml">
-        <form string="Clinical">
+        <group name="main_group" position="replace">
           <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button type="object" name="toggle_active" string="Archive" attrs="{'invisible': [('active', '=', False)]}"/>
+              <button type="object" name="toggle_active" string="Restore" attrs="{'invisible': [('active', '=', True)]}"/>
+            </div>
             <div class="oe_title">
               <h1>
                 <field name="name" required="1"/>
+                <field name="active" invisible="1"/>
               </h1>
             </div>
             <group>
               <group>
-                <field name="operating_unit_id"/>
-                <field name="clinical_code"/>
+                <field name="partner_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="code"/>
                 <field name="address"/>
                 <field name="email"/>
                 <field name="principal_phone"/>
@@ -34,7 +31,7 @@
                 <field name="emergency_phone"/>
               </group>
               <group>
-                <field name="clinical_type_id"/>
+                <field name="type_id"/>
                 <field name="vat"/>
                 <field name="opening_time"/>
                 <field name="consult_room_number"/>
@@ -53,27 +50,13 @@
               </page>
             </notebook>
           </sheet>
-          <div class="oe_chatter" name="studio_div_8fe9a2">
+          <!--div class="oe_chatter" name="studio_div_8fe9a2">
             <field name="message_follower_ids" widget="mail_followers"/>
             <field name="activity_ids" widget="mail_activity"/>
             <field name="message_ids" widget="mail_thread"/>
-          </div>
-        </form>
+          </div-->
+        </group>
       </field>
     </record>
-
-    <record id="action_open_clinical_tree" model="ir.actions.act_window">
-      <field name="name">Clinicals</field>
-      <field name="res_model">clinical.clinical</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem
-          action="action_open_clinical_tree"
-          id="menu_action_clinical_tree"
-          parent="base.menu_users"
-          sequence="3"
-    />
-
   </data>
 </odoo>

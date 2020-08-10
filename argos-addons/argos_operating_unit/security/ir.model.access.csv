@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_operating_unit_type_reader,access_operating_unit_type reader,model_operating_unit_type,,1,0,0,0
+access_operating_unit_type_user,access_operating_unit_type user,model_operating_unit_type,base.group_user,1,1,1,0
+access_operating_unit_type_admin,ccess_operating_unit_type admin,model_operating_unit_type,base.group_erp_manager,1,1,1,1

@@ -17,6 +17,7 @@
         'argos_planning',
         'argos_website',
         'argos_sale',
+        'argos_operating_unit'
     ],
     'data': [],
     'application': True,
