@@ -17,7 +17,6 @@ class ResPartner(models.Model):
     send_sms = fields.Boolean('Send Sms')
     to_call = fields.Boolean('Call')
     origin_id = fields.Many2one('connection.origin', 'Connection Origin')
-    gmvet_id = fields.Char('GmVet ID')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):

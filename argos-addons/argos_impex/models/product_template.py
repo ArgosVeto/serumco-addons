@@ -168,7 +168,7 @@ class ProductTemplate(models.Model):
         :param data:
         :return:
         """
-        if not data or not template or not source:
+        if not data or not template or not source or not isinstance(data, list):
             return
         csv_data = io.StringIO()
         csv_writer = csv.writer(csv_data, delimiter=';')
@@ -204,6 +204,11 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('filtre'), row.get('valeur'), error])
+        elif source == 'contacts':
+            header = list(data[0][0].keys())
+            csv_writer.writerow(header + ['error detail'])
+            for row, error in data:
+                csv_writer.writerow([row.get(key) for key in header] + [error])
         elif source == 'produit-reglementation':
             return self.generate_xml_error_file(source, template, data)
         elif source == 'produit-enrichi':
