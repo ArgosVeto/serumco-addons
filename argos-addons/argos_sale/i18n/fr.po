@@ -1,0 +1,213 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-10 14:32+0000\n"
+"PO-Revision-Date: 2020-08-10 14:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__age
+msgid "Age"
+msgstr "Age"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Analysis"
+msgstr "Analyses"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__animal_id
+msgid "Animal"
+msgstr "Animal"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__partner_animal_ids
+msgid "Animal List"
+msgstr "Animaux du client"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__argos_state
+msgid "Argos State"
+msgstr "Etat consultation"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Clinical"
+msgstr "Clinique"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Command Lines"
+msgstr "Lignes de commande"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Consultation"
+msgstr "Consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_date
+msgid "Consultation Date"
+msgstr "Date consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type
+msgid "Consultation Type"
+msgstr "Raison du rendez-vous "
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_consultations
+#: model:ir.ui.menu,name:argos_sale.menu_consultation
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_tree
+msgid "Consultations"
+msgstr "Consultations"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__conv_key
+msgid "Convention Key"
+msgstr "Clé de la convention"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__customer_observation
+msgid "Customer Observation"
+msgstr "Observation du client"
+
+#. module: argos_sale
+#: model:ir.actions.server,name:argos_sale.model_sale_order_action_delete_convention
+msgid "Delete Convention"
+msgstr "Suppression convention"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__diagnostic_ids
+msgid "Diagnostic"
+msgstr "Diagnostiques"
+
+#. module: argos_sale
+#: model:ir.model.fields.selection,name:argos_sale.selection__sale_order__argos_state__consultation_done
+msgid "Done"
+msgstr "Consultation terminée"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__hypothese_ids
+msgid "Hypothese"
+msgstr "Hypothèses"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Imagery"
+msgstr "Imagerie"
+
+#. module: argos_sale
+#: model:ir.model.fields.selection,name:argos_sale.selection__sale_order__argos_state__in_progress
+msgid "In progress"
+msgstr "Consultation en cours"
+
+#. module: argos_sale
+#: model:product.template,name:argos_sale.product_incineration
+msgid "Incineration"
+msgstr "Incinération"
+
+#. module: argos_sale
+#: model:ir.actions.server,name:argos_sale.model_sale_order_action_create_convention
+msgid "Incineris Convention"
+msgstr "Convention incinération"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__is_consultation
+msgid "Is Consultation"
+msgstr "Est une consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__observation
+msgid "Observations"
+msgstr "Observations"
+
+#. module: argos_sale
+#: code:addons/argos_sale/models/sale_order.py:0
+#: code:addons/argos_sale/models/sale_order.py:0
+#: code:addons/argos_sale/models/sale_order.py:0
+#, python-format
+msgid "Only consultation can generate incineris convention."
+msgstr "Seule une consultation peut générer une convention"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__name
+msgid "Order Reference"
+msgstr "Référence commande"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__pathology_ids
+msgid "Pathology"
+msgstr "Pathologies"
+
+#. module: argos_sale
+#: code:addons/argos_sale/models/sale_order.py:0
+#: code:addons/argos_sale/models/sale_order.py:0
+#, python-format
+msgid "Please generate convention first"
+msgstr "Veuillez d'abord générer la convention"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Reason For Appointment"
+msgstr "Raison du rendez-vous"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__referent_partner_id
+msgid "Referent Partner"
+msgstr "Référé par"
+
+#. module: argos_sale
+#: model:ir.actions.server,name:argos_sale.model_sale_order_action_reprint_convention
+msgid "Reprint Convention"
+msgstr "Réimpression convention"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Seen By"
+msgstr "Vu par"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__sex
+msgid "Sex"
+msgstr "Sexe"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__category_id
+msgid "Species"
+msgstr "Espèce"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Total"
+msgstr "Total"
+
+#. module: argos_sale
+#: model:product.template,uom_name:argos_sale.product_incineration
+msgid "Units"
+msgstr "Unités"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__veterinary_id
+msgid "Veterinary"
+msgstr "Vétérinaire"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__weight
+msgid "Weight"
+msgstr "Poids"

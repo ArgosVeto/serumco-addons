@@ -8,6 +8,7 @@ class AnimalCategory(models.Model):
     _description = "Animal Category"
 
     name = fields.Char('Category Name', required=True)
+    is_incineris_species = fields.Boolean()
 
     @api.model
     def _get_animal_category(self, category):

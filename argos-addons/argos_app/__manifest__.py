@@ -16,6 +16,7 @@
         'argos_stock',
         'argos_planning',
         'argos_website',
+        'argos_sale',
     ],
     'data': [],
     'application': True,

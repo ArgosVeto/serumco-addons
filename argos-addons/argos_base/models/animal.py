@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _, tools
-from datetime import datetime
 
 
 class Animal(models.Model):
@@ -43,6 +42,7 @@ class Animal(models.Model):
     phone = fields.Char('Phone')
     email = fields.Char('Email')
     note = fields.Text('Notes')
+    weight = fields.Float('Weight')
     owner_ids = fields.Many2many('res.partner', string='Owners')
 
     @api.model
