@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="res_partner_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="argos_base.res_partner_view_form_inherit"/>
+      <field name="arch" type="xml">
+
+        <field name="to_call" position="after">
+          <field name="origin_id"/>
+        </field>
+
+      </field>
+    </record>
+
+    <record id="res_partner_view_tree" model="ir.ui.view">
+      <field name="name">res.patient.view.tree</field>
+      <field name="model">res.partner</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <tree string="Patients">
+          <field name="name"/>
+          <field name="category_id" widget="many2many_tags" string="Species"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="res_partner_view_form" model="ir.ui.view">
+      <field name="name">res.patient.view.form</field>
+      <field name="model">res.partner</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <form string="Patient">
+          <sheet>
+            <field name="image" widget="image" class="oe_avatar"/>
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="active" invisible="1"/>
+                <field name="category_id" required="1" widget="many2many_tags" string="Species"/>
+                <field name="race_id" context="{'default_type': 'race'}"/>
+                <field name="gender"/>
+                <field name="robe_id" context="{'default_type': 'robe'}"/>
+                <field name="birthdate_date"/>
+                <field name="age"/>
+                <field name="weight"/>
+                <field name="is_sterilized"/>
+                <field name="is_reproductive"/>
+                <field name="is_dangerous"/>
+                <field name="tattoo_location"/>
+                <field name="tattoo_date"/>
+                <field name="chip_identification"/>
+                <field name="chip_location"/>
+                <field name="chip_date"/>
+              </group>
+              <group>
+                <field name="passport"/>
+                <field name="issue_date"/>
+                <field name="location"/>
+                <field name="veterinary_id"/>
+                <field name="insurance_id" context="{'default_type': 'insurance'}"/>
+                <field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>
+                <field name="diet_ids" widget="many2many_tags" context="{'default_type': 'diet'}"/>
+                <field name="pathology_ids" widget="many2many_tags"/>
+                <field name="is_dead"/>
+                <field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
+                <field name="death_reason"
+                       attrs="{'invisible': [('is_dead', '=', False)]}"/>
+                <field name="is_missing"/>
+                <field name="missing_date" attrs="{'invisible': [('is_missing', '=', False)]}"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Medical Events"/>
+              <page string="Weight"/>
+              <page string="Outside Events"/>
+              <page string="Surgery"/>
+              <page string="Vaccination"/>
+              <page string="Hospitalization"/>
+              <page string="Internal Notes">
+                <group>
+                  <group>
+                    <field name="comment"/>
+                  </group>
+                </group>
+              </page>
+              <page string="Owners">
+                <field name="owner_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter" name="studio_div_8fe9a2">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="res_partner_action" model="ir.actions.act_window">
+      <field name="name">Patients</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
+                             'form_view_ref': 'argos_contact.res_partner_view_form',
+                             'default_contact_type': 'patient',}</field>
+      <field name="domain">[('contact_type', '=', 'patient')]</field>
+    </record>
+
+  </data>
+</odoo>

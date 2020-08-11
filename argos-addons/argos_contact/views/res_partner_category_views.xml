@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="res_partner_category_view_tree" model="ir.ui.view">
+      <field name="name">res.partner.category.view.tree</field>
+      <field name="model">res.partner.category</field>
+      <field name="inherit_id" ref="base.view_partner_category_list"/>
+      <field name="arch" type="xml">
+
+        <field name="display_name" position="after">
+          <field name="is_incineris_species"/>
+        </field>
+
+      </field>
+    </record>
+
+    <record id="res_partner_category_view_form" model="ir.ui.view">
+      <field name="name">res.partner.category.view.form</field>
+      <field name="model">res.partner.category</field>
+      <field name="inherit_id" ref="base.view_partner_category_form"/>
+      <field name="arch" type="xml">
+
+        <field name="parent_id" position="after">
+          <field name="is_incineris_species"/>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</odoo>

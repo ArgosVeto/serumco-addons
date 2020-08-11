@@ -10,7 +10,7 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
-        'argos_base',
+        'argos_contact',
         'sale_management',
         'sale_operating_unit',
     ],

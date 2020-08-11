@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <menuitem id="res_partner_menuitem"
+              name="Patients"
+              action="res_partner_action"
+              parent="contacts.res_partner_menu_contacts"
+              sequence="2"/>
+
+    <menuitem id="res_partner_menu_config"
+              name="Patients"
+              sequence="0"
+              parent="contacts.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_category_menuitem"
+              action="base.action_partner_category_form"
+              name="Species"
+              sequence="1"
+              parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_race_menuitem"
+              action="res_partner_parameter_race_action"
+              name="Races"
+              sequence="20" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_robe_menuitem"
+              action="res_partner_parameter_robe_action"
+              name="Robes"
+              sequence="30" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_insurance_menuitem"
+              action="res_partner_parameter_insurance_action"
+              name="Insurances"
+              sequence="40" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_living_menuitem"
+              action="res_partner_parameter_living_action"
+              name="Living Environments"
+              sequence="50" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_diet_menuitem"
+              action="res_partner_parameter_diet_action"
+              name="Recommended Diet"
+              sequence="60" parent="argos_contact.res_partner_menu_config"/>
+
+  </data>
+</odoo>

@@ -10,7 +10,7 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
-        'argos_base',
+        'argos_contact',
         'operating_unit'
     ],
     'data': [
@@ -19,7 +19,6 @@
         'security/ir.model.access.csv',
         # views
         'views/res_partner_views.xml',
-        'views/animal_animal_views.xml',
         'views/operating_unit_views.xml',
     ],
     'application': False,

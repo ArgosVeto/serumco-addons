@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="res_partner_parameter_view_tree" model="ir.ui.view">
+      <field name="name">res.partner.parameter.view.tree</field>
+      <field name="model">res.partner.parameter</field>
+      <field name="arch" type="xml">
+        <tree string="Patient Parameters">
+          <field name="name"/>
+          <field name="type"/>
+          <field name="gmvet_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="res_partner_parameter_view_form" model="ir.ui.view">
+      <field name="name">res.partner.parameter.view.form</field>
+      <field name="model">res.partner.parameter</field>
+      <field name="arch" type="xml">
+        <form string="Patient Parameter">
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+            <group>
+              <field name="type"/>
+              <field name="gmvet_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="res_partner_parameter_diet_action" model="ir.actions.act_window">
+      <field name="name">Diet</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'diet')]</field>
+      <field name="context">{'default_type': 'diet'}</field>
+    </record>
+
+    <record id="res_partner_parameter_race_action" model="ir.actions.act_window">
+      <field name="name">Races</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'race')]</field>
+      <field name="context">{'default_type': 'race'}</field>
+    </record>
+
+    <record id="res_partner_parameter_robe_action" model="ir.actions.act_window">
+      <field name="name">Robes</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'robe')]</field>
+      <field name="context">{'default_type': 'robe'}</field>
+    </record>
+
+    <record id="res_partner_parameter_living_action" model="ir.actions.act_window">
+      <field name="name">Living Environments</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'living')]</field>
+      <field name="context">{'default_type': 'living'}</field>
+    </record>
+
+    <record id="res_partner_parameter_insurance_action" model="ir.actions.act_window">
+      <field name="name">Insurances</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'insurance')]</field>
+      <field name="context">{'default_type': 'insurance'}</field>
+    </record>
+
+  </data>
+</odoo>

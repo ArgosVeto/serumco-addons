@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_parameter_reader,access_res_partner_parameter reader,model_res_partner_parameter,,1,0,0,0
+access_res_partner_parameter_user,access_res_partner_parameter user,model_res_partner_parameter,base.group_user,1,1,1,0
+access_res_partner_parameter_admin,ccess_res_partner_parameter admin,model_res_partner_parameter,base.group_erp_manager,1,1,1,1

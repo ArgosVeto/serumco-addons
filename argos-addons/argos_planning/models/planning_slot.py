@@ -9,7 +9,7 @@ class PlanningSlot(models.Model):
     mrdv_event_id = fields.Integer('Mrdv Id')
     mrdv_job_id = fields.Integer('Mrdv Job Id')
     source = fields.Selection([('odoo', 'Odoo'), ('mrdv', 'Mrdv')], 'Source', default='odoo')
-    animal_id = fields.Many2one('animal.animal', 'Animal')
+    animal_id = fields.Many2one('res.partner', 'Animal')
     partner_id = fields.Many2one('res.partner', 'Customer')
     operating_unit_id = fields.Many2one('operating.unit', 'Operating Unit')
     consultation_type_id = fields.Many2one('consultation.type', 'Consultation Type')
@@ -39,7 +39,6 @@ class PlanningSlot(models.Model):
         type_obj = self.env['consultation.type']
         unit_obj = self.env['operating.unit']
         partner_obj = self.env['res.partner']
-        animal_obj = self.env['animal.animal']
         return {
             'mrdv_event_id': post.get('mrdvEventId'),
             'mrdv_job_id': post.get('mrdvJobId'),
@@ -53,7 +52,7 @@ class PlanningSlot(models.Model):
             'consultation_type_id': type_obj._get_consultation_type(post.get('consultationName')).id,
             'operating_unit_id': unit_obj._get_operating_unit_by_location(post.get('location')).id,
             'partner_id': partner_obj._get_partner_by_name(post.get('customerName'), post.get('customerPhone')).id,
-            'animal_id': animal_obj._get_animal_by_name(post.get('petName'), post.get('animalName'), post.get('customerName'),
+            'animal_id': partner_obj._get_animal_by_name(post.get('petName'), post.get('animalName'), post.get('customerName'),
                                                         post.get('customerPhone')).id,
         }
 

@@ -58,7 +58,7 @@ msgstr "Age"
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_animal_animal
 #: model:ir.ui.menu,name:argos_base.argos_animal_menu_contacts
-#: model:ir.ui.menu,name:argos_base.menu_animal_config
+#: model:ir.ui.menu,name:argos_base.res_partner_menu_config
 #: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
 msgid "Animal"
 msgstr "Animaux"
@@ -216,8 +216,6 @@ msgstr "Communication"
 
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_connection_origin
-#: model:ir.model.fields,field_description:argos_base.field_res_partner__origin_id
-#: model:ir.model.fields,field_description:argos_base.field_res_users__origin_id
 msgid "Connection Origin"
 msgstr "Origine de la connexion"
 
