@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 14:34+0000\n"
-"PO-Revision-Date: 2020-08-10 14:34+0000\n"
+"POT-Creation-Date: 2020-08-11 13:12+0000\n"
+"PO-Revision-Date: 2020-08-11 13:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,143 +16,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: argos_base
-#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__death_reason__accidental
-msgid "Accidental"
-msgstr "Accidentelle"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_needaction
-msgid "Action Needed"
-msgstr "Action requise"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__active
-msgid "Active"
-msgstr "Actif"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_ids
-msgid "Activities"
-msgstr "Activités"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_exception_decoration
-msgid "Activity Exception Decoration"
-msgstr "Décoration d'exception d'activité"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_state
-msgid "Activity State"
-msgstr "État de l'activité"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__address
-msgid "Address"
-msgstr "Adresse"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__age
-msgid "Age"
-msgstr "Age"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_animal
-#: model:ir.ui.menu,name:argos_base.argos_animal_menu_contacts
-#: model:ir.ui.menu,name:argos_base.res_partner_menu_config
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Animal"
-msgstr "Animaux"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_category
-msgid "Animal Category"
-msgstr "Espèce"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_diet
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_diet_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_diet_tree
-msgid "Animal Diet"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_insurance
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_insurance_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_insurance_tree
-msgid "Animal Insurance"
-msgstr ""
-
-#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__animal_ids
 #: model:ir.model.fields,field_description:argos_base.field_res_users__animal_ids
 msgid "Animal List"
 msgstr "Liste des animaux"
 
 #. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_pathology
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_pathology_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_pathology_tree
-msgid "Animal Pathology"
-msgstr "Pathologie"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_race_list
-#: model:ir.model,name:argos_base.model_animal_race
-#: model:ir.ui.menu,name:argos_base.menu_animal_race
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_race_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_race_tree
-msgid "Animal Race"
-msgstr "Race"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_robe_list
-#: model:ir.model,name:argos_base.model_animal_robe
-#: model:ir.ui.menu,name:argos_base.menu_animal_robe
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_robe_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_robe_tree
-msgid "Animal Robe"
-msgstr "Robe"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_category_list
-#: model:ir.ui.menu,name:argos_base.menu_animal_category
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_category_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_category_tree
-msgid "Animal Species"
-msgstr "Espèce"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_view_animal_list
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_tree
-#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
 msgid "Animals"
 msgstr "Animaux"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_attachment_count
-msgid "Attachment Count"
-msgstr "Nombre de pièces jointes"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__veterinary_id
-msgid "Attending Veterinarian"
-msgstr "Vétérinaire traitant"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
 msgid "Authorized Channels"
 msgstr "Canaux de communication autorisés"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__birth_date
-msgid "Birth Date"
-msgstr "Date de naissance"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__cip
 #: model:ir.model.fields,field_description:argos_base.field_product_template__cip
 msgid "CIP Code"
-msgstr ""
+msgstr "Code CIP"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__to_call
@@ -161,68 +44,21 @@ msgid "Call"
 msgstr "Téléphone"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__name
-msgid "Category Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_identification
-msgid "Chip Identification"
-msgstr "Identification de la puce"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_location
-msgid "Chip Location"
-msgstr "Lieu de la puce"
-
-#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__mother_class
 #: model:ir.model.fields,field_description:argos_base.field_product_template__mother_class
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__click_and_collect
-msgid "Click And Collect"
-msgstr "Click and Collect"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_form
-msgid "Clinical"
-msgstr "Clinique"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__clinical_code
-msgid "Clinical Code"
-msgstr "Code clinique"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_clinical_type
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__clinical_type_id
-msgid "Clinical Type"
-msgstr "Type de clinique"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.action_open_clinical_tree
-#: model:ir.ui.menu,name:argos_base.menu_action_clinical_tree
-#: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_tree
-msgid "Clinicals"
-msgstr "Clinique"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
 msgid "Communication"
 msgstr "Communication"
 
 #. module: argos_base
-#: model:ir.model,name:argos_base.model_connection_origin
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__origin_id
+#: model:ir.model.fields,field_description:argos_base.field_res_users__origin_id
 msgid "Connection Origin"
 msgstr "Origine de la connexion"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__consult_room_number
-msgid "Consultation Rooms Number"
-msgstr "Nombre de salles de consultation"
 
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_res_partner
@@ -232,521 +68,72 @@ msgstr "Contacts"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__create_uid
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__create_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__create_date
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__create_date
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__create_date
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__create_date
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__create_date
 msgid "Created on"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_dangerous
-msgid "Dangerous"
-msgstr "Dangereux"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_dead
-msgid "Dead"
-msgstr "Décédé"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__death_date
-msgid "Death Date"
-msgstr "Date du décès"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__death_reason
-msgid "Death Reason"
-msgstr "Raison du décès"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_form
-msgid "Digital Service"
-msgstr "Service numérique"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_form
-msgid "Digital services offered by the clinic"
-msgstr "Services numériques offerts par la clinique"
+msgstr "Créé le"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__display_name
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__display_name
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__display_name
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__display_name
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__display_name
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__ean
 #: model:ir.model.fields,field_description:argos_base.field_product_template__ean
 msgid "EAN Code"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__ecommerce_relay_point
-msgid "Ecommerce Relay Point"
-msgstr "Point relais e-commerce"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__email
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__email
-msgid "Email"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__emergency_phone
-msgid "Emergency Phone"
-msgstr "Téléphone d'urgence"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__equipment_ids
-msgid "Equipments"
-msgstr "Equipements"
-
-#. module: argos_base
-#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__sex__female
-msgid "Female"
-msgstr "Femelle"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_follower_ids
-msgid "Followers"
-msgstr "Abonnés"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Abonnés (canaux)"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_partner_ids
-msgid "Followers (Partners)"
-msgstr "Abonnés (Partenaires)"
+msgstr "Code EAN"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__gtin
 #: model:ir.model.fields,field_description:argos_base.field_product_template__gtin
 msgid "GTIN Code"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_res_partner__gmvet_id
-#: model:ir.model.fields,field_description:argos_base.field_res_users__gmvet_id
-msgid "GmVet ID"
-msgstr "ID GmVet"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__hide_messages
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__hide_messages
-msgid "Hide messages"
-msgstr "Masquer les messages"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__hide_notes
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__hide_notes
-msgid "Hide notes"
-msgstr "Masquer les commentaires"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__hide_notifications
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__hide_notifications
-msgid "Hide notifications"
-msgstr "Masquer les notifications"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Hospitalization"
-msgstr "Hospitalisations"
+msgstr "Code GTIN"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__id
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__id
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__id
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__id
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__id
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__id
 msgid "ID"
-msgstr ""
+msgstr "Identifiant"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_exception_icon
-msgid "Icon"
-msgstr "Icône"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__activity_exception_icon
-msgid "Icon to indicate an exception activity."
-msgstr "Icône pour indiquer une activité d'exception"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_needaction
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_unread
-msgid "If checked, new messages require your attention."
-msgstr "Si coché, les nouveaux messages nécessitent votre attention"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_has_error
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_has_sms_error
-msgid "If checked, some messages have a delivery error."
-msgstr "Si coché, certains messages ont une erreur de livraison."
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__image
-msgid "Image"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__chip_date
-msgid "Insertion Date"
-msgstr "Date de l'insertion"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_insurance_list
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__insurance_id
-#: model:ir.ui.menu,name:argos_base.menu_animal_insurance
-msgid "Insurance"
-msgstr "Assurance"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__name
-msgid "Insurance Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Internal Notes"
-msgstr "Notes internes"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_is_follower
-msgid "Is Follower"
-msgstr "Est abonné"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__is_incineris_species
-msgid "Is Incineris Species"
-msgstr "Est espèce d'incinération"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__issue_date
-msgid "Issue Date"
-msgstr "Date d'émission"
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
+msgid "ID GmVet"
+msgstr "Identifiant Gmvt"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_category____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_race____last_update
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe____last_update
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical____last_update
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type____last_update
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin____last_update
-#: model:ir.model.fields,field_description:argos_base.field_living_environment____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__write_uid
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_category__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_insurance__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__write_date
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__write_date
 #: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__write_date
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__write_date
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__write_date
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__write_date
 msgid "Last Updated on"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_living_environment_list
-#: model:ir.model,name:argos_base.model_living_environment
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__environment_ids
-#: model:ir.ui.menu,name:argos_base.menu_living_environment
-#: model_terms:ir.ui.view,arch_db:argos_base.view_living_environment_form
-#: model_terms:ir.ui.view,arch_db:argos_base.view_living_environment_tree
-msgid "Living Environment"
-msgstr "Milieu de vie"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__location
-msgid "Location"
-msgstr "Lieu"
+msgstr "Dernière mise à jour le"
 
 #. module: argos_base
 #: model:res.groups,name:argos_base.mrdv_group_user
 msgid "MRDV User"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Pièce jointe principale"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__clinic_id
-#: model:ir.model.fields,field_description:argos_base.field_res_partner__clinic_id
-#: model:ir.model.fields,field_description:argos_base.field_res_users__clinic_id
-msgid "Main Clinic"
-msgstr "Clinique principale"
-
-#. module: argos_base
-#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__sex__male
-msgid "Male"
-msgstr "Mâle"
-
-#. module: argos_base
-#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__death_reason__medical
-msgid "Medical"
-msgstr "Médicale"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Medical Events"
-msgstr "Evènements médicaux"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_has_error
-msgid "Message Delivery error"
-msgstr "Erreur de livraison de message"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_ids
-msgid "Messages"
-msgstr "Messages"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_missing
-msgid "Missing"
-msgstr "Disparu"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__missing_date
-msgid "Missing Date"
-msgstr "Date de disparition"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__name
-#: model:ir.model.fields,field_description:argos_base.field_animal_diet__name
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__name
-#: model:ir.model.fields,field_description:argos_base.field_clinical_type__name
-#: model:ir.model.fields,field_description:argos_base.field_connection_origin__name
-#: model:ir.model.fields,field_description:argos_base.field_living_environment__name
-msgid "Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model:ir.model.fields.selection,name:argos_base.selection__animal_animal__death_reason__natural
-msgid "Natural"
-msgstr "Naturelle"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_date_deadline
-msgid "Next Activity Deadline"
-msgstr "Date limite de la prochaine activité"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_summary
-msgid "Next Activity Summary"
-msgstr "Résumé de l'activité suivante"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_type_id
-msgid "Next Activity Type"
-msgstr "Type d'activité suivant"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__note
-msgid "Notes"
-msgstr "Notes"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_needaction_counter
-msgid "Number of Actions"
-msgstr "Nombre d'actions"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_has_error_counter
-msgid "Number of errors"
-msgstr "Nombre d'erreurs"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Nombre de messages nécessitant une action"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_has_error_counter
-msgid "Number of messages with delivery error"
-msgstr "Nombre de messages avec erreur de livraison"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__message_unread_counter
-msgid "Number of unread messages"
-msgstr "Nombre de messages non lus"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__online_appointment_booking
-msgid "Online Appointment Booking"
-msgstr "Réservation de rendez-vous en ligne"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__opening_time
-msgid "Opening Time"
-msgstr "Horaire d'ouverture"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_operating_unit
-msgid "Operating Unit"
-msgstr ""
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Outside Events"
-msgstr "Evènements extérieurs"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__owner_ids
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Owners"
-msgstr "Propriétaires"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__operating_unit_id
-msgid "Partner"
-msgstr "Partenaire"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__passport
-msgid "Passport"
-msgstr "Passeport"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_pathology_list
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__pathology_ids
-#: model:ir.ui.menu,name:argos_base.menu_animal_pathology
-msgid "Pathology"
-msgstr "Pathologie"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_pathology__name
-msgid "Pathology Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__phone
-msgid "Phone"
-msgstr "Téléphone"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__principal_phone
-msgid "Principal Phone"
-msgstr "Téléphone principal"
+msgstr "Utilisateur MRDV"
 
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_product_template
 msgid "Product Template"
 msgstr "Modèle d'article"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__race_id
-msgid "Race"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_race__name
-msgid "Race Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model:ir.actions.act_window,name:argos_base.open_animal_diet_list
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__diet_ids
-#: model:ir.ui.menu,name:argos_base.menu_animal_diet
-msgid "Recommended Diet"
-msgstr "Alimentation préconisée"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_reproductive
-msgid "Reproductive"
-msgstr "Reproducteur"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__activity_user_id
-msgid "Responsible User"
-msgstr "Utilisateur responsable"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__robe_id
-msgid "Robe"
-msgstr "Robe"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_robe__name
-msgid "Robe Name"
-msgstr "Nom"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Erreur de livraison SMS"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__secondary_phone
-msgid "Secondary Phone"
-msgstr "Téléphone secondaire"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__send_email
@@ -767,69 +154,34 @@ msgid "Send Sms"
 msgstr "SMS"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__sex
-msgid "Sex"
-msgstr "Sexe"
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__signup_expiration
+#: model:ir.model.fields,field_description:argos_base.field_res_users__signup_expiration
+msgid "Signup Expiration"
+msgstr "Expiration de la session de connexion"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__skill_ids
-msgid "Skills List"
-msgstr "Liste de compétences"
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__signup_token
+#: model:ir.model.fields,field_description:argos_base.field_res_users__signup_token
+msgid "Signup Token"
+msgstr "Session de connexion"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__category_id
-msgid "Species"
-msgstr "Espèce"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__activity_state
-msgid ""
-"Status based on activities\n"
-"Overdue: Due date is already passed\n"
-"Today: Activity date is today\n"
-"Planned: Future activities."
-msgstr ""
-"Statut basé sur les activités\n"
-"En retard: la date d'échéance est déjà dépassée\n"
-"Aujourd'hui: la date de l'activité est aujourd'hui\a"
-"Prévu: activités futures."
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__is_sterilized
-msgid "Sterilized"
-msgstr "Stérilisé"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_clinical_form
-msgid "Structure"
-msgstr "Structure"
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__signup_type
+#: model:ir.model.fields,field_description:argos_base.field_res_users__signup_type
+msgid "Signup Token Type"
+msgstr "Type de jeton de connexion"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__child_class
 #: model:ir.model.fields,field_description:argos_base.field_product_template__child_class
 msgid "Sub Class"
-msgstr ""
+msgstr "Sous classe"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__sub_child_class
 #: model:ir.model.fields,field_description:argos_base.field_product_template__sub_child_class
 msgid "Sub child class"
 msgstr ""
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Surgery"
-msgstr "Chirurgies"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__tattoo_date
-msgid "Tattoo Date"
-msgstr "Date du tatouage"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__tattoo_location
-msgid "Tattoo Location"
-msgstr "Lieu du tatouage"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__tutor_curator_id
@@ -844,47 +196,11 @@ msgid "Tutorship/Curatorship"
 msgstr "Tutelle/Curatelle"
 
 #. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__activity_exception_decoration
-msgid "Type of the exception activity on record."
-msgstr "Type d'activité d'exception enregistrée"
+#: model:ir.model,name:argos_base.model_animal_animal
+msgid "animal.animal"
+msgstr ""
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_unread
-msgid "Unread Messages"
-msgstr "Messages non lus"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr "Compteur de messages non lus"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Vaccination"
-msgstr "Vaccinations"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__vat
-msgid "Vat"
-msgstr "TVA"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__website_message_ids
-msgid "Website Messages"
-msgstr "Messages du site Web"
-
-#. module: argos_base
-#: model:ir.model.fields,help:argos_base.field_clinical_clinical__website_message_ids
-msgid "Website communication history"
-msgstr "Historique des communications sur le site Web"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__weight
-#: model_terms:ir.ui.view,arch_db:argos_base.view_animal_form
-msgid "Weight"
-msgstr "Poids"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.view_partner_inherit_form
-msgid "e.g. Clinic ..."
-msgstr "ex. Clinique..."
+#: model:ir.model,name:argos_base.model_clinical_clinical
+msgid "clinical.clinical"
+msgstr ""
