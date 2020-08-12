@@ -2,14 +2,6 @@
 
 from odoo import api, fields, models, _, tools
 
-class Clinic(models.Model):
-    _name = 'clinical.clinical'
-    # TODO: to be deleted
-
-class AClinic(models.Model):
-    _name = 'animal.animal'
-    # TODO: to be deleted
-
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -24,7 +16,8 @@ class ResPartner(models.Model):
     signup_token = fields.Char(groups='base.group_erp_manager,argos_base.mrdv_group_user')
     signup_type = fields.Char(groups='base.group_erp_manager,argos_base.mrdv_group_user')
     origin_id = fields.Char()
-    animal_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', string='Animal List')
+    patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', string='Patient List')
+    social_reason = fields.Char('Social Reason')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):

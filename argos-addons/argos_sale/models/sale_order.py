@@ -9,13 +9,13 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     name = fields.Char(readonly=False)
-    partner_animal_ids = fields.Many2many(related='partner_id.animal_ids')
+    partner_patient_ids = fields.Many2many(related='partner_id.patient_ids')
     argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')])
-    animal_id = fields.Many2one('res.partner', 'Animal')
-    category_id = fields.Many2many(related='animal_id.category_id')
-    sex = fields.Selection(related='animal_id.gender', string='Sex')
-    age = fields.Integer('Age', related='animal_id.age')
-    weight = fields.Float('Weight', related='animal_id.weight')
+    patient_id = fields.Many2one('res.partner', 'Patient')
+    category_id = fields.Many2many(related='patient_id.category_id')
+    sex = fields.Selection(related='patient_id.gender', string='Sex')
+    age = fields.Integer('Age', related='patient_id.age')
+    weight = fields.Float('Weight', related='patient_id.weight')
     pathology_ids = fields.Many2many('res.partner.pathology')
     veterinary_id = fields.Many2one('hr.employee')
     is_consultation = fields.Boolean('Is Consultation')
@@ -40,16 +40,16 @@ class SaleOrder(models.Model):
         new_url = urlparse.urlunparse(url_parse)
         return new_url
 
-    @api.depends('veterinary_id', 'partner_id', 'animal_id')
+    @api.depends('veterinary_id', 'partner_id', 'patient_id')
     def _compute_conv_key(self):
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
         editor_id = soft_id or ''
         for rec in self:
             vet_id = str(rec.veterinary_id.id)
             owner_id = str(rec.partner_id.id)
-            animal_id = str(rec.animal_id.id)
+            patient_id = str(rec.patient_id.id)
             timestamp = str(fields.Datetime.now())
-            rec.conv_key = '-'.join([editor_id, vet_id, owner_id, animal_id, timestamp])
+            rec.conv_key = '-'.join([editor_id, vet_id, owner_id, patient_id, timestamp])
 
     def action_edit_incineris(self):
         self.ensure_one()
@@ -57,7 +57,8 @@ class SaleOrder(models.Model):
             raise UserError(_('Only consultation can generate incineris convention.'))
         url = self.env['ir.config_parameter'].get_param("incineris_url") or ''
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
-        species = self.animal_id.category_id.is_incineris_species and self.animal_id.category_id.name or 'nac'
+        species = self.patient_id.category_id and self.patient_id.category_id[0].is_incineris_species and \
+                  self.patient_id[0].category_id.name or 'nac'
         params = {
             'action': 'create',
             'soft_id': soft_id or '',
@@ -76,15 +77,15 @@ class SaleOrder(models.Model):
             'soft_clinic_id': self.operating_unit_id.id or '',
             'vet_name': self.veterinary_id.name or '',
             'soft_vet_id': self.veterinary_id.id or '',
-            'pet_name': self.animal_id.name or '',
+            'pet_name': self.patient_id.name or '',
             'pet_species': species.lower(),
-            'pet_birth_date': fields.Date.from_string(self.animal_id.birth_date).strftime(
-                "%d/%m/%Y") if self.animal_id.birth_date else '',
-            'pet_death_date': fields.Date.from_string(self.animal_id.death_date).strftime(
-                "%d/%m/%Y") if self.animal_id.death_date else '',
-            'pet_breed': self.animal_id.race_id.name or '',
-            'pet_identification': self.animal_id.chip_identification or '',
-            'pet_death_reason': self.animal_id.death_reason or '',
+            'pet_birth_date': fields.Date.from_string(self.patient_id.birthdate_date).strftime(
+                "%d/%m/%Y") if self.patient_id.birthdate_date else '',
+            'pet_death_date': fields.Date.from_string(self.patient_id.death_date).strftime(
+                "%d/%m/%Y") if self.patient_id.death_date else '',
+            'pet_breed': self.patient_id.race_id.name or '',
+            'pet_identification': self.patient_id.chip_identification or '',
+            'pet_death_reason': self.patient_id.death_reason or '',
         }
         new_url = self.parse_url(url, params)
         return {

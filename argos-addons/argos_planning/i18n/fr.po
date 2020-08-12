@@ -1,0 +1,240 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_planning
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-11 17:12+0000\n"
+"PO-Revision-Date: 2020-08-11 17:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
+msgid "Active"
+msgstr ""
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.view_planning_assignment_form
+msgid "Assignment"
+msgstr "Affectation"
+
+#. module: argos_planning
+#: model:ir.actions.act_window,name:argos_planning.planning_action_schedule_assignment
+#: model:ir.ui.menu,name:argos_planning.menu_planning_assignment
+#: model_terms:ir.ui.view,arch_db:argos_planning.view_planning_assignment_tree
+msgid "Assignments"
+msgstr "Affectations"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__away
+msgid "Away"
+msgstr "Absence"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__cancel
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__operating_unit_id
+msgid "Clinic"
+msgstr "Clinique"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__name
+msgid "Consultation Name"
+msgstr "Nom"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_consultation_type
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__consultation_type_id
+msgid "Consultation Type"
+msgstr "Type de consultation"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.consultation_type_view_form
+msgid "Consultation type"
+msgstr "Type de consultation"
+
+#. module: argos_planning
+#: model:ir.actions.act_window,name:argos_planning.action_open_consultation_type
+#: model:ir.ui.menu,name:argos_planning.menu_settings_consultation_type
+#: model_terms:ir.ui.view,arch_db:argos_planning.consultation_type_view_tree
+msgid "Consultation types"
+msgstr "Types de consultation"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__create_uid
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__create_date
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__partner_id
+msgid "Customer"
+msgstr "Client"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__display_name
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__draft
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__end_date
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__id
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__id
+msgid "ID"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type____last_update
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__write_uid
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_consultation_type__write_date
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__more_info
+msgid "More Information"
+msgstr "Plus d'infos"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__mrdv
+msgid "Mrdv"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__mrdv_event_id
+msgid "Mrdv Id"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__mrdv_job_id
+msgid "Mrdv Job Id"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__odoo
+msgid "Odoo"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__operating_unit_id
+msgid "Operating Unit"
+msgstr "Clinique"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__patient_id
+msgid "Patient"
+msgstr "Patient"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_planning_assignment
+msgid "Planning Assignment"
+msgstr "Affectation"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_planning_role
+msgid "Planning Role"
+msgstr "Rôle"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_planning_slot
+msgid "Planning Shift"
+msgstr "Changement de planification"
+
+#. module: argos_planning
+#: model:ir.actions.server,name:argos_planning.ir_cron_planning_recovery_ir_actions_server
+#: model:ir.cron,cron_name:argos_planning.ir_cron_planning_recovery
+#: model:ir.cron,name:argos_planning.ir_cron_planning_recovery
+msgid "Planning: recover assignments, aways and presences"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__presence
+msgid "Presence"
+msgstr "Présence"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__rdv
+msgid "Rdv"
+msgstr "Rendez-vous"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_role__role_type
+msgid "Role Type"
+msgstr ""
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+msgid "Set to Draft"
+msgstr "Marquer comme brouillon"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__source
+msgid "Source"
+msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__start_date
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__state
+msgid "State"
+msgstr "Statut"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+msgid "Validate"
+msgstr "Valider"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__validated
+msgid "Validated"
+msgstr "Validé"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__employee_id
+msgid "Veterinary"
+msgstr "Vétérinaire"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 13:12+0000\n"
-"PO-Revision-Date: 2020-08-11 13:12+0000\n"
+"POT-Creation-Date: 2020-08-11 16:55+0000\n"
+"PO-Revision-Date: 2020-08-11 16:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -131,6 +131,17 @@ msgid "MRDV User"
 msgstr "Utilisateur MRDV"
 
 #. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
+msgid "Patients"
+msgstr "Animaux"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__patient_ids
+#: model:ir.model.fields,field_description:argos_base.field_res_users__patient_ids
+msgid "Patients List"
+msgstr "Liste des animaux"
+
+#. module: argos_base
 #: model:ir.model,name:argos_base.model_product_template
 msgid "Product Template"
 msgstr "Modèle d'article"
@@ -172,6 +183,12 @@ msgid "Signup Token Type"
 msgstr "Type de jeton de connexion"
 
 #. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__social_reason
+#: model:ir.model.fields,field_description:argos_base.field_res_users__social_reason
+msgid "Social Reason"
+msgstr "Raison sociale"
+
+#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__child_class
 #: model:ir.model.fields,field_description:argos_base.field_product_template__child_class
 msgid "Sub Class"
@@ -194,13 +211,3 @@ msgstr "Tuteur/Curateur"
 #: model:ir.model.fields,field_description:argos_base.field_res_users__has_tutor_curator
 msgid "Tutorship/Curatorship"
 msgstr "Tutelle/Curatelle"
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_animal_animal
-msgid "animal.animal"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model,name:argos_base.model_clinical_clinical
-msgid "clinical.clinical"
-msgstr ""

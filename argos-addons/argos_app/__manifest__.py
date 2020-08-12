@@ -19,6 +19,8 @@
         'argos_sale',
         'argos_contact',
         'argos_operating_unit',
+        'argos_account',
+        'argos_purchase',
     ],
     'data': [],
     'application': True,

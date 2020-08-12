@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 14:32+0000\n"
-"PO-Revision-Date: 2020-08-10 14:32+0000\n"
+"POT-Creation-Date: 2020-08-11 17:17+0000\n"
+"PO-Revision-Date: 2020-08-11 17:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,16 +24,6 @@ msgstr "Age"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Analysis"
 msgstr "Analyses"
-
-#. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__animal_id
-msgid "Animal"
-msgstr "Animal"
-
-#. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__partner_animal_ids
-msgid "Animal List"
-msgstr "Animaux du client"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__argos_state
@@ -76,6 +66,11 @@ msgstr "Consultations"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__conv_key
 msgid "Convention Key"
 msgstr "Clé de la convention"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__partner_id
+msgid "Customer"
+msgstr "Client"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__customer_observation
@@ -149,6 +144,16 @@ msgstr "Référence commande"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__pathology_ids
 msgid "Pathology"
 msgstr "Pathologies"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__patient_id
+msgid "Patient"
+msgstr "Animal"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__partner_patient_ids
+msgid "Patients List"
+msgstr "Liste des animaux"
 
 #. module: argos_sale
 #: code:addons/argos_sale/models/sale_order.py:0
