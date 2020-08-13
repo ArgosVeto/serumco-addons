@@ -20,6 +20,7 @@
         # views
         'views/product_template_views.xml',
         'views/res_partner_views.xml',
+        'views/res_company_views.xml',
     ],
     'application': False,
     'installable': True,

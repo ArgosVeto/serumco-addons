@@ -40,12 +40,12 @@ class ResPartner(models.Model):
     patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', string='Patients List')
 
     @api.model
-    def _get_animal_by_name(self, name=False, category=False, customer_name=False, phone=False):
+    def _get_patient_by_name(self, name=False, category=False, customer_name=False, phone=False):
         partner = self._get_partner_by_name(customer_name, phone)
-        category = self.env['animal.category'].search([('name', '=', category)], limit=1)
-        animal = self.search([('name', '=', name),
-                              ('category_id', '=', category.id),
-                              ('partner_id', '=', partner.id)], limit=1)
-        if animal:
-            return animal
-        return self.create({'name': name, 'category_id': category.id, 'partner_id': partner.id})
+        category = self.env['res.partner.category'].search([('name', '=', category)], limit=1)
+        patient = self.search([('name', '=', name),
+                              ('category_id', 'in', category.ids),
+                              ('owner_ids', 'in', partner.ids)], limit=1)
+        if patient:
+            return patient
+        return self.create({'name': name, 'category_id': [(6, 0, category.ids)], 'owner_ids': [(6, 0, partner.ids)]})

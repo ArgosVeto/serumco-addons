@@ -8,7 +8,7 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='employee_id']" position="after">
           <field name="operating_unit_id"/>
-          <field name="animal_id"/>
+          <field name="patient_id"/>
           <field name="partner_id"/>
           <field name="consultation_type_id"/>
           <field name="more_info"/>
@@ -55,7 +55,7 @@
               <field name="mrdv_job_id"/>
             </group>
             <group>
-              <field name="animal_id"/>
+              <field name="patient_id"/>
               <field name="partner_id"/>
               <field name="consultation_type_id"/>
               <field name="more_info"/>

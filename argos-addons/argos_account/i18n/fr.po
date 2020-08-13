@@ -1,0 +1,115 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-11 15:59+0000\n"
+"PO-Revision-Date: 2020-08-11 15:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_account
+#: model:mail.template,body_html:argos_account.validation_mail_template
+msgid ""
+"\n"
+"        \n"
+"          <a href=\"${ctx['url']}\">\n"
+"            ${ctx['url']}\n"
+"          </a>\n"
+"      \n"
+"      "
+msgstr ""
+"\n"
+"        \n"
+"          <a href=\"${ctx['url']}\">\n"
+"            ${ctx['url']}\n"
+"          </a>\n"
+"      \n"
+"      "
+
+#. module: argos_account
+#: model_terms:ir.ui.view,arch_db:argos_account.argos_view_partner_bank_form
+msgid "Approve"
+msgstr "Approuver"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner_bank__state__approved
+msgid "Approved"
+msgstr "Approuvé"
+
+#. module: argos_account
+#: model:mail.template,subject:argos_account.validation_mail_template
+msgid "Bank Account Validation Request"
+msgstr "Compte bancaire - Requête d'approbation"
+
+#. module: argos_account
+#: model:ir.model,name:argos_account.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Comptes bancaires"
+
+#. module: argos_account
+#: model:ir.model.fields,field_description:argos_account.field_res_partner__no_payment
+#: model:ir.model.fields,field_description:argos_account.field_res_users__no_payment
+msgid "Block payment"
+msgstr "Bloquer paiement"
+
+#. module: argos_account
+#: code:addons/argos_account/models/account_move.py:0
+#: code:addons/argos_account/models/account_payment.py:0
+#, python-format
+msgid "Can't create payment for this partner."
+msgstr "Impossible de créer un paiement pour ce partenaire"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__cash
+msgid "Cash"
+msgstr "Espèces"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__check
+msgid "Check"
+msgstr "Chèque"
+
+#. module: argos_account
+#: model:ir.model,name:argos_account.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: argos_account
+#: model:ir.model,name:argos_account.model_account_move
+msgid "Journal Entries"
+msgstr "Pièces comptables"
+
+#. module: argos_account
+#: model:ir.model.fields,field_description:argos_account.field_res_partner__payment_mode
+#: model:ir.model.fields,field_description:argos_account.field_res_users__payment_mode
+msgid "Payment Mode"
+msgstr "Mode de règlement"
+
+#. module: argos_account
+#: model:ir.model,name:argos_account.model_account_payment
+msgid "Payments"
+msgstr "Paiements"
+
+#. module: argos_account
+#: model:ir.model.fields,field_description:argos_account.field_account_setup_bank_manual_config__state
+#: model:ir.model.fields,field_description:argos_account.field_res_partner_bank__state
+msgid "State"
+msgstr "Statut"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner_bank__state__to_approve
+msgid "To Approve"
+msgstr "A approuver"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__transfer
+msgid "Transfer"
+msgstr "Virement"

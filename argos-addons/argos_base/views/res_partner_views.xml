@@ -28,14 +28,40 @@
               <field name="send_email"/>
               <field name="send_sms"/>
               <field name="to_call"/>
+              <field name="origin_id"/>
             </group>
           </page>
         </page>
         <page name="internal_notes" position="after">
-          <page name="animals" string="Animals">
-            <field name="animal_ids"/>
+          <page name="patients" string="Patients">
+            <field name="patient_ids"/>
           </page>
         </page>
+        <field name="property_payment_term_id" position="before">
+          <field name="customer_rank"/>
+        </field>
+        <field name="property_supplier_payment_term_id" position="before">
+          <field name="supplier_rank"/>
+        </field>
+        <field name="vat" position="before">
+          <field name="social_reason" attrs="{'invisible': [('is_company', '=', False)]}"/>
+        </field>
+      </field>
+    </record>
+
+    <record id="argos_res_partner_form_l10n_fr" model="ir.ui.view">
+      <field name="name">argos.res.partner.form.l10n.fr</field>
+      <field name="model">res.partner</field>
+      <field name="priority">30</field>
+      <field name="inherit_id" ref="l10n_fr.res_partner_form_l10n_fr"/>
+      <field name="arch" type="xml">
+        <data>
+          <xpath expr="//field[@name='siret']" position="attributes">
+            <attribute name="attrs">{'invisible': [('is_company', '=', False)], 'required': [('is_company', '=',
+              True)]}
+            </attribute>
+          </xpath>
+        </data>
       </field>
     </record>
 
