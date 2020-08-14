@@ -14,6 +14,7 @@
     'data': [
         # data
         'data/res_users_data.xml',
+        'data/mail_template_data.xml',
         # security
         'security/res_groups.xml',
         'security/ir.model.access.csv',

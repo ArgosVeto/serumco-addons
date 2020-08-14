@@ -87,7 +87,7 @@ msgstr "Cité"
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__origin_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__connection
 msgid "Connection Origin"
-msgstr "Origine de la connexion"
+msgstr "Origine de la mise en relation"
 
 #. module: argos_contact
 #: model:ir.model,name:argos_contact.model_res_partner
@@ -535,7 +535,7 @@ msgstr "Patients"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__patient_ids
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__patient_ids
 msgid "Patients List"
-msgstr "Liste des animaux"
+msgstr "Animaux"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__quartier

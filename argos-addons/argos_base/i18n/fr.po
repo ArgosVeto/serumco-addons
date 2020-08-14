@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 16:55+0000\n"
-"PO-Revision-Date: 2020-08-11 16:55+0000\n"
+"POT-Creation-Date: 2020-08-14 10:48+0000\n"
+"PO-Revision-Date: 2020-08-14 10:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,15 +16,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_res_partner__animal_ids
-#: model:ir.model.fields,field_description:argos_base.field_res_users__animal_ids
-msgid "Animal List"
-msgstr "Liste des animaux"
-
-#. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
-msgid "Animals"
-msgstr "Animaux"
+#: model:mail.template,body_html:argos_base.confirmation_mail_template
+msgid ""
+"\n"
+"        \n"
+"          <span>Welcome</span>\n"
+"      \n"
+"      "
+msgstr ""
+"\n"
+"        \n"
+"          <span>Bienvenue</span>\n"
+"      \n"
+"      "
 
 #. module: argos_base
 #: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
@@ -58,7 +62,7 @@ msgstr "Communication"
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__origin_id
 #: model:ir.model.fields,field_description:argos_base.field_res_users__origin_id
 msgid "Connection Origin"
-msgstr "Origine de la connexion"
+msgstr "Origine de la mise en relation"
 
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_res_partner
@@ -67,28 +71,16 @@ msgid "Contact"
 msgstr "Contacts"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_uid
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__create_uid
-msgid "Created by"
-msgstr "Créé par"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__create_date
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__create_date
-msgid "Created on"
-msgstr "Créé le"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__display_name
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__display_name
-msgid "Display Name"
-msgstr "Nom affiché"
-
-#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__ean
 #: model:ir.model.fields,field_description:argos_base.field_product_template__ean
 msgid "EAN Code"
 msgstr "Code EAN"
+
+#. module: argos_base
+#: code:addons/argos_base/models/res_partner.py:0
+#, python-format
+msgid "First letter of firstname must be upper"
+msgstr "Le Prénom doit avoir la première lettre en majuscule"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__gtin
@@ -97,33 +89,15 @@ msgid "GTIN Code"
 msgstr "Code GTIN"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__id
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__id
-msgid "ID"
-msgstr "Identifiant"
-
-#. module: argos_base
 #: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
 msgid "ID GmVet"
 msgstr "Identifiant Gmvt"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal____last_update
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_uid
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__write_uid
-msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_animal_animal__write_date
-#: model:ir.model.fields,field_description:argos_base.field_clinical_clinical__write_date
-msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+#: code:addons/argos_base/models/res_partner.py:0
+#, python-format
+msgid "Lastname must be upper"
+msgstr "Le Nom doit être en majuscule"
 
 #. module: argos_base
 #: model:res.groups,name:argos_base.mrdv_group_user
@@ -131,15 +105,21 @@ msgid "MRDV User"
 msgstr "Utilisateur MRDV"
 
 #. module: argos_base
-#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
-msgid "Patients"
-msgstr "Animaux"
+#: code:addons/argos_base/models/res_partner.py:0
+#, python-format
+msgid "Partner must be unique"
+msgstr "La combinaison Nom-Prénom-Email doit être unique"
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__patient_ids
 #: model:ir.model.fields,field_description:argos_base.field_res_users__patient_ids
-msgid "Patients List"
+msgid "Patient List"
 msgstr "Liste des animaux"
+
+#. module: argos_base
+#: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
+msgid "Patients"
+msgstr "Animaux"
 
 #. module: argos_base
 #: model:ir.model,name:argos_base.model_product_template
@@ -211,3 +191,8 @@ msgstr "Tuteur/Curateur"
 #: model:ir.model.fields,field_description:argos_base.field_res_users__has_tutor_curator
 msgid "Tutorship/Curatorship"
 msgstr "Tutelle/Curatelle"
+
+#. module: argos_base
+#: model:mail.template,subject:argos_base.confirmation_mail_template
+msgid "Welcome"
+msgstr "Bienvenue"

@@ -3,6 +3,9 @@
 from odoo import api, fields, models, _
 import urllib.parse as urlparse
 from odoo.exceptions import UserError, ValidationError
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class SaleOrder(models.Model):
@@ -133,3 +136,18 @@ class SaleOrder(models.Model):
             'url': new_url,
             'target': 'new',
         }
+
+    def send_notification_mail(self):
+        self.ensure_one()
+        try:
+            email_template = self.env.ref('argos_sale.notification_mail_template')
+            email_template.send_mail(self.id, force_send=True, raise_exception=True)
+        except Exception as e:
+            _logger.error(repr(e))
+
+    @api.model
+    def create(self, vals):
+        res = super(SaleOrder, self).create(vals)
+        if res.partner_id and res.partner_id.tutor_curator_id:
+            res.send_notification_mail()
+        return res

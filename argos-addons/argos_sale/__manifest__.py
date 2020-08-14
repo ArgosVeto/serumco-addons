@@ -18,6 +18,7 @@
         # data
         'data/product_template_data.xml',
         'data/res_config_parameter_data.xml',
+        'data/mail_template_data.xml',
         # views
         'views/sale_order_views.xml',
     ],
