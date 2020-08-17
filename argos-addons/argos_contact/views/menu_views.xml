@@ -39,6 +39,26 @@
               name="Living Environments"
               sequence="50" parent="argos_contact.res_partner_menu_config"/>
 
+    <menuitem id="res_partner_pathology_menuitem"
+              action="res_partner_pathology_action"
+              name="Pathology"
+              sequence="55" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="pathology_category_menuitem"
+              action="pathology_category_action"
+              name="Category pathology"
+              sequence="56" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_weight_menuitem"
+              action="res_partner_weight_action"
+              name="Weights"
+              sequence="57" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="passport_passport_menuitem"
+              action="passport_passport_action"
+              name="Passport"
+              sequence="58" parent="argos_contact.res_partner_menu_config"/>
+
     <menuitem id="res_partner_parameter_diet_menuitem"
               action="res_partner_parameter_diet_action"
               name="Recommended Diet"

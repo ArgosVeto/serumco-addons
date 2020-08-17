@@ -20,6 +20,9 @@ class OperatingUnit(models.Model):
     click_and_collect = fields.Boolean()
     ecommerce_relay_point = fields.Boolean()
     online_appointment_booking = fields.Boolean()
+    rooms_ids = fields.One2many('operating.unit.room', 'operating_unit_id', 'Rooms')
+    access_reduced_mobility = fields.Boolean()
+    parking = fields.Boolean()
 
     def toggle_active(self):
         self.ensure_one()

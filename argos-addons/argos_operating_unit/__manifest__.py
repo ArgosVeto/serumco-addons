@@ -20,6 +20,7 @@
         # views
         'views/res_partner_views.xml',
         'views/operating_unit_views.xml',
+        'views/operating_unit_room_views.xml',
     ],
     'application': False,
     'installable': True,

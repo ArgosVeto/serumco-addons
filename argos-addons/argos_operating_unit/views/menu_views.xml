@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="operating_unit_room_menuitem"
+							action="operating_unit_room_action"
+							name="Rooms"
+							sequence="58" parent="base.menu_users"/>
+
+	</data>
+</odoo>
