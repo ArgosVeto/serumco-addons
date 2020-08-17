@@ -34,7 +34,7 @@
               </group>
               <group>
                 <field name="consultation_date"/>
-                <field name="veterinary_id" string="Seen By"/>
+                <field name="employee_id" string="Seen By"/>
                 <field name="partner_id"/>
                 <field name="partner_patient_ids" widget="many2many_tags"/>
                 <field name="operating_unit_id" string="Clinical"/>

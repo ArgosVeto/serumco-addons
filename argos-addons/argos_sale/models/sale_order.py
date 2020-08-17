@@ -17,7 +17,7 @@ class SaleOrder(models.Model):
     age = fields.Integer('Age', related='patient_id.age')
     weight = fields.Float('Weight', related='patient_id.weight')
     pathology_ids = fields.Many2many('res.partner.pathology')
-    veterinary_id = fields.Many2one('hr.employee')
+    employee_id = fields.Many2one('hr.employee')
     is_consultation = fields.Boolean('Is Consultation')
     conv_key = fields.Char('Convention Key', compute='_compute_conv_key')
     consultation_date = fields.Date(default=fields.Date.today(), string='Consultation Date')
@@ -40,12 +40,12 @@ class SaleOrder(models.Model):
         new_url = urlparse.urlunparse(url_parse)
         return new_url
 
-    @api.depends('veterinary_id', 'partner_id', 'patient_id')
+    @api.depends('employee_id', 'partner_id', 'patient_id')
     def _compute_conv_key(self):
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
         editor_id = soft_id or ''
         for rec in self:
-            vet_id = str(rec.veterinary_id.id)
+            vet_id = str(rec.employee_id.id)
             owner_id = str(rec.partner_id.id)
             patient_id = str(rec.patient_id.id)
             timestamp = str(fields.Datetime.now())
@@ -75,8 +75,8 @@ class SaleOrder(models.Model):
             'owner_country': self.partner_id.country_id.name or '',
             'owner_civility': self.partner_id.title.shortcut or '',
             'soft_clinic_id': self.operating_unit_id.id or '',
-            'vet_name': self.veterinary_id.name or '',
-            'soft_vet_id': self.veterinary_id.id or '',
+            'vet_name': self.employee_id.name or '',
+            'soft_vet_id': self.employee_id.id or '',
             'pet_name': self.patient_id.name or '',
             'pet_species': species.lower(),
             'pet_birth_date': fields.Date.from_string(self.patient_id.birthdate_date).strftime(
