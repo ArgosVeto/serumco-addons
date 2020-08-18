@@ -21,6 +21,7 @@
         'argos_operating_unit',
         'argos_account',
         'argos_purchase',
+        'argos_hr',
     ],
     'data': [],
     'application': True,

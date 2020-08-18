@@ -208,7 +208,7 @@ msgid "Units"
 msgstr "Unités"
 
 #. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__veterinary_id
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__employee_id
 msgid "Veterinary"
 msgstr "Vétérinaire"
 

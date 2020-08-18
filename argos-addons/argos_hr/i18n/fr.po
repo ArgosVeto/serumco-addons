@@ -1,0 +1,84 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-17 15:53+0000\n"
+"PO-Revision-Date: 2020-08-17 15:53+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_res_partner__employee_id
+#: model:ir.model.fields,field_description:argos_hr.field_res_users__employee_id
+msgid "Attending Veterinarian"
+msgstr "Vétérinaire traitant"
+
+#. module: argos_hr
+#: model:ir.model,name:argos_hr.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: argos_hr
+#: model:ir.model,name:argos_hr.model_hr_departure_wizard
+msgid "Departure Wizard"
+msgstr "Assistant de départ"
+
+#. module: argos_hr
+#: model_terms:ir.ui.view,arch_db:argos_hr.hr_employee_view_form_inherit
+msgid "Drive Permit"
+msgstr "Permis de conduire"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__drive_permit_number
+msgid "Drive Permit Number"
+msgstr "N° de permis"
+
+#. module: argos_hr
+#: model:ir.model,name:argos_hr.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__issue_date
+msgid "Issue Date"
+msgstr "Date d'obtention"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__issue_location
+msgid "Issue Location"
+msgstr "Lieu d'obtention"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_departure_wizard__leave_date
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__leave_date
+msgid "Leave Date"
+msgstr "Date de départ"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__order_number
+msgid "Order Number"
+msgstr "N° d'order"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__registration_number
+msgid "Registration Number"
+msgstr "Matricule"
+
+#. module: argos_hr
+#: model_terms:ir.ui.view,arch_db:argos_hr.hr_skills_employee_view_form_inherit
+msgid "Resume"
+msgstr "Résumé"
+
+#. module: argos_hr
+#: model:ir.model.fields,field_description:argos_hr.field_hr_employee__signature
+#: model_terms:ir.ui.view,arch_db:argos_hr.hr_employee_view_form_inherit
+msgid "Signature"
+msgstr "Signature"

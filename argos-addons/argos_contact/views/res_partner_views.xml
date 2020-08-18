@@ -69,7 +69,6 @@
                 <field name="passport_id"/>
                 <field name="issue_date"/>
                 <field name="location"/>
-                <field name="veterinary_id"/>
                 <field name="insurance_id" context="{'default_type': 'insurance'}"/>
                 <field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>
                 <field name="diet_ids" widget="many2many_tags" context="{'default_type': 'diet'}"/>
