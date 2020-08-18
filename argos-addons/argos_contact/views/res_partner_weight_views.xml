@@ -19,7 +19,9 @@
 								<field name="source"/>
 								<field name="note"/>
 							</group>
-							<group></group>
+							<group>
+								<field name="partner_id"/>
+							</group>
 						</group>
 					</sheet>
 					<div class="oe_chatter" name="studio_div_2bbdca">
@@ -37,7 +39,7 @@
 			<field name="arch" type="xml">
 				<tree create="false" delete="false">
 					<field name="date"/>
-					<field name="patient_id"/>
+					<field name="partner_id"/>
 					<field name="values"/>
 					<field name="source"/>
 				</tree>

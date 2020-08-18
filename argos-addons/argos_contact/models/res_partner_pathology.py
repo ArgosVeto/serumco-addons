@@ -17,4 +17,4 @@ class ResPartnerPathology(models.Model):
 
     name = fields.Char('Pathology Name', required=True)
     quartier = fields.Char('Quartier')
-    pathology_category_id = fields.Many2one('pathology.category')
+    category_id = fields.Many2one('pathology.category')

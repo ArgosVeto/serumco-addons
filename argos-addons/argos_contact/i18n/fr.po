@@ -495,7 +495,7 @@ msgid "Pathology"
 msgstr "Pathologies"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__pathology_category_id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__category_id
 msgid "Pathology Category"
 msgstr "Catégorie de pathologie"
 

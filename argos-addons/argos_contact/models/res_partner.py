@@ -35,7 +35,7 @@ class ResPartner(models.Model):
     passport_id = fields.Many2one('passport.passport', 'Passport')
     veterinary_id = fields.Many2one('res.partner', 'Attending Veterinarian')
     pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id', 'Pathologies')
-    weight_ids = fields.One2many('res.partner.weight', 'patient_id', 'Weights')
+    weight_ids = fields.One2many('res.partner.weight', 'partner_id', 'Weights')
     weight = fields.Float('Weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_owner_rel', 'partner_id', 'owner_id', 'Owners')
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
