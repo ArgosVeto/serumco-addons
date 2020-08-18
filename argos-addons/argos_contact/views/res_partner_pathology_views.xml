@@ -1,43 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
+	<data>
 
-    <record id="view_patient_pathology_tree" model="ir.ui.view">
-      <field name="name">res.partner.pathology.tree</field>
-      <field name="model">res.partner.pathology</field>
-      <field name="arch" type="xml">
-        <tree string="Patient Pathology">
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
+		<record id="patient_pathology_view_tree" model="ir.ui.view">
+			<field name="name">res.partner.pathology.tree</field>
+			<field name="model">res.partner.pathology</field>
+			<field name="arch" type="xml">
+				<tree string="Patient Pathology">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
 
-    <record id="view_patient_pathology_form" model="ir.ui.view">
-      <field name="name">res.partner.pathology.form</field>
-      <field name="model">res.partner.pathology</field>
-      <field name="arch" type="xml">
-        <form string="Patient Pathology">
-          <sheet>
-            <div class="oe_title">
-              <h1>
-                <field name="name"/>
-              </h1>
-            </div>
-          </sheet>
-        </form>
-      </field>
-    </record>
+		<record id="patient_pathology_view_form" model="ir.ui.view">
+			<field name="name">res.partner.pathology.form</field>
+			<field name="model">res.partner.pathology</field>
+			<field name="arch" type="xml">
+				<form string="Patient Pathology">
+					<sheet>
+						<group col="4">
+							<field name="name" modifiers="{&quot;required&quot;: true}"/>
+							<field name="pathology_category_id"/>
+							<field name="quartier"/>
+							<separator/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
 
-    <record id="open_patient_pathology_list" model="ir.actions.act_window">
-      <field name="name">Pathology</field>
-      <field name="res_model">res.partner.pathology</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+		<record id="pathology_category_view_tree" model="ir.ui.view">
+			<field name="name">pathology.category.tree</field>
+			<field name="model">pathology.category</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
 
-    <menuitem id="menu_patient_pathology"
-        action="open_patient_pathology_list"
-        name="Pathology"
-        sequence="7" parent="argos_base.res_partner_menu_config"/>
+		<record id="pathology_category_view_form" model="ir.ui.view">
+			<field name="name">pathology.category.form</field>
+			<field name="model">pathology.category</field>
+			<field name="arch" type="xml">
+				<form string="Patient Pathology">
+					<sheet>
+						<div class="oe_title">
+							<h1>
+								<field name="name" required="1"/>
+							</h1>
+						</div>
+						<group>
+							<group>
+								<field name="type"/>
+								<field name="typical_workshop"/>
+							</group>
+							<group></group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
 
-  </data>
+		<record id="res_partner_pathology_action" model="ir.actions.act_window">
+			<field name="name">Pathology</field>
+			<field name="res_model">res.partner.pathology</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="pathology_category_action" model="ir.actions.act_window">
+			<field name="name">Category Pathology</field>
+			<field name="res_model">pathology.category</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
 </odoo>

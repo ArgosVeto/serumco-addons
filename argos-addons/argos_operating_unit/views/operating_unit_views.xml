@@ -56,6 +56,26 @@
             <field name="message_ids" widget="mail_thread"/>
           </div-->
         </group>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]" position="inside">
+          <group>
+            <group>
+              <field name="rooms_ids">
+                <tree string="Rooms">
+                  <field name="name" modifiers="{}"/>
+                  <field name="area"/>
+                </tree>
+              </field>
+            </group>
+          </group>
+          <group>
+            <group string="Convenient service">
+              <field name="access_reduced_mobility" string="Access for people with reduced mobility"/>
+              <field name="parking" string="Parking"/>
+            </group>
+          </group>
+          <group>
+            </group>
+        </xpath>
       </field>
     </record>
   </data>
