@@ -201,15 +201,16 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(csv_header)
             for row, error in data:
                 csv_writer.writerow([row.get('code'), row.get('filtre'), row.get('valeur'), error])
-        elif source == 'contacts':
-            header = list(data[0][0].keys())
-            csv_writer.writerow(header + ['error detail'])
-            for row, error in data:
-                csv_writer.writerow([row.get(key) for key in header] + [error])
         elif source == 'produit-reglementation':
             return self.generate_xml_error_file(source, template, data)
         elif source == 'produit-enrichi':
             return self.generate_xml_error_file(source, template, data)
+        elif source in ('contacts', 'patients', 'owners', 'gender', 'race', 'robe', 'insurance', 'insurance', 'living', 'species',
+                        'tattoo', 'chip', 'passport', 'pathology-category', 'pathology', 'weight'):
+            header = list(data[0][0].keys())
+            csv_writer.writerow(header + ['error detail'])
+            for row, error in data:
+                csv_writer.writerow([row.get(key) for key in header] + [error])
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
         filename = '%s_%s.csv' % (source, date)

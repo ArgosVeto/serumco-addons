@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from . import res_partner
-from . import location_location
 from . import passport_passport
 from . import res_partner_weight
 from . import res_partner_category

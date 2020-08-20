@@ -13,4 +13,4 @@ class ResPartnerWeight(models.Model):
     values = fields.Float('Values')
     source = fields.Char('Source')
     note = fields.Char('Notes')
-    partner_id = fields.Many2one('res.partner', 'Patient')
+    partner_id = fields.Many2one('res.partner', 'Patient', ondelete='cascade')

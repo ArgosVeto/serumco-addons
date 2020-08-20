@@ -2,9 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_res_partner_parameter_reader,access_res_partner_parameter reader,model_res_partner_parameter,,1,0,0,0
 access_res_partner_parameter_user,access_res_partner_parameter user,model_res_partner_parameter,base.group_user,1,1,1,0
 access_res_partner_parameter_admin,access_res_partner_parameter admin,model_res_partner_parameter,base.group_erp_manager,1,1,1,1
-access_location_location_reader,access_location_location reader,model_location_location,,1,0,0,0
-access_location_location_user,access_location_location user,model_location_location,base.group_user,1,1,1,0
-access_location_location_admin,access_location_location admin,model_location_location,base.group_erp_manager,1,1,1,1
 access_passport_passport_reader,access_passport_passport reader,model_passport_passport,,1,0,0,0
 access_passport_passport_user,access_passport_passport user,model_passport_passport,base.group_user,1,1,1,0
 access_passport_passport_admin,access_passport_passport admin,model_passport_passport,base.group_erp_manager,1,1,1,1
