@@ -2,15 +2,29 @@
 <odoo>
   <data>
 
+    <record id="res_partner_view_form_base_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.base.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[1]" position="before">
+          <page name="patients" string="Patients" autofocus="autofocus">
+            <field name="patient_ids"/>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
     <record id="res_partner_view_form_inherit" model="ir.ui.view">
       <field name="name">res.partner.view.form.inherit</field>
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="argos_base.res_partner_view_form_inherit"/>
       <field name="arch" type="xml">
-
-        <field name="to_call" position="after">
-          <field name="origin_id"/>
-        </field>
+        <group name="communication" position="after">
+          <group>
+            <field name="origin_id"/>
+          </group>
+        </group>
 
       </field>
     </record>
@@ -90,7 +104,7 @@
                     <field name="source"/>
                   </tree>
                 </field>
-                </page>
+              </page>
               <page string="Outside Events"/>
               <page string="Surgery"/>
               <page string="Vaccination"/>
@@ -123,7 +137,8 @@
       <field name="view_mode">tree,form</field>
       <field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
                              'form_view_ref': 'argos_contact.res_partner_view_form',
-                             'default_contact_type': 'patient',}</field>
+                             'default_contact_type': 'patient', }
+      </field>
       <field name="domain">[('contact_type', '=', 'patient')]</field>
     </record>
 

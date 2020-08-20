@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 15:59+0000\n"
-"PO-Revision-Date: 2020-08-11 15:59+0000\n"
+"POT-Creation-Date: 2020-08-18 08:30+0000\n"
+"PO-Revision-Date: 2020-08-18 08:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,12 @@ msgstr ""
 "      "
 
 #. module: argos_account
-#: model_terms:ir.ui.view,arch_db:argos_account.argos_view_partner_bank_form
+#: model_terms:ir.ui.view,arch_db:argos_account.res_partner_followup_view_form_inherit
+msgid "<span class=\"o_stat_text\">Total Due</span>"
+msgstr "<span class=\"o_stat_text\">Impayés</span>"
+
+#. module: argos_account
+#: model_terms:ir.ui.view,arch_db:argos_account.res_partner_bank_view_form_inherit
 msgid "Approve"
 msgstr "Approuver"
 

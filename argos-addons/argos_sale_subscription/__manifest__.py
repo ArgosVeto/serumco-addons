@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Argos Purchase',
+    'name': 'Argos Sale Subscription',
     'summary': '',
-    'category': 'Purchase',
+    'category': 'Sales/Subscription',
     'version': '1.0',
-    'sequence': -83,
+    'sequence': -93,
     'author': 'ArkeUp',
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
-        'argos_base',
-        'purchase',
-        'purchase_operating_unit',
+        'argos_contact',
+        'sale_subscription',
     ],
-    'data': [
-        'views/res_partner_views.xml',
-    ],
+    'data': [],
     'application': False,
     'installable': True,
     'auto_install': False,

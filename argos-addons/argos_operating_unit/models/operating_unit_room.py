@@ -5,6 +5,7 @@ from odoo import api, fields, models
 
 class OperatingUnitRoom(models.Model):
     _name = 'operating.unit.room'
+    _description = 'Operating Unit Room'
 
     name = fields.Char('Name')
     operating_unit_id = fields.Many2one('operating.unit', 'Clinic')

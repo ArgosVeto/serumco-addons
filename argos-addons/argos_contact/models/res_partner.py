@@ -37,7 +37,8 @@ class ResPartner(models.Model):
     weight = fields.Float('Weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_owner_rel', 'partner_id', 'owner_id', 'Owners')
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
-    patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', string='Patients List')
+    patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', 'Patients List',
+                                   domain="[('contact_type', '=', 'patient')]")
     species_id = fields.Many2one('res.partner.category', "Species", domain=[('is_incineris_species', '=', True)])
 
     @api.model

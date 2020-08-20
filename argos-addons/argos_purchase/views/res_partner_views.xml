@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="res_partner_view_purchase_buttons_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.purchase.buttons.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="purchase.res_partner_view_purchase_buttons"/>
+    <field name="arch" type="xml">
+      <xpath expr="//button[@name='%(purchase.act_res_partner_2_purchase_order)d']" position="attributes">
+        <attribute name="attrs">{'invisible': [('supplier_rank', '&lt;', 1)]}</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>

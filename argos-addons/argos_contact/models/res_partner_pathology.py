@@ -5,6 +5,7 @@ from odoo import fields, models
 
 class PathologyCategory(models.Model):
     _name = 'pathology.category'
+    _description = 'Pathology Category'
 
     name = fields.Char('Name')
     type = fields.Char('Type')
