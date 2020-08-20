@@ -14,7 +14,9 @@ class SaleOrder(models.Model):
     name = fields.Char(readonly=False)
     partner_patient_ids = fields.Many2many(related='partner_id.patient_ids')
     argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')])
-    patient_id = fields.Many2one('res.partner', 'Patient')
+    partner_id = fields.Many2one(
+        domain="[('contact_type', '=', 'contact'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
+    patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
     category_id = fields.Many2many(related='patient_id.category_id')
     sex = fields.Selection(related='patient_id.gender', string='Sex')
     age = fields.Integer('Age', related='patient_id.age')
