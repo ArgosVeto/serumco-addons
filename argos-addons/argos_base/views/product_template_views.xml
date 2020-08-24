@@ -11,9 +11,6 @@
           <field name="ean"/>
           <field name="gtin"/>
           <field name="cip"/>
-          <field name="mother_class"/>
-          <field name="child_class"/>
-          <field name="sub_child_class"/>
         </field>
       </field>
     </record>

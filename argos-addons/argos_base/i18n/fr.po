@@ -48,12 +48,6 @@ msgid "Call"
 msgstr "Téléphone"
 
 #. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_product_product__mother_class
-#: model:ir.model.fields,field_description:argos_base.field_product_template__mother_class
-msgid "Class"
-msgstr "Classe"
-
-#. module: argos_base
 #: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
 msgid "Communication"
 msgstr "Communication"
@@ -167,18 +161,6 @@ msgstr "Type de jeton de connexion"
 #: model:ir.model.fields,field_description:argos_base.field_res_users__social_reason
 msgid "Social Reason"
 msgstr "Raison sociale"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_product_product__child_class
-#: model:ir.model.fields,field_description:argos_base.field_product_template__child_class
-msgid "Sub Class"
-msgstr "Sous classe"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_product_product__sub_child_class
-#: model:ir.model.fields,field_description:argos_base.field_product_template__sub_child_class
-msgid "Sub child class"
-msgstr ""
 
 #. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__tutor_curator_id
