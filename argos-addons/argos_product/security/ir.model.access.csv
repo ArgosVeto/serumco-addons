@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_active_substance_reader,access_active_substance reader,model_active_substance,,1,0,0,0
+access_active_substance_user,access_active_substance user,model_active_substance,base.group_user,1,1,1,0
+access_active_substance_admin,access_active_substance admin,model_active_substance,base.group_erp_manager,1,1,1,1
