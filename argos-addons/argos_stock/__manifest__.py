@@ -12,8 +12,11 @@
     'depends': [
         'argos_base',
         'stock',
+        'argos_product',
     ],
-    'data': [],
+    'data': [
+        'views/product_template_views.xml',
+    ],
     'application': False,
     'installable': True,
     'auto_install': False,

@@ -22,7 +22,6 @@
         'argos_purchase',
         'argos_hr',
         'argos_sale_subscription',
-        'argos_product',
     ],
     'data': [],
     'application': True,

@@ -16,7 +16,6 @@ class ProductTemplate(models.Model):
                               'Nature')
     approval = fields.Char('Approval')
     indication = fields.Text('Indications')
-    usage_tips = fields.Text('Usage Tips')
     active_substance_id = fields.Many2one('active.substance', 'Active Substance')
     substance_quantity = fields.Float('Active Substance Quantity')
     substance_uom_id = fields.Many2one('uom.uom', 'Active Substance Unity')
