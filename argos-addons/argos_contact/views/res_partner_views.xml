@@ -12,6 +12,9 @@
             <field name="patient_ids"/>
           </page>
         </xpath>
+        <field name="type" position="before">
+          <field name="contact_category"/>
+        </field>
       </field>
     </record>
 
@@ -158,6 +161,29 @@
             </group>
           </sheet>
         </form>
+      </field>
+    </record>
+
+    <record id="res_partner_view_search_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.search.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">
+        <filter name="type_company" position="after">
+          <separator/>
+          <filter name="person_with_patient"
+                  domain="[('category', '=', 'person_patient')]"
+                  string="Person With Patient"/>
+          <filter name="person_without_patient"
+                  domain="[('category', '=', 'person_no_patient')]"
+                  string="Person Without Patient"/>
+          <filter name="company_with_patient"
+                  domain="[('category', '=', 'company_patient')]"
+                  string="Company With Patient"/>
+          <filter name="company_without_patient"
+                  domain="[('category', '=', 'company_no_patient')]"
+                  string="Company Without Patient"/>
+        </filter>
       </field>
     </record>
 
