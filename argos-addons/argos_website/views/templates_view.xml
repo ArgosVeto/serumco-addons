@@ -8,7 +8,9 @@
           <div class="container">
             <div id="vetowidget"></div>
             <script data-widget-clinic="7335"
-                    src="http://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js"></script>
+                    data-widget-theme="argos"
+                    src="https://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js">
+            </script>
           </div>
         </div>
       </t>
