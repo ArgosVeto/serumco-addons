@@ -9,7 +9,8 @@
       <field name="arch" type="xml">
         <xpath expr="//page[1]" position="before">
           <page name="patients" string="Patients" autofocus="autofocus">
-            <field name="patient_ids"/>
+            <field name="patient_ids" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
+                   'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
           </page>
         </xpath>
         <field name="type" position="before">
@@ -39,7 +40,7 @@
       <field name="arch" type="xml">
         <tree string="Patients">
           <field name="name"/>
-          <field name="category_id"/>
+          <field name="species_id"/>
           <field name="owner_ids"/>
         </tree>
       </field>

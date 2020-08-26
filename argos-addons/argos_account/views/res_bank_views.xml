@@ -21,7 +21,7 @@
         <sheet position="before">
           <header>
             <button string="Approve" name="action_approve_account" states="to_approve" type="object"
-                    class="oe_highlight" groups="base.group_system"/>
+                    class="oe_highlight" groups="account.group_account_manager"/>
             <field name="state" widget="statusbar"/>
           </header>
         </sheet>

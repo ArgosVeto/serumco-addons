@@ -2,28 +2,6 @@
 <odoo>
   <data>
 
-    <record id="res_partner_patient_view_tree_inherit" model="ir.ui.view">
-      <field name="name">res.partner.patient.view.tree.inherit</field>
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="argos_contact.res_partner_view_tree"/>
-      <field name="arch" type="xml">
-        <field name="owner_ids" position="after">
-          <field name="operating_unit_id"/>
-        </field>
-      </field>
-    </record>
-
-    <!--<record id="res_partner_patient_view_form_inherit" model="ir.ui.view">
-      <field name="name">res.partner.patient.view.form.inherit</field>
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
-      <field name="arch" type="xml">
-        <field name="location" position="after">
-          <field name="operating_unit_id"/>
-        </field>
-      </field>
-    </record>-->
-
     <record id="res_partner_view_form_inherit" model="ir.ui.view">
       <field name="name">res.partner.view.form.inherit</field>
       <field name="model">res.partner</field>

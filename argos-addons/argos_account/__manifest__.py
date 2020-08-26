@@ -15,7 +15,9 @@
         'account_accountant',
     ],
     'data': [
+        # data
         'data/mail_template_data.xml',
+        # views
         'views/res_partner_views.xml',
         'views/res_bank_views.xml',
     ],
