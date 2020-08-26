@@ -9,6 +9,9 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_data"/>
+			<field name="sequence">-100</field>
+			<!--field name="run_as_queue_job">True</field>
+			<field name="channel_id" ref="queue_job_cron.channel_root_ir_cron"/-->
 		</record>
 
 		<record id="ir_model_import_template_data" model="ir.model.import.template">
@@ -23,6 +26,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_tarif_data"/>
+			<field name="sequence">-99</field>
 		</record>
 
 		<record id="ir_model_import_template_list_price_data" model="ir.model.import.template">
@@ -37,6 +41,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_association_data"/>
+			<field name="sequence">-98</field>
 		</record>
 
 		<record id="ir_model_association_import_template_data" model="ir.model.import.template">
@@ -51,6 +56,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_documentation_data"/>
+			<field name="sequence">-97</field>
 		</record>
 
 		<record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
@@ -65,6 +71,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regroupment_data"/>
+			<field name="sequence">-96</field>
 		</record>
 
 		<record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
@@ -79,6 +86,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regulation_data"/>
+			<field name="sequence">-95</field>
 		</record>
 
 		<record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
@@ -93,6 +101,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_enriched_product_data"/>
+			<field name="sequence">-94</field>
 		</record>
 
 		<record id="ir_model_enriched_product_import_template_data" model="ir.model.import.template">
@@ -107,6 +116,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">False</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_referentiel_filtre_data"/>
+			<field name="sequence">-93</field>
 		</record>
 
 		<record id="ir_model_referentiel_filtre_import_template_data" model="ir.model.import.template">
@@ -121,6 +131,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">False</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_produit_filtre_data"/>
+			<field name="sequence">-92</field>
 		</record>
 
 		<record id="ir_model_produit_filtre_import_template_data" model="ir.model.import.template">
@@ -135,6 +146,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-91</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_template_data" model="ir.model.import.template">
@@ -147,6 +159,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-90</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_gender_data" model="ir.model.import.template">
@@ -160,6 +173,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-89</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_race_data" model="ir.model.import.template">
@@ -173,6 +187,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-88</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_robe_data" model="ir.model.import.template">
@@ -186,6 +201,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-87</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_insurance_data" model="ir.model.import.template">
@@ -199,6 +215,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-86</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_living_data" model="ir.model.import.template">
@@ -212,6 +229,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-85</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_category_data" model="ir.model.import.template">
@@ -225,6 +243,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-84</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_tattoo_data" model="ir.model.import.template">
@@ -238,6 +257,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-83</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_parameter_chip_data" model="ir.model.import.template">
@@ -251,6 +271,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-82</field>
 		</record>
 
 		<record id="ir_model_import_res_partner_patient_template_data" model="ir.model.import.template">
@@ -264,6 +285,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-81</field>
 		</record>
 
 		<record id="ir_model_import_passport_passport_template_data" model="ir.model.import.template">
@@ -277,6 +299,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-80</field>
 		</record>
 
 		<record id="ir_model_import_patient_pathology_category_template_data" model="ir.model.import.template">
@@ -290,6 +313,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-79</field>
 		</record>
 
 		<record id="ir_model_import_patient_pathology_template_data" model="ir.model.import.template">
@@ -303,6 +327,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-78</field>
 		</record>
 
 		<record id="ir_model_import_contact_patient_rel_template_data" model="ir.model.import.template">
@@ -316,6 +341,7 @@
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
 			<field name="is_remote_import">False</field>
+			<field name="sequence">-77</field>
 		</record>
 
 		<record id="ir_model_import_patient_weight_template_data" model="ir.model.import.template">

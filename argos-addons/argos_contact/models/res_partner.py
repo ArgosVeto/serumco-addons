@@ -68,3 +68,8 @@ class ResPartner(models.Model):
             return patient
         return self.create({'name': name, 'contact_type': 'patient', 'category_id': [(6, 0, category.ids)],
                             'owner_ids': [(6, 0, partner.ids)]})
+
+
+# TODO: TO BE DELETED AFTER UPGRADE
+class LocationLocation(models.Model):
+    _name = 'location.location'
