@@ -9,7 +9,8 @@
       <field name="arch" type="xml">
 
         <field name="display_name" position="after">
-          <field name="is_incineris_species"/>
+          <field name="type"/>
+          <field name="is_incineris_species" modifiers="{'invisible':[('type', '!=', 'patient')]"/>
         </field>
 
       </field>

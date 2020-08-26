@@ -16,4 +16,5 @@ class PassportPassport(models.Model):
     number = fields.Char('Number')
     status = fields.Char('Status')
     zip_code = fields.Char('Zip Code')
+    gmvet_id = fields.Char('Gmvet ID')
     patient_ids = fields.One2many('res.partner', 'passport_id', 'Patients')

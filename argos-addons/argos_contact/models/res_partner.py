@@ -16,8 +16,8 @@ class ResPartner(models.Model):
     robe_id = fields.Many2one('res.partner.parameter', 'Robe', domain=[('type', '=', 'robe')])
     insurance_id = fields.Many2one('res.partner.parameter', 'Insurance', domain=[('type', '=', 'insurance')])
     origin_id = fields.Many2one('res.partner.parameter', 'Connection Origin', domain=[('type', '=', 'connection')])
-    environment_ids = fields.Many2many('res.partner.parameter', 'res_partner_envirnment_rel', 'patient_id',
-                                       'environment_id',
+    gender_id = fields.Many2one('res.partner.parameter', 'Gender', domain=[('type', '=', 'gender')])
+    environment_ids = fields.Many2many('res.partner.parameter', 'res_partner_envirnment_rel', 'patient_id', 'environment_id',
                                        'Living Environment', domain=[('type', '=', 'living')])
     diet_ids = fields.Many2many('res.partner.parameter', 'res_partner_diet_rel', 'patient_id', 'diet_id',
                                 'Recommended Diet',
@@ -29,9 +29,9 @@ class ResPartner(models.Model):
     chip_identification = fields.Char('Chip Identification')
     issue_date = fields.Date('Issue Date')
     location = fields.Char('Location')
-    tattoo_location_id = fields.Many2one('location.location', 'Tattoo Location', domain=[('type', '=', 'tattoo')])
+    tattoo_location_id = fields.Many2one('res.partner.parameter', 'Tattoo Location', domain=[('type', '=', 'tattoo')])
     chip_date = fields.Date('Insertion Date')
-    chip_location_id = fields.Many2one('location.location', 'Chip Location', domain=[('type', '=', 'chip')])
+    chip_location_id = fields.Many2one('res.partner.parameter', 'Chip Location', domain=[('type', '=', 'chip')])
     image = fields.Binary('Image')
     passport_id = fields.Many2one('passport.passport', 'Passport')
     pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id',
@@ -40,8 +40,7 @@ class ResPartner(models.Model):
     weight = fields.Float('Weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_owner_rel', 'partner_id', 'owner_id', 'Owners')
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
-    patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id',
-                                   'Patients List',
+    patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'partner_id', 'patient_id', 'Patients List',
                                    domain="[('contact_type', '=', 'patient')]")
     species_id = fields.Many2one('res.partner.category', "Species", domain=[('is_incineris_species', '=', True)])
     contact_category = fields.Selection([('person_patient', 'Person With Patient'), ('company_patient', 'Company With Patient'),

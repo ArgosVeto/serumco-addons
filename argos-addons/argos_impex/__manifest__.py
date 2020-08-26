@@ -28,7 +28,7 @@
     'category': 'Tools',
     'version': '0.1',
     'sequence': -94,
-    'depends': ['arkeup_impex', 'arkeup_ftp', 'argos_base'],
+    'depends': ['arkeup_impex', 'arkeup_ftp', 'argos_contact'],
     'data': [
         # data
         'data/server_ftp_data.xml',

@@ -68,7 +68,7 @@
                 <field name="active" invisible="1"/>
                 <field name="species_id"/>
                 <field name="race_id" context="{'default_type': 'race'}"/>
-                <field name="gender"/>
+                <field name="gender_id" context="{'default_type': 'gender'}"/>
                 <field name="robe_id" context="{'default_type': 'robe'}"/>
                 <field name="birthdate_date"/>
                 <field name="age"/>
@@ -76,10 +76,10 @@
                 <field name="is_sterilized"/>
                 <field name="is_reproductive"/>
                 <field name="is_dangerous"/>
-                <field name="tattoo_location_id"/>
+                <field name="tattoo_location_id" context="{'default_type': 'tattoo'}"/>
                 <field name="tattoo_date"/>
                 <field name="chip_identification"/>
-                <field name="chip_location_id"/>
+                <field name="chip_location_id" context="{'default_type': 'chip'}"/>
                 <field name="chip_date"/>
               </group>
               <group>
@@ -143,48 +143,6 @@
                              'default_contact_type': 'patient', }
       </field>
       <field name="domain">[('contact_type', '=', 'patient')]</field>
-    </record>
-
-    <record id="location_location_view_form" model="ir.ui.view">
-      <field name="name">location.view.form</field>
-      <field name="model">location.location</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <div class="oe_title">
-              <h1>
-                <field name="name" required="1"/>
-              </h1>
-            </div>
-            <group>
-              <field name="type"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-    <record id="res_partner_view_search_inherit" model="ir.ui.view">
-      <field name="name">res.partner.view.search.inherit</field>
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="base.view_res_partner_filter"/>
-      <field name="arch" type="xml">
-        <filter name="type_company" position="after">
-          <separator/>
-          <filter name="person_with_patient"
-                  domain="[('category', '=', 'person_patient')]"
-                  string="Person With Patient"/>
-          <filter name="person_without_patient"
-                  domain="[('category', '=', 'person_no_patient')]"
-                  string="Person Without Patient"/>
-          <filter name="company_with_patient"
-                  domain="[('category', '=', 'company_patient')]"
-                  string="Company With Patient"/>
-          <filter name="company_without_patient"
-                  domain="[('category', '=', 'company_no_patient')]"
-                  string="Company Without Patient"/>
-        </filter>
-      </field>
     </record>
 
   </data>

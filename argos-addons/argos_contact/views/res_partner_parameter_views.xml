@@ -79,5 +79,14 @@
       <field name="context">{'default_type': 'insurance'}</field>
     </record>
 
+    <record id="res_partner_parameter_gender_action" model="ir.actions.act_window">
+      <field name="name">Gender</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'gender')]</field>
+      <field name="context">{'default_type': 'gender'}</field>
+    </record>
+
   </data>
 </odoo>

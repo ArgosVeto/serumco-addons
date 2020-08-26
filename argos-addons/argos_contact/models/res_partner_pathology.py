@@ -10,6 +10,7 @@ class PathologyCategory(models.Model):
     name = fields.Char('Name')
     type = fields.Char('Type')
     typical_workshop = fields.Char('Typical Workshop')
+    gmvet_id = fields.Char('Gmvet ID')
 
 
 class ResPartnerPathology(models.Model):
@@ -19,3 +20,4 @@ class ResPartnerPathology(models.Model):
     name = fields.Char('Pathology Name', required=True)
     quartier = fields.Char('Quartier')
     category_id = fields.Many2one('pathology.category')
+    gmvet_id = fields.Char('Gmvet ID')
