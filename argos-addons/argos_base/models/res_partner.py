@@ -70,5 +70,6 @@ class ResPartner(models.Model):
     @api.model
     def create(self, vals):
         record = super(ResPartner, self).create(vals)
-        record.send_confirmation_mail()
+        if self._context.get('from_bo', False):
+            record.send_confirmation_mail()
         return record
