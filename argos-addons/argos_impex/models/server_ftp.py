@@ -27,6 +27,8 @@ class ServerFTP(models.Model):
             return product_tmpl_obj.processing_import_data(datas.decode('utf-8'), template, source, logger)
         if source == 'tarif':
             return product_tmpl_obj.processing_import_list_price_data(datas.decode('utf-8'), template, source, logger)
+        if source == 'stock':
+            return product_tmpl_obj.processing_import_stock_data(datas.decode('utf-8'), template, source, logger)
         if source == 'produit-association':
             return product_tmpl_obj.processing_import_product_association_data(datas.decode('utf-8'), template, source, logger)
         if source == 'produit-documentation':

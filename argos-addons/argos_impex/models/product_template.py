@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 from odoo import models, fields, registry, api, _
 from odoo.addons.argos_base.models import tools
 
+
 def transform_tuple_to_dict(data_tuple=(), source=False):
     """
     Transform data tuple to dict
@@ -21,6 +22,7 @@ def transform_tuple_to_dict(data_tuple=(), source=False):
     if source == 'produit-regroupement':
         return {'code': data_tuple[1], 'regroupement': data_tuple[3], 'ordre': data_tuple[2]}
     return {'code': data_tuple[1], 'filtre': data_tuple[2], 'valeur': data_tuple[3]}
+
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
@@ -92,6 +94,8 @@ class ProductTemplate(models.Model):
                             return self.processing_import_product_enrichi_data(content, template, source)
                         if source == 'produit-filtre':
                             return self.processing_import_produit_filtre_data(content, template, source)
+                        if source == 'stock':
+                            return self.processing_import_stock_data(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()
@@ -211,6 +215,10 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(header + ['error detail'])
             for row, error in data:
                 csv_writer.writerow([row.get(key) for key in header] + [error])
+        elif source == 'stock':
+            csv_writer.writerow(['Client', 'Article', 'Stock', 'Erreur'])
+            for row, error in data:
+                csv_writer.writerow([row.get('Client'), row.get('Article'), row.get('Stock'), error])
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
         filename = '%s_%s.csv' % (source, date)
@@ -397,7 +405,7 @@ class ProductTemplate(models.Model):
         lines = []
         product_summary = {}
         for row in reader:
-            product_summary.setdefault(row.get('regroupement'), []).\
+            product_summary.setdefault(row.get('regroupement'), []). \
                 append((reader.line_num, row.get('code'), row.get('ordre'), row.get('regroupement')))
         for key, values in product_summary.items():
             try:
@@ -445,7 +453,7 @@ class ProductTemplate(models.Model):
             return False
         if errors:
             logger.info(_("List of stranded lines: ['%s']") % "', '".join(str(row[0].get('code', row[0].get('default_code')))
-                                                                         for row in errors if row and isinstance(row[0], dict)))
+                                                                          for row in errors if row and isinstance(row[0], dict)))
             return False
         if not errors:
             logger.info(_('Import done successfully.'))
@@ -677,13 +685,13 @@ class ProductTemplate(models.Model):
                 attribute = key[1]
                 index += 1
                 if index % 500 == 0:
-                    progression = round(index * 100/len(product_attribute_summary))
+                    progression = round(index * 100 / len(product_attribute_summary))
                     logger.info(_('Import in progress ... %s %%%%') % str(progression))
                 attribute_lines = product.attribute_line_ids.filtered(lambda attr: attr.attribute_id == attribute)
                 attribute_values = product_attr_value_obj.manage_attribute_values(values, attribute, logger)
                 if attribute_lines:
                     attribute_lines.write({'value_ids': [(4, idx) for idx in attribute_values.ids]})
-                    #TODO: manage attribute value deletion
+                    # TODO: manage attribute value deletion
                 else:
                     product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
                                                                   'value_ids': [(6, 0, attribute_values.ids)]})]})
@@ -696,3 +704,84 @@ class ProductTemplate(models.Model):
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
+
+    @api.model
+    def processing_import_stock_data(self, content=None, template=False, source=False, logger=False):
+        """
+        Import price list of products
+        :param content:
+        :param template:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return False
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        operating_unit_obj = self.env['operating.unit']
+        quant_obj = self.env['stock.quant']
+        stock_location_obj = self.env['stock.location']
+        for row in reader:
+            try:
+                line_num = reader.line_num
+                clinical = row.get('Client')
+                if not clinical:
+                    logger.error(_('The clinical code is missed. Line %s') % line_num)
+                    errors.append((row, _('The clinical code is missed!')))
+                    continue
+                operating_unit = operating_unit_obj.search([('code', '=', clinical)], limit=1)
+                if not operating_unit:
+                    logger.error(_('No clinical with code %s found. Line %s') % (clinical, line_num))
+                    errors.append((row, _('No clinical found!')))
+                    continue
+                code = row.get('Article')
+                if not code:
+                    logger.error(_('The product code is missed. Line %s') % line_num)
+                    errors.append((row, _('The product code is missed!')))
+                    continue
+                product = self.search([('default_code', '=', code)], limit=1)
+                if not product:
+                    logger.error(_('No product with code %s found. Line %s') % (code, line_num))
+                    errors.append((row, _('No product found.')))
+                    continue
+                try:
+                    quant = quant_obj.search([('location_id.operating_unit_id', '=', operating_unit.id),
+                                              ('location_id.usage', 'in', ('internal', 'transit')),
+                                              ('product_id', 'in', product.product_variant_ids.ids)], limit=1)
+                    if quant:
+                        if row.get('Stock') == 'O':
+                            inventory_quantity = 1
+                        else:
+                            inventory_quantity = 0
+                        quant.with_context(inventory_mode=True).write({'inventory_quantity': inventory_quantity})
+                    elif row.get('Stock') == 'O':
+                        quant_obj.with_context(inventory_mode=True).create({
+                            'location_id': stock_location_obj.search([('usage', 'in', ('internal', 'transit')),
+                                                                      ('operating_unit_id', '=', operating_unit.id)]).id,
+                            'product_id': product.product_variant_ids.ids[0],
+                            'inventory_quantity': 1,
+                        })
+                    lines.append(line_num)
+                    self._cr.commit()
+                except Exception as e:
+                    logger.error(repr(e))
+                    errors.append((row, repr(e)))
+                    self._cr.rollback()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report(source, lines, template, errors, logger)
+        return True
+
+
+class StockQuant(models.Model):
+    _inherit = 'stock.quant'
+
+    @api.model
+    def create(self, vals):
+        record = super(StockQuant, self).create(vals)
+        return record

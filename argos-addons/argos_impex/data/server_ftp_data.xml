@@ -9,6 +9,13 @@
       <field name="filename">/ARGOS/General/produit-general.csv</field>
     </record>
 
+    <record id="server_ftp_argos_stock_data" model="server.ftp">
+      <field name="url">ftp1.centravet.net</field>
+      <field name="login">ARGOS</field>
+      <field name="password">k1Ifi0qsVZqPnj39hBnd</field>
+      <field name="filename">/ARGOS/stock.csv</field>
+    </record>
+
     <record id="server_ftp_argos_tarif_data" model="server.ftp">
       <field name="url">ftp1.centravet.net</field>
       <field name="login">ARGOS</field>

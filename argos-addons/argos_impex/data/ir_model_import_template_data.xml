@@ -34,6 +34,21 @@
 						 eval="{'template_id': ref('argos_impex.ir_model_import_template_list_price_data'), 'source': 'tarif'}"/>
 		</record>
 
+		<record id="ir_model_import_template_stock_data" model="ir.model.import.template">
+			<field name="name">3 - Import Stock</field>
+			<field name="model_id" ref="product.model_product_template"/>
+			<field name="method">schedule_import_process</field>
+			<field name="export_xls">True</field>
+			<field name="is_remote_import">True</field>
+			<field name="sequence">-98</field>
+			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_stock_data"/>
+		</record>
+
+		<record id="ir_model_import_template_stock_data" model="ir.model.import.template">
+			<field name="method_args"
+						 eval="{'template_id': ref('argos_impex.ir_model_import_template_stock_data'), 'source': 'stock'}"/>
+		</record>
+
 		<record id="ir_model_association_import_template_data" model="ir.model.import.template">
 			<field name="name">3 - Import Produit - Association</field>
 			<field name="model_id" ref="product.model_product_template"/>
