@@ -13,5 +13,16 @@
       </field>
     </record>
 
+    <record id="res_partner_assign_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.assign.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="website_crm_partner_assign.view_crm_partner_assign_form"/>
+      <field name="arch" type="xml">
+        <field name="date_partnership" position="after">
+          <field name="partnership_end_date"/>
+        </field>
+      </field>
+    </record>
+
   </data>
 </odoo>

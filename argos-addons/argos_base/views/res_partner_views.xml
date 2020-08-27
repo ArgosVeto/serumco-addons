@@ -72,5 +72,16 @@
       <field name="context">{'default_is_company': True, 'from_bo': True, 'default_contact_type': 'contact'}</field>
     </record>
 
+    <record id="res_partner_geo_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.geo.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base_geolocalize.view_crm_partner_geo_form"/>
+      <field name="arch" type="xml">
+        <page name="geo_location" position="attributes">
+          <attribute name="string">Partnership</attribute>
+        </page>
+      </field>
+    </record>
+
   </data>
 </odoo>

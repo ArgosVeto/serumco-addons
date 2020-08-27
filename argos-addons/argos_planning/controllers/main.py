@@ -31,7 +31,7 @@ class PlanningWebservice(http.Controller):
                 'title': planning.name,
                 'status': planning.state,
                 'petName': planning.patient_id.name,
-                'animalName': planning.patient_id.category_id[0].name if planning.patient_id.category_id else None,
+                'animalName': planning.patient_id.species_id.name if planning.patient_id.species_id else None,
                 'customerName': planning.partner_id.name,
                 'customerPhone': planning.partner_id.phone,
                 'customerMoreInfo': planning.more_info,

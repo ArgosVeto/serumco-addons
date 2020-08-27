@@ -60,9 +60,9 @@ class ResPartner(models.Model):
         category = self.env['res.partner.category'].search([('name', '=', category)], limit=1)
         patient = self.search([('name', '=', name),
                                ('contact_type', '=', 'patient'),
-                               ('category_id', 'in', category.ids),
+                               ('species_id', '=', category.id),
                                ('owner_ids', 'in', partner.ids)], limit=1)
         if patient:
             return patient
-        return self.create({'name': name, 'contact_type': 'patient', 'category_id': [(6, 0, category.ids)],
+        return self.create({'name': name, 'contact_type': 'patient', 'species_id': category.id,
                             'owner_ids': [(6, 0, partner.ids)]})

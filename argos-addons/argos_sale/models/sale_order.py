@@ -20,7 +20,7 @@ class SaleOrder(models.Model):
     partner_id = fields.Many2one(
         domain="[('contact_type', '=', 'contact'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
-    category_id = fields.Many2many(related='patient_id.category_id')
+    species_id = fields.Many2one(related='patient_id.species_id')
     sex = fields.Selection(related='patient_id.gender', string='Sex')
     age = fields.Integer('Age', related='patient_id.age')
     weight = fields.Float('Weight', related='patient_id.weight')
@@ -65,8 +65,8 @@ class SaleOrder(models.Model):
             raise UserError(_('Only consultation can generate incineris convention.'))
         url = self.env['ir.config_parameter'].get_param("incineris_url") or ''
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
-        species = self.patient_id.category_id and self.patient_id.category_id[0].is_incineris_species and \
-                  self.patient_id[0].category_id.name or 'nac'
+        species = self.patient_id.species_id and self.patient_id.species_id.is_incineris_species and \
+                  self.patient_id.species_id.name or 'nac'
         params = {
             'action': 'create',
             'soft_id': soft_id or '',

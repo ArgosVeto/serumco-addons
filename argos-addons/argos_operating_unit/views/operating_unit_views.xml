@@ -10,8 +10,10 @@
         <group name="main_group" position="replace">
           <sheet>
             <div class="oe_button_box" name="button_box">
-              <button type="object" name="toggle_active" string="Archive" attrs="{'invisible': [('active', '=', False)]}"/>
-              <button type="object" name="toggle_active" string="Restore" attrs="{'invisible': [('active', '=', True)]}"/>
+              <button type="object" name="toggle_active" icon="fa-archive" string="Archive"
+                      attrs="{'invisible': [('active', '=', False)]}"/>
+              <button type="object" name="toggle_active" string="Restore"
+                      attrs="{'invisible': [('active', '=', True)]}"/>
             </div>
             <div class="oe_title">
               <h1>
@@ -21,40 +23,42 @@
             </div>
             <group>
               <group>
-                <field name="partner_id"/>
+                <field name="partner_id" required="0" readonly="1" attrs="{'invisible': [('id', '=', False)]}"/>
                 <field name="company_id" groups="base.group_multi_company"/>
                 <field name="code"/>
-                <field name="address"/>
+                <label for="street" string="Address"/>
+                <div class="o_address_format">
+                  <field name="street" placeholder="Street..." class="o_address_street"/>
+                  <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                  <field name="city" placeholder="City" class="o_address_city"/>
+                  <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                  <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                  <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True}'/>
+                </div>
                 <field name="email"/>
-                <field name="principal_phone"/>
-                <field name="secondary_phone"/>
+                <field name="phone" string="Principal Phone"/>
+                <field name="mobile" string="Secondary Phone"/>
                 <field name="emergency_phone"/>
               </group>
               <group>
                 <field name="type_id"/>
                 <field name="vat"/>
-                <field name="opening_time"/>
+                <field name="calendar_id"/>
                 <field name="consult_room_number"/>
-                <field name="skill_ids" widget="many2many_tags"/>
                 <field name="equipment_ids" widget="many2many_tags"/>
+                <field name="certification_ids" widget="many2many_tags"/>
               </group>
             </group>
             <notebook>
               <page string="Structure"/>
-              <page string="Digital Service">
+              <page name="digital_service" string="Digital Service">
                 <group string="Digital services offered by the clinic">
                   <field name="click_and_collect"/>
-                  <field name="ecommerce_relay_point"/>
                   <field name="online_appointment_booking"/>
                 </group>
               </page>
             </notebook>
           </sheet>
-          <!--div class="oe_chatter" name="studio_div_8fe9a2">
-            <field name="message_follower_ids" widget="mail_followers"/>
-            <field name="activity_ids" widget="mail_activity"/>
-            <field name="message_ids" widget="mail_thread"/>
-          </div-->
         </group>
         <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]" position="inside">
           <group>
@@ -74,7 +78,7 @@
             </group>
           </group>
           <group>
-            </group>
+          </group>
         </xpath>
       </field>
     </record>

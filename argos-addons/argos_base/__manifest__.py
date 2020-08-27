@@ -9,8 +9,9 @@
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
-    'depends': ['web', 'l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance', 'partner_firstname',
-                'jitsi_meet_integration', 'prt_mail_messages_pro', 'arkeup_saop_wsdl_log'],
+    'depends': ['l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance',
+                'website_crm_partner_assign', 'partner_firstname', 'jitsi_meet_integration', 'prt_mail_messages_pro',
+                'arkeup_saop_wsdl_log'],
     'data': [
         # data
         'data/res_users_data.xml',
