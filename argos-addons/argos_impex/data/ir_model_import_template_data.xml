@@ -10,8 +10,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_data"/>
 			<field name="sequence">-100</field>
-			<!--field name="run_as_queue_job">True</field>
-			<field name="channel_id" ref="queue_job_cron.channel_root_ir_cron"/-->
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_import_template_data" model="ir.model.import.template">
@@ -27,6 +26,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_tarif_data"/>
 			<field name="sequence">-99</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_import_template_list_price_data" model="ir.model.import.template">
@@ -42,6 +42,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="sequence">-98</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_stock_data"/>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_import_template_stock_data" model="ir.model.import.template">
@@ -57,6 +58,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_association_data"/>
 			<field name="sequence">-97</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_association_import_template_data" model="ir.model.import.template">
@@ -72,6 +74,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_documentation_data"/>
 			<field name="sequence">-96</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_documentation_import_template_data" model="ir.model.import.template">
@@ -87,6 +90,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regroupment_data"/>
 			<field name="sequence">-95</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_regroupment_import_template_data" model="ir.model.import.template">
@@ -102,6 +106,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_regulation_data"/>
 			<field name="sequence">-94</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_regulation_import_template_data" model="ir.model.import.template">
@@ -117,6 +122,7 @@
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_enriched_product_data"/>
 			<field name="sequence">-93</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_enriched_product_import_template_data" model="ir.model.import.template">
@@ -132,6 +138,7 @@
 			<field name="export_xls">False</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_referentiel_filtre_data"/>
 			<field name="sequence">-92</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_referentiel_filtre_import_template_data" model="ir.model.import.template">
@@ -147,6 +154,7 @@
 			<field name="export_xls">False</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_produit_filtre_data"/>
 			<field name="sequence">-91</field>
+			<field name="new_thread" eval="False"/>
 		</record>
 
 		<record id="ir_model_produit_filtre_import_template_data" model="ir.model.import.template">

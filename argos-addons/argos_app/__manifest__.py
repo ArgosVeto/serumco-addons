@@ -17,7 +17,6 @@
         'argos_planning',
         'argos_website',
         'argos_sale',
-        'argos_contact',
         'argos_operating_unit',
         'argos_purchase',
         'argos_hr',

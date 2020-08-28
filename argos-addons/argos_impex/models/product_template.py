@@ -723,6 +723,7 @@ class ProductTemplate(models.Model):
         lines = []
         operating_unit_obj = self.env['operating.unit']
         quant_obj = self.env['stock.quant']
+        product_obj = self.env['product.product']
         stock_location_obj = self.env['stock.location']
         for row in reader:
             try:
@@ -742,46 +743,32 @@ class ProductTemplate(models.Model):
                     logger.error(_('The product code is missed. Line %s') % line_num)
                     errors.append((row, _('The product code is missed!')))
                     continue
-                product = self.search([('default_code', '=', code)], limit=1)
-                if not product:
+                product_template = self.search([('default_code', '=', code)], limit=1)
+                if not product_template:
                     logger.error(_('No product with code %s found. Line %s') % (code, line_num))
                     errors.append((row, _('No product found.')))
                     continue
-                try:
-                    quant = quant_obj.search([('location_id.operating_unit_id', '=', operating_unit.id),
-                                              ('location_id.usage', 'in', ('internal', 'transit')),
-                                              ('product_id', 'in', product.product_variant_ids.ids)], limit=1)
-                    if quant:
-                        if row.get('Stock') == 'O':
-                            inventory_quantity = 1
-                        else:
-                            inventory_quantity = 0
-                        quant.with_context(inventory_mode=True).write({'inventory_quantity': inventory_quantity})
-                    elif row.get('Stock') == 'O':
-                        quant_obj.with_context(inventory_mode=True).create({
-                            'location_id': stock_location_obj.search([('usage', 'in', ('internal', 'transit')),
-                                                                      ('operating_unit_id', '=', operating_unit.id)]).id,
-                            'product_id': product.product_variant_ids.ids[0],
-                            'inventory_quantity': 1,
-                        })
-                    lines.append(line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                product = product_template.product_variant_id or \
+                          product_obj.search([('type', '=', 'product'), ('product_tmpl_id', '=', product_template.id)], limit=1)
+                quant = quant_obj.search([('location_id.operating_unit_id', '=', operating_unit.id),
+                                          ('location_id.usage', 'in', ('internal', 'transit')), ('product_id', '=', product.id)], limit=1)
+                if quant:
+                    if row.get('Stock') == 'O':
+                        inventory_quantity = 1
+                    else:
+                        inventory_quantity = 0
+                    quant.with_context(inventory_mode=True).write({'inventory_quantity': inventory_quantity})
+                elif row.get('Stock') == 'O':
+                    location = stock_location_obj.search([('usage', 'in', ('internal', 'transit')),
+                                                          ('operating_unit_id', '=', operating_unit.id)], limit=1)
+                    quant_obj.with_context(inventory_mode=True).create({'location_id': location.id,
+                                                                        'product_id': product.id,
+                                                                        'inventory_quantity': 1})
+                lines.append(line_num)
+                self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
-
-
-class StockQuant(models.Model):
-    _inherit = 'stock.quant'
-
-    @api.model
-    def create(self, vals):
-        record = super(StockQuant, self).create(vals)
-        return record
