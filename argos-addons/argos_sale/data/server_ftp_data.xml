@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="server_ftp_argos_sale_order_data" model="server.ftp">
+      <field name="url">ftp.centravet.net</field>
+      <field name="login">upload_cen</field>
+      <field name="password">U2001Cen#</field>
+      <field name="filename">/</field>
+    </record>
+
+  </data>
+</odoo>

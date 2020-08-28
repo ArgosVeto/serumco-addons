@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="chrono_sale_order_centravet" model="ir.sequence">
+      <field name="name">Chrono Sale Order Centravet</field>
+      <field name="code">centravet.sale.order.seq</field>
+      <field name="padding">6</field>
+      <field name="number_next">1</field>
+      <field name="number_increment">1</field>
+    </record>
+
+  </data>
+</odoo>

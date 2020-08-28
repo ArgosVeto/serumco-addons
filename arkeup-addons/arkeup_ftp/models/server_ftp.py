@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import io
 import logging
 
 from ftplib import FTP
@@ -47,6 +48,7 @@ class ServerFTP(models.Model):
         ftp = self.connect()
         datas = []
         ftp.retrbinary('RETR ' + self.filename, lambda block: datas.append(block))
+        ftp.close()
         return b''.join(datas)
 
     def button_check_connection(self):
@@ -54,9 +56,11 @@ class ServerFTP(models.Model):
         check if all parameters are correctly set
         :return:
         """
-        if self.connect():
+        ftp = self.connect()
+        if ftp:
             title = _('Connection Test Succeeded!')
             message = _('Everything seems properly set up!')
+            ftp.close()
             return {
                 'type': 'ir.actions.client',
                 'tag': 'display_notification',
@@ -68,3 +72,17 @@ class ServerFTP(models.Model):
         if not vals.get('name'):
             vals.update({'name': self.env['ir.sequence'].next_by_code('server.ftp.seq')})
         return super(ServerFTP, self).create(vals)
+
+    def store_data(self, filename=False, writer=False):
+        """
+        send data to the FTP
+        :param filename:
+        :param content:
+        :return:
+        """
+        self.ensure_one()
+        ftp = self.connect()
+        writer.seek(0)
+        ftp.storbinary('STOR %s' % filename, io.BytesIO(writer.getvalue().encode()))
+        ftp.close()
+        return True
