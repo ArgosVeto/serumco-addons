@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
   <data>
-    <record id="notification_mail_template" model="mail.template">
+    <record id="planning_notification_mail_template" model="mail.template">
       <field name="name">Planning Notification Mail</field>
       <field name="model_id" ref="planning.model_planning_slot"/>
       <field name="subject">Planning Notification</field>
@@ -11,10 +11,18 @@
       <field name="body_html">
         <![CDATA[
           <div>
+            <span>Hello,</span>
+          </div>
+          <div>
+            <span>We inform you that
             <strong>
               ${object.partner_id.name}
             </strong>
-            <span>has made an appointment</span>
+            <span>has made an appointment with us.</span>
+          </div>
+          <br/>
+          <div>
+            <span>Cordially</span>
           </div>
       ]]>
       </field>
