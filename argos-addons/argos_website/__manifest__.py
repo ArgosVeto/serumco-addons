@@ -10,14 +10,15 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
-        'argos_base',
-        'website',
+        'argos_product',
+        'website_sale',
     ],
     'data': [
         # data
         # security
         'security/ir.model.access.csv',
         # views
+        'views/product_template_view.xml',
         'views/templates_view.xml',
     ],
     'application': False,

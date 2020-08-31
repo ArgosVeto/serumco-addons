@@ -27,18 +27,6 @@ def transform_tuple_to_dict(data_tuple=(), source=False):
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    doc_type = fields.Char('Documentation Type', required=False)
-    doc_url = fields.Char('Documentation URL', required=False)
-    aliment_type = fields.Char('Aliment Type', required=False)
-    utilization = fields.Char('Utilization', required=False)
-    composition = fields.Char('Composition', required=False)
-    analytic_constitution = fields.Char('Analytic Constitution', required=False)
-    additives = fields.Char('Additives', required=False)
-    energetic_value = fields.Char('Energetic Value', required=False)
-    daily_ratio_recommended = fields.Char('Daily Ratio Recommended', required=False)
-    indications = fields.Char('Indications', required=False)
-    waters_content = fields.Char('Waters Content', required=False)
-
     def manage_supinfo(self, row={}):
         self.ensure_one()
         if not row.get('fournisseur'):
@@ -605,7 +593,7 @@ class ProductTemplate(models.Model):
             default_code = child[0].text.strip()
             vals = {
                 'default_code': default_code,
-                'description_sale': child[1].text,
+                'description_web': child[1].text,
                 'image_1024': tools.get_image_url_as_base64(child[2].text),
                 'image_1920': tools.get_image_url_as_base64(child[3].text)
             }
