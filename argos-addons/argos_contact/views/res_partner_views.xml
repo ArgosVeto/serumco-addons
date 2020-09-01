@@ -41,7 +41,7 @@
         <tree string="Patients">
           <field name="name"/>
           <field name="species_id"/>
-          <field name="owner_ids"/>
+          <field name="owner_ids" widget="many2many_tags"/>
         </tree>
       </field>
     </record>
@@ -144,6 +144,40 @@
                              'default_contact_type': 'patient', }
       </field>
       <field name="domain">[('contact_type', '=', 'patient')]</field>
+    </record>
+
+    <record id="res_partner_view_search_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.search.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">
+        <filter name="type_company" position="after">
+          <separator/>
+          <filter name="person_with_patient"
+                  domain="[('contact_category', '=', 'person_patient')]"
+                  string="Person With Patient"/>
+          <filter name="person_without_patient"
+                  domain="[('contact_category', '=', 'person_no_patient')]"
+                  string="Person Without Patient"/>
+          <filter name="company_with_patient"
+                  domain="[('contact_category', '=', 'company_patient')]"
+                  string="Company With Patient"/>
+          <filter name="company_without_patient"
+                  domain="[('contact_category', '=', 'company_no_patient')]"
+                  string="Company Without Patient"/>
+        </filter>
+      </field>
+    </record>
+
+    <record id="res_partner_information_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.information.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='personal_information_page']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </field>
     </record>
 
   </data>

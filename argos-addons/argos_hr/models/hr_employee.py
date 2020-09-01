@@ -11,7 +11,7 @@ class HrEmployee(models.Model):
     leave_date = fields.Date('Leave Date')
     drive_permit_number = fields.Char('Drive Permit Number')
     issue_location = fields.Char('Issue Location')
-    issue_date = fields.Char('Issue Date')
+    issue_date = fields.Date('Issue Date')
     signature = fields.Binary('Signature')
     partner_ids = fields.One2many('res.partner', inverse_name='employee_id')
 

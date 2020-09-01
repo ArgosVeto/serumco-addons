@@ -88,7 +88,7 @@ class PlanningSlot(models.Model):
     def send_notification_mail(self):
         self.ensure_one()
         try:
-            email_template = self.env.ref('argos_planning.notification_mail_template')
+            email_template = self.env.ref('argos_planning.planning_notification_mail_template')
             email_template.send_mail(self.id, force_send=True, raise_exception=True)
         except Exception as e:
             _logger.error(repr(e))
@@ -96,6 +96,6 @@ class PlanningSlot(models.Model):
     @api.model
     def create(self, vals):
         res = super(PlanningSlot, self).create(vals)
-        if res.partner_id and res.partner_id.tutor_curator_id:
+        if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
         return res
