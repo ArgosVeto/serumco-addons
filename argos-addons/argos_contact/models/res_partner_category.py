@@ -16,4 +16,3 @@ class ResPartnerCategory(models.Model):
         if not parameter:
             return self.create({'name': name, 'type': type})
         return parameter
-

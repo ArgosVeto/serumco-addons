@@ -8,8 +8,7 @@ class ResPartner(models.Model):
 
     is_dead = fields.Boolean('Dead')
     death_date = fields.Date('Death Date')
-    death_reason = fields.Selection([('natural', 'Natural'), ('accidental', 'Accidental'), ('medical', 'Medical')],
-                                    default='natural')
+    death_reason = fields.Selection([('natural', 'Natural'), ('accidental', 'Accidental'), ('medical', 'Medical')], default='natural')
     is_missing = fields.Boolean('Missing')
     missing_date = fields.Date('Missing Date')
     race_id = fields.Many2one('res.partner.parameter', 'Race', domain=[('type', '=', 'race')])
@@ -19,8 +18,7 @@ class ResPartner(models.Model):
     gender_id = fields.Many2one('res.partner.parameter', 'Gender', domain=[('type', '=', 'gender')])
     environment_ids = fields.Many2many('res.partner.parameter', 'res_partner_envirnment_rel', 'patient_id', 'environment_id',
                                        'Living Environment', domain=[('type', '=', 'living')])
-    diet_ids = fields.Many2many('res.partner.parameter', 'res_partner_diet_rel', 'patient_id', 'diet_id',
-                                'Recommended Diet',
+    diet_ids = fields.Many2many('res.partner.parameter', 'res_partner_diet_rel', 'patient_id', 'diet_id', 'Recommended Diet',
                                 domain=[('type', '=', 'diet')])
     is_sterilized = fields.Boolean('Sterilized')
     is_reproductive = fields.Boolean('Reproductive')
@@ -34,8 +32,7 @@ class ResPartner(models.Model):
     chip_location_id = fields.Many2one('res.partner.parameter', 'Chip Location', domain=[('type', '=', 'chip')])
     image = fields.Binary('Image')
     passport_id = fields.Many2one('passport.passport', 'Passport')
-    pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id',
-                                     'Pathologies')
+    pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id', 'Pathologies')
     weight_ids = fields.One2many('res.partner.weight', 'partner_id', 'Weights')
     weight = fields.Float('Weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'patient_id', 'owner_id', 'Owners',
@@ -43,7 +40,7 @@ class ResPartner(models.Model):
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
     patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'owner_id', 'patient_id', 'Patients List',
                                    domain="[('contact_type', '=', 'patient')]")
-    species_id = fields.Many2one('res.partner.category', "Species", domain=[('is_incineris_species', '=', True)])
+    species_id = fields.Many2one('res.partner.category', 'Species')
     contact_category = fields.Selection([('person_patient', 'Person With Patient'), ('company_patient', 'Company With Patient'),
                                          ('person_no_patient', 'Person Without Patient'),
                                          ('company_no_patient', 'Company Without Patient')], 'Contact Category',
@@ -69,8 +66,3 @@ class ResPartner(models.Model):
             return patient
         return self.create({'name': name, 'contact_type': 'patient', 'category_id': [(6, 0, category.ids)],
                             'owner_ids': [(6, 0, partner.ids)]})
-
-
-# TODO: TO BE DELETED AFTER UPGRADE
-class LocationLocation(models.Model):
-    _name = 'location.location'
