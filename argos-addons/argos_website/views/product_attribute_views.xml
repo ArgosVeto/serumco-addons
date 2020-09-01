@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="product_attribute_view_form_inherit" model="ir.ui.view">
+			<field name="name">product.attribute.view.form.inherit</field>
+			<field name="model">product.attribute</field>
+			<field name="inherit_id" ref="product.product_attribute_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//group[@name='main_fields']" position="after">
+					<group>
+						<field name="is_attribute_visible"/>
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>
