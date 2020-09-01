@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="operating_unit_sequence" model="ir.sequence">
+      <field name="name">Operating Unit Sequence</field>
+      <field name="code">operating.unit.seq</field>
+      <field name="number_increment" eval="1"/>
+      <field name="padding">2</field>
+    </record>
+  </data>
+</odoo>

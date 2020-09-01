@@ -12,12 +12,14 @@
     'depends': [
         'argos_contact',
         'hr_skills',
+        'argos_operating_unit',
 
     ],
     'data': [
         'views/hr_employee_views.xml',
         'views/hr_skills_views.xml',
         'views/res_partner_views.xml',
+        'views/operating_unit_views.xml',
         'wizard/hr_departure_wizard_views.xml',
     ],
     'application': False,

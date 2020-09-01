@@ -25,6 +25,17 @@
       </field>
     </record>
 
+    <record id="res_partner_base_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.base.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <field name="property_payment_term_id" position="after">
+          <field name="payment_method_ids" widget="many2many_tags"/>
+        </field>
+      </field>
+    </record>
+
     <record id="res_partner_view_form_inherit" model="ir.ui.view">
       <field name="name">res.partner.view.form.inherit</field>
       <field name="model">res.partner</field>

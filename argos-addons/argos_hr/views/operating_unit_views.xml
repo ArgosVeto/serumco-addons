@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="operating_unit_view_form_inherit" model="ir.ui.view">
+      <field name="name">operating.unit.view.form.inherit</field>
+      <field name="model">operating.unit</field>
+      <field name="inherit_id" ref="argos_operating_unit.operating_unit_view_form"/>
+      <field name="arch" type="xml">
+        <field name="equipment_ids" position="before">
+          <field name="skill_ids" widget="many2many_tags"/>
+        </field>
+        <page name="digital_service" position="before">
+          <page name="employees" string="Employees">
+            <field name="employee_ids" mode="kanban"/>
+          </page>
+        </page>
+      </field>
+    </record>
+  </data>
+</odoo>

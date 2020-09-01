@@ -239,13 +239,9 @@ msgid "Sex"
 msgstr "Sexe"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__species_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Species"
-msgstr "Espèce"
-
-#. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__category_id
-msgid "Tags"
 msgstr "Espèce"
 
 #. module: argos_sale
