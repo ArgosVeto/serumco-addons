@@ -6,6 +6,7 @@ from odoo import api, fields, models, _, tools
 class ResPartnerWeight(models.Model):
     _name = 'res.partner.weight'
     _description = 'Patient Weight'
+    _order = 'date desc'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char('Name')

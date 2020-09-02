@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.addons.argos_base.models import tools
+from dateutil.relativedelta import  relativedelta
 
 
 class ResPartner(models.Model):
@@ -45,6 +47,10 @@ class ResPartner(models.Model):
                                          ('person_no_patient', 'Person Without Patient'),
                                          ('company_no_patient', 'Company Without Patient')], 'Contact Category',
                                         default='company_no_patient', compute='_compute_contact_category', store=True)
+    age_formatted = fields.Char('Age', compute='_compute_age_formatted')
+    date_insurance_start = fields.Date('Date insurance start')
+    date_insurance_end = fields.Date('Date insurance end')
+    policy_insurance = fields.Char('Policy insurance')
 
     @api.depends('company_type', 'patient_ids')
     def _compute_contact_category(self):
@@ -66,3 +72,13 @@ class ResPartner(models.Model):
             return patient
         return self.create({'name': name, 'contact_type': 'patient', 'species_id': category.id,
                             'owner_ids': [(6, 0, partner.ids)]})
+
+    @api.depends("birthdate_date")
+    def _compute_age_formatted(self):
+        for rec in self:
+            if rec.birthdate_date:
+                relative_age = relativedelta(fields.Datetime.to_datetime(rec.birthdate_date), fields.Datetime.now())
+                years = abs(relative_age.years)
+                months = abs(relative_age.months)
+                weeks = int(abs(relative_age.days) / 7)
+            rec.age_formatted = str(years) + _(' years(s) ') + str(months) + _(' month(s) ') + str(weeks) + _(' week(s)')

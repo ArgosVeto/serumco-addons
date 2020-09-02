@@ -6,14 +6,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-27 08:38+0000\n"
-"PO-Revision-Date: 2020-08-27 08:38+0000\n"
+"POT-Creation-Date: 2020-09-03 18:17+0000\n"
+"PO-Revision-Date: 2020-09-03 18:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: argos_contact
+#: code:addons/argos_contact/models/res_partner.py:0
+#, python-format
+msgid " month(s) "
+msgstr " mois "
+
+#. module: argos_contact
+#: code:addons/argos_contact/models/res_partner.py:0
+#, python-format
+msgid " week(s)"
+msgstr " semaine(s)"
+
+#. module: argos_contact
+#: code:addons/argos_contact/models/res_partner.py:0
+#, python-format
+msgid " years(s) "
+msgstr " an(s)"
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__death_reason__accidental
@@ -46,6 +64,17 @@ msgid "Address"
 msgstr "Adresse"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__age_formatted
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__age_formatted
+msgid "Age"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+msgid "Analysis"
+msgstr "Analyses"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_attachment_count
 msgid "Attachment Count"
 msgstr "Nombre de pièces jointes"
@@ -66,11 +95,6 @@ msgid "Category pathology"
 msgstr "Catégories de pathologie"
 
 #. module: argos_contact
-#: model:ir.model.fields.selection,name:argos_contact.selection__location_location__type__chip
-msgid "Chip"
-msgstr "Puce"
-
-#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__chip_identification
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__chip_identification
 msgid "Chip Identification"
@@ -79,6 +103,7 @@ msgstr "Identification de la puce"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__chip_location_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__chip_location_id
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__chip
 msgid "Chip Location"
 msgstr "Lieu de la puce"
 
@@ -109,8 +134,9 @@ msgstr "Origine de la mise en relation"
 #. module: argos_contact
 #: model:ir.model,name:argos_contact.model_res_partner
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__contact_type__contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_category__type__contact
 msgid "Contact"
-msgstr "Contact"
+msgstr "Contacts"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__contact_category
@@ -125,7 +151,6 @@ msgid "Contact Type"
 msgstr "Type de contact"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_uid
@@ -135,7 +160,6 @@ msgid "Created by"
 msgstr "Créé par"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_date
@@ -153,7 +177,19 @@ msgstr "Dangereux"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
 msgid "Date"
-msgstr "Date"
+msgstr ""
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__date_insurance_end
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__date_insurance_end
+msgid "Date insurance end"
+msgstr "Date de début assurance"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__date_insurance_start
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__date_insurance_start
+msgid "Date insurance start"
+msgstr "Date de fin assurance"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__is_dead
@@ -185,7 +221,6 @@ msgid "Diet"
 msgstr "Alimentation"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__display_name
@@ -210,9 +245,29 @@ msgid "Followers (Partners)"
 msgstr "Abonnés (Patient)"
 
 #. module: argos_contact
+#: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_gender_action
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__gender_id
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__gender_id
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__gender
+msgid "Gender"
+msgstr "Genre"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__gmvet_id
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__gmvet_id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__gmvet_id
+msgid "Gmvet ID"
+msgstr ""
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__gmvet_id
 msgid "Gmvet Id"
 msgstr "Identifiant Gmvet"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_category__gmvet_id
+msgid "Gmvet id"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__hide_messages
@@ -235,17 +290,16 @@ msgstr "Masquer les notifications"
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Hospitalization"
-msgstr "Hôspitalisation"
+msgstr "Hospitalisation"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__id
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__id
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__id
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__id
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__id
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__activity_exception_icon
@@ -260,7 +314,7 @@ msgstr "Icône pour indiquer une activité d'exception."
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__identification
 msgid "Identification"
-msgstr "Identification"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,help:argos_contact.field_res_partner_weight__message_needaction
@@ -278,7 +332,12 @@ msgstr "Si coché, certains messages ont une erreur de livraison."
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__image
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__image
 msgid "Image"
-msgstr "Image"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+msgid "Imaging"
+msgstr "Imageries"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__chip_date
@@ -290,8 +349,14 @@ msgstr "Date de l'insertion"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__insurance_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__insurance_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__insurance
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Insurance"
 msgstr "Assurance"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+msgid "Insurance ..."
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_insurance_action
@@ -321,7 +386,6 @@ msgid "Issue Date"
 msgstr "Date d'émission"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter____last_update
@@ -331,7 +395,6 @@ msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_uid
@@ -341,7 +404,6 @@ msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_date
@@ -392,7 +454,7 @@ msgstr "Erreur de livraison de message"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_ids
 msgid "Messages"
-msgstr "Messages"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__is_missing
@@ -436,7 +498,7 @@ msgstr "Type d'activité suivant"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__note
 msgid "Notes"
-msgstr "Notes"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__number
@@ -470,8 +532,8 @@ msgstr "Nombre de messages non lus"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
-msgid "Outside Events"
-msgstr "Evènements extérieurs"
+msgid "Order"
+msgstr "Ordonances"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__owner_ids
@@ -497,13 +559,18 @@ msgstr "Étiquettes du partenaire"
 #: model:ir.ui.menu,name:argos_contact.passport_passport_menuitem
 #: model_terms:ir.ui.view,arch_db:argos_contact.passport_view_form
 msgid "Passport"
-msgstr "Passports"
+msgstr ""
+
+#. module: argos_contact
+#: model:ir.model,name:argos_contact.model_passport_passport
+msgid "Passport Passport"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__pathology_ids
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__pathology_ids
 msgid "Pathologies"
-msgstr "Pathologies"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_pathology_action
@@ -512,9 +579,9 @@ msgid "Pathology"
 msgstr "Pathologies"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__category_id
+#: model:ir.model,name:argos_contact.model_pathology_category
 msgid "Pathology Category"
-msgstr "Catégorie de pathologie"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__name
@@ -522,11 +589,12 @@ msgid "Pathology Name"
 msgstr "Nom"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__patient_id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__partner_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__contact_type__patient
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_category__type__patient
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Patient"
-msgstr "Patient"
+msgstr "Animal"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_parameter_view_form
@@ -547,13 +615,19 @@ msgid "Patient Pathology"
 msgstr "Pathologie"
 
 #. module: argos_contact
+#: model:ir.model,name:argos_contact.model_res_partner_weight
+msgid "Patient Weight"
+msgstr ""
+
+#. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_action
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__patient_ids
 #: model:ir.ui.menu,name:argos_contact.res_partner_menu_config
 #: model:ir.ui.menu,name:argos_contact.res_partner_menuitem
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form_base_inherit
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_tree
 msgid "Patients"
-msgstr "Patients"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__patient_ids
@@ -574,22 +648,33 @@ msgid "Person Without Patient"
 msgstr "Particulier sans animaux"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__policy_insurance
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__policy_insurance
+msgid "Policy insurance"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+msgid "Policy insurance N° ..."
+msgstr ""
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__quartier
 msgid "Quartier"
-msgstr "Quartier"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__race_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__race_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__race
 msgid "Race"
-msgstr "Race"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_race_action
 #: model:ir.ui.menu,name:argos_contact.res_partner_parameter_race_menuitem
 msgid "Races"
-msgstr "Races"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__diet_ids
@@ -614,13 +699,13 @@ msgstr "Utilisateur responsable"
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__robe_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__robe
 msgid "Robe"
-msgstr "Robe"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_robe_action
 #: model:ir.ui.menu,name:argos_contact.res_partner_parameter_robe_menuitem
 msgid "Robes"
-msgstr "Robes"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_has_sms_error
@@ -630,7 +715,7 @@ msgstr "Erreur de livraison SMS"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__source
 msgid "Source"
-msgstr "Source"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__species_id
@@ -669,33 +754,28 @@ msgid "Surgery"
 msgstr "Chirurgie"
 
 #. module: argos_contact
-#: model:ir.model.fields.selection,name:argos_contact.selection__location_location__type__tattoo
-msgid "Tattoo"
-msgstr "Tatouage"
-
-#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__tattoo_date
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__tattoo_date
 msgid "Tattoo Date"
-msgstr "Date de tatouage"
+msgstr "Date du tatouage"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__tattoo_location_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__tattoo_location_id
 msgid "Tattoo Location"
-msgstr "Location du tatouage"
+msgstr "Localisation tatouage"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__name
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__tattoo
 msgid "Tattoo location"
-msgstr "Emplacement du tatoutage"
+msgstr ""
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_location_location__type
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__type
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_category__type
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__type
 msgid "Type"
-msgstr "Type"
+msgstr "Type d'appel"
 
 #. module: argos_contact
 #: model:ir.model.fields,help:argos_contact.field_res_partner_weight__activity_exception_decoration
@@ -720,7 +800,7 @@ msgstr "Compteur de messages non lus"
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Vaccination"
-msgstr "Vaccination"
+msgstr ""
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__values
@@ -756,24 +836,4 @@ msgstr "Poids"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__zip_code
 msgid "Zip Code"
-msgstr "Zip Code"
-
-#. module: argos_contact
-#: model:ir.model,name:argos_contact.model_location_location
-msgid "location.location"
-msgstr "Location"
-
-#. module: argos_contact
-#: model:ir.model,name:argos_contact.model_passport_passport
-msgid "passport.passport"
-msgstr "Passport"
-
-#. module: argos_contact
-#: model:ir.model,name:argos_contact.model_pathology_category
-msgid "pathology.category"
-msgstr "Catégorie de pathalogie"
-
-#. module: argos_contact
-#: model:ir.model,name:argos_contact.model_res_partner_weight
-msgid "res.partner.weight"
-msgstr "Poids du patient"
+msgstr ""
