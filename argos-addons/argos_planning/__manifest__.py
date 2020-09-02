@@ -15,13 +15,17 @@
         'argos_account',
     ],
     'data': [
+        # data
         'data/mail_template_data.xml',
-        'security/ir.model.access.csv',
         'data/planning_role_data.xml',
+        'data/planning_cron.xml',
+        # security
+        'security/ir.model.access.csv',
+        'security/res_users_groups.xml',
+        # views
         'views/consultation_views.xml',
         'views/planning_views.xml',
         'views/assignment_views.xml',
-        'data/planning_cron.xml',
         'views/res_partner_views.xml',
     ],
     'application': False,
