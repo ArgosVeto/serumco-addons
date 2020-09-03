@@ -71,6 +71,7 @@ class ResPartner(models.Model):
                     errors.append((row, _('The numero column is missed!')))
                     continue
                 phone, mobile = tools.split_consolidated_phones(row.get('consolidatedPhones'))
+                company_type = row.get('profession') == 'Professionnel' and 'company' or 'person'
                 vals = {
                     'ref': row.get('numero'),
                     'gmvet_id': row.get('id'),
@@ -86,7 +87,8 @@ class ResPartner(models.Model):
                     'send_sms': tools.str2bool(row.get('mailingBySMS')),
                     'send_email': tools.str2bool(row.get('mailingByEmail')),
                     'title': partner_title_obj.get_title_by_shortcut(row.get('title')),
-                    'active': not tools.str2bool(row.get('deleted'))
+                    'active': not tools.str2bool(row.get('deleted')),
+                    'company_type': company_type,
                 }
                 partner = self.search([('ref', '=', number)], limit=1)
                 if partner:

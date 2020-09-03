@@ -24,6 +24,7 @@ class PassportPassport(models.Model):
                         return True
                     passport_obj = self.env['passport.passport']
                     patient_obj = self.env['res.partner']
+                    category_obj = self.env['res.partner.category']
                     content = base64.decodebytes(template.import_file).decode('utf-8-sig')
                     csvfile = io.StringIO(content)
                     reader = csv.DictReader(csvfile, delimiter=';')
@@ -35,6 +36,7 @@ class PassportPassport(models.Model):
                             delivery_date = tools.format_date(row.get('dateDelivery'))
                             patient = patient_obj.search([('gmvet_id', '=', row.get('patient_id')), ('contact_type', '=', 'patient')],
                                                             limit=1)
+                            species = row.get('species') and category_obj._get_category_by_name(row.get('species'), 'patient').id or False
                             vals = {
                                 'gmvet_id': row.get('id'),
                                 'address': row.get('address'),
@@ -45,7 +47,8 @@ class PassportPassport(models.Model):
                                 'status': row.get('status'),
                                 'zip_code': row.get('zipCode'),
                                 'name': row.get('number'),
-                                'patient_ids': patient and [(4, patient.id)] or False
+                                'patient_ids': patient and [(4, patient.id)] or False,
+                                'species_id': species
                             }
                             passport = passport_obj.search([('gmvet_id', '=', row.get('id'))], limit=1)
                             if passport:

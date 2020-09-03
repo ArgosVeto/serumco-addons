@@ -12,7 +12,7 @@ class ResPartnerCategory(models.Model):
 
     @api.model
     def _get_category_by_name(self, name, type):
-        parameter = self.search([('name', '=', name), ('type', '=', type)])
-        if not parameter:
+        category = self.search([('name', '=', name), ('type', '=', type)])
+        if not category:
             return self.create({'name': name, 'type': type})
-        return parameter
+        return category
