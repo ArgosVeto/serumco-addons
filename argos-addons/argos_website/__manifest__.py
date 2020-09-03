@@ -19,16 +19,23 @@
         'payment_stripe',
         'website_sale_coupon',
         'jitsi_meet_integration',
+        'website_rating',
     ],
     'data': [
         # data
+        'data/mail_template_data.xml',
+        'data/res_config_settings.xml',
+        'data/mail_template_data.xml',
         'data/res_config_settings.xml',
         # security
         'security/ir.model.access.csv',
+        'security/res_groups.xml',
         # views
         'views/product_template_view.xml',
         'views/templates_view.xml',
         'views/product_attribute_views.xml',
+        'views/rating_rating_views.xml',
+        'views/menu_views.xml',
     ],
     'application': False,
     'installable': True,

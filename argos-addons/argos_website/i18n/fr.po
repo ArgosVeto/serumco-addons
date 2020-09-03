@@ -29,3 +29,80 @@ msgstr "Ceci indique si l'attribut est visible dans les filtres du boutique sur 
 #: model:ir.model,name:argos_website.model_product_attribute
 msgid "Product Attribute"
 msgstr "Caractéristique de l'article"
+
+#: model:mail.template,body_html:argos_website.rating_mail_template_data
+msgid ""
+"\n"
+"        \n"
+"          <span>A Ratting were submitted on your website for <a href=${object.get_url()}>${object.res_name}</a> </span>\n"
+"      \n"
+"      "
+msgstr ""
+"\n"
+"        \n"
+"          <span>Un avis a été posté sur votre site web pour <a href=${object.get_url()}>${object.res_name}</a> </span>\n"
+"      \n"
+"      "
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
+msgid ""
+"<span class=\"o_text_overflow float-left\" "
+"style=\"color:green\">Published</span>"
+msgstr ""
+"<span class=\"o_text_overflow float-left\" "
+"style=\"color:green\">Publié</span>"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
+msgid ""
+"<span class=\"o_text_overflow float-left\" "
+"style=\"color:red\">Unpublished</span>"
+msgstr ""
+"<span class=\"o_text_overflow float-left\" "
+"style=\"color:red\">Non publié</span>"
+
+#. module: argos_website
+#: model:ir.model.fields,field_description:argos_website.field_rating_rating__is_published
+msgid "Is published"
+msgstr "Est publié"
+
+#. module: argos_website
+#: model:ir.model,name:argos_website.model_mail_message
+msgid "Message"
+msgstr "Message"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
+msgid "Publish"
+msgstr "Publier"
+
+#. module: argos_website
+#: model:ir.model,name:argos_website.model_rating_rating
+msgid "Rating"
+msgstr "Avis"
+
+#. module: argos_website
+#: model:ir.module.category,name:argos_website.module_category_rating_management
+msgid "Rating management"
+msgstr "Gestion des avis"
+
+#. module: argos_website
+#: model:res.groups,name:argos_website.group_rating_management
+msgid "Rating manager"
+msgstr "Gestionnaire des avis"
+
+#. module: argos_website
+#: model:mail.template,subject:argos_website.rating_mail_template_data
+msgid "Rating submitted on your website"
+msgstr "Avis posté sur votre site web"
+
+#. module: argos_website
+#: model:ir.ui.menu,name:argos_website.rating_rating_menuitem
+msgid "Ratings"
+msgstr "Avis"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
+msgid "Unpublish"
+msgstr "Non-publié"

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="rating_rating_view_form_inherit" model="ir.ui.view">
+			<field name="name">rating.rating.view.form.inherit</field>
+			<field name="model">rating.rating</field>
+			<field name="inherit_id" ref="rating.rating_rating_view_form"/>
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<field name="website_published" widget="website_redirect_button"/>
+				</div>
+				<xpath expr="//sheet[1]" position="before">
+					<header>
+						<field name="is_published" invisible="1"/>
+						<button name="publish_message" class="oe_highlight" string="Publish" type="object"
+										attrs="{'invisible': [('is_published', '=', True)]}"/>
+						<button name="unpublish_message" class="btn-danger" string="Unpublish" type="object"
+										attrs="{'invisible': [('is_published', '=', False)]}"/>
+					</header>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="rating_rating_view_kanban_inherit" model="ir.ui.view">
+			<field name="name">rating.rating.kanban</field>
+			<field name="model">rating.rating</field>
+			<field name="inherit_id" ref="rating.rating_rating_view_kanban"/>
+			<field name="arch" type="xml">
+				<xpath expr="//kanban/templates/t/div/div/i[1]" position="before">
+					<field name="is_published" invisible="1"/>
+					<t t-if="record.is_published.raw_value">
+						<span class="o_text_overflow float-left" style="color:green">Published</span>
+					</t>
+					<t t-if="!record.is_published.raw_value">
+						<span class="o_text_overflow float-left" style="color:red">Unpublished</span>
+					</t>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>
+
