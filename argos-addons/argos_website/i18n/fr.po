@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-26 17:40+0000\n"
-"PO-Revision-Date: 2020-08-26 17:40+0000\n"
+"POT-Creation-Date: 2020-09-03 11:12+0000\n"
+"PO-Revision-Date: 2020-09-03 11:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,20 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: argos_website
-#: model:ir.model.fields,field_description:argos_website.field_product_attribute__is_attribute_visible
-msgid "Filter visible in Web"
-msgstr "Filtre visible sur le Web"
-
-#. module: argos_website
-#: model:ir.model.fields,help:argos_website.field_product_attribute__is_attribute_visible
-msgid "It indicates that current attribute is visible in shop filter."
-msgstr "Ceci indique si l'attribut est visible dans les filtres du boutique sur le site web."
-
-#. module: argos_website
-#: model:ir.model,name:argos_website.model_product_attribute
-msgid "Product Attribute"
-msgstr "Caractéristique de l'article"
-
 #: model:mail.template,body_html:argos_website.rating_mail_template_data
 msgid ""
 "\n"
@@ -38,11 +24,6 @@ msgid ""
 "      \n"
 "      "
 msgstr ""
-"\n"
-"        \n"
-"          <span>Un avis a été posté sur votre site web pour <a href=${object.get_url()}>${object.res_name}</a> </span>\n"
-"      \n"
-"      "
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
@@ -50,8 +31,6 @@ msgid ""
 "<span class=\"o_text_overflow float-left\" "
 "style=\"color:green\">Published</span>"
 msgstr ""
-"<span class=\"o_text_overflow float-left\" "
-"style=\"color:green\">Publié</span>"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
@@ -59,18 +38,38 @@ msgid ""
 "<span class=\"o_text_overflow float-left\" "
 "style=\"color:red\">Unpublished</span>"
 msgstr ""
-"<span class=\"o_text_overflow float-left\" "
-"style=\"color:red\">Non publié</span>"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.product_template_form_view_inherit
+msgid "Description Web"
+msgstr "Description Web"
+
+#. module: argos_website
+#: model:ir.model.fields,field_description:argos_website.field_product_attribute__is_attribute_visible
+msgid "Filter visible in Web"
+msgstr "Filtre visible sur le Web"
 
 #. module: argos_website
 #: model:ir.model.fields,field_description:argos_website.field_rating_rating__is_published
 msgid "Is published"
-msgstr "Est publié"
+msgstr ""
+
+#. module: argos_website
+#: model:ir.model.fields,help:argos_website.field_product_attribute__is_attribute_visible
+msgid "It indicates that current attribute is visible in shop filter."
+msgstr ""
+"Ceci indique si l'attribut est visible dans les filtres du boutique sur le "
+"site web."
 
 #. module: argos_website
 #: model:ir.model,name:argos_website.model_mail_message
 msgid "Message"
 msgstr "Message"
+
+#. module: argos_website
+#: model:ir.model,name:argos_website.model_product_attribute
+msgid "Product Attribute"
+msgstr "Caractéristique de l'article"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
@@ -106,3 +105,8 @@ msgstr "Avis"
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
 msgid "Unpublish"
 msgstr "Non-publié"
+
+#. module: argos_website
+#: model:ir.model.fields,help:argos_website.field_rating_rating__is_published
+msgid "Visible on the website as a comment"
+msgstr "Visible sur le site comme commentaire"
