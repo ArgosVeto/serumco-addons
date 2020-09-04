@@ -70,6 +70,7 @@
 
     <record id="contacts.action_contacts" model="ir.actions.act_window">
       <field name="context">{'default_is_company': True, 'from_bo': True, 'default_contact_type': 'contact'}</field>
+      <field name="domain">[('contact_type','=','contact')]</field>
     </record>
 
     <record id="res_partner_geo_view_form_inherit" model="ir.ui.view">
