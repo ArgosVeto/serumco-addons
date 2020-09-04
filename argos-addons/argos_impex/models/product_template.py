@@ -69,7 +69,7 @@ class ProductTemplate(models.Model):
                         if source == 'produit-general':
                             return self.processing_import_data(content, template, source)
                         if source == 'tarif':
-                            return self.processing_import_list_price_data(content, template, source)
+                            return self.processing_import_standard_price_data(content, template, source)
                         if source == 'produit-association':
                             return self.processing_import_product_association_data(content, template, source)
                         if source == 'produit-documentation':
@@ -235,7 +235,7 @@ class ProductTemplate(models.Model):
         return True
 
     @api.model
-    def processing_import_list_price_data(self, content=None, template=False, source=False, logger=False):
+    def processing_import_standard_price_data(self, content=None, template=False, source=False, logger=False):
         """
         Import price list of products
         :param content:
@@ -258,7 +258,7 @@ class ProductTemplate(models.Model):
                     continue
                 vals = {
                     'default_code': row.get('code'),
-                    'list_price': row.get('tarif')
+                    'standard_price': row.get('tarif')
                 }
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 try:
