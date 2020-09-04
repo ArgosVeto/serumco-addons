@@ -6,14 +6,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 09:05+0000\n"
-"PO-Revision-Date: 2020-08-25 09:05+0000\n"
+"POT-Creation-Date: 2020-09-04 13:19+0000\n"
+"PO-Revision-Date: 2020-09-04 13:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__amm
+#: model:ir.model.fields,field_description:argos_product.field_product_template__amm
+msgid "AMM Code"
+msgstr "Code AMM"
 
 #. module: argos_product
 #: model:ir.model,name:argos_product.model_active_substance
@@ -35,6 +41,18 @@ msgid "Active Substance Unity"
 msgstr "Substance active Unité"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__additional_features
+#: model:ir.model.fields,field_description:argos_product.field_product_template__additional_features
+msgid "Additional Features"
+msgstr "Caractéristiques complémentaires"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__additives
+#: model:ir.model.fields,field_description:argos_product.field_product_template__additives
+msgid "Additives"
+msgstr "Additifs"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__administration_route_ids
 #: model:ir.model.fields,field_description:argos_product.field_product_template__administration_route_ids
 msgid "Administration Route"
@@ -52,6 +70,11 @@ msgid "Chemical"
 msgstr "Chimique"
 
 #. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Cost Price"
+msgstr "Prix de revient"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__create_uid
 msgid "Created by"
 msgstr "Créé par"
@@ -62,9 +85,19 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Customer Label"
+msgstr "Libellé client"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
+
+#. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_only_form_view_inherit
+msgid "Features"
+msgstr "Caractéristiques"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__gross_weight
@@ -97,6 +130,11 @@ msgstr "Immunologique"
 #: model:ir.model.fields,field_description:argos_product.field_product_template__indication
 msgid "Indications"
 msgstr "Indications"
+
+#. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Internal Label"
+msgstr "Libellé interne Argos"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__issue_condition
@@ -152,6 +190,17 @@ msgid "Net Weight (in g)"
 msgstr "Poids unitaire net (g)"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__price_sensivity
+#: model:ir.model.fields,field_description:argos_product.field_product_template__price_sensivity
+msgid "Price Sensivity"
+msgstr "Sensibilité prix"
+
+#. module: argos_product
+#: model:ir.model,name:argos_product.model_product_attribute
+msgid "Product Attribute"
+msgstr "Caractéristique de l'article"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_supplierinfo__maker_partner_id
 msgid "Product Maker"
 msgstr "Fabricant"
@@ -180,6 +229,27 @@ msgid "Race"
 msgstr "Races"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_attribute__routing
+msgid "Routing"
+msgstr "Gamme"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__routing_value_ids
+#: model:ir.model.fields,field_description:argos_product.field_product_template__routing_value_ids
+msgid "Routing Value"
+msgstr "Gammes"
+
+#. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Sales Price TTC"
+msgstr "Prix de vente TTC"
+
+#. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Sales uom"
+msgstr "Unité de mesure de vente"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__species_ids
 #: model:ir.model.fields,field_description:argos_product.field_product_template__species_ids
 msgid "Species"
@@ -189,3 +259,9 @@ msgstr "Espèces"
 #: model:ir.model,name:argos_product.model_product_supplierinfo
 msgid "Supplier Pricelist"
 msgstr "Liste de prix du fournisseur"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__top_ten
+#: model:ir.model.fields,field_description:argos_product.field_product_template__top_ten
+msgid "Top Ten"
+msgstr "Top ten"

@@ -73,6 +73,11 @@ class ResPartner(models.Model):
         return self.create({'name': name, 'contact_type': 'patient', 'species_id': category.id,
                             'owner_ids': [(6, 0, partner.ids)]})
 
+    def write(self, vals):
+        if vals.get('is_dead'):
+            vals['active'] = False
+        return super(ResPartner, self).write(vals)
+
     @api.depends("birthdate_date")
     def _compute_age_formatted(self):
         for rec in self:

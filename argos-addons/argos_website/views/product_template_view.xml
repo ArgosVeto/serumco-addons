@@ -14,6 +14,10 @@
           </group>
         </group>
 
+        <field name="website_style_ids" position="after">
+          <field name="is_new"/>
+        </field>
+
       </field>
     </record>
 

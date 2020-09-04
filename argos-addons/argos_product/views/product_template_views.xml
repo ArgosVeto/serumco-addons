@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
+
     <record id="product_template_form_view_inherit" model="ir.ui.view">
       <field name="name">product.template.form.view.inherit</field>
       <field name="model">product.template</field>
@@ -37,7 +38,60 @@
             </group>
           </page>
         </notebook>
+        <xpath expr="//label[@for='name']" position="attributes">
+          <attribute name="string">Internal Label</attribute>
+        </xpath>
+        <group name="description" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </group>
+        <div name="options" position="before">
+          <group>
+            <field name="description_sale" string="Customer Label"/>
+            <field name="routing_value_ids" widget="many2many_tags"/>
+          </group>
+        </div>
+        <xpath expr="//field[@name='uom_po_id']" position="after">
+          <field name="price_sensivity" widget="radio"/>
+          <field name="top_ten"/>
+        </xpath>
+        <xpath expr="//label[@for='list_price']" position="attributes">
+          <attribute name="string">Sales Price TTC</attribute>
+        </xpath>
+        <xpath expr="//label[@for='standard_price']" position="attributes">
+          <attribute name="string">Cost Price</attribute>
+        </xpath>
+        <xpath expr="//field[@name='uom_id']" position="attributes">
+          <attribute name="string">Sales uom</attribute>
+        </xpath>
       </field>
     </record>
+
+    <record id="product_template_base_form_view_inherit" model="ir.ui.view">
+      <field name="name">product.template.base.form.view.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="argos_base.product_template_form_inherit"/>
+      <field name="arch" type="xml">
+        <field name="cip" position="after">
+          <field name="amm"/>
+        </field>
+      </field>
+    </record>
+
+    <record id="product_template_only_form_view_inherit" model="ir.ui.view">
+      <field name="name">product.template.only.form.view.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <page name="variants" position="attributes">
+          <attribute name="string">Features</attribute>
+        </page>
+        <xpath expr="//page[@name='variants']" position="inside">
+          <group>
+            <field name="additional_features"/>
+          </group>
+        </xpath>
+      </field>
+    </record>
+
   </data>
 </odoo>
