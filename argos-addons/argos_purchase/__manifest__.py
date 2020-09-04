@@ -11,11 +11,12 @@
     'description': '',
     'depends': [
         'argos_base',
-        'purchase',
+        'purchase_requisition',
         'purchase_operating_unit',
     ],
     'data': [
         'views/res_partner_views.xml',
+        'views/product_template_views.xml',
     ],
     'application': False,
     'installable': True,

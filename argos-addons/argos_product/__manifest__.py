@@ -16,6 +16,7 @@
         'security/ir.model.access.csv',
         'views/product_supplierinfo_views.xml',
         'views/product_template_views.xml',
+        'views/product_attribute_views.xml',
     ],
     'application': False,
     'installable': True,
