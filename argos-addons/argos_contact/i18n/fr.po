@@ -31,7 +31,7 @@ msgstr " semaine(s)"
 #: code:addons/argos_contact/models/res_partner.py:0
 #, python-format
 msgid " years(s) "
-msgstr " an(s)"
+msgstr " an(s) "
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__death_reason__accidental

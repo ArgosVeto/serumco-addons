@@ -76,6 +76,7 @@ class ResPartner(models.Model):
     @api.depends("birthdate_date")
     def _compute_age_formatted(self):
         for rec in self:
+            years, months, weeks = 0, 0, 0
             if rec.birthdate_date:
                 relative_age = relativedelta(fields.Datetime.to_datetime(rec.birthdate_date), fields.Datetime.now())
                 years = abs(relative_age.years)
