@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-01 19:35+0000\n"
-"PO-Revision-Date: 2020-08-01 19:35+0000\n"
+"POT-Creation-Date: 2020-09-04 09:08+0000\n"
+"PO-Revision-Date: 2020-09-04 09:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__additives
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__additives
-msgid "Additives"
-msgstr "Additifs"
+#: model:ir.model,name:argos_impex.model_product_attribute_value
+msgid "Attribute Value"
+msgstr "Valeur de la caractéristique"
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__aliment_type
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__aliment_type
-msgid "Aliment Type"
-msgstr "Type alimentaire"
+#: code:addons/argos_impex/models/patient_weight.py:0
+#, python-format
+msgid "Cant assign weight. Missing patient (Patient Gmvet id: %s)!"
+msgstr ""
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__analytic_constitution
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__analytic_constitution
-msgid "Analytic Constitution"
-msgstr "Constitutants analytiques"
+#: code:addons/argos_impex/models/patient_weight.py:0
+#, python-format
+msgid "Cantt assign weight. Missing patient (Patient Gmvet id: %s)!"
+msgstr ""
 
 #. module: argos_impex
 #: model:ir.model.fields,field_description:argos_impex.field_product_attribute__centravet_id
@@ -39,34 +38,17 @@ msgid "Centravet Id"
 msgstr "Identifiant CentraVet"
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__composition
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__composition
-msgid "Composition"
-msgstr "Composition"
+#: model:ir.model,name:argos_impex.model_res_partner
+msgid "Contact"
+msgstr ""
 
 #. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__daily_ratio_recommended
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__daily_ratio_recommended
-msgid "Daily Ratio Recommended"
-msgstr "Ration journalière recommandée"
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__doc_type
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__doc_type
-msgid "Documentation Type"
-msgstr "Type documentation"
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__doc_url
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__doc_url
-msgid "Documentation URL"
-msgstr "Url documentation"
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__energetic_value
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__energetic_value
-msgid "Energetic Value"
-msgstr "Valeur énergétique"
+#: model:ir.model.fields,field_description:argos_impex.field_operating_unit__gmvet_id
+#: model:ir.model.fields,field_description:argos_impex.field_res_partner__gmvet_id
+#: model:ir.model.fields,field_description:argos_impex.field_res_partner_weight__gmvet_id
+#: model:ir.model.fields,field_description:argos_impex.field_res_users__gmvet_id
+msgid "Gmvet ID"
+msgstr ""
 
 #. module: argos_impex
 #: model:ir.model,name:argos_impex.model_ir_model_import_template
@@ -96,20 +78,26 @@ msgstr "Importer à partir de FTP"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "Import in progress ... %s %%%%"
+msgstr "Import en cours ... %s %%%%"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/passport_passport.py:0
+#: code:addons/argos_impex/models/patient_weight.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/res_partner.py:0
+#: code:addons/argos_impex/models/res_partner.py:0
+#: code:addons/argos_impex/models/res_partner.py:0
 #, python-format
 msgid "Import in progress ... %s lines treated."
 msgstr "Import en cours ... %s lignes ont été traitées."
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__indications
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__indications
-msgid "Indications"
-msgstr "Indications"
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -124,12 +112,51 @@ msgid "List of stranded lines: ['%s']"
 msgstr "Liste des lignes échouées : ['%s']"
 
 #. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "Missing contact with gmvet id %s or patient with gmvet id %s"
+msgstr ""
+
+#. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
 msgid "No associated product with code %s found."
 msgstr "Aucun produit associé avec le code %s n'a été trouvé."
 
 #. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No attribute %s found."
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No attribute %s found. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No clinical found!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No clinical with code %s found. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No product found."
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/product_template.py:0
@@ -139,6 +166,48 @@ msgstr "Aucun produit associé avec le code %s n'a été trouvé."
 #, python-format
 msgid "No product with code %s found."
 msgstr "Aucun produit avec ce code %s n'a été trouvé."
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "No product with code %s found. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_res_partner_parameter
+msgid "Partner Parameter"
+msgstr "Paramètre"
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_res_partner_category
+msgid "Partner Tags"
+msgstr "Étiquettes du partenaire"
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_res_partner_title
+msgid "Partner Title"
+msgstr "Titre du partenaire"
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_passport_passport
+msgid "Passport Passport"
+msgstr ""
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_pathology_category
+msgid "Pathology Category"
+msgstr ""
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_res_partner_pathology
+msgid "Patient Pathology"
+msgstr "Pathologie"
+
+#. module: argos_impex
+#: model:ir.model,name:argos_impex.model_res_partner_weight
+msgid "Patient Weight"
+msgstr ""
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -162,10 +231,33 @@ msgid "Product Template"
 msgstr "Modèle d'article"
 
 #. module: argos_impex
+#: model:ir.model.fields,field_description:argos_impex.field_ir_model_import_template__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: argos_impex
 #: model:ir.model,name:argos_impex.model_server_ftp
 #: model:ir.model.fields,field_description:argos_impex.field_ir_model_import_template__server_ftp_id
 msgid "Server FTP"
 msgstr "Serveur FTP"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The %s parameter with Gmvet ID %s is missing."
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The clinical code is missed!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The clinical code is missed. Line %s"
+msgstr ""
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -175,6 +267,20 @@ msgstr "Serveur FTP"
 #, python-format
 msgid "The code column is missed!"
 msgstr "La colonne Code est introuvable!"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The code column is needed to continue processing this article!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The code column is needed to continue processing this article. Line %s"
+msgstr ""
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -199,6 +305,19 @@ msgstr ""
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
 #, python-format
+msgid "The filtre column is needed to continue processing this article!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid ""
+"The filtre column is needed to continue processing this article. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
 msgid "The is no regroupement to treat!"
 msgstr "Aucun regroupement à traiter"
 
@@ -219,7 +338,49 @@ msgstr "La colonne libelle n'est pas renseignée!"
 #, python-format
 msgid "The libelle is needed to continue processing this article. Line %s"
 msgstr ""
-"Le libellé est nécessaire pour continuer l'import de ce produit. Ligne %s"
+"Le libelle est nécessaire pour continuer l'import de ce produit. Ligne %s"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The name column is missing!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The name is needed to continue processing this contact. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The numero column is missed!"
+msgstr "La colonne numero est introuvable!"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The numero is needed to continue processing this contact. Line %s"
+msgstr "Le numero est nécessaire pour impoerter ce contact. Ligne %s"
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The product code is missed!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The product code is missed. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/res_partner.py:0
+#, python-format
+msgid "The species with Gmvet ID %s is missing."
+msgstr ""
 
 #. module: argos_impex
 #: code:addons/argos_impex/models/product_template.py:0
@@ -235,33 +396,28 @@ msgstr ""
 "Le type est nécessaire pour continuer l'import de ce produit. Ligne %s"
 
 #. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid "The value column is needed to continue processing this article!"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/product_template.py:0
+#, python-format
+msgid ""
+"The value column is needed to continue processing this article. Line %s"
+msgstr ""
+
+#. module: argos_impex
+#: code:addons/argos_impex/models/passport_passport.py:0
+#: code:addons/argos_impex/models/patient_pathology.py:0
+#: code:addons/argos_impex/models/patient_pathology_category.py:0
+#: code:addons/argos_impex/models/patient_weight.py:0
 #: code:addons/argos_impex/models/product_attribute.py:0
 #: code:addons/argos_impex/models/product_template.py:0
 #: code:addons/argos_impex/models/res_partner.py:0
+#: code:addons/argos_impex/models/res_partner_category.py:0
+#: code:addons/argos_impex/models/res_partner_parameter.py:0
 #, python-format
 msgid "There is nothing to import."
 msgstr "Le modèle d'import n'est pas trouvé. Rien à importer!"
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__utilization
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__utilization
-msgid "Utilization"
-msgstr "Utilisation"
-
-#. module: argos_impex
-#: model:ir.model.fields,field_description:argos_impex.field_product_product__waters_content
-#: model:ir.model.fields,field_description:argos_impex.field_product_template__waters_content
-msgid "Waters Content"
-msgstr "Teneur en eau"
-
-#. module: argos_impex
-#: code:addons/argos_impex/models/res_partner.py:0
-#, python-format
-msgid "The numero column is missed!"
-msgstr "La colonne numero est introuvable!"
-
-#. module: argos_impex
-#: code:addons/argos_impex/models/res_partner.py:0
-#, python-format
-msgid "The numero is needed to continue processing this contact. Line %s"
-msgstr "Le numero est nécessaire pour impoerter ce contact. Ligne %s"

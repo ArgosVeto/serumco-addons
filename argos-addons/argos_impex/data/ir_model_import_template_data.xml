@@ -2,6 +2,22 @@
 <odoo>
 	<data>
 
+		<record id="ir_model_import_template_global_data" model="ir.model.import.template">
+			<field name="name">0 - Import Produit - Global</field>
+			<field name="model_id" ref="product.model_product_template"/>
+			<field name="method">schedule_import_process</field>
+			<field name="is_remote_import">True</field>
+			<field name="export_xls">True</field>
+			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_global_data"/>
+			<field name="sequence">-101</field>
+			<field name="new_thread" eval="False"/>
+		</record>
+
+		<record id="ir_model_import_template_global_data" model="ir.model.import.template">
+			<field name="method_args"
+						 eval="{'template_id': ref('argos_impex.ir_model_import_template_global_data'), 'source': 'produit-catalogue-global'}"/>
+		</record>
+
 		<record id="ir_model_import_template_data" model="ir.model.import.template">
 			<field name="name">1 - Import Produit - Général</field>
 			<field name="model_id" ref="product.model_product_template"/>
