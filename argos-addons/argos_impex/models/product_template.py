@@ -84,6 +84,8 @@ class ProductTemplate(models.Model):
                             return self.processing_import_produit_filtre_data(content, template, source)
                         if source == 'stock':
                             return self.processing_import_stock_data(content, template, source)
+                        if source == 'produit-catalogue-global':
+                            return self.processing_import_catalogue_global_data(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()
@@ -207,6 +209,10 @@ class ProductTemplate(models.Model):
             csv_writer.writerow(['Client', 'Article', 'Stock', 'Erreur'])
             for row, error in data:
                 csv_writer.writerow([row.get('Client'), row.get('Article'), row.get('Stock'), error])
+        elif source == 'produit-catalogue-global':
+            for row, error in data:
+                row.append(error)
+                csv_writer.writerow(row)
         content = base64.b64encode(csv_data.getvalue().encode('utf-8'))
         date = str(fields.Datetime.now()).replace(':', '').replace('-', '').replace(' ', '')
         filename = '%s_%s.csv' % (source, date)
@@ -752,6 +758,81 @@ class ProductTemplate(models.Model):
                     quant_obj.with_context(inventory_mode=True).create({'location_id': location.id,
                                                                         'product_id': product.id,
                                                                         'inventory_quantity': 1})
+                lines.append(line_num)
+                self._cr.commit()
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report(source, lines, template, errors, logger)
+        return True
+
+    @api.model
+    def processing_import_catalogue_global_data(self, content=None, template=False, source=False, logger=False):
+        """
+        Processing import catalogue global
+        :param content:
+        :param template:
+        :param source:
+        :param logger:
+        :return:
+        """
+        if not content or not template:
+            return
+        category_obj = self.env['product.category']
+        csvfile = io.StringIO(content)
+        reader = csv.reader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                line_num = reader.line_num
+                if not row[0]:
+                    logger.error(_('The code column is needed to continue processing this article. Line %s') % line_num)
+                    errors.append((row, _('The code column is needed to continue processing this article!')))
+                    continue
+                default_code = row[0]
+                vals = {
+                    'gtin': row[1],
+                    'ean': row[2],
+                    # 'none': row[3], #Code AMM : missing
+                    # 'none': row[4], #Code distributeur article de remplacement : missing
+                    'name': row[5],
+                    'categ_id': category_obj._get_category_by_name(row[6]),
+                    # 'none': row[7], # Famille : missing
+                    # 'none': row[8], # Sous-Famille : missing
+                    # 'none': row[9], # Famille commerciale : missing
+                    # 'none': row[10], # Laboratoire/Fournisseur : missing
+                    # 'none': row[11], # Statut de l'article : missing
+                    # 'none': row[12], # Classe thérapeutique européenne : missing
+                    # 'none': row[13], # Agrément : missing
+                    'weight': row[14],  # Poids unitaire NET
+                    # 'none': row[15], # Sous-unité de revente : missing
+                    # 'none': row[16], # Gestion du stock : missing
+                    # 'none': row[18], # Quantié tarif : missing
+                    'list_price': float(row[19]),  # Prix de l'unitaire hors promotion
+                    # 'none': row[20], # Pris de l'unitaire en promotion : missing
+                    # 'none': row[21], # Date de début promotion : missing
+                    # 'none': row[22], # Date de fin promotion : missing
+                    # 'none': row[23], # Quantié UG : missing
+                    'cip': row[24],  # Code CIP
+                    # 'none': row[25], # Zone libre 1 : missing
+                    # 'none': row[26], # Zone libre 2 : missing
+                    'description_sale': row[5],
+                    # 'description': "",
+                    'sale_ok': True,
+                    'purchase_ok': True,
+                    'type': 'product',
+                }
+                product = self.search([('default_code', '=', default_code)], limit=1)
+                if product:
+                    product.write(vals)
+                else:
+                    vals.update({'default_code': default_code})
+                    self.create(vals)
+                if line_num % 500 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % line_num)
                 lines.append(line_num)
                 self._cr.commit()
             except Exception as e:

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import logging
+from zipfile import ZipFile
+from io import StringIO, BytesIO
 
 from odoo import models, fields, api, _
 
@@ -43,4 +45,9 @@ class ServerFTP(models.Model):
             return product_attr_obj.processing_import_referentiel_filtre_data(datas.decode('utf-8'), template, source, logger)
         if source == 'produit-filtre':
             return product_tmpl_obj.processing_import_produit_filtre_data(datas.decode('utf-8'), template, source, logger)
+        if source == 'produit-catalogue-global':
+            zf = ZipFile(BytesIO(datas), 'r')
+            for fileInfo in zf.infolist():
+                return product_tmpl_obj.processing_import_catalogue_global_data(zf.read(fileInfo).decode('ISO-8859-1'),
+                                                                                template, source, logger)
         return False
