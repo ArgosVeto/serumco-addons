@@ -36,7 +36,7 @@ class ResPartner(models.Model):
     passport_id = fields.Many2one('passport.passport', 'Passport')
     pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id', 'Pathologies')
     weight_ids = fields.One2many('res.partner.weight', 'partner_id', 'Weights')
-    weight = fields.Float('Weight')
+    weight = fields.Float('Weight', compute='_compute_last_weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'patient_id', 'owner_id', 'Owners',
                                  domain="[('contact_type', '=', 'contact')]")
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
@@ -82,3 +82,11 @@ class ResPartner(models.Model):
                 months = abs(relative_age.months)
                 weeks = int(abs(relative_age.days) / 7)
             rec.age_formatted = str(years) + _(' years(s) ') + str(months) + _(' month(s) ') + str(weeks) + _(' week(s)')
+
+    @api.depends('weight_ids')
+    def _compute_last_weight(self):
+        for rec in self:
+            if rec.weight_ids:
+                rec.weight = rec.weight_ids[0].values
+            else:
+                rec.weight = False
