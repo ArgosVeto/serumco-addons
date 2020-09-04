@@ -559,7 +559,7 @@ msgstr "Étiquettes du partenaire"
 #: model:ir.ui.menu,name:argos_contact.passport_passport_menuitem
 #: model_terms:ir.ui.view,arch_db:argos_contact.passport_view_form
 msgid "Passport"
-msgstr ""
+msgstr "Passeport"
 
 #. module: argos_contact
 #: model:ir.model,name:argos_contact.model_passport_passport
