@@ -796,22 +796,23 @@ class ProductTemplate(models.Model):
                 vals = {
                     'gtin': row[1],
                     'ean': row[2],
-                    # 'none': row[3], #Code AMM : missing
+                    'amm': row[3],
                     # 'none': row[4], #Code distributeur article de remplacement : missing
                     'name': row[5],
-                    'categ_id': category_obj._get_category_by_name(row[6]),
+                    # 'categ_id': default All
                     # 'none': row[7], # Famille : missing
                     # 'none': row[8], # Sous-Famille : missing
                     # 'none': row[9], # Famille commerciale : missing
                     # 'none': row[10], # Laboratoire/Fournisseur : missing
                     # 'none': row[11], # Statut de l'article : missing
                     # 'none': row[12], # Classe thérapeutique européenne : missing
-                    # 'none': row[13], # Agrément : missing
+                    'approval': row[13],
                     'weight': row[14],  # Poids unitaire NET
                     # 'none': row[15], # Sous-unité de revente : missing
                     # 'none': row[16], # Gestion du stock : missing
+                    'taxes_id': [(6, 0, self.get_tax_by_amount(row[17]).ids)],
                     # 'none': row[18], # Quantié tarif : missing
-                    'list_price': float(row[19]),  # Prix de l'unitaire hors promotion
+                    'standard_price': float(row[19]),  # Prix de l'unitaire hors promotion
                     # 'none': row[20], # Pris de l'unitaire en promotion : missing
                     # 'none': row[21], # Date de début promotion : missing
                     # 'none': row[22], # Date de fin promotion : missing
@@ -841,3 +842,15 @@ class ProductTemplate(models.Model):
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
+
+    @api.model
+    def get_tax_by_amount(self, amount=0.0):
+        """
+        Get tax by amount
+        :param amount:
+        :return:
+        """
+        return self.env['account.tax'].search([('amount', '=', float(amount)),
+                                               ('type_tax_use', '=', 'sale'),
+                                               ('tax_exigibility', '=', 'on_invoice'),
+                                               ('price_include', '=', True)], limit=1)
