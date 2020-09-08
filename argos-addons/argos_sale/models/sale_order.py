@@ -178,11 +178,31 @@ class SaleOrder(models.Model):
             partner = order.partner_id
             partner_shipping = order.partner_shipping_id
             for line in order.order_line:
-                csv_writer.writerow([order.name, partner.email or '', partner.name, partner_shipping.street or '',
-                                     partner_shipping.street2 or '', partner_shipping.zip or '', partner_shipping.city or '',
-                                     partner.phone or '', order.operating_unit_id.code, baseurl, '', '', '', '', '',
-                                     line.product_id.default_code, line.product_uom_qty, order.carrier_id.name or '', '', '',
-                                     partner.ref or '', '', '', '', ''])
+                csv_writer.writerow([order.name,
+                                     partner.email or '',
+                                     partner.name,
+                                     partner_shipping.street or '',
+                                     partner_shipping.street2 or '',
+                                     partner_shipping.zip or '',
+                                     partner_shipping.city or '',
+                                     partner.phone or partner.mobile or '',
+                                     order.operating_unit_id.code,
+                                     baseurl,
+                                     '',
+                                     '',
+                                     '',
+                                     'CDK',
+                                     '',
+                                     line.product_id.default_code,
+                                     line.product_uom_qty,
+                                     '',
+                                     'N',
+                                     '',
+                                     partner.ref or '',
+                                     '',
+                                     '',
+                                     '',
+                                     ''])
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
             filename = '%s%sV%s.WBV.csv' % (server.filename, order.operating_unit_id.code, sequence)
             server.store_data(filename, csv_data)
