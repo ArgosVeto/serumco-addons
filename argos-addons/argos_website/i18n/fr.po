@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-03 13:01+0000\n"
-"PO-Revision-Date: 2020-09-03 13:01+0000\n"
+"POT-Creation-Date: 2020-09-08 11:53+0000\n"
+"PO-Revision-Date: 2020-09-08 11:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,11 @@ msgid ""
 "      \n"
 "      "
 msgstr ""
+"\n"
+"        \n"
+"          <span>Un avis a été posté sur votre site web pour <a href=${object.get_url()}>${object.res_name}</a> </span>\n"
+"      \n"
+"      "
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
@@ -31,6 +36,8 @@ msgid ""
 "<span class=\"o_text_overflow float-left\" "
 "style=\"color:green\">Published</span>"
 msgstr ""
+"<span class=\"o_text_overflow float-left\" "
+"style=\"color:green\">Publié</span>"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_kanban_inherit
@@ -38,6 +45,8 @@ msgid ""
 "<span class=\"o_text_overflow float-left\" "
 "style=\"color:red\">Unpublished</span>"
 msgstr ""
+"<span class=\"o_text_overflow float-left\" style=\"color:red\">Non "
+"publié</span>"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.product_template_form_view_inherit
@@ -50,6 +59,11 @@ msgid "Filter visible in Web"
 msgstr "Filtre visible sur le Web"
 
 #. module: argos_website
+#: model:ir.model.fields,field_description:argos_website.field_product_template_attribute_line__is_attribute_visible
+msgid "Filter visible in web"
+msgstr "Filtre visible sur le Web"
+
+#. module: argos_website
 #: model:ir.model.fields,field_description:argos_website.field_product_product__is_new
 #: model:ir.model.fields,field_description:argos_website.field_product_template__is_new
 msgid "Is New"
@@ -58,10 +72,11 @@ msgstr "Nouveau"
 #. module: argos_website
 #: model:ir.model.fields,field_description:argos_website.field_rating_rating__is_published
 msgid "Is published"
-msgstr ""
+msgstr "Est publié"
 
 #. module: argos_website
 #: model:ir.model.fields,help:argos_website.field_product_attribute__is_attribute_visible
+#: model:ir.model.fields,help:argos_website.field_product_template_attribute_line__is_attribute_visible
 msgid "It indicates that current attribute is visible in shop filter."
 msgstr ""
 "Ceci indique si l'attribut est visible dans les filtres du boutique sur le "
@@ -81,6 +96,11 @@ msgstr "Caractéristique de l'article"
 #: model:ir.model,name:argos_website.model_product_template
 msgid "Product Template"
 msgstr "Modèle d'article"
+
+#. module: argos_website
+#: model:ir.model,name:argos_website.model_product_template_attribute_line
+msgid "Product Template Attribute Line"
+msgstr "Ligne d'attribut du modèle d'article"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
