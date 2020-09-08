@@ -23,7 +23,10 @@ class ResPartner(models.Model):
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):
-        partner = self.search([('name', '=', name), ('phone', '=', phone)], limit=1)
+        domain = [('name', '=', name)]
+        if phone:
+            domain.extend([('phone', '=', phone)])
+        partner = self.search(domain, limit=1)
         if partner:
             return partner
         return self.create({'name': name, 'phone': phone})
