@@ -9,6 +9,7 @@
         <field name="department_id" position="before">
           <field name="registration_number"/>
           <field name="order_number"/>
+          <field name="operating_unit_ids" widget="many2many_tags"/>
         </field>
         <field name="departure_reason" position="after">
           <field name="leave_date"/>
