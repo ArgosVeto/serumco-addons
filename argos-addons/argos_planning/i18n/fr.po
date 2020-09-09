@@ -213,7 +213,7 @@ msgstr "Clinique"
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__patient_id
 msgid "Patient"
-msgstr "Patient"
+msgstr "Animal"
 
 #. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__phone

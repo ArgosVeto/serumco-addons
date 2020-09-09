@@ -242,7 +242,7 @@ msgstr "Abonnés (canaux)"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Abonnés (Patient)"
+msgstr "Abonnés (Animaux)"
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_gender_action
@@ -581,7 +581,7 @@ msgstr "Pathologies"
 #. module: argos_contact
 #: model:ir.model,name:argos_contact.model_pathology_category
 msgid "Pathology Category"
-msgstr ""
+msgstr "Catégorie de pathologie"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__name
@@ -617,7 +617,7 @@ msgstr "Pathologie"
 #. module: argos_contact
 #: model:ir.model,name:argos_contact.model_res_partner_weight
 msgid "Patient Weight"
-msgstr ""
+msgstr "Poids de l'animal"
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_action
@@ -627,7 +627,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form_base_inherit
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_tree
 msgid "Patients"
-msgstr ""
+msgstr "Animaux"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__patient_ids
