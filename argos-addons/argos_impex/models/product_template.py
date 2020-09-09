@@ -116,7 +116,6 @@ class ProductTemplate(models.Model):
                     errors.append((row, _('The libelle column is missed!')))
                     continue
                 vals = {
-                    'default_code': row.get('code'),
                     'description_sale': row.get('libelle'),
                     'description': row.get('presentation'),
                     'weight': row.get('poids'),
@@ -127,23 +126,17 @@ class ProductTemplate(models.Model):
                     'sale_ok': True,
                     'purchase_ok': True,
                     'type': 'product',
-                    'is_published': True,
-                }
+                    'is_published': True}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        product.write(vals)
-                    else:
-                        product = self.create(vals)
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
+                if product:
+                    product.write(vals)
                     product.manage_supinfo(row)
                     lines.append(reader.line_num)
                     self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                else:
+                    errors.append((row, _('No product with code %s found!') % row.get('code')))
+                if reader.line_num % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
