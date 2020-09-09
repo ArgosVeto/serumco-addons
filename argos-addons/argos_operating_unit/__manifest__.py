@@ -16,6 +16,7 @@
     'data': [
         # data
         'data/sequence_data.xml',
+        'data/res_config_parameter_data.xml',
         # security
         'security/ir.model.access.csv',
         # views

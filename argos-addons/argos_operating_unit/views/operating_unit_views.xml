@@ -25,6 +25,7 @@
               <group>
                 <field name="partner_id" required="0" readonly="1" attrs="{'invisible': [('id', '=', False)]}"/>
                 <field name="company_id" groups="base.group_multi_company"/>
+                <field name="centravet_code"/>
                 <field name="code"/>
                 <label for="street" string="Address"/>
                 <div class="o_address_format">
@@ -55,6 +56,13 @@
                 <group string="Digital services offered by the clinic">
                   <field name="click_and_collect"/>
                   <field name="online_appointment_booking"/>
+                </group>
+              </page>
+              <page name="centravet_info" string="Centravet Informations">
+                <group>
+                  <group>
+                    <field name="password" password="True"/>
+                  </group>
                 </group>
               </page>
             </notebook>
