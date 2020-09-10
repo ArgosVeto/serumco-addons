@@ -11,7 +11,7 @@
     'description': '',
     'depends': ['l10n_fr', 'product', 'contacts', 'operating_unit', 'documents', 'maintenance',
                 'website_crm_partner_assign', 'partner_firstname', 'jitsi_meet_integration', 'prt_mail_messages_pro',
-                'arkeup_saop_wsdl_log'],
+                'arkeup_saop_wsdl_log', 'smile_anonymization'],
     'data': [
         # data
         'data/res_users_data.xml',
