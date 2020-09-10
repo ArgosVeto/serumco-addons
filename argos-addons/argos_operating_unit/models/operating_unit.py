@@ -31,6 +31,8 @@ class OperatingUnit(models.Model):
     certification_ids = fields.Many2many('operating.unit.certification', 'operating_unit_certification_rel',
                                          'operating_unit_id', 'certification_id', 'Certifications')
     name = fields.Char(related='partner_id.name', inherited=True, readonly=False)
+    centravet_code = fields.Char('Centravet Code')
+    password = fields.Char('Password')
 
     def toggle_active(self):
         self.ensure_one()
