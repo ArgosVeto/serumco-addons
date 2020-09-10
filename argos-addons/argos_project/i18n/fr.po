@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-11 13:03+0000\n"
+"PO-Revision-Date: 2020-09-11 13:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_project
+#: model:ir.model,name:argos_project.model_mail_activity
+msgid "Activity"
+msgstr "Activité"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Deadline"
+msgstr "Date limite"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: model:ir.model.fields,field_description:argos_project.field_mail_activity__done
+#, python-format
+msgid "Done"
+msgstr "Fait"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Log"
+msgstr "Log"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Mail"
+msgstr "Mail"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Mark as done"
+msgstr "Marqué comme fait"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Preview"
+msgstr "Aperçu"
+
+#. module: argos_project
+#: model:ir.model.fields,field_description:argos_project.field_mail_activity__product_id
+msgid "Product"
+msgstr "Article"
+
+#. module: argos_project
+#: model:ir.model.fields,field_description:argos_project.field_mail_activity__product_quantity
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: argos_project
+#: code:addons/argos_project/models/mail_activity.py:0
+#, python-format
+msgid "Schedule an Activity"
+msgstr "Planifier une activité"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Send Now"
+msgstr "Envoyer maintenant"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "Upload file"
+msgstr "Uploader un fichier"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: argos_project
+#. openerp-web
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#: code:addons/argos_project/static/src/xml/activity_dropdown.xml:0
+#, python-format
+msgid "or"
+msgstr "ou"
+
+#. module: argos_project
+#: code:addons/argos_project/models/mail_activity.py:6
+#, python-format
+msgid "The quantity of a product cannot be less than 0."
+msgstr "La quantité d'un produit ne peut pas être inférieure à 0."
