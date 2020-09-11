@@ -184,8 +184,9 @@
 			<field name="model_id" ref="base.model_res_partner"/>
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
-			<field name="is_remote_import">False</field>
+			<field name="is_remote_import">True</field>
 			<field name="sequence">-90</field>
+			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_contact_data"/>
 		</record>
 
 		<record id="ir_model_import_res_partner_template_data" model="ir.model.import.template">
@@ -309,8 +310,9 @@
 			<field name="model_id" ref="base.model_res_partner"/>
 			<field name="method">schedule_import_process</field>
 			<field name="export_xls">True</field>
-			<field name="is_remote_import">False</field>
+			<field name="is_remote_import">True</field>
 			<field name="sequence">-81</field>
+			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_patient_data"/>
 		</record>
 
 		<record id="ir_model_import_res_partner_patient_template_data" model="ir.model.import.template">
@@ -389,12 +391,10 @@
 		</record>
 
 		<function name="create_cron" model="ir.model.import.template"
-							eval="[[ref('ir_model_enriched_product_import_template_data'),ref('ir_model_regulation_import_template_data'),
-                      ref('ir_model_regroupment_import_template_data'),ref('ir_model_documentation_import_template_data'),
-                      ref('ir_model_association_import_template_data'),ref('ir_model_import_template_list_price_data'),
-                      ref('ir_model_import_template_data'),ref('ir_model_referentiel_filtre_import_template_data'),
-                      ref('ir_model_produit_filtre_import_template_data'),ref('ir_model_import_template_stock_data'),
-                      ref('ir_model_import_res_partner_template_data')]]"/>
-
+							eval="[[ref('ir_model_import_template_data'),ref('ir_model_import_template_list_price_data'),
+											ref('ir_model_import_template_stock_data'),ref('ir_model_association_import_template_data'),
+											ref('ir_model_documentation_import_template_data'),ref('ir_model_regroupment_import_template_data'),
+											ref('ir_model_regulation_import_template_data'),ref('ir_model_enriched_product_import_template_data'),
+											ref('ir_model_referentiel_filtre_import_template_data'),ref('ir_model_produit_filtre_import_template_data')]]"/>
 	</data>
 </odoo>

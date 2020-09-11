@@ -39,17 +39,23 @@ class ResPartner(models.Model):
                 self = self.with_env(self.env(cr=new_cr))
                 logger = self._context['logger']
                 try:
+                    source = kwargs.get('source')
                     template = self.env['ir.model.import.template'].browse(kwargs['template_id'])
-                    if not template.import_file:
+                    if not template:
                         logger.error(_('There is nothing to import.'))
                         return True
-                    content = base64.decodebytes(template.import_file).decode('utf-8-sig')
-                    if kwargs.get('source', False) == 'contacts':
-                        return self.processing_import_contact(content, template, logger)
-                    if kwargs.get('source', False) == 'patients':
-                        return self.processing_import_patient(content, template, logger)
-                    if kwargs.get('source', False) == 'owners':
-                        return self.processing_import_patient_relationnal(content, template, logger)
+                    if template.is_remote_import:
+                        if not template.server_ftp_id:
+                            return
+                        return template.server_ftp_id.with_context(template=template.id, logger=logger, source=source).retrieve_data()
+                    elif template.import_file:
+                        content = base64.decodebytes(template.import_file).decode('utf-8-sig')
+                        if source == 'contacts':
+                            return self.processing_import_contact(content, template, logger)
+                        if source == 'patients':
+                            return self.processing_import_patient(content, template, logger)
+                        if source == 'owners':
+                            return self.processing_import_patient_relationnal(content, template, logger)
                 except Exception as e:
                     logger.error(repr(e))
                     new_cr.rollback()

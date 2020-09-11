@@ -79,5 +79,19 @@
       <field name="filename">/ARGOS/CatalogueComplet/GTIN.zip</field>
     </record>
 
+    <record id="server_ftp_argos_contact_data" model="server.ftp">
+      <field name="url">ftp1.centravet.net</field>
+      <field name="login">ARGOS</field>
+      <field name="password">k1Ifi0qsVZqPnj39hBnd</field>
+      <field name="filename">/ARGOS/contacts/clients.csv</field>
+    </record>
+
+    <record id="server_ftp_argos_patient_data" model="server.ftp">
+      <field name="url">ftp1.centravet.net</field>
+      <field name="login">ARGOS</field>
+      <field name="password">k1Ifi0qsVZqPnj39hBnd</field>
+      <field name="filename">/ARGOS/contacts/patients.csv</field>
+    </record>
+
   </data>
 </odoo>

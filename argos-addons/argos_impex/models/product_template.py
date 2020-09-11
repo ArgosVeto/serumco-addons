@@ -63,7 +63,7 @@ class ProductTemplate(models.Model):
                     if template.is_remote_import:
                         if not template.server_ftp_id:
                             return
-                        template.server_ftp_id.with_context(template=template.id, logger=logger, source=source).retrieve_data()
+                        return template.server_ftp_id.with_context(template=template.id, logger=logger, source=source).retrieve_data()
                     elif template.import_file:
                         content = base64.decodebytes(template.import_file).decode('utf-8-sig')
                         if source == 'produit-general':

@@ -22,6 +22,7 @@ class ServerFTP(models.Model):
         product_tmpl_obj = self.env['product.template']
         product_attr_obj = self.env['product.attribute']
         model_import_obj = self.env['ir.model.import.template']
+        partner_obj = self.env['res.partner']
         template = model_import_obj.browse(self._context.get('template'))
         logger = self._context.get('logger')
         source = self._context.get('source')
@@ -50,4 +51,8 @@ class ServerFTP(models.Model):
             for fileInfo in zf.infolist():
                 return product_tmpl_obj.processing_import_catalogue_global_data(zf.read(fileInfo).decode('ISO-8859-1'),
                                                                                 template, source, logger)
+        if source == 'contacts':
+            return partner_obj.processing_import_contact(datas.decode('utf-8'), template, logger)
+        if source == 'patients':
+            return partner_obj.processing_import_patient(datas.decode('utf-8'), template, logger)
         return False
