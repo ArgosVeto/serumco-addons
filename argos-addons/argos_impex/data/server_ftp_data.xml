@@ -93,5 +93,12 @@
       <field name="filename">/ARGOS/contacts/patients.csv</field>
     </record>
 
+    <record id="server_ftp_argos_global_data_mgtin" model="server.ftp">
+      <field name="url">ftp1.centravet.net</field>
+      <field name="login">ARGOS</field>
+      <field name="password">k1Ifi0qsVZqPnj39hBnd</field>
+      <field name="filename">/ARGOS/CatalogueComplet/MGTIN.zip</field>
+    </record>
+
   </data>
 </odoo>
