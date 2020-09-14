@@ -4,7 +4,8 @@
 import csv
 import io
 import base64
-
+from datetime import datetime
+import re
 import xml.etree.ElementTree as ET
 
 from odoo import models, fields, registry, api, _
@@ -760,6 +761,43 @@ class ProductTemplate(models.Model):
         self.manage_import_report(source, lines, template, errors, logger)
         return True
 
+    def manage_supplier_index_gtin(self, row):
+        if not row or len(row) < 17:
+            return
+        lenrow = len(row)
+        if lenrow > 10 and row[10].strip():
+            supplier = self.env['res.partner']._get_partner_by_name(row[10])  # Laboratoire/Fournisseur
+            supplier_info_vals = {
+                'name': supplier.id,
+                'min_qty': float(row[18]),  # Quantié tarif
+                'is_import': True,
+                'price': float(row[19]),  # Prix de l'unitaire hors promotion
+            }
+            supp_info = self.seller_ids.filtered(lambda si: si.name.id == supplier.id and not si.is_discount and si.is_import)
+            if supp_info:
+                supp_info.write(supplier_info_vals)
+            else:
+                self.write({'seller_ids': [(0, 0, supplier_info_vals)]})
+            if lenrow > 20 and row[20].strip():
+                priceprom = float(re.sub(r'^\.', r'0.', row[20].strip()))
+                if priceprom:
+                    supplier_info_vals_prom = {
+                        'name': supplier.id,
+                        'is_discount': True,
+                        'is_import': True,
+                        'min_qty': float(row[18]),  # Quantié tarif
+                        'price': float(priceprom),  # Pris de l'unitaire en promotion
+                    }
+                    if lenrow > 21 and len(row[21]) == 8:
+                        supplier_info_vals_prom['date_start'] = datetime.strptime(row[21], '%Y%m%d')
+                    if lenrow > 22 and len(row[22]) == 8:
+                        supplier_info_vals_prom['date_end'] = datetime.strptime(row[22], '%Y%m%d')
+                    supp_info = self.seller_ids.filtered(lambda si: si.name.id == supplier.id and si.is_discount and si.is_import)
+                    if supp_info:
+                        supp_info.write(supplier_info_vals_prom)
+                    else:
+                        self.write({'seller_ids': [(0, 0, supplier_info_vals_prom)]})
+
     @api.model
     def processing_import_catalogue_global_data(self, content=None, template=False, source=False, logger=False):
         """
@@ -824,7 +862,8 @@ class ProductTemplate(models.Model):
                     product.write(vals)
                 else:
                     vals.update({'default_code': default_code})
-                    self.create(vals)
+                    product = self.create(vals)
+                product.manage_supplier_index_gtin(row)
                 if line_num % 500 == 0:
                     logger.info(_('Import in progress ... %s lines treated.') % line_num)
                 lines.append(line_num)
