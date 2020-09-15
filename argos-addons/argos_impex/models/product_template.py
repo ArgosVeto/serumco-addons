@@ -87,6 +87,8 @@ class ProductTemplate(models.Model):
                             return self.processing_import_stock_data(content, template, source)
                         if source == 'produit-catalogue-global':
                             return self.processing_import_catalogue_global_data(content, template, source)
+                        if source == 'product-tarifs':
+                            return self.processing_import_prices_centravet_product(content, template, source)
                 except Exception as e:
                     logger.error(repr(e))
                     self._cr.rollback()
@@ -886,3 +888,63 @@ class ProductTemplate(models.Model):
                                                ('type_tax_use', '=', 'sale'),
                                                ('tax_exigibility', '=', 'on_invoice'),
                                                ('price_include', '=', True)], limit=1)
+
+    @api.model
+    def processing_import_prices_centravet_product(self, content=None, template=False, source=False, logger=False):
+        """
+        :param content:
+        :param template:
+        :return:
+        """
+        if not content or not template:
+            return
+        csvfile = io.StringIO(content)
+        reader = csv.DictReader(csvfile, delimiter=';')
+        logger = logger or self._context['logger']
+        errors = []
+        lines = []
+        for row in reader:
+            try:
+                if not row.get('Référence'):
+                    logger.error(_('The Référence is needed to continue processing this article. Line %s') % reader.line_num)
+                    errors.append((row, _('The code column is missed!')))
+                    continue
+                if not row.get('Libellé interne'):
+                    logger.error(_('The Libellé interne is needed to continue processing this article. Line %s') % reader.line_num)
+                    errors.append((row, _('The libelle column is missed!')))
+                    continue
+                product = self.search([('default_code', '=', row.get('Référence'))], limit=1)
+                if product:
+                    vals = {
+                        'name': row.get('Libellé interne'),
+                        'description_sale': row.get('Libellé public'),
+                        'taxes_id': [(6, 0, self.get_tax_by_amount(row.get('TVA').replace(',', ".")).ids)],
+                        'list_price': row.get('Prix TTC').replace(',', "."),
+                    }
+                    if row.get('Compte comptable'):
+                        account = self.env['account.account'].get_account_by_code(row.get('Compte comptable'))
+                        if account:
+                            vals["property_account_income_id"] = account.id
+                    product.write(vals)
+                    lines.append(reader.line_num)
+                    self._cr.commit()
+                else:
+                    logger.info(_('Code %s in line %s does not exist') % (row.get('Référence'), reader.line_num))
+                if reader.line_num % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
+            except Exception as e:
+                logger.error(repr(e))
+                errors.append((row, repr(e)))
+                self._cr.rollback()
+        self.manage_import_report(source, lines, template, errors, logger)
+        return True
+
+    @api.model
+    def get_account_by_code(self, code):
+        """
+        Get account by code
+        :param code: code of account
+        :return: account.account
+        """
+        return self.env['account.account'].search([('code', '=', code)], limit=1)
+
