@@ -20,6 +20,8 @@
           <sheet>
             <group>
               <field name="name"/>
+              <field name="is_canvas" invisible="1"/>
+              <field name="chapters" attrs="{'invisible': [('is_canvas', '=', False)]}"/>
             </group>
           </sheet>
         </form>
@@ -28,15 +30,34 @@
 
     <record id="action_open_consultation_type" model="ir.actions.act_window">
       <field name="name">Consultation types</field>
+      <field name="type">ir.actions.act_window</field>
       <field name="res_model">consultation.type</field>
       <field name="view_mode">tree,form</field>
+      <field name="domain">[('is_canvas', '=', False)]</field>
+      <field name="context">{'default_is_canvas': False}</field>
+    </record>
+
+    <record id="action_open_consultation_canvas" model="ir.actions.act_window">
+      <field name="name">Consultation Canvas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">consultation.type</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('is_canvas', '=', True)]</field>
+      <field name="context">{'default_is_canvas': True}</field>
     </record>
 
     <menuitem
           id="menu_settings_consultation_type"
           name="Consultation types"
-          parent="planning.planning_menu_settings"
-          sequence="32"
+          parent="sale.menu_sale_config"
+          sequence="2"
           action="action_open_consultation_type"/>
+
+    <menuitem
+          id="menu_settings_consultation_canvas"
+          name="Consultation Canvas"
+          parent="sale.menu_sale_config"
+          sequence="2"
+          action="action_open_consultation_canvas"/>
   </data>
 </odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+  <record id="project_task_result_view_form" model="ir.ui.view">
+    <field name="name">project.task.result.view.form</field>
+    <field name="model">project.task</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <group>
+              <field name="task_id" invisible="1"/>
+              <field name="equipment_id"/>
+              <field name="result_date"/>
+            </group>
+            <group>
+              <field name="order_id" invisible="1"/>
+              <field name="patient_id"/>
+              <field name="species_id"/>
+            </group>
+          </group>
+          <notebook>
+            <page name="result_lines" string="Result Lines">
+              <field name="result_line_ids"/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  </data>
+</odoo>

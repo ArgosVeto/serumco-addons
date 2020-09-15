@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<odoo>
+  <template id="tooltip_assets_backend" name="tooltip_assets_backend" inherit_id="web.assets_backend">
+    <xpath expr="//script[last()]" position="after">
+      <script type="text/javascript" src="/argos_sale/static/src/js/tooltips.js"></script>
+    </xpath>
+  </template>
+</odoo>

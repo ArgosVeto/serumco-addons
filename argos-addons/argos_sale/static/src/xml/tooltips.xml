@@ -1,0 +1,38 @@
+<templates>
+  <div t-name="argos_sale.Tooltips">
+    <div>
+      <t t-if="widget.data.is_critical_antibiotic or widget.data.has_promotion">
+        <a tabindex="0" class="fa fa-info-circle text-primary"/>
+      </t>
+    </div>
+  </div>
+
+  <div t-name="argos_sale.TooltipsPopOver">
+    <table t-if="data.is_critical_antibiotic">
+      <tbody>
+        <tr>
+          <td>
+            <t t-esc="data.tooltip_text"></t>
+          </td>
+          <td/>
+        </tr>
+      </tbody>
+    </table>
+    <table t-if="data.has_promotion">
+      <tbody>
+        <tr>
+          <td>
+            <strong>Promotions</strong>
+          </td>
+        </tr>
+        <t t-foreach="data.program_list" t-as="program">
+          <tr>
+            <td>
+              -<span t-esc="program.name"/>
+            </td>
+          </tr>
+        </t>
+      </tbody>
+    </table>
+  </div>
+</templates>

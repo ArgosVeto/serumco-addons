@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="sale_order_view_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.view.form.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="argos_sale.consultation_view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='analysis_lines']" position="inside">
+          <field name="task_ids" context="{'default_task_type': 'analysis'}">
+            <tree editable="bottom" default_order="id asc">
+              <field name="task_type" invisible="1"/>
+              <field name="task_id" invisible="1"/>
+              <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="equipment_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="note"/>
+              <field name="state" invisible="1"/>
+              <button type="object" name="action_launch_analysis" string="Launch"
+                      attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+              <button type="object" name="action_open_result" string="View result" icon="fa-list-ul"
+                      attrs="{'invisible': [('state', '!=', 'done')]}"/>
+            </tree>
+            <form>
+              <group>
+                <field name="task_type" invisible="1"/>
+                <field name="task_id" invisible="1"/>
+                <field name="name"/>
+                <field name="equipment_id"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <field name="note"/>
+              </group>
+            </form>
+          </field>
+        </xpath>
+        <xpath expr="//page[@name='imagery_lines']" position="inside">
+          <field name="imagery_task_ids" context="{'default_task_type': 'imagery'}">
+            <tree editable="bottom" default_order="id asc">
+              <field name="task_type" invisible="1"/>
+              <field name="task_id" invisible="1"/>
+              <field name="state" invisible="1"/>
+              <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="equipment_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <button type="object" name="action_launch_analysis" string="Launch"
+                      attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+              <field name="imagery" widget="image" options="{'preview_image': 'image_128', 'size': [80, 80]}"
+                     string="Result"/>
+              <field name="comments"/>
+            </tree>
+            <form>
+              <group>
+                <field name="task_type" invisible="1"/>
+                <field name="task_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="equipment_id"/>
+              </group>
+              <group>
+                <field name="imagery" widget="image" string="Result"/>
+                <field name="comments"/>
+              </group>
+            </form>
+          </field>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

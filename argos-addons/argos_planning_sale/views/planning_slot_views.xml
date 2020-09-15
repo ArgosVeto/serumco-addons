@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="planning_slot_view_form_inherit" model="ir.ui.view">
+      <field name="name">planning.slot.view.form.inherit</field>
+      <field name="model">planning.slot</field>
+      <field name="inherit_id" ref="argos_planning.planning_slot_view_form_inherit"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+          <button name="action_view_orders" type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                  attrs="{'invisible': [('order_count', '&lt;', 1)]}">
+            <field name="order_count" widget="statinfo" string="Consultation(s)"/>
+          </button>
+        </xpath>
+        <button name="button_progress" position="attributes">
+          <attribute name="attrs">{'invisible': ['|', ('state', 'in', ['draft', 'validated']), ('order_count', '&gt;',
+            0)]}
+          </attribute>
+        </button>
+      </field>
+    </record>
+  </data>
+</odoo>

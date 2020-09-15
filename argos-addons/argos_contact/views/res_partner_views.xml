@@ -1,236 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
+  <data>
 
-		<record id="res_partner_view_form_base_inherit" model="ir.ui.view">
-			<field name="name">res.partner.view.form.base.inherit</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="base.view_partner_form"/>
-			<field name="arch" type="xml">
-				<xpath expr="//page[1]" position="before">
-					<page name="patients" string="Patients" autofocus="autofocus">
-						<field name="patient_ids" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
+    <record id="res_partner_view_form_base_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.base.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[1]" position="before">
+          <page name="patients" string="Patients" autofocus="autofocus">
+            <field name="patient_ids" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
                    'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
-					</page>
-				</xpath>
-				<field name="type" position="before">
-					<field name="contact_category"/>
-				</field>
-			</field>
-		</record>
+          </page>
+        </xpath>
+        <field name="type" position="before">
+          <field name="contact_category"/>
+        </field>
+      </field>
+    </record>
 
-		<record id="res_partner_view_form_inherit" model="ir.ui.view">
-			<field name="name">res.partner.view.form.inherit</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="argos_base.res_partner_view_form_inherit"/>
-			<field name="arch" type="xml">
-				<group name="communication" position="after">
-					<group>
-						<field name="origin_id"/>
-					</group>
-				</group>
+    <record id="res_partner_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="argos_base.res_partner_view_form_inherit"/>
+      <field name="arch" type="xml">
+        <group name="communication" position="after">
+          <group>
+            <field name="origin_id"/>
+          </group>
+        </group>
 
-			</field>
-		</record>
+      </field>
+    </record>
 
-		<record id="res_partner_view_tree" model="ir.ui.view">
-			<field name="name">res.patient.view.tree</field>
-			<field name="model">res.partner</field>
-			<field name="priority">100</field>
-			<field name="arch" type="xml">
-				<tree string="Patients">
-					<field name="name"/>
-					<field name="species_id"/>
-					<field name="owner_ids" widget="many2many_tags"/>
-				</tree>
-			</field>
-		</record>
+    <record id="res_partner_view_tree" model="ir.ui.view">
+      <field name="name">res.patient.view.tree</field>
+      <field name="model">res.partner</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <tree string="Patients">
+          <field name="name"/>
+          <field name="species_id"/>
+          <field name="owner_ids" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
 
-		<record id="res_partner_view_form" model="ir.ui.view">
-			<field name="name">res.patient.view.form</field>
-			<field name="model">res.partner</field>
-			<field name="priority">100</field>
-			<field name="arch" type="xml">
-				<form string="Patient">
-					<sheet>
-						<div class="oe_button_box" name="button_box">
-							<button class="oe_stat_button" icon="fa-folder-open" type="object" name="action_open_sales">
-								<field name="sale_order_count" widget="statinfo"/>
-							</button>
-						</div>
-						<field name="image" widget="image" class="oe_avatar"/>
-						<div class="oe_title">
-							<h1>
-								<field name="name" required="1"/>
-							</h1>
-						</div>
-						<group>
-							<group>
-								<field name="active" invisible="1"/>
-								<field name="species_id"/>
-								<field name="race_id" context="{'default_type': 'race'}"/>
-								<field name="gender_id" context="{'default_type': 'gender'}"/>
-								<field name="robe_id" context="{'default_type': 'robe'}"/>
-								<field name="birthdate_date"/>
-								<field name="age_formatted"/>
-								<field name="weight"/>
-								<field name="is_sterilized"/>
-								<field name="is_reproductive"/>
-								<field name="is_dangerous"/>
-								<field name="tattoo_location_id" context="{'default_type': 'tattoo'}"/>
-								<field name="tattoo_date"/>
-								<field name="chip_identification"/>
-								<field name="chip_location_id" context="{'default_type': 'chip'}"/>
-								<field name="chip_date"/>
-							</group>
-							<group>
-								<field name="passport_id"/>
-								<field name="issue_date"/>
-								<field name="location"/>
-								<field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>
-								<field name="diet_ids" widget="many2many_tags" context="{'default_type': 'diet'}"/>
-								<field name="pathology_ids" widget="many2many_tags"/>
-								<field name="is_dead"/>
-								<field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
-								<field name="death_reason" attrs="{'invisible': [('is_dead', '=', False)]}"/>
-								<field name="is_missing"/>
-								<field name="missing_date" attrs="{'invisible': [('is_missing', '=', False)]}"/>
-							</group>
-						</group>
-						<notebook>
-							<page string="Owners">
-								<field name="owner_ids"/>
-							</page>
-							<page string="Medical Events"/>
-							<page string="Weights">
-								<field name="weight_ids" nolabel="1">
-									<tree>
-										<field name="date"/>
-										<field name="values"/>
-										<field name="source"/>
-									</tree>
-								</field>
-							</page>
-							<page string="Surgery"/>
-							<page string="Vaccination"/>
-							<page string="Hospitalization"/>
-							<page string="Analysis"/>
-							<page string="Imaging"/>
-							<page string="Order"/>
-							<page string="Insurance">
-								<group>
-									<group>
-										<field name="insurance_id" context="{'default_type':'insurance'}" placeholder="Insurance ..."/>
-									</group>
-								</group>
-								<group>
-									<group>
-										<field name="policy_insurance" nolabel="1" placeholder="Policy insurance N° ..."/>
-										<field name="date_insurance_start"/>
-										<field name="date_insurance_end"/>
-									</group>
-								</group>
-							</page>
-							<page string="Internal Notes">
-								<group>
-									<group>
-										<field name="comment"/>
-									</group>
-								</group>
-							</page>
-						</notebook>
-					</sheet>
-					<div class="oe_chatter" name="studio_div_8fe9a2">
-						<field name="message_follower_ids" widget="mail_followers"/>
-						<field name="activity_ids" widget="mail_activity"/>
-						<field name="message_ids" widget="mail_thread"/>
-					</div>
-				</form>
-			</field>
-		</record>
+    <record id="res_partner_view_form" model="ir.ui.view">
+      <field name="name">res.patient.view.form</field>
+      <field name="model">res.partner</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <form string="Patient">
+          <sheet>
+            <div class="oe_button_box" name="button_box"/>
+            <field name="image" widget="image" class="oe_avatar"/>
+            <div class="oe_title">
+              <h1>
+                <field name="name" required="1"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="active" invisible="1"/>
+                <field name="species_id"/>
+                <field name="race_id" context="{'default_type': 'race'}"/>
+                <field name="gender_id" context="{'default_type': 'gender'}"/>
+                <field name="robe_id" context="{'default_type': 'robe'}"/>
+                <field name="birthdate_date"/>
+                <field name="age_formatted"/>
+                <field name="weight"/>
+                <field name="is_sterilized"/>
+                <field name="is_reproductive"/>
+                <field name="is_dangerous"/>
+                <field name="tattoo_location_id" context="{'default_type': 'tattoo'}"/>
+                <field name="tattoo_date"/>
+                <field name="chip_identification"/>
+                <field name="chip_location_id" context="{'default_type': 'chip'}"/>
+                <field name="chip_date"/>
+              </group>
+              <group>
+                <field name="passport_id"/>
+                <field name="issue_date"/>
+                <field name="location"/>
+                <field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>
+                <field name="diet_ids" widget="many2many_tags" context="{'default_type': 'diet'}"/>
+                <field name="pathology_ids" widget="many2many_tags"/>
+                <field name="is_dead"/>
+                <field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
+                <field name="death_reason" attrs="{'invisible': [('is_dead', '=', False)]}"/>
+                <field name="is_missing"/>
+                <field name="missing_date" attrs="{'invisible': [('is_missing', '=', False)]}"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Owners">
+                <field name="owner_ids"/>
+              </page>
+              <page name="medical_events" string="Medical Events"/>
+              <page string="Weights">
+                <field name="weight_ids" nolabel="1">
+                  <tree>
+                    <field name="date"/>
+                    <field name="values"/>
+                    <field name="source"/>
+                  </tree>
+                </field>
+              </page>
+              <page string="Surgery"/>
+              <page string="Vaccination"/>
+              <page string="Hospitalization"/>
+              <page name="analysis" string="Analysis"/>
+              <page name="imagery" string="Imagery"/>
+              <page string="Order"/>
+              <page string="Insurance">
+                <group>
+                  <group>
+                    <field name="insurance_id" context="{'default_type':'insurance'}" placeholder="Insurance ..."/>
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="policy_insurance" nolabel="1" placeholder="Policy insurance N° ..."/>
+                    <field name="date_insurance_start"/>
+                    <field name="date_insurance_end"/>
+                  </group>
+                </group>
+              </page>
+              <page string="Internal Notes">
+                <group>
+                  <group>
+                    <field name="comment"/>
+                  </group>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter" name="studio_div_8fe9a2">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
 
-		<record id="patient_kanban_form" model="ir.ui.view">
-			<field name="name">patient.kanban.form</field>
-			<field name="model">res.partner</field>
-			<field name="priority">100</field>
-			<field name="arch" type="xml">
-				<kanban class="o_res_partner_kanban">
-					<field name="id"/>
-					<field name="name"/>
-					<field name="owner_ids"/>
-					<templates>
-						<t t-name="kanban-box">
-							<div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
-								<div class="o_kanban_image_fill_left d-none d-md-block"
-										 t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
-								</div>
-								<div class="o_kanban_image d-md-none"
-										 t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
-								</div>
-								<div class="oe_kanban_details">
-									<strong class="o_kanban_record_title oe_partner_heading">
-										<field name="display_name"/>
-									</strong>
-									<div class="o_kanban_record_subtitle">
-										<ul>
-											<field name="owner_ids" widget="many2many_tags"/>
-										</ul>
-									</div>
-									<div class="oe_kanban_partner_links"/>
-								</div>
-							</div>
-						</t>
-					</templates>
-				</kanban>
-			</field>
-		</record>
+    <record id="patient_kanban_form" model="ir.ui.view">
+      <field name="name">patient.kanban.form</field>
+      <field name="model">res.partner</field>
+      <field name="priority">100</field>
+      <field name="arch" type="xml">
+        <kanban class="o_res_partner_kanban">
+          <field name="id"/>
+          <field name="name"/>
+          <field name="owner_ids"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                <div class="o_kanban_image_fill_left d-none d-md-block"
+                     t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
+                </div>
+                <div class="o_kanban_image d-md-none"
+                     t-attf-style="background-image:url('#{kanban_image('res.partner', 'image_128', record.id.raw_value,  placeholder)}')">
+                </div>
+                <div class="oe_kanban_details">
+                  <strong class="o_kanban_record_title oe_partner_heading">
+                    <field name="display_name"/>
+                  </strong>
+                  <div class="o_kanban_record_subtitle">
+                    <ul>
+                      <field name="owner_ids" widget="many2many_tags"/>
+                    </ul>
+                  </div>
+                  <div class="oe_kanban_partner_links"/>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
 
-		<record id="res_partner_action" model="ir.actions.act_window">
-			<field name="name">Patients</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">res.partner</field>
-			<field name="view_mode">kanban,tree,form</field>
-			<field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
-				'form_view_ref': 'argos_contact.res_partner_view_form',
-				'kanban_view_ref': 'argos_contact.patient_kanban_form',
-				'default_contact_type': 'patient', }
-			</field>
-			<field name="domain">[('contact_type', '=', 'patient')]</field>
-		</record>
+    <record id="res_partner_action" model="ir.actions.act_window">
+      <field name="name">Patients</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban,tree,form</field>
+      <field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
+        'form_view_ref': 'argos_contact.res_partner_view_form',
+        'kanban_view_ref': 'argos_contact.patient_kanban_form',
+        'default_contact_type': 'patient', }
+      </field>
+      <field name="domain">[('contact_type', '=', 'patient')]</field>
+    </record>
 
-		<record id="res_partner_view_search_inherit" model="ir.ui.view">
-			<field name="name">res.partner.view.search.inherit</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="base.view_res_partner_filter"/>
-			<field name="arch" type="xml">
-				<filter name="type_company" position="after">
-					<separator/>
-					<filter name="person_with_patient"
-									domain="[('contact_category', '=', 'person_patient')]"
-									string="Person With Patient"/>
-					<filter name="person_without_patient"
-									domain="[('contact_category', '=', 'person_no_patient')]"
-									string="Person Without Patient"/>
-					<filter name="company_with_patient"
-									domain="[('contact_category', '=', 'company_patient')]"
-									string="Company With Patient"/>
-					<filter name="company_without_patient"
-									domain="[('contact_category', '=', 'company_no_patient')]"
-									string="Company Without Patient"/>
-				</filter>
-			</field>
-		</record>
+    <record id="res_partner_view_search_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.search.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">
+        <filter name="type_company" position="after">
+          <separator/>
+          <filter name="person_with_patient"
+                  domain="[('contact_category', '=', 'person_patient')]"
+                  string="Person With Patient"/>
+          <filter name="person_without_patient"
+                  domain="[('contact_category', '=', 'person_no_patient')]"
+                  string="Person Without Patient"/>
+          <filter name="company_with_patient"
+                  domain="[('contact_category', '=', 'company_patient')]"
+                  string="Company With Patient"/>
+          <filter name="company_without_patient"
+                  domain="[('contact_category', '=', 'company_no_patient')]"
+                  string="Company Without Patient"/>
+        </filter>
+      </field>
+    </record>
 
-		<record id="res_partner_information_view_form_inherit" model="ir.ui.view">
-			<field name="name">res.partner.information.view.form.inherit</field>
-			<field name="model">res.partner</field>
-			<field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
-			<field name="arch" type="xml">
-				<xpath expr="//page[@name='personal_information_page']" position="attributes">
-					<attribute name="invisible">1</attribute>
-				</xpath>
-			</field>
-		</record>
+    <record id="res_partner_information_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.information.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='personal_information_page']" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </field>
+    </record>
 
-	</data>
+  </data>
 </odoo>

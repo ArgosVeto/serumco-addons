@@ -1,0 +1,247 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* argos_sale_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-15 14:24+0000\n"
+"PO-Revision-Date: 2020-09-15 14:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_sale_order__task_ids
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__task_type__analysis
+msgid "Analysis"
+msgstr "Analyses"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__task_id
+msgid "Analysis Request"
+msgstr "Examen"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_operating_unit__result_line_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_res_partner__result_line_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_res_users__result_line_ids
+msgid "Analysis Result Lines"
+msgstr "Lignes de résultat"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__type
+msgid "Analysis Type"
+msgstr "Type d'analyse"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__comments
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__comments
+msgid "Comments"
+msgstr "Commentaires"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__state__done
+msgid "Done"
+msgstr "Terminé"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__state__draft
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__equipment_id
+msgid "Equipment"
+msgstr "Appareil médical"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__state
+msgid "Exam State"
+msgstr "Statut"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__task_type
+msgid "Exam Type"
+msgstr "Type d'examen"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__type__external
+msgid "External"
+msgstr "Externe"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_operating_unit__imagery_task_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__imagery
+#: model:ir.model.fields,field_description:argos_sale_project.field_res_partner__imagery_task_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_res_users__imagery_task_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_sale_order__imagery_task_ids
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__task_type__imagery
+msgid "Imagery"
+msgstr "Imagerie"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__type__internal
+msgid "Internal"
+msgstr "Interne"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_maintenance_equipment__is_bidirectional
+msgid "Is Bidirectional"
+msgstr "Biridectionnel"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
+msgid "Launch"
+msgstr "Lancer"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_maintenance_equipment
+msgid "Maintenance Equipment"
+msgstr "Equipement de maintenance"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__max
+msgid "Maximum"
+msgstr "Limite supérieure"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__min
+msgid "Minimum"
+msgstr "Limite inférieure"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__note
+msgid "Note"
+msgstr "Note"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__order_id
+msgid "Order"
+msgstr "Consultation"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__type__outsourcing
+msgid "Outsourcing"
+msgstr "Sous-traitance"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__parameter_id
+msgid "Parameter"
+msgstr "Paramètre"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__patient_id
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__patient_id
+msgid "Patient"
+msgstr "Animal"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_project_task_line
+msgid "Project Task Result Line"
+msgstr "Ligne de résultat"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__result_ids
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__task_id
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.res_partner_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
+msgid "Result"
+msgstr "Résultat"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__result_date
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__result_date
+msgid "Result Date"
+msgstr "Date"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__result_line_ids
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.project_task_result_line_view_tree
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.project_task_result_view_form
+msgid "Result Lines"
+msgstr "Lignes de résultat"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task__species_id
+msgid "Species"
+msgstr "Espèce"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__name
+msgid "Title"
+msgstr "Titre"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__unit
+msgid "Unit"
+msgstr "Unité"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__value
+msgid "Value"
+msgstr "Résultat"
+
+#. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
+msgid "View result"
+msgstr "Voir résultat"
+
+#. module: argos_sale_project
+#: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__state__waiting
+msgid "Waiting"
+msgstr "En attente"

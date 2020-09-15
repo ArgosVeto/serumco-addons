@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="project_task_result_line_view_tree" model="ir.ui.view">
+      <field name="name">project.task.result.line.view.tree</field>
+      <field name="model">project.task.line</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom" string="Result Lines">
+          <field name="parameter_id" required="1"/>
+          <field name="value"/>
+          <field name="unit"/>
+          <field name="min"/>
+          <field name="max"/>
+          <field name="comments"/>
+        </tree>
+      </field>
+    </record>
+  </data>
+</odoo>

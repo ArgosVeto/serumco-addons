@@ -22,6 +22,8 @@
         'argos_hr',
         'argos_sale_subscription',
         'argos_i18n',
+        'argos_sale_project',
+        'argos_planning_sale',
     ],
     'data': [],
     'application': True,

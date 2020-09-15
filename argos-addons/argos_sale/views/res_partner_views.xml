@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="res_patient_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.patient.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
+      <field name="arch" type="xml">
+        <div name="button_box" position="inside">
+          <button name="%(argos_sale.patient_sale_report_action)d" string="Sale Report" icon="fa-bar-chart"
+                  type="action"/>
+        </div>
+        <xpath expr="//form/sheet" position="before">
+          <header>
+            <button name="button_create_consultation" type="object" class="btn btn-primary" string="New consultation"
+                    attrs="{'invisible': [('id', '=', False)]}"/>
+          </header>
+        </xpath>
+        <page name="medical_events" position="inside">
+          <field name="consultation_ids"
+                 context="{'form_view_ref': 'argos_sale.consultation_view_order_form', 'tree_view_ref': 'argos_sale.consultation_view_order_tree', 'default_is_consultation': True}"
+                 domain="[('is_consultation', '=', True)]"/>
+        </page>
+      </field>
+    </record>
+
+    <record id="res_partner_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <div name="button_box" position="inside">
+          <button name="%(argos_sale.partner_sale_report_action)d" string="Sale Report" icon="fa-bar-chart"
+                  type="action"/>
+        </div>
+      </field>
+    </record>
+
+  </data>
+</odoo>

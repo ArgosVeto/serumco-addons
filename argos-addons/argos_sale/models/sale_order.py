@@ -14,28 +14,31 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    name = fields.Char(readonly=False)
-    partner_patient_ids = fields.Many2many(related='partner_id.patient_ids')
+    partner_patient_ids = fields.Many2many(related='partner_id.patient_ids', string='Patient List')
     argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')])
     partner_id = fields.Many2one(
         domain="[('contact_type', '=', 'contact'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
     species_id = fields.Many2one(related='patient_id.species_id')
-    sex = fields.Selection(related='patient_id.gender', string='Sex')
+    race_id = fields.Many2one(related='patient_id.race_id')
+    gender_id = fields.Many2one(related='patient_id.gender_id')
     age = fields.Integer('Age', related='patient_id.age')
     weight = fields.Float('Weight', related='patient_id.weight')
-    pathology_ids = fields.Many2many('res.partner.pathology')
+    pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids')
     employee_id = fields.Many2one('hr.employee')
     is_consultation = fields.Boolean('Is Consultation')
     conv_key = fields.Char('Convention Key', compute='_compute_conv_key')
-    consultation_date = fields.Date(default=fields.Date.today(), string='Consultation Date')
-    consultation_type = fields.Many2one('consultation.type')
+    consultation_date = fields.Date('Consultation Date', default=lambda self: fields.Date.today())
+    consultation_type_id = fields.Many2one('consultation.type', domain=[('is_canvas', '=', False)])
     observation = fields.Text('Observations')
     customer_observation = fields.Text('Customer Observation')
     referent_partner_id = fields.Many2one('res.partner')
     diagnostic_ids = fields.Many2many('documents.tag', 'sale_order_diagnostic_tag_rel', 'sale_order_id',
                                       'diagnostic_id')
     hypothese_ids = fields.Many2many('documents.tag', 'sale_order_hypothese_tag_rel', 'sale_order_id', 'hypothese_id')
+    canvas_id = fields.Many2one('consultation.type', domain=[('is_canvas', '=', True)])
+    arrival_time = fields.Datetime('Arrival Time', track_visibility='onchange')
+    pickup_time = fields.Datetime('Pick-up Time', track_visibility='onchange')
 
     @api.model
     def parse_url(self, url='', params={}):
@@ -152,6 +155,7 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, vals):
+        vals['arrival_time'] = fields.Datetime.now()
         res = super(SaleOrder, self).create(vals)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
@@ -207,3 +211,15 @@ class SaleOrder(models.Model):
             filename = '%s%sV%s.WBV.csv' % (server.filename, order.operating_unit_id.code, sequence)
             server.store_data(filename, csv_data)
         return True
+
+    @api.onchange('canvas_id')
+    def onchange_canvas_id(self):
+        self.observation = self.canvas_id.chapters or ''
+
+    def action_create_invoice(self):
+        self.ensure_one
+        self.write({
+            'pickup_time': fields.Datetime.now(),
+            'argos_state': 'consultation_done'
+        })
+        return self.env.ref('sale.action_view_sale_advance_payment_inv').read()[0]

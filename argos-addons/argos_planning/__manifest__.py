@@ -13,6 +13,7 @@
         'argos_contact',
         'planning',
         'argos_account',
+        'argos_sale',
     ],
     'data': [
         # data
@@ -23,7 +24,6 @@
         'security/ir.model.access.csv',
         'security/res_users_groups.xml',
         # views
-        'views/consultation_views.xml',
         'views/planning_views.xml',
         'views/assignment_views.xml',
         'views/res_partner_views.xml',

@@ -54,7 +54,7 @@ class ResPartner(models.Model):
         for rec in self.filtered(lambda p: not p.is_company):
             if rec.lastname and rec.firstname and rec.email:
                 domain = [
-                    ('id', '!=', self.id),
+                    ('id', '!=', rec.id),
                     ('lastname', '=', rec.lastname),
                     ('firstname', '=', rec.firstname),
                     ('email', '=', rec.email),

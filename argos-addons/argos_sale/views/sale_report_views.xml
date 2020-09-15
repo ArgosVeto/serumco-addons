@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.actions.act_window" id="patient_sale_report_action">
+      <field name="name">patient.sale.report.action</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.report</field>
+      <field name="view_mode">dashboard,pivot,graph</field>
+      <field name="domain">[('state','in',['sale', 'done']), ('patient_id', '=', active_id)]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="partner_sale_report_action">
+      <field name="name">partner.sale.report.action</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.report</field>
+      <field name="view_mode">dashboard,pivot,graph</field>
+      <field name="domain">[('state','in',['sale', 'done']), ('partner_id', '=', active_id)]</field>
+    </record>
+
+  </data>
+</odoo>
