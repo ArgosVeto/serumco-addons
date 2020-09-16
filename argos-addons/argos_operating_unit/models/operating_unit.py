@@ -31,8 +31,21 @@ class OperatingUnit(models.Model):
     certification_ids = fields.Many2many('operating.unit.certification', 'operating_unit_certification_rel',
                                          'operating_unit_id', 'certification_id', 'Certifications')
     name = fields.Char(related='partner_id.name', inherited=True, readonly=False)
-    centravet_code = fields.Char('Centravet Code')
     password = fields.Char('Password')
+    argos_code = fields.Char('Argos Code', compute='_compute_argos_code')
+    sequence = fields.Char('Sequence', copy=False)
+
+    @api.depends('zip')
+    def _compute_argos_code(self):
+        for record in self:
+            record.argos_code = '-'.join([attr for attr in [record.zip, record.sequence] if attr])
+
+    @api.model
+    def default_get(self, fields):
+        res = super(OperatingUnit, self).default_get(fields)
+        if not res.get('sequence'):
+            res.update({'sequence': self.env['ir.sequence'].next_by_code('operating.unit.seq')})
+        return res
 
     def toggle_active(self):
         self.ensure_one()

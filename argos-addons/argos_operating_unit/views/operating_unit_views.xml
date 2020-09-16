@@ -25,8 +25,9 @@
               <group>
                 <field name="partner_id" required="0" readonly="1" attrs="{'invisible': [('id', '=', False)]}"/>
                 <field name="company_id" groups="base.group_multi_company"/>
-                <field name="centravet_code"/>
-                <field name="code"/>
+                <field name="code" string="Centravet Code"/>
+                <field name="argos_code"/>
+                <field name="sequence" invisible="1"/>
                 <label for="street" string="Address"/>
                 <div class="o_address_format">
                   <field name="street" placeholder="Street..." class="o_address_street"/>
@@ -90,5 +91,20 @@
         </xpath>
       </field>
     </record>
+
+    <record id="operating_unit_view_tree_inherit" model="ir.ui.view">
+      <field name="name">operating.unit.view.tree.inherit</field>
+      <field name="model">operating.unit</field>
+      <field name="inherit_id" ref="operating_unit.view_operating_unit_tree"/>
+      <field name="arch" type="xml">
+        <field name="code" position="before">
+          <field name="argos_code"/>
+        </field>
+        <field name="code" position="attributes">
+          <attribute name="string">Centravet Code</attribute>
+        </field>
+      </field>
+    </record>
+
   </data>
 </odoo>
