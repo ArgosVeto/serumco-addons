@@ -52,7 +52,7 @@
         </div>
         <xpath expr="//field[@name='uom_po_id']" position="after">
           <field name="price_sensivity" widget="radio"/>
-          <field name="top_ten"/>
+          <field name="is_top_ten"/>
         </xpath>
         <xpath expr="//label[@for='list_price']" position="attributes">
           <attribute name="string">Sales Price TTC</attribute>

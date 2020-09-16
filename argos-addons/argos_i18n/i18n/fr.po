@@ -50,3 +50,40 @@ msgstr "Nom"
 #: model_terms:ir.actions.act_window,help:operating_unit.action_operating_unit_tree
 msgid "Click to start a new Operating Unit."
 msgstr "Créer une nouvelle clinique"
+
+#. module: sale
+#: model:ir.ui.menu,name:sale.sale_menu_root
+msgid "Sales"
+msgstr "Actes & Ventes"
+
+#. module: sale
+#: model:ir.ui.menu,name:sale.sale_order_menu
+msgid "Orders"
+msgstr "Actes & Ventes"
+
+#. module: sale
+#: model:ir.ui.menu,name:sale.menu_sale_order
+msgid "Orders"
+msgstr "Devis acceptés"
+
+#. module: sale
+#: model:ir.actions.act_window,name:sale.action_quotations
+#: model:ir.actions.act_window,name:sale.action_quotations_with_onboarding
+#: model:ir.ui.menu,name:sale.menu_sale_quotations
+msgid "Quotations"
+msgstr "Devis proposés"
+
+#. module: sale
+#: model:ir.actions.act_window,name:sale.action_orders
+msgid "Sales Orders"
+msgstr "Devis acceptés"
+
+#. module: sale_product_pack
+#: code:addons/sale_product_pack/models/sale_order.py:0
+#, python-format
+msgid ""
+"You cannot delete this line because is part of a pack in this sale order. In"
+" order to delete this line you need to delete the pack itself"
+msgstr ""
+"Vous ne pouvez pas supprimer cette ligne car elle fait partie d'un pack. Pour"
+" supprimer cette ligne, vous devez supprimer le pack lui-même"

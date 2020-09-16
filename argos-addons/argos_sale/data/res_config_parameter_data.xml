@@ -7,7 +7,7 @@
   </record>
   <record id="incineris_soft_id" model="ir.config_parameter">
     <field name="key">incineris.soft_id</field>
-    <field name="value">ARGOS</field>
+    <field name="value">GHC5R5</field>
   </record>
 
 </odoo>

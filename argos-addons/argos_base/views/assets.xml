@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<odoo>
+  <template id="assets_backend" name="timer_assets" inherit_id="web.assets_backend">
+    <xpath expr="//script[last()]" position="after">
+      <script type="text/javascript" src="/argos_base/static/src/js/timer.js"></script>
+    </xpath>
+  </template>
+</odoo>

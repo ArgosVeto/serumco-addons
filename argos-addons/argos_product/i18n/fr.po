@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 13:19+0000\n"
-"PO-Revision-Date: 2020-09-04 13:19+0000\n"
+"POT-Creation-Date: 2020-09-15 14:14+0000\n"
+"PO-Revision-Date: 2020-09-15 14:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,9 @@ msgstr "Immunologique"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__indication
+#: model:ir.model.fields,field_description:argos_product.field_product_product__indications
 #: model:ir.model.fields,field_description:argos_product.field_product_template__indication
+#: model:ir.model.fields,field_description:argos_product.field_product_template__indications
 msgid "Indications"
 msgstr "Indications"
 
@@ -135,6 +137,22 @@ msgstr "Indications"
 #: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
 msgid "Internal Label"
 msgstr "Libellé interne Argos"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_category__is_antibiotic
+msgid "Is Antibiotic"
+msgstr "Antibiotique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_category__is_critical
+msgid "Is Critical"
+msgstr "Critique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_top_ten
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_top_ten
+msgid "Is Top Ten"
+msgstr "Top ten"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__issue_condition
@@ -196,9 +214,19 @@ msgid "Price Sensivity"
 msgstr "Sensibilité prix"
 
 #. module: argos_product
+#: model:ir.model,name:argos_product.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: argos_product
 #: model:ir.model,name:argos_product.model_product_attribute
 msgid "Product Attribute"
 msgstr "Caractéristique de l'article"
+
+#. module: argos_product
+#: model:ir.model,name:argos_product.model_product_category
+msgid "Product Category"
+msgstr "Catégorie d'article"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_supplierinfo__maker_partner_id
@@ -261,7 +289,6 @@ msgid "Supplier Pricelist"
 msgstr "Liste de prix du fournisseur"
 
 #. module: argos_product
-#: model:ir.model.fields,field_description:argos_product.field_product_product__top_ten
-#: model:ir.model.fields,field_description:argos_product.field_product_template__top_ten
-msgid "Top Ten"
-msgstr "Top ten"
+#: model:ir.model.fields,field_description:argos_product.field_product_category__tooltip_text
+msgid "Tooltip Text"
+msgstr "Texte Tooltip"

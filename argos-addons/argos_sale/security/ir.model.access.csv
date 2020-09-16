@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_consultation_type_reader,access_consultation_type reader,model_consultation_type,,1,0,0,0
+access_consultation_type_user,access_consultation_type user,model_consultation_type,base.group_user,1,1,1,0
+access_consultation_type_admin,access_consultation_type admin,model_consultation_type,base.group_erp_manager,1,1,1,1

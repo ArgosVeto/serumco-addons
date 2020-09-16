@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 19:12+0000\n"
-"PO-Revision-Date: 2020-08-31 19:12+0000\n"
+"POT-Creation-Date: 2020-09-15 14:18+0000\n"
+"PO-Revision-Date: 2020-09-15 14:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -57,9 +57,36 @@ msgstr ""
 "      "
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Add a note"
+msgstr "Ajouter une note"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Add a product"
+msgstr "Ajouter un produit"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Add a section"
+msgstr "Ajouter une section"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_add_subline
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Add subline"
+msgstr "Ajouter composant"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__age
 msgid "Age"
 msgstr "Age"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_product_product__is_add_subline_allowed
+#: model:ir.model.fields,field_description:argos_sale.field_product_template__is_add_subline_allowed
+msgid "Allow Add Subline"
+msgstr "Autoriser l'ajout de composant"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -70,6 +97,26 @@ msgstr "Analyses"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__argos_state
 msgid "Argos State"
 msgstr "Etat consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__arrival_time
+msgid "Arrival Time"
+msgstr "Heure de début"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.sale_order_line_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__canvas_id
+msgid "Canvas"
+msgstr "Canevas"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__chapters
+msgid "Chapters"
+msgstr "Chapitres"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -83,8 +130,19 @@ msgstr "Lignes de commande"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Consultation"
 msgstr "Consultation"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_open_consultation_canvas
+#: model:ir.ui.menu,name:argos_sale.menu_settings_consultation_canvas
+msgid "Consultation Canvas"
+msgstr "Canevas"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_date
@@ -92,21 +150,66 @@ msgid "Consultation Date"
 msgstr "Date consultation"
 
 #. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type
+#: model:ir.model,name:argos_sale.model_consultation_type
 msgid "Consultation Type"
-msgstr "Raison du rendez-vous "
+msgstr "Type de consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type_id
+msgid "Consultation Type"
+msgstr "Raison du rendez-vous"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_type_view_form
+msgid "Consultation type"
+msgstr "Type de consultation"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_open_consultation_type
+#: model:ir.ui.menu,name:argos_sale.menu_settings_consultation_type
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_type_view_tree
+msgid "Consultation types"
+msgstr "Types de consultation"
 
 #. module: argos_sale
 #: model:ir.actions.act_window,name:argos_sale.action_consultations
+#: model:ir.model.fields,field_description:argos_sale.field_operating_unit__consultation_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_partner__consultation_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_users__consultation_ids
 #: model:ir.ui.menu,name:argos_sale.menu_consultation
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_tree
 msgid "Consultations"
 msgstr "Consultations"
 
 #. module: argos_sale
+#: model:ir.model,name:argos_sale.model_res_partner
+msgid "Contact"
+msgstr "Contact"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__conv_key
 msgid "Convention Key"
 msgstr "Clé de la convention"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__coupon_program_ids
+msgid "Coupon Program"
+msgstr "Promotions"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Create Invoice"
+msgstr "Créer une facture"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_date
+msgid "Created on"
+msgstr "Créé le"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__partner_id
@@ -124,9 +227,29 @@ msgid "Delete Convention"
 msgstr "Suppression convention"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Delivered"
+msgstr "Livré"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Description"
+msgstr "Description"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__diagnostic_ids
 msgid "Diagnostic"
 msgstr "Diagnostiques"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Disc.%"
+msgstr "Rem.%"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
 
 #. module: argos_sale
 #: model:ir.model.fields.selection,name:argos_sale.selection__sale_order__argos_state__consultation_done
@@ -139,9 +262,19 @@ msgid "Employee"
 msgstr "Vétérinaire"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__gender_id
+msgid "Gender"
+msgstr "Genre"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__hypothese_ids
 msgid "Hypothese"
 msgstr "Hypothèses"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__id
+msgid "ID"
+msgstr "ID"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -164,9 +297,69 @@ msgid "Incineris Convention"
 msgstr "Convention incinération"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Invoiced"
+msgstr "Facturé"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__is_add_subline_allowed
+msgid "Is Add Subline Allowed"
+msgstr "Autoriser l'ajout de composant"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__is_antibiotic
+msgid "Is Antibiotic"
+msgstr "Antibiotique"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__is_canvas
+msgid "Is Canvas"
+msgstr "Est un canevas"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__is_consultation
 msgid "Is Consultation"
 msgstr "Est une consultation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__is_critical_antibiotic
+msgid "Is Critical Antibiotic"
+msgstr "Antibiotique critique"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "New consultation"
+msgstr "Nouvelle consultation"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Note"
+msgstr "Note"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__observation
@@ -182,17 +375,28 @@ msgid "Only consultation can generate incineris convention."
 msgstr "Seule une consultation peut générer une convention"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_tree
+msgid "Operating Unit"
+msgstr "Clinique"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__name
 msgid "Order Reference"
 msgstr "Référence commande"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__pathology_ids
-msgid "Pathology"
+msgid "Pathologies"
 msgstr "Pathologies"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Pathologies & Intolerance"
+msgstr "Pathologies & Intolérances"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__patient_id
+#: model:ir.model.fields,field_description:argos_sale.field_sale_report__patient_id
 msgid "Patient"
 msgstr "Animal"
 
@@ -202,11 +406,43 @@ msgid "Patient List"
 msgstr "Liste des animaux"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__pickup_time
+msgid "Pick-up Time"
+msgstr "Heure de fin"
+
+#. module: argos_sale
 #: code:addons/argos_sale/models/sale_order.py:0
 #: code:addons/argos_sale/models/sale_order.py:0
 #, python-format
 msgid "Please generate convention first"
 msgstr "Veuillez d'abord générer la convention"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Product"
+msgstr "Article"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: argos_sale
+#. openerp-web
+#: code:addons/argos_sale/static/src/xml/tooltips.xml:0
+#, python-format
+msgid "Promotions"
+msgstr "Promotions"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Quantity:"
+msgstr "Quantité:"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__race_id
+msgid "Race"
+msgstr "Race"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -224,19 +460,50 @@ msgid "Reprint Convention"
 msgstr "Réimpression convention"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_partner_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "Sale Report"
+msgstr "Analyse des ventes"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_report
+msgid "Sales Analysis Report"
+msgstr "Rapport d'analyse des ventes"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_coupon_program
+msgid "Sales Coupon Program"
+msgstr "Programme de coupon de vente"
+
+#. module: argos_sale
 #: model:ir.model,name:argos_sale.model_sale_order
 msgid "Sales Order"
 msgstr "Bon de commande"
 
 #. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Sales Order Lines"
+msgstr "Lignes de commande"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.sale_order_line_view_form
+msgid "Save"
+msgstr "Enregistrer"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Section Name (eg. Products, Services)"
+msgstr "Nom de section (e.g. Articles, Services)"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Seen By"
 msgstr "Vu par"
-
-#. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__sex
-msgid "Sex"
-msgstr "Sexe"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__species_id
@@ -246,8 +513,13 @@ msgstr "Espèce"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
-msgid "Total"
-msgstr "Total"
+msgid "Terms and conditions..."
+msgstr "Conditions générales..."
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__tooltip_text
+msgid "Tooltip Text"
+msgstr "Texte tooltip"
 
 #. module: argos_sale
 #: model:mail.template,subject:argos_sale.sale_notification_mail_template
@@ -255,11 +527,36 @@ msgid "Transaction Notification"
 msgstr "Notification de transaction"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Unit Price:"
+msgstr "Prix unitaire:"
+
+#. module: argos_sale
 #: model:product.template,uom_name:argos_sale.product_incineration
 msgid "Units"
 msgstr "Unités"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "UoM"
+msgstr "UdM"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__weight
 msgid "Weight"
 msgstr "Poids"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "days"
+msgstr "jours"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.partner_sale_report_action
+msgid "partner.sale.report.action"
+msgstr "Analyse des ventes"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.patient_sale_report_action
+msgid "patient.sale.report.action"
+msgstr "Analyse des ventes"

@@ -4,7 +4,7 @@ from odoo import api, fields, models
 
 
 class HrEmployee(models.Model):
-    _inherit = "hr.employee"
+    _inherit = 'hr.employee'
 
     registration_number = fields.Char('Registration Number')
     order_number = fields.Char('Order Number')

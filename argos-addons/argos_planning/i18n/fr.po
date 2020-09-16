@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 19:10+0000\n"
-"PO-Revision-Date: 2020-08-31 19:10+0000\n"
+"POT-Creation-Date: 2020-09-15 14:08+0000\n"
+"PO-Revision-Date: 2020-09-15 14:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr ""
 "      "
 
 #. module: argos_planning
-#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "<span class=\"align-middle\">for this customer.</span>"
 msgstr "<span class=\"align-middle\">pour ce client.</span>"
 
@@ -65,6 +65,11 @@ msgstr "<span class=\"align-middle\">pour ce client.</span>"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
 msgid "Active"
 msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__arrival_time
+msgid "Arrival Time"
+msgstr "Heure d'arrivée"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.view_planning_assignment_form
@@ -84,7 +89,7 @@ msgid "Away"
 msgstr "Absence"
 
 #. module: argos_planning
-#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -136,7 +141,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type__create_date
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__currency_id
@@ -149,10 +154,20 @@ msgid "Customer"
 msgstr "Client"
 
 #. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__departure_time
+msgid "Departure Time"
+msgstr "Heure de départ"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type__display_name
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__done
+msgid "Done"
+msgstr "Terminé"
 
 #. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__draft
@@ -168,40 +183,55 @@ msgstr "Date de fin"
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type__id
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__in_progress
+msgid "In Progress"
+msgstr "Consultation en cours"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type____last_update
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type__write_uid
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_consultation_type__write_date
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__more_info
 msgid "More Information"
-msgstr "Plus d'infos"
+msgstr "Plus d'informations"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__mrdv_event_id
 msgid "Mrdv Id"
-msgstr ""
+msgstr "ID Mrdv"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__mrdv_job_id
 msgid "Mrdv Job Id"
-msgstr ""
+msgstr "ID Job Mrdv"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "New consultation"
+msgstr "Nouvelle consultation"
+
+#. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__not_honored
+msgid "Not Honored"
+msgstr "Non honoré"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__operating_unit_id
@@ -216,10 +246,22 @@ msgid "Patient"
 msgstr "Animal"
 
 #. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_operating_unit__patient_slot_ids
+#: model:ir.model.fields,field_description:argos_planning.field_res_partner__patient_slot_ids
+#: model:ir.model.fields,field_description:argos_planning.field_res_users__patient_slot_ids
+msgid "Patient Planning Slots"
+msgstr "Rendez-vous"
+
+#. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__phone
 #: model:ir.model.fields.selection,name:argos_planning.selection__res_partner__source__phone
 msgid "Phone"
 msgstr "Téléphone"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__pickup_time
+msgid "Pick-up Time"
+msgstr "Heure de prise en charge"
 
 #. module: argos_planning
 #: model:ir.model,name:argos_planning.model_planning_assignment
@@ -240,6 +282,13 @@ msgstr "Rôle"
 #: model:ir.model,name:argos_planning.model_planning_slot
 msgid "Planning Shift"
 msgstr "Changement de planification"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_operating_unit__slot_ids
+#: model:ir.model.fields,field_description:argos_planning.field_res_partner__slot_ids
+#: model:ir.model.fields,field_description:argos_planning.field_res_users__slot_ids
+msgid "Planning Slots"
+msgstr "Rendez-vous"
 
 #. module: argos_planning
 #: model:ir.actions.server,name:argos_planning.ir_cron_planning_recovery_ir_actions_server
@@ -264,7 +313,7 @@ msgid "Role Type"
 msgstr "Type"
 
 #. module: argos_planning
-#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "Set to Draft"
 msgstr "Marquer comme brouillon"
 
@@ -295,7 +344,7 @@ msgid "Total Due"
 msgstr "Impayés"
 
 #. module: argos_planning
-#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "Validate"
 msgstr "Valider"
 
@@ -310,12 +359,33 @@ msgid "Veterinary"
 msgstr "Vétérinaire"
 
 #. module: argos_planning
+#: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__waiting
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "Waiting"
+msgstr "En attente"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_tree_inherit
+msgid "Waiting Time"
+msgstr "Temps d'attente"
+
+#. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__web
 #: model:ir.model.fields.selection,name:argos_planning.selection__res_partner__source__web
 msgid "Web"
 msgstr "Web"
 
 #. module: argos_planning
-#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_inherit_form
+#: code:addons/argos_planning/models/planning_slot.py:0
+#, python-format
+msgid ""
+"Your appointment has arrived: <a href=# data-oe-model=planning.slot data-oe-"
+"id=%d>%s</a>"
+msgstr ""
+"Votre rendez-vous est arrivé: <a href=# data-oe-model=planning.slot data-oe-"
+"id=%d>%s</a>"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "total due"
 msgstr "impayés"

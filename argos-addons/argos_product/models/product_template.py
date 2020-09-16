@@ -5,6 +5,7 @@ from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+    _order = 'is_top_ten desc, name'
 
     net_weight = fields.Float('Net Weight')
     gross_weight = fields.Float('Gross Weight')
@@ -24,7 +25,7 @@ class ProductTemplate(models.Model):
                                                 'Administration Route')
     amm = fields.Char('AMM Code')
     price_sensivity = fields.Selection([('a', 'A'), ('b', 'B'), ('c', 'C')], 'Price Sensivity')
-    top_ten = fields.Boolean('Top Ten')
+    is_top_ten = fields.Boolean('Is Top Ten')
     routing_value_ids = fields.Many2many('product.attribute.value', compute='_compute_routing_value_ids')
     additional_features = fields.Text('Additional Features')
     doc_type = fields.Char('Documentation Type')
