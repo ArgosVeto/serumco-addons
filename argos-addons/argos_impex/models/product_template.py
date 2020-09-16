@@ -129,6 +129,7 @@ class ProductTemplate(models.Model):
                     'sale_ok': True,
                     'purchase_ok': True,
                     'type': 'product',
+                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)],
                     'is_published': True}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 if product:

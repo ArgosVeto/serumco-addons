@@ -31,7 +31,7 @@
 
 		<record id="ir_model_import_template_global_data_mgtin" model="ir.model.import.template">
 			<field name="method_args"
-						 eval="{'template_id': ref('argos_impex.ir_model_import_template_global_data'), 'source': 'produit-catalogue-global'}"/>
+						 eval="{'template_id': ref('argos_impex.ir_model_import_template_global_data_mgtin'), 'source': 'produit-catalogue-global'}"/>
 		</record>
 
 		<record id="ir_model_import_template_data" model="ir.model.import.template">

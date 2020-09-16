@@ -25,7 +25,6 @@
         'data/product_template_data.xml',
         'data/res_config_parameter_data.xml',
         'data/mail_template_data.xml',
-        'data/ir_sequence_data.xml',
         'data/server_ftp_data.xml',
         # views
         'views/sale_report_views.xml',

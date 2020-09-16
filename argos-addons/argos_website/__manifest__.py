@@ -27,6 +27,7 @@
         'data/res_config_settings.xml',
         'data/mail_template_data.xml',
         'data/res_config_settings.xml',
+        'data/ir_sequence_data.xml',
         # security
         'security/ir.model.access.csv',
         'security/res_groups.xml',

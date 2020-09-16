@@ -33,10 +33,13 @@ class ServerFTP(models.Model):
     def connect(self):
         self.ensure_one()
         _logger.info(_('starting ftp connection ...'))
-        ftp = FTP(self.url)
-        ftp.set_pasv(True)
-        ftp.login(self.login, self.password)
-        _logger.info(_('connection established succesfully.'))
+        try:
+            ftp = FTP(self.url)
+            ftp.set_pasv(True)
+            ftp.login(self.login, self.password)
+            _logger.info(_('connection established succesfully.'))
+        except Exception as e:
+            raise Warning(repr(e))
         return ftp
 
     def retrieve_data(self):
