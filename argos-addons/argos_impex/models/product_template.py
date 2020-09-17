@@ -939,13 +939,3 @@ class ProductTemplate(models.Model):
                 self._cr.rollback()
         self.manage_import_report(source, lines, template, errors, logger)
         return True
-
-    @api.model
-    def get_account_by_code(self, code):
-        """
-        Get account by code
-        :param code: code of account
-        :return: account.account
-        """
-        return self.env['account.account'].search([('code', '=', code)], limit=1)
-
