@@ -69,8 +69,6 @@ class ProductTemplate(models.Model):
                         content = base64.decodebytes(template.import_file).decode('utf-8-sig')
                         if source == 'produit-general':
                             return self.processing_import_data(content, template, source)
-                        if source == 'tarif':
-                            return self.processing_import_standard_price_data(content, template, source)
                         if source == 'produit-association':
                             return self.processing_import_product_association_data(content, template, source)
                         if source == 'produit-documentation':
@@ -229,53 +227,6 @@ class ProductTemplate(models.Model):
         model = 'ir.model.import.template'
         template.attachment_ids = [(0, 0, {'type': 'binary', 'res_model': model,
                                            'res_id': template.id, 'datas': content, 'name': filename})]
-        return True
-
-    @api.model
-    def processing_import_standard_price_data(self, content=None, template=False, source=False, logger=False):
-        """
-        Import price list of products
-        :param content:
-        :param template:
-        :param logger:
-        :return:
-        """
-        if not content or not template:
-            return False
-        csvfile = io.StringIO(content)
-        reader = csv.DictReader(csvfile, delimiter=';')
-        logger = logger or self._context['logger']
-        errors = []
-        lines = []
-        for row in reader:
-            try:
-                if not row.get('code'):
-                    logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
-                    errors.append((row, _('The code column is missed!')))
-                    continue
-                vals = {
-                    'default_code': row.get('code'),
-                    'standard_price': row.get('tarif')
-                }
-                product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        product.write(vals)
-                    else:
-                        errors.append((row, _('No product with code %s found.') % row.get('code')))
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
-                    lines.append(reader.line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
-            except Exception as e:
-                logger.error(repr(e))
-                errors.append((row, repr(e)))
-                self._cr.rollback()
-        self.manage_import_report(source, lines, template, errors, logger)
         return True
 
     @api.model
