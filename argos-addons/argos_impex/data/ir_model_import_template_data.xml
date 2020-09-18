@@ -9,7 +9,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_global_data"/>
-			<field name="sequence">-102</field>
+			<field name="sequence">-101</field>
 			<field name="new_thread" eval="False"/>
 		</record>
 
@@ -25,7 +25,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_global_data_mgtin"/>
-			<field name="sequence">-101</field>
+			<field name="sequence">-100</field>
 			<field name="new_thread" eval="False"/>
 		</record>
 
@@ -41,7 +41,7 @@
 			<field name="is_remote_import">True</field>
 			<field name="export_xls">True</field>
 			<field name="server_ftp_id" ref="argos_impex.server_ftp_argos_data"/>
-			<field name="sequence">-100</field>
+			<field name="sequence">-99</field>
 			<field name="new_thread" eval="False"/>
 		</record>
 

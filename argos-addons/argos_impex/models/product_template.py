@@ -739,7 +739,7 @@ class ProductTemplate(models.Model):
             else:
                 self.write({'seller_ids': [(0, 0, supplier_info_vals)]})
             if lenrow > 20 and row[20].strip():
-                priceprom = row[20].strip()
+                priceprom = float(row[20].strip())
                 if priceprom > 0:
                     supplier_info_vals_prom = {
                         'name': supplier.id,
