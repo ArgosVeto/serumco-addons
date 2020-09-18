@@ -770,32 +770,43 @@ class ProductTemplate(models.Model):
         lenrow = len(row)
         if lenrow > 10 and row[10].strip():
             supplier = self.env['res.partner']._get_partner_by_name(row[10])  # Laboratoire/Fournisseur
+            price_no_prom = row[19].strip()
             supplier_info_vals = {
                 'name': supplier.id,
-                'min_qty': float(row[18]),  # Quantié tarif
+                'min_qty': 1,  # Quantié tarif
                 'is_import': True,
-                'price': float(row[19]),  # Prix de l'unitaire hors promotion
+                'price': price_no_prom,  # Prix de l'unitaire hors promotion
             }
-            supp_info = self.seller_ids.filtered(lambda si: si.name.id == supplier.id and not si.is_discount and si.is_import)
+            supp_info = self.seller_ids.filtered(
+                lambda si:
+                    si.name.id == supplier.id
+                    and not si.is_discount
+                    and si.is_import
+            )
             if supp_info:
                 supp_info.write(supplier_info_vals)
             else:
                 self.write({'seller_ids': [(0, 0, supplier_info_vals)]})
             if lenrow > 20 and row[20].strip():
-                priceprom = float(re.sub(r'^\.', r'0.', row[20].strip()))
-                if priceprom:
+                priceprom = row[20].strip()
+                if priceprom > 0:
                     supplier_info_vals_prom = {
                         'name': supplier.id,
                         'is_discount': True,
                         'is_import': True,
                         'min_qty': float(row[18]),  # Quantié tarif
-                        'price': float(priceprom),  # Pris de l'unitaire en promotion
+                        'price': priceprom,  # Pris de l'unitaire en promotion
                     }
                     if lenrow > 21 and len(row[21]) == 8:
                         supplier_info_vals_prom['date_start'] = datetime.strptime(row[21], '%Y%m%d')
                     if lenrow > 22 and len(row[22]) == 8:
                         supplier_info_vals_prom['date_end'] = datetime.strptime(row[22], '%Y%m%d')
-                    supp_info = self.seller_ids.filtered(lambda si: si.name.id == supplier.id and si.is_discount and si.is_import)
+                    supp_info = self.seller_ids.filtered(
+                        lambda si:
+                            si.name.id == supplier.id
+                            and si.is_discount
+                            and si.is_import
+                    )
                     if supp_info:
                         supp_info.write(supplier_info_vals_prom)
                     else:
