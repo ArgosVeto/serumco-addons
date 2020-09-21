@@ -719,9 +719,9 @@ class ProductTemplate(models.Model):
         if not row or len(row) < 17:
             return
         lenrow = len(row)
-        if lenrow > 10 and row[10].strip():
+        if lenrow > 10 and row[10].strip() and float(row[19].strip()):
             supplier = self.env['res.partner']._get_partner_by_name(row[10])  # Laboratoire/Fournisseur
-            price_no_prom = row[19].strip()
+            price_no_prom = float(row[19].strip())
             supplier_info_vals = {
                 'name': supplier.id,
                 'min_qty': 1,  # Quantié tarif
@@ -740,7 +740,7 @@ class ProductTemplate(models.Model):
                 self.write({'seller_ids': [(0, 0, supplier_info_vals)]})
             if lenrow > 20 and row[20].strip():
                 priceprom = float(row[20].strip())
-                if priceprom > 0:
+                if priceprom > 0 and float(row[18]) > 0:
                     supplier_info_vals_prom = {
                         'name': supplier.id,
                         'is_discount': True,
@@ -757,6 +757,7 @@ class ProductTemplate(models.Model):
                             si.name.id == supplier.id
                             and si.is_discount
                             and si.is_import
+                            and si.min_qty == float(row[18])
                     )
                     if supp_info:
                         supp_info.write(supplier_info_vals_prom)
