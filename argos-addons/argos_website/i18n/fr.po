@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-08 11:53+0000\n"
-"PO-Revision-Date: 2020-09-08 11:53+0000\n"
+"POT-Creation-Date: 2020-09-21 08:03+0000\n"
+"PO-Revision-Date: 2020-09-21 08:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,30 @@ msgstr ""
 "publié</span>"
 
 #. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "<span style=\"color: red;\">Unavailable<br/></span>"
+msgstr "<span style=\"color: red;\">Indisponible<br/></span>"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Add one"
+msgstr "Ajouter"
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "Cannot setup the payment"
+msgstr "Impossible d'installer le paiement."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.api_error
+#: model_terms:ir.ui.view,arch_db:argos_website.product_custom
+#: model_terms:ir.ui.view,arch_db:argos_website.products_custom
+msgid "Close"
+msgstr "Fermer"
+
+#. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.product_template_form_view_inherit
 msgid "Description Web"
 msgstr "Description Web"
@@ -85,7 +109,31 @@ msgstr ""
 #. module: argos_website
 #: model:ir.model,name:argos_website.model_mail_message
 msgid "Message"
-msgstr "Message"
+msgstr ""
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "No payment method selected"
+msgstr "Aucune méthode de paiement sélectionnée"
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "Please select a payment method."
+msgstr "Veuillez sélectionner une méthode de paiement."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Price"
+msgstr "Prix"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Product"
+msgstr "Article"
 
 #. module: argos_website
 #: model:ir.model,name:argos_website.model_product_attribute
@@ -106,6 +154,11 @@ msgstr "Ligne d'attribut du modèle d'article"
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
 msgid "Publish"
 msgstr "Publier"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Quantity"
+msgstr "Quantité"
 
 #. module: argos_website
 #: model:ir.model,name:argos_website.model_rating_rating
@@ -133,6 +186,60 @@ msgid "Ratings"
 msgstr "Avis"
 
 #. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Remove from cart"
+msgstr "Supprimer du panier"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.cart_lines_custom
+msgid "Remove one"
+msgstr "Supprimer"
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "Server Error"
+msgstr "Erreur de serveur"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.api_error
+#: model_terms:ir.ui.view,arch_db:argos_website.error_service
+#: model_terms:ir.ui.view,arch_db:argos_website.product_custom
+#: model_terms:ir.ui.view,arch_db:argos_website.products_custom
+msgid "Service Error"
+msgstr "Erreur Service"
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.api_error
+#: model_terms:ir.ui.view,arch_db:argos_website.product_custom
+msgid "Service temporarily unavailable"
+msgstr "Service momentanément indisponible."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.error_service
+#: model_terms:ir.ui.view,arch_db:argos_website.products_custom
+msgid "Service temporarily unavailable."
+msgstr "Service momentanément indisponible."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.api_error
+#: model_terms:ir.ui.view,arch_db:argos_website.product_custom
+#: model_terms:ir.ui.view,arch_db:argos_website.products_custom
+msgid "This product is not in stock at the moment."
+msgstr "Ce produit n'est pas en stock en ce moment."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.api_error
+#: model_terms:ir.ui.view,arch_db:argos_website.product_custom
+#: model_terms:ir.ui.view,arch_db:argos_website.products_custom
+msgid "Unavailable Product"
+msgstr "Article Indisponible"
+
+#. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.rating_rating_view_form_inherit
 msgid "Unpublish"
 msgstr "Non-publié"
@@ -141,3 +248,37 @@ msgstr "Non-publié"
 #: model:ir.model.fields,help:argos_website.field_rating_rating__is_published
 msgid "Visible on the website as a comment"
 msgstr "Visible sur le site comme commentaire"
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "We are not able to add your payment method at the moment."
+msgstr "Nous ne pouvons ajouter votre méthode de paiement pour le moment."
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "We are not able to redirect you to the payment form."
+msgstr "Nous ne pouvons pas vous rediriger vers le formulaire de paiement."
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "We're unable to process your payment."
+msgstr "Impossible de traiter votre paiement."
+
+#. module: argos_website
+#. openerp-web
+#: code:addons/argos_website/static/src/js/check_transaction_products.js:0
+#, python-format
+msgid "e.g. Your credit card details are wrong. Please verify."
+msgstr "e.g. Les détails de votre carte de crédit sont faux. Veuillez vérifier."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.error_service
+msgid "return to shop"
+msgstr "Retourner à la boutique"
