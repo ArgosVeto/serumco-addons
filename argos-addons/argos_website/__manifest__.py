@@ -27,11 +27,13 @@
         'data/res_config_settings.xml',
         'data/mail_template_data.xml',
         'data/res_config_settings.xml',
+        'data/res_config_parameter.xml',
         'data/ir_sequence_data.xml',
         # security
         'security/ir.model.access.csv',
         'security/res_groups.xml',
         # views
+        'views/assets.xml',
         'views/product_template_view.xml',
         'views/templates_view.xml',
         'views/product_attribute_views.xml',

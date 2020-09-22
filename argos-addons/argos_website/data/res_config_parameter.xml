@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+  <record id="api_centravet_auth_token" model="ir.config_parameter">
+    <field name="key">api.centravet.auth.token</field>
+    <field name="value">http://transnet6.centravet.net/auth/V2/tokens/user</field>
+  </record>
+
+  <record id="api_centravet_stock" model="ir.config_parameter">
+    <field name="key">api.centravet.stock</field>
+    <field name="value">http://transnet6.centravet.net/openwebveto/V1/stocks</field>
+  </record>
+
+  <record id="api_centravet_login_mail" model="ir.config_parameter">
+    <field name="key">api.centravet.login.mail</field>
+    <field name="value">digital@argos-veterinaire.com</field>
+  </record>
+
+  <record id="api_centravet_login_password" model="ir.config_parameter">
+    <field name="key">api.centravet.login.password</field>
+    <field name="value">5Bg484me53XqHDcU</field>
+  </record>
+
+</odoo>
