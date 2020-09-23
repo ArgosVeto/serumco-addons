@@ -25,6 +25,7 @@ class ResPartner(models.Model):
     is_sterilized = fields.Boolean('Sterilized')
     is_reproductive = fields.Boolean('Reproductive')
     is_dangerous = fields.Boolean('Dangerous')
+    tattoo_number = fields.Char('Tattoo Number')
     tattoo_date = fields.Date('Tattoo Date')
     chip_identification = fields.Char('Chip Identification')
     issue_date = fields.Date('Issue Date')

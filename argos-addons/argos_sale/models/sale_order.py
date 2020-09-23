@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
     species_id = fields.Many2one(related='patient_id.species_id')
     race_id = fields.Many2one(related='patient_id.race_id')
     gender_id = fields.Many2one(related='patient_id.gender_id')
-    age = fields.Integer('Age', related='patient_id.age')
+    age = fields.Char('Age', related='patient_id.age_formatted')
     weight = fields.Float('Weight', related='patient_id.weight')
     pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids')
     employee_id = fields.Many2one('hr.employee')

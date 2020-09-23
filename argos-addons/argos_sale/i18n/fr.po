@@ -147,7 +147,7 @@ msgstr "Canevas"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_date
 msgid "Consultation Date"
-msgstr "Date consultation"
+msgstr "Date de consultation"
 
 #. module: argos_sale
 #: model:ir.model,name:argos_sale.model_consultation_type
