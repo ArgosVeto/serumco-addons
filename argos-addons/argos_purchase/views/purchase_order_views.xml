@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="purchase_order_view_form_inherit" model="ir.ui.view">
+      <field name="name">purchase.order.view.form.inherit</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
+          <attribute name="invisible">True</attribute>
+        </xpath>
+        <xpath expr="//button[@name='action_rfq_send'][last()]" position="attributes">
+          <attribute name="invisible">True</attribute>
+        </xpath>
+        <xpath expr="//button[@name='print_quotation'][1]" position="attributes">
+          <attribute name="invisible">True</attribute>
+        </xpath>
+        <xpath expr="//field[@name='state']" position="attributes">
+          <attribute name="statusbar_visible">draft,approved,purchase</attribute>
+        </xpath>
+        <xpath expr="//button[@name='button_confirm'][last()]" position="attributes">
+          <attribute name="context">{'standard_process': True}</attribute>
+        </xpath>
+        <xpath expr="//button[@name='button_release'][last()]" position="attributes">
+          <attribute name="context">{'standard_process': True}</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

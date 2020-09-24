@@ -43,6 +43,9 @@
         <field name="vat" position="before">
           <field name="social_reason" attrs="{'invisible': [('is_company', '=', False)]}"/>
         </field>
+        <xpath expr="//group[@name='purchase']" position="inside">
+          <field name="is_centravet"/>
+        </xpath>
       </field>
     </record>
 

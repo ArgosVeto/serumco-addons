@@ -20,6 +20,7 @@ class ResPartner(models.Model):
     signup_token = fields.Char(groups='base.group_erp_manager,argos_base.mrdv_group_user')
     signup_type = fields.Char(groups='base.group_erp_manager,argos_base.mrdv_group_user')
     social_reason = fields.Char('Social Reason')
+    is_centravet = fields.Boolean("Is Centravet supplier")
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):
