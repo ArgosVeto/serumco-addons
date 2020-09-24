@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import http
+from odoo import http, _
 from odoo.http import request
-import json
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -19,6 +18,7 @@ class PlanningWebservice(http.Controller):
         :return:
         """
         try:
+            _logger.info(_('Listing Events %s') % OdooCalendarIds)
             slot_obj = request.env['planning.slot']
             planning_ids = slot_obj.search([('start_datetime', '>=', timeMin), ('end_datetime', '<=', timeMax),
                                             ('id', 'in', OdooCalendarIds)])
@@ -53,6 +53,7 @@ class PlanningWebservice(http.Controller):
         :return:
         """
         try:
+            _logger.info(_('Cancelling Event %s') % OdooCalendarId)
             slot_obj = request.env['planning.slot']
             slot = slot_obj.search([('mrdv_event_id', '=', mdrvEventId), ('mrdv_job_id', '=', mdrvJobId), ('id', '=', OdooCalendarId)])
             slot.write({'state': 'cancel'})
@@ -69,6 +70,7 @@ class PlanningWebservice(http.Controller):
         :return:
         """
         try:
+            _logger.info(_('Archiving Event %s') % OdooCalendarId)
             slot_obj = request.env['planning.slot']
             slot = slot_obj.search([('mrdv_event_id', '=', mdrvEventId), ('mrdv_job_id', '=', mdrvJobId), ('id', '=', OdooCalendarId)])
             slot.write({'active': False})
@@ -83,6 +85,7 @@ class PlanningWebservice(http.Controller):
         :return:
         """
         try:
+            _logger.info(_('Pushing Event %s') % post)
             slot_obj = request.env['planning.slot']
             vals = slot_obj._prepare_slot_data(post)
             slot_obj.create(vals)
