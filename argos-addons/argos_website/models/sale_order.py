@@ -44,24 +44,24 @@ class SaleOrder(models.Model):
                                      partner_shipping.zip or '',
                                      partner_shipping.city or '',
                                      partner.phone or partner.mobile or '',
-                                     order.operating_unit_id.centravet_code,
+                                     order.operating_unit_id.code,
                                      baseurl or '',
                                      order.operating_unit_id.email,
                                      '',
                                      order.operating_unit_id.password,
-                                     'CDK',
+                                     'WVTCDK',
                                      code_version or '',
                                      line.product_id.default_code,
-                                     line.product_uom_qty,
+                                     int(line.product_uom_qty),
                                      '',
                                      'N',
-                                     '',
+                                     0,
                                      subscriber_code or '',
                                      watermark or '',
                                      '',
                                      '',
                                      ''])
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
-            filename = '%s%sV%s.WBV.csv' % (server.filename, order.operating_unit_id.code, sequence)
+            filename = '%s%sV%s.WBV' % (server.filename, order.operating_unit_id.code, sequence)
             server.store_data(filename, csv_data)
         return True
