@@ -424,15 +424,6 @@
       </field>
     </record>
 
-    <record id="model_sale_order_action_create_convention" model="ir.actions.server">
-      <field name="name">Incineris Convention</field>
-      <field name="model_id" ref="sale.model_sale_order"/>
-      <field name="binding_model_id" ref="sale.model_sale_order"/>
-      <field name="binding_view_types">form</field>
-      <field name="state">code</field>
-      <field name="code">action = records.action_edit_incineris()</field>
-    </record>
-
     <record id="model_sale_order_action_reprint_convention" model="ir.actions.server">
       <field name="name">Reprint Convention</field>
       <field name="model_id" ref="sale.model_sale_order"/>

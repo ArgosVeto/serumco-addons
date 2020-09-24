@@ -38,7 +38,8 @@
       <field name="model">res.partner</field>
       <field name="priority">100</field>
       <field name="arch" type="xml">
-        <tree string="Patients">
+        <tree string="Patients" decoration-muted="is_dead==True">
+          <field name="is_dead" invisible="1"/>
           <field name="name"/>
           <field name="species_id"/>
           <field name="owner_ids" widget="many2many_tags"/>

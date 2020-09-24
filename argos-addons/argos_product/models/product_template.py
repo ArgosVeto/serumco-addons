@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class ProductTemplate(models.Model):
@@ -40,6 +40,9 @@ class ProductTemplate(models.Model):
     indications = fields.Char('Indications')
     waters_content = fields.Char('Waters Content')
     description_web = fields.Html('Description Web')
+    act_type = fields.Selection([('undefined', _('Undefined')), ('surgery', _('Surgery')),
+                                 ('incineration', _('Incineration')), ('euthanasia', _('Euthanasia')),
+                                 ('hospitalization', _('Hospitalization'))], string='Act Type', default='undefined')
 
     @api.depends('attribute_line_ids')
     def _compute_routing_value_ids(self):
