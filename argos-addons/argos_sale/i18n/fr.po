@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 14:18+0000\n"
-"PO-Revision-Date: 2020-09-15 14:18+0000\n"
+"POT-Creation-Date: 2020-09-24 10:10+0000\n"
+"PO-Revision-Date: 2020-09-24 10:10+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -57,6 +57,51 @@ msgstr ""
 "      "
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "&amp;nbsp; leave the body for incineration. (1)"
+msgstr "&amp;nbsp; laisser le corps en vue de son incinération. (1)"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "&amp;nbsp; owner, (1)"
+msgstr "&amp;nbsp; propriétaire, (1)"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid ""
+"&amp;nbsp; representing the owner who gave me all power to do the\n"
+"                  request for euthanasia\n"
+"                  in his name,\n"
+"                  (1)"
+msgstr ""
+"&amp;nbsp; représentant le propriétaire qui m'a donné tout pouvoir pour faire la\n"
+"                  demande d'euthanasie\n"
+"                  en son nom,\n"
+"                  (1)"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "&amp;nbsp; take back the body. (1)"
+msgstr "&amp;nbsp; reprendre le corps. (1)"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "(1) Cross out as appropriate."
+msgstr "(1) Rayer les mentions inutiles."
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_operating_unit__act_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_partner__act_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_users__act_ids
+msgid "Acts"
+msgstr "Actes"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "Acts"
+msgstr "Actes"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Add a note"
 msgstr "Ajouter une note"
@@ -78,6 +123,11 @@ msgid "Add subline"
 msgstr "Ajouter composant"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Address"
+msgstr "Adresse"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__age
 msgid "Age"
 msgstr "Age"
@@ -94,6 +144,11 @@ msgid "Analysis"
 msgstr "Analyses"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Animal"
+msgstr "Animal"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__argos_state
 msgid "Argos State"
 msgstr "Etat consultation"
@@ -102,6 +157,21 @@ msgstr "Etat consultation"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__arrival_time
 msgid "Arrival Time"
 msgstr "Heure de début"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Belonging to"
+msgstr "Appartenant à"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Born (age)"
+msgstr "Né(e) le (age)"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "CHAMP MANQUANT !!"
+msgstr "CHAMP MANQUANT !!"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.sale_order_line_view_form
@@ -117,6 +187,11 @@ msgstr "Canevas"
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__chapters
 msgid "Chapters"
 msgstr "Chapitres"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "City"
+msgstr "Ville"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -151,6 +226,7 @@ msgstr "Date de consultation"
 
 #. module: argos_sale
 #: model:ir.model,name:argos_sale.model_consultation_type
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type_id
 msgid "Consultation Type"
 msgstr "Type de consultation"
 
@@ -178,6 +254,7 @@ msgstr "Types de consultation"
 #: model:ir.model.fields,field_description:argos_sale.field_res_users__consultation_ids
 #: model:ir.ui.menu,name:argos_sale.menu_consultation
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_tree
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Consultations"
 msgstr "Consultations"
 
@@ -257,14 +334,30 @@ msgid "Done"
 msgstr "Consultation terminée"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "EUTHANASIA REQUEST"
+msgstr "DEMANDE D'EUTHANASIE"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__employee_id
 msgid "Employee"
 msgstr "Vétérinaire"
 
 #. module: argos_sale
+#: model:ir.actions.report,name:argos_sale.report_euhtanasia_request_pdf
+msgid "Euthanasia Request"
+msgstr "Demande d'euthanasie"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__gender_id
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Gender"
 msgstr "Genre"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__has_promotion
+msgid "Has Promotion"
+msgstr "A une promotion"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__hypothese_ids
@@ -272,9 +365,32 @@ msgid "Hypothese"
 msgstr "Hypothèses"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid ""
+"I declare on my honor that this animal has not, to my knowledge, bitten or "
+"scratched any person or animal, for 15 days, that it has not been in contact"
+" with rabid or suspect animals and that it has not been abroad in the past "
+"six months."
+msgstr ""
+"Je déclare sur l'honneur que cet animal n'a, à ma connaissance ni mordu ni "
+"griffé aucune personne ni aucun animal, depuis 15jours, qu'il n'a pas été en contact"
+" avec des animaux enragés ou suspects et qu'il n'est pas allé à l'étranger dans les six "
+"derniers mois."
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "I, the undersigned,"
+msgstr "Je soussigné,"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__id
 msgid "ID"
 msgstr "ID"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Id. electronic"
+msgstr "Id. electronique"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -347,7 +463,18 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Last name and first name"
+msgstr "Nom et prénom"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Made in ................................................ the"
+msgstr "Fait, à ................................................ le"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__name
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Name"
 msgstr "Nom"
 
@@ -360,6 +487,11 @@ msgstr "Nouvelle consultation"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Note"
 msgstr "Note"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "N° tattoo"
+msgstr "N° tatouage"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__observation
@@ -418,6 +550,11 @@ msgid "Please generate convention first"
 msgstr "Veuillez d'abord générer la convention"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "Pray to the veterinary doctor:"
+msgstr "Prie le Docteur Vétérinaire:"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Product"
 msgstr "Article"
@@ -441,6 +578,7 @@ msgstr "Quantité:"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__race_id
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Race"
 msgstr "Race"
 
@@ -464,6 +602,11 @@ msgstr "Réimpression convention"
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Sale Report"
 msgstr "Analyse des ventes"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Facture de paiement d'avance"
 
 #. module: argos_sale
 #: model:ir.model,name:argos_sale.model_sale_report
@@ -508,6 +651,7 @@ msgstr "Vu par"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__species_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Species"
 msgstr "Espèce"
 
@@ -547,6 +691,11 @@ msgid "Weight"
 msgstr "Poids"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "and declares:"
+msgstr "et déclare:"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "days"
 msgstr "jours"
@@ -560,3 +709,15 @@ msgstr "Analyse des ventes"
 #: model:ir.actions.act_window,name:argos_sale.patient_sale_report_action
 msgid "patient.sale.report.action"
 msgstr "Analyse des ventes"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid "signature"
+msgstr "signature"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+msgid ""
+"to proceed with the euthanasia of the animal whose description follows:"
+msgstr ""
+"de bien vouloir procéder à l'euthanasie de l'animal dont le signalement suit:"
