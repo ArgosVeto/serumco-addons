@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 11:44+0000\n"
-"PO-Revision-Date: 2020-09-17 11:44+0000\n"
+"POT-Creation-Date: 2020-09-25 06:48+0000\n"
+"PO-Revision-Date: 2020-09-25 06:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,7 @@ msgstr "Pays"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__create_uid
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__create_uid
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__create_uid
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__create_uid
 msgid "Created by"
 msgstr "Créé par"
@@ -128,6 +129,7 @@ msgstr "Créé par"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__create_date
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__create_date
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__create_date
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__create_date
 msgid "Created on"
 msgstr "Créé le"
@@ -145,6 +147,7 @@ msgstr "Services numériques offerts par la clinique"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__display_name
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__display_name
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__display_name
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__display_name
 msgid "Display Name"
 msgstr "Afficher Nom"
@@ -167,6 +170,7 @@ msgstr "Equipements"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__id
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__id
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__id
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__id
 msgid "ID"
 msgstr "ID"
@@ -174,6 +178,7 @@ msgstr "ID"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification____last_update
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room____last_update
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service____last_update
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
@@ -181,6 +186,7 @@ msgstr "Dernière modification le"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__write_uid
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__write_uid
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__write_uid
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
@@ -188,6 +194,7 @@ msgstr "Dernière mise à jour par"
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__write_date
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__write_date
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__write_date
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
@@ -198,9 +205,15 @@ msgid "Mobile"
 msgstr "Mobile"
 
 #. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__mrdv_id
+msgid "Mrdv Id"
+msgstr "ID MRDV"
+
+#. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__name
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification__name
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_room__name
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__name
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__name
 msgid "Name"
 msgstr "Nom"
@@ -229,6 +242,11 @@ msgstr "Certification"
 #: model:ir.model,name:argos_operating_unit.model_operating_unit_room
 msgid "Operating Unit Room"
 msgstr "Salle"
+
+#. module: argos_operating_unit
+#: model:ir.model,name:argos_operating_unit.model_operating_unit_service
+msgid "Operating Unit Service"
+msgstr "Service"
 
 #. module: argos_operating_unit
 #: model:ir.model,name:argos_operating_unit.model_operating_unit_type
@@ -288,6 +306,18 @@ msgid "Sequence"
 msgstr "Séquence"
 
 #. module: argos_operating_unit
+#: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_service_view_form
+msgid "Service"
+msgstr "Service"
+
+#. module: argos_operating_unit
+#: model:ir.actions.act_window,name:argos_operating_unit.action_open_operating_unit_service_view
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__service_ids
+#: model:ir.ui.menu,name:argos_operating_unit.menu_operating_unit_service
+msgid "Services"
+msgstr "Services"
+
+#. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__state_id
 #: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_view_form
 msgid "State"
@@ -331,6 +361,16 @@ msgid ""
 msgstr ""
 "Le numéro d'identification fiscale. Complétez-le si le contact est soumis à "
 "Taxes gouvernementales. Utilisé dans certaines déclarations juridiques."
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__web_shop_id
+msgid "Web Shop Id"
+msgstr "Identifiant clinique Boutique Web"
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__web_shop_password
+msgid "Web Shop Password"
+msgstr "Mot de passe clinique Boutique Web"
 
 #. module: argos_operating_unit
 #: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_view_form

@@ -43,20 +43,27 @@
                 <field name="emergency_phone"/>
               </group>
               <group>
+                <field name="mrdv_id"/>
                 <field name="type_id"/>
                 <field name="vat"/>
                 <field name="calendar_id"/>
                 <field name="consult_room_number"/>
                 <field name="equipment_ids" widget="many2many_tags"/>
                 <field name="certification_ids" widget="many2many_tags"/>
+                <field name="service_ids" widget="many2many_tags"/>
               </group>
             </group>
             <notebook>
               <page string="Structure"/>
               <page name="digital_service" string="Digital Service">
-                <group string="Digital services offered by the clinic">
-                  <field name="click_and_collect"/>
-                  <field name="online_appointment_booking"/>
+                <group>
+                  <group string="Digital services offered by the clinic">
+                    <field name="click_and_collect"/>
+                    <field name="web_shop_id" attrs="{'invisible': [('click_and_collect', '=', False)]}"/>
+                    <field name="web_shop_password" attrs="{'invisible': [('click_and_collect', '=', False)]}"
+                           password="True"/>
+                    <field name="online_appointment_booking"/>
+                  </group>
                 </group>
               </page>
               <page name="centravet_info" string="Centravet Informations">
