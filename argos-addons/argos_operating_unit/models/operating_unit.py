@@ -21,8 +21,8 @@ class OperatingUnit(models.Model):
     vat = fields.Char(related='partner_id.vat', inherited=True, readonly=False)
     calendar_id = fields.Many2one('resource.calendar', 'Opening Time')
     consult_room_number = fields.Integer('Consultation Rooms Number')
-    equipment_ids = fields.Many2many('maintenance.equipment', 'operating_unit_equipment_rel', 'operating_unit_id', 'equipment_id',
-                                     'Equipments')
+    equipment_ids = fields.Many2many('maintenance.equipment', 'operating_unit_equipment_rel', 'operating_unit_id',
+                                     'equipment_id', 'Equipments')
     click_and_collect = fields.Boolean()
     online_appointment_booking = fields.Boolean()
     rooms_ids = fields.One2many('operating.unit.room', 'operating_unit_id', 'Rooms')
@@ -34,6 +34,11 @@ class OperatingUnit(models.Model):
     password = fields.Char('Password')
     argos_code = fields.Char('Argos Code', compute='_compute_argos_code')
     sequence = fields.Char('Sequence', copy=False)
+    mrdv_id = fields.Char('Mrdv Id')
+    web_shop_id = fields.Char('Web Shop Id')
+    web_shop_password = fields.Char('Web Shop Password')
+    service_ids = fields.Many2many('operating.unit.service', 'operating_unit_service_tag_rel', 'operating_unit_id',
+                                   'service_id', 'Services')
 
     @api.depends('zip')
     def _compute_argos_code(self):
