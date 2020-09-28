@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-27 08:34+0000\n"
-"PO-Revision-Date: 2020-08-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-28 14:06+0000\n"
+"PO-Revision-Date: 2020-09-28 14:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -38,6 +38,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:argos_account.res_partner_followup_view_form_inherit
 msgid "<span class=\"o_stat_text\">Total Due</span>"
 msgstr "<span class=\"o_stat_text\">Impayés</span>"
+
+#. module: argos_account
+#: model:ir.model,name:argos_account.model_account_account
+msgid "Account"
+msgstr "Compte"
 
 #. module: argos_account
 #: model_terms:ir.ui.view,arch_db:argos_account.res_partner_bank_view_form_inherit
@@ -73,9 +78,9 @@ msgid "Can't create payment for this partner."
 msgstr "Impossible de créer un paiement pour ce partenaire"
 
 #. module: argos_account
-#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__cash
-msgid "Cash"
-msgstr "Espèces"
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__card
+msgid "Card"
+msgstr "CB"
 
 #. module: argos_account
 #: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__check
@@ -86,6 +91,11 @@ msgstr "Chèque"
 #: model:ir.model,name:argos_account.model_res_partner
 msgid "Contact"
 msgstr "Contact"
+
+#. module: argos_account
+#: model:ir.model.fields.selection,name:argos_account.selection__res_partner__payment_mode__debit
+msgid "Debit"
+msgstr "Prélèvement"
 
 #. module: argos_account
 #: model:ir.model,name:argos_account.model_account_move
