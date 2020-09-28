@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <!--  reqw -->
+    <template id="portal_template" name="Portal Template">
+        <t t-call="website.layout">
+            <div id="wrap"  class="container">
+                <div class="row my_content mb48">
+                    <div class="col-lg-12 mb48 mt24">
+                        <div class="top-links">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="#">Vue d'ensemble</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/my/order">Commandes</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/my/account">Mes adresses</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/my-clinic">Ma clinique</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="/my/account">Mes infos personnelles</a>
+                                </li>
+                                <li class="nav-item mr-3">
+                                    <a class="nav-link" href="#">Mes cartes bancaires</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
+                            <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 heading">
+                        <h1 class="mt16 mb32">
+                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                        </h1>
+                        <p>
+                            Retrouvez sur cette page lorem ipsum dolor sit amet 
+                        </p>
+                        <p class="mb48">
+                            Nous Contacter
+                        </p>
+                    </div>
+                    <div class="col-md-12 main-content">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="card p-3">
+                                    <div class="row title-row">
+                                        <div class="col-md-6 text-left">
+                                            <strong>MES COMMANDES</strong>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <a href="/my/orders">Voir tout</a>
+                                        </div>
+                                    </div>
+                                    <div class="mb32">
+                                        <t t-if="order_ids">
+                                            <t t-foreach="order_ids[0].order_line" t-as="line">
+                                                <div class="row mx-0 px-24 bottom-border">
+                                                    <div class="col-md-6 pl-0">
+                                                        <span t-field="line.product_id.image_1920"
+                                                            t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                            class="product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                    </div>
+                                                    <div class="col-md-6 pr-0">
+                                                        <p class="status">À récupérer</p>
+                                                        <p class="status-date">7 juillet 2020</p>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </t>
+                                    </div>
+                                    <a class="mt-auto btn btn-primary d-block" href="/my/order">Gérer mes commandes</a>
+                                </div>                              
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card p-3">
+                                            <div class="row title-row">
+                                                <div class="col-md-8 text-left">
+                                                    <strong>MON PROCHAIN RDV</strong>
+                                                </div>
+                                                <div class="col-md-4 text-right">
+                                                    <a href="#">Voir tout</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb32">
+                                                <t t-if="next_appointment_id">
+                                                    <div class="row mt24 mon-prochain">
+                                                        <div class="col-md-12">
+                                                            <div class="date-time">
+                                                                <span>Mercredi</span>
+                                                                <span t-field="next_appointment_id.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
+                                                                <span>--</span>
+                                                                <span t-field="next_appointment_id.start_datetime" t-options='{"format": "HH:MM"}'/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt24 mon-prochain">
+                                                        <div class="col-md-6">
+                                                            <img class="img img-fluid" t-att-src="website.image_url(next_appointment_id.operating_unit_id, 'clinic_banner')" />
+                                                        </div>
+                                                        <div class="col-md-6 main-info">
+                                                            <h1><t t-esc="next_appointment_id.operating_unit_id.name"/></h1>            
+                                                            <p class="mt8">
+                                                                <span t-field="next_appointment_id.employee_id.name"/>
+                                                            </p>
+                                                        </div>
+                                                    </div>                                    
+                                                </t>
+                                            </div>
+                                            <a role="button" href="#" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3">
+                                            <div class="row title-row">
+                                                <div class="col-md-6 text-left">
+                                                    <strong>MA CLINIQUE</strong>
+                                                </div>
+                                            </div>
+
+                                            <t t-if="request.env.user.partner_id.clinic_shortlisted_ids">
+                                                <div class="mb32">
+                                                        <div class="row mt24 ma-clinique">
+                                                            <div class="col-md-6">
+                                                                <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id, 'clinic_banner')"/>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <strong><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.name"/></strong>
+                                                                <p>
+                                                                    <span class="street"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.street"/></span>
+                                                                        <span>, </span>
+                                                                    <span class="zip"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.zip"/></span>
+                                                                        <span>, </span>
+                                                                    <span class="city"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.city"/></span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block" href="#">
+                                                    <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
+                                                    <span>Appeler</span>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3">
+                                            <div class="row title-row">
+                                                <div class="col-md-8 text-left">
+                                                    <strong>MON RDV PRECEDENT</strong>
+                                                </div>
+                                                <div class="col-md-4 text-right">
+                                                    <a href="#">Voir tout</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb32">
+                                                <t t-if="pervious_appointment_id">
+
+                                                    <div class="row mt24 mon-prochain">
+                                                        <div class="col-md-12">
+                                                            <div class="date-time">
+                                                                <span>Mercredi</span>
+                                                                <span t-field="pervious_appointment_id.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
+                                                                <span>--</span>
+                                                                <span t-field="pervious_appointment_id.start_datetime" t-options='{"format": "HH:MM"}'/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt24 mon-prochain">
+                                                        <div class="col-md-6">
+                                                            <img class="img img-fluid" t-att-src="website.image_url(pervious_appointment_id.operating_unit_id, 'clinic_banner')" />
+                                                        </div>
+                                                        <div class="col-md-6 main-info">
+                                                            <h1><t t-esc="pervious_appointment_id.operating_unit_id.name"/></h1>            
+                                                            <div class="mt8">
+                                                                <span t-field="pervious_appointment_id.employee_id.name"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                    
+                                                </t>
+                                            </div>
+                                            <a role="button" href="#" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block">Ajouter a mon calendrier</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt16">
+                                        <div class="card p-3">
+                                            <div class="row title-row">
+                                                <div class="col-md-6 text-left">
+                                                    <strong>MES PRODUITS</strong>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <a href="/wishlist-product">Voir tout</a>
+                                                </div>
+                                            </div>
+                                            <div class="mb32">
+                                                <t t-if="product_wishlist_ids">
+                                                    <div class="row mt24 mes-product">
+                                                        <div class="col-md-6">
+                                                            <span t-field="product_wishlist_ids[0].product_id.image_1920"
+                                                                t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p t-field="product_wishlist_ids[0].product_id.public_categ_ids"/>
+                                                            <strong><t t-esc="product_wishlist_ids[0].product_id.name"/></strong>
+                                                        </div>
+                                                    </div>                                    
+                                                </t>
+                                            </div>
+                                            <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block" href="#"><i class="fa fa-cart"/> Ajouter</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    
+
+    <template id="clinic_shortlisted_template" name="Clinic Shortlisted">
+        <t t-call="website.layout">
+            <div id="wrap"  class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <t t-foreach="clinic_shortlisted_ids" t-as="clinic">
+                                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
+                                    <div class="card bg-white">
+                                        <img class="card-img-top" t-att-src="website.image_url(clinic.favorite_clinic_id, 'clinic_banner')"/>
+                                        <div class="card-body">
+                                            <h3 class="card-title o_default_snippet_text">
+                                                <a itemprop="display_name"  t-attf-href="/clinic-detail/clinic-pratice/#{clinic.favorite_clinic_id.id}" t-att-content="clinic.favorite_clinic_id.display_name" t-field="clinic.favorite_clinic_id.display_name"/>
+                                            </h3>
+
+                                            <p class="Clinique-actuellemen">
+                                                <i class="fa fa-circle"></i><span>Clinique actuellement ouverte</span>
+                                            </p>
+                                            
+                                            <div class="clinic-link d-flex">
+                                                <div class="image-l">
+                                                    <img src="/website_argos/static/src/img/location.svg"/>
+                                                </div>
+                                                <div class="link">
+                                                    <span class="Avenue-Pasteur">
+                                                        <span class="street" t-field="clinic.favorite_clinic_id.street"/><span>, </span><span class="zip" t-field="clinic.favorite_clinic_id.zip"/><span>, </span><span class="city" t-field="clinic.favorite_clinic_id.city"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                                
+                                            <div class="">
+                                                 <a role="button" target="" t-attf-href="tel:{{clinic.favorite_clinic_id.phone}}" class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
+                                                    <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
+                                                </a>
+                                                 <a role="button" target="_blank" href="#" class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+                                                    <span class="">Prendre RDV</span>
+                                                </a>
+                                            </div>                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="wishlist_product_template" name="wishlist product">
+        <t t-call="website.layout">
+            <div id="wrap"  class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <t t-foreach="product_wishlist_ids" t-as="product">
+                                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
+                                    <div class="card bg-white">
+                                        <img class="card-img-top" t-att-src="website.image_url(product.product_id, 'image_1920')"/>
+                                        <div class="card-body">
+                                            <h3 class="card-title o_default_snippet_text">
+                                        
+                                                <a itemprop="display_name"  t-attf-href="#" t-att-content="product.product_id.display_name" t-field="product.product_id.display_name"/>
+                                            </h3>                              
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

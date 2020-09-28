@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+		<template id="prendre_rendez_vous_two_tmp" name="Application">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="s_text_block_three pt32 pb32" data-name="Text block" data-oe-id="1373" data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view" data-oe-field="arch">
+					        <div class="container">
+					            <div class="row">
+					            	<div class="col-lg-8">
+					            		<div class="">
+						            		<ol class="breadcrumb">
+											    <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+											    <li class="breadcrumb-item"><a href="/prendre-rendez-vous"></a> Prendre rendez-vous</li>
+											    <t t-if="clinic_id">
+											    	 <li class="breadcrumb-item"><t t-esc="clinic_id.name"/></li>
+											    </t>
+											   
+											</ol>
+						            	</div>
+										
+										<div class=" pt16 pb8">
+						                	<t t-if="clinic_id">
+										    	<h1><t t-esc="clinic_id.name"/></h1>
+										    </t>
+						                </div>
+										
+						            	<div id="vetowidget"></div>
+						            	<link rel="stylesheet" type="text/css"
+											href="/website_argos/static/src/css/appointment.css"/>
+							            <script  t-att-data-widget-clinic="clinic_id.remote_id"
+							                    data-widget-theme="argos"
+							                    src="https://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js">
+							            </script>
+
+					            
+					                </div>
+					                <div class="col-lg-4 ">
+					                	<div class="mb16">
+						                   <a role="button" target="" href="#" class="btn btn-outline-primary d-block">
+						                       <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Afficher la carte</span>
+						                   </a>
+						                </div> 
+					                	<div class="side-block-c side-block">
+											<div class="">
+												<h3 t-field="clinic_id.name">
+												</h3>
+											</div>
+											<div class="clinic-link d-flex">
+												<div class="mr-2">
+													<img src="/website_argos/static/src/img/location.svg" />
+												</div>
+														<div class="link">
+														<span class="Avenue-Pasteur">
+															<span class="street" t-field="clinic_id.street" />
+															<span>, </span>
+															<span class="zip" t-field="clinic_id.zip" />
+															<span>, </span>
+															<span class="city" t-field="clinic_id.city" />
+														</span>
+													</div>
+											</div>
+
+											<div class="clinic-link d-flex mt16">
+
+												<div class="socialicons mr-4">
+													<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
+													<t t-if="clinic_shortlisted">
+														<t t-if="any(clinic_id.id == cs for cs in clinic_shortlisted)">
+						                                   <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-fav-clinic/#{clinic_id.sudo().id}">
+						                                    	<img src="/website_argos/static/src/img/heart.svg"></img>
+						                                	</a>
+						                                </t>
+						                                <t t-else="">
+							                        	  <a role="button"  class="btn btn-primary fav-btn"
+							                        	  	 t-attf-href="/add-fav-clinic/#{clinic_id.sudo().id}">
+						                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+						                                	</a> 
+						                                </t>
+						                            </t>
+				                            	</div>
+
+												<div class="socialicons mr-4">
+													<a t-att-href="'mailto:%s' % (clinic_id.email)" target="_blank">
+														<img src="/website_argos/static/src/img/message.svg" />
+													</a>
+												</div>
+												<div class="socialicons mr-4">
+													<a t-att-href="clinic_id.facebook" target="_blank">
+														<img src="/website_argos/static/src/img/facebook.svg" />
+													</a>
+												</div>
+											</div>
+											<div class="content mt16 mb16">
+												<span>Horaires d’ouverture</span>
+											</div>
+											<div class="clinic-link">
+												<div class="clinic-link mt24">
+													<t t-if="clinic_working_slot">
+														<div class="row">
+															<t t-set="dayofweek" t-value="list(clinic_working_slot.keys())" />
+															<t t-foreach="clinic_working_slot" t-as="wt">
+																<div class="col-lg-2">
+																	<span class="Lun-Mar-Mer-Jeu-Copy">
+																		<t t-esc="wt" />
+																	</span>
+																</div>
+																<div class="col-lg-5 text-center">
+																	<span class="h00---12h30-9h00---copy">
+																		<t t-esc="clinic_working_slot[wt]['start_time']" />
+																	</span>
+																</div>
+																<div class="col-lg-5 text-center">
+																	<span class="h00---12h30-9h00---copy">
+																		<t t-esc="clinic_working_slot[wt]['end_time']" />
+																	</span>
+																</div>
+															</t>
+														</div>
+													</t>
+
+												</div>
+												
+											</div>
+											<div class="clinic-link mt24">
+												<a t-attf-href="/clinic-detail/clinic-pratice/#{slug(clinic_id.sudo())}"  class="btn btn-primary btn-block">Voir la fiche clinique</a>
+											</div>
+										</div>
+					                </div>
+					            </div>
+					        </div>
+				    	</section>
+					</div>
+				</t>
+			</template>
+</odoo>

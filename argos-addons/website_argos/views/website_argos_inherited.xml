@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Mega menus -->
+	<template id="megamenu_snippets_inherited" inherit_id="website.snippets">
+		<xpath expr="//div[@id='snippet_mega_menu']" position="inside">
+			<div class="o_panel_header">
+				<i class="fa fa-puzzle-piece" />
+				Website Argos Mega Menu
+			</div>
+			<div class="o_panel_body">
+				<t t-snippet="website_argos.mega_menu_one_snippet"
+					t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+				<t t-snippet="website_argos.mega_menu_two_snippet"
+					t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+				<t t-snippet="website_argos.mega_menu_three_snippet"
+					t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+			</div>
+		</xpath>
+	</template>
+
+	<template id="website_argos_snippets" inherit_id="website.snippets">
+		<xpath expr="//div[@id='snippet_mega_menu']" position="after">
+			<div id="snippet_menu" class="o_panel">
+				<div class="o_panel_header">
+					<i class="fa fa-puzzle-piece" />
+					Job Detail Snippet
+				</div>
+				<div class="o_panel_body">
+					<t t-snippet="website_argos.job_detail_snippet" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+				</div>
+			</div>
+		</xpath>
+	</template>
+
+</odoo>
