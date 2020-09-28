@@ -235,31 +235,13 @@ class WebsiteForm(WebsiteForm):
 
 class WebsiteSale(WebsiteSale):
 
-	@http.route(['/shop/checkout'], type='http', auth="public", website=True)
-	def checkout(self, **post):
-		order = request.website.sale_get_order()
+	# @http.route(['/shop/address'], type='http', methods=['GET', 'POST'], auth="public", website=True)
+	# def address(self, **kw):
+	# 	res = super(address,self).address(**kw)
+	# 	print('\n\n\n===**kw====res====',res,**kw)
+	# 	return res
+    	# erwq
 
-		redirection = self.checkout_redirection(order)
-		if redirection:
-			return redirection
-
-		if order.partner_id.id == request.website.user_id.sudo().partner_id.id:
-			return request.redirect('/add-address?new-address=1')
-		for f in self._get_mandatory_billing_fields():
-			if not order.partner_id[f]:
-				return request.redirect('/add-address?new-address=1')
-
-		values = self.checkout_values(**post)
-
-		if post.get('express'):
-			return request.redirect('/shop/confirm_order')
-
-		values.update({'website_sale_order': order})
-
-		# Avoid useless rendering if called in ajax
-		if post.get('xhr'):
-			return 'ok'
-		return request.render("website_sale.checkout", values)
 
 
 
