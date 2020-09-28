@@ -6,6 +6,8 @@ import json
 class Address(http.Controller):
 	@http.route(['/add-address'], type='http', auth="public", website=True)
 	def add_new_address(self,**post):
+		sale_order_id = request.session['sale_order_id']
+		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
 		required_fields = []
 		predefine_data = {}
 		user_id = request.env.user
@@ -30,13 +32,14 @@ class Address(http.Controller):
 				'mode':'new-address',		
 			})
 		if 'submitted' in post and post['submitted']:
-			required_fields = ['name','city','street','phone']
+			required_fields = ['name','city','street','country_id','email']
 			values = {}
 			update_partner_id = False
 			rfields = []
 			if 'partner_id' in post and post['partner_id']:
 				partner = ''.join(x for x in post['partner_id'] if x.isdigit())
 				update_partner_id = request.env['res.partner'].sudo().browse(int(partner))
+				
 			error_message = ''
 			for require_field in required_fields:
 				if require_field in post and not post[require_field]:
@@ -71,9 +74,10 @@ class Address(http.Controller):
 				if post['mode'] == 'edit-mode' and update_partner_id:
 					delivery_partner_id = update_partner_id.sudo().write(partner_vals)
 				elif post['mode'] == 'new-address':
-					partner_vals.update({'parent_id':partner_id.id,'type':'delivery'})
 					delivery_partner_id = request.env['res.partner'].sudo().create(partner_vals)
-			return request.redirect('/my-address')
+					sale_order.partner_invoice_id = delivery_partner_id.id
+					sale_order.partner_id = delivery_partner_id.id
+			return request.redirect('/shop/checkout')
 		else:
 			values.update({
 				'partner_id':partner_id,
@@ -83,6 +87,5 @@ class Address(http.Controller):
 				'predefine_data':predefine_data,
 				'state_ids':state_ids,			
 			})
-		# print('\n\n\n\n====*****======values=====',values)
 		values.update({'partner_id':partner_id})
 		return request.render('website_argos.add_address',values)
