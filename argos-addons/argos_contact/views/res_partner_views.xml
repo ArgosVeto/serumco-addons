@@ -26,7 +26,7 @@
       <field name="arch" type="xml">
         <group name="communication" position="after">
           <group>
-            <field name="origin_id"/>
+            <field name="origin_id" context="{'default_type': 'connection', 'from_connection': True}"/>
           </group>
         </group>
 
