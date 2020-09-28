@@ -222,12 +222,15 @@
 		                    <div class="col-md-4">
                                 <!-- <form id="update_address" action="/add-address" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                                    ?edit-mode=#{bill.id}
+
                                     <button type="submit" id="form_submit"
                                         class="btn btn-primary mb16 mt32 btn-block">
                                         Edit
                                     </button>
                                 </form> -->
-		                        <!-- <a  href="#" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address"><span class='fa fa-edit mr-2'/>Modifier l'adresse</a> -->
+		                        <a t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address"><span class='fa fa-edit mr-2'/>Modifier l'adresse</a>
 		                    </div>
 		                </t>
             		</div>
