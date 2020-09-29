@@ -18,7 +18,7 @@
             	<form action="/clinic-detail" method="post" class="">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                     <div class="col-md-12 mt8">
-                        <t t-call="website_product_rating_bizople.clinic_search_box"/>
+                        <t t-call="website_product_rating_argos.clinic_search_box"/>
                     </div>                    
 
             		<div class="col-md-12 mt16 row">

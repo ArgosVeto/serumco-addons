@@ -54,7 +54,7 @@
         <xpath expr="//div[@class='product_price']" position="after">
             <input type="hidden" name="product_tmpl_id" t-att-value="product.id"/>
             <t t-set="combination" t-value="product._get_first_possible_combination()"/>
-            <t t-if="combination" t-call="website_product_rating_bizople.product_variants">
+            <t t-if="combination" t-call="website_product_rating_argos.product_variants">
             </t>
         </xpath>
 	</template>
@@ -62,7 +62,7 @@
     <template inherit_id='website_sale.product' id="product_rating_value" name="Product Rating">
         <xpath expr="//div[@id='product_details']/h1" position="after">
             <div class="product_ref_code mt16 mb16">
-                <t t-call="website_product_rating_bizople.product_item_stars"/> 
+                <t t-call="website_product_rating_argos.product_item_stars"/> 
             </div>      
         </xpath>
     </template>
