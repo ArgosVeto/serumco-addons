@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<template id="homepage_clinic_search_box" name="Homepage Clinic Searchbox">
+        <div role="search">
+             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
+                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Adresse/Code Postal/Ville…" t-att-value="search"/>
+                <div class="se-btn">
+                    <button type="submit" class="btn btn-light oe_search_button search-btn" aria-label="Search" title="Search">Rechercher</button>
+                </div>         
+            </form>            
+        </div>
+    </template>
+	
+	<record id="argos_homepage" model="ir.ui.view">
+		<field name="name">Argos Homepage</field>
+		<field name="type">qweb</field>
+		<field name="key">website.argos_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Argos Homepage" t-name="argos_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="home-banner">
+							<div class="container">
+								<div class="title d-md-flex">
+									<h1 class="text-primary">Argos, votre clinique vétérinaire</h1>
+									<img src="/website_argos/static/src/img/banner-arrow.svg" class="d-none d-md-block"/>
+								</div>
+								<div class="banner-content">
+									<div class="red-round-big"/>
+									<div class="red-round-small"/>
+									<div class="image-text">
+										<img src="/website_argos/static/src/img/home-banner.jpg" class="img img-fluid" />
+										<div class="text">
+											<h3 class="text-gamma">Quaerat beatae fuga sed repudiandae ea</h3>
+											<p class="m-0 text-gamma">Alias dolorum atque veritatis fugit adipisci alias sit adipisci error. Eligendi vel excepturi doloremque ab occaecati.</p>
+											<a class="text-gamma" href="#">En savoir plus</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-brands">
+							<div class="container">
+								<div class="title">
+									<h1 class="text-primary">Nos marques</h1>
+								</div>
+								<div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+						          	<div class="carousel-inner" role="listbox">
+						            	<div class="carousel-item active" >
+						            		<div class="row align-items-center">
+							            		<div class="col pr-5 pl-0">
+							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/osalia.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/royal-canin.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/proplan.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col pl-5 pr-0">
+							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
+							            		</div>
+							            	</div>
+						            	</div>
+						            	<div class="carousel-item" >
+						            		<div class="row align-items-center">
+							            		<div class="col pr-5 pl-0">
+							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/osalia.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/royal-canin.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col px-5">
+							            			<img src="/website_argos/static/src/img/proplan.png" class="img img-fluid" />
+							            		</div>
+							            		<div class="col pl-5 pr-0">
+							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
+							            		</div>
+							            	</div>
+							            </div>
+						          	</div>
+						          	<div class="slider-control">
+					              		<a class="left carousel-control-prev font-14" data-target="#brand-carousel" role="button" data-slide="prev">
+						                	<span class="fa fa-long-arrow-left"/>
+						               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+						              	</a>
+						              	<a class="right carousel-control-next font-14" data-target="#brand-carousel" role="button" data-slide="next">
+						                	<span class="fa fa-long-arrow-right"/>
+						                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+						              	</a>
+						            </div>
+						        </div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-animals">
+							<div class="container">
+								<div class="animals-content">
+									<div class="blue-round-small"/>
+									<div class="red-round-big"/>
+									<div class="row">
+										<div class="col-md-6 px16">
+											<div class="image-box mb32">
+												<div class="image">
+													<img src="/website_argos/static/src/img/home_chat.jpg" class="img img-fluid" />
+												</div>
+												<div class="text">
+													<p class="animal-name text-white">CHAT</p>
+													<h6 class="text-white w-283">Corrupti sed veritatis asperiores</h6>
+												</div>
+												<div class="bottom-icon">
+													<img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid" />
+												</div>
+											</div>
+											<div class="image-box">
+												<div class="image">
+													<img src="/website_argos/static/src/img/home_rongeurs.jpg" class="img img-fluid" />
+												</div>
+												<div class="text">
+													<p class="animal-name text-white">Rongeurs</p>
+													<h6 class="text-white">Minima possimus</h6>
+												</div>
+												<div class="bottom-icon">
+													<img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 px16">
+											<div class="image-box">
+												<div class="image">
+													<img src="/website_argos/static/src/img/home_chien.jpg" class="img img-fluid" />
+												</div>
+												<div class="text">
+													<p class="animal-name text-black">Chien</p>
+													<h6 class="text-black">A autem consequatur adipisci nulla dignissimos</h6>
+												</div>
+												<div class="bottom-icon">
+													<img src="/website_argos/static/src/img/home_animal_icon_black.svg" class="img img-fluid" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-clinic">
+							<div class="container">
+								<section class="clinic-content bg-primary" style="background-image: url('/website_argos/static/src/img/home_clinic.svg');">
+									<div class="text">
+										<h3 class="text-white">Trouver ma clinique vétérinaire</h3>
+										<p>Deserunt assumenda libero aut voluptates eveniet voluptatum est. Quo magni quis autem aut distinctio sed sint officia. Reprehenderit voluptate qui saepe officia aut et corporis ipsa harum.</p>
+										<t t-call="website_argos.homepage_clinic_search_box"/>
+										
+									</div>
+								</section>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-appointment">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-6 text-center">
+										<div class="image text-center">
+											<div class="red-round-big"/>
+											<div class="blue-round-small"/>
+											<img src="/website_argos/static/src/img/home_rdv.jpg" class="img img-fluid"/>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="text">
+											<h3 class="text-primary">Prendre rendez-vous</h3>
+											<p>Sed odit sequi numquam quis ducimus autem aut rerum culpa. Reiciendis et numquam voluptate quo perferendis in. Odio consequuntur aut voluptates fugit quae eligendi. Sed molestiae et expedita.</p>
+											<form class="o_clinic_type_homepage_form"  action="/appointment-two" method="get">
+
+												<t t-set="get_clinic_ids" t-value="website.get_clinic()"/>
+												<select id="clinic_id" name="clinic_id" t-attf-class="form-control">
+							                        <option value="">Choisir ma clinique…</option>
+							                        <t t-foreach="get_clinic_ids" t-as="c"> 
+							                            <option t-att-value="c.id">
+							                                <t t-esc="c.name"/>
+							                            </option>
+							                        </t>
+							                    </select>
+							                    <button type="submit" id="consulter" class="btn btn-primary Consulter-btn">Consulter</button>
+
+										    </form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-services">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-5">
+										<div class="text">
+											<h3 class="text-primary">Un service vétérinaire complet</h3>
+											<p class="mb32">Nos équipes appliquent au quotidien nos valeurs : Excellence, Proximité et Passion, afin de garantir des soins adaptés à vos compagnons à quatre pattes (chiens, chats et NAC).</p>
+											<p>Nous réalisons les consultations courantes (vaccination) et des actes de chirurgie générale (stérilisation). Aussi, nos établissements de soins disposent d’un laboratoire d’analyses permettant de réaliser des diagnostics vétérinaires complets. Nous sommes également équipés en imagerie médicale. En cas de besoin, nous assurons l’hospitalisation et la dentisterie de vos compagnons.</p>
+										</div>
+									</div>
+									<div class="col-md-7">
+										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+								          	<div class="carousel-inner" role="listbox">
+								            	<div class="carousel-item active" >
+								            		<div class="row">
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
+										            			<p class="text-white">Dentisterie</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
+										            			<p class="text-white">Chirurgie</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
+										            			<p class="text-white">Consultation générale</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
+										            			<p class="text-white">Imagerie médicale</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
+										            			<p class="text-white">Hospitalisation</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
+										            			<p class="text-white">Laboratoire</p>
+										            		</div>
+									            		</div>
+									            	</div>
+								            	</div>
+								            	<div class="carousel-item" >
+								            		<div class="row">
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
+										            			<p class="text-white">Dentisterie</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
+										            			<p class="text-white">Chirurgie</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
+										            			<p class="text-white">Consultation générale</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
+										            			<p class="text-white">Imagerie médicale</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
+										            			<p class="text-white">Hospitalisation</p>
+										            		</div>
+									            		</div>
+									            		<div class="col-md-6 mb-3">
+									            			<div class="service-box d-flex align-items-center">
+										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
+										            			<p class="text-white">Laboratoire</p>
+										            		</div>
+									            		</div>
+									            	</div>
+									            </div>
+								          	</div>
+								          	<div class="slider-control">
+							              		<a class="left carousel-control-prev font-14" data-target="#service-carousel" role="button" data-slide="prev">
+								                	<span class="fa fa-long-arrow-left"/>
+								               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+								              	</a>
+								              	<a class="right carousel-control-next font-14" data-target="#service-carousel" role="button" data-slide="next">
+								                	<span class="fa fa-long-arrow-right"/>
+								                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+								              	</a>
+								            </div>
+								        </div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-emergency">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-6">
+										<section class="emergency-box bg-secondary">
+											<div class="image">
+												<img src="/website_argos/static/src/img/combined-shape.png" class="img img-fluid"/>
+											</div>
+											<h6 class="text-white">Une urgence vétérinaire ?</h6>
+											<p class="text-white">Ab autem quia est nesciunt et alias ut eveniet. Aspernatur odio nam dolores velit debitis.</p>
+											<a class="btn btn-light btn-red">Appeler le 01.22.22.22.22</a>
+										</section>
+									</div>
+									<div class="col-md-6">
+										<section class="emergency-box" style="background-image: url('/website_argos/static/src/img/home_emergency.svg');">
+											<div class="image">
+												<img src="/website_argos/static/src/img/combined-shape_2.png" class="img img-fluid"/>
+											</div>
+											<h6 class="text-white">J’ai trouvé un animal</h6>
+											<p class="text-white">Est et amet consectetur. Aut ut eligendi quidem exercitationem est sequi aut voluptas. </p>
+											<a class="btn btn-light btn-red">Lorem ipsum</a>
+										</section>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-health">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<div class="text">
+											<h3 class="text-primary">Le bien-être et la santé<br/>de vos animaux en ligne</h3>
+											<p>Nous avons à cœur de vous accompagner, quels que soient votre besoin ou vos doutes. Nous vous proposons un service vétérinaire complet en ligne afin que vous retrouviez toutes les réponses à vos questions. </p>
+											<p>Nous mettons à votre disposition des informations médicales et des conseils pratiques concernant la santé de vos animaux. Aussi, découvrez notre boutique en ligne pour acheter nourriture, médicaments et jouets pour votre animal. </p>
+											<p>Retrouvez un espace utilisateur complet avec une fiche pour votre animal comprenant le suivi de vos rendez-vous, un rappel des vaccins et des conseils adaptés.</p>
+											<a class="btn btn-primary">Créer un compte</a>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="image text-right">
+											<div class="blue-round-big"/>
+											<div class="red-round-small"/>
+											<img src="/website_argos/static/src/img/home-health.png" class="img img-fluid"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-group">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<div class="image">
+											<div class="blue-round-small"/>
+											<div class="red-round-big"/>
+											<img src="/website_argos/static/src/img/home-group.png" class="img img-fluid"/>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="text">
+											<h3 class="text-primary">Notre groupe</h3>
+											<p>Découvrez nos cliniques vétérinaires Argos ; des professionnels à votre écoute pour garantir le bien-être et la santé de vos animaux. En tant que réseau français de cabinets et cliniques vétérinaires d’excellence, nous appliquons des soins de qualité dans des structures à taille humaine.</p>
+											<p>Nous sommes présents dans de nombreuses agglomérations françaises, au plus proche de votre animal de compagnie. Faites confiance à Argos Vétérinaire, le meilleur ami de l’animal !</p>
+											<a class="btn btn-primary">En savoir plus</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
+						<section class="home-services-2">
+							<div class="container">
+								<section class="services-content bg-primary">
+									<div class="text">
+										<h3 class="text-white">Une équipe de vétérinaires<br/>à votre service</h3>
+										<p>Si votre animal présente une plaie, des vomissements, des crises convulsives, de la fièvre, des difficultés respiratoires, ou autre problème qui vous semble inquiétant, contactez-nous. Les cliniques et cabinets vétérinaires du réseau Argos restent disponibles 7j/7 pour traiter les urgences vétérinaires.</p>
+										<p class="m-0">Si votre animal ne présente pas ces symptômes, nous vous invitons à <b><u>prendre contact avec la clinique vétérinaire Argos la plus proche de chez vous</u></b> pendant les horaires d’ouverture. Prenez rendez-vous en toute simplicité et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal !</p>
+									</div>
+								</section>
+							</div>
+						</section>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="argos_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/homepage</field>
+		<field name="is_homepage">True</field>
+		<field name="view_id" ref="argos_homepage" />
+	</record>
+</odoo>

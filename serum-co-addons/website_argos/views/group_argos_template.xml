@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="groupe_argos_homepage" model="ir.ui.view">
+		<field name="name">Groupe Argos</field>
+		<field name="type">qweb</field>
+		<field name="key">website.groupe_argos_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Groupe Argos" t-name="groupe_argos_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="groupe-argos-banner pt64 pb64">
+							<div class="container">
+								<div class="">
+				            		<ol class="breadcrumb">
+									    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+									    <li class="breadcrumb-item">Le groupe Argos</li>
+									  </ol>
+				            	</div>
+								<div class="title d-flex">
+									<h1 class="text-primary">Le groupe Argos</h1>
+									<img src="/website_argos/static/src/img/banner-arrow.svg"/>
+								</div>
+								<div class="banner">
+									<div class="red-round-big"/>
+									<div class="blue-round-small"/>
+									<img src="/website_argos/static/src/img/group-2.png" class="img img-fluid"/>
+								</div>
+							</div>
+						</section>
+						<section class="Notre-histoire-section pt64 pb64">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-lg-6">
+										<h1 class="Notre-histoire">Notre histoire</h1>
+										<p class="Argos-Vtrinaire-es">Argos Vétérinaire est un réseau de cliniques et cabinets vétérinaires créé en janvier 2014 par le Docteur Emeric Lemarignier. Début 2019, notre réseau comptait 9 cliniques vétérinaires sur l’agglomération bordelaise. Après avoir validé l’intérêt de ce concept pour les clients et pour les vétérinaires, nous sommes maintenant prêts à vous proposer cette nouvelle approche dans d’autres villes françaises : Nantes, Montpellier, Saint-Etienne, Grenoble…</p>
+										<p class="Argos-Vtrinaire-es">Toutes<a class="text-style-1" href="clinic-detail"> nos cliniques</a> sont regroupées sous la marque “Argos”, travaillent en équipe, fédèrent les vétérinaires dans leur profession et proposent une qualité de service la plus élevée possible à nos clients.
+										</p>
+									</div>
+									<div class="col-md-6 text-center">
+										<div class="image text-center">
+											<img src="/website_argos/static/src/img/rectangle.png" class="img img-fluid"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="Rectangle-Copy-section pt64 pb64">
+							<div class="container">
+								<div class="row">
+									<div class="Rectangle-Copy d-flex align-items-center">
+										<div class="image text-center">
+											<img src="/website_argos/static/src/img/groupe-argos-statue.png" class="img img-responsive"/>
+										</div>
+										<div class="content">
+											<h1 class="Le-saviez-vous-">Le saviez-vous ?</h1>
+											<p class="Argos-est-le-nom-don"><span class="style1">Argos</span> est le nom donné par Homère au<span class="style2"> chien d’Ulysse,</span> le héros de l’Odyssée. Ce compagnon élevé avec amour par Ulysse avant son départ pour la guerre de Troie, sera le seul à le reconnaître à son retour, après vingt ans de voyage. Argos démasquera alors Ulysse déguisé en mendiant et s’éteindra à ses pieds. Argos devient alors un symbole de<span class="style2"> fidélité animale.</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="Notre-manifeste-section pt64 pb64">
+							<div class="container">
+								<h1 class="Notre-manifeste">Notre manifeste</h1>
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="mask text-center mb32">
+											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
+										</div>
+										<div class="content">
+											<h2 class="Argos-cest-lhisto">Argos, c’est l’histoire d’une passion partagée.</h2>
+											<p class="Cest-un-rseau-de-c">C’est un réseau de compétences et d’expertises au service de la qualité des <span class="style1">soins</span>. C’est la garantie de confier votre animal à des équipes passionnées.</p>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="mask text-center mb32">
+											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
+										</div>
+										<div class="content">
+											<h2 class="Argos-cest-lhisto">Argos, c’est l’alliance de la compétence et de la proximité</h2>
+											<p class="Cest-un-rseau-de-c">C’est la combinaison du savoir-faire médical et de la bienveillance. C’est la volonté constante de vous offrir les meilleures solutions.</p>
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="mask text-center mb32">
+											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
+										</div>
+										<div class="content">
+											<h2 class="Argos-cest-lhisto">Argos, ce sont des structures à taille humaine</h2>
+											<p class="Cest-un-rseau-de-c">C’est l’assurance d’être écouté, compris, conseillé. C’est une relation privilégiée.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="Quelques-chiffres-section pt64 pb64">
+							<div class="text-center justify-content-center">
+								<h2 class="Quelques-chiffres">Quelques chiffres</h2>
+							</div>
+							<div class="container">
+								<div class="row justify-content-center">
+									<div class="col-lg-10">
+										<div class="row inner-row justify-content-center">
+											<div class="col-lg-4 border-right">
+												<div class="company-counter text-center">
+													<div class="content counter-box">
+														<span class="number counter">16</span>
+														<p class="Cliniques">Cliniques</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 border-right">
+												<div class="company-counter text-center">
+													<div class="content counter-box">
+														<span class="number counter">5</span>
+														<p class="Cliniques">Agglomérations</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<div class="company-counter text-center">
+													<div class="content counter-box">
+														<span class="number counter">60</span>
+														<p class="Cliniques">Collaborateurs</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="Pattern-2" style="background-image: url('/website_argos/static/src/img/job_pattern.svg');">
+								<div class="container">
+									<div class="row align-items-center">
+										<div class="col-lg-6">
+											<div class="red-round-big"/>
+											<div class="blue-round-small"/>
+											<img src="/website_argos/static/src/img/dark-rectangle.png" class="img img-fluid"/>
+										</div>
+										<div class="col-lg-6">
+											<div class="content">
+												<h2 class="Lalliance-de-lexpe">L'alliance de l'expertise et de la proximité</h2>
+												<p class="Argos-Vtrinaire-es">Argos Vétérinaire est un réseau français de cabinets et cliniques vétérinaires d’excellence qui regroupe des professionnels expérimentés et passionnés vous offrant en permanence le meilleur de leur écoute et de leur savoir-faire.</p>
+												<p class="Argos-Vtrinaire-es">Nous sommes présents dans de nombreuses agglomérations françaises, au plus proche de vous et de votre animal.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class=" argos_job_page pt64 pb64">
+							<div class="container job-exercise">
+								<div class="title text-center mb80">
+									<h3 class="mb16">Nos engagements</h3>
+									<p>Des engagements forts, vécus au prisme de nos valeurs : Proximité, passion &amp; excellence !</p>
+								</div>
+								<div class="row justify-content-center">
+									<div class="col-md-5 mb80 pr32">
+										<div class="exercice-box">
+											<section class="gray-box"></section>
+											<div class="text">
+												<h6>Se former pour toujours mieux soigner </h6>
+												<p>Nos vétérinaires et ASV sont formés en permanence. Un comité scientifique les aide à sélectionner les pratiques et les traitements les plus adaptés (vaccination, visite pubertaire, rappels…). Grâce à des établissements à taille humaine, nos clients connaissent leurs vétérinaires… et les vétérinaires connaissent leurs animaux ! </p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5 mb80 pl32">
+										<div class="exercice-box">
+											<section class="gray-box"></section>
+											<div class="text">
+												<h6>Permettre à tous d'offrir le meilleur à son animal </h6>
+												<p>Nous privilégions la<b> prévention</b> en proposant à nos clients des plans de soin. Nous réalisons un devis écrit avant chaque intervention spécifique. Nous garantissons des prix compétitifs et transparents afin que chaque animal puisse bénéficier du meilleur traitement possible.</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5 mb80 pr32">
+										<div class="exercice-box">
+											<section class="gray-box"></section>
+											<div class="text">
+												<h6>Faciliter la vie de nos clients </h6>
+												<p class="mb32">Nous<b> innovons</b> constamment pour mieux servir nos clients. Nos applications permettent un gain de temps et un contact permanent même en dehors des horaires d’ouverture : prise de rendez-vous, suivi individualisé, dossier animal partagé, livraison d’alimentation spécialisée…</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5 mb80 pl32">
+										<div class="exercice-box">
+											<section class="gray-box"></section>
+											<div class="text">
+												<h6>Agir de manière responsable dans la société </h6>
+												<p>Chez Argos Vétérinaire nous proposons des démarches de<b> soins raisonnées</b>. Nous diminuons les déplacements grâce à la proximité et au<b class="text-primary"> maillage territorial des cliniques.</b></p><p>Nous travaillons pour limiter le recours aux emballages plastiques et non recyclables…</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="Un-rseau-dexcellen-section pt64 pb64">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-lg-6">
+										<div class="content">
+											<h2 class="Un-rseau-dexcellen">Un réseau d'excellence </h2>
+											<p class="Nos-cliniques-et-cab">Nos cliniques et cabinets vétérinaires sont notés en moyenne<span class="style2"> 4,7/5 étoiles sur Google</span>. Prenez rendez-vous les yeux fermés dans nos structures à taille humaine et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal.</p>
+										</div>
+									</div>
+									<div class="col-lg-6 text-center">
+										<div class="image text-center">
+											<div class="red-round-small"/>
+											<div class="blue-round-big"/>
+											<div class="gray-recangle-small"/>
+											<div class="gray-recangle-big"/>
+											<img src="/website_argos/static/src/img/group-14.png" class="img img-fluid"/>
+										</div>
+									</div>
+								</div>
+								<div class="button text-center justify-content-center mt98">
+									<a class="btn btn-primary text-white">Rejoindre le groupe Argos</a>
+								</div>
+							</div>
+						</section>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+	<record id="groupe_argos_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/group-argos</field>
+		<field name="view_id" ref="groupe_argos_homepage" />
+	</record>
+</odoo>

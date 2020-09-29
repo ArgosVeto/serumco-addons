@@ -1,0 +1,107 @@
+.home-two-banner{
+	.text{
+		h3{
+			font-family: Comfortaa-Bold;
+		  	font-size: 40px;
+		  	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: -0.6px;
+		  	margin-bottom: 16px;
+		}
+		p{
+			font-family: AvenirLTStd-Heavy;
+		  	font-size: 18px;
+		  	font-weight: 900;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: normal;
+		  	margin-bottom: 32px;
+		  	color: #8b8b8b;
+		}
+		select{
+			width: 360px;
+	 	 	height: 44px;
+		  	border-radius: 8px;
+		  	background-color: #fff;
+		  	margin-right: 16px;
+		  	font-family: AvenirLTStd-Roman;
+		  	display: inline-block;
+		    border: 0;
+		    box-shadow: 0 2px 4px 0 rgba(32, 31, 76, 0.04);
+    		border: solid 1px rgba(99, 186, 233, 0.4);
+		    color: theme-color('primary');
+		}
+		.Valider-btn{
+			width: 84px;
+		  	height: 44px;
+		  	border-radius: 6px;
+		  	background-color: theme-color('primary') !important;
+		    border-color: theme-color('primary') !important;
+		    color: white !important;
+		    padding: 0;
+		    line-height: 44px;
+		    font-family: AvenirLTStd-Heavy;
+		    font-size: 16px;
+		  	font-weight: 900;
+		  	font-stretch: normal;
+	 	 	font-style: normal;
+		  	letter-spacing: normal;
+		  	text-align: center;
+		}
+		.clinique-link{
+			width: 239px;
+    		height: 44px;
+    		font-family: AvenirLTStd-Heavy;
+		}
+		.ou-text{
+			font-family: AvenirLTStd-Roman;
+			  font-size: 16px;
+			  font-weight: normal;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.63;
+			  letter-spacing: normal;
+			  color: #8b8b8b;
+			  margin-right:15px;
+		}
+	}
+}
+.home-two-text-block {
+	p{
+		font-family: AvenirLTStd-Roman;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: #8b8b8b;
+	}
+}
+
+
+.round-color {
+	.red-round-big{
+			width: 137px;
+  			height: 137px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 53px;
+    		left: -52px;
+    		z-index: -1;
+		}
+		.red-round-small{
+			width: 60px;
+  			height: 60px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: 56px;
+		    right: 0px;
+    		z-index: -1;
+		}
+}

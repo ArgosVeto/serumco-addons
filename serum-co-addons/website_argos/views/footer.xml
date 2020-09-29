@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="footer_clinic_search_box" name="Footer Clinic Searchbox">
+        <div role="search">
+             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
+                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Adresse/Code Postal/Ville…" t-att-value="search"/>
+                <div class="se-btn">
+                    <button type="submit" class="btn btn-light ok-btn oe_search_button" aria-label="Search" title="Search">OK</button>
+                </div>         
+            </form>            
+        </div>
+    </template>
+
+	<template id="website_argos_footer" inherit_id="website.layout" name="Argos Footer">
+	       <xpath expr="//footer[hasclass('o_footer')]" position="replace">
+			<footer id="argos_footer" class="argos-footer o_footer">
+				<div class="footer-service">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-md-3">
+								<div class="service-box d-flex align-items-center">
+									<div class="image">
+										<img src="/website_argos/static/src/img/footer-service1.svg"/>
+									</div>
+									<div class="text">
+										<p class="text-primary">Présent dans 5 agglomérations françaises</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="service-box d-flex align-items-center">
+									<div class="image">
+										<img src="/website_argos/static/src/img/footer-service2.svg"/>
+									</div>
+									<div class="text">
+										<p class="text-primary">Disponible 7j/7 pour traiter vos urgences vétérinaires</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="service-box d-flex align-items-center">
+									<div class="image">
+										<img src="/website_argos/static/src/img/footer-service3.svg"/>
+									</div>
+									<div class="text">
+										<p class="text-primary">Livraison en Click &amp; Collect avec paiement sécurisé</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="service-box d-flex align-items-center">
+									<div class="image">
+										<img src="/website_argos/static/src/img/footer-service4.svg"/>
+									</div>
+									<div class="text">
+										<p class="text-primary">Plus de 3000 produits pour vos animaux </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="footer-newsletter">
+					<div class="container">
+						<div class="news-content">
+							<div class="text">
+								<t t-set="mailing_list_ids" t-value="website.get_mailing_list()"/>
+								<h3 class="text-primary">Recevez l’essentiel<br/>de l’actu vétérinaire</h3>
+								<p>Laboriosam beatae in voluptatum libero. Et repudiandae ratione sint <br/>voluptatem autem voluptates. Quo et repellendus ratione vel <br/>voluptatem et quasi.</p>
+								<form action="/update-mailinglist" method="post">
+									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+
+									<select class="form-control" id="news" name="news">
+								        <option>Je suis...</option>
+								        <t t-if="mailing_list_ids">
+								        	<t t-foreach="mailing_list_ids" t-as="mail">
+						                        <option t-att-value="mail.id"
+						                            	t-att-id="mail.id" 
+						                             	t-att-class="mail.id">
+						                            <t t-esc="mail.name" />
+						                        </option>
+						                    </t>
+								        </t>
+							      	</select>
+							      	<input type="text" name="email" placeholder="Mon adresse e-mail"/>
+							      	<button type="submit" class="btn btn-primary news-btn">S'abonner</button>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div class="footer-content bg-primary">
+					<div class="container">
+						<div class="logo-social">
+							<div class="row align-items-center">
+								<div class="col-md-6">
+									<div class="argos-logo">
+										<img src="/website_argos/static/src/img/argos-white-log.png" class="img img-fluid"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="footer-media">
+										<a class="link" t-att-href="website.social_facebook"
+											t-if="website.social_facebook" target="_blank">
+											<i class="fa fa-facebook" />
+										</a>
+										<a class="link" t-att-href="website.social_youtube"
+											t-if="website.social_youtube" target="_blank">
+											<i class="fa fa-youtube-play" />
+										</a>
+										<a class="link" t-att-href="website.social_linkedin"
+											t-if="website.social_linkedin" target="_blank">
+											<i class="fa fa-linkedin" />
+										</a>
+										<a class="link" t-att-href="website.social_instagram"
+											t-if="website.social_instagram" target="_blank">
+											<i class="fa fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="main-content">
+							<div class="row">
+								<div class="col-md-3">
+									<p class="heading">Nos cliniques</p>
+									<ul class="footer-links">
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Prendre rendez-vous
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Trouver une clinique
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Clinique Saint-Etienne Pasteur
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Clinique Villenave d'Ornon
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Clinique  Vif
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Clinique Bordeaux Bastide
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-3">
+									<p class="heading">Produits</p>
+									<ul class="footer-links">
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Chat
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Chien
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Lapin
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Furet
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Rongeurs
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-3">
+									<p class="heading">Nous contacter</p>
+									<ul class="footer-links">
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Contacter une clinique
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												J'ai trouvé un animal
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Demande d'informations
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Service client clinique
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Service clinique e-commerce
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												Nous rejoindre
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-3">
+									<p class="heading">Nous contacter</p>
+									<p class="address-text">
+										Découvrez notre réseau de cabinets et cliniques vétérinaires au plus proche de vous et de votre animal : Bordeaux, Grenoble, Montpellier, Nantes et Saint-Etienne.
+									</p>
+									<t t-call="website_argos.footer_clinic_search_box"/>
+								</div>
+							</div>
+						</div>
+						<div class="copyright-content">
+							<div class="row align-items-center">
+								<div class="col-md-3">
+									<p class="text-white m-0">
+										© Argos 2020
+									</p>
+								</div>
+								<div class="col-md-9">
+									<p class="m-0 text-white text-right">
+										<a href="#">Mentions légales</a><span class="mx-3"> - </span><a href="#">CGV</a><span class="mx-3"> - </span><a href="#">Politique de confidentialité</a><span class="mx-3"> - </span><a href="#">Plan du site</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</xpath>
+	</template>
+
+	<record id="subscribe_thankyou" model="website.page">
+	    <field name="url">/subscribe-thank-you</field>
+	    <field name="is_published">True</field>
+	    <field name="website_indexed" eval="False"/>
+	    <field name="name">Thank you (subscribe)</field>
+	    <field name="type">qweb</field>
+	    <field name="key">website_argos.subscribe_thankyou</field>
+	    <field name="arch" type="xml">
+	        <t name="Thank you (subscribe)" t-name="website_argos.subscribe_thankyou">
+	            <t t-call="website.layout">
+	                <div id="wrap">
+	                    <div class="oe_structure">
+	                        <div class="container">
+	                            <div class="row">
+	                                <div class="col-lg-12">
+	                                    <p class="text-center">
+	                                    	Thank you for subscribe our newsletter.
+	                                    </p>
+	                                </div>
+	                            </div>                            
+	                        </div>
+	                    </div>
+	                </div>
+	            </t>
+	        </t>
+	    </field>
+	</record>
+</odoo>

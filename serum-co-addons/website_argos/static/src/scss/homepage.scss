@@ -1,0 +1,754 @@
+.btn-primary, .btn-secondary, .btn-light {
+	font-family: AvenirLTStd-Heavy;
+  	font-size: 16px;
+  	font-weight: 900;
+  	font-stretch: normal;
+  	font-style: normal;
+ 	line-height: normal;
+  	letter-spacing: normal;
+  	text-align: center;
+}
+
+.home-banner{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.title{
+		h1{
+			width: 647px;
+	 	 	font-size: 64px;
+	 	 	font-weight: bold;
+		  	font-stretch: normal;
+	  		font-style: normal;
+	  		line-height: 1.25;
+		  	letter-spacing: -0.6px;
+		  	margin-right: 16px;
+		  	margin-bottom: 0;
+		}
+		margin-bottom: 54px;
+	}
+	.banner-content{
+		.red-round-big{
+			width: 137px;
+  			height: 137px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 27px;
+    		left: -52px;
+		}
+		.red-round-small{
+			width: 60px;
+  			height: 60px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: 56px;
+    		right: -30px;
+		}
+		.image-text{
+			img{
+				border-radius: 8px;
+			}
+			.text{
+				h3{
+					width: 355px;
+				  	height: 64px;
+				  	font-family: AvenirLTStd-Heavy;
+				  	font-size: 28px;
+				  	font-weight: 900;
+				  	font-stretch: normal;
+				  	font-style: normal;
+				  	line-height: 1.14;
+				  	letter-spacing: normal;
+				  	margin-bottom: 16px;
+				}
+				p{
+					width: 445px;
+				  	height: 52px;
+				  	font-family: AvenirLTStd-Roman;
+				  	font-size: 14px;
+				  	font-weight: normal;
+				  	font-stretch: normal;
+			  		font-style: normal;
+			  		line-height: 1.86;
+				  	letter-spacing: normal;
+				  	margin-bottom: 23px !important;
+				}
+				a{
+					width: 125px;
+				  	height: 20px;
+				  	font-family: AvenirLTStd-Heavy;
+				  	font-size: 12px;
+				  	font-weight: 900;
+				  	font-stretch: normal;
+				  	font-style: normal;
+				  	line-height: 1.67;
+				  	letter-spacing: 2px;
+				  	text-align: right;
+				  	text-transform: uppercase;
+				  	text-decoration: none;
+				  	transition: 0.2s;
+				  	-webkit-transition: 0.2s;
+				  	&:hover{
+				  		color: theme-color('secondary') !important;
+				  	}
+				  	&::after{
+			  		    content: "\f178";
+				  		font-family: "FontAwesome" !important;
+				  		margin-left: 10px;
+				  	}
+				}
+				position: absolute;
+				bottom: 36px;
+				left: 40px;
+				width: 445px;
+			}
+			position: relative;
+		}
+		position: relative;
+	}
+
+	@media (max-width: 767.98px) {
+		.title{
+			h1{
+				font-size: 40px;
+			}
+		}
+		.banner-content{
+			.red-round-big{
+				width: 60px;
+	  			height: 60px;
+			}
+			.red-round-small{
+				width: 31px;
+	  			height: 31px;
+			}
+		}
+	}
+	padding-top: 52px;
+	padding-bottom: 140px;
+}
+
+.home-brands{
+	.container{
+		.row{
+			> .col{
+				padding: 0;
+			}
+			margin: 0;
+		}
+		.title{
+			h1{
+				font-family: Comfortaa-Bold;
+			  	font-size: 40px;
+			  	font-weight: bold;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: normal;
+			  	letter-spacing: -0.6px;
+			  	margin-bottom: 45px;
+			}
+		}
+		.carousel{
+			.slider-control{
+				.carousel-control-prev, .carousel-control-next {
+					.fa{
+						transition: 0.2s;
+				    	-webkit-transition: 0.2s;
+					}
+					position: unset;
+					display: inline-block;
+					width: 48px;
+    				height: 48px;
+    				background-color: rgba(99, 186, 233, 0.04);
+    				border-radius: 50%;
+    				color: theme-color('primary') !important;
+    				opacity: 1;
+				    line-height: 48px;
+				    cursor: pointer;
+				    transition: 0.2s;
+				    -webkit-transition: 0.2s;
+				    &:hover{
+				    	background-color: rgba(222, 26, 70, 0.04);
+				    	color: theme-color('secondary') !important;
+				    }
+				}
+			    position: absolute;
+			    top: 0;
+			    right: 154px;
+			}
+			position: unset;
+		}
+		position: relative;
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	padding-top: 220px;
+	padding-bottom: 184px;
+}
+
+.home-animals{
+	.container{
+		.row{
+			> .col-md-6{
+				padding: 0;
+			}
+			margin: 0;
+		}
+		.animals-content{
+			.blue-round-small{
+				width: 102px;
+	  			height: 102px;
+	  			background-color: theme-color('primary');
+	  			border-radius: 50%;
+	  			position: absolute;
+			    top: -44px;
+	    		left: 72px;
+			}
+			.red-round-big{
+				width: 260px;
+	  			height: 260px;
+	  			background-color: theme-color('secondary');
+	  			border-radius: 50%;
+	  			position: absolute;
+			    top: 332px;
+	    		right: -98px;
+			}
+			.row{
+			    margin-right: -15px;
+	    		margin-left: -15px;
+			}
+			.px16{
+				padding-right: 16px;
+				padding-left: 16px;
+			}
+			.image-box{
+				.image{
+					.img{
+						border-radius: 8px;
+					}
+				}
+				.text{
+					.animal-name{
+						font-family: AvenirLTStd-Heavy;
+						font-size: 12px;
+					  	font-weight: 900;
+					  	font-stretch: normal;
+					  	font-style: normal;
+					  	line-height: 1.67;
+					  	letter-spacing: 2px;
+					  	margin-bottom: 8px;
+					  	text-transform: uppercase;
+					}
+					h6{
+						width: 372px;
+						font-family: Comfortaa-Bold;
+					  	font-size: 28px;
+					  	font-weight: bold;
+					  	font-stretch: normal;
+					  	font-style: normal;
+					  	line-height: 1.21;
+					  	letter-spacing: -0.6px;
+					}
+					h6.w-283{
+						width: 283px;
+					}
+					position: absolute;
+					top: 24px;
+					left: 24px;
+				}
+				.bottom-icon{
+					position: absolute;
+					bottom: 24px;
+					right: 24px;
+				}
+				position: relative;
+			}
+			position: relative;
+		}
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	padding-bottom: 180px;
+}
+
+.home-clinic{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.clinic-content{
+		.text{
+			h3{
+				font-family: Comfortaa-Bold;
+			  	font-size: 36px;
+			  	font-weight: bold;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: 1.22;
+			  	letter-spacing: -0.54px;
+			  	margin-bottom: 16px;
+			}
+			p{
+				max-width: 550px;
+				font-family: AvenirLTStd-Roman;
+			  	font-size: 16px;
+			  	font-weight: normal;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: 1.63;
+			  	letter-spacing: normal;
+			  	margin-bottom: 48px;
+			}
+		
+			
+			.o_clinic_searchbar_form {
+			    width: 45% !important;
+			    .se-btn {
+				    margin-left: 1px;
+				}
+			}
+			
+			input{
+				width: 338px;
+			  	height: 51px;
+			  	border-radius: 5px;
+			  	background-color: rgba(255, 255, 255, 0.16);
+			  	border: 0;
+			    padding: 15px;
+		        outline: 0 !important;
+		        margin-right: 16px;
+		        margin-bottom: 0;
+		        &::placeholder{
+		        	color: white;
+		        	font-size: 15px;
+		        	font-family: AvenirLTStd-Roman;
+			  		font-weight: normal;
+			  		font-stretch: normal;
+			  		font-style: normal;
+			  		line-height: 1.73;
+			  		letter-spacing: normal;
+		        }
+			}
+			.search-btn{
+			  	border-radius: 6px;
+			  	background-color: #ffffff !important;
+			    border-color: white !important;
+			    color: theme-color('primary');
+			    padding: 15px;
+			    font-family: AvenirLTStd-Heavy;
+			    font-size: 16px;
+			  	font-weight: 900;
+			  	font-stretch: normal;
+		 	 	font-style: normal;
+			  	letter-spacing: normal;
+			  	text-align: center;
+			}
+		}
+		padding: 61px 47px 53px;
+		border-radius: 8px;
+		background-image: url('/website_argos/static/src/img/home_clinic.svg');
+	    background-size: contain;
+	    background-position: right;
+	    background-repeat: no-repeat;
+	}
+	padding-bottom: 150px;
+}
+
+.home-appointment{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.image{
+		.blue-round-small{
+			width: 102px;
+  			height: 102px;
+  			background-color: theme-color('primary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: -51px;
+    		right: 47px;
+    		z-index: -1;
+		}
+		.red-round-big{
+			width: 260px;
+  			height: 260px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: -66px;
+    		left: -27px;
+    		z-index: -1;
+		}
+		.img{
+			border-radius: 8px;
+		}
+		display: inline-block;
+		position:relative;
+	}
+	.text{
+		h3{
+			font-family: Comfortaa-Bold;
+		  	font-size: 36px;
+		  	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: -0.54px;
+		  	margin-bottom: 16px;
+		}
+		p{
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 16px;
+		  	font-weight: normal;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.63;
+		  	letter-spacing: normal;
+		  	margin-bottom: 32px;
+		}
+		select{
+			width: 360px;
+	 	 	height: 44px;
+		  	border-radius: 4px;
+		  	background-color: rgba(99, 186, 233, 0.04);
+		  	margin-right: 16px;
+		  	display: inline-block;
+		    border: 0;
+		    box-shadow: none;
+		    color: theme-color('primary');
+		}
+		.clinic-btn{
+			width: 106px;
+		  	height: 44px;
+		  	border-radius: 6px;
+		  	background-color: theme-color('primary') !important;
+		    border-color: theme-color('primary') !important;
+		    color: white !important;
+		    padding: 0;
+		    line-height: 44px;
+		    font-family: AvenirLTStd-Heavy;
+		    font-size: 16px;
+		  	font-weight: 900;
+		  	font-stretch: normal;
+	 	 	font-style: normal;
+		  	letter-spacing: normal;
+		  	text-align: center;
+		}
+	}
+	padding-bottom: 272px;
+}
+
+.home-services{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.text{
+		h3{
+			font-family: Comfortaa-Bold;
+		  	font-size: 36px;
+		 	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: -0.54px;
+		  	margin-bottom: 16px;
+		}
+		p{
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 16px;
+		  	font-weight: normal;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.63;
+		  	letter-spacing: normal;
+		  	margin: 0;
+		}
+	}
+	#service-carousel{
+		.service-box{
+			.img{
+				margin-right: 16px;
+			}
+			p{
+				font-family: Comfortaa-Bold;
+			  	font-size: 16px;
+			  	font-weight: bold;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: normal;
+			  	letter-spacing: -0.24px;
+			  	margin: 0;
+			}
+			padding: 26px 16px;
+			border-radius: 8px;
+			background-color: theme-color('primary');
+		}
+		.slider-control{
+			.carousel-control-prev, .carousel-control-next {
+				width: 48px;
+			    height: 48px;
+			    background-color: rgba(99, 186, 233, 0.04);
+			    opacity: 1;
+			    color: theme-color('primary');
+			    top: 50%;
+			    transform: translateY(-50%);
+			    -webkit-transform: translateY(-50%);
+			    border-radius: 50%;
+			}
+			.carousel-control-prev{
+				left: 20px;
+			}
+			.carousel-control-next{
+				right: -90px;
+			}
+		}
+	    padding-left: 100px;
+	}
+	padding-bottom: 156px;
+}
+
+.home-emergency{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.emergency-box{
+		
+		
+		.btn-light{
+		    	padding: 13px 20px;
+		    }
+		
+		.image{
+			min-height: 98px;
+			margin-bottom: 27px;
+		}
+		h6{
+			font-family: Comfortaa-Bold;
+		  	font-size: 28px;
+		  	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.21;
+		  	letter-spacing: normal;
+		  	margin-bottom: 6px;
+		}
+		p{
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 16px;
+		  	font-weight: normal;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.63;
+		  	letter-spacing: normal;
+		  	margin-bottom: 20px;
+		}
+		.btn{
+		  	color: theme-color('primary') !important;
+		}
+		background-size: cover;
+		background-position: center;
+		border-radius: 8px;
+		padding: 63px 83px 50px;
+		text-align: center;
+	}
+	padding-bottom: 140px;
+}
+
+.home-health{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.text{
+		h3{
+			font-family: Comfortaa-Bold;
+		  	font-size: 36px;
+		  	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: -0.54px;
+		  	margin-bottom: 16px;
+		}
+		p{
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 16px;
+		  	font-weight: normal;
+	  		font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.63;
+		  	letter-spacing: normal;
+		  	margin-bottom: 32px;
+		}
+		.btn{
+		  	color: white !important;
+		}
+	}
+	.image{
+		.blue-round-big{
+			width: 170px;
+  			height: 170px;
+  			background-color: theme-color('primary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 31px;
+    		right: 173px;
+    		z-index: -1;
+		}
+		.red-round-small{
+			width: 102px;
+  			height: 102px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: -37px;
+    		right: 327px;
+    		z-index: -1;
+		}
+		position: relative;
+	}
+	padding-bottom: 177px;
+}
+
+.home-group{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.text{
+		h3{
+			font-family: Comfortaa-Bold;
+		  	font-size: 36px;
+		  	font-weight: bold;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: -0.54px;
+		  	margin-bottom: 16px;
+		}
+		p{
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 16px;
+		  	font-weight: normal;
+	  		font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.63;
+		  	letter-spacing: normal;
+		  	margin-bottom: 32px;
+		}
+		.btn{
+		  	color: white !important;
+		}
+	}
+	.image{
+		.blue-round-small{
+			width: 74px;
+  			height: 74px;
+  			background-color: theme-color('primary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 38px;
+    		left: 448px;
+    		z-index: -1;
+		}
+		.red-round-big{
+			width: 194px;
+  			height: 194px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: -68px;
+    		left: 20px;
+    		z-index: -1;
+		}
+		position: relative;
+	}
+	padding-bottom: 290px;
+	padding-top: 133px;
+}
+
+.home-services-2{
+	.container{
+		@media (min-width: 1400px) {
+			padding: 0 154px;
+		}
+	}
+	.services-content{
+		.text{
+			h3{
+				font-family: Comfortaa-Bold;
+			  	font-size: 36px;
+			  	font-weight: bold;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: 1.22;
+			  	letter-spacing: -0.54px;
+			  	margin-bottom: 32px;
+			}
+			p{
+				max-width: 623px;
+				font-family: AvenirLTStd-Roman;
+			  	font-size: 16px;
+			  	font-weight: normal;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: 1.63;
+			  	letter-spacing: normal;
+			  	margin-bottom: 32px;
+			}
+		}
+		.image{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		padding: 44px 64px 47px;
+		border-radius: 8px;
+		background-image: url('/website_argos/static/src/img/home-service2.png');
+	    background-size: contain;
+	    background-position: right;
+	    background-repeat: no-repeat;
+	}
+	padding-bottom: 150px;
+}
+
+.Nous-utilisons-des-c {
+	font-family: AvenirLTStd-Roman;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.86;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+}
+.Nous-utilisons-des-c .text-style-1 {
+  font-family: AvenirLTStd-Heavy;
+  font-weight: 900;
+}
+
+.Vos-paramtres-de-co {
+  font-family: AvenirLTStd-Heavy !important;
+  font-size: 28px;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: #201f4c;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="theme_customize_options" inherit_id="web._assets_primary_variables">
+		<xpath expr="//link" position="after">
+			<link rel="stylesheet" type="text/scss"
+				href="/theme_argos/static/src/scss/theme_variable.scss"/>
+				<link rel="stylesheet" type="text/scss"
+				href="/theme_argos/static/src/scss/fonts.scss"/>
+				<link rel="stylesheet" type="text/scss"
+				href="/theme_argos/static/src/scss/font-layout.scss"/>
+		</xpath>
+	</template>
+
+</odoo>

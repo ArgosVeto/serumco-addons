@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="mega_menu_three_snippet" name="Boutique en ligne Menu">
+		<section class="mega_menu_one_snippet">
+			<div class="container p-0">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="heading-contents">
+							<p class="m-0 heading text-primary">Animal</p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Chat</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Chien</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Lapin</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Furet</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Lorem</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#">Ipsum</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="heading-contents">
+							<p class="m-0"><a href="#" class="menu_item text-gamma">Nouveautés</a></p>
+							<p class="m-0 mt-2 heading text-primary">Marques</p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma">Lorem</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma">Ipsum</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma">Dolor sit</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma">+ 134 autres marques…</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="right-img menu-3">
+							<img src="/website_argos/static/src/img/sous-menu_produits_01.jpg" class="img img-fluid mix-blend"/>
+							<p class="image-text image-text-2 text-primary">Marque lorem</p>
+							<p class="image-text text-gamma"><a href="#" class="text-gamma">Lorem ipsum dolor sit amet</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="right-img menu-3">
+							<img src="/website_argos/static/src/img/sous-menu_produits_02.jpg" class="img img-fluid"/>
+							<p class="image-text image-text-2 text-primary">Marque lorem</p>
+							<p class="image-text text-gamma"><a href="#" class="text-gamma">Lorem ipsum dolor sit amet</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

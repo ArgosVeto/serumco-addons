@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="argos_appointment_five" model="ir.ui.view">
+		<field name="name">Prendre rendez-vous-five</field>
+		<field name="type">qweb</field>
+		<field name="key">website.argos_appointment_five</field>
+		<field name="arch" type="xml">
+			<t name="Prendre rendez-vous" t-name="argos_appointment_five">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="s_text_block_three pt32 pb32" data-name="Text block" data-oe-id="1373" data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view" data-oe-field="arch">
+					        <div class="container">
+					            <div class="row">
+					            	<div class="col-lg-8">
+					            		<div class="">
+						            		<ol class="breadcrumb">
+											    <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+											    <li class="breadcrumb-item"><a href="/prendre-rendez-vous"></a> Prendre rendez-vous</li>
+											    <li class="breadcrumb-item">Rendez-vous confirmé !</li>
+											</ol>
+						            	</div>
+						                <div class="pt16 pb8">
+						                	<h1>Rendez-vous confirmé !</h1>
+						                </div>
+						                <div class="mt16 mb16 success-message d-flex">
+						                	<img src="/website_argos/static/src/img/check.png" class="img-ing-fluid mr-3 ml-3"/>
+						                	<p class="Attention-votre-ren">La demande de votre rendez-vous a bien été prise en compte. Un email récapitulatif vous a été envoyé. Si vous n'avez pas reçu cet email, veuillez consulter votre dossier Courrier indésirable ou Spam.</p>
+						                </div>
+						                <div class="b-in-hr" data-oe-model="ir.ui.view" data-oe-id="1546" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[2]/div[2]">
+											<div class="s_hr text-left pt32 pb32" data-name="Separator">
+												<hr class="border-600 s_hr_1px s_hr_solid w-100 mx-auto"/>
+											</div>
+										</div>
+										<div class="address">
+											<div class="Mercredi-28-aot-202 mb16">Mercredi 28 août 2020 à 09h30 - Première consultation</div>
+											<div class="style1 Dr-Pierre-Michel">Dr. Pierre Michel - Cabinet Vétérinaire Argos Grabels</div>
+											<div class="style2 Dr-Pierre-Michel">284 Avenue Pasteur<br></br>33185 Le Haillan</div>
+										</div>
+										<div class="b-in-hr" data-oe-model="ir.ui.view" data-oe-id="1546" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[2]/div[2]">
+											<div class="s_hr text-left pt32 pb32" data-name="Separator">
+												<hr class="border-600 s_hr_1px s_hr_solid w-100 mx-auto"/>
+											</div>
+										</div>
+
+					                </div>
+					                <div class="col-lg-4 ">
+					                	<div class="mb16">
+						                   <a role="button" target="" href="#" class="btn btn-outline-primary d-block">
+						                       <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Afficher la carte</span>
+						                   </a>
+						                </div> 
+					                	<div class="side-block-c side-block">
+											<div class="">
+												<h3>
+													Cabinet vétérinaire Argos du Haillan
+												</h3>
+											</div>
+											<div class="clinic-link d-flex">
+												<div class="mr-2">
+													<img src="/website_argos/static/src/img/location.svg" />
+												</div>
+												<div class="link">
+													<span class="Avenue-Pasteur">
+														<span>284 Avenue Pasteur, 33185 Le Haillan</span>
+													</span>
+												</div>
+											</div>
+
+											<div class="clinic-link d-flex mt16">
+												<div class="socialicons mr-4 bg-heart">
+													<img src="/website_argos/static/src/img/heart.svg" />
+												</div>
+												<div class="socialicons mr-4">
+													<img src="/website_argos/static/src/img/message.svg" />
+												</div>
+												<div class="socialicons mr-4">
+													<img src="/website_argos/static/src/img/facebook.svg" />
+												</div>
+											</div>
+											<div class="content mt16 mb16">
+												<span>Horaires d’ouverture</span>
+											</div>
+											<div class="clinic-link">
+												<div class="row">
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Lun.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Mar.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Mer.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Jeu.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Ven.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Sam.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">8h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+													<div class="col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Dim.</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+													<div class="col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+												</div>
+											</div>
+											<div class="clinic-link mt24">
+												<a href="#" class="btn btn-primary btn-block">Voir la fiche clinique</a>
+											</div>
+										</div>
+					                </div>
+					            </div>
+					        </div>
+				    	</section>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+	<record id="argos_appointment_five_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/prendre-rendez-vous-five</field>
+		<field name="view_id" ref="argos_appointment_five" />
+	</record>
+</odoo>

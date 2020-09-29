@@ -1,0 +1,355 @@
+.s_text_block_three{
+	background-color:unset !important;
+
+	 h1{
+	 	font-family: Comfortaa-Bold !important;
+	  	font-size: 40px;
+	  	font-weight: bold;
+	  	font-stretch: normal;
+	  	font-style: normal;
+	  	line-height: normal;
+	  	letter-spacing: -0.6px;
+	  	color: theme-color('primary') !important;
+	  	margin-bottom:18px;
+	 }
+	.o_default_snippet_text{
+		font-family: AvenirLTStd-Heavy;
+	  	font-size: 18px;
+	  	font-weight: 900;
+	  	font-stretch: normal;
+	  	font-style: normal;
+	  	line-height: 1.22;
+	  	letter-spacing: normal;
+	  	color: #8b8b8b;
+	}
+	.text-three{
+		font-family: AvenirLTStd-Roman;
+	  	font-size: 16px;
+	  	font-weight: normal;
+	  	font-stretch: normal;
+	  	font-style: normal;
+	  	line-height: 26px;
+	  	letter-spacing: normal;
+	  	color: #8b8b8b;
+	  	padding: 35px 0;
+	  	border-bottom:1px solid #ececec;
+	  	margin-bottom:0;
+	}
+	.side-block{
+		position:unset !important;
+	}
+	.clinic-type{
+		.badge-light {
+			  border-radius: 24px;
+			  border: solid 1px rgba(99, 186, 233, 0.4);
+			  background-color: #ffffff;
+			  font-family: Comfortaa-Bold;
+			  font-size: 14px;
+			  font-weight: bold;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: normal;
+			  letter-spacing: normal;
+			  text-align: center;
+			  color:theme-color('primary');
+		      padding: 0.7em 1.3em;
+		      
+		      &:hover{
+		      	background-color: theme-color('primary');
+		      	color: #fff;
+		      }
+		}
+	}
+	.select-option select{
+		width: 360px;
+ 	 	height: 44px;
+	  	border-radius: 8px;
+	  	background-color: #fff;
+	  	margin-right: 16px;
+	  	display: inline-block;
+	  	font-family: AvenirLTStd-Roman;
+	    border: 0;
+	    box-shadow: 0 2px 4px 0 rgba(32, 31, 76, 0.04);
+		border: solid 1px rgba(99, 186, 233, 0.4);
+	    color: theme-color('primary') !important;
+	}
+	.Valider-btn{
+		width: 84px;
+	  	height: 44px;
+	  	border-radius: 6px;
+	  	background-color: theme-color('primary') !important;
+	    border-color: theme-color('primary') !important;
+	    color: white !important;
+	    padding: 0;
+	    line-height: 44px;
+	    font-family: AvenirLTStd-Heavy;
+	    font-size: 16px;
+	  	font-weight: 900;
+	  	font-stretch: normal;
+ 	 	font-style: normal;
+	  	letter-spacing: normal;
+	  	text-align: center;
+	}
+	
+	.Rectangle {
+	  border-radius: 4px;
+	  border: solid 1px rgba(99, 186, 233, 0.4);
+	  background-color: #ffffff;
+	  padding: 31px 33px 20px;
+	  position:relative;
+
+	  .Arrow-left {
+	  	img{
+	  		vertical-align: unset;
+	  	}
+		  width: 16px;
+		  height: 16px;
+		  object-fit: contain;
+		  position: absolute;
+		  left: 14px;
+		  top: 40px;
+		}
+	  .Arrow-right {
+	  	img{
+	  		vertical-align: unset;
+	  	}
+		  width: 16px;
+		  height: 16px;
+		  object-fit: contain;
+		  position: absolute;
+		  right: 14px;
+		  top: 40px;
+		}
+		.Lun-6-juil {
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.43;
+		  letter-spacing: normal;
+		  text-align: center;
+		  color: theme-color('gamma');
+
+		  .sty1{
+		  	font-family: AvenirLTStd-Heavy;
+		  }
+		  .sty2{
+		  	font-family: AvenirLTStd-Roman;
+		  }
+		}
+		.Rectangle-Copy-2 {
+		  border-radius: 8px;
+		  border: solid 1px rgba(99, 186, 233, 0.4);
+		  background-color: #ffffff;
+		  padding: 10px;
+
+		  .h00 {
+			  font-family: AvenirLTStd-Heavy;
+			  font-size: 14px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.86;
+			  letter-spacing: normal;
+			  text-align: center;
+			  color: theme-color('primary');
+			}
+		}
+		.Rectangle-two {
+		  border-radius: 6px;
+		  background-color: theme-color('primary');
+		  margin: 20px;
+		  width: 210px;
+		  margin-left:auto;
+		  margin-right:auto;
+
+		  .btn {
+			  font-family: AvenirLTStd-Heavy;
+			  font-size: 16px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: normal;
+			  letter-spacing: normal;
+			  text-align: center;
+			  color: #ffffff;
+			}
+		}
+	}
+
+	.row.mx-7{
+		.px-7{
+			padding: 0 7px;
+		}
+		margin: 0 -7px;
+	}
+	.connecte-text{
+		padding: 35px 0;
+	  	border-bottom:1px solid #ececec;
+	}
+	.connecte-btn{
+		width: 170px;
+		height: 44px;
+		border-radius: 6px;
+	  	font-family: AvenirLTStd-Heavy;
+	  	font-size: 16px;
+	  	font-weight: 900;
+	  	font-stretch: normal;
+	  	font-style: normal;
+	  	line-height: normal;
+	  	letter-spacing: normal;
+	  	text-align: center;
+	  	color: #ffffff;
+	}	
+
+	.Prendre-form{
+		.form-text{
+			font-family: AvenirLTStd-Roman;
+		    font-size: 16px;
+		    font-weight: normal;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 26px;
+		    letter-spacing: normal;
+		    color: #8b8b8b;
+		}
+		.Un-code-va-vous-tre {
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 26px;
+		  letter-spacing: normal;
+		  color: #201f4c;
+		  margin-bottom:30px;
+		  margin-top:10px;
+		}
+		.Jaccepte-les-condit {
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: #8b8b8b;
+		  margin:0;
+		}
+		.number{
+			select{
+				border-top-right-radius: 0;
+    			border-bottom-right-radius: 0;
+    			width: 174px;
+    			border-right: 0;
+    			background-color: rgba(99, 186, 233, 0.04);
+			}
+			input{
+				border-top-left-radius: 0;
+    			border-bottom-left-radius: 0;
+			}
+		}
+		.image{
+			width: 16px;
+			  height: 16px;
+			  border-radius: 4px;
+			  border: solid 1px theme-color('primary');
+			  background-color: #ffffff;
+			  line-height: 16px;
+			  text-align:center;
+			  margin-top:3px;
+
+			  img{
+			  	width: 8px;
+  				height: 6px;
+			  }
+		}
+	}
+	.warning-message{
+		width: 744px;
+  		height: 48px;
+  		border-radius: 8px;
+  		background-color: rgba(222, 26, 70, 0.04);
+  		text-align: center;
+    	align-items: center;
+
+  		img{
+  			width: 20px;
+  			height: 20px;
+  			object-fit: contain;
+  		}
+  		.Attention-votre-ren {
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.86;
+		  letter-spacing: normal;
+		  color: theme-color('secondary');
+		  margin:0;
+		  text-align: left;
+		}
+	}
+	.success-message{
+		width: 744px;
+  		height: 78px;
+  		border-radius: 8px;
+  		 background-color: rgba(99, 186, 233, 0.04);
+  		text-align: center;
+    	align-items: center;
+
+  		img{
+  			width: 20px;
+  			height: 20px;
+  			object-fit: contain;
+  		}
+  		.Attention-votre-ren {
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.86;
+		  letter-spacing: normal;
+		  color: theme-color('primary');
+		  margin:0;
+		  text-align: left;
+		}
+	}
+	.address{
+		.Mercredi-28-aot-202 {
+		  font-family: AvenirLTStd-Heavy;
+		  font-size: 18px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.22;
+		  letter-spacing: normal;
+		  color: #201f4c;
+		}
+		.Dr-Pierre-Michel {
+		  font-size: 16px;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: #8b8b8b;
+		}
+		.style1{
+			font-family: AvenirLTStd-Heavy;
+			font-weight: 900;
+		}
+		.style2{
+			font-family: AvenirLTStd-Roman;
+		  	font-weight: normal;
+		}
+	}
+	.input2{
+		height: 88px !important;
+	}
+
+	//Appointment CSS
+	
+}
+
