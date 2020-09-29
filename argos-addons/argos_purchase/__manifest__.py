@@ -20,6 +20,7 @@
         'merge_purchase_order',
         'bi_convert_purchase_from_sales',
         'delivery',
+        'resource',
     ],
     'data': [
         #security
