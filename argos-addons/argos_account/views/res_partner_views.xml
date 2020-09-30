@@ -52,7 +52,7 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="account_followup.res_partner_view_form"/>
       <field name="arch" type="xml">
-        <xpath expr="//span[hasclass('o_stat_text')]" position="replace">
+        <xpath expr="//button[@name='open_action_followup']/div/span[hasclass('o_stat_text')]" position="replace">
           <span class="o_stat_text">Total Due</span>
         </xpath>
         <button name="open_action_followup" position="attributes">

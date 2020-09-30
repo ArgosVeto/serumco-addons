@@ -87,3 +87,12 @@ msgid ""
 msgstr ""
 "Vous ne pouvez pas supprimer cette ligne car elle fait partie d'un pack. Pour"
 " supprimer cette ligne, vous devez supprimer le pack lui-même"
+
+#. module: sale_operating_unit
+#: model:ir.model.fields,field_description:sale_operating_unit.field_sale_order__operating_unit_id
+#: model:ir.model.fields,field_description:sale_operating_unit.field_sale_order_line__operating_unit_id
+#: model:ir.model.fields,field_description:sale_operating_unit.field_sale_report__operating_unit_id
+#: model_terms:ir.ui.view,arch_db:sale_operating_unit.view_sale_report_search
+#: model_terms:ir.ui.view,arch_db:sale_operating_unit.view_sales_order_filter
+msgid "Operating Unit"
+msgstr "Clinique"

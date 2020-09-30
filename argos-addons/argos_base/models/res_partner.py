@@ -32,24 +32,6 @@ class ResPartner(models.Model):
             return partner
         return self.create({'name': name, 'phone': phone})
 
-    @api.constrains('lastname')
-    def _check_lastname(self):
-        if not self._context.get('from_bo'):
-            return
-        if self._context.get('copy'):
-            return
-        for rec in self.filtered(lambda p: not p.is_company):
-            if rec.lastname and not rec.lastname.isupper():
-                raise ValidationError(_('Lastname must be upper'))
-
-    @api.constrains('firstname')
-    def _check_firstname(self):
-        if not self._context.get('from_bo'):
-            return
-        for rec in self.filtered(lambda p: not p.is_company):
-            if rec.firstname and not rec.firstname[0].isupper():
-                raise ValidationError(_('First letter of firstname must be upper'))
-
     @api.constrains('lastname', 'firstname', 'email')
     def _check_unique_partner(self):
         for rec in self.filtered(lambda p: not p.is_company):
@@ -72,8 +54,23 @@ class ResPartner(models.Model):
             _logger.error(repr(e))
 
     @api.model
+    def _format_name_vals(self, vals):
+        if vals.get('lastname') and not vals['lastname'].isupper():
+            vals['lastname'] = vals['lastname'].upper()
+        if vals.get('firstname') and not vals['firstname'].istitle():
+            vals['firstname'] = vals['firstname'].title()
+        return vals
+
+    @api.model
     def create(self, vals):
+        if self._context.get('from_bo', False):
+            vals = self._format_name_vals(vals)
         record = super(ResPartner, self).create(vals)
         if self._context.get('from_bo', False):
             record.send_confirmation_mail()
         return record
+
+    def write(self, vals):
+        if self._context.get('from_bo', False):
+            vals = self._format_name_vals(vals)
+        return super(ResPartner, self).write(vals)

@@ -94,5 +94,18 @@
       </field>
     </record>
 
+    <record id="res_partner_mail_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.mail.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="mail.res_partner_view_form_inherit_mail"/>
+      <field name="priority" eval="2"/>
+      <field name="arch" type="xml">
+        <xpath expr="//label[@for='email']" position="replace"/>
+        <xpath expr="//div[hasclass('o_row_readonly')]" position="replace">
+          <field name="email"/>
+        </xpath>
+      </field>
+    </record>
+
   </data>
 </odoo>
