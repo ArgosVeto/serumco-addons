@@ -114,11 +114,6 @@
         parent="website.menu_website_configuration"/>
 
 
- 	<menuitem id="menu_sub_service_provide" name="Services"
-        sequence="10"
-        parent="website_argos.menu_clinic"
-        action="action_service_provide"/>
-
     <menuitem id="menu_sub_job_type" name="Job Type"
         sequence="30"
         parent="website_argos.menu_clinic"
