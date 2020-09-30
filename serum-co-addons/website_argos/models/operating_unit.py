@@ -11,7 +11,7 @@ class OperatingUnit(models.Model):
     _inherit = 'operating.unit'
 
     contact_questions_id = fields.Many2one('contact.questions',string="Contact Question")
-    service_ids = fields.Many2many("service.provide",string="Services")
+    service_ids = fields.Many2many("operating.unit.service",string="Services")
     clinic_banner = fields.Binary("Clinic Banner")
     clinic_description = fields.Html(string="Clinic Description",default=lambda self:self.get_clinic_description())
     visible_in_contact = fields.Boolean(string="Visible In Contact")

@@ -8,6 +8,7 @@ class Address(http.Controller):
 	def add_new_address(self,**post):
 		sale_order_id = request.session['sale_order_id']
 		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
+		
 		required_fields = []
 		predefine_data = {}
 		user_id = request.env.user
@@ -77,6 +78,10 @@ class Address(http.Controller):
 					delivery_partner_id = request.env['res.partner'].sudo().create(partner_vals)
 					sale_order.partner_invoice_id = delivery_partner_id.id
 					sale_order.partner_id = delivery_partner_id.id
+					sale_order.onchange_partner_id()
+					sale_order.team_id = request.website.salesteam_id and request.website.salesteam_id.id
+					sale_order.user_id = request.website.salesperson_id and request.website.salesperson_id.id
+					sale_order.website_id = request.website.id
 			return request.redirect('/shop/checkout')
 		else:
 			values.update({

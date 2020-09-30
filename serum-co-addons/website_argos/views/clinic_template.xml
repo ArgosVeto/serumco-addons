@@ -119,6 +119,8 @@
 						</div>
                         </div>
                         <div class="criteria search_by_service">
+						        	<!-- <t t-esc="service_ids"/> -->
+
                         	<t t-set="service" t-value="service_ids" />
 						        <div t-attf-class="dropdown">
 						        	<t t-if="service_ids">

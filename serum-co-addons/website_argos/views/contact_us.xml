@@ -88,8 +88,7 @@
 										<div
 											class="form-group row form-field o_website_form_required_custom col-md-12">
 											<div class="col-lg-12">
-												<label class="col-form-label" for="contact_clinic">Contacter une
-													clinique</label>
+												<label class="col-form-label" for="contact_clinic">Contacter une clinique</label>
 											</div>
 											<div class="col-lg-12">
 												<select id="clinic_contact_id"

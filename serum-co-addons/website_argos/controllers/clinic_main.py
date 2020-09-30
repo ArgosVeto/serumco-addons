@@ -360,7 +360,7 @@ class ClinicDetail(http.Controller):
 			subdomains.append([('type_id','=',clinic_type_ids.ids)])
 
 		if 'service-type' in post and post['service-type']:
-			service_ids = request.env['service.provide'].sudo().search([('id','=',post['service-type'])])
+			service_ids = request.env['operating.unit.service'].sudo().search([('id','=',post['service-type'])])
 			subdomains.append([('service_ids', 'in', service_ids.ids)])
 
 		if 'search' in post and post['search']:
@@ -374,7 +374,7 @@ class ClinicDetail(http.Controller):
 		domain = expression.AND(domain)
 		operating_unit_ids = request.env['operating.unit'].sudo().search(domain)
 		type_ids = request.env['operating.unit.type'].sudo().search([])
-		service_ids = request.env['service.provide'].sudo().search([])
+		service_ids = request.env['operating.unit.service'].sudo().search([])
 		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids}
 		return request.env['ir.ui.view'].render_template("website_argos.clinic_template",values)
 
@@ -408,7 +408,7 @@ class ClinicDetail(http.Controller):
 
 	@http.route(['/clinic-detail/clinic-pratice/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
 	def add_clinic_pratice(self,operating_unit,**post):	
-		service_ids = request.env['service.provide'].sudo().search([])
+		service_ids = request.env['operating.unit.service'].sudo().search([])
 		payment_method_ids = request.env['payment.acquirer'].sudo().search([])
 		practical_service_ids = request.env['practical.service'].sudo().search([])
 		operating_unit_id = request.env['operating.unit'].sudo().browse(int(operating_unit))

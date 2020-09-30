@@ -3,14 +3,15 @@
 # See LICENSE file for full copyright and licensing details
 
 from odoo import api, fields, models, _
+# operating.unit.service
 
-class Services(models.Model):
-    _name = 'service.provide'
-    _description = 'Service Provide'
+# class Services(models.Model):
+#     _name = 'service.provide'
+#     _description = 'Service Provide'
 
-    name = fields.Char(string="Service")
-    description = fields.Char(string="Description")
-    service_partner_id = fields.Many2one('res.partner',string="Partner")
+#     name = fields.Char(string="Service")
+#     description = fields.Char(string="Description")
+#     service_partner_id = fields.Many2one('res.partner',string="Partner")
 
 
 class ClinicFavorite(models.Model):

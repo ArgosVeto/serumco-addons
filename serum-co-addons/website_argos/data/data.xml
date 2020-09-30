@@ -5,9 +5,9 @@
             <field name="website_logo" type="base64" file="website_argos/static/src/img/argos-logo.png" />
         </record>
 
-        <record id="service_provide_value_1" model="service.provide">
+        <!-- <record id="service_provide_value_1" model="operating.unit.service">
             <field name="name">Service</field>
-        </record>
+        </record> -->
         <!-- <record id="clinic_type_value_1" model="clinic.type">
             <field name="name">Type</field>
         </record>
