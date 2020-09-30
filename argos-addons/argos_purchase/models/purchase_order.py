@@ -4,6 +4,7 @@ import csv
 import io
 import base64
 from odoo import models, fields, api, _
+from datetime import time
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -53,7 +54,8 @@ class PurchaseOrder(models.Model):
                 }
         for rec in self:
             rec.send_order_mail()
-
+            if rec.partner_id.is_centravet and rec.is_centravet_planned_tour():
+                rec.apply_discount(1)
         return super(PurchaseOrder, self).button_release()
 
     def send_order_mail(self):
@@ -111,3 +113,21 @@ class PurchaseOrder(models.Model):
                 ''
             ])
         return csv_data
+
+    def is_centravet_planned_tour(self):
+        self.ensure_one()
+        calendar_id = self.partner_id.supplier_calendar_id
+        now = fields.Datetime.now()
+        now_time = now.time()
+        if calendar_id:
+            for attendance in calendar_id.attendance_ids:
+                if int(attendance.dayofweek) - now.weekday() == 2 and time(16, 30) <= now_time <= time(20, 0):
+                    return True
+        return False
+
+    def apply_discount(self, discount=False):
+        if not discount:
+            return
+        for rec in self:
+            rec.order_line.write({'discount': discount})
+        return True

@@ -10,4 +10,16 @@
       </xpath>
     </field>
   </record>
+
+  <record id="res_partner_view_form_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.form.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="argos_base.res_partner_view_form_inherit"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='is_centravet']" position="after">
+        <field name="supplier_calendar_id"/>
+      </xpath>
+    </field>
+  </record>
+
 </odoo>
