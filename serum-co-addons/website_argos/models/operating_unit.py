@@ -21,6 +21,7 @@ class OperatingUnit(models.Model):
     last_name = fields.Char(string="Last Name")
     remote_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")
+    show_in_footer = fields.Boolean(string="Show In Footer")
 
 
     def  clinic_working_status(self):

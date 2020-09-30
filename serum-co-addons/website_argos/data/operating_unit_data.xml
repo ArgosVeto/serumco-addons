@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="operating_unit_1" model="operating.unit">
+            <field name="name">Clinique Saint-Etienne Pasteur</field>
+            <field name="code">AAA</field>
+            <field name="show_in_footer">True</field>
+        </record>
+
+        <record id="operating_unit_2" model="operating.unit">
+            <field name="name">Clinique Villenave d'Ornon</field>
+            <field name="code">BBB</field>
+            <field name="show_in_footer">True</field>
+        </record>
+
+        <record id="operating_unit_3" model="operating.unit">
+            <field name="name">Clinique Vif</field>
+            <field name="code">CCC</field>
+            <field name="show_in_footer">True</field>
+        </record>
+
+        <record id="operating_unit_4" model="operating.unit">
+            <field name="name">Clinique Bordeaux Bastide</field>
+            <field name="code">DDD</field>
+            <field name="show_in_footer">True</field>
+        </record>
+    </data>
+</odoo>

@@ -77,6 +77,12 @@
 						                                	</a> 
 						                                </t>
 						                            </t>
+						                            <t t-else="">
+						                        	  <a role="button"  class="btn btn-primary fav-btn"
+						                        	  	 t-attf-href="/add-fav-clinic/#{clinic_id.sudo().id}">
+					                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+					                                	</a> 
+					                                </t>
 				                            	</div>
 
 												<div class="socialicons mr-4">

@@ -128,16 +128,29 @@
 									<p class="heading">Nos cliniques</p>
 									<ul class="footer-links">
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/prendre-rendez-vous">
 												Prendre rendez-vous
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-detail">
 												Trouver une clinique
 											</a>
 										</li>
-										<li class="nav-item">
+										
+										<t t-set="operating_unit" t-value="website.get_footer_operating_unit()"/>
+										<t t-if="operating_unit">
+	                    					<t t-foreach="operating_unit" t-as="ou">
+	                    						<li class="nav-item">
+													<a class="nav-link" t-attf-href="/clinic-detail/clinic-pratice/#{slug(ou.sudo())}">
+														<t t-esc="ou.name"/>
+													</a>
+												</li>
+	                    					</t>
+	                    				</t>
+
+
+										<!-- <li class="nav-item">
 											<a class="nav-link" href="#">
 												Clinique Saint-Etienne Pasteur
 											</a>
@@ -156,7 +169,7 @@
 											<a class="nav-link" href="#">
 												Clinique Bordeaux Bastide
 											</a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<div class="col-md-3">
@@ -193,32 +206,32 @@
 									<p class="heading">Nous contacter</p>
 									<ul class="footer-links">
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-contact">
 												Contacter une clinique
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-contact">
 												J'ai trouvé un animal
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-contact">
 												Demande d'informations
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-contact">
 												Service client clinique
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/clinic-contact">
 												Service clinique e-commerce
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="#">
+											<a class="nav-link" href="/jobs">
 												Nous rejoindre
 											</a>
 										</li>

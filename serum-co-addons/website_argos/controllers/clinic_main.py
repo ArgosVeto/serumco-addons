@@ -9,6 +9,9 @@ from datetime import datetime,date
 import pytz
 from odoo.addons.http_routing.models.ir_http import slug
 
+
+# sss
+
 class Appointment(http.Controller):
 	@http.route([
 			'''/appointment-two''',

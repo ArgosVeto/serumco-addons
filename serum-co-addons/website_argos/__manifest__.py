@@ -24,6 +24,7 @@
     ],
     'data': [
         'data/data.xml',
+        'data/operating_unit_data.xml',
         'views/assets.xml',
         'data/menu.xml',
         'security/ir.model.access.csv',
