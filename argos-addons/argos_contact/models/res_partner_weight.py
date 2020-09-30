@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _, tools
+from odoo import api, fields, models
+import math
 
 
 class ResPartnerWeight(models.Model):
@@ -15,3 +16,15 @@ class ResPartnerWeight(models.Model):
     source = fields.Char('Source')
     note = fields.Char('Notes')
     partner_id = fields.Many2one('res.partner', 'Patient', ondelete='cascade')
+    score = fields.Selection(
+        [('1_9', '1/9'), ('2_9', '2/9'), ('3_9', '3/9'), ('4_9', '4/9'), ('5_9', '5/9'), ('6_9', '6/9'), ('7_9', '7/9'),
+         ('8_9', '8/9'), ('9_9', '9/9')], 'Score')
+    area = fields.Float('Area', compute='_compute_area')
+
+    @api.depends('values')
+    def _compute_area(self):
+        for rec in self:
+            if rec.values:
+                rec.area = math.pow(rec.values, (2/3)) * 0.101
+            else:
+                rec.area = False

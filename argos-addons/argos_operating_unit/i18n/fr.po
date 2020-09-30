@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-25 06:48+0000\n"
-"PO-Revision-Date: 2020-09-25 06:48+0000\n"
+"POT-Creation-Date: 2020-09-28 19:11+0000\n"
+"PO-Revision-Date: 2020-09-28 19:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -198,6 +198,11 @@ msgstr "Dernière mise à jour par"
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
+
+#. module: argos_operating_unit
+#: model_terms:ir.ui.view,arch_db:argos_operating_unit.res_patient_view_form_inherit
+msgid "Main Clinic"
+msgstr "Clinique principale"
 
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__mobile

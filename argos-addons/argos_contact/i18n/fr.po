@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 14:02+0000\n"
-"PO-Revision-Date: 2020-09-28 14:02+0000\n"
+"POT-Creation-Date: 2020-09-28 19:02+0000\n"
+"PO-Revision-Date: 2020-09-28 19:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,51 @@ msgstr " semaine(s)"
 #, python-format
 msgid " years(s) "
 msgstr " an(s) "
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__1_9
+msgid "1/9"
+msgstr "1/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__2_9
+msgid "2/9"
+msgstr "2/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__3_9
+msgid "3/9"
+msgstr "3/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__4_9
+msgid "4/9"
+msgstr "4/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__5_9
+msgid "5/9"
+msgstr "5/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__6_9
+msgid "6/9"
+msgstr "6/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__7_9
+msgid "7/9"
+msgstr "7/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__8_9
+msgid "8/9"
+msgstr "8/9"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_weight__score__9_9
+msgid "9/9"
+msgstr "9/9"
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__death_reason__accidental
@@ -73,6 +118,18 @@ msgstr "Age"
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Analysis"
 msgstr "Analyses"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__area
+msgid "Area"
+msgstr "Surface"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_form
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_tree
+msgid "Area (m²)"
+msgstr "Surface (m²)"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_attachment_count
@@ -173,12 +230,6 @@ msgstr "Créé par"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__create_date
 msgid "Created on"
 msgstr "Créé le"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner__is_dangerous
-#: model:ir.model.fields,field_description:argos_contact.field_res_users__is_dangerous
-msgid "Dangerous"
-msgstr "Dangereux"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
@@ -621,6 +672,17 @@ msgid "Patient Pathology"
 msgstr "Pathologie"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__tag
+msgid "Patient Tag"
+msgstr "Étiquette d'animal"
+
+#. module: argos_contact
+#: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_tag_action
+#: model:ir.ui.menu,name:argos_contact.res_partner_parameter_tag_menuitem
+msgid "Patient Tags"
+msgstr "Étiquettes"
+
+#. module: argos_contact
 #: model:ir.model,name:argos_contact.model_res_partner_weight
 msgid "Patient Weight"
 msgstr "Poids de l'animal"
@@ -690,12 +752,6 @@ msgid "Recommended Diet"
 msgstr "Alimentation préconisée"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner__is_reproductive
-#: model:ir.model.fields,field_description:argos_contact.field_res_users__is_reproductive
-msgid "Reproductive"
-msgstr "Reproducteur"
-
-#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__activity_user_id
 msgid "Responsible User"
 msgstr "Utilisateur responsable"
@@ -719,17 +775,36 @@ msgid "SMS Delivery error"
 msgstr "Erreur de livraison SMS"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__score
+msgid "Score"
+msgstr "Score corporel"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_form
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_tree
+msgid "Score (NEC)"
+msgstr "Score corporel (NEC)"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__source
 msgid "Source"
 msgstr "Source"
 
 #. module: argos_contact
+#: model:ir.actions.act_window,name:argos_contact.res_partner_category_species_action
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__species_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__species_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__species_id
 #: model:ir.ui.menu,name:argos_contact.res_partner_category_menuitem
 msgid "Species"
 msgstr "Espèce"
+
+#. module: argos_contact
+#: code:addons/argos_contact/models/res_partner_category.py:0
+#, python-format
+msgid "Species must be unique"
+msgstr "Le nom de l'espèce doit être unique."
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__status
@@ -758,6 +833,12 @@ msgstr "Stérilisé"
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Surgery"
 msgstr "Chirurgie"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__tag_ids
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__tag_ids
+msgid "Tags"
+msgstr "Étiquettes"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__tattoo_date

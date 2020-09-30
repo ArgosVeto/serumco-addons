@@ -9,7 +9,7 @@
         <tree string="Patient Parameters">
           <field name="name"/>
           <field name="type"/>
-          <field name="gmvet_id" invisible="context.get('from_connection', False)"/>
+          <field name="gmvet_id" invisible="context.get('hide_gmvet', False)"/>
         </tree>
       </field>
     </record>
@@ -27,7 +27,7 @@
             </div>
             <group>
               <field name="type"/>
-              <field name="gmvet_id" attrs="{'invisible': [('type', '=', 'connection')]}"/>
+              <field name="gmvet_id" attrs="{'invisible': [('type', 'in', ['connection', 'tag'])]}"/>
             </group>
           </sheet>
         </form>
@@ -94,7 +94,16 @@
       <field name="res_model">res.partner.parameter</field>
       <field name="view_mode">tree,form</field>
       <field name="domain">[('type', '=', 'connection')]</field>
-      <field name="context">{'default_type': 'connection', 'from_connection': True}</field>
+      <field name="context">{'default_type': 'connection', 'hide_gmvet': True}</field>
+    </record>
+
+    <record id="res_partner_parameter_tag_action" model="ir.actions.act_window">
+      <field name="name">Patient Tags</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner.parameter</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('type', '=', 'tag')]</field>
+      <field name="context">{'default_type': 'tag', 'hide_gmvet': True}</field>
     </record>
 
   </data>

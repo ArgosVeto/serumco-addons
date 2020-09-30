@@ -17,6 +17,7 @@
         'sale_coupon',
         'sale_product_pack',
         'sale_product_configurator',
+        'argos_hr',
     ],
     'data': [
         # security

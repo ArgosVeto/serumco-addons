@@ -23,8 +23,6 @@ class ResPartner(models.Model):
     diet_ids = fields.Many2many('res.partner.parameter', 'res_partner_diet_rel', 'patient_id', 'diet_id', 'Recommended Diet',
                                 domain=[('type', '=', 'diet')])
     is_sterilized = fields.Boolean('Sterilized')
-    is_reproductive = fields.Boolean('Reproductive')
-    is_dangerous = fields.Boolean('Dangerous')
     tattoo_number = fields.Char('Tattoo Number')
     tattoo_date = fields.Date('Tattoo Date')
     chip_identification = fields.Char('Chip Identification')
@@ -43,7 +41,7 @@ class ResPartner(models.Model):
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
     patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'owner_id', 'patient_id', 'Patients List',
                                    domain="[('contact_type', '=', 'patient')]")
-    species_id = fields.Many2one('res.partner.category', 'Species')
+    species_id = fields.Many2one('res.partner.category', 'Species', domain=[('type', '=', 'patient')])
     contact_category = fields.Selection([('person_patient', 'Person With Patient'), ('company_patient', 'Company With Patient'),
                                          ('person_no_patient', 'Person Without Patient'),
                                          ('company_no_patient', 'Company Without Patient')], 'Contact Category',
@@ -52,6 +50,7 @@ class ResPartner(models.Model):
     date_insurance_start = fields.Date('Date insurance start')
     date_insurance_end = fields.Date('Date insurance end')
     policy_insurance = fields.Char('Policy insurance')
+    tag_ids = fields.Many2many('res.partner.parameter', 'res_partner_tag_rel', 'patient_id', 'tag_id', 'Tags', domain=[('type', '=', 'tag')])
 
     @api.depends('company_type', 'patient_ids')
     def _compute_contact_category(self):

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 10:10+0000\n"
-"PO-Revision-Date: 2020-09-24 10:10+0000\n"
+"POT-Creation-Date: 2020-09-29 06:11+0000\n"
+"PO-Revision-Date: 2020-09-29 06:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -601,6 +601,11 @@ msgstr "Réimpression convention"
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_partner_view_form_inherit
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Sale Report"
+msgstr "Analyse des ventes"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_open_sales
+msgid "Sales"
 msgstr "Analyse des ventes"
 
 #. module: argos_sale
