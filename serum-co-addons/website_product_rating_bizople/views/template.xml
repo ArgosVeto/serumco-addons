@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="product_item_stars" name="Rating: static star widget">
+        <t t-set="rating_avg" t-value="round(product.rating_avg * 100) / 100 / 2"/>
+        <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+        <t t-set="val_integer" t-value="int(rating_avg)"/>
+        <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+        <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+            <t t-foreach="range(0, val_integer)" t-as="num">
+                <i class="fa fa-star" role="img"></i>
+            </t>
+            <t t-if="val_decimal">
+                <i class="fa fa-star-half-o" role="img"></i>
+            </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star text-black-25" role="img"></i>
+            </t>
+            <span style="margin-left:2px;">
+                <t t-esc="rating_avg"/><span> / 5</span>
+            </span>
+            <span style="margin-left:5px;font-size:15px;">Voir les 
+            <t t-esc="product.rating_avg"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+        </div>
+    </template>
+    
+    <template id="product_variants">
+        <t t-set="attribute_exclusions" t-value="product._get_attribute_exclusions(parent_combination, parent_name)"/>
+        <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
+            <t t-if="ptal.attribute_id.display_type == 'radio'">
+                <ul t-att-data-attribute_id="ptal.attribute_id.id" t-attf-class="list-unstyled #{'d-none' if single_and_custom else ''}">
+                    <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+                        <li class="form-group js_attribute_value"  t-att-style="inline_mode and 'display:inline'" style="margin: 0;">
+                            <label class="col-form-label">
+                                <div>
+                                    <input type="radio"
+                                        t-att-checked="ptav in combination"
+                                        name="ptal"
+                                        t-att-value="ptav.id"  
+                                        t-att-id="ptav.id"/>
+                                    <div class="radio_input_value">
+                                        <span t-field="ptav.name"/>
+                                    </div>
+                                </div>
+                            </label>
+                        </li>
+                    </t>
+                </ul>
+            </t>
+        </t>
+    </template>
+
+	<template id="products_item_rating_value" inherit_id="website_sale.products_item"
+		name="Website Product Rating">
+        <xpath expr="//div[@class='product_price']" position="after">
+            <input type="hidden" name="product_tmpl_id" t-att-value="product.id"/>
+            <t t-set="combination" t-value="product._get_first_possible_combination()"/>
+            <t t-if="combination" t-call="website_product_rating_bizople.product_variants">
+            </t>
+        </xpath>
+	</template>
+
+    <template inherit_id='website_sale.product' id="product_rating_value" name="Product Rating">
+        <xpath expr="//div[@id='product_details']/h1" position="after">
+            <div class="product_ref_code mt16 mb16">
+                <t t-call="website_product_rating_bizople.product_item_stars"/> 
+            </div>      
+        </xpath>
+    </template>
+</odoo>
