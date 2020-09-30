@@ -32,3 +32,12 @@ class ResPartner(models.Model):
             'default_is_consultation': True,
         })
         return action
+
+    def action_open_orders(self):
+        self.ensure_one()
+        action = self.env.ref('argos_sale.action_open_sales').read()[0]
+        if self.contact_type == 'contact':
+            action['domain'] = [('partner_id', '=', self.id)]
+        else:
+            action['domain'] = [('patient_id', '=', self.id)]
+        return action

@@ -16,6 +16,10 @@
         <field name="type" position="before">
           <field name="contact_category"/>
         </field>
+        <field name="category_id" position="attributes">
+          <attribute name="domain">[('type', '=', 'contact')]</attribute>
+          <attribute name="context">{'default_type': 'contact'}</attribute>
+        </field>
       </field>
     </record>
 
@@ -26,7 +30,7 @@
       <field name="arch" type="xml">
         <group name="communication" position="after">
           <group>
-            <field name="origin_id" context="{'default_type': 'connection', 'from_connection': True}"/>
+            <field name="origin_id" context="{'default_type': 'connection', 'hide_gmvet': True}"/>
           </group>
         </group>
 
@@ -64,7 +68,7 @@
             <group>
               <group>
                 <field name="active" invisible="1"/>
-                <field name="species_id"/>
+                <field name="species_id" context="{'default_type': 'patient'}"/>
                 <field name="race_id" context="{'default_type': 'race'}"/>
                 <field name="gender_id" context="{'default_type': 'gender'}"/>
                 <field name="robe_id" context="{'default_type': 'robe'}"/>
@@ -72,8 +76,7 @@
                 <field name="age_formatted"/>
                 <field name="weight"/>
                 <field name="is_sterilized"/>
-                <field name="is_reproductive"/>
-                <field name="is_dangerous"/>
+                <field name="tag_ids" widget="many2many_tags" context="{'default_type': 'tag'}"/>
                 <field name="tattoo_number"/>
                 <field name="tattoo_location_id" context="{'default_type': 'tattoo'}"/>
                 <field name="tattoo_date"/>
@@ -105,6 +108,8 @@
                   <tree>
                     <field name="date"/>
                     <field name="values"/>
+                    <field name="score" string="Score (NEC)"/>
+								    <field name="area" string="Area (m²)"/>
                     <field name="source"/>
                   </tree>
                 </field>

@@ -26,6 +26,9 @@
             <field name="signature" widget="image"/>
           </page>
         </page>
+        <field name="mobile_phone" position="before">
+          <field name="is_veterinary"/>
+        </field>
       </field>
     </record>
   </data>

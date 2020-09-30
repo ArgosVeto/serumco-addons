@@ -75,7 +75,7 @@
                 <field name="consultation_date"/>
                 <field name="pricelist_id" groups="product.group_product_pricelist"
                        options="{'no_open':True,'no_create': True}"/>
-                <field name="employee_id" string="Seen By"/>
+                <field name="employee_id" string="Seen By" context="{'default_is_veterinary': True}"/>
                 <field name="partner_id"/>
                 <field name="partner_patient_ids" widget="many2many_tags"/>
                 <field name="operating_unit_id" string="Clinical"/>
@@ -498,6 +498,14 @@
           <attribute name="invisible">1</attribute>
         </xpath>
       </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_open_sales">
+      <field name="name">Sales</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.order</field>
+      <field name="view_id" ref="sale.view_sale_order_graph"/>
+      <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
     </record>
 
   </data>

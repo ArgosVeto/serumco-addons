@@ -25,7 +25,7 @@ class SaleOrder(models.Model):
     age = fields.Char('Age', related='patient_id.age_formatted')
     weight = fields.Float('Weight', related='patient_id.weight')
     pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids')
-    employee_id = fields.Many2one('hr.employee')
+    employee_id = fields.Many2one('hr.employee', domain="[('is_veterinary', '=', True)]")
     is_consultation = fields.Boolean('Is Consultation')
     conv_key = fields.Char('Convention Key', compute='_compute_conv_key')
     consultation_date = fields.Date('Consultation Date', default=lambda self: fields.Date.today())

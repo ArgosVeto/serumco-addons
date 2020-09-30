@@ -24,5 +24,16 @@
       </field>
     </record>
 
+    <record id="res_patient_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.patient.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
+      <field name="arch" type="xml">
+        <field name="location" position="after">
+          <field name="operating_unit_id" string="Main Clinic"/>
+        </field>
+      </field>
+    </record>
+
   </data>
 </odoo>

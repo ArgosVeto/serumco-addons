@@ -16,6 +16,7 @@ class HrEmployee(models.Model):
     partner_ids = fields.One2many('res.partner', inverse_name='employee_id')
     operating_unit_ids = fields.Many2many('operating.unit', 'operating_unit_employee_rel', 'employee_id',
                                           'operating_unit_id', 'Operating Units')
+    is_veterinary = fields.Boolean('Is Veterinary')
 
     def write(self, vals):
         if 'company_id' in vals:

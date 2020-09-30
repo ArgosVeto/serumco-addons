@@ -16,6 +16,8 @@
 							<group>
 								<field name="date"/>
 								<field name="values"/>
+								<field name="score" string="Score (NEC)"/>
+								<field name="area" string="Area (m²)"/>
 								<field name="source"/>
 								<field name="note"/>
 							</group>
@@ -41,6 +43,8 @@
 					<field name="date"/>
 					<field name="partner_id"/>
 					<field name="values"/>
+					<field name="score" string="Score (NEC)"/>
+					<field name="area" string="Area (m²)"/>
 					<field name="source"/>
 				</tree>
 			</field>
