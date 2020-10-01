@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="res_partner_view_form_inherit" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='picking']" position="inside">
+          <field name="picking_ids"
+                 domain="[('is_arg_prescription','=',True)]"
+                 context="{'form_view_ref' : 'argos_stock.prescription_argos_form_view'}"
+          />
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
