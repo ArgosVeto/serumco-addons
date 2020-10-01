@@ -9,7 +9,7 @@
             
             <xpath expr="//field[@name='certification_ids']" position="after">
                 <field name="visible_in_contact"/> 
-                <field name="facebook" widget="url"/>
+<!--                 <field name="facebook" widget="url"/> -->
                 <field name="remote_id"/>
             </xpath>
             <xpath expr="//page[@name='digital_service']" position="after">
