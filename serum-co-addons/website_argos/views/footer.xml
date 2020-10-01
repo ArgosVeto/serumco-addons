@@ -138,7 +138,7 @@
 											</a>
 										</li>
 										
-										<t t-set="operating_unit" t-value="website.get_footer_operating_unit()"/>
+										<!-- <t t-set="operating_unit" t-value="website.get_footer_operating_unit()"/>
 										<t t-if="operating_unit">
 	                    					<t t-foreach="operating_unit" t-as="ou">
 	                    						<li class="nav-item">
@@ -147,7 +147,7 @@
 													</a>
 												</li>
 	                    					</t>
-	                    				</t>
+	                    				</t> -->
 
 
 										<!-- <li class="nav-item">

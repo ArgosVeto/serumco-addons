@@ -23,10 +23,10 @@ class Website(models.Model):
         consultation_type_ids = request.env['consultation.type'].sudo().search([])
         return consultation_type_ids
 
-    @api.model
-    def get_footer_operating_unit(self):
-        operating_unit_ids = request.env['operating.unit'].sudo().search([('show_in_footer','=',True)])
-        return operating_unit_ids
+#     @api.model
+#     def get_footer_operating_unit(self):
+#         operating_unit_ids = request.env['operating.unit'].sudo().search([('show_in_footer','=',True)])
+#         return operating_unit_ids
     
     @api.model
     def get_clinic(self):
