@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import csv
-import io
-
 from odoo import api, fields, models, _
 import urllib.parse as urlparse
 from odoo.exceptions import UserError, ValidationError
@@ -39,6 +36,16 @@ class SaleOrder(models.Model):
     canvas_id = fields.Many2one('consultation.type', domain=[('is_canvas', '=', True)])
     arrival_time = fields.Datetime('Arrival Time', track_visibility='onchange')
     pickup_time = fields.Datetime('Pick-up Time', track_visibility='onchange')
+    refer_employee_id = fields.Many2one('hr.employee', 'Referent', readonly=True)
+    is_referral = fields.Boolean('Is a referral', readonly=True)
+    origin_order_id = fields.Many2one('sale.order', 'Origin of the consultation', readonly=True)
+    refer_order_ids = fields.One2many('sale.order', 'origin_order_id', 'Referred', readonly=True)
+    refer_count = fields.Integer('Refers count', compute='_count_refers')
+
+    @api.depends('refer_order_ids')
+    def _count_refers(self):
+        for consultation in self:
+            consultation.refer_count = len(consultation.refer_order_ids)
 
     @api.model
     def parse_url(self, url='', params={}):
@@ -172,3 +179,20 @@ class SaleOrder(models.Model):
             'argos_state': 'consultation_done'
         })
         return self.env.ref('sale.action_view_sale_advance_payment_inv').read()[0]
+
+    def button_referrals_view(self):
+        self.ensure_one()
+        action = self.env.ref('argos_sale.action_consultations').read()[0]
+        action.update({
+            'name': _('Referrals'),
+            'target': 'current',
+            'domain': [('id', 'in', self.refer_order_ids.ids)],
+        })
+        return action
+
+    def button_confirm_edition_sale_completed(self):
+        self.ensure_one()
+        self.action_cancel()
+        self.action_draft()
+        return True
+
