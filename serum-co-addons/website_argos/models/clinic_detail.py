@@ -7,6 +7,7 @@ from odoo import api, fields, models, _
 
 # class Services(models.Model):
 #     _name = 'service.provide'
+#object to delete
 #     _description = 'Service Provide'
 
 #     name = fields.Char(string="Service")
