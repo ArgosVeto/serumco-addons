@@ -18,7 +18,7 @@
 				            	</div>
 								<div class="title d-flex">
 									<h1 class="text-primary">Le groupe Argos</h1>
-									<img src="/website_argos/static/src/img/banner-arrow.svg"/>
+									<img src="/website_argos/static/src/img/banner-arrow.svg" class="d-none d-md-block"/>
 								</div>
 								<div class="banner">
 									<div class="red-round-big"/>
@@ -30,13 +30,13 @@
 						<section class="Notre-histoire-section pt64 pb64">
 							<div class="container">
 								<div class="row align-items-center">
-									<div class="col-lg-6">
+									<div class="col-lg-6 col-md-6 mb16">
 										<h1 class="Notre-histoire">Notre histoire</h1>
 										<p class="Argos-Vtrinaire-es">Argos Vétérinaire est un réseau de cliniques et cabinets vétérinaires créé en janvier 2014 par le Docteur Emeric Lemarignier. Début 2019, notre réseau comptait 9 cliniques vétérinaires sur l’agglomération bordelaise. Après avoir validé l’intérêt de ce concept pour les clients et pour les vétérinaires, nous sommes maintenant prêts à vous proposer cette nouvelle approche dans d’autres villes françaises : Nantes, Montpellier, Saint-Etienne, Grenoble…</p>
 										<p class="Argos-Vtrinaire-es">Toutes<a class="text-style-1" href="clinic-detail"> nos cliniques</a> sont regroupées sous la marque “Argos”, travaillent en équipe, fédèrent les vétérinaires dans leur profession et proposent une qualité de service la plus élevée possible à nos clients.
 										</p>
 									</div>
-									<div class="col-md-6 text-center">
+									<div class="col-lg-6 col-md-6 mb16 text-center">
 										<div class="image text-center">
 											<img src="/website_argos/static/src/img/rectangle.png" class="img img-fluid"/>
 										</div>
@@ -63,7 +63,7 @@
 							<div class="container">
 								<h1 class="Notre-manifeste">Notre manifeste</h1>
 								<div class="row">
-									<div class="col-lg-4">
+									<div class="col-lg-4 col-md-4">
 										<div class="mask text-center mb32">
 											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
 										</div>
@@ -72,7 +72,7 @@
 											<p class="Cest-un-rseau-de-c">C’est un réseau de compétences et d’expertises au service de la qualité des <span class="style1">soins</span>. C’est la garantie de confier votre animal à des équipes passionnées.</p>
 										</div>
 									</div>
-									<div class="col-lg-4">
+									<div class="col-lg-4 col-md-4">
 										<div class="mask text-center mb32">
 											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
 										</div>
@@ -81,7 +81,7 @@
 											<p class="Cest-un-rseau-de-c">C’est la combinaison du savoir-faire médical et de la bienveillance. C’est la volonté constante de vous offrir les meilleures solutions.</p>
 										</div>
 									</div>
-									<div class="col-lg-4">
+									<div class="col-lg-4 col-md-4">
 										<div class="mask text-center mb32">
 											<img src="/website_argos/static/src/img/mask.png" class="img img-fluid"/>
 										</div>
@@ -101,7 +101,7 @@
 								<div class="row justify-content-center">
 									<div class="col-lg-10">
 										<div class="row inner-row justify-content-center">
-											<div class="col-lg-4 border-right">
+											<div class="col-lg-4 col-md-4 border-right">
 												<div class="company-counter text-center">
 													<div class="content counter-box">
 														<span class="number counter">16</span>
@@ -109,7 +109,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4 border-right">
+											<div class="col-lg-4 col-md-4 border-right">
 												<div class="company-counter text-center">
 													<div class="content counter-box">
 														<span class="number counter">5</span>
@@ -117,7 +117,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-4">
+											<div class="col-lg-4 col-md-4">
 												<div class="company-counter text-center">
 													<div class="content counter-box">
 														<span class="number counter">60</span>
@@ -132,12 +132,12 @@
 							<div class="Pattern-2" style="background-image: url('/website_argos/static/src/img/job_pattern.svg');">
 								<div class="container">
 									<div class="row align-items-center">
-										<div class="col-lg-6">
+										<div class="col-lg-6 col-md-6 mb16">
 											<div class="red-round-big"/>
 											<div class="blue-round-small"/>
 											<img src="/website_argos/static/src/img/dark-rectangle.png" class="img img-fluid"/>
 										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-6 col-md-6 mb16">
 											<div class="content">
 												<h2 class="Lalliance-de-lexpe">L'alliance de l'expertise et de la proximité</h2>
 												<p class="Argos-Vtrinaire-es">Argos Vétérinaire est un réseau français de cabinets et cliniques vétérinaires d’excellence qui regroupe des professionnels expérimentés et passionnés vous offrant en permanence le meilleur de leur écoute et de leur savoir-faire.</p>

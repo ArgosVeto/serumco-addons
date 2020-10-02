@@ -93,7 +93,7 @@
 											<div class="row">
 												<t t-if="clinic.clinic_image_ids">
 													<t t-foreach="clinic.clinic_image_ids" t-as="c_i">
-														<div class="col-md-3">
+														<div class="col-3">
 															<script>
 																 function changeImage(e) {
 																        document.getElementById('banner-img').src = e;

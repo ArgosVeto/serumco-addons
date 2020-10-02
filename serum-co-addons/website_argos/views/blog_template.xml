@@ -58,7 +58,7 @@
                     </a>
                 </li>
 
-                <li class="">
+                <li class="mr-1 mb8">
                     <select id="blog_id" name="blog_id" t-attf-class="form-control">
                         <option value="">sélectionner...</option>
                         <t t-foreach="blogs" t-as="blog">
@@ -68,7 +68,7 @@
                         </t>
                     </select>
                 </li>
-                <li class="">
+                <li class="mr-1 mb8">
                     <select id="tag_id" name="tag_id" t-attf-class="form-control">
                         <option value="">sélectionner...</option>
                         <t t-foreach="tags" t-as="tag">

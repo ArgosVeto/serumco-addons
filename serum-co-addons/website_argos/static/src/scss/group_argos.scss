@@ -36,6 +36,27 @@
 		}
 		margin-bottom: 54px;
 	}
+	@media (max-width: 767.98px) {
+		padding-bottom: 0px !important;
+		.title{
+			margin-bottom: 20px !important;
+			h1{
+				font-size: 38px !important;
+			}
+		}
+		.red-round-big {
+			width: 70px !important;
+    		height: 70px !important;
+    		bottom: 15px !important;
+    		left: -15px !important;
+		}
+		.blue-round-small {
+			width: 40px !important;
+    		height: 40px !important;
+    		bottom: -10px !important;
+    		right: -15px !important;
+		}
+	}
 }
 .Notre-histoire-section{
 	.Notre-histoire {
@@ -112,6 +133,16 @@
 		  font-weight: 900;
 		}
 	}
+	@media (max-width: 767.98px) {
+		padding-top: 0 !important;
+		.Rectangle-Copy{
+			display: block !important;
+			padding: 20px;
+		}
+		.content{
+			margin-left: 0 !important;
+		}
+	}
 }
 .Notre-manifeste-section{
 	.Notre-manifeste {
@@ -152,6 +183,14 @@
 		  	font-weight: 900;
 		  	color: theme-color('primary');
 		  }
+		}
+	}
+	@media (max-width: 767.98px) {
+		padding-bottom: 30px !important;
+		padding-top: 30px !important;
+		.Notre-manifeste {
+			font-size: 38px !important;
+			margin-bottom: 25px !important;
 		}
 	}
 }
@@ -264,6 +303,30 @@
 		  line-height: 1.63;
 		  letter-spacing: normal;
 		  color: #8b8b8b;
+		}
+	}
+	@media (max-width: 767.98px) {
+		padding-bottom: 0px !important;
+		.inner-row{
+			top: 5% !important;
+		}
+		.Pattern-2{
+			.red-round-big {
+				width: 100px !important;
+    			height: 100px !important;
+    			top: -40px !important;
+    			left: 2px !important;
+			}
+			.blue-round-small {
+				width: 80px !important;
+    			height: 80px !important;
+    			bottom: -40px !important;
+    			right: 40px !important;
+			}
+			.content{
+				font-size: 32px !important;
+				margin-top: 30px;
+			}
 		}
 	}
 }
@@ -398,6 +461,36 @@
 		position:relative;
 		bottom:200px;
 	}
+	@media (max-width: 767.98px) {
+		padding-top: 0px !important;
+		.Un-rseau-dexcellen{
+			font-size: 30px !important;
+		}
+		.gray-recangle-small{
+			width: 160px;
+			height: 200px;
+			margin-right: 20px;
+		}
+		.gray-recangle-big{
+			width: 160px;
+			height: 300px;
+		}
+		.blue-round-big{
+			width: 140px !important;
+			height: 140px !important;
+			top: 30% !important;
+    		left: 13% !important;
+		}
+		.red-round-small {
+			width: 80px !important;
+    		height: 80px !important;
+    		bottom: 16% !important;
+    		right: -15px !important;
+		}
+		.img{
+			bottom: 170px !important;
+		}
+	}
 }
 .Service-hospitalisation-banner{
 	.Hospitalisation-vt {
@@ -419,5 +512,10 @@
 	  line-height: 1.63;
 	  letter-spacing: normal;
 	  color: #8b8b8b;
+	}
+	@media (max-width: 767.98px) {
+		.Hospitalisation-vt {
+			font-size: 42px !important;
+		}
 	}
 }

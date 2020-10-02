@@ -9,6 +9,10 @@
   	text-align: center;
 }
 
+.pd-0 {
+	padding:0px;
+}
+
 .home-banner{
 	.container{
 		@media (min-width: 1400px) {
@@ -115,17 +119,43 @@
 		.title{
 			h1{
 				font-size: 40px;
+				width: 310px;
 			}
 		}
 		.banner-content{
 			.red-round-big{
 				width: 60px;
 	  			height: 60px;
+	  			left: -15px;
 			}
 			.red-round-small{
 				width: 31px;
 	  			height: 31px;
+  			    bottom: unset;
+    			right: -15px;
+    			top: 121px;
 			}
+			.image-text{
+				.text{
+					h3{
+					  	margin-top: 16px;
+					  	color: theme-color('primary') !important
+					}
+					p{
+						width: 344px;
+					  	height: 78px;
+					  	margin-bottom: 16px !important;
+					}
+					a{
+						color: theme-color('secondary') !important;
+					}
+					position: unset;
+					width: unset;
+				}
+			}
+		}
+		.text-right {
+		    text-align: left !important;
 		}
 	}
 	padding-top: 52px;
@@ -273,6 +303,43 @@
 		@media (min-width: 1400px) {
 			padding: 0 154px;
 		}
+		@media (max-width: 767.98px) {
+			.animals-content{
+				.blue-round-small{
+					width: 69px;
+		  			height: 69px;
+	  			    top: -34px;
+    				left: 60px;
+				}
+				.red-round-big{
+					width: 146px;
+		  			height: 146px;
+		  			right: 15px;
+    				bottom: -30px;
+    				top: unset;
+				}
+				.image-box{
+					.image{
+						.img{
+							border-radius: 8px;
+						}
+					}
+					.text{
+						h6{
+							width: 283px;
+						  	font-size: 20px;
+						}
+						position: absolute;
+						top: 24px;
+						left: 24px;
+					}
+					.bottom-icon{
+						display: none;
+					}
+					margin-bottom: 16px !important
+				}
+			}
+		}
 	}
 	padding-bottom: 180px;
 }
@@ -358,6 +425,46 @@
 	    background-position: right;
 	    background-repeat: no-repeat;
 	}
+	@media (max-width: 767.98px) {
+		.clinic-content{
+			.text{
+				h3{
+				  	font-size: 28px;
+				  	margin-bottom: 8px;
+				}
+				p{
+				  	font-size: 16px;
+				  	margin-bottom: 26px;
+				}
+			
+				
+				.o_clinic_searchbar_form {
+				    width: 100% !important;
+    				display: block;
+				    .se-btn {
+					    margin-left: 0;
+					}
+				}
+				
+				input{
+					width: 100%;
+				}
+				.search-btn{
+				  	display: block;
+				    width: 100%;
+				    border-radius: 26px;
+				    margin-top: 16px;
+			        padding: 12px 15px;
+				}
+			}
+			padding: 70px 15px 30px;
+			border-radius: 8px;
+			background-image: url('/website_argos/static/src/img/group-5.png') !important;
+		    background-size: cover;
+    		background-position: top;
+		    background-repeat: no-repeat;
+		}
+	}
 	padding-bottom: 150px;
 }
 
@@ -415,10 +522,10 @@
 		  	letter-spacing: normal;
 		  	margin-bottom: 32px;
 		}
-		select{
+		input{
 			width: 360px;
-	 	 	height: 44px;
-		  	border-radius: 4px;
+	 	 	height: 47px;
+		  	border-radius: 4px !important;
 		  	background-color: rgba(99, 186, 233, 0.04);
 		  	margin-right: 16px;
 		  	display: inline-block;
@@ -426,23 +533,49 @@
 		    box-shadow: none;
 		    color: theme-color('primary');
 		}
-		.clinic-btn{
-			width: 106px;
-		  	height: 44px;
-		  	border-radius: 6px;
-		  	background-color: theme-color('primary') !important;
-		    border-color: theme-color('primary') !important;
-		    color: white !important;
-		    padding: 0;
-		    line-height: 44px;
-		    font-family: AvenirLTStd-Heavy;
-		    font-size: 16px;
-		  	font-weight: 900;
-		  	font-stretch: normal;
-	 	 	font-style: normal;
-		  	letter-spacing: normal;
-		  	text-align: center;
+		.input-group-append{
+			.btn{
+			    border-radius: 24px !important;
+			}
 		}
+	}
+	@media (max-width: 767.98px) {
+		.image{
+			.blue-round-small{
+				width: 72px;
+	  			height: 72px;
+			    bottom: -36px;
+	    		right: 33px;
+			}
+			.red-round-big{
+				width: 184px;
+	  			height: 184px;
+	    		left: -15px;
+			}
+		}
+		.text{
+			h3{
+			  	font-size: 28px;
+			  	margin-bottom: 13px;
+			}
+			.js_subscribe{
+				display: block;
+			}
+			input{
+				width: 100%;
+				margin-bottom: 16px;
+				margin-right: 0;
+			}
+			.input-group-append{
+				.btn{
+				    border-radius: 24px !important;
+				    padding: 12px 15px;
+				    width: 100%;
+				}
+			}
+			margin-top: 68px;
+		}
+		padding-bottom: 72px;
 	}
 	padding-bottom: 272px;
 }
@@ -515,6 +648,33 @@
 		}
 	    padding-left: 100px;
 	}
+	@media (max-width: 767.98px) {
+		.order{
+			order: -1;
+		    margin-bottom: 30px;
+		}
+		.text{
+			h3{
+			  	font-size: 28px;
+			  	margin-bottom: 13px;
+			}
+		}
+		#service-carousel{
+			.service-box{
+				.img{
+					margin-right: 0;
+					margin-bottom: 16px;
+				}
+				text-align: center;
+				padding: 26px 5px;
+			}
+			.slider-control{
+				display: none;
+			}
+		    padding-left: 0;
+		}
+	    padding-bottom: 80px;
+	}
 	padding-bottom: 156px;
 }
 
@@ -525,8 +685,6 @@
 		}
 	}
 	.emergency-box{
-		
-		
 		.btn-light{
 		    	padding: 13px 20px;
 		    }
@@ -563,6 +721,17 @@
 		border-radius: 8px;
 		padding: 63px 83px 50px;
 		text-align: center;
+	}
+	@media (max-width: 767.98px) {
+		.emergency-box{
+			.btn{
+				border-radius: 24px;
+				padding: 12px 15px;
+			}
+			margin-bottom: 24px;
+		    padding: 37px 28px 36px;
+	    }
+        padding-bottom: 80px;
 	}
 	padding-bottom: 140px;
 }
@@ -621,6 +790,38 @@
 		}
 		position: relative;
 	}
+	@media (max-width: 767.98px) {
+		.order{
+			order: -1;
+		}
+		.text{
+			h3{
+			  	font-size: 28px;
+			  	margin-bottom: 13px;
+			}
+			.btn{
+			  	border-radius: 24px;
+			  	padding: 12px 15px;
+			}
+		}
+		.image{
+			.blue-round-big{
+				width: 120px;
+	  			height: 120px;
+			    top: 31px;
+	    		right: 125px;
+			}
+			.red-round-small{
+				width: 72px;
+	  			height: 72px;
+	    		right: unset;
+	    		bottom: -24px;
+    			left: 39px;
+			}
+			margin-bottom: 48px;
+		}
+	    padding-bottom: 0;
+	}
 	padding-bottom: 177px;
 }
 
@@ -678,6 +879,35 @@
 		}
 		position: relative;
 	}
+	@media (max-width: 767.98px) {
+		.text{
+			h3{
+			  	font-size: 28px;
+			  	margin-bottom: 13px;
+			}
+			.btn{
+			  	border-radius: 24px;
+			  	padding: 12px 15px;
+			}
+		}
+		.image{
+			.blue-round-small{
+				width: 52px;
+	  			height: 52px;
+			    top: 38px;
+	    		left: unset;
+    			right: -15px;
+			}
+			.red-round-big{
+				width: 137px;
+	  			height: 137px;
+			    bottom: -50px;
+	    		left: 14px;
+			}
+			margin-bottom: 92px;
+		}
+	    padding-bottom: 80px;
+	}
 	padding-bottom: 290px;
 	padding-top: 133px;
 }
@@ -724,6 +954,26 @@
 	    background-position: right;
 	    background-repeat: no-repeat;
 	}
+	@media (max-width: 767.98px) {
+		.services-content{
+			.text{
+				h3{
+				  	font-size: 28px;
+				  	margin-bottom: 13px;
+				}
+				p{
+				  	margin-bottom: 0;
+				}
+			}
+			padding: 70px 15px 30px;
+			border-radius: 8px;
+			background-image: url('/website_argos/static/src/img/group-5.png') !important;
+		    background-size: cover;
+    		background-position: top;
+		    background-repeat: no-repeat;
+		}
+	    padding-bottom: 80px;
+	}
 	padding-bottom: 150px;
 }
 
@@ -751,4 +1001,10 @@
   line-height: 1.36;
   letter-spacing: normal;
   color: #201f4c;
+}
+
+@media (max-width: 767.98px) {
+	.breadcrumb{
+		display: none;
+	}
 }

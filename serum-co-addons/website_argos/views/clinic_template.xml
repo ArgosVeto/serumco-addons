@@ -192,7 +192,7 @@
 											</t>
 											<t t-else="">
 												<i class="fa fa-circle" style="color:red;"></i>
-												<span>Clinique actuellement ouverte</span>
+												<span>Clinique actuellement fermée</span>
 											</t>
 				                            
 				                            <div class="clinic-link d-flex">

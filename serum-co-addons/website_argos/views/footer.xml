@@ -17,7 +17,7 @@
 				<div class="footer-service">
 					<div class="container">
 						<div class="row align-items-center">
-							<div class="col-md-3">
+							<div class="col-md-3 mb-3 mb-md-0">
 								<div class="service-box d-flex align-items-center">
 									<div class="image">
 										<img src="/website_argos/static/src/img/footer-service1.svg"/>
@@ -27,7 +27,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 mb-3 mb-md-0">
 								<div class="service-box d-flex align-items-center">
 									<div class="image">
 										<img src="/website_argos/static/src/img/footer-service2.svg"/>
@@ -37,7 +37,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 mb-3 mb-md-0">
 								<div class="service-box d-flex align-items-center">
 									<div class="image">
 										<img src="/website_argos/static/src/img/footer-service3.svg"/>
@@ -47,7 +47,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-3 mb-3 mb-md-0">
 								<div class="service-box d-flex align-items-center">
 									<div class="image">
 										<img src="/website_argos/static/src/img/footer-service4.svg"/>
@@ -67,26 +67,13 @@
 								<t t-set="mailing_list_ids" t-value="website.get_mailing_list()"/>
 								<h3 class="text-primary">Recevez l’essentiel<br/>de l’actu vétérinaire</h3>
 								<p>Laboriosam beatae in voluptatum libero. Et repudiandae ratione sint <br/>voluptatem autem voluptates. Quo et repellendus ratione vel <br/>voluptatem et quasi.</p>
-								<form action="/update-mailinglist" method="post">
-									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-
-
-									<select class="form-control" id="news" name="news">
-								        <option>Je suis...</option>
-								        <t t-if="mailing_list_ids">
-								        	<t t-foreach="mailing_list_ids" t-as="mail">
-						                        <option t-att-value="mail.id"
-						                            	t-att-id="mail.id" 
-						                             	t-att-class="mail.id">
-						                            <t t-esc="mail.name" />
-						                        </option>
-						                    </t>
-								        </t>
-							      	</select>
-							      	<input type="text" name="email" placeholder="Mon adresse e-mail"/>
-							      	<button type="submit" class="btn btn-primary news-btn">S'abonner</button>
-
-								</form>
+								<div class="input-group js_subscribe col-md-6 pd-0" data-list-id="1" data-name="Newsletter">
+						        <input type="email" name="email" class="js_subscribe_email form-control" placeholder="Mon adresse e-mail"/>
+						        <span class="input-group-append">
+						            <a role="button" href="#" class="btn btn-primary js_subscribe_btn o_default_snippet_text">S'abonner</a>
+						            <a role="button" href="#" class="btn btn-primary js_subscribed_btn d-none o_default_snippet_text" disabled="disabled">Thanks</a>
+						        </span>
+						    </div>
 							</div>
 						</div>
 					</div>
@@ -125,136 +112,129 @@
 						<div class="main-content">
 							<div class="row">
 								<div class="col-md-3">
-									<p class="heading">Nos cliniques</p>
-									<ul class="footer-links">
-										<li class="nav-item">
-											<a class="nav-link" href="/prendre-rendez-vous">
-												Prendre rendez-vous
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-detail">
-												Trouver une clinique
-											</a>
-										</li>
-										<t t-set="operating_unit" t-value="website.get_footer_operating_unit()"/>
-										<t t-if="operating_unit">
-	                    					<t t-foreach="operating_unit" t-as="ou">
-	                    						<li class="nav-item">
-													<a class="nav-link" t-attf-href="/clinic-detail/clinic-pratice/#{slug(ou.sudo())}">
-														<t t-esc="ou.name"/>
-													</a>
-												</li>
-	                    					</t>
-	                    				</t>
-
-
-										<!-- <li class="nav-item">
-											<a class="nav-link" href="#">
-												Clinique Saint-Etienne Pasteur
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Clinique Villenave d'Ornon
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Clinique  Vif
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Clinique Bordeaux Bastide
-											</a>
-										</li> -->
-									</ul>
+									<!-- <p class="heading">Nos cliniques</p> -->
+									<a href="#demo" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Nos cliniques</a>
+								  	<div id="demo" class="collapse">
+									    <ul class="footer-links">
+											<li class="nav-item">
+												<a class="nav-link" href="/prendre-rendez-vous">
+													Prendre rendez-vous
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-detail">
+													Trouver une clinique
+												</a>
+											</li>
+											
+											<t t-set="operating_unit" t-value="website.get_footer_operating_unit()"/>
+											<t t-if="operating_unit">
+		                    					<t t-foreach="operating_unit" t-as="ou">
+		                    						<li class="nav-item">
+														<a class="nav-link" t-attf-href="/clinic-detail/clinic-pratice/#{slug(ou.sudo())}">
+															<t t-esc="ou.name"/>
+														</a>
+													</li>
+		                    					</t>
+		                    				</t>
+										</ul>
+								  	</div>
 								</div>
 								<div class="col-md-3">
-									<p class="heading">Produits</p>
-									<ul class="footer-links">
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Chat
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Chien
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Lapin
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Furet
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="#">
-												Rongeurs
-											</a>
-										</li>
-									</ul>
+									<a href="#demo1" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Produits</a>
+									<div id="demo1" class="collapse">
+										<ul class="footer-links">
+											<li class="nav-item">
+												<a class="nav-link" href="#">
+													Chat
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">
+													Chien
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">
+													Lapin
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">
+													Furet
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">
+													Rongeurs
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<div class="col-md-3">
-									<p class="heading">Nous contacter</p>
-									<ul class="footer-links">
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-contact">
-												Contacter une clinique
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-contact">
-												J'ai trouvé un animal
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-contact">
-												Demande d'informations
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-contact">
-												Service client clinique
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/clinic-contact">
-												Service clinique e-commerce
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="/jobs">
-												Nous rejoindre
-											</a>
-										</li>
-									</ul>
+									<a href="#demo2" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Nous contacter</a>
+									<div id="demo2" class="collapse">
+										<ul class="footer-links">
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-contact">
+													Contacter une clinique
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-contact">
+													J'ai trouvé un animal
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-contact">
+													Demande d'informations
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-contact">
+													Service client clinique
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/clinic-contact">
+													Service clinique e-commerce
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="/jobs">
+													Nous rejoindre
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<div class="col-md-3">
-									<p class="heading">Nous contacter</p>
-									<p class="address-text">
-										Découvrez notre réseau de cabinets et cliniques vétérinaires au plus proche de vous et de votre animal : Bordeaux, Grenoble, Montpellier, Nantes et Saint-Etienne.
-									</p>
-									<t t-call="website_argos.footer_clinic_search_box"/>
+									<a href="#demo3" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Nous contacter</a>
+									<div id="demo3" class="collapse">
+										<p class="address-text">
+											Découvrez notre réseau de cabinets et cliniques vétérinaires au plus proche de vous et de votre animal : Bordeaux, Grenoble, Montpellier, Nantes et Saint-Etienne.
+										</p>
+										<t t-call="website_argos.footer_clinic_search_box"/>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="copyright-content">
 							<div class="row align-items-center">
-								<div class="col-md-3">
+								<div class="col-md-3 d-none d-md-block">
 									<p class="text-white m-0">
 										© Argos 2020
 									</p>
 								</div>
-								<div class="col-md-9">
+								<div class="col-md-9 d-none d-md-block">
 									<p class="m-0 text-white text-right">
 										<a href="#">Mentions légales</a><span class="mx-3"> - </span><a href="#">CGV</a><span class="mx-3"> - </span><a href="#">Politique de confidentialité</a><span class="mx-3"> - </span><a href="#">Plan du site</a>
+									</p>
+								</div>
+								<div class="col-md-12 mobile-cpyrgt d-block d-md-none">
+									<p class="px-5 text-white text-left">
+										<span>© Argos 2020</span><span class="mx-1"> - </span><a href="#">Mentions légales</a><span class="mx-1"> - </span><a href="#">CGV</a><span class="mx-1"> - </span><a href="#">Politique de confidentialité</a><span class="mx-1"> - </span><a href="#">Plan du site</a>
 									</p>
 								</div>
 							</div>

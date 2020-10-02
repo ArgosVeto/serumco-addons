@@ -41,7 +41,7 @@
 							</div>
 						</section>
 						<div class="oe_structure"/>
-						<section class="home-brands">
+						<section class="home-brands d-none d-md-block">
 							<div class="container">
 								<div class="title">
 									<h1 class="text-primary">Nos marques</h1>
@@ -179,6 +179,7 @@
 										<div class="text">
 											<h3 class="text-primary">Prendre rendez-vous</h3>
 											<p>Sed odit sequi numquam quis ducimus autem aut rerum culpa. Reiciendis et numquam voluptate quo perferendis in. Odio consequuntur aut voluptates fugit quae eligendi. Sed molestiae et expedita.</p>
+
 											<form class="o_clinic_type_homepage_form"  action="/appointment-two" method="get">
 
 												<t t-set="get_clinic_ids" t-value="website.get_clinic()"/>
@@ -191,7 +192,6 @@
 							                        </t>
 							                    </select>
 							                    <button type="submit" id="consulter" class="btn btn-primary Consulter-btn">Consulter</button>
-
 										    </form>
 										</div>
 									</div>
@@ -209,43 +209,43 @@
 											<p>Nous réalisons les consultations courantes (vaccination) et des actes de chirurgie générale (stérilisation). Aussi, nos établissements de soins disposent d’un laboratoire d’analyses permettant de réaliser des diagnostics vétérinaires complets. Nous sommes également équipés en imagerie médicale. En cas de besoin, nous assurons l’hospitalisation et la dentisterie de vos compagnons.</p>
 										</div>
 									</div>
-									<div class="col-md-7">
+									<div class="col-md-7 order">
 										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
 								          	<div class="carousel-inner" role="listbox">
 								            	<div class="carousel-item active" >
 								            		<div class="row">
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
 										            			<p class="text-white">Dentisterie</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
 										            			<p class="text-white">Chirurgie</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
 										            			<p class="text-white">Consultation générale</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
 										            			<p class="text-white">Imagerie médicale</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
 										            			<p class="text-white">Hospitalisation</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
 										            			<p class="text-white">Laboratoire</p>
 										            		</div>
@@ -254,38 +254,38 @@
 								            	</div>
 								            	<div class="carousel-item" >
 								            		<div class="row">
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
 										            			<p class="text-white">Dentisterie</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
 										            			<p class="text-white">Chirurgie</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
 										            			<p class="text-white">Consultation générale</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
 										            			<p class="text-white">Imagerie médicale</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
 										            			<p class="text-white">Hospitalisation</p>
 										            		</div>
 									            		</div>
-									            		<div class="col-md-6 mb-3">
-									            			<div class="service-box d-flex align-items-center">
+									            		<div class="col-6 mb-3">
+									            			<div class="service-box d-md-flex align-items-center">
 										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
 										            			<p class="text-white">Laboratoire</p>
 										            		</div>
@@ -348,7 +348,7 @@
 											<a class="btn btn-primary">Créer un compte</a>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 order">
 										<div class="image text-right">
 											<div class="blue-round-big"/>
 											<div class="red-round-small"/>

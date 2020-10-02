@@ -19,7 +19,7 @@ class OperatingUnit(models.Model):
     practical_service_ids = fields.Many2many("practical.service",string="Practical Service")
     payment_method_ids = fields.Many2many("payment.acquirer",string="Payment Methods")
     last_name = fields.Char(string="Last Name")
-    remote_id = fields.Char(string="Remote")
+    mrdv_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")
     show_in_footer = fields.Boolean(string="Show In Footer")
 

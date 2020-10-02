@@ -113,16 +113,36 @@
 		}
 	
 	 .input-group-append > .btn{
-     border-top-left-radius: 0.25rem !important;
-     border-bottom-left-radius: 0.25rem !important;
-}
+	     border-top-left-radius: 0.25rem !important;
+	     border-bottom-left-radius: 0.25rem !important;
+	}
+	@media (max-width: 767.98px) {
+		.form-control {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		.btn{
+			display: block;
+			width: 100%;
+			margin-left: 0 !important;
+		}
+		.se-btn {
+			.oe_search_button{
+				display: block;
+    			width: 100%;
+			}
+			margin-left: 0;
+			margin-bottom: 15px;
+		}
+
+	    display: block;
+    	width: 100%;
+	}
 }
 
 .fav-btn {
 	position: absolute;
     top: 16px;
-    transform: translate(0%, -50%);
-    -ms-transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.64);
     color: white;
     font-size: 16px;
@@ -211,8 +231,12 @@
 
 .see_map {
 	.custom-switch {
-		    padding-left: 3.25rem;
-		    padding-top: 6px;
+	    padding-left: 3.25rem;
+	    padding-top: 6px;
+	    @media (max-width: 767.98px) {
+	    	padding-left: 4rem;
+		 	padding-top: 10px;
+		}
 	}
 	
 	.custom-control-label {
@@ -279,12 +303,25 @@
     position: sticky;
     top: 46px;
     margin-left: -14px;
+    @media (max-width: 767.98px) {
+    	margin-left: 0;
+    }
 }
 
 .clinic-detail-sticky.side-sticky{
    	position: sticky;
     top: 0px;
     margin-left: -14px;
+    @media (max-width: 767.98px) {
+    	margin-left: 0;
+    }
+}
+
+.clinic-detail-sticky{
+	.fav-btn{
+		transform: translate(0);
+    	-ms-transform: translate(0);
+	}
 }
 
 .side-block-c {
@@ -640,6 +677,10 @@
 .clinic_images {
 	img {
 		min-height: 105px;
+		@media (max-width: 767.98px) {
+			min-height: 60px;
+		    margin-bottom: 10px;
+		}
 	}
 }
 

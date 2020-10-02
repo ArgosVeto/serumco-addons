@@ -27,7 +27,7 @@
 						            	<div id="vetowidget"></div>
 						            	<link rel="stylesheet" type="text/css"
 											href="/website_argos/static/src/css/appointment.css"/>
-							            <script  t-att-data-widget-clinic="clinic_id.remote_id"
+							            <script  t-att-data-widget-clinic="clinic_id.mrdv_id"
 							                    data-widget-theme="argos"
 							                    src="https://recette.monrendezvousveto.fr/bundles/app/assets/js/widget-container.entry.js">
 							            </script>

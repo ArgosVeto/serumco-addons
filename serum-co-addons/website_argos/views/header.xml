@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+	<template id="website_argos_header_search_inherit" inherit_id="website.website_search_box">
+		<xpath expr="//input" position="replace">
+			<input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Rechercher un produit…" t-att-value="search"/>
+		</xpath>
+	</template>
+
 	<template id="website_argos_header" inherit_id="portal.frontend_layout" name="Header">
 		<xpath expr="//header" position="replace">
 			<header id="argos_header" t-attf-class="argos-header">
@@ -14,13 +20,19 @@
 							</div>
 							<div class="mobile-icons d-flex d-md-none ml-auto align-items-center justify-content-end">
 								<div class="search">
-									<img src="/website_argos/static/src/img/search.svg"/>
+									<a class="nav-link p-0 text-secondary" href="/clinic-detail">
+										<img src="/website_argos/static/src/img/location.svg"/>
+									</a>
 								</div>
 								<div class="user ml24">
-									<img src="/website_argos/static/src/img/user.svg"/>
+									<a class="nav-link p-0 text-secondary" href="/my-content">
+										<img src="/website_argos/static/src/img/calender.svg"/>
+									</a>
 								</div>
 								<div class="cart ml24">
-									<img src="/website_argos/static/src/img/cart.svg"/>
+									<a class="nav-link p-0 text-secondary" href="/shop/cart">
+										<img src="/website_argos/static/src/img/cart.svg"/>
+									</a>
 								</div>
 								<div class="sidebar ml24">
 									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
@@ -57,9 +69,12 @@
 									<a class="btn btn-primary p-0" href="/prendre-rendez-vous"><span>Prendre RDV</span></a>
 								</div>
 								<div class="search ml19">
-									<a href="#" class="icon-btn">
+									<a href="#" class="search-btn dropdown-toggle" data-toggle="dropdown">
 										<img src="/website_argos/static/src/img/search.svg"/>
 									</a>
+									<div class="dropdown-menu search-dropdown" role="menu">
+										<t t-call="website_sale.s_products_searchbar_input" />
+									</div>
 								</div>
 								<div class="user ml4">
 									<a href="#" class="icon-btn dropdown-toggle acc-dropdown" data-toggle="dropdown">
@@ -116,6 +131,9 @@
 								<!-- wishlist code end -->
 							</div>
 						</div>
+					</div>
+					<div class="header-search d-block d-md-none">
+						<t t-call="website_sale.s_products_searchbar_input" />
 					</div>
 				</div>
 				<t t-call="website_argos.bizople_mbl_side_bar"/>

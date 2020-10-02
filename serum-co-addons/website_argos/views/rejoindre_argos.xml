@@ -26,7 +26,7 @@
 					                    </ol>
 					                </div>
 									<div class="row m-md-0 align-items-center">
-										<div class="col-md-6 p-md-0">
+										<div class="col-md-6">
 											<div class="job-content">
 												<h1 class="text-primary">Construisons ensemble l'avenir vétérinaire</h1>
 												<p class="mb32">Chez Argos nous partageons un état d’esprit et nous rallions une <b class="text-primary">équipe aux valeurs fortes</b> donnant du sens à toutes nos actions. Prenez part à l’avenir de votre profession en rejoignant le réseau Argos.</p>
@@ -36,7 +36,7 @@
 												</a>
 											</div>
 										</div>
-										<div class="col-md-6 p-md-0">
+										<div class="col-md-6">
 											<div class="d-flex justify-content-end align-items-end">
 												<section class="blank-block">
 												</section>
@@ -129,7 +129,7 @@
 										          	<div class="carousel-inner" role="listbox">
 										            	<div class="carousel-item active" >
 										            		<div class="row">
-											            		<div class="col-lg-6">
+											            		<div class="col-lg-6 col-md-6">
 											            			<section class="work-box">
 											            				<section class="gray-box"></section>
 											            				<div class="text text-center">
@@ -138,7 +138,7 @@
 											            				</div>
 											            			</section>
 											            		</div>
-											            		<div class="col-lg-6 mt56">
+											            		<div class="col-lg-6 col-md-6 mt56">
 											            			<section class="work-box">
 											            				<section class="gray-box"></section>
 											            				<div class="text text-center">
@@ -151,7 +151,7 @@
 										            	</div>
 										            	<div class="carousel-item" >
 										            		<div class="row">
-											            		<div class="col-lg-6">
+											            		<div class="col-lg-6 col-md-6">
 											            			<section class="work-box">
 											            				<section class="gray-box"></section>
 											            				<div class="text text-center">
@@ -160,7 +160,7 @@
 											            				</div>
 											            			</section>
 											            		</div>
-											            		<div class="col-lg-6 mt56">
+											            		<div class="col-lg-6 col-md-6 mt56">
 											            			<section class="work-box">
 											            				<section class="gray-box"></section>
 											            				<div class="text text-center">

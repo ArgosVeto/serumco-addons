@@ -88,6 +88,9 @@ a {
 		  letter-spacing: -0.6px;
 		  color:theme-color('primary');
 	      margin-bottom: 18px;
+	    @media (max-width: 767.98px) {
+	    	font-size: 28px;
+	    }
 	}
 
 	.lead {
@@ -99,5 +102,16 @@ a {
 	  letter-spacing: normal;
 	  color: #8b8b8b;
 		
+	}
+	
+}
+
+section.s_text_block.pt32.s_common_banner_without_bg.banner-content{
+	@media (max-width: 767.98px) {
+		a.btn{
+		    display: block;
+    		margin: 0 !important;
+    		margin-bottom: 15px !important;
+		}
 	}
 }

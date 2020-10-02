@@ -22,7 +22,6 @@
 		  	color: #8b8b8b;
 		}
 		select{
-			width: 360px;
 	 	 	height: 44px;
 		  	border-radius: 8px;
 		  	background-color: #fff;
@@ -68,6 +67,13 @@
 			  margin-right:15px;
 		}
 	}
+	@media (max-width: 767.98px) {
+		.text{
+			h3{
+				font-size: 36px !important;
+			}
+		}
+	}
 }
 .home-two-text-block {
 	p{
@@ -79,6 +85,7 @@
 		  line-height: 1.63;
 		  letter-spacing: normal;
 		  color: #8b8b8b;
+		  padding: 10px;
 	}
 }
 

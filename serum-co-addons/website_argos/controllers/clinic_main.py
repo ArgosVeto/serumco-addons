@@ -34,7 +34,7 @@ class Appointment(http.Controller):
 		if clinic_id and clinic_id.calendar_id:
 			date_today = date.today()
 			clinic_working_slot = clinic_id.calendar_id.get_employee_slot(clinic_id.calendar_id)
-		values = {'remote_id':clinic_id.remote_id,
+		values = {'mrdv_id':clinic_id.mrdv_id,
 				'consultation_type_ids':consultation_type_ids,
 				'clinic_id':clinic_id,
 				'working_timing':working_timing,

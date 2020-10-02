@@ -127,67 +127,67 @@
 											</div>
 											<div class="clinic-link">
 												<div class="row">
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Lun.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Mar.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Mer.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Jeu.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Ven.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Sam.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">8h00 - 12h30</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">fermé</span>
 													</div>
-													<div class="col-lg-2">
+													<div class="col-lg-2 col-2">
 														<span class="Lun-Mar-Mer-Jeu-Copy">Dim.</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">fermé</span>
 													</div>
-													<div class="col-lg-5 text-center">
+													<div class="col-lg-5 col-5 text-center">
 														<span class="h00---12h30-9h00---copy">fermé</span>
 													</div>
 												</div>

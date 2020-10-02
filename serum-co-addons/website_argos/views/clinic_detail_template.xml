@@ -41,7 +41,7 @@
 									</t>
 									<t t-else="">
 										<i class="fa fa-circle" style="color:red;"></i>
-										<span>Clinique actuellement ouverte</span>
+										<span>Clinique actuellement fermée</span>
 									</t>									
 								</p>
 							</div>
@@ -91,7 +91,7 @@
 								<div class="row">
 									<t t-if="operating_unit.clinic_image_ids">
 										<t t-foreach="operating_unit.clinic_image_ids" t-as="c_i">
-											<div class="col-md-3">
+											<div class="col-3">
 												<script>
 													 function changeImage(e) {
 													        document.getElementById('banner-img').src = e;
@@ -469,17 +469,17 @@
 									<div class="row">
 										<t t-set="dayofweek" t-value="list(working_timing.keys())" />
 										<t t-foreach="working_timing" t-as="wt">
-											<div class="col-lg-2">
+											<div class="col-4 col-lg-2">
 												<span class="Lun-Mar-Mer-Jeu-Copy">
 													<t t-esc="wt" />
 												</span>
 											</div>
-											<div class="col-lg-5 text-center">
+											<div class="col-4 col-lg-5 text-center">
 												<span class="h00---12h30-9h00---copy">
 													<t t-esc="working_timing[wt]['start_time']" />
 												</span>
 											</div>
-											<div class="col-lg-5 text-center">
+											<div class="col-4 col-lg-5 text-center">
 												<span class="h00---12h30-9h00---copy">
 													<t t-esc="working_timing[wt]['end_time']" />
 												</span>

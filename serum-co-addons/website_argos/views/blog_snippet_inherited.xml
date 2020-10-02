@@ -28,7 +28,7 @@
 	<template id="blog_inherit_view_aviat" inherit_id="website_blog.s_latest_posts_big_picture_template" name="blog_inherit_view_argos">
 	    <xpath expr="//figure[@class='col-12 col-md-6 col-xl-4 my-3 s_latest_posts_post']" position="replace">
 		    	<t t-foreach="posts" t-as="p">
-		    	<div class="col my-3 loading_container s_latest_posts_post mt32">
+		    	<div class="col-xl-4 col-md-6 my-3 loading_container s_latest_posts_post mt32">
 					<div class="">
 						<div class="argos_latest_post bg-white">
 							<a t-attf-href="/blog/#{p.blog_id.id}/post/#{p.id}">

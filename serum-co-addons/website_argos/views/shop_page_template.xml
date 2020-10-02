@@ -32,7 +32,7 @@
 		                	<ul class="nav nav-pills flex-row">
 		                		<t t-if="category.child_id">
 		                			<t t-foreach="category.child_id" t-as="categ_sub">
-										<li class="nav-item">
+										<li class="nav-item mb-3 mb-md-0">
 											<a t-att-href="keep('/shop/category/' + slug(categ_sub), category=0)" class="nav-link categ-btn">
 								                <span t-field="categ_sub.name"/>
 								            </a>
@@ -44,7 +44,7 @@
 					</div>
 				</section>
 			</t>
-			<div class="shop_page_filter oe_website_sale">
+			<div class="shop_page_filter oe_website_sale d-none d-md-block">
 				<div class="container">
 					<div class="d-flex align-items-center">
 						<div class="product_filters d-flex align-items-center">
@@ -160,7 +160,7 @@
 			            </p>
 					</div>
 		        </t>
-				<div class="argos-product-icons">
+				<div class="argos-product-icons d-none d-md-block">
 				</div>
 			</div>
 		</xpath>

@@ -199,7 +199,7 @@
 
 											<h6 class="mb24 mt48">Besoin d’en savoir plus à propos des avantages proposés par le réseau Argos Vétérinaire ? </h6>
 
-											<a class="btn-outline-primary" href="#">
+											<a class="btn-outline-primary btn-fiche" href="#">
 												<img src="/website_argos/static/src/img/job_pdf.svg" class="img img-fluid mr-2" />
 												<span>Téléchargez notre plaquette « Avantages Argos"</span>
 											</a>

@@ -11,7 +11,7 @@
 						<section class="home-two-banner pt64 pb64">
 							<div class="container">
 								<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-6 mb16">
 										<div class="text">
 											<div class="">
 							            		<ol class="breadcrumb">
@@ -25,7 +25,7 @@
 											
 						                    <t t-set="clinic_ids" t-value="website.get_clinic()"/>
 
-						                    <form class="o_clinic_type_searchbar_form"  action="/appointment-two" method="get">
+						                    <form class="o_clinic_type_searchbar_form d-flex"  action="/appointment-two" method="get">
 
 												<select id="clinic_id" name="clinic_id" class="form-control">
 							                        <option value="">Choisir ma clinique…</option>
@@ -52,7 +52,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6 text-center round-color">
+									<div class="col-md-6 mb16 text-center round-color">
 										<div class="image text-center position-relative">
 											<img src="/website_argos/static/src/img/home-two-rdv.png" class="img img-fluid"/>
 											<div class="red-round-small"></div>
@@ -61,7 +61,7 @@
 								</div>
 							</div>
 						</section>
-						<section class="home-two-text-block py112 pb112">
+						<section class="home-two-text-block pb112">
 		                	<div class="container">
 		                		<div class="row">
 		                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae arcu non sem placerat blandit et at sapien. Praesent tempor et est porta efficitur. Aliquam ac felis non turpis sollicitudin efficitur vel ut leo. Nunc sit amet felis aliquet, aliquam lacus at, aliquet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non maximus ligula, ac consequat ligula. Mauris sit amet lectus eleifend nunc facilisis pellentesque. Integer gravida sapien ut sagittis commodo.</p>

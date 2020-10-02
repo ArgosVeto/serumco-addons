@@ -5,8 +5,6 @@
     'name' : 'Products Rating',
     'version' : '13.0.1.1',
     'summary': 'Products Rating',
-    'author': 'Bizople Solutions Pvt. Ltd.',
-    'website': 'https://www.bizople.com',
     'sequence': 1,
     'description': """
         Products Rating
