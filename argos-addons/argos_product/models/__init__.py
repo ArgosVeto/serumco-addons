@@ -6,3 +6,5 @@ from . import active_substance
 from . import product_attribute
 from . import product_product
 from . import product_category
+from . import product_route
+from . import product_documentation
