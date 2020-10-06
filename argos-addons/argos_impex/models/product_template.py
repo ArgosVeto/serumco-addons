@@ -118,7 +118,7 @@ class ProductTemplate(models.Model):
                     continue
                 vals = {
                     'description_sale': row.get('libelle'),
-                    'description': row.get('presentation'),
+                    'additional_features': row.get('presentation'),
                     'weight': row.get('poids'),
                     'categ_id': category_obj._get_category_by_name(row.get('categorie')),
                     'gtin': row.get('gtin'),
