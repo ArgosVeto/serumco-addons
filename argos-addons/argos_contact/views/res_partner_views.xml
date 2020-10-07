@@ -119,7 +119,7 @@
               <page string="Hospitalization"/>
               <page name="analysis" string="Analysis"/>
               <page name="imagery" string="Imagery"/>
-              <page string="Order"/>
+              <page name="picking" string="Pickings"/>
               <page string="Insurance">
                 <group>
                   <group>

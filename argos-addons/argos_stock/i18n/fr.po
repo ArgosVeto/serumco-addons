@@ -6,14 +6,246 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 09:07+0000\n"
-"PO-Revision-Date: 2020-08-25 09:07+0000\n"
+"POT-Creation-Date: 2020-10-01 14:11+0000\n"
+"PO-Revision-Date: 2020-10-01 14:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: argos_stock
+#: model:mail.template,report_name:argos_stock.mail_template_prescription_send
+msgid "${(object.name or '').replace('/','_')}"
+msgstr ""
+
+#. module: argos_stock
+#: model:mail.template,subject:argos_stock.mail_template_prescription_send
+msgid ""
+"${object.company_id.name} - Prescription (Ref ${object.name or 'n/a' })\n"
+"    "
+msgstr ""
+"${object.company_id.name} - Ordonnance (Ref ${object.name or 'n/a' })\n"
+"    "
+
+#. module: argos_stock
+#: model:ir.actions.report,print_report_name:argos_stock.action_print_precription
+msgid "'Prescription - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr "'Ordonnance - %s - %s' % (object.partner_id.name or '', object.name)"
+
+#. module: argos_stock
+#: model:mail.template,body_html:argos_stock.mail_template_prescription_send
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 12px;\">\n"
+"          Hello,\n"
+"          <br/>\n"
+"          <br/>\n"
+"\n"
+"          Your prescription <strong>${object.name}</strong> is sent in this email.\n"
+"\n"
+"          <br/>\n"
+"          <br/>\n"
+"          Do not hesitate to contact us if you have any questions.\n"
+"          <br/>\n"
+"          <br/>\n"
+"        </p>\n"
+"      </div>\n"
+"    "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 12px;\">\n"
+"          Bonjour,\n"
+"          <br/>\n"
+"          <br/>\n"
+"\n"
+"          Votre ordonnance <strong> ${object.name}</strong> est envoyée dans cet e-mail.\n"
+"\n"
+"          <br/>\n"
+"          <br/>\n"
+"          N'hésitez pas à nous contacter si vous avez des questions.\n"
+"          <br/>\n"
+"          <br/>\n"
+"        </p>\n"
+"      </div>\n"
+"    "
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\"/>\n"
+"              All products could not be reserved. Click on the \"Check Availability\" button to try to reserve products."
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid ""
+"<span>\n"
+"                    <strong>Owner:</strong>\n"
+"                  </span>"
+msgstr ""
+"<span>\n"
+"                    <strong>Propriétaire:</strong>\n"
+"                  </span>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<span>Signature</span>"
+msgstr "<span>Signature</span>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<span>Veto order n°:</span>"
+msgstr "<span>N° d'ordre veto:</span>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Administration Route</strong>"
+msgstr "<strong>Voie d'administration</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Consultation:</strong>"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Description</strong>"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Done</strong>"
+msgstr "<strong>Fait</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>From</strong>"
+msgstr "<strong>De</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Lot/Serial Number</strong>"
+msgstr "<strong>Lot/Numéro de série</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Patient</strong>"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Prescriber</strong>"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Prescription date:</strong>"
+msgstr "<strong>Date de l'ordonnance:</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Product Barcode</strong>"
+msgstr "<strong>Code barre</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Product</strong>"
+msgstr "<strong>Article</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Status:</strong>"
+msgstr "<strong>Etat:</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>To</strong>"
+msgstr "<strong>À</strong>"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move__administration_route_ids
+msgid "Administration Route"
+msgstr "Voie d'administration"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Barcode"
+msgstr "Code Bare"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "From"
+msgstr "De"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__is_arg_prescription
+msgid "Is prescription"
+msgstr " Est une ordonnance"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Package"
+msgstr ""
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Presciption n°"
+msgstr "Ordonnance n°"
+
+#. module: argos_stock
+#: model:ir.actions.report,name:argos_stock.action_print_precription
+#: model:ir.model.fields,field_description:argos_stock.field_operating_unit__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_res_partner__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_res_users__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_sale_order__prescription_count
+#: model_terms:ir.ui.view,arch_db:argos_stock.prescription_consultation_view_form
+msgid "Prescription"
+msgstr "Ordonnance"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/sale_order.py:0
+#: model:ir.actions.act_window,name:argos_stock.action_arg_prescription
+#: model:ir.ui.menu,name:argos_stock.menu_arg_prescription
+#, python-format
+msgid "Prescriptions"
+msgstr "Ordonnances"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.prescription_argos_form_view
+msgid "Send by Email"
+msgstr "Envoyer par email"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_move
+msgid "Stock Move"
+msgstr "Stock déplacer"
+
+#. module: argos_stock
+#: model_terms:ir.actions.act_window,help:argos_stock.action_arg_prescription
+msgid "This action allows you to view patient prescriptions"
+msgstr "Cette action vous permet de visualiser les ordonnances des patients"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "To"
+msgstr "À"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.product_template_form_view_inherit
