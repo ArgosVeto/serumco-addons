@@ -97,10 +97,10 @@
 										</div>
 										<div groups="base.group_public" class="">
 											<a class="dropdown-item px-0" t-attf-href="/web/login">
-												<span>Sign in</span>
+												<span>Se connecter</span>
 											</a>
 											<a class="dropdown-item px-0" t-attf-href="/web/signup">
-												<span>Register</span>
+												<span>S'enregistrer</span>
 											</a>
 										</div>
 									</div>

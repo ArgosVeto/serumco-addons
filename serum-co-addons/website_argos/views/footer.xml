@@ -143,33 +143,27 @@
 								<div class="col-md-3">
 									<a href="#demo1" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Produits</a>
 									<div id="demo1" class="collapse">
-										<ul class="footer-links">
-											<li class="nav-item">
-												<a class="nav-link" href="#">
-													Chat
-												</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#">
-													Chien
-												</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#">
-													Lapin
-												</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#">
-													Furet
-												</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#">
-													Rongeurs
-												</a>
-											</li>
-										</ul>
+										<t t-set="cash_value" t-value="website.get_cash_values()"/>
+										<t t-if="cash_value">
+											<ul class="footer-links">
+												<!-- <t t-set="default_category" t-value="website.default_category()"/> -->
+
+												<t t-foreach="cash_value" t-as="c">
+													<li class="nav-item">
+														<t t-set="default_category" t-value="website.default_category(c)"/>
+
+														<a class="nav-link"
+														t-att-href="website.default_category(c)" 
+															>
+
+															<!-- t-att-href="'/shop/category/%s?category=%s&amp;search=&amp;attrib=%s-%s' %(,c.id,c.attribute_id.id,c.id)" -->
+															<!-- t-att-href="'/shop?cash=%s' % slug(c)" -->
+															<t t-esc="c.name"/>
+														</a>
+													</li>
+												</t>
+											</ul>
+										</t>
 									</div>
 								</div>
 								<div class="col-md-3">
@@ -229,12 +223,12 @@
 								</div>
 								<div class="col-md-9 d-none d-md-block">
 									<p class="m-0 text-white text-right">
-										<a href="#">Mentions légales</a><span class="mx-3"> - </span><a href="#">CGV</a><span class="mx-3"> - </span><a href="#">Politique de confidentialité</a><span class="mx-3"> - </span><a href="#">Plan du site</a>
+										<a href="/legal-notice">Mentions légales</a><span class="mx-3"> - </span><a href="/gtc">CGV</a><span class="mx-3"> - </span><a href="/privacy-policy">Politique de confidentialité</a><span class="mx-3"> - </span><a href="#">Plan du site</a>
 									</p>
 								</div>
 								<div class="col-md-12 mobile-cpyrgt d-block d-md-none">
 									<p class="px-5 text-white text-left">
-										<span>© Argos 2020</span><span class="mx-1"> - </span><a href="#">Mentions légales</a><span class="mx-1"> - </span><a href="#">CGV</a><span class="mx-1"> - </span><a href="#">Politique de confidentialité</a><span class="mx-1"> - </span><a href="#">Plan du site</a>
+										<span>© Argos 2020</span><span class="mx-1"> - </span><a href="/legal-notice">Mentions légales</a><span class="mx-1"> - </span><a href="/gtc">CGV</a><span class="mx-1"> - </span><a href="/privacy-policy">Politique de confidentialité</a><span class="mx-1"> - </span><a href="#">Plan du site</a>
 									</p>
 								</div>
 							</div>

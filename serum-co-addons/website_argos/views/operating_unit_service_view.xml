@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ 	<record id="operating_unit_service_view_inherit" model="ir.ui.view">
+        <field name="name">operating.unit.service.view.form.inherit</field>
+        <field name="model">operating.unit.service</field>
+        <field name="inherit_id" ref="argos_operating_unit.operating_unit_service_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="replace">
+            	<field name="service_image" widget="image" class="oe_avatar"/>
+            	<div class="oe_title">
+                    <h1>
+                        <field name="name" nolabel="1"/>
+                    </h1>
+                </div>
+            </xpath>
+         </field>
+    </record>
+</odoo>

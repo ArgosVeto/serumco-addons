@@ -38,6 +38,7 @@
         'views/hr_applicant_view.xml',
         'views/product_view.xml',
         'views/product_view_inherited.xml',
+        'views/operating_unit_service_view.xml',
 
 
         'views/homepage.xml',
@@ -61,6 +62,10 @@
         'views/website_argos_inherited.xml',
         'views/shop_page_template.xml',
         'views/address_view.xml',
+        'views/legal_notice.xml',
+        'views/gtc.xml',
+        'views/privacy_policy.xml',
+
 
         # 'views/partner_view.xml',
         'views/clinic_template.xml',
@@ -77,7 +82,7 @@
         'views/menus.xml',
         'views/my_clinic.xml',
         'views/all_appointment.xml',
-        # 'views/cart_template.xml',        
+        'views/service_template.xml',        
         # 'views/clinic_views.xml',        
         # 'views/cart_template.xml',
         'views/rejoindre_argos.xml',

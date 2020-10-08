@@ -264,8 +264,6 @@ class WebsiteSale(WebsiteSale):
 			return 'ok'
 		return request.render("website_sale.checkout", values)
 
-
-
 	@http.route(['/shop/cart/update'], type='http', auth="public", methods=['GET', 'POST'], website=True, csrf=False)
 	def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
 		product_tmpl_id = False
@@ -308,6 +306,14 @@ class WebsiteSale(WebsiteSale):
 		return request.redirect("/shop/cart")
 
 class ClinicDetail(http.Controller):
+
+	
+	@http.route(['''/service-detail/<model("operating.unit.service"):operating_service>'''],type='http', auth="public", website=True)	
+	def service_detail(self,operating_service,**post):
+		values = {'service':operating_service}
+		return request.env['ir.ui.view'].render_template("website_argos.service_template",values)
+
+
 
 	@http.route(['/update-delivery-address'], type='json', auth="public")
 	def update_delivery_address(self,**post):
@@ -400,11 +406,12 @@ class ClinicDetail(http.Controller):
 		if partner_id.clinic_shortlisted_ids.ids:
 			check_operating_uni = any(operating_unit.id == cs.favorite_clinic_id.id for cs in partner_id.clinic_shortlisted_ids)
 			if not check_operating_uni:
+				for cs in partner_id.clinic_shortlisted_ids:
+					cs.unlink()
 				partner_id.clinic_shortlisted_ids = [(0,0,{'favorite_clinic_id':operating_unit.id})]
 			else:
 				for cs in partner_id.clinic_shortlisted_ids:
-					if(operating_unit.id == cs.favorite_clinic_id.id):
-						cs.unlink()
+					cs.unlink()
 		else:
 			partner_id.clinic_shortlisted_ids = [(0,0,{'favorite_clinic_id':operating_unit.id})]
 		return request.redirect("/clinic-detail")

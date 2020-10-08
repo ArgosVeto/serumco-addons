@@ -24,5 +24,31 @@
             <field name="code">DDD</field>
             <field name="show_in_footer">True</field>
         </record>
+
+        <record id="operating_unit_service_1" model="operating.unit.service">
+            <field name="name">Laboratoire</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service1.svg" />
+        </record>
+        <record id="operating_unit_service_2" model="operating.unit.service">
+            <field name="name">Hospitalisation</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service2.svg" />
+        </record>
+        <record id="operating_unit_service_3" model="operating.unit.service">
+            <field name="name">Dentisterie</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service3.svg" />
+        </record>
+        <record id="operating_unit_service_4" model="operating.unit.service">
+            <field name="name">Consultation générale</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service4.svg" />
+        </record>
+        <record id="operating_unit_service_5" model="operating.unit.service">
+            <field name="name">Chirurgie</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service5.svg" />
+        </record>
+
+        <record id="operating_unit_service_6" model="operating.unit.service">
+            <field name="name">Imagerie médicale</field>
+            <field name="service_image" type="base64" file="website_argos/static/src/img/service6.svg" />
+        </record>
     </data>
 </odoo>

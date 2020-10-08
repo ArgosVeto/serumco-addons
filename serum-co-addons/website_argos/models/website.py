@@ -6,6 +6,7 @@
 from odoo import api, fields, models
 from odoo.http import request
 import base64
+from odoo.addons.http_routing.models.ir_http import slug
 
 
 class res_config(models.TransientModel):
@@ -34,6 +35,36 @@ class Website(models.Model):
         return clinic_ids
 
     @api.model
+    def operating_unit_services(self):
+        service_ids = request.env['operating.unit.service'].sudo().search([],limit=6)
+        return service_ids
+
+    @api.model
+    def default_category(self,c):
+        Category = request.env['product.public.category']
+        dom = request.env['website'].get_current_website().website_domain()
+        category_id = Category.search(dom,limit=1)
+        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.attribute_id.id,c.id)
+        return category_url
+
+    @api.model
+    def get_gamne_values(self):
+        gamne_values = request.env['product.attribute'].sudo().search([('name','=','Gamme')],limit=5)
+        att_value = False
+        if gamne_values:
+            att_value = gamne_values[0].value_ids
+            att_value = att_value[0:5]
+        return att_value
+
+    @api.model
+    def get_cash_values(self):
+        cash_values = request.env['product.attribute'].sudo().search([('name','=','Espèces')])
+        att_value = False
+        if cash_values:
+            att_value = cash_values[0].value_ids
+        return att_value
+
+    @api.model
     def get_categories(self):
         category_ids = self.env['product.public.category'].search(
             [('parent_id', '=', False)])
@@ -52,16 +83,18 @@ class Website(models.Model):
         auto_assign_categ_ids = self.env['product.public.category'].search([('auto_assign','=',True)])
         return auto_assign_categ_ids
 
+
     def add_fav_clinic(self,operating_unit):
         partner_id =  self.env.user.partner_id
         if partner_id.clinic_shortlisted_ids.ids:
             check_operating_uni = any(operating_unit.id == cs.favorite_clinic_id.id for cs in partner_id.clinic_shortlisted_ids)
             if not check_operating_uni:
+                for cs in partner_id.clinic_shortlisted_ids:
+                    cs.unlink()
                 partner_id.clinic_shortlisted_ids = [(0,0,{'favorite_clinic_id':operating_unit.id})]
             else:
                 for cs in partner_id.clinic_shortlisted_ids:
-                    if(operating_unit.id == cs.favorite_clinic_id.id):
-                        cs.unlink()
+                    cs.unlink()
         else:
             partner_id.clinic_shortlisted_ids = [(0,0,{'favorite_clinic_id':operating_unit.id})]
         return operating_unit

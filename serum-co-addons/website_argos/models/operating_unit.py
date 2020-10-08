@@ -5,6 +5,15 @@
 from odoo import api, fields, models
 from datetime import datetime,date
 import pytz
+
+class OperatingUnitservic(models.Model):
+    _inherit = 'operating.unit.service'
+
+    service_image = fields.Binary("Service Banner")
+
+
+
+
         
 
 class OperatingUnit(models.Model):

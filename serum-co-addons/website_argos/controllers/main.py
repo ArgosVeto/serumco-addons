@@ -29,7 +29,7 @@ class PortalUser(http.Controller):
             user_id.write({'image_1920':datas_file})
         values = {'user_id':user_id}
         return request.env['ir.ui.view'].render_template("website_argos.update_user_image",values)
-
+ # self.get_combination_info(product_template_id, product_id, combination, add_qty, **kw)
 
 # class WebsiteSaleVariantController(VariantController):
 
@@ -202,7 +202,6 @@ class BizopleWebsiteSale(WebsiteSale):
             attrib_set = {v[1] for v in attrib_values}
 
             domain = self._get_search_domain(search, category, attrib_values)
-
             url = "/shop"
             if search:
                 post["search"] = search
@@ -288,8 +287,7 @@ class BizopleWebsiteSale(WebsiteSale):
                 domain.append(("name", 'ilike', search.strip()))
             if not request.env.user.has_group('base.group_system'):
                     domain.append(("website_published", '=', True))
-            product_tmpl_ids = request.env['product.template'].search(domain).ids
-            
+            product_tmpl_ids = request.env['product.template'].search(domain).ids            
             result.qcontext.update({
                 'search': search,
                 'total_product_count': len(product_tmpl_ids),
@@ -314,6 +312,7 @@ class BizopleWebsiteSale(WebsiteSale):
             })
             return result
         else:
+
             return super(BizopleWebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
 
 
@@ -574,16 +573,16 @@ class WebsiteSale(WebsiteSale):
             return request.redirect("/shop/checkout?express=1")
         return request.redirect("/shop/cart")
 
-    @http.route([
-        '''/shop''',
-        '''/shop/page/<int:page>''',
-        '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>''',
-        '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>/page/<int:page>'''
-    ], type='http', auth="public", website=True)
-    def shop(self, page=0, category=None, search='', ppg=False, **post):
-        if not category:
-            category_ids = request.env['product.public.category'].search([])
-            if category_ids:
-                category = category_ids[0]
-        res = super(WebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
-        return res
+    # @http.route([
+    #     '''/shop''',
+    #     '''/shop/page/<int:page>''',
+    #     '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>''',
+    #     '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>/page/<int:page>'''
+    # ], type='http', auth="public", website=True)
+    # def shop(self, page=0, category=None, search='', ppg=False, **post):
+    #     if not category:
+    #         category_ids = request.env['product.public.category'].search([])
+    #         if category_ids:
+    #             category = category_ids[0]
+    #     res = super(WebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
+    #     return res

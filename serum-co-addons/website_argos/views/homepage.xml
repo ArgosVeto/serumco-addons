@@ -47,10 +47,21 @@
 									<h1 class="text-primary">Nos marques</h1>
 								</div>
 								<div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+									<t t-set="gamne_value" t-value="website.get_gamne_values()"/>
+									<t t-if="gamne_value">
 						          	<div class="carousel-inner" role="listbox">
 						            	<div class="carousel-item active" >
 						            		<div class="row align-items-center">
-							            		<div class="col pr-5 pl-0">
+						            			<t t-foreach="gamne_value" t-as="gv">		
+						            				<div class="col pr-5 pl-0">
+							            				<a class="btn btn-primary"
+							            				t-att-href="website.default_category(gv)"
+							            				role="button">
+										               	 	<b><t t-esc="gv.name"/></b>
+										              	</a>
+									              	</div>
+								            	</t>
+							            		<!-- <div class="col pr-5 pl-0">
 							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
 							            		</div>
 							            		<div class="col px-5">
@@ -64,12 +75,20 @@
 							            		</div>
 							            		<div class="col pl-5 pr-0">
 							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
-							            		</div>
+							            		</div> -->
 							            	</div>
 						            	</div>
 						            	<div class="carousel-item" >
 						            		<div class="row align-items-center">
-							            		<div class="col pr-5 pl-0">
+						            			<t t-foreach="gamne_value" t-as="gv">
+						            				<div class="col pr-5 pl-0">
+							            				<a class="btn btn-primary" t-att-href="website.default_category(gv)" role="button">
+										               	 	<b><t t-esc="gv.name"/></b>
+										              	</a>
+										            </div>
+							            		</t>
+
+							            		<!-- <div class="col pr-5 pl-0">
 							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
 							            		</div>
 							            		<div class="col px-5">
@@ -83,7 +102,7 @@
 							            		</div>
 							            		<div class="col pl-5 pr-0">
 							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
-							            		</div>
+							            		</div> -->
 							            	</div>
 							            </div>
 						          	</div>
@@ -97,6 +116,7 @@
 						                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
 						              	</a>
 						            </div>
+						        </t>
 						        </div>
 							</div>
 						</section>
@@ -211,85 +231,45 @@
 									</div>
 									<div class="col-md-7 order">
 										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+											<t t-set="services" t-value="website.operating_unit_services()"/>
+											<!-- <t t-if="services"> -->
+
 								          	<div class="carousel-inner" role="listbox">
 								            	<div class="carousel-item active" >
 								            		<div class="row">
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
-										            			<p class="text-white">Dentisterie</p>
+								            			<t t-foreach="services" t-as="s">
+									            			<div class="col-6 mb-3">
+										            			<div class="service-box h-100 m16">
+										            				<a class="btn btn-primary p-0 text-md-left"  t-attf-href="/service-detail/#{slug(s.sudo())}" role="button">
+												            			<div class="d-md-flex align-items-center">
+
+											            					<img class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />
+														            		
+														            		<p class="text-white"><t t-esc="s.name"/></p>
+														            	</div>
+														            </a>
+											            		</div>
 										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
-										            			<p class="text-white">Chirurgie</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
-										            			<p class="text-white">Consultation générale</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
-										            			<p class="text-white">Imagerie médicale</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
-										            			<p class="text-white">Hospitalisation</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
-										            			<p class="text-white">Laboratoire</p>
-										            		</div>
-									            		</div>
+									            		</t>        		
 									            	</div>
 								            	</div>
-								            	<div class="carousel-item" >
+								            	<div class="carousel-item">
 								            		<div class="row">
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service1.svg" class="img img-fluid" />
-										            			<p class="text-white">Dentisterie</p>
+								            			<t t-foreach="services" t-as="s">
+									            			<div class="col-6 mb-3">
+										            			<div class="service-box h-100 m16">
+
+										            				
+												            		<a class="btn btn-primary p-0 text-md-left"  t-attf-href="/service-detail/#{slug(s.sudo())}" role="button">
+												            			<div class="d-md-flex align-items-center">
+
+											            					<img class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />				
+												            				<p class="text-white"><t t-esc="s.name"/></p>
+												            			</div>
+											            			</a>
+											            		</div>
 										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service2.svg" class="img img-fluid" />
-										            			<p class="text-white">Chirurgie</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service3.svg" class="img img-fluid" />
-										            			<p class="text-white">Consultation générale</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service4.svg" class="img img-fluid" />
-										            			<p class="text-white">Imagerie médicale</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service5.svg" class="img img-fluid" />
-										            			<p class="text-white">Hospitalisation</p>
-										            		</div>
-									            		</div>
-									            		<div class="col-6 mb-3">
-									            			<div class="service-box d-md-flex align-items-center">
-										            			<img src="/website_argos/static/src/img/service6.svg" class="img img-fluid" />
-										            			<p class="text-white">Laboratoire</p>
-										            		</div>
-									            		</div>
+									            		</t> 
 									            	</div>
 									            </div>
 								          	</div>
@@ -304,6 +284,7 @@
 								              	</a>
 								            </div>
 								        </div>
+								    <!-- </t> -->
 									</div>
 								</div>
 							</div>
@@ -319,7 +300,8 @@
 											</div>
 											<h6 class="text-white">Une urgence vétérinaire ?</h6>
 											<p class="text-white">Ab autem quia est nesciunt et alias ut eveniet. Aspernatur odio nam dolores velit debitis.</p>
-											<a class="btn btn-light btn-red">Appeler le 01.22.22.22.22</a>
+											<a class="btn btn-light btn-red d-md-inline-block d-none">Appeler le 01.22.22.22.22</a>
+											<a href="tel: 01.22.22.22.22;" class="btn btn-light btn-red d-inline-block d-md-none">Appeler le 01.22.22.22.22</a>
 										</section>
 									</div>
 									<div class="col-md-6">
@@ -329,7 +311,7 @@
 											</div>
 											<h6 class="text-white">J’ai trouvé un animal</h6>
 											<p class="text-white">Est et amet consectetur. Aut ut eligendi quidem exercitationem est sequi aut voluptas. </p>
-											<a class="btn btn-light btn-red">Lorem ipsum</a>
+											<a href="/clinic-contact" class="btn btn-light btn-red">Lorem ipsum</a>
 										</section>
 									</div>
 								</div>
@@ -345,7 +327,7 @@
 											<p>Nous avons à cœur de vous accompagner, quels que soient votre besoin ou vos doutes. Nous vous proposons un service vétérinaire complet en ligne afin que vous retrouviez toutes les réponses à vos questions. </p>
 											<p>Nous mettons à votre disposition des informations médicales et des conseils pratiques concernant la santé de vos animaux. Aussi, découvrez notre boutique en ligne pour acheter nourriture, médicaments et jouets pour votre animal. </p>
 											<p>Retrouvez un espace utilisateur complet avec une fiche pour votre animal comprenant le suivi de vos rendez-vous, un rappel des vaccins et des conseils adaptés.</p>
-											<a class="btn btn-primary">Créer un compte</a>
+											<a href="/web/signup" class="btn btn-primary">Créer un compte</a>
 										</div>
 									</div>
 									<div class="col-md-6 order">
@@ -374,7 +356,7 @@
 											<h3 class="text-primary">Notre groupe</h3>
 											<p>Découvrez nos cliniques vétérinaires Argos ; des professionnels à votre écoute pour garantir le bien-être et la santé de vos animaux. En tant que réseau français de cabinets et cliniques vétérinaires d’excellence, nous appliquons des soins de qualité dans des structures à taille humaine.</p>
 											<p>Nous sommes présents dans de nombreuses agglomérations françaises, au plus proche de votre animal de compagnie. Faites confiance à Argos Vétérinaire, le meilleur ami de l’animal !</p>
-											<a class="btn btn-primary">En savoir plus</a>
+											<a href="/group-argos" class="btn btn-primary">En savoir plus</a>
 										</div>
 									</div>
 								</div>
@@ -387,7 +369,7 @@
 									<div class="text">
 										<h3 class="text-white">Une équipe de vétérinaires<br/>à votre service</h3>
 										<p>Si votre animal présente une plaie, des vomissements, des crises convulsives, de la fièvre, des difficultés respiratoires, ou autre problème qui vous semble inquiétant, contactez-nous. Les cliniques et cabinets vétérinaires du réseau Argos restent disponibles 7j/7 pour traiter les urgences vétérinaires.</p>
-										<p class="m-0">Si votre animal ne présente pas ces symptômes, nous vous invitons à <b><u>prendre contact avec la clinique vétérinaire Argos la plus proche de chez vous</u></b> pendant les horaires d’ouverture. Prenez rendez-vous en toute simplicité et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal !</p>
+										<p class="m-0">Si votre animal ne présente pas ces symptômes, nous vous invitons à <a href="/clinic-detail" class="text-white"><b><u>prendre contact avec la clinique vétérinaire Argos la plus proche de chez vous</u></b></a> pendant les horaires d’ouverture. Prenez rendez-vous en toute simplicité et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal !</p>
 									</div>
 								</section>
 							</div>

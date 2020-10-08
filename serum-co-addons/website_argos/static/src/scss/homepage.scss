@@ -8,6 +8,11 @@
   	letter-spacing: normal;
   	text-align: center;
 }
+#wrapwrap {
+	.btn-primary, .btn-secondary, .btn-light {
+		border-radius: 24px;
+	}
+}
 
 .pd-0 {
 	padding:0px;
@@ -60,7 +65,7 @@
 				h3{
 					width: 355px;
 				  	height: 64px;
-				  	font-family: AvenirLTStd-Heavy;
+				  	font-family: AvenirLTStd-Heavy !important;
 				  	font-size: 28px;
 				  	font-weight: 900;
 				  	font-stretch: normal;
@@ -246,7 +251,7 @@
 	  			border-radius: 50%;
 	  			position: absolute;
 			    top: 332px;
-	    		right: -98px;
+	    		right: -92px;
 			}
 			.row{
 			    margin-right: -15px;
@@ -392,6 +397,7 @@
 		        outline: 0 !important;
 		        margin-right: 16px;
 		        margin-bottom: 0;
+		        color: white;
 		        &::placeholder{
 		        	color: white;
 		        	font-size: 15px;
@@ -402,9 +408,13 @@
 			  		line-height: 1.73;
 			  		letter-spacing: normal;
 		        }
+		        &:focus{
+		        	&::placeholder{
+	        		    visibility: hidden;
+		        	}
+		        }
 			}
 			.search-btn{
-			  	border-radius: 6px;
 			  	background-color: #ffffff !important;
 			    border-color: white !important;
 			    color: theme-color('primary');
@@ -522,10 +532,10 @@
 		  	letter-spacing: normal;
 		  	margin-bottom: 32px;
 		}
-		input{
+		select{
 			width: 360px;
-	 	 	height: 47px;
-		  	border-radius: 4px !important;
+	 	 	height: 44px;
+		  	border-radius: 4px;
 		  	background-color: rgba(99, 186, 233, 0.04);
 		  	margin-right: 16px;
 		  	display: inline-block;
@@ -533,10 +543,21 @@
 		    box-shadow: none;
 		    color: theme-color('primary');
 		}
-		.input-group-append{
-			.btn{
-			    border-radius: 24px !important;
-			}
+		.clinic-btn{
+			width: 106px;
+		  	height: 44px;
+		  	background-color: theme-color('primary') !important;
+		    border-color: theme-color('primary') !important;
+		    color: white !important;
+		    padding: 0;
+		    line-height: 44px;
+		    font-family: AvenirLTStd-Heavy;
+		    font-size: 16px;
+		  	font-weight: 900;
+		  	font-stretch: normal;
+	 	 	font-style: normal;
+		  	letter-spacing: normal;
+		  	text-align: center;
 		}
 	}
 	@media (max-width: 767.98px) {
@@ -610,6 +631,11 @@
 	}
 	#service-carousel{
 		.service-box{
+			> .btn-primary{
+				background-color: theme-color('primary') !important;
+				border-color: theme-color('primary') !important;
+				color: white !important;
+			}
 			.img{
 				margin-right: 16px;
 			}
@@ -715,11 +741,13 @@
 		}
 		.btn{
 		  	color: theme-color('primary') !important;
+		  	background-color: white !important;
+		  	border-color: white !important;
 		}
 		background-size: cover;
 		background-position: center;
 		border-radius: 8px;
-		padding: 63px 83px 50px;
+		padding: 63px 75px 50px;
 		text-align: center;
 	}
 	@media (max-width: 767.98px) {

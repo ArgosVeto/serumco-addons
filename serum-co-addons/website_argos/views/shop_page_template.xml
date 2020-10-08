@@ -30,15 +30,26 @@
 		                </div>
 		                <div class="sub-categories mt32">
 		                	<ul class="nav nav-pills flex-row">
-		                		<t t-if="category.child_id">
-		                			<t t-foreach="category.child_id" t-as="categ_sub">
-										<li class="nav-item mb-3 mb-md-0">
-											<a t-att-href="keep('/shop/category/' + slug(categ_sub), category=0)" class="nav-link categ-btn">
-								                <span t-field="categ_sub.name"/>
-								            </a>
-										</li>
-									</t>
-								</t>
+								<li class="nav-item mb-3 mb-md-0">
+									<a href="#" class="nav-link categ-btn">
+						                <span>Croquettes</span>
+						            </a>
+								</li>
+								<li class="nav-item mb-3 mb-md-0">
+									<a href="#" class="nav-link categ-btn">
+						                <span>Pâtés</span>
+						            </a>
+								</li>
+								<li class="nav-item mb-3 mb-md-0">
+									<a href="#" class="nav-link categ-btn">
+						                <span>Chat stérilisé</span>
+						            </a>
+								</li>
+								<li class="nav-item mb-3 mb-md-0">
+									<a href="#" class="nav-link categ-btn">
+						                <span>Alimentation premium</span>
+						            </a>
+								</li>
 		                	</ul>
 		                </div>
 					</div>
@@ -48,7 +59,7 @@
 				<div class="container">
 					<div class="d-flex align-items-center">
 						<div class="product_filters d-flex align-items-center">
-							<div class="category-filter">
+							<div class="category-filter d-none">
 								<a href="#" class="category-btn dropdown-toggle" data-toggle="dropdown">Category</a>
 								<div class="dropdown-menu" role="menu">
 									<ul class="nav nav-pills flex-column">
@@ -107,10 +118,10 @@
 						</div>
 						<t t-if="request.website.viewref('website_sale.sort').active">
 							<div class="product_sort_by_btn ml-auto">
-								<t t-set="list_price_desc_label">Catalog price: High to Low</t>
-					            <t t-set="list_price_asc_label">Catalog price: Low to High</t>
-					            <t t-set="name_asc_label">Name: A to Z</t>
-					            <t t-set="name_desc_label">Name: Z to A</t>
+								<t t-set="list_price_desc_label">prix décroissant</t>
+					            <t t-set="list_price_asc_label">prix croissant</t>
+					            <t t-set="name_asc_label">Nom: A à Z</t>
+					            <t t-set="name_desc_label">Nom: Z à A</t>
 					            <t t-set="website_sale_sortable" t-value="[
 					                (list_price_desc_label, 'list_price desc'),
 					                (list_price_asc_label, 'list_price asc'),
@@ -122,10 +133,10 @@
 					                <a role="button" href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown">
 					                    <span class="d-none d-lg-inline">
 					                        <t t-if='len(website_sale_sortable_current)'>
-					                            Sorting by : <t t-raw='website_sale_sortable_current[0][0]'/>
+					                            Trier par : <t t-raw='website_sale_sortable_current[0][0]'/>
 					                        </t>
 					                        <t t-else='1'>
-					                            Sort by
+					                            Trier par
 					                        </t>
 					                    </span>
 					                    <i class="fa fa-sort-amount-asc d-lg-none"/>
