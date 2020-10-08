@@ -31,6 +31,13 @@
             <button name="action_confirm"
                     string="Confirm" type="object"
                     attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+            <button name="button_confirm_edition_sale_completed"
+                    string="Modify consultation completed" type="object"
+                    attrs="{'invisible': [('state', 'not in', ['sent', 'sale'])]}"
+            />
+            <button name="%(argos_sale.action_refer_consultation_to)d"
+                    string="Refer To" type="action"
+            />
             <field name="argos_state" widget="statusbar" statusbar_visible="in_progress,consultation_done"/>
           </header>
           <sheet>
@@ -41,6 +48,13 @@
                       icon="fa-pencil-square-o"
                       attrs="{'invisible': [('invoice_count', '=', 0)]}">
                 <field name="invoice_count" widget="statinfo" string="Invoices"/>
+              </button>
+              <button type="object"
+                      name="button_referrals_view"
+                      class="oe_stat_button"
+                      icon="fa-newspaper-o"
+                      attrs="{'invisible': [('refer_count', '=', 0)]}" >
+                <field name="refer_count" widget="statinfo" string="Referrals"/>
               </button>
               <button attrs="{'invisible': [('arrival_time', '=', False)]}">
                 <field name="arrival_time" widget="timer" class="text-danger h2 pull-right mr-4 font-weight-bold"/>
@@ -53,6 +67,7 @@
             </div>
             <group>
               <group>
+                <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
                 <field name="invoice_status" invisible="1"/>
                 <field name="state" invisible="1"/>
                 <field name="company_id" invisible="1"/>

@@ -29,6 +29,7 @@
         'data/server_ftp_data.xml',
         # views
         'views/sale_report_views.xml',
+        'views/sale_order_refer_views.xml',
         'views/sale_order_line_views.xml',
         'views/sale_order_views.xml',
         'views/consultation_type_views.xml',

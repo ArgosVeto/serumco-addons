@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-29 06:11+0000\n"
-"PO-Revision-Date: 2020-09-29 06:11+0000\n"
+"POT-Creation-Date: 2020-10-07 16:18+0000\n"
+"PO-Revision-Date: 2020-10-07 16:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -174,6 +174,7 @@ msgid "CHAMP MANQUANT !!"
 msgstr "CHAMP MANQUANT !!"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
 #: model_terms:ir.ui.view,arch_db:argos_sale.sale_order_line_view_form
 msgid "Cancel"
 msgstr "Annuler"
@@ -204,6 +205,12 @@ msgid "Command Lines"
 msgstr "Lignes de commande"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__comments
+#: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
+msgid "Comments"
+msgstr "Commentaire"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Confirm"
 msgstr "Confirmer"
@@ -226,7 +233,6 @@ msgstr "Date de consultation"
 
 #. module: argos_sale
 #: model:ir.model,name:argos_sale.model_consultation_type
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type_id
 msgid "Consultation Type"
 msgstr "Type de consultation"
 
@@ -280,11 +286,13 @@ msgstr "Créer une facture"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_uid
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__create_uid
 msgid "Created by"
 msgstr "Créé par"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_date
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__create_date
 msgid "Created on"
 msgstr "Créé le"
 
@@ -325,6 +333,7 @@ msgstr "Rem.%"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__display_name
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
 
@@ -384,6 +393,7 @@ msgstr "Je soussigné,"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__id
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__id
 msgid "ID"
 msgstr "ID"
 
@@ -448,17 +458,25 @@ msgid "Is Critical Antibiotic"
 msgstr "Antibiotique critique"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__is_referral
+msgid "Is a referral"
+msgstr "Est une référence"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type____last_update
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_uid
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_date
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
@@ -471,6 +489,11 @@ msgstr "Nom et prénom"
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Made in ................................................ the"
 msgstr "Fait, à ................................................ le"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Modify consultation completed"
+msgstr "Modifier consultation terminée"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__name
@@ -510,6 +533,11 @@ msgstr "Seule une consultation peut générer une convention"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_tree
 msgid "Operating Unit"
 msgstr "Clinique"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__origin_order_id
+msgid "Origin of the consultation"
+msgstr "Origine de la consultation"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__name
@@ -588,14 +616,71 @@ msgid "Reason For Appointment"
 msgstr "Raison du rendez-vous"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__consultation_type_id
+msgid "Reason For Referral Request"
+msgstr "Raison de la demande de référé"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
+msgid "Refer"
+msgstr "Référé"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_refer_consultation_to
+msgid "Refer Consultation To"
+msgstr "Référer à"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Refer To"
+msgstr "Référer à"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__operating_unit_id
+msgid "Refer To Clinic"
+msgstr "Référer à la clinique"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__employee_id
+msgid "Refer to veterinary"
+msgstr "Référer au vétérinaire"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__refer_employee_id
+msgid "Referent"
+msgstr "Référent"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__referent_partner_id
 msgid "Referent Partner"
 msgstr "Référé par"
 
 #. module: argos_sale
+#: code:addons/argos_sale/models/sale_order.py:0
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+#, python-format
+msgid "Referrals"
+msgstr "Références"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__refer_order_ids
+msgid "Referred"
+msgstr "Référé"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__refer_count
+msgid "Refers count"
+msgstr "Nombre de références"
+
+#. module: argos_sale
 #: model:ir.actions.server,name:argos_sale.model_sale_order_action_reprint_convention
 msgid "Reprint Convention"
 msgstr "Réimpression convention"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_sale_order_refer
+msgid "Sale Order Refer"
+msgstr "Référé"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_partner_view_form_inherit
@@ -689,6 +774,11 @@ msgstr "Unités"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "UoM"
 msgstr "UdM"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
+msgid "Validate refer"
+msgstr "Valider le référé"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__weight
