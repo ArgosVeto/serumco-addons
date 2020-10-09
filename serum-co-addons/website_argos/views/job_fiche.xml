@@ -13,7 +13,7 @@
 								<div class="top-breadcrumbs">
 				                    <ol class="breadcrumb mb32">
 				                    	<li class="breadcrumb-item">
-						                    <a href="#">Accueil</a>
+						                    <a href="/">Accueil</a>
 						                </li>
 				                        <li class="breadcrumb-item">
 				                            <a href="/group-argos">Le groupe Argos</a>
@@ -199,7 +199,7 @@
 
 											<h6 class="mb24 mt48">Besoin d’en savoir plus à propos des avantages proposés par le réseau Argos Vétérinaire ? </h6>
 
-											<a class="btn-outline-primary btn-fiche" href="#">
+											<a class="btn-outline-primary btn-fiche" href="/website_argos/static/src/docs/argos_doc.pdf">
 												<img src="/website_argos/static/src/img/job_pdf.svg" class="img img-fluid mr-2" />
 												<span>Téléchargez notre plaquette « Avantages Argos"</span>
 											</a>
@@ -220,41 +220,43 @@
 										</div>
 									</div>
 									<div class="col-lg-4">
-										<div class="job-fiche-right-content">
-											<h3 class="mb16">Docteur Vétérinaire</h3>
-											<p class="heavy mb8">Formation :</p>
-											<p class="mb24"> 4 à 5 ans</p>
+										<div class="job-right-sticky">
+											<div class="job-fiche-right-content">
+												<h3 class="mb16">Docteur Vétérinaire</h3>
+												<p class="heavy mb8">Formation :</p>
+												<p class="mb24"> 4 à 5 ans</p>
 
-											<p class="heavy mb8">Diplôme :</p>
-											<p class="mb24">Diplôme d'État de Docteur Vétérinaire (EV)</p>
+												<p class="heavy mb8">Diplôme :</p>
+												<p class="mb24">Diplôme d'État de Docteur Vétérinaire (EV)</p>
 
-											<p class="heavy mb8">Spécialisation possible :</p>
-											<p class="mb24">Oui</p>
+												<p class="heavy mb8">Spécialisation possible :</p>
+												<p class="mb24">Oui</p>
 
-											<p class="heavy mb8">Rémunération :</p>
-											<p class="mb32">Entre 1940€ et 3590€ pour un vétérinaire salarié et entre 4600€ et 6500€ pour un vétérinaire libéral</p>
+												<p class="heavy mb8">Rémunération :</p>
+												<p class="mb32">Entre 1940€ et 3590€ pour un vétérinaire salarié et entre 4600€ et 6500€ pour un vétérinaire libéral</p>
 
-											<a class="btn btn-primary d-block" href="#">Voir les offres d'emploi</a>
-										</div>
+												<a class="btn btn-primary d-block" href="#">Voir les offres d'emploi</a>
+											</div>
 
-										<div class="job-right-share mt40 text-center">
-											<p class="mb32 text-center">Partager la fiche métier</p>
-											<div class="share-link">
-				                            	<div t-attf-class="s_share #{_classes}">
-											        <a href="https://www.facebook.com/sharer/sharer.php?u={url}" t-attf-class="s_share_facebook #{_link_classes}" target="_blank">
-											            <i t-attf-class="fa fa-1x fa-facebook #{not _link_classes and 'rounded shadow-sm'}"/>
-											        </a>
-											        <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" t-attf-class="s_share_twitter #{_link_classes}" target="_blank">
-											            <i t-attf-class="fa fa-1x fa-twitter #{not _link_classes and 'rounded shadow-sm'}"/>
-											        </a>
-											        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={url}&amp;title={title}&amp;" t-attf-class="s_share_linkedin #{_link_classes}" target="_blank">
-											            <i t-attf-class="fa fa-1x fa-linkedin #{not _link_classes and 'rounded shadow-sm'}"/>
-											        </a>
-											        <a href="mailto:?body={url}&amp;subject={title}" t-attf-class="s_share_email #{_link_classes}">
-											            <i t-attf-class="fa fa-1x fa-envelope #{not _link_classes and 'rounded shadow-sm'}"/>
-											        </a>
-											    </div>
-				                            </div>
+											<div class="job-right-share mt40 text-center">
+												<p class="mb32 text-center">Partager la fiche métier</p>
+												<div class="share-link">
+					                            	<div t-attf-class="s_share #{_classes}">
+												        <a href="https://www.facebook.com/sharer/sharer.php?u={url}" t-attf-class="s_share_facebook #{_link_classes}" target="_blank">
+												            <i t-attf-class="fa fa-1x fa-facebook #{not _link_classes and 'rounded shadow-sm'}"/>
+												        </a>
+												        <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" t-attf-class="s_share_twitter #{_link_classes}" target="_blank">
+												            <i t-attf-class="fa fa-1x fa-twitter #{not _link_classes and 'rounded shadow-sm'}"/>
+												        </a>
+												        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={url}&amp;title={title}&amp;" t-attf-class="s_share_linkedin #{_link_classes}" target="_blank">
+												            <i t-attf-class="fa fa-1x fa-linkedin #{not _link_classes and 'rounded shadow-sm'}"/>
+												        </a>
+												        <a href="mailto:?body={url}&amp;subject={title}" t-attf-class="s_share_email #{_link_classes}">
+												            <i t-attf-class="fa fa-1x fa-envelope #{not _link_classes and 'rounded shadow-sm'}"/>
+												        </a>
+												    </div>
+					                            </div>
+											</div>
 										</div>
 									</div>
 								</div>

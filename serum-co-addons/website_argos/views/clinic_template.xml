@@ -3,7 +3,7 @@
     <template id="clinic_search_box" name="Clinic Searchbox">
         <div role="search">
              <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
-                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Name/Adresse/Code Postal/Ville…" t-att-value="search"/>
+                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Nom/Adresse/Code Postal/Ville…" t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
                 </div>  
@@ -81,13 +81,12 @@
 		            <div class="row">
 		            	<div class="col-lg-12">
 		            		<ol class="breadcrumb">
-							    <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+							    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
 							    <li class="breadcrumb-item"> Trouver une clinique</li>
 							  </ol>
 		            	</div>
 		                <div class="col-lg-12 pt16 pb8">
 		                	<h1>Trouver une clinique</h1>
-		                    <p class="lead o_default_snippet_text">Eaque ratione sapiente et quo quaerat voluptas non amet. Quam ex hic hic. Ut sequi et. Nihil ut nesciunt. Omnis molestias ratione nihil voluptatibus. Voluptatem ut dolor. Omnis nihil enim dolores. Laboriosam neque commodi eum id alias officiis dolorem qui. Quibusdam eos nulla corporis vel debitis iste…</p>
 		                </div>
 		                
 		                <div class="col-lg-12 pt16 pb8">
@@ -113,14 +112,13 @@
 	                	</div>
                         <div class="open_today">
                           <div class="clinic-type-b">
-				        	<a href="#" class="mr-4 badge badge-pill badge-light">
+				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-4 badge badge-pill badge-light">
 				        		<span>OUVERT AUJOURD HUI</span>
 				        	</a>
+				        	<!-- OUVERT AUJOURD HUI -->
 						</div>
                         </div>
                         <div class="criteria search_by_service">
-						        	<!-- <t t-esc="service_ids"/> -->
-
                         	<t t-set="service" t-value="service_ids" />
 						        <div t-attf-class="dropdown">
 						        	<t t-if="service_ids">
@@ -150,6 +148,13 @@
 							  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
 							</div>
                         </div>
+
+                        <div class="clear-search mt8 ml8">
+				        	<a t-attf-href="/clinic-detail?clear_search=1" class="">
+				        		<span>CLEAR</span>
+				        	</a>
+						</div>
+
                     </div>
                     </div>
                     </section>
@@ -168,12 +173,12 @@
 				                    <div class="card bg-white">
 				                        <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
                                         <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-                                           <a role="button"  class="btn-primary mt16 fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+                                           <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
                                             	<img src="/website_argos/static/src/img/heart.svg"></img>
                                         	</a>
                                         </t>
                                         <t t-else="">
-			                        	  <a role="button"  class="btn btn-primary mt16 fav-btn"
+			                        	  <a role="button"  class="btn btn-primary fav-btn"
 			                        	  	 t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
                                             <img src="/website_argos/static/src/img/heart.svg"></img>
                                         	</a> 

@@ -15,7 +15,7 @@
 									<div class="top-breadcrumbs">
 					                    <ol class="breadcrumb mt32 mb48">
 					                    	<li class="breadcrumb-item">
-							                    <a href="#">Accueil</a>
+							                    <a href="/">Accueil</a>
 							                </li>
 					                        <li class="breadcrumb-item">
 					                            <a href="/group-argos">Le groupe Argos</a>

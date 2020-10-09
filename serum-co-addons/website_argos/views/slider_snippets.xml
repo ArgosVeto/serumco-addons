@@ -95,7 +95,9 @@
 											<p>
 												<t t-foreach="product.tag_ids" t-as="tags">
 								            		<div class="tag-name">
-								            			<t t-esc="tags.name"/>
+								            			<a t-att-href="'/shop?tag_id=%s' % tags.id" class="btn btn-outline-secondary rounded-circle btn-sm">
+						                                    <t t-esc="tags.name"/>
+						                                </a>
 								            		</div>
 								            	</t>
 								            </p>
@@ -129,6 +131,9 @@
 												<span t-field='product.name' />
 											</a>
 										</h5>
+										<div class="slider-product-rating">
+											<t t-call="website_argos.product_item_stars"/>
+										</div>
 									</div>
 									<div class="o_wsale_product_btn">
 										<form action="/shop/cart/update" method="post">
@@ -517,7 +522,9 @@
 						<p>
 							<t t-foreach="product.tag_ids" t-as="tags">
 			            		<div class="tag-name">
-			            			<t t-esc="tags.name"/>
+			            			<a t-att-href="'/shop?tag_id=%s' % tags.id" class="">
+                                    <t t-esc="tags.name"/>
+                                </a>
 			            		</div>
 			            	</t>
 			            </p>
@@ -551,6 +558,9 @@
 							<span t-field='product.name' />
 						</a>
 					</h3>
+					<div class="slider-product-rating">
+						<t t-call="website_argos.product_item_stars"/>
+					</div>
 				</div>
 				<div class="o_wsale_product_btn">
 					<form action="/shop/cart/update" method="post">

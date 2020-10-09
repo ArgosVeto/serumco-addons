@@ -428,13 +428,13 @@
 										</div>
 
 										<div class="clinic-link d-flex mt16">
-											<div class="socialicons mr-4 bg-heart">
+											<div class="socialicons mr-4 heart-btn">
 												<img src="/website_argos/static/src/img/heart.svg" />
 											</div>
-											<div class="socialicons mr-4">
+											<div class="socialicons msg-btn mr-4">
 												<img src="/website_argos/static/src/img/message.svg" />
 											</div>
-											<div class="socialicons mr-4">
+											<div class="socialicons fcbk-btn mr-4">
 												<img src="/website_argos/static/src/img/facebook.svg" />
 											</div>
 										</div>

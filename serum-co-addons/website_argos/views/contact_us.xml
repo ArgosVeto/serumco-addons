@@ -14,7 +14,7 @@
 								<div class="col-lg-12">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="#">Accueil</a>
+											<a href="/">Accueil</a>
 										</li>
 										<li class="breadcrumb-item">
 											<a href="/group-argos">Le groupe Argos</a>
@@ -142,11 +142,12 @@
 									</form>
 								</div>
 								<div class="col-lg-4 cli-contact">
+									<t t-if="partner_ids">
 									<div class="s_title pt16 pb16">
 										<h1 class="La-clinique-la-plus">La clinique la plus proche</h1>
 									</div>
 									<section class="pt8 pb8">
-										<t t-if="partner_ids">
+										<!-- <t t-if="partner_ids"> -->
 											<t t-foreach="partner_ids" t-as="partner">
 												<div class="s_col_no_bgcolor pt16 clinic-grid">
 													<div class="card bg-white">
@@ -199,19 +200,22 @@
 														</div>
 													</div>
 												</div>
-											</t>
+											<!-- </t> -->
 										</t>
 									</section>
+								</t>
 									<div class="b-in-hr">
 										<div class="s_hr text-left pt32" data-name="Separator">
 											<hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto" />
 										</div>
 									</div>
+									<t t-if="partner_ids">
+
 									<div class="s_title pt32 pb16">
 										<h1 class="La-clinique-la-plus">Ma clinique favorite</h1>
 									</div>
 									<section class="pt8 pb8">
-										<t t-if="partner_ids">
+										<!-- <t t-if="partner_ids"> -->
 											<t t-foreach="partner_ids" t-as="partner">
 
 												<div class="s_col_no_bgcolor pt16 pb16 clinic-grid">
@@ -266,8 +270,9 @@
 													</div>
 												</div>
 											</t>
-										</t>
+										<!-- </t> -->
 									</section>
+								</t>
 
 									<section class="pt16 mb16 home-emergency">
 										<section class="emergency-box bg-secondary">

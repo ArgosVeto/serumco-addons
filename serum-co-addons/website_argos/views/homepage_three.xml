@@ -9,7 +9,7 @@
 					            	<div class="col-lg-8">
 					            		<div class="">
 						            		<ol class="breadcrumb">
-											    <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+											    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
 											    <li class="breadcrumb-item"><a href="/prendre-rendez-vous"></a> Prendre rendez-vous</li>
 											    <t t-if="clinic_id">
 											    	 <li class="breadcrumb-item"><t t-esc="clinic_id.name"/></li>
@@ -85,12 +85,12 @@
 					                                </t>
 				                            	</div>
 
-												<div class="socialicons mr-4">
+												<div class="socialicons msg-btn mr-4">
 													<a t-att-href="'mailto:%s' % (clinic_id.email)" target="_blank">
 														<img src="/website_argos/static/src/img/message.svg" />
 													</a>
 												</div>
-												<div class="socialicons mr-4">
+												<div class="socialicons fcbk-btn mr-4">
 													<a t-att-href="clinic_id.facebook" target="_blank">
 														<img src="/website_argos/static/src/img/facebook.svg" />
 													</a>

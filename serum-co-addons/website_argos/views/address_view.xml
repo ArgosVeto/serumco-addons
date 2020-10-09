@@ -18,7 +18,7 @@
                                     </div>
 
                                     <div t-attf-class="form-group col-lg-12 div_name">
-                                        <label class="col-form-label" for="name">Name</label>
+                                        <label class="col-form-label" for="name">Nom du titulaire</label>
                                         <input type="text" name="name"  t-attf-class="form-control o_website_form_input #{'name' in required_fields and 'is-invalid' or ''}"  t-att-value="predefine_data and 'name' in predefine_data and predefine_data['name'] or partner_id and 'name' in partner_id and partner_id['name']" />
                                     </div>
                                     <div t-attf-class="form-group col-lg-12 email">
@@ -26,34 +26,34 @@
                                         <input type="text" name="email" t-attf-class="form-control" t-att-value="predefine_data and 'email' in predefine_data and predefine_data['email'] or partner_id and 'email' in partner_id and partner_id['email']"/>
                                     </div>
                                     <div t-attf-class="form-group col-lg-12 phone">
-                                        <label class="col-form-label" for="phone">Phone</label>
+                                        <label class="col-form-label" for="phone">Téléphone</label>
                                         <input type="text" name="phone" t-attf-class="form-control o_website_form_input #{'phone' in required_fields and 'is-invalid' or ''}"  t-att-value="predefine_data and 'phone' in predefine_data and predefine_data['phone'] or partner_id and 'phone' in partner_id and partner_id['phone']"/>
                                     </div>
 
                                     <div t-attf-class="form-group col-lg-12 street">
-                                         <label class="col-form-label" for="street">Street <span class="d-none d-md-inline"> and Number</span></label>
+                                         <label class="col-form-label" for="street">Rue <span class="d-none d-md-inline"> et numéro</span></label>
                                         <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']"/>
                                     </div>
 
                                      <div t-attf-class="form-group col-lg-12 div_street2">
-                                        <label class="col-form-label label-optional" for="street2">Street 2</label>
+                                        <label class="col-form-label label-optional" for="street2">Rue # 2</label>
                                         <input type="text" name="street2" t-attf-class="form-control" t-att-value="predefine_data and 'street2' in predefine_data and predefine_data['street2'] or partner_id and 'street2' in partner_id and partner_id['street2']"/>
                                     </div>
                                      <div t-attf-class="form-group col-md-4 div_zip">
-                                        <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                                        <label class="col-form-label label-optional" for="zip">Code postal</label>
                                         <input type="text" name="zip" t-attf-class="form-control"  t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']"/>
                                     </div>
 
 
                                     <div t-attf-class="form-group col-md-8 div_city">
-                                        <label class="col-form-label" for="city">City</label>
+                                        <label class="col-form-label" for="city">Ville</label>
                                         <input type="text" name="city" t-attf-class="form-control o_website_form_input #{'city' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'city' in predefine_data and predefine_data['city'] or partner_id and 'city' in partner_id and partner_id['city']"/>
                                     </div>
 
                                      <div t-attf-class="form-group col-lg-6 div_country">
-                                        <label class="col-form-label" for="country_id">Country</label>
+                                        <label class="col-form-label" for="country_id">Pays</label>
                                         <select id="country_id" name="country_id" t-attf-class="form-control">
-                                            <option value="">Country...</option>
+                                            <option value="">Pays...</option>
                                             <t t-foreach="countries" t-as="c">
                                                 <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">
                                                     <t t-esc="c.name" />
@@ -65,7 +65,7 @@
                                     <div t-attf-class="form-group col-lg-6" id="div_state">
                                         <label class="col-form-label" for="state_id">State / Province</label>
                                         <select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}">
-                                            <option value="">State / Province...</option>
+                                            <option value="">État / Province</option>
                                         </select>
                                     </div>
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
@@ -75,9 +75,9 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
 
-                                    <a role="button" href="/my-address" class="btn btn-secondary mb32 float-left"><span class="fa fa-chevron-left" /> Back</a>
+                                    <a role="button" href="/my-address" class="continue-btn btn btn-secondary mb32 float-left"><span class="fa fa-chevron-left" /> RETOUR</a>
                                     <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
-                                        Confirm
+                                        Valider la commande
                                     </button>
                                 </div>
                             </form>
@@ -178,7 +178,7 @@
             </div>
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
-                <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4">
+                <a role="button" target="" href="#" class="btn btn-outline-primary  ml-3">
                     <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
                 </a>
             </div>

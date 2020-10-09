@@ -15,6 +15,7 @@ from odoo.addons.website_sale.controllers import main
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.website_sale.controllers.main import TableCompute
 from odoo.addons.sale.controllers.variant import VariantController
+from odoo.osv import expression
 
 class PortalUser(http.Controller):
     @http.route(['/update-image'], type='json', auth="user")
@@ -29,14 +30,6 @@ class PortalUser(http.Controller):
             user_id.write({'image_1920':datas_file})
         values = {'user_id':user_id}
         return request.env['ir.ui.view'].render_template("website_argos.update_user_image",values)
- # self.get_combination_info(product_template_id, product_id, combination, add_qty, **kw)
-
-# class WebsiteSaleVariantController(VariantController):
-
-#     @http.route(['/product_code/get_combination_info'], type='json', auth="public", methods=['POST'], website=True)
-#     def get_combination_info_sku_website(self, product_template_id, product_id, combination, add_qty, **kw):
-#         res = self.get_combination_info(product_template_id, product_id, combination, add_qty, **kw)
-#         return request.env['ir.ui.view'].render_template('website_argos.product_default_code',values={'default_code': res['default_code']})
         
 class WebsiteCategoyBizople(http.Controller):
     _per_page_category = 20
@@ -284,7 +277,7 @@ class BizopleWebsiteSale(WebsiteSale):
             active_brand_list = list(set(brand_set))
 
             if search:
-                domain.append(("name", 'ilike', search.strip()))
+                domain.append(("name", 'ilike', search.strip()))            
             if not request.env.user.has_group('base.group_system'):
                     domain.append(("website_published", '=', True))
             product_tmpl_ids = request.env['product.template'].search(domain).ids            
@@ -312,8 +305,7 @@ class BizopleWebsiteSale(WebsiteSale):
             })
             return result
         else:
-
-            return super(BizopleWebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
+            return  super(BizopleWebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
 
 
 class bizcommonSliderSettings(http.Controller):
@@ -573,16 +565,106 @@ class WebsiteSale(WebsiteSale):
             return request.redirect("/shop/checkout?express=1")
         return request.redirect("/shop/cart")
 
-    # @http.route([
-    #     '''/shop''',
-    #     '''/shop/page/<int:page>''',
-    #     '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>''',
-    #     '''/shop/category/<model("product.public.category", "[('website_id', 'in', (False, current_website_id))]"):category>/page/<int:page>'''
-    # ], type='http', auth="public", website=True)
-    # def shop(self, page=0, category=None, search='', ppg=False, **post):
-    #     if not category:
-    #         category_ids = request.env['product.public.category'].search([])
-    #         if category_ids:
-    #             category = category_ids[0]
-    #     res = super(WebsiteSale, self).shop(page=page, category=category, search=search, ppg=ppg, **post)
-    #     return res
+
+    @http.route([
+        '''/shop''',
+        '''/shop/page/<int:page>''',
+        '''/shop/category/<model("product.public.category"):category>''',
+        '''/shop/category/<model("product.public.category"):category>/page/<int:page>'''
+    ], type='http', auth="public", website=True, sitemap=WebsiteSale.sitemap_shop)
+    def shop(self, page=0, category=None, search='', ppg=False, **post):
+        add_qty = int(post.get('add_qty', 1))
+        Category = request.env['product.public.category']
+        if category:
+            category = Category.search([('id', '=', int(category))], limit=1)
+            if not category or not category.can_access_from_current_website():
+                raise NotFound()
+        else:
+            category = Category
+
+        if ppg:
+            try:
+                ppg = int(ppg)
+                post['ppg'] = ppg
+            except ValueError:
+                ppg = False
+        if not ppg:
+            ppg = request.env['website'].get_current_website().shop_ppg or 20
+
+        ppr = request.env['website'].get_current_website().shop_ppr or 4
+
+        attrib_list = request.httprequest.args.getlist('attrib')
+        attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
+        attributes_ids = {v[0] for v in attrib_values}
+        attrib_set = {v[1] for v in attrib_values}
+
+        domain = self._get_search_domain(search, category, attrib_values)
+
+        keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list, order=post.get('order'))
+
+        pricelist_context, pricelist = self._get_pricelist_context()
+
+        request.context = dict(request.context, pricelist=pricelist.id, partner=request.env.user.partner_id)
+
+        url = "/shop"
+        if search:
+            post["search"] = search
+        if attrib_list:
+            post['attrib'] = attrib_list
+
+        Product = request.env['product.template'].with_context(bin_size=True)
+
+        search_product = Product.search(domain)
+        website_domain = request.website.website_domain()
+        categs_domain = [('parent_id', '=', False)] + website_domain
+        if search:
+            search_categories = Category.search([('product_tmpl_ids', 'in', search_product.ids)] + website_domain).parents_and_self
+            categs_domain.append(('id', 'in', search_categories.ids))
+        else:
+            search_categories = Category
+        categs = Category.search(categs_domain)
+
+        if category:
+            url = "/shop/category/%s" % slug(category)
+
+        product_count = len(search_product)
+        pager = request.website.pager(url=url, total=product_count, page=page, step=ppg, scope=7, url_args=post)
+        if 'tag_id' in post and post['tag_id']:
+            domain.append(('tag_ids','in',[int(post['tag_id'])]))
+        products = Product.search(domain, limit=ppg, offset=pager['offset'], order=self._get_search_order(post))
+
+        ProductAttribute = request.env['product.attribute']
+        if products:
+            # get all products without limit
+            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
+        else:
+            attributes = ProductAttribute.browse(attributes_ids)
+
+        layout_mode = request.session.get('website_sale_shop_layout_mode')
+        if not layout_mode:
+            if request.website.viewref('website_sale.products_list_view').active:
+                layout_mode = 'list'
+            else:
+                layout_mode = 'grid'
+        values = {
+            'search': search,
+            'category': category,
+            'attrib_values': attrib_values,
+            'attrib_set': attrib_set,
+            'pager': pager,
+            'pricelist': pricelist,
+            'add_qty': add_qty,
+            'products': products,
+            'search_count': product_count,  # common for all searchbox
+            'bins': TableCompute().process(products, ppg, ppr),
+            'ppg': ppg,
+            'ppr': ppr,
+            'categories': categs,
+            'attributes': attributes,
+            'keep': keep,
+            'search_categories_ids': search_categories.ids,
+            'layout_mode': layout_mode,
+        }
+        if category:
+            values['main_object'] = category
+        return request.render("website_sale.products", values)

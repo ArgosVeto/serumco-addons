@@ -59,7 +59,7 @@ class PortalContent(http.Controller):
 		partner = request.env.user.partner_id
 		fav_clinic = False
 		fav_clinic = partner.clinic_shortlisted_ids
-		order_ids = request.env['sale.order'].sudo().search([('partner_id','=',partner.id)])
+		order_ids = request.env['sale.order'].sudo().search([('partner_id','=',partner.id)],limit=2)
 		product_wishlist_ids = request.env['product.wishlist'].sudo().search([('partner_id','=',partner.id)])
 		values.update({'next_appointment_id':next_appointment_id,
 					'pervious_appointment_id':pervious_appointment_id,
@@ -85,45 +85,3 @@ class PortalContent(http.Controller):
 			'product_wishlist_ids': product_wishlist_ids,
 		}
 		return request.render("website_argos.wishlist_product_template", values)
-
-
-		
-# Mes commandes --> last 2 orders
-# Ma clinique --> Fav clinic
-# Mes produits favoris --> wishlist products
-# reqw
-# class CustomerPortal(CustomerPortal):
-# 	def _prepare_portal_layout_values(self):
-# 		values = super(CustomerPortal, self)._prepare_portal_layout_values()
-# 		partner = request.env.user.partner_id
-# 		fav_clinic = len(partner.clinic_shortlisted_ids)
-# 		my_clinic = partner
-# 		product_wishlist_ids = request.env['product.wishlist'].sudo().search([('partner_id','=',partner.id)])
-# 		order_ids = request.env['sale.order'].sudo().search([('partner_id','=',partner.id)])
-# 		values.update({
-# 			'fav_clinic':fav_clinic,
-# 			'my_clinic_count':len(my_clinic),
-# 			'product_wishlist':len(product_wishlist_ids),
-# 			'orders':len(order_ids),
-# 			'product_wishlist_ids':product_wishlist_ids,
-# 		})
-# 		return values
-
-# 	# Customer Reward Point history list on my Account
-# 	@http.route(['/my/clinic-shortlisted'], type='http', auth="user", website=True)
-# 	def portal_clinic_shortlisted(self,page=1):
-# 		values = self._prepare_portal_layout_values()
-# 		partner = request.env.user.partner_id
-# 		clinic_count = len(partner.clinic_shortlisted_ids)
-# 		clinic_favorite = request.env['clinic.favorite']
-# 		pager = portal_pager(url="/my/clinic-shortlisted",total=clinic_count)
-# 		values.update({
-# 			'clinic_shortlisted_ids': partner.clinic_shortlisted_ids.sudo(),
-# 			'page_name': 'Clinic',
-# 			'pager': pager,
-# 			'clinic_count':clinic_count,
-# 			'default_url': '/my/clinic-shortlisted',
-# 		})
-# 		return request.render("website_argos.protal_template", values)
-
-

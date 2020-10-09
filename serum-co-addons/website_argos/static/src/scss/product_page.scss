@@ -221,8 +221,8 @@
 		.css_quantity{
 			.control-qty-cart {
 				height:44px;
-				width:82px;
-				border-radius: 6px;
+				width:100px;
+				border-radius: 24px;
 				margin-right:16px;
 				border: solid 1px rgba(99, 186, 233, 0.4);
 				background-color: #ffffff;
@@ -258,7 +258,7 @@
 		.a-submit{
 			width: 452px;
   			height: 44px;
-  			border-radius: 6px;
+  			border-radius: 24px;
   			background-color: theme-color('primary');
   			font-family: AvenirLTStd-Heavy;
 		  	font-size: 16px;
@@ -521,18 +521,60 @@
 		height: 444px;
 		margin:auto;
 	}
-	h6 a{
-		font-family: AvenirLTStd-Heavy;
-	  	font-size: 18px;
-	  	font-weight: 900;
-	  	font-stretch: normal;
-	  	font-style: normal;
-	  	line-height: 1.22;
-	  	letter-spacing: normal;
-	  	color: theme-color('gamma') !important;
-	    text-align: left;
+	.argos_tags{
+		position: absolute;
+	    top: 20px;
+	    left: 0;
+	    z-index: 5;
+		.tag-name{
+			border-radius: 4px;
+		  	border: solid 1px rgba(99, 186, 233, 0.4);
+		  	color:theme-color('primary');
+		  	background-color: #ffffff;
+		  	font-size:10px;
+		  	margin-bottom:7px;
+		  	font-weight: normal;
+  			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: 1px;
+		  	text-transform: uppercase;
+		  	padding: 3px;
+		  	font-family:"AvenirLTStd-Roman";
+		  	margin-right: 10px;
+		}
 	}
-	.product_ref_code{
+	.argos_categ{
+		p{
+			font-size: 12px;
+		    font-weight: 900;
+		    margin-bottom: 0px;
+		    text-transform: uppercase;
+		    letter-spacing: 2px;
+		    line-height: 1.43;
+		    font-family:"AvenirLTStd-Heavy";
+		    color:theme-color('primary');
+		    text-align: left;
+		}
+		a:hover{
+			text-decoration:none;
+		}
+	}
+	h6{
+		margin-bottom: 0;
+		a{
+			font-family: AvenirLTStd-Heavy;
+		  	font-size: 18px;
+		  	font-weight: 900;
+		  	font-stretch: normal;
+		  	font-style: normal;
+		  	line-height: 1.22;
+		  	letter-spacing: normal;
+		  	color: theme-color('gamma') !important;
+		    text-align: left;
+		}
+	}
+	.pro-rating{
 		text-align: left;
 		i{
 			color:theme-color('secondary');
@@ -571,5 +613,18 @@
 		.alternative_product1{
 			max-width: unset !important;
 		}
+	}
+}
+.o_shop_discussion_rating{
+	#discussion{
+		 border-top: solid 1px rgba(139, 139, 139, 0.16);
+		 padding:50px 0 !important;
+		 margin-top: 25px;
+	}
+	.o_portal_chatter_header{
+		display:none;
+	}
+	hr{
+		display:none;
 	}
 }

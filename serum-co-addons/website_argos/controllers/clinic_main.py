@@ -363,7 +363,8 @@ class ClinicDetail(http.Controller):
 		],type='http', auth="public", website=True)	
 	def clinic_detail(self,**post):
 		subdomains = []
-		domain = [[('active', '=', True)]]	
+		domain = [[('active', '=', True)]]
+
 		if 'clinic-type' in post and post['clinic-type']:
 			clinic_type_ids = request.env['operating.unit.type'].sudo().search([('id','=',post['clinic-type'])])
 			subdomains.append([('type_id','=',clinic_type_ids.ids)])
@@ -380,8 +381,22 @@ class ClinicDetail(http.Controller):
 			subdomains.append([('zip','ilike',post['search'])])
 		if subdomains:
 			domain.append(expression.OR(subdomains))
+
 		domain = expression.AND(domain)
+		if 'clear_search' in post and post['clear_search']:
+			domain = []
+
 		operating_unit_ids = request.env['operating.unit'].sudo().search(domain)
+		if 'open_today' in post and post['open_today'] == str(1):
+			unit_list = []
+			date_today = date.today()
+			date_today = date_today.weekday()
+			for unit in operating_unit_ids:
+				if unit.calendar_id and unit.calendar_id.attendance_ids:
+					day_timimg = unit.calendar_id.attendance_ids.filtered(lambda x:x.dayofweek == str(date_today))
+					if day_timimg:
+						unit_list.append(unit.id)
+			operating_unit_ids = operating_unit_ids.filtered(lambda x:x.id in unit_list)
 		type_ids = request.env['operating.unit.type'].sudo().search([])
 		service_ids = request.env['operating.unit.service'].sudo().search([])
 		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids}
@@ -426,6 +441,7 @@ class ClinicDetail(http.Controller):
 		not_working_time = False
 		week_slot = {'0':'Lun.','1':'Mar.','2':'Mer','3':'Jeu','4':'Ven.','5':'Sam.','6':'Dim.'}
 		if operating_unit_id.calendar_id:
+			resource_id = operating_unit_id.calendar_id
 			attendance_ids = operating_unit_id.calendar_id.attendance_ids
 			if attendance_ids:
 				for day_week in range(0,6):
@@ -449,17 +465,8 @@ class ClinicDetail(http.Controller):
 									not_working_time = True
 								if (now_time >= t3) and (now_time <= t4):
 									not_working_time = True
-
-							hour_from_1 = str(day_timimg[0].hour_from)
-							hour_from_1 = hour_from_1.split('.')
-							hour_to_1 = str(day_timimg[0].hour_to)
-							hour_to_1 = hour_to_1.split('.')
-							end_hour_from_1 = str(day_timimg[1].hour_from)
-							end_hour_from_1 = end_hour_from_1.split('.')
-							end_hour_to_1 = str(day_timimg[1].hour_to)
-							end_hour_to_1 = end_hour_to_1.split('.')
-							start_time = hour_from_1[0]+'h'+hour_from_1[1] +' - ' +   hour_to_1[0]+'h'+hour_to_1[1]
-							end_time = end_hour_from_1[0]+'h'+end_hour_from_1[1] +' - ' +   end_hour_to_1[0]+'h'+end_hour_to_1[1]
+							start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+							end_time = resource_id.convert_to_time(t3 * 3600) +' - ' + resource_id.convert_to_time(t4 * 3600)
 
 						elif len(day_timimg) == 1:
 							t1 = day_timimg[0].hour_from
@@ -471,9 +478,9 @@ class ClinicDetail(http.Controller):
 							hour_from_1 = hour_from_1.split('.')
 							hour_to_1 = str(day_timimg[0].hour_to)
 							hour_to_1 = hour_to_1.split('.')							
-							start_time = hour_from_1[0]+'h'+hour_from_1[1] +' - ' +   hour_to_1[0]+'h'+hour_to_1[1]
-
-						elif len(day_timimg) > 2 and (date_today == day_week):
+							start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+						elif len(day_timimg) > 2:
+							day_timimg = day_timimg[0:2]
 							t1 = day_timimg[0].hour_from
 							t2 = day_timimg[0].hour_to
 							t3 = day_timimg[1].hour_from
@@ -481,18 +488,8 @@ class ClinicDetail(http.Controller):
 							if (date_today == day_week):							
 								if ((now_time >= t1) and (now_time <= t2)) or ((now_time >= t3) and (now_time <= t4)):
 									not_working_time = True
-
-							day_timimg = day_timimg[0:2]
-							hour_from_1 = str(day_timimg[0].hour_from)
-							hour_from_1 = hour_from_1.split('.')
-							hour_to_1 = str(day_timimg[0].hour_to)
-							hour_to_1 = hour_to_1.split('.')
-							end_hour_from_1 = str(day_timimg[1].hour_from)
-							end_hour_from_1 = end_hour_from_1.split('.')
-							end_hour_to_1 = str(day_timimg[1].hour_to)
-							end_hour_to_1 = end_hour_to_1.split('.')
-							start_time = hour_from_1[0]+'h'+hour_from_1[1] +' - ' +   hour_to_1[0]+'h'+hour_to_1[1]
-							end_time = end_hour_from_1[0]+'h'+end_hour_from_1[1] +' - ' +   end_hour_to_1[0]+'h'+end_hour_to_1[1]
+							start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+							end_time = resource_id.convert_to_time(t3 * 3600) +' - ' + resource_id.convert_to_time(t4 * 3600)
 						else:
 							if (date_today == day_week):
 								not_working_time = True
@@ -509,7 +506,6 @@ class ClinicContact(http.Controller):
 		partner =  request.env.user.partner_id
 		if partner.clinic_shortlisted_ids:
 			partner_ids = partner.clinic_shortlisted_ids
-
 		clinic_ids = request.env['operating.unit'].sudo().search([])
 		# contact_ids = request.env['operating.unit'].sudo().search([('visible_in_contact','=',True)])
 		values = {'clinic_ids':clinic_ids,'partner_ids':partner_ids,'contact_questions_ids':contact_questions_ids}

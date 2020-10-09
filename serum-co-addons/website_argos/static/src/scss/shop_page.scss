@@ -334,6 +334,9 @@
 					.radio_input_value.active{
 						background-color:theme-color('primary') !important;
 						color: white !important;
+						a{
+							color: #fff !important;
+						}
 					}
 				}
 				.product_price{
@@ -343,7 +346,7 @@
 					display:none;
 				}
 				padding: 0 !important;
-			    max-height: 125px;
+			    max-height: 135px;
     			overflow: scroll;
     			&::-webkit-scrollbar {
 				  	width: 0;

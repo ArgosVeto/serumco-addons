@@ -48,6 +48,11 @@ class Website(models.Model):
         return category_url
 
     @api.model
+    def default_category_tmp(self,c):
+        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.attribute_id.id,c.product_attribute_value_id.id)
+        return category_url
+
+    @api.model
     def get_gamne_values(self):
         gamne_values = request.env['product.attribute'].sudo().search([('name','=','Gamme')],limit=5)
         att_value = False

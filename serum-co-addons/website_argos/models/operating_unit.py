@@ -11,11 +11,6 @@ class OperatingUnitservic(models.Model):
 
     service_image = fields.Binary("Service Banner")
 
-
-
-
-        
-
 class OperatingUnit(models.Model):
     _inherit = 'operating.unit'
 
@@ -31,7 +26,6 @@ class OperatingUnit(models.Model):
     mrdv_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")
     show_in_footer = fields.Boolean(string="Show In Footer")
-
 
     def  clinic_working_status(self):
         not_working_time = False
@@ -63,7 +57,7 @@ class OperatingUnit(models.Model):
                                 if (date_today == day_week):
                                     if (now_time >= t1) and (now_time <= t2):
                                         not_working_time = True
-                            elif len(day_timimg) > 2 and (date_today == day_week):
+                            elif len(day_timimg) > 2:
                                 t1 = day_timimg[0].hour_from
                                 t2 = day_timimg[0].hour_to
                                 t3 = day_timimg[1].hour_from
@@ -86,3 +80,8 @@ class OperatingUnit(models.Model):
             <p>Notre cabinet vétérinaire est à la fois calme et chaleureux pour accueillir au mieux vos compagnons à quatre pattes. Equipé avec du matériel performant et de qualité, nous assurons les consultations courantes dans une salle de consultation lumineuse et moderne.</p>
         '''
         return content
+
+
+class OperatingUnitTesting(models.Model):
+    _name = 'operating.unit'
+    _inherit = ['operating.unit','portal.mixin', 'mail.thread', 'mail.activity.mixin', 'utm.mixin','rating.mixin']

@@ -6,7 +6,7 @@
              <form t-attf-class="o_cjob_searchbar_form input-group" t-att-action="action if action else '/jobs'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Name/Adresse/Code Postal/Ville…" t-att-value="search"/>
                 <div class="se-btn">
-                    <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
+                    <button type="submit" class="btn btn-primary oe_search_button ml-4" aria-label="Search" title="Search">Rechercher</button>
                 </div>  
                  <div class="">
                    <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4">
@@ -44,13 +44,15 @@
     </template>
 
 	<template id="index_inherit_template" inherit_id="website_hr_recruitment.index" name="Jobs List">
+
+		
 		<xpath expr="//section" position="replace">
 			<section class="job_heading pt32 pb8 mb48">
                 <div class="container">
                 	<div class="top-breadcrumbs">
 	                    <ol class="breadcrumb mb32">
 	                    	<li class="breadcrumb-item">
-			                    <a href="#">Accueil</a>
+			                    <a href="/">Accueil</a>
 			                </li>
 	                        <li class="breadcrumb-item">
 	                            <a href="/group-argos">Le groupe Argos</a>
@@ -95,10 +97,7 @@
 			<div class="col-lg-12" id="jobs_grid">
                 <div t-if="not jobs">
                     <div class="text-center text-muted">
-                        <h3 class="css_editable_hidden"><a t-attf-href="/contactus">Contact us</a> for job opportunities.</h3>
-                        <h4 groups="hr_recruitment.group_hr_recruitment_manager">
-                            Create new job pages from the <strong><i>+New</i></strong> top-right button.
-                        </h4>
+                    	<h3>No Job Offer</h3>
                     </div>
                 </div>
                 <ul class="list-unstyled" t-if="jobs">
@@ -158,7 +157,7 @@
 						<div class="text">
 							<h3 class="text-white">Nos offres d'emploi</h3>
 							<p>Dans le cadre de son développement dans les grandes agglomérations françaises, Argos Vétérinaire recrute ses futurs collaborateurs pour intégrer nos cabinets et cliniques de proximités. Vous souhaitez rejoindre l’aventure au sein d’une équipe dynamique et compétente en tant que Docteur Vétérinaire ou Auxiliaire Spécialisé(e) Vétérinaire ? N’hésitez pas à nous envoyer votre candidature. </p>
-							<a class="btn btn-light search-btn">J'envoie ma candidature</a>
+							<a href="/application" class="btn btn-light search-btn">J'envoie ma candidature</a>
 						</div>
 					</section>
 				</div>
@@ -175,7 +174,7 @@
                 	<div class="top-breadcrumbs">
 	                    <ol class="breadcrumb mb32">
 	                    	<li class="breadcrumb-item">
-			                    <a href="#">Accueil</a>
+			                    <a href="/">Accueil</a>
 			                </li>
 	                        <li class="breadcrumb-item">
 	                            <a href="/group-argos">Le groupe Argos</a>
@@ -271,7 +270,7 @@
 
 	        <div class="form-group row form-field o_website_form_required_custom">
 	            <div class="col-lg-3 col-md-4 text-right">
-	                <label class="col-form-label" for="address">Adressre</label>
+	                <label class="col-form-label" for="address">Adresse</label>
 	            </div>
 	            <div class="col-lg-7 col-md-8">
 	                <input type="text" class="form-control o_website_form_input" name="address" required=""/>

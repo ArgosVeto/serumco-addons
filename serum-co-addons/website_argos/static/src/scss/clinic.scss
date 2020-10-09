@@ -389,13 +389,29 @@
 	}
 
 .socialicons {
-    background-color: rgba(24, 119, 242, 0.08);
     border-radius: 50%;
     height: 50px;
     width: 50px;
     text-align: center;
     line-height: 3;
 }
+   .socialicons .fav-btn{
+    	background-color: rgba(222, 26, 70, 0.08);
+    	&:hover{
+    		background-color: rgba(222, 26, 70, 0.08);
+    	}
+    }
+    .socialicons.heart-btn{
+    	background-color: rgba(222, 26, 70, 0.08);
+    }
+    .socialicons.msg-btn{
+    	background-color: rgba(99, 186, 233, 0.08);
+    }
+    .socialicons.fcbk-btn{
+    	background-color: rgba(24, 119, 242, 0.08);
+    }
+
+
 
 .bg-heart {
 	background-color: rgba(222, 26, 70, 0.08);
@@ -422,7 +438,6 @@
 
 .service-innerp {
 	.Nos-services {
-	  font-size: 28px;
 	  font-weight: bold;
 	  font-stretch: normal;
 	  font-style: normal;

@@ -42,7 +42,7 @@
                     <div class="row my_content mb48">
                         <div class="col-lg-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                                 <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
                                 <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
                             </ol>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="mb32">
                                             <t t-if="order_ids">
-                                                <t t-foreach="order_ids[0].order_line" t-as="line">
+                                                <t t-foreach="order_ids.order_line" t-as="line">
                                                     <div class="row mx-0 px-24 bottom-border">
                                                         <div class="col-md-6 col-6 pl-0">
                                                             <span t-field="line.product_id.image_1920"
@@ -88,7 +88,7 @@
                                                 </t>
                                             </t>
                                         </div>
-                                        <a class="mt-auto btn btn-primary d-block" href="/my/order">Gérer mes commandes</a>
+                                        <a class="mt-auto btn btn-primary d-block" href="/my/orders">Gérer mes commandes</a>
                                     </div>                              
                                 </div>
 
@@ -212,7 +212,7 @@
                                             <div class="card p-3">
                                                 <div class="row title-row">
                                                     <div class="col-md-6 col-6 text-left">
-                                                        <strong>MES PRODUITS</strong>
+                                                        <strong>MES PRODUITS FAVORIS</strong>
                                                     </div>
                                                     <div class="col-md-6 col-6 text-right">
                                                         <a href="/wishlist-product">Voir tout</a>

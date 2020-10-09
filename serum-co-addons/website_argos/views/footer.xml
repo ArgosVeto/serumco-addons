@@ -153,8 +153,7 @@
 														<t t-set="default_category" t-value="website.default_category(c)"/>
 
 														<a class="nav-link"
-														t-att-href="website.default_category(c)" 
-															>
+														t-att-href="website.default_category(c)">
 
 															<!-- t-att-href="'/shop/category/%s?category=%s&amp;search=&amp;attrib=%s-%s' %(,c.id,c.attribute_id.id,c.id)" -->
 															<!-- t-att-href="'/shop?cash=%s' % slug(c)" -->

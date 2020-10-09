@@ -21,6 +21,7 @@
         'mass_mailing',
         'website_sale_wishlist',
         'sale_operating_unit',
+        'website_rating',
     ],
     'data': [
         'data/data.xml',

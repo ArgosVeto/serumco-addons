@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<template id="argos_product_detail_inherited" inherit_id="website_sale.product" name="Product Details">
-		 <xpath expr="//div[hasclass('col-xl-8')]" position="attributes">
+
+        <xpath expr="//ol[hasclass('breadcrumb')]" position="replace">
+            <ol class="breadcrumb mb32">
+                <li class="breadcrumb-item">
+                    <a href="/shop">Boutique</a>
+                </li>
+                <t t-if="product.public_categ_ids">
+                    <li class="breadcrumb-item">
+                       <t t-foreach="product.public_categ_ids" t-as="categs">
+                            <a t-att-href="'/shop/category/%s' % slug(categs)">
+                                <span class="categ-name">
+                                    <t t-esc="categs.name"/>
+                                </span>
+                            </a>
+                        </t>
+                    </li>
+                </t>
+                <li class="breadcrumb-item active">
+                    <span t-field="product.name" />
+                </li>
+            </ol>
+        </xpath>
+
+		<xpath expr="//div[hasclass('col-xl-8')]" position="attributes">
 	        <attribute name="class">col-lg-6 col-xl-6 mb-4 mb-lg-0</attribute>
 	    </xpath>
 
@@ -30,15 +53,18 @@
                             <img src="/website_argos/static/src/img/heart.png" class="img img-fluid ml-2" alt="Add To Wishlist"/></a>
                     </div>
             	</div>
-            	<t t-if="product.tag_ids">
-					<div class="argos_tags d-flex align-items-center mb16">
-						<t t-foreach="product.tag_ids" t-as="tags">
-		            		<div class="tag-name">
-		            			<t t-esc="tags.name"/>
-		            		</div>
-		            	</t>
-					</div>
-		        </t>
+
+                <t t-if="product.tag_ids">
+                    <div class="argos_tags d-flex align-items-center mb16">
+                        <t t-foreach="product.tag_ids" t-as="tags">
+                            <div class="tag-name">
+                                <a t-att-href="'/shop?tag_id=%s' % tags.id" class="">
+                                    <t t-esc="tags.name"/>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </t>
             	<div class="product-name-share">
                     <h1 itemprop="name" t-field="product.name" class="product-name m-0">Product Name</h1>
                     <div class="product_ref_code mt16 mb16">
@@ -141,14 +167,14 @@
                                     </a>
                                 </li>
                             </t>
-                            
+                            <!-- 
                             <t t-if="review_enabled">
                                 <li class="nav-item" priority="1">
                                     <a class="nav-link" id="nav-home-tab3" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="false">
                                         Reviews
                                     </a>
                                 </li>
-                            </t>
+                            </t> -->
                             
                             <t t-foreach="product.tab_ids" t-as="tab">
                                 <li class="nav-item">
@@ -206,7 +232,7 @@
                             </section>
                         </div>
                         </t>
-                        <t t-if="review_enabled">
+                        <!-- <t t-if="review_enabled">
                         <div class="tab-pane fade" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
                             <div class="o_shop_discussion_rating">
                                 <section class="container mt16 mb16">
@@ -222,7 +248,7 @@
                                 </section>
                             </div>
                         </div>
-                        </t>
+                        </t> -->
                         <t t-foreach="product.tab_ids" t-as="tab">
                             <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="tab-pane fade" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)">
                                 <section class="mt16 mb16">
@@ -241,10 +267,10 @@
         <xpath expr="//section[@id='product_full_spec']//h3" position="replace" />
     </template>
 
-    <template id="discussion_rating_bizople" inherit_id="website_sale.product_comment">
+    <!-- <template id="discussion_rating_bizople" inherit_id="website_sale.product_comment">
         <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="replace">
         </xpath>
-    </template>
+    </template> -->
 
     <template id="product_description_bizople" inherit_id="website_sale.product">
          <xpath expr="//div[@id='product_full_description']" position="attributes">
@@ -252,26 +278,78 @@
         </xpath>
     </template>
 
-     <template id="theme_common_alternative_product_inherited" inherit_id="website_sale.recommended_products">
+    <template id="alt_product_item_stars" name="Rating: static star widget">
+        <t t-set="rating_avg" t-value="round(alt_product.rating_avg * 100) / 100 / 2"/>
+        <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+        <t t-set="val_integer" t-value="int(rating_avg)"/>
+        <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+        <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+            <t t-foreach="range(0, val_integer)" t-as="num">
+                <i class="fa fa-star" role="img"></i>
+            </t>
+            <t t-if="val_decimal">
+                <i class="fa fa-star-half-o" role="img"></i>
+            </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star-o text-secondary" role="img"></i>
+            </t>
+            <span style="margin-left:2px;" class="text1">
+                <t t-esc="rating_avg"/><span> / 5</span>
+            </span>
+            <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
+            <t t-esc="alt_product.rating_avg"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+        </div>
+    </template>
+
+    <template id="theme_common_alternative_product_inherited" inherit_id="website_sale.recommended_products">
         <xpath expr="//div[hasclass('container','mt32')]" position="attributes">
              <attribute name="class" separator=" " add="alternative_product" />
+        </xpath>
+        <xpath expr="//span[hasclass('h3')]" position="replace">
+            <h3>Articles associés</h3>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-2')]" position="replace">
             <div class="col-lg-3 col-md-3 pt16 pb112 alternative_product1">
                 <div class="text-center alt_product" style="height: 100%;">
+                     <t t-if="alt_product.tag_ids">
+                        <div class="argos_tags mb16">
+                            <t t-foreach="alt_product.tag_ids" t-as="tags">
+                                <div class="tag-name">
+                                    <a t-att-href="'/shop?tag_id=%s' % tags.id" class="">
+                                        <t t-esc="tags.name"/>
+                                    </a>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
                     <t t-set="combination_info" t-value="alt_product._get_combination_info()"/>
                     <t t-set="product_variant" t-value="alt_product.env['product.product'].browse(combination_info['product_id'])"/>
                     <div t-if="product_variant" t-field="product_variant.image_128" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
                         class="d-flex h-100 justify-content-center align-items-center" />
                     <div t-else="" t-field="alt_product.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded shadow o_alternative_product' }" />
+                    <t t-if="alt_product.public_categ_ids">
+                        <div class="argos_categ">
+                            <p>
+                                <t t-foreach="alt_product.public_categ_ids" t-as="categs">
+                                    <a t-att-href="'/shop/category/%s' % slug(categs)">
+                                        <span class="categ-name">
+                                            <t t-esc="categs.name"/>
+                                        </span>
+                                    </a>
+                                </t>
+                            </p>
+                        </div>
+                    </t>
                     <h6>
                         <a t-att-href="alt_product.website_url" style="display: block">
                             <span t-att-title="alt_product.name" t-field="alt_product.name" class="o_text_overflow" style="display: block;" />
                         </a>
                     </h6>
-                    <div class="product_ref_code ">
-                        <t t-call="website_argos.product_item_stars"/> 
-                    </div> 
+                    
+                    <div class="pro-rating">
+                        <t t-call="website_argos.alt_product_item_stars"/>
+                    </div>
+
                     <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
                         <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
                         <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
@@ -283,4 +361,14 @@
         </xpath>
     </template>
 
+    <template id="product_rating_inherited" inherit_id="website_sale.product_comment">
+         <xpath expr="//div[hasclass('col-lg-8')]" position="attributes">
+            <attribute name="class">col-lg-12 col-md-12</attribute>
+         </xpath>
+         <xpath expr="//t[@t-call='portal.message_thread']" position="inside">
+            <t t-foreach="rating" t-as="rat">
+                <h5 class="mb-1"><t t-esc="rat.publisher_name"/></h5>
+            </t>
+         </xpath>
+    </template>
 </odoo>

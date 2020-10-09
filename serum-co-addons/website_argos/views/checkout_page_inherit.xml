@@ -266,6 +266,9 @@
          <xpath expr="//t[@t-set='back_button_class']" position="replace">
             <t t-set="back_button_class" t-value="'btn btn-secondary continue-btn'"/>
         </xpath>
+        <xpath expr="//div[@id='payment_method']//h3" position="replace">
+            <h3 class="mb24">Payment</h3>
+        </xpath>
     </template>
 
 
@@ -285,6 +288,66 @@
                     <span class="fa fa-long-arrow-right" />
                 </a>
             </div>
+        </xpath>
+    </template>
+
+    <template id="product_cart_confirmation" inherit_id="website_sale.confirmation" name="Product Cart confirmation">
+        <xpath expr="//h1" position="replace">
+             <div class="col-12">
+                <t t-call="website_sale.wizard_checkout">
+                    <t t-set="step" t-value="41" />
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12','col-xl')]" position="attributes">
+            <attribute name="class">col-12 col-xl-8</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('oe_cart')]" position="replace">
+            <div class="argos_confirm">
+                <h3 class="text-primary mb32">Votre commande est confirmée !</h3>
+                <h6 class="text-gamma mb16">Lorem ipsum dolor sit</h6>
+                <p class="mb32">Molestiae voluptas consequatur qui ut dolorum soluta nulla eligendi. Autem non quis commodi doloremque doloremque in commodi. Enim architecto rerum nihil. Earum commodi eveniet qui.</p>
+ 
+                <p class="pb48 mb48">Impedit qui quia tempora aperiam. Dolores ea natus omnis sit commodi. Ut quaerat non minima ducimus est consequatur hic tempore eius. Commodi nulla dolorum veritatis consequatur velit. Optio sit id natus ut qui. Unde ut consectetur voluptatibus ea recusandae enim quo.</p>
+
+            </div>
+            <div class="col-md-12 mt-4">
+                <a class="btn btn-primary float-right" href="/">Retour à la page d'accueil</a>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12','col-xl-auto')]" position="inside">
+            <t t-if="order.operating_unit_id">
+                <div class=" mt32 click-collect">
+                    <div class="mb32">
+                        <div class="title">
+                            <h2>LIVRAISON : CLICK &amp; COLLECT</h2>
+                        </div>
+                        <div class="row mt24 ma-clinique">
+                            <div class="col-md-6 col-6">
+                                <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(order.operating_unit_id, 'clinic_banner')"/>
+                            </div>
+                            <div class="col-md-6 col-6">
+                                <h2 class="company"><t t-esc="order.operating_unit_id.name"/></h2>
+                                <p>
+                                    <span class="street"><t t-esc="order.operating_unit_id.street"/></span>
+                                    <span>,</span>
+                                    <span class="zip"><t t-esc="order.operating_unit_id.zip"/></span>
+                                    <span>, </span>
+                                    <span class="city"><t t-esc="order.operating_unit_id.city"/></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mb32">
+                        <a role="button" id="buy_now" class="btn btn-outline-primary" href="/clinic-detail">
+                            <span>Voir la fiche clinique</span>
+                        </a>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('col-12','col-xl-auto')]" position="attributes">
+            <attribute name="class">col-12 col-xl-4</attribute>
         </xpath>
     </template>
 </odoo>

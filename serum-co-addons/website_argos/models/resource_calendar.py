@@ -14,31 +14,13 @@ class ResourceCalendar(models.Model):
 	def convert_to_time(self,seconds): 
 		min, sec = divmod(seconds, 60) 
 		hour, min = divmod(min, 60)
-		date_time = str(int(hour)) + "h" + str(int(min))
+		min_str = ''
+		if min <= 0:
+			min_str = '00'
+		else:
+			min_str = str(int(min))
+		date_time = str(int(hour)) + "h" + min_str
 		return date_time
-
-	# def  get_employee_slot(self,date_today,calendar_id):
-	# 	final_vals = {}
-	# 	vals = {}
-	# 	to_date = date_today
-	# 	for date_range in range(0,4):
-	# 		to_find_date = to_date + relativedelta(days=date_range)
-	# 		date_week_day = to_find_date.weekday()
-	# 		day_timimg = calendar_id.attendance_ids.filtered(lambda x:x.dayofweek == str(date_week_day))
-	# 		if day_timimg:
-	# 			date_content = []
-	# 			dt = day_timimg[0].hour_from
-	# 			for dc in range(0,3):
-	# 				start_hour = dt
-	# 				start_hour = self.convert_to_time(start_hour*3600)
-	# 				date_content.append(start_hour)
-	# 				dt += 0.5
-	# 		else:
-	# 			date_content = []
-	# 			for dc in range(0,3):
-	# 				date_content.append('fermé')
-	# 		vals.update({to_find_date.strftime("%b %d"):date_content})
-	# 	return vals
 
 	def  get_short_employee_slot(self,calendar_id):
 		week_slot = {'0':'Lun.','1':'Mar.','2':'Mer','3':'Jeu','4':'Ven.','5':'Sam.','6':'Dim.'}
@@ -123,7 +105,7 @@ class ResourceCalendar(models.Model):
 									not_working_time = True
 							start_time = self.convert_to_time(day_timimg[0].hour_from * 3600) +' - ' + self.convert_to_time(day_timimg[0].hour_to * 3600)
 
-						elif len(day_timimg) > 2 and (date_today == day_week):
+						elif len(day_timimg) > 2:
 							t1 = day_timimg[0].hour_from
 							t2 = day_timimg[0].hour_to
 							t3 = day_timimg[1].hour_from

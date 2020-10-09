@@ -15,9 +15,9 @@
 					<div class="col-md-3">
 						<div class="heading-contents">
 							<p class="m-0 heading text-primary">Nos métiers</p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Vétérinaire</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">ASV</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Formations</a></p>
+							<p class="m-0"><a href="/jobs" class="menu_item text-gamma">Vétérinaire</a></p>
+							<p class="m-0"><a href="/jobs" class="menu_item text-gamma">ASV</a></p>
+							<p class="m-0"><a href="/jobs" class="menu_item text-gamma">Formations</a></p>
 						</div>
 					</div>
 					<div class="col-md-3">

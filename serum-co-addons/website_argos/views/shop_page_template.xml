@@ -14,10 +14,10 @@
 						<div class="top-breadcrumbs">
 		                    <ol class="breadcrumb mb32">
 		                    	<li class="breadcrumb-item">
-				                    <a href="/">Home</a>
+				                    <a href="/">Accueil</a>
 				                </li>
 		                        <li class="breadcrumb-item">
-		                            <a href="/shop">Products</a>
+		                            <a href="/shop">Boutique</a>
 		                        </li>
 		                        <li t-if="category" class="breadcrumb-item active">
 		                            <span><t t-esc="category.name"/></span>
@@ -165,7 +165,9 @@
 						<p>
 							<t t-foreach="product.tag_ids" t-as="tags">
 			            		<div class="tag-name">
-			            			<t t-esc="tags.name"/>
+			            			<a t-att-href="'/shop?tag_id=%s' % tags.id" class="">
+		            					<t t-esc="tags.name"/>
+		            				</a>
 			            		</div>
 			            	</t>
 			            </p>
