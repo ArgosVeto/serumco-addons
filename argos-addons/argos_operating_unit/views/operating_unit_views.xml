@@ -113,5 +113,9 @@
       </field>
     </record>
 
+    <record id="operating_unit.action_operating_unit_tree" model="ir.actions.act_window">
+      <field name="context">{'default_is_company': True}</field>
+    </record>
+
   </data>
 </odoo>
