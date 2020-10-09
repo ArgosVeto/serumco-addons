@@ -6,12 +6,18 @@
       <t t-foreach="docs" t-as="o">
         <t t-call="web.external_layout">
           <div class="page">
+            <t t-if="o.is_duplicate">
+              <div style="opacity:0.13; position:absolute; text-align:center; width:95%; margin-top: 100px;">
+                <span style="font-size:100px; letter-spacing: 2px;">duplicata</span>
+              </div>
+            </t>
             <div class="row">
               <div class="col-6">
                 <div>
                   <strong>Prescriber</strong>
                   <div>
                     <div>
+                      <span>Name:</span>
                       <span t-field="o.sale_id.employee_id"/>
                     </div>
                     <div>
@@ -20,21 +26,16 @@
                     </div>
                   </div>
                 </div>
-                <h1 class="mt0 float-left">Presciption n°
-                  <span t-field="o.name"/>
-                </h1>
-                <div class="row mt48 mb32">
-                  <div t-if="o.origin" class="col-auto" name="div_origin">
-                    <strong>Consultation:</strong>
-                    <p t-field="o.origin"/>
-                  </div>
-                  <div class="col-auto" name="div_state">
-                    <strong>Status:</strong>
-                    <p t-field="o.state"/>
-                  </div>
-                  <div class="col-auto" name="div_sched_date">
+                <div style="margin-top: 30px;">
+                  <h3 class="mt0 float-left text-danger">Presciption n°
+                    <span t-field="o.name"/>
+                  </h3>
+                </div>
+                <br/>
+                <div style="margin-top: 60px;">
+                  <div name="div_sched_date" class="text-center">
                     <strong>Prescription date:</strong>
-                    <p t-field="o.scheduled_date"/>
+                    <p t-field="o.scheduled_date" t-options="{'format': 'dd/MM/yyyy'}"/>
                   </div>
                 </div>
               </div>
@@ -69,15 +70,29 @@
                     </t>
                   </div>
                 </div>
+                <br/>
                 <div t-if="o.sale_id and o.sale_id.patient_id">
                   <strong>Patient</strong>
-                  <div><span t-field="o.sale_id.patient_id"/>,
+                  <div>
+                    <span t-field="o.sale_id.patient_id"/>,
                     <span t-field="o.sale_id.patient_id.chip_identification"/>
                   </div>
-                  <div t-field="o.sale_id.patient_id.species_id"/>
-                  <div t-field="o.sale_id.patient_id.gender_id"/>
-                  <div t-field="o.sale_id.patient_id.birthdate_date"/>
-                  <div t-field="o.sale_id.patient_id.weight"/>
+                  <div>
+                    Species:
+                    <span t-field="o.sale_id.patient_id.species_id"/>
+                  </div>
+                  <div>
+                    Gender:
+                    <span t-field="o.sale_id.patient_id.gender_id"/>
+                  </div>
+                  <div>
+                    Birthdate:
+                    <span t-field="o.sale_id.patient_id.birthdate_date"/>
+                  </div>
+                  <div>
+                    Weight in kg:
+                    <span t-field="o.sale_id.patient_id.weight"/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,19 +114,19 @@
                     <strong>Administration Route</strong>
                   </th>
                   <th>
-                    <strong>Done</strong>
+                    <strong>Initial Qty</strong>
                   </th>
-                  <th name="th_from" t-if="o.picking_type_id.code != 'incoming'" align="left" groups="stock.group_stock_multi_locations">
-                    <strong>From</strong>
-                  </th>
-                  <th name="th_to" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
-                    <strong>To</strong>
+                  <th>
+                    <strong>Delivered</strong>
                   </th>
                   <th name="th_serial_number" class="text-center" t-if="has_serial_number">
                     <strong>Lot/Serial Number</strong>
                   </th>
                   <th name="th_barcode" class="text-center" t-if="has_barcode">
                     <strong>Product Barcode</strong>
+                  </th>
+                  <th>
+                    <strong>Delivery Date</strong>
                   </th>
                 </tr>
               </thead>
@@ -131,29 +146,17 @@
                         <span t-field="move.administration_route_ids"/>
                       </td>
                       <td>
+                        <span t-field="ml.initial_qty"/>
+                        <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
+                      </td>
+                      <td>
                         <span t-field="ml.qty_done"/>
                         <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
-
-                      </td>
-                      <td t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations">
-                        <span t-esc="ml.location_id.display_name"/>
-                        <t t-if="ml.package_id">
-                          <span t-field="ml.package_id"/>
-                        </t>
-                      </td>
-                      <td t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
-                        <div>
-                          <span t-field="ml.location_dest_id"/>
-                          <t t-if="ml.result_package_id">
-                            <span t-field="ml.result_package_id"/>
-                          </t>
-                        </div>
                       </td>
                       <td class=" text-center h6" t-if="has_serial_number">
                         <img t-if="has_serial_number and (ml.lot_id or ml.lot_name)"
                              t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=1' % ('Code128', ml.lot_id.name or ml.lot_name, 400, 100)"
                              style="width:100%;height:35px;" alt="Barcode"/>
-
                       </td>
                       <td class="text-center" t-if="has_barcode">
                         <t t-if="product_barcode != move.product_id.barcode">
@@ -171,6 +174,9 @@
                           </span>
                           <t t-set="product_barcode" t-value="move.product_id.barcode"/>
                         </t>
+                      </td>
+                      <td>
+                        <span t-field="ml.date" t-options="{'format': 'dd/MM/yyyy'}"/>
                       </td>
                     </tr>
                   </t>
@@ -211,7 +217,8 @@
             </p>
             <p t-field="o.note"/>
             <div class="row">
-              <div class="col-4 col-offset-8">
+              <div class="col-7"/>
+              <div class="col-5 col-offset-8 text-center">
                 <div>
                   <span>Signature</span>
                 </div>
@@ -221,6 +228,9 @@
                 </div>
               </div>
             </div>
+            <t t-if="not o.is_duplicate">
+              <t t-set="duplicate" t-value="o.make_duplicate()"/>
+            </t>
           </div>
         </t>
       </t>

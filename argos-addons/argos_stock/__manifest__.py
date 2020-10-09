@@ -15,10 +15,14 @@
         'argos_sale',
     ],
     'data': [
+        # security
+        'security/ir.model.access.csv',
+        # views
         'views/product_template_views.xml',
         'views/prescription_report.xml',
         'views/prescription_report_template.xml',
         'views/mail_data.xml',
+        'views/stock_picking_print_views.xml',
         'views/sale_order_views.xml',
         'views/stock_picking_views.xml',
         'views/stock_menu_views.xml',

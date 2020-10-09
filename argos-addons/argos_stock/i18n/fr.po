@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-01 14:11+0000\n"
-"PO-Revision-Date: 2020-10-01 14:11+0000\n"
+"POT-Creation-Date: 2020-10-09 08:43+0000\n"
+"PO-Revision-Date: 2020-10-09 08:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. module: argos_stock
 #: model:mail.template,report_name:argos_stock.mail_template_prescription_send
 msgid "${(object.name or '').replace('/','_')}"
-msgstr ""
+msgstr "${(object.name or '').replace('/','_')}"
 
 #. module: argos_stock
 #: model:mail.template,subject:argos_stock.mail_template_prescription_send
@@ -91,6 +91,11 @@ msgstr ""
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<span>Name:</span>"
+msgstr "<span>Nom:</span>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "<span>Signature</span>"
 msgstr "<span>Signature</span>"
 
@@ -106,23 +111,23 @@ msgstr "<strong>Voie d'administration</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "<strong>Consultation:</strong>"
-msgstr ""
+msgid "<strong>Delivered</strong>"
+msgstr "<strong>Qté livrée</strong>"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "<strong>Delivery Date</strong>"
+msgstr "<strong>Date de délivrance</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "<strong>Description</strong>"
-msgstr ""
+msgstr "<strong>Description</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "<strong>Done</strong>"
-msgstr "<strong>Fait</strong>"
-
-#. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "<strong>From</strong>"
-msgstr "<strong>De</strong>"
+msgid "<strong>Initial Qty</strong>"
+msgstr "<strong>Qté prescrite</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
@@ -132,12 +137,12 @@ msgstr "<strong>Lot/Numéro de série</strong>"
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "<strong>Patient</strong>"
-msgstr ""
+msgstr "<strong>Animal</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "<strong>Prescriber</strong>"
-msgstr ""
+msgstr "<strong>Prescripteur</strong>"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
@@ -155,16 +160,6 @@ msgid "<strong>Product</strong>"
 msgstr "<strong>Article</strong>"
 
 #. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "<strong>Status:</strong>"
-msgstr "<strong>Etat:</strong>"
-
-#. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "<strong>To</strong>"
-msgstr "<strong>À</strong>"
-
-#. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move__administration_route_ids
 msgid "Administration Route"
 msgstr "Voie d'administration"
@@ -175,9 +170,39 @@ msgid "Barcode"
 msgstr "Code Bare"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Birthdate:"
+msgstr "Date de naissance:"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.stock_picking_print_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: argos_stock
 #: model:ir.model,name:argos_stock.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__delivered_qty
+msgid "Delivered Quantity"
+msgstr "Quantité délivrée"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
@@ -185,14 +210,52 @@ msgid "From"
 msgstr "De"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Gender:"
+msgstr "Sexe:"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__id
+msgid "ID"
+msgstr "ID"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__initial_qty
+msgid "Initial Quantity"
+msgstr "Quantité prescrite"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_sale_order__is_delivered
+msgid "Is Delivered"
+msgstr "Est délivré"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__is_duplicate
+msgid "Is Duplicate"
+msgstr "Est un duplicata"
+
+#. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_stock_picking__is_arg_prescription
 msgid "Is prescription"
 msgstr " Est une ordonnance"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.stock_picking_print_view_form
+msgid "No Available Quantity"
+msgstr "Aucun article disponible"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Package"
-msgstr ""
+msgstr "Paquetage"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_operating_unit__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_res_partner__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_res_users__picking_ids
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__picking_id
+msgid "Picking"
+msgstr "Transfert"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
@@ -201,9 +264,6 @@ msgstr "Ordonnance n°"
 
 #. module: argos_stock
 #: model:ir.actions.report,name:argos_stock.action_print_precription
-#: model:ir.model.fields,field_description:argos_stock.field_operating_unit__picking_ids
-#: model:ir.model.fields,field_description:argos_stock.field_res_partner__picking_ids
-#: model:ir.model.fields,field_description:argos_stock.field_res_users__picking_ids
 #: model:ir.model.fields,field_description:argos_stock.field_sale_order__prescription_count
 #: model_terms:ir.ui.view,arch_db:argos_stock.prescription_consultation_view_form
 msgid "Prescription"
@@ -218,6 +278,31 @@ msgid "Prescriptions"
 msgstr "Ordonnances"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.stock_picking_print_view_form
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: argos_stock
+#: model:ir.actions.act_window,name:argos_stock.action_print_picking
+msgid "Print Picking"
+msgstr "Imprimer ordonnace"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.prescription_consultation_view_form
+msgid "Print prescription"
+msgstr "Imprimer ordonnance"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Mouvements d'article (Ligne de mouvement de stock)"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__remaining_qty
+msgid "Remaining Quantity"
+msgstr "Reste à livrer"
+
+#. module: argos_stock
 #: model:ir.model,name:argos_stock.model_sale_order
 msgid "Sales Order"
 msgstr "Bon de commande"
@@ -228,9 +313,24 @@ msgid "Send by Email"
 msgstr "Envoyer par email"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Species:"
+msgstr "Espèce:"
+
+#. module: argos_stock
 #: model:ir.model,name:argos_stock.model_stock_move
 msgid "Stock Move"
-msgstr "Stock déplacer"
+msgstr "Mouvement de stock"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking_print__move_line_ids
+msgid "Stock Move Lines"
+msgstr "Lignes de mouvements"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_picking_print
+msgid "Stock Picking Print"
+msgstr "Imprimer ordonnance"
 
 #. module: argos_stock
 #: model_terms:ir.actions.act_window,help:argos_stock.action_arg_prescription
@@ -243,6 +343,11 @@ msgid "To"
 msgstr "À"
 
 #. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.stock_picking_print_view_form
+msgid "To deliver"
+msgstr "A délivrer"
+
+#. module: argos_stock
 #: model:ir.model,name:argos_stock.model_stock_picking
 msgid "Transfer"
 msgstr "Transfert"
@@ -251,3 +356,8 @@ msgstr "Transfert"
 #: model_terms:ir.ui.view,arch_db:argos_stock.product_template_form_view_inherit
 msgid "Usage Tips"
 msgstr "Conseils d'utilisation"
+
+#. module: argos_stock
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Weight in kg:"
+msgstr "Poids en kg:"
