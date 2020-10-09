@@ -16,6 +16,13 @@
             <field name="prescription_count" widget="statinfo" string="Prescription"/>
           </button>
         </xpath>
+        <xpath expr="//header/button[@id='action_confirm']" position="before">
+          <field name="is_delivered" invisible="1"/>
+          <button name="button_print_picking"
+                  string="Print prescription"
+                  attrs="{'invisible': ['|', ('prescription_count', '=', 0), ('is_delivered', '=', True)]}"
+                  type="object"/>
+        </xpath>
       </field>
     </record>
   </data>

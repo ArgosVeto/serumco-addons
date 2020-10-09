@@ -7,6 +7,7 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     is_arg_prescription = fields.Boolean('Is prescription')
+    is_duplicate = fields.Boolean('Is Duplicate')
 
     def action_prescription_send(self):
         self.ensure_one()
@@ -34,4 +35,9 @@ class StockPicking(models.Model):
             'target': 'new',
             'context': context,
         }
+
+    def make_duplicate(self):
+        self.ensure_one()
+        self.is_duplicate = True
+        return True
 
