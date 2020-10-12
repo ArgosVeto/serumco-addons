@@ -90,7 +90,7 @@
                 <field name="location"/>
                 <field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>
                 <field name="diet_ids" widget="many2many_tags" context="{'default_type': 'diet'}"/>
-                <field name="pathology_ids" widget="many2many_tags"/>
+                <field name="pathology_ids" widget="many2many_tags" string="Pathologies &amp; Intolerance"/>
                 <field name="is_dead"/>
                 <field name="death_date" attrs="{'invisible': [('is_dead', '=', False)]}"/>
                 <field name="death_reason" attrs="{'invisible': [('is_dead', '=', False)]}"/>

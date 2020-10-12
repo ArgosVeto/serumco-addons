@@ -94,8 +94,8 @@
                 <field name="partner_id"/>
                 <field name="partner_patient_ids" widget="many2many_tags"/>
                 <field name="operating_unit_id" string="Clinical"/>
-                <field name="diagnostic_ids" widget="many2many_tags"/>
-                <field name="hypothese_ids" widget="many2many_tags"/>
+                <field name="diagnostic_ids" widget="many2many_tags" context="{'default_type': 'diagnostic'}"/>
+                <field name="hypothese_ids" widget="many2many_tags" context="{'default_type': 'hypothese'}"/>
               </group>
             </group>
             <notebook>

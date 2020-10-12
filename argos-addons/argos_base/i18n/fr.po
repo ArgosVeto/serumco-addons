@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 06:06+0000\n"
-"PO-Revision-Date: 2020-09-30 06:06+0000\n"
+"POT-Creation-Date: 2020-10-12 15:21+0000\n"
+"PO-Revision-Date: 2020-10-12 15:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,11 @@ msgid "Contact"
 msgstr "Contacts"
 
 #. module: argos_base
+#: model:ir.model.fields.selection,name:argos_base.selection__documents_tag__type__diagnostic
+msgid "Diagnostic"
+msgstr "Diagnostique"
+
+#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_product_product__ean
 #: model:ir.model.fields,field_description:argos_base.field_product_template__ean
 msgid "EAN Code"
@@ -75,6 +80,11 @@ msgstr "Code EAN"
 #: model:ir.model.fields,field_description:argos_base.field_product_template__gtin
 msgid "GTIN Code"
 msgstr "Code GTIN"
+
+#. module: argos_base
+#: model:ir.model.fields.selection,name:argos_base.selection__documents_tag__type__hypothese
+msgid "Hypothese"
+msgstr "Hypothèse"
 
 #. module: argos_base
 #: model_terms:ir.ui.view,arch_db:argos_base.res_partner_view_form_inherit
@@ -156,6 +166,11 @@ msgid "Social Reason"
 msgstr "Raison sociale"
 
 #. module: argos_base
+#: model:ir.model,name:argos_base.model_documents_tag
+msgid "Tag"
+msgstr "Étiquette"
+
+#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__tutor_curator_id
 #: model:ir.model.fields,field_description:argos_base.field_res_users__tutor_curator_id
 msgid "Tutor/Curator"
@@ -166,6 +181,16 @@ msgstr "Tuteur/Curateur"
 #: model:ir.model.fields,field_description:argos_base.field_res_users__has_tutor_curator
 msgid "Tutorship/Curatorship"
 msgstr "Tutelle/Curatelle"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_documents_tag__type
+msgid "Type"
+msgstr "Type"
+
+#. module: argos_base
+#: model:ir.model.fields.selection,name:argos_base.selection__documents_tag__type__undefined
+msgid "Undefined"
+msgstr "Indéfini"
 
 #. module: argos_base
 #: model:mail.template,subject:argos_base.confirmation_mail_template

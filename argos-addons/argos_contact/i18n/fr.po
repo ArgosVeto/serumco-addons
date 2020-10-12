@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 11:50+0000\n"
-"PO-Revision-Date: 2020-10-07 11:50+0000\n"
+"POT-Creation-Date: 2020-10-12 15:24+0000\n"
+"PO-Revision-Date: 2020-10-12 15:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgstr "Identification de la puce"
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__chip_location_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__chip
 msgid "Chip Location"
-msgstr "Lieu de la puce"
+msgstr "Localisation puce"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__city
@@ -623,6 +623,11 @@ msgstr "Passeport"
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__pathology_ids
 msgid "Pathologies"
 msgstr "Pathologies"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
+msgid "Pathologies & Intolerance"
+msgstr "Pathologies & Intolérances"
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_pathology_action

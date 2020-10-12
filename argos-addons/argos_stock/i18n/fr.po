@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 08:43+0000\n"
-"PO-Revision-Date: 2020-10-09 08:43+0000\n"
+"POT-Creation-Date: 2020-10-12 15:27+0000\n"
+"PO-Revision-Date: 2020-10-12 15:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr "Imprimer"
 #. module: argos_stock
 #: model:ir.actions.act_window,name:argos_stock.action_print_picking
 msgid "Print Picking"
-msgstr "Imprimer ordonnace"
+msgstr "Imprimer ordonnance"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.prescription_consultation_view_form
@@ -301,6 +301,11 @@ msgstr "Mouvements d'article (Ligne de mouvement de stock)"
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__remaining_qty
 msgid "Remaining Quantity"
 msgstr "Reste à livrer"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_sale_order_refer
+msgid "Sale Order Refer"
+msgstr "Référé"
 
 #. module: argos_stock
 #: model:ir.model,name:argos_stock.model_sale_order
