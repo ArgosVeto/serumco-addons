@@ -11,19 +11,25 @@ class SaleOrderRefer(models.TransientModel):
     consultation_type_id = fields.Many2one('consultation.type', 'Reason For Referral Request', placeholder='Comments')
     comments = fields.Text('Comments')
 
-    def button_validate_refer(self):
+    def get_refer_values(self, order):
         self.ensure_one()
-        consultation = self.env['sale.order'].browse(self.env.context.get('active_id'))
-        vals_overriden = {
-            'refer_employee_id': consultation.employee_id.id,
+        return {
+            'refer_employee_id': order.employee_id.id,
             'is_referral': True,
-            'origin_order_id': consultation.id,
+            'origin_order_id': order.id,
             'employee_id': self.employee_id.id,
             'operating_unit_id': self.operating_unit_id.id,
+            'company_id': self.operating_unit_id.company_id.id,
+            'team_id': False,
             'observation': self.comments,
             'state': 'draft',
             'argos_state': 'in_progress',
         }
+
+    def button_validate_refer(self):
+        self.ensure_one()
+        consultation = self.env['sale.order'].browse(self.env.context.get('active_id'))
+        vals_overriden = self.get_refer_values(consultation)
         new_consultation = consultation.copy(vals_overriden)
         action = self.env.ref('argos_sale.action_consultations').read()[0]
         action.update({

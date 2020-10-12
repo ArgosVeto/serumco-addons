@@ -115,6 +115,7 @@ class PlanningSlot(models.Model):
             'default_is_consultation': True,
             'default_consultation_type_id': self.consultation_type_id.id,
             'default_customer_observation': self.more_info,
+            'default_operating_unit_id': self.operating_unit_id.id,
         })
         return action
 
