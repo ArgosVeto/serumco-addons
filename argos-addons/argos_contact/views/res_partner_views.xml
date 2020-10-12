@@ -8,7 +8,7 @@
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
         <xpath expr="//page[1]" position="before">
-          <page name="patients" string="Patients" autofocus="autofocus">
+          <page name="patients" string="Patients" autofocus="autofocus" attrs="{'invisible':[('supplier_rank','>', 0)]}">
             <field name="patient_ids" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
                    'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
           </page>

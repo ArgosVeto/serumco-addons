@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="purchase_request.menu_purchase_request_pro_mgt" model="ir.ui.menu">
+      <field name="sequence">0</field>
+    </record>
+    <record id="purchase_request.menu_purchase_request_line" model="ir.ui.menu">
+      <field name="sequence">5</field>
+    </record>
+    <record id="purchase.menu_purchase_rfq" model="ir.ui.menu">
+      <field name="sequence">10</field>
+    </record>
+    <record id="purchase.menu_purchase_form_action" model="ir.ui.menu">
+      <field name="sequence">15</field>
+    </record>
+    <record id="purchase.menu_procurement_management_supplier_name" model="ir.ui.menu">
+      <field name="sequence">20</field>
+    </record>
+  </data>
+
+  <data noupdate="1">
+    <delete model="ir.ui.menu" id="purchase_requisition.menu_purchase_requisition_pro_mgt"/>
+  </data>
+</odoo>

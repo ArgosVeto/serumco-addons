@@ -36,6 +36,7 @@
         'views/purchase_confirmation_views.xml',
         'views/stock_move_line_views.xml',
         'views/purchase_request_views.xml',
+        'views/menu_views.xml',
     ],
     'application': False,
     'installable': True,

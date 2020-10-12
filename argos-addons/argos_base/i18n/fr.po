@@ -171,3 +171,9 @@ msgstr "Tutelle/Curatelle"
 #: model:mail.template,subject:argos_base.confirmation_mail_template
 msgid "Welcome"
 msgstr "Bienvenue"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__is_centravet
+#: model:ir.model.fields,field_description:argos_base.field_res_users__is_centravet
+msgid "Is Centravet supplier"
+msgstr "Transmission EDI Centravet"

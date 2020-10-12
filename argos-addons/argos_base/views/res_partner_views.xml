@@ -45,7 +45,7 @@
           <field name="social_reason" attrs="{'invisible': [('is_company', '=', False)]}"/>
         </field>
         <xpath expr="//group[@name='purchase']" position="inside">
-          <field name="is_centravet"/>
+          <field name="is_centravet"  attrs="{'invisible':[('parent_id', '!=', False)]}"/>
         </xpath>
         <xpath expr="//label[@for='lang']" position="attributes">
           <attribute name="invisible">1</attribute>

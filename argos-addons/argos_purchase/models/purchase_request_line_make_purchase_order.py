@@ -19,8 +19,12 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
 
     @api.model
     def _check_multiple_operating_unit_request(self):
-        if self._context.get('active_ids', False):
+        if self._context.get('active_model', False) == 'purchase.request.line' and self._context.get('active_ids', False):
             request_lines = self.env['purchase.request.line'].browse(self._context.get('active_ids'))
+            if len(request_lines.mapped('operating_unit_id')) >= 1:
+                return True
+        if self._context.get('active_model', False) == 'purchase.request' and self._context.get('active_ids', False):
+            request_lines = self.env['purchase.request'].browse(self._context.get('active_ids')).mapped('line_ids')
             if len(request_lines.mapped('operating_unit_id')) >= 1:
                 return True
         return False
@@ -38,7 +42,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
     @api.model
     def _check_valid_request_line(self, request_lines):
         request_line_obj = self.env["purchase.request.line"]
-        if self._check_multiple_operating_unit_request():
+        if self._context.get('active_model', False) == 'purchase.request.line' and self._check_multiple_operating_unit_request():
             request_lines = request_line_obj.browse(request_lines)
             if request_lines.filtered(lambda line: line.request_id.state == 'done'):
                 raise UserError(_("Purchase request has already been completed."))
