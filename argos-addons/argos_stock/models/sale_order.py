@@ -23,7 +23,7 @@ class SaleOrder(models.Model):
             'views': [(self.env.ref('argos_stock.prescription_argos_form_view').id, 'form')],
             'context': {},
         }
-        pickings = self.picking_ids.filtered(lambda p: p.is_arg_prescription)
+        pickings = self.picking_ids.filtered(lambda p: p.is_arg_prescription and not p.backorder_id)
         if len(pickings) > 1:
             action['domain'] = [('id', 'in', pickings.ids)]
             action['view_mode'] = 'tree,form'
@@ -35,7 +35,7 @@ class SaleOrder(models.Model):
     @api.depends('picking_ids', 'picking_ids.is_arg_prescription')
     def _compute_prescription_count(self):
         for order in self:
-            order.prescription_count = len(order.picking_ids.filtered(lambda sp: sp.is_arg_prescription))
+            order.prescription_count = len(order.picking_ids.filtered(lambda sp: sp.is_arg_prescription and not sp.backorder_id))
 
     def button_print_picking(self):
         self.ensure_one()

@@ -27,6 +27,7 @@ class PlanningSlot(models.Model):
             'default_employee_id': self.employee_id.id,
             'default_is_consultation': True,
             'default_consultation_type_id': self.consultation_type_id.id,
+            'default_operating_unit_id': self.operating_unit_id.id,
         })
         return action
 
