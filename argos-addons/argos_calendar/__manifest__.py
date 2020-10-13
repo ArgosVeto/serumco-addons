@@ -10,10 +10,18 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
-        'argos_base',
         'calendar',
+        'argos_base',
+        'argos_planning',
+        'argos_planning_sale',
     ],
-    'data': [],
+    'data': [
+        'views/calendar_templates.xml',
+        'views/calendar_views.xml',
+    ],
+    'qweb': [
+        "static/src/xml/web_calendar.xml",
+    ],
     'application': False,
     'installable': True,
     'auto_install': False,

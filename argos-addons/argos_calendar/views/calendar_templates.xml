@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="assets_backend" name="calendar assets" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+      <link rel="stylesheet" type="text/scss" href="/argos_calendar/static/src/scss/web_calendar.scss"/>
+      <link rel="stylesheet" type="text/css" href="/argos_calendar/static/src/css/calendar.css"/>
+      <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_view.js"/>
+      <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_model.js"/>
+      <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_renderer.js"/>
+      <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_controller.js"/>
+    </xpath>
+  </template>
+</odoo>

@@ -1,0 +1,69 @@
+<template>
+  <t t-name="SwitchOperatingUnitMenu">
+    <li class="o_switch_company_menu">
+      <a role="button" class="dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false"
+         href="#" aria-label="Dropdown menu" title="Dropdown menu">
+        <span t-attf-class="#{widget.isMobile ? 'fa fa-building-o' : 'oe_topbar_name'}">
+          <t t-if="!widget.isMobile">
+            <t t-raw="widget.current_company_name"/>
+          </t>
+        </span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" role="menu">
+        <t t-if="widget.isMobile">
+          <li class="bg-info">Tap on the list to change company</li>
+        </t>
+        <t t-foreach="widget.user_companies" t-as="company">
+          <div>
+            <div role="menuitem" href="#" class="dropdown-item d-flex py-0 px-0" data-menu="company"
+                 t-att-data-company-id="company[0]">
+              <div class="ml-auto pl-3 pr-3 border border-top-0 border-left-0 border-bottom-0 toggle_company o_py">
+                <span style="height: 2rem;">
+                  <t t-if="widget.allowed_company_ids.includes(company[0])">
+                    <i class="fa fa-fw fa-check-square pt-2"></i>
+                  </t>
+                  <t t-if="!widget.allowed_company_ids.includes(company[0])">
+                    <i class="fa fa-fw fa-square-o pt-2"></i>
+                  </t>
+                </span>
+              </div>
+              <div class="d-flex flex-grow-1 align-items-center py-0 log_into pl-3 o_py"
+                   t-att-style="company[0] === widget.current_company ? 'background-color: lightgrey;' : ''">
+                <t t-if="widget.allowed_company_ids.includes(company[0])">
+                  <span class='mr-3 company_label'>
+                    <t t-esc="company[1]"/>
+                  </span>
+                </t>
+                <t t-if="!widget.allowed_company_ids.includes(company[0])">
+                  <span class='mr-3 company_label text-muted'>
+                    <t t-esc="company[1]"/>
+                  </span>
+                </t>
+              </div>
+            </div>
+            <t t-if="widget.user_operating_units[company[0]]">
+              <t t-foreach="widget.user_operating_units[company[0]]" t-as="ou">
+                <div role="menuitem" href="#" class="dropdown-item d-flex py-0 px-0" data-menu="company"
+                     t-att-data-ou-id="ou[0]" t-att-data-company-id="company[0]">
+                  <div class="ml-auto pl-3 pr-3 border border-top-0 border-left-0 border-bottom-0 switch_ou o_py">
+                    <span style="height: 2rem; margin-left: 5px;">
+                      <t t-if="widget.operating_unit_id == ou[0]">
+                        <i class="fa fa-fw fa-check-circle pt-2"></i>
+                      </t>
+                      <t t-if="!(widget.operating_unit_id == ou[0])">
+                        <i class="fa fa-fw fa-circle-o pt-2"></i>
+                      </t>
+                    </span>
+                    <span class='mr-3 operating_unit_label'>
+                      <t t-esc="ou[1]"/>
+                    </span>
+                  </div>
+                </div>
+              </t>
+            </t>
+          </div>
+        </t>
+      </div>
+    </li>
+  </t>
+</template>

@@ -1,0 +1,84 @@
+.fc-agendaWeek-view th.rotate > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 80px;
+    padding: 1px;
+    /*-webkit-transform: translate(0px, 0px) rotate(10deg);*/
+    /*-moz-transform: translate(0px, 0px) rotate(10deg);*/
+    /*-o-transform: translate(0px, 0px) rotate(10deg);*/
+    /*-ms-transform: translate(0px, 0px) rotate(10deg);*/
+    /*transform: translate(0px, 0px) rotate(10deg);*/
+}
+
+.calendar_agenda .fc-view-container {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.calendar_agenda .fc-widget-header {
+    border-color: #ddd !important;
+}
+
+.calendar_agenda .fc-agendaWeek-view .fc-resource-cell {
+    padding: 3px;
+    vertical-align: middle;
+    /*writing-mode: tb-rl;*/
+    /*transform: rotate(-180deg);*/
+}
+
+.o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaDay-view .fc-event.fc-v-event, .o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaWeek-view .fc-event.fc-v-event {
+    word-wrap: break-word;
+}
+
+.o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaDay-view .fc-time-grid .fc-slats .fc-minor td, .o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaWeek-view .fc-time-grid .fc-slats .fc-minor td {
+    border-top-style: dotted !important;
+}
+
+.o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaDay-view table td.fc-widget-content, .o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaWeek-view table td.fc-widget-content {
+    border-left-color: #e9ecef;
+    border-right-color: #e9ecef;
+}
+
+.o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaDay-view .fc-axis, .o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaWeek-view .fc-axis {
+    padding: 0 0px;
+}
+
+.o_calendar_view .o_calendar_widget .fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {
+    padding: 0em;
+}
+
+.o_calendar_view .o_calendar_widget.calendar_agenda .fc-agendaDay-view .fc-event {
+    padding: 1px;
+}
+
+.o_calendar_view .calendar_agenda .fc-event .fc-content {
+    margin: 1px 2px;
+    min-height: 35px;
+}
+
+.calendar_agenda .fc-time-grid .fc-slats td {
+    height: 2em;
+}
+
+.fc-day-activity-grid, .fc-day-task-grid {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.fc-day-activity-grid .fc-day.fc-widget-content, .fc-day-task-grid .fc-day.fc-widget-content {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fc-agenda-view .fc-day-activity-grid .fc-row, .fc-agenda-view .fc-day-task-grid .fc-row {
+    min-height: 2.2em;
+}
+
+.calendar_agenda .o_mail_systray_item {
+    padding: 5px;
+}
+
+.calendar_agenda .o_mail_systray_item:hover {
+    background-color: #ebebeb;
+}
