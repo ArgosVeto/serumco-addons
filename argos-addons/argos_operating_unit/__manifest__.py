@@ -24,6 +24,7 @@
         'views/operating_unit_views.xml',
         'views/operating_unit_room_views.xml',
         'views/operating_unit_certification_views.xml',
+        'views/operating_unit_service_views.xml',
         'views/operating_unit_templates.xml',
     ],
     'qweb': [
