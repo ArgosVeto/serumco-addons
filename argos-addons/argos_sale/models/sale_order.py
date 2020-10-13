@@ -21,7 +21,7 @@ class SaleOrder(models.Model):
     gender_id = fields.Many2one(related='patient_id.gender_id')
     age = fields.Char('Age', related='patient_id.age_formatted')
     weight = fields.Float('Weight', related='patient_id.weight')
-    pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids')
+    pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids', readonly=False)
     employee_id = fields.Many2one('hr.employee', domain="[('is_veterinary', '=', True)]")
     is_consultation = fields.Boolean('Is Consultation')
     conv_key = fields.Char('Convention Key', compute='_compute_conv_key')
@@ -31,8 +31,9 @@ class SaleOrder(models.Model):
     customer_observation = fields.Text('Customer Observation')
     referent_partner_id = fields.Many2one('res.partner')
     diagnostic_ids = fields.Many2many('documents.tag', 'sale_order_diagnostic_tag_rel', 'sale_order_id',
-                                      'diagnostic_id')
-    hypothese_ids = fields.Many2many('documents.tag', 'sale_order_hypothese_tag_rel', 'sale_order_id', 'hypothese_id')
+                                      'diagnostic_id', domain=[('type', '=', 'diagnostic')])
+    hypothese_ids = fields.Many2many('documents.tag', 'sale_order_hypothese_tag_rel', 'sale_order_id', 'hypothese_id',
+                                     domain=[('type', '=', 'hypothese')])
     canvas_id = fields.Many2one('consultation.type', domain=[('is_canvas', '=', True)])
     arrival_time = fields.Datetime('Arrival Time', track_visibility='onchange', copy=False)
     pickup_time = fields.Datetime('Pick-up Time', track_visibility='onchange', copy=False)
@@ -195,4 +196,3 @@ class SaleOrder(models.Model):
         self.action_cancel()
         self.action_draft()
         return True
-

@@ -12,7 +12,7 @@ class StockPicking(models.Model):
     def action_prescription_send(self):
         self.ensure_one()
         template = self.env.ref('argos_stock.mail_template_prescription_send')
-        lang = self.env.context.get('lang')
+        lang = self._context.get('lang')
         if template.lang:
             lang = template._render_template(template.lang, 'stock.picking', self.id)
         context = {
@@ -22,7 +22,7 @@ class StockPicking(models.Model):
             'default_template_id': template.id,
             'default_composition_mode': 'comment',
             'mark_so_as_sent': True,
-            'proforma': self.env.context.get('proforma', False),
+            'proforma': self._context.get('proforma', False),
             'force_email': True,
             'model_description': self.with_context(lang=lang).name,
         }

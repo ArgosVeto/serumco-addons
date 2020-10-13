@@ -15,6 +15,7 @@ class SaleOrderRefer(models.TransientModel):
         self.ensure_one()
         return {
             'refer_employee_id': order.employee_id.id,
+            'referent_partner_id': self.env.user.partner_id.id,
             'is_referral': True,
             'origin_order_id': order.id,
             'employee_id': self.employee_id.id,
@@ -24,11 +25,12 @@ class SaleOrderRefer(models.TransientModel):
             'observation': self.comments,
             'state': 'draft',
             'argos_state': 'in_progress',
+            'order_line': False,
         }
 
     def button_validate_refer(self):
         self.ensure_one()
-        consultation = self.env['sale.order'].browse(self.env.context.get('active_id'))
+        consultation = self.env['sale.order'].browse(self._context.get('active_id'))
         vals_overriden = self.get_refer_values(consultation)
         new_consultation = consultation.copy(vals_overriden)
         action = self.env.ref('argos_sale.action_consultations').read()[0]
