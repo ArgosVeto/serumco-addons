@@ -1,38 +1,12 @@
 <?xml version="1.0"?>
 <odoo>
-  <record id="planning_agenda_view_form_quickcreate" model="ir.ui.view">
-    <field name="name">planning.slot.agenda.form.quickcreate</field>
-    <field name="model">planning.slot</field>
-    <field name="arch" type="xml">
-      <form>
-        <sheet>
-          <group>
-            <field name="employee_id"/>
-            <field name="operating_unit_id"/>
-            <field name="patient_id"/>
-            <field name="partner_id" required="1"/>
-            <field name="consultation_type_id"/>
-            <field name="more_info"/>
-            <field name="role_id"/>
-            <field name="company_id" groups="base.group_multi_company"/>
-            <field name="name"/>
-            <field name="background_event"/>
-            <field name="allday" invisible="1"/>
-            <field name="start_datetime" invisible="1"/>
-            <field name="end_datetime" invisible="1"/>
-          </group>
-        </sheet>
-      </form>
-    </field>
-  </record>
-
   <record id="planning_view_agenda" model="ir.ui.view">
     <field name="name">planning.slot.agenda</field>
     <field name="model">planning.slot</field>
     <field name="priority">10</field>
     <field name="arch" type="xml">
       <calendar string="Agenda" date_start="start_datetime" date_stop="end_datetime" color="role_id" all_day="allday"
-                form_view_id="%(planning_agenda_view_form_quickcreate)d" event_open_popup="true" quick_add="False">
+                form_view_id="%(argos_planning.planning_slot_view_form_inherit)d" event_open_popup="true" quick_add="False">
         <field name="state" readonly="1"/>
         <field name="name" string="RDV Reason"/>
         <field name="role_id" string="RDV Type"/>
@@ -42,7 +16,6 @@
         <field name="background_event" invisible="1"/>
         <field name="order_count" invisible="1"/>
         <field name="invoice_count" invisible="1"/>
-        <!--<field name="arrival_time">-->
       </calendar>
     </field>
   </record>
@@ -57,7 +30,7 @@
   <menuitem
           id="agenda_menu_calendar"
           name="Agenda"
-          sequence="1"
-          parent="planning.planning_menu_root"
+          sequence="20"
+          parent="planning.planning_menu_my_planning"
           action="agenda_calendar_action"/>
 </odoo>

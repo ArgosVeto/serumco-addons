@@ -71,6 +71,9 @@
             <field name="state" widget="statusbar"/>
           </header>
         </xpath>
+        <field name="start_datetime" position="before">
+          <field name="background_event"/>
+        </field>
         <field name="is_assigned_to_me" position="before">
           <div class="oe_button_box" name="button_box">
             <button attrs="{'invisible': [('arrival_time', '=', False)]}">
