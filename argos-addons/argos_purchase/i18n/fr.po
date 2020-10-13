@@ -42,7 +42,7 @@ msgid ""
 "Can this order be sent after 5:00 p.m. on the correct delivery day to "
 "optimize product costs?"
 msgstr ""
-"Cette commande peut-elle être envoyeée après 17h le bon jour de livraison pour "
+"Cette commande peut-elle être envoyée après 17h le bon jour de livraison pour "
 "optimiser le coût des produits?"
 
 #. module: argos_purchase
@@ -203,14 +203,14 @@ msgid ""
 "Quotation - %s' % (object.name) or                 'Purchase Order - %s' % "
 "(object.name))"
 msgstr ""
-"                 (object.state in ('draft', 'sent') and 'Demande d'achat - "
+"                 (object.state in ('draft', 'sent') and 'Demande d''achat - "
 "%s' % (object.name) or                 'Bon de Commande - %s' % "
 "(object.name))"
 
 #. module: purchase
 #: model:ir.actions.report,print_report_name:purchase.report_purchase_quotation
 msgid "'Request for Quotation - %s' % (object.name)"
-msgstr "'Demande d'achat - %s' % (object.name)"
+msgstr "'Demande d''achat - %s' % (object.name)"
 
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.res_config_settings_view_form_purchase
@@ -275,7 +275,7 @@ msgid ""
 "            a certain quantity of materials services, so that they are\n"
 "            available at a certain point in time."
 msgstr ""
-"Une demande d'autorisation d'achat est une instruction d'achat pour se procurer une "
+"Une autorisation d'achat est une instruction d'achat pour se procurer une "
 "certaine quantité de matériaux, de sorte qu'ils soient disponibles à un "
 "certain moment."
 
@@ -286,24 +286,24 @@ msgid ""
 "Check this box to generate Purchase Request instead of generating Requests "
 "For Quotation from procurement."
 msgstr ""
-"Cocher cette case pour générer une demande d'autorisation d'achat au lieu d'une demande de "
+"Cocher cette case pour générer une autorisation d'achat au lieu d'une demande de "
 "prix à partir des approvisionnements."
 
 #. module: purchase_request
 #: model_terms:ir.actions.act_window,help:purchase_request.purchase_request_form_action
 msgid "Click to start a new purchase request process."
-msgstr "Cliquez pour démarrer une nouvelle demande d'autorisation d'achat."
+msgstr "Cliquez pour démarrer une nouvelle autorisation d'achat."
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_stock_move__created_purchase_request_line_id
 msgid "Created Purchase Request Line"
-msgstr "Ligne de demande d'autorisation d'achat crée"
+msgstr "Ligne d'autorisation d'achat crée"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_line__estimated_cost
 msgid "Estimated cost of Purchase Request Line, not propagated to PO."
 msgstr ""
-"Coût estimé de la ligne de demande d'autorisation d'achat, n'est pas propagé au bon de "
+"Coût estimé de la ligne d'autorisation d'achat, n'est pas propagé au bon de "
 "commande achat."
 
 #. module: purchase_request
@@ -312,26 +312,26 @@ msgstr ""
 msgid ""
 "From last reception this quantity has been allocated to this purchase request"
 msgstr ""
-"Cette quantité a été allouée à cette demande d'autorisation d'achat depuis la dernière "
+"Cette quantité a été allouée à cette autorisation d'achat depuis la dernière "
 "réception"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #, fuzzy
 msgid "Purchase Done"
-msgstr "Demande d'autorisation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_allocation__purchase_line_id
 #, fuzzy
 msgid "Purchase Line"
-msgstr "Demande d'autorisation d'achat
+msgstr "Autorisation d'achat
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_order_line
 #, fuzzy
 msgid "Purchase Order Line"
-msgstr "Ligne de demande d'autorisation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line__purchase_lines
@@ -341,7 +341,7 @@ msgstr "Ligne de demande d'autorisation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
 #, fuzzy
 msgid "Purchase Order Lines"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.actions.report,name:purchase_request.action_report_purchase_requests
@@ -356,19 +356,19 @@ msgstr "Lignes de demande d'autorisation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_tree
 msgid "Purchase Request"
-msgstr "Demande d'autorisation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: code:addons/purchase_request/models/purchase_order.py:0
 #, fuzzy, python-format
 msgid "Purchase Request %s has already been completed"
-msgstr "Demande d'autorisation d'achat rejetée"
+msgstr "Autorisation d'achat rejetée"
 
 #. module: purchase_request
 #: code:addons/purchase_request/wizard/purchase_request_line_make_purchase_order.py:0
 #, python-format
 msgid "Purchase Request %s is not approved"
-msgstr "Demande d'autorisation d'achat %s est non approuvée"
+msgstr "Autorisation d'achat %s est non approuvée"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_allocation
@@ -377,14 +377,14 @@ msgstr "Demande d'autorisation d'achat %s est non approuvée"
 #: model:ir.model.fields,field_description:purchase_request.field_stock_move__purchase_request_allocation_ids
 #, fuzzy
 msgid "Purchase Request Allocation"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_move_form
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_picking_form
 #, fuzzy
 msgid "Purchase Request Allocations"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line
@@ -392,25 +392,25 @@ msgstr "Lignes de demande d'autorisation d'achat"
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_make_purchase_order_item__line_id
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_form
 msgid "Purchase Request Line"
-msgstr "Ligne de demande d'autorisation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line_make_purchase_order
 #, fuzzy
 msgid "Purchase Request Line Make Purchase Order"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line_make_purchase_order_item
 #, fuzzy
 msgid "Purchase Request Line Make Purchase Order Item"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request__line_count
 #, fuzzy
 msgid "Purchase Request Line count"
-msgstr "Ligne de demande d'autorisation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: code:addons/purchase_request/models/purchase_order.py:0
@@ -423,42 +423,42 @@ msgstr "Ligne de demande d'autorisation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_tree
 #, python-format
 msgid "Purchase Request Lines"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:res.groups,name:purchase_request.group_purchase_request_manager
 msgid "Purchase Request Manager"
-msgstr "Responsable demande d'autorisation d'achat"
+msgstr "Responsable d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:res.groups,name:purchase_request.group_purchase_request_user
 msgid "Purchase Request User"
-msgstr "Utilisateur demande d'autorisation d'achat"
+msgstr "Utilisateur d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_approved
 #: model:mail.message.subtype,name:purchase_request.mt_request_approved
 msgid "Purchase Request approved"
-msgstr "Demande d'autorisation d'achat approuvée"
+msgstr "Autorisation d'achat approuvée"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_form
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_line_tree
 #, fuzzy
 msgid "Purchase Request lines"
-msgstr "Lignes de demande d'autorisation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_rejected
 #: model:mail.message.subtype,name:purchase_request.mt_request_rejected
 msgid "Purchase Request rejected"
-msgstr "Demande d'autorisation d'achat rejetée"
+msgstr "Autorisation d'achat rejetée"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_to_approve
 #: model:mail.message.subtype,name:purchase_request.mt_request_to_approve
 msgid "Purchase Request to be approved"
-msgstr "Demande d'autorisation d'achat devant être approuvée"
+msgstr "Autorisation d'achat devant être approuvée"
 
 #. module: purchase_request
 #: model:ir.actions.act_window,name:purchase_request.action_purchase_request_line_product_tree
@@ -468,25 +468,25 @@ msgstr "Demande d'autorisation d'achat devant être approuvée"
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_act
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_pro_mgt
 msgid "Purchase Requests"
-msgstr "Demandes d'autorisation d'achat"
+msgstr "Autorisations d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line__purchase_state
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #, fuzzy
 msgid "Purchase Status"
-msgstr "Demande d'autorisation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.ui.menu,name:purchase_request.parent_menu_purchase_request
 msgid "Purchase requests"
-msgstr "Demandes d'autorisation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request__purchase_count
 #, fuzzy
 msgid "Purchases count"
-msgstr "Demande d'autorisation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_allocation__allocated_product_qty
@@ -515,16 +515,42 @@ msgstr "Demander l'autorisation"
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_line_search_sub
 #, fuzzy
 msgid "Search Purchase Order Line"
-msgstr "Recherche demande d'autorisation d'achat"
+msgstr "Recherche d'autorisation d'achat"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 msgid "Search Purchase Request"
-msgstr "Recherche demande d'autorisation d'achat"
+msgstr "Recherche d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_allocation__purchase_line_id
 #, fuzzy
 msgid "Service Purchase Order Line"
-msgstr "Recherche demande d'autorisation d'achat"
+msgstr "Recherche d'autorisation d'achat"
+
+#. module: purchase_order_approved
+#: model_terms:ir.ui.view,arch_db:purchase_order_approved.purchase_order_form
+msgid "Convert to Purchase Order"
+msgstr "Convertir en commande d'achat"
+
+#. module: purchase
+#: model_terms:ir.ui.view,arch_db:purchase.purchase_order_form
+msgid ""
+"<span class=\"o_form_label\" attrs=\"{'invisible': [('state','not in',('draft','sent'))]}\">Request for Quotation </span>\n"
+"                        <span class=\"o_form_label\" attrs=\"{'invisible': [('state','in',('draft','sent'))]}\">Purchase Order </span>"
+msgstr ""
+"<span class=\"o_form_label\" attrs=\"{'invisible': [('state','not in',('draft','sent'))]}\">Demande d'achat </span>\n"
+"                        <span class=\"o_form_label\" attrs=\"{'invisible': [('state','in',('draft','sent'))]}\">Commande d'achat </span>"
+
+#. module: purchase_request
+#: model:ir.actions.act_window,name:purchase_request.action_purchase_request_line_make_purchase_order
+#: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
+#: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_line_make_purchase_order
+msgid "Create RFQ"
+msgstr "Créer une demande d'achat"
+
+#. module: purchase
+#: model:ir.ui.menu,name:purchase.menu_purchase_form_action
+msgid "Purchase Orders"
+msgstr "Commandes validées"

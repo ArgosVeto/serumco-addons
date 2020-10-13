@@ -16,10 +16,10 @@
           <attribute name="invisible">True</attribute>
         </xpath>
         <xpath expr="//field[@name='state']" position="attributes">
-          <attribute name="statusbar_visible">draft,approved,purchase</attribute>
+          <attribute name="statusbar_visible">draft,purchase</attribute>
         </xpath>
         <xpath expr="//button[@name='button_confirm'][last()]" position="attributes">
-          <attribute name="context">{'standard_process': True}</attribute>
+          <attribute name="context">{'check_centravet_tour': True, 'check_shipping_fees': True}</attribute>
         </xpath>
         <xpath expr="//button[@name='button_release'][last()]" position="attributes">
           <attribute name="context">{'standard_process': True}</attribute>

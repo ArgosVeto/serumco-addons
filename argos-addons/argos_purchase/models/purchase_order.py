@@ -26,27 +26,11 @@ class PurchaseOrder(models.Model):
                                                          'requested_line_id', 'Operating Unit Requested Lines')
 
     def button_confirm(self):
-        if self._context.get('standard_process', False):
-            context = dict(self.env.context, wait_discount=True)
-            context.update({'active_id': self.id})
-            return {
-                'name': _('Confirmation'),
-                'type': 'ir.actions.act_window',
-                'view_mode': 'form',
-                'res_model': 'purchase.confirmation.wizard',
-                'views': [(False, 'form')],
-                'target': 'new',
-                'context': context,
-            }
-
-        return super(PurchaseOrder, self).button_confirm()
-
-    def button_release(self):
-        if self._context.get('standard_process', False):
+        context = self._context.copy()
+        if self._context.get('check_shipping_fees', False):
             carrier_id = self.partner_id.property_delivery_carrier_id
-            if carrier_id and self.amount_untaxed < carrier_id.amount:
-                context = dict(self.env.context, shipping_fees=True)
-                context.update({'active_id': self.id})
+            if carrier_id and carrier_id.free_over and self.amount_untaxed < carrier_id.amount:
+                context.update(active_id=self.id)
                 return {
                     'name': _('Confirmation'),
                     'type': 'ir.actions.act_window',
@@ -56,11 +40,36 @@ class PurchaseOrder(models.Model):
                     'target': 'new',
                     'context': context,
                 }
+            else:
+                context.update(check_shipping_fees=False)
+        if self._context.get('check_centravet_tour', False):
+            if self.partner_id.is_centravet:
+                context.update(active_id=self.id)
+                return {
+                    'name': _('Confirmation'),
+                    'type': 'ir.actions.act_window',
+                    'view_mode': 'form',
+                    'res_model': 'purchase.confirmation.wizard',
+                    'views': [(False, 'form')],
+                    'target': 'new',
+                    'context': context,
+                }
+            else:
+                context.update(check_centravet_tour=False)
+        return super(PurchaseOrder, self).button_confirm()
+
+    def button_release(self):
         for rec in self:
             rec.send_order_mail()
             if rec.partner_id.is_centravet and rec.is_centravet_planned_tour():
                 rec.apply_discount(1)
         return super(PurchaseOrder, self).button_release()
+
+    def button_approve(self, force=False):
+        centravet_orders = self.filtered(lambda order: order.partner_id.is_centravet)
+        if centravet_orders:
+            super(PurchaseOrder, centravet_orders).button_approve(force)
+        return (self - centravet_orders).button_release()
 
     def _create_picking(self):
         res = super(PurchaseOrder, self)._create_picking()
