@@ -67,6 +67,18 @@ msgid "Active"
 msgstr ""
 
 #. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_role__allday
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__allday
+msgid "All Day"
+msgstr "Toute la journée"
+
+#. module: argos_planning
+#: code:addons/argos_planning/controllers/main.py:0
+#, python-format
+msgid "Archiving Event %s"
+msgstr ""
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__arrival_time
 msgid "Arrival Time"
 msgstr "Heure d'arrivée"
@@ -87,6 +99,11 @@ msgstr "Affectations"
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__away
 msgid "Away"
 msgstr "Absence"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__background_event
+msgid "Background"
+msgstr "Arrière-plan"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
@@ -152,6 +169,11 @@ msgstr "Devise"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__partner_id
 msgid "Customer"
 msgstr "Client"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__partner_phone
+msgid "Customer phone"
+msgstr "Téléphone client"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__departure_time
@@ -373,7 +395,7 @@ msgstr "Temps d'attente"
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__web
 #: model:ir.model.fields.selection,name:argos_planning.selection__res_partner__source__web
 msgid "Web"
-msgstr "Web"
+msgstr ""
 
 #. module: argos_planning
 #: code:addons/argos_planning/models/planning_slot.py:0

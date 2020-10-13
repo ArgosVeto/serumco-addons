@@ -109,5 +109,16 @@
       </field>
     </record>
 
+    <record id="planning_role_view_tree_inherit" model="ir.ui.view">
+      <field name="name">planning.role.view.tree.inherit</field>
+      <field name="model">planning.role</field>
+      <field name="inherit_id" ref="planning.planning_role_view_tree"/>
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="role_type"/>
+          <field name="allday"/>
+        </field>
+      </field>
+    </record>
   </data>
 </odoo>

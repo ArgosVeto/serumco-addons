@@ -1,0 +1,106 @@
+<template>
+  <t t-name="agenda-box">
+    <div t-att-style="typeof color === 'string' ? ('background-color:' + color) + ';' : ''"
+         t-attf-class="#{!event.color_index ? 'text-white' : ''} #{record.is_highlighted and record.is_highlighted.value ? 'o_event_hightlight' : ''} #{typeof color === 'number' ? _.str.sprintf('o_calendar_color_%s', color) : ''}">
+      <div class="float-right" t-if="record.invoice_count > 0">
+        <span>
+          <img src="/argos_calendar/static/src/img/invoice-bill.png" class="rounded-circle img-fluid"
+               style="max-width: 20px"/>
+        </span>
+      </div>
+      <div class="float-right" t-elif="record.order_count > 0">
+        <span>
+          <img src="/argos_calendar/static/src/img/hospital.png" class="rounded-circle img-fluid"
+               style="max-width: 20px"/>
+        </span>
+      </div>
+      <div class="float-right" t-elif="record.state == 'in_progress'">
+        <span>
+          <img src="/argos_calendar/static/src/img/medical.png" class="rounded-circle img-fluid"
+               style="max-width: 20px"/>
+        </span>
+      </div>
+      <div class="float-right" t-elif="record.state == 'waiting'">
+        <span>
+          <img src="/argos_calendar/static/src/img/hourglass.png" class="rounded-circle img-fluid"
+               style="max-width: 20px"/>
+        </span>
+      </div>
+      <field name="name"/>
+      <t t-if="record.role_id">
+        <div class="o_event_title" t-esc="record.role_id[1]"/>
+      </t>
+      <t t-else="">
+        <div class="o_event_title" t-esc="record.display_name"/>
+      </t>
+    </div>
+  </t>
+  <t t-name="AgendaView.buttons">
+    <div class="o_calendar_buttons">
+      <div class="btn-group">
+        <div class="dropdown">
+          <button type="button" id="dropdownClockButton" data-placement="top" title="Modify time slot"
+                  class="o_calendar_button_clock btn btn-secondary dropdown-toggle fa fa-lg fa-clock-o"
+                  data-toggle="dropdown" data-toggle-second="tooltip" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownClockButton">
+            <t t-foreach="clockInterval" t-as="clock">
+              <button class="dropdown-item" type="button" t-att-data-interval="clock.interval" href="#">
+                <t t-esc="clock.name"/>
+              </button>
+            </t>
+          </div>
+        </div>
+      </div>
+      <t t-if="!isMobile">
+        <button class="o_calendar_button_prev btn btn-primary" aria-label="Previous" title="Previous">
+          <span class="fa fa-arrow-left"/>
+        </button>
+        <button class="o_calendar_button_today btn btn-primary">Today</button>
+        <button class="o_calendar_button_next btn btn-primary" aria-label="Next" title="Next">
+          <span class="fa fa-arrow-right"/>
+        </button>
+      </t>
+      <div class="btn-group">
+        <button type="button" class="o_calendar_button_day btn btn-secondary">Day</button>
+        <button type="button" class="o_calendar_button_week btn btn-secondary">Week</button>
+      </div>
+    </div>
+  </t>
+
+  <t t-name="CalendarView.event.popup.placeholder">
+    <div t-attf-class="o_cw_popover popover card shadow #{typeof color === 'number' ? _.str.sprintf('o_calendar_color_%s', color) : ''}"
+         role="tooltip">
+      <div class="arrow"/>
+      <div class="card-header d-flex justify-content-between py-2 pr-2">
+        <h4 class="popover-header border-0 p-0 pt-1"/>
+      </div>
+      <div class="o_popup_body">
+      </div>
+    </div>
+  </t>
+
+  <t t-name="CalendarView.event.popup">
+    <div class="o_cw_body">
+      <ul class="list-group list-group-flush">
+        <li t-if="!widget.hideDate and widget.eventDate.date" class="list-group-item">
+          <i class="fa fa-fw fa-calendar-o"/>
+          <b class="text-capitalize" t-esc="widget.eventDate.date"/>
+          <small t-if="widget.eventDate.duration">
+            <b t-esc="_.str.sprintf('(%s)', widget.eventDate.duration)"/>
+          </small>
+        </li>
+        <li t-if="!widget.hideTime and widget.eventTime.time" class="list-group-item">
+          <i class="fa fa-fw fa-clock-o"/>
+          <b t-esc="widget.eventTime.time"/>
+          <small t-if="widget.eventTime.duration">
+            <b t-esc="_.str.sprintf('(%s)', widget.eventTime.duration)"/>
+          </small>
+        </li>
+      </ul>
+      <ul class="list-group list-group-flush o_cw_popover_fields_secondary"/>
+      <div class="card-footer border-top">
+      </div>
+    </div>
+  </t>
+</template>

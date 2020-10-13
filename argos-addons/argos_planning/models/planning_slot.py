@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
-import logging
 import ast
+import pytz
+import logging
+import datetime
+from datetime import timedelta, datetime as dt
+
+from odoo import models, fields, api, _
 
 _logger = logging.getLogger(__name__)
 
@@ -30,6 +34,61 @@ class PlanningSlot(models.Model):
     arrival_time = fields.Datetime('Arrival Time', track_visibility='onchange')
     pickup_time = fields.Datetime('Pick-up Time', track_visibility='onchange')
     departure_time = fields.Datetime('Departure Time', track_visibility='onchange')
+    allday = fields.Boolean('All Day', default=False)
+    background_event = fields.Boolean('Background', default=False)
+    partner_phone = fields.Char(related='partner_id.phone', string='Customer phone')
+
+    @api.model
+    def get_work_interval(self, start_date, employee=False, background=False):
+        timezone = self._context.get('tz') or self.env.user.partner_id.tz or 'UTC'
+        self_tz = self.with_context(tz=timezone)
+        start_date = fields.Datetime.context_timestamp(self_tz, start_date)
+        start_datetime = dt.combine(start_date, datetime.time(8, 0, 0))
+        end_datetime = dt.combine(start_date, datetime.time(20, 0, 0))
+        if background:
+            start_datetime = dt.combine(start_date, datetime.time.min)
+            end_datetime = dt.combine(start_date, datetime.time.max)
+        elif employee:
+            work_interval = employee.resource_id._get_work_interval(start_datetime, end_datetime)
+            if work_interval.get(employee.resource_id.id, False):
+                start_dt, end_dt = work_interval[employee.resource_id.id]
+                if start_dt:
+                    start_datetime = start_dt.astimezone(pytz.utc).replace(tzinfo=None)
+                if end_dt:
+                    end_datetime = end_dt.astimezone(pytz.utc).replace(tzinfo=None)
+        return [start_datetime.astimezone(pytz.utc).replace(tzinfo=None),
+                end_datetime.astimezone(pytz.utc).replace(tzinfo=None)]
+
+    def write(self, vals):
+        if vals.get('rendering', False):
+            del vals['rendering']
+        if vals.get('allday', False) or self[0].allday:
+            start_datetime = fields.Datetime.from_string(vals.get('start_datetime', False)) or self[0].start_datetime
+            employee_id = self.env['hr.employee'].browse(vals['employee_id']) if 'employee_id' in vals else self[
+                0].employee_id
+            interval = self.get_work_interval(start_datetime, employee_id)
+            vals['start_datetime'] = interval[0]
+            vals['end_datetime'] = interval[1]
+        return super(PlanningSlot, self).write(vals)
+
+    @api.onchange('allday')
+    def _on_allday_change(self):
+        if self.allday:
+            interval = self.get_work_interval(self.start_datetime, self.employee_id)
+            self.start_datetime = interval[0]
+            self.end_datetime = interval[1]
+
+    @api.onchange('background_event')
+    def _on_background_event_change(self):
+        if self.background_event:
+            interval = self.get_work_interval(self.start_datetime, self.employee_id, self.background_event)
+            self.start_datetime = interval[0]
+            self.end_datetime = interval[1]
+
+    @api.onchange('role_id')
+    def _on_role_change(self):
+        if self.role_id and self.role_id.allday:
+            self.allday = True
 
     @api.model
     def _cron_recover_planning(self):
@@ -115,7 +174,6 @@ class PlanningSlot(models.Model):
             'default_is_consultation': True,
             'default_consultation_type_id': self.consultation_type_id.id,
             'default_customer_observation': self.more_info,
-            'default_operating_unit_id': self.operating_unit_id.id,
         })
         return action
 
