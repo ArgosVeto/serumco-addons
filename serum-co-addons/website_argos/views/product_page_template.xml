@@ -31,19 +31,22 @@
 	    <xpath expr="//div[@id='product_details']" position="replace">
             <div class="col-lg-6 col-xl-6" id="product_details">
             	<div class="category-wish d-flex align-items-center mb16">
-            		<t t-if="product.public_categ_ids">
-		                <div class="argos_categ">
-		                    <p>
-		                        <t t-foreach="product.public_categ_ids" t-as="categs">
-		                            <a t-att-href="'/shop/category/%s' % slug(categs)">
-		                                <span class="categ-name">
-		                                    <t t-esc="categs.name"/>
-		                                </span>
-		                            </a>
-		                        </t>
-		                    </p>
-		                </div>
-		            </t>
+            		<t t-set="gamne_value" t-value="website.get_product_gamne_values(product)"/>
+                    <t t-if="gamne_value">
+                        <div class="argos_categ">
+                            <p>
+                                <t t-foreach="gamne_value" t-as="gv">
+                                    <a 
+                                    t-att-href="website.default_category(gv)"
+                                    role="button">
+                                        <span class="categ-name">
+                                            <t t-esc="gv.name"/>
+                                        </span>
+                                    </a>    
+                                </t>
+                            </p>
+                        </div>
+                    </t>
             		<div class="ml-auto">
                         <a type="button" role="button"
                             class="btn btn-default o_add_wishlist te_theme_button"
@@ -297,7 +300,7 @@
                 <t t-esc="rating_avg"/><span> / 5</span>
             </span>
             <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
-            <t t-esc="alt_product.rating_avg"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+            <t t-esc="alt_product.rating_count"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
         </div>
     </template>
 
@@ -327,15 +330,18 @@
                     <div t-if="product_variant" t-field="product_variant.image_128" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
                         class="d-flex h-100 justify-content-center align-items-center" />
                     <div t-else="" t-field="alt_product.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded shadow o_alternative_product' }" />
-                    <t t-if="alt_product.public_categ_ids">
+                    <t t-set="gamne_value" t-value="website.get_product_gamne_values(alt_product)"/>
+                    <t t-if="gamne_value">
                         <div class="argos_categ">
                             <p>
-                                <t t-foreach="alt_product.public_categ_ids" t-as="categs">
-                                    <a t-att-href="'/shop/category/%s' % slug(categs)">
+                                <t t-foreach="gamne_value" t-as="gv">
+                                    <a 
+                                    t-att-href="website.default_category(gv)"
+                                    role="button">
                                         <span class="categ-name">
-                                            <t t-esc="categs.name"/>
+                                            <t t-esc="gv.name"/>
                                         </span>
-                                    </a>
+                                    </a>    
                                 </t>
                             </p>
                         </div>

@@ -8,12 +8,34 @@
 			<t name="Argos Shop Home" t-name="argos_shop_home">
 				<t t-call="website.layout">
 					<div class="oe_structure oe_empty" id="wrap">
-						<section class="shop_home_banner pt64 pb64">
+						<section class="shop_home_banner pb64">
+							<div class="row m-0 my_content">
+			                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
+			                        <div class="top-links p-0">
+			                            <div class="container">
+			                                <ul class="nav navbar-nav flex-row">
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/shop-home">Accueil</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
+			                                    </li>
+			                                    <li class="nav-item m-0">
+			                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
+			                                    </li>
+			                                </ul>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
 							<div class="container">
-								<div class="">
+								<div class="mt8">
 				            		<ol class="breadcrumb">
 									    <li class="breadcrumb-item"><a href="/shop">Boutique</a></li>
-									    <li class="breadcrumb-item"><a href="/"></a>Accueil</li>
+									    <li class="breadcrumb-item"><a href="/shop-home">Accueil</a></li>
 									</ol>
 				            	</div>
 				            	<div class="Accueil-banner mt32 mb32">

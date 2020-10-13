@@ -494,13 +494,14 @@
 							</div>
 						</div>
 					</div>
+					<div class="clinic-rating">
+						<h2>Les avis de nos clients</h2>
+						<t t-call="portal.message_thread">
+							<t t-set="object" t-value="operating_unit"/>
+							<t t-set="display_rating" t-value="True"/>
+						</t>
+					</div>
 				</div>
-
-				<h2>Communication</h2>
-				<t t-call="portal.message_thread">
-					<t t-set="object" t-value="operating_unit"/>
-					<t t-set="display_rating" t-value="True"/>
-				</t>
 			</section>
 		</t>
 	</template>

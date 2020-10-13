@@ -27,6 +27,9 @@ access_applicant_agglomeration,access_applicant_agglomeration,model_applicant_ag
 access_job_type,access_job_type,model_job_type,base.group_user,1,1,1,1
 access_job_tag,access_job_tag,model_job_tag,base.group_user,1,1,1,1
 
+access_job_tag_portal,access_job_tag_portal,model_job_tag,base.group_portal,1,1,1,1
+access_job_tag_public,access_job_tag_public,model_job_tag,base.group_public,1,1,1,1
+
 access_product_tab,access_product_tab,model_product_tab,base.group_user,1,1,1,1
 access_product_tab_website,access_product_tab_website,model_product_tab,,1,0,0,0
 

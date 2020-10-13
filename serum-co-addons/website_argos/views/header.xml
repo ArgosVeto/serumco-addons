@@ -84,16 +84,16 @@
 									<div class="dropdown-menu js_usermenu" role="menu">
 										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 											<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
-											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
-											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
-											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
-											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
 											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
 											<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a>
 											<a id="o_logout" class="dropdown-item px-0"
 												t-attf-href="/web/session/logout?redirect=/"
-												role="menuitem">Logout</a>
+												role="menuitem">Déconnexion</a>
 										</div>
 										<div groups="base.group_public" class="">
 											<a class="dropdown-item px-0" t-attf-href="/web/login">
@@ -105,8 +105,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="cart ml4" id="top_menu">
-									<a href="/shop/cart" class="cart-link p-0 m-0">
+								<div class="cart  ml4" id="top_menu">
+									<a href="/shop/cart" class="cart-link p-0 m-0 o_wsale_my_cart">
 										<img src="/website_argos/static/src/img/cart.svg"/>
 										<img src="/website_argos/static/src/img/red-cart.svg" class="red"/>
 									</a>

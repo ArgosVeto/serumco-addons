@@ -90,11 +90,9 @@
         'views/job_detail_snippet.xml',
         'views/job_fiche.xml',
     ],
-
-    'qweb':[
-        'static/src/xml/button.xml',
+    'qweb': [
+        'static/src/xml/portal_chatter.xml',
     ],
-
     'demo': [
     
     ],

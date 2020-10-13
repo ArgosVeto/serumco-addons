@@ -40,6 +40,61 @@
     </xpath>
 </template>
 
+    <template id="blog_type_search_tmp" name="Blog Post Search">
+        <t t-if="posts">
+
+        <t t-set="blog" t-value="blogs"/>
+        <div t-attf-class="dropdown">
+            <t t-if="blog">
+                
+                <t t-set="ss" t-value="blog[0]"/>
+                <a role="button" href="#" class="dropdown-toggle btn ge btn-link nav-link" data-toggle="dropdown">
+                    <t t-esc="ss and ss.name or ' - '" />
+                </a>
+                <div class="dropdown-menu" role="menu">
+                    <t t-if="blog">
+                        <t t-foreach="blog" t-as="s">
+                            <a role="menuitem" t-attf-href="/blog?blog_blog=#{s.sudo().id}" class="dropdown-item">
+                                <span class="switcher_pricelist" 
+                                    t-att-name="s.name"
+                                    t-att-data-pl_id="s.id" 
+                                    t-esc="s.name" />
+                            </a>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </div>
+        </t>    
+    </template>
+    <template id="blog_tag_search_tmp" name="Blog Tag Search">
+        <t t-if="posts">
+            <t t-set="tag" t-value="blog_tag_ids"/>
+            <div t-attf-class="dropdown">
+                <t t-if="tag">                
+                    <t t-set="ss" t-value="tag[0]"/>
+                    <a role="button" href="#" class="dropdown-toggle btn ge btn-link nav-link" data-toggle="dropdown">
+                        <t t-esc="ss and ss.name or ' - '" />
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <t t-if="tag">
+                            <t t-foreach="tag" t-as="s">
+                                <a role="menuitem" t-attf-href="/blog?blog_tag=#{s.sudo().id}" class="dropdown-item">
+                                    <span class="switcher_pricelist" 
+                                        t-att-name="s.name"
+                                        t-att-data-pl_id="s.id" 
+                                        t-esc="s.name" />
+                                </a>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </t>     
+    </template>
+
+    
+
 
 	
 	<!-- ======   Template: Blogs Navbar   =========================================
@@ -47,38 +102,20 @@
 	
 	<template id="opt_blog_nav_argos" name="Nav Argos" inherit_id="website_blog.blogs_nav">
 	    <xpath expr="//ul[hasclass('navbar-nav')]" position="replace">
-	    	<ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/blog" t-attf-class="nav-link font-weight-bold #{(not blog) and 'active'}">All</a>
-                </li>
-                <li class="nav-item" t-foreach="blogs" t-as="nav_blog">
-                    <a t-attf-href="/blog/#{slug(nav_blog)}"
-                       t-attf-class="nav-link #{(blog and nav_blog.id == blog.id) and 'active' or ''}">
-                        <b t-field="nav_blog.name"/>
-                    </a>
-                </li>
+            <t t-if="posts">
+    	    	<ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/blog" t-attf-class="nav-link font-weight-bold #{(not blog) and 'active'}">All</a>
+                    </li>
+                    <div class="search_by_blog">
+                        <t t-call="website_argos.blog_type_search_tmp"/>
+                    </div>
 
-                <li class="mr-1 mb8">
-                    <select id="blog_id" name="blog_id" t-attf-class="form-control">
-                        <option value="">sélectionner...</option>
-                        <t t-foreach="blogs" t-as="blog">
-                            <option t-att-value="blog.id">
-                                <t t-esc="blog.name"/>
-                            </option>
-                        </t>
-                    </select>
-                </li>
-                <li class="mr-1 mb8">
-                    <select id="tag_id" name="tag_id" t-attf-class="form-control">
-                        <option value="">sélectionner...</option>
-                        <t t-foreach="tags" t-as="tag">
-                            <option t-att-value="tag.id">
-                                <t t-esc="tag.name"/>
-                            </option>
-                        </t>
-                    </select>
-                </li>
-            </ul>
+                     <div class="search_by_blog_tag">
+                        <t t-call="website_argos.blog_tag_search_tmp"/>
+                    </div>
+                </ul>
+            </t>
 	    </xpath>
     </template>
     

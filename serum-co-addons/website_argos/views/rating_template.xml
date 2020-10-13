@@ -19,7 +19,7 @@
                 <t t-esc="rating_avg"/><span> / 5</span>
             </span>
             <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
-            <t t-esc="product.rating_avg"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+            <t t-esc="product.rating_count"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
         </div>
     </template>
     

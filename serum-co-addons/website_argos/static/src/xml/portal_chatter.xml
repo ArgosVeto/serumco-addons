@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+	<t t-extend="portal.chatter_messages">
+		<t t-jquery=".o_portal_chatter_messages" t-operation="replace">
+        	<div class="o_portal_chatter_messages">
+            <t t-foreach="widget.get('messages') || []" t-as="message">
+                <div class="media o_portal_chatter_message" t-att-id="'message-' + message.id">
+                    <div class="media-body">
+                        <div class="product-rating-star">
+                            <t t-if="message['rating_value']">
+                                <t t-call="website_rating.rating_stars_static">
+                                    <t t-set="val" t-value="message.rating_value"/>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="position-relative">
+                        	 <t t-raw="message.body"/>
+                        	 <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                        </div>
+                        <div class="o_portal_chatter_message_title">
+                            <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+                            <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+        </t>
+    </t>
+</templates>

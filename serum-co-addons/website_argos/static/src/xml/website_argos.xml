@@ -20,7 +20,7 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-dismiss="modal" id="prod_sub_data">Add</button>
+                       <button class="btn btn-primary" data-dismiss="modal" id="prod_sub_data">Add</button>
                     </div>
                 </div>
             </div>

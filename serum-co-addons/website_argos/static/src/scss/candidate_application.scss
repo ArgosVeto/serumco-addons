@@ -86,5 +86,27 @@
 	  		height: 132px;
 	  	}
   	}
+  	.custom-input::-webkit-file-upload-button {
+	  visibility: hidden;
+	}
+	.custom-input{
+		border:none !important;
+		box-shadow: unset !important;
+		padding:10px 0 !important;
+	}
+	.custom-input::before {
+	  content: 'Ajouter un fichier';
+	  display: inline-block;
+	  background-color: theme-color('primary');
+	  border-radius: 22px;
+	  padding: 10px 40px;
+	  outline: none;
+	  white-space: nowrap;
+	  -webkit-user-select: none;
+	  cursor: pointer;
+	  font-weight: 900;
+	  font-size: 16px;
+	  color:#ffffff;
+	}
 }
 

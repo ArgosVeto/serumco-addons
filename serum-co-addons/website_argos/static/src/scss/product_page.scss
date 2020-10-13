@@ -70,6 +70,9 @@
 	}
 	#product_details{
 		padding-top:20px;
+		#product_attributes_simple{
+			display: none;
+		}
 		.category-wish{
 			.argos_categ{
 	    		p{
@@ -173,7 +176,7 @@
 			  line-height: 26px;
 			  letter-spacing: normal;
 			  color: #8b8b8b !important;
-			  font-family:"AvenirLTStd-Heavy";
+			  font-family:"AvenirLTStd-Roman";
 		}
 		.line{
 		  height: 1px;
@@ -292,10 +295,9 @@
 		  	height: 48px;
 		  	border-radius: 8px;
 		  	background-color: rgba(99, 186, 233, 0.04);
-		  	text-align: center;
-    		justify-content: center;
     		line-height: 48px;
     		margin-top:25px;
+    		padding:0 16px;
     		img{
     			width: 20px;
   				height: 20px;
@@ -616,15 +618,100 @@
 	}
 }
 .o_shop_discussion_rating{
+	.stars.enabled {
+		> .fa-star-o{
+			color: theme-color('secondary') !important;
+		}
+		> .fa-star{
+			color: theme-color('secondary') !important;
+		}
+	}
+	.product-rating-star {
+		.o_website_rating_static {
+			i.fa.fa-star.text-black-25{
+				color: theme-color('secondary') !important;
+				&::before{
+				    content: "\f006";
+				}
+			}
+		}
+	}
 	#discussion{
 		 border-top: solid 1px rgba(139, 139, 139, 0.16);
 		 padding:50px 0 !important;
 		 margin-top: 25px;
+	}
+	h2{
+		margin-bottom:40px;
 	}
 	.o_portal_chatter_header{
 		display:none;
 	}
 	hr{
 		display:none;
+	}
+	.o_website_rating_static{
+		color: #de1a46 !important;
+		margin-bottom: 15px;
+	}
+	.media{
+		.media-body{
+			> .position-relative > .o_website_rating_static {
+				display: none;
+			}
+			border-bottom: none !important;
+		}
+	}
+	.media-body{
+		position: relative;
+		padding: 30px 0;
+		border-bottom: solid 1px rgba(139, 139, 139, 0.16);
+	}
+	p{
+		font-size: 16px;
+	    font-weight: normal;
+	    font-stretch: normal;
+	    font-style: oblique;
+	    line-height: 1.63;
+	    letter-spacing: normal;
+	    color: #8b8b8b;
+	    position: relative;
+	    margin-bottom: 1rem !important;
+	}
+	.quote-image {
+	    position: absolute;
+	    left: 0px;
+	    top: -15px;
+	}
+	.o_portal_chatter_message_title{
+
+		h5{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy !important;
+		    font-size: 12px;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9;
+		    text-transform: uppercase;
+		    &:after{
+		    	content: '|';
+		    	margin:0 10px;
+		    }
+		}
+		.o_portal_chatter_puslished_date{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy;
+		    font-size: 12px !important;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9 !important;
+		    text-transform: uppercase;
+		}
 	}
 }

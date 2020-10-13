@@ -103,6 +103,34 @@
 	  letter-spacing: 2px;
 	  font-family: AvenirLTStd-Heavy;
       text-transform: uppercase;
+   		border-radius: 8px;
+   		transition: 0.2s;
+   		-webkit-transition: 0.2s;
+
+      
+	}
+	.selection{
+		select , option{
+			border: none !important;
+			color:theme-color('primary') !important;
+			font-size: 12px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.67;
+			  letter-spacing: 2px;
+			  font-family: AvenirLTStd-Heavy;
+		      text-transform: uppercase;
+		}
+	}
+
+	.navbar .navbar-nav{
+		.nav-link {
+			margin-right: 10px;
+			&:hover{
+		      	background-color: #ffffff !important;
+	      	}
+		}
 	}
 
 	#o_wblog_posts_loop .o_record_cover_container {

@@ -62,6 +62,18 @@ class Website(models.Model):
         return att_value
 
     @api.model
+    def get_product_gamne_values(self,product):
+        att_value = False
+        att_list = []
+        if product.attribute_line_ids:
+            for line in product.attribute_line_ids:
+                if line.attribute_id.name == 'Gamme':
+                    att_list = line.value_ids                    
+        return att_list
+
+        
+
+    @api.model
     def get_cash_values(self):
         cash_values = request.env['product.attribute'].sudo().search([('name','=','Espèces')])
         att_value = False

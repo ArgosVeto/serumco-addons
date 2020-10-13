@@ -2,6 +2,8 @@
 <odoo>
 
 	 <template id="job_search_box" name="job Searchbox">
+    	<t t-if="jobs">
+
         <div role="search">
              <form t-attf-class="o_cjob_searchbar_form input-group" t-att-action="action if action else '/jobs'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Name/Adresse/Code Postal/Ville…" t-att-value="search"/>
@@ -15,32 +17,37 @@
                 </div>               
             </form>            
         </div>
+    </t>
     </template>
 
 
 	<template id="job_type_search_box" name="Job Type Search">
-        <t t-set="jobs" t-value="job_type_ids" />
-        <div t-attf-class="dropdown">
-        	<t t-if="job_type_ids">
-	            <t t-set="job_type" t-value="job_type_ids"/>
-	            <t t-set="jt" t-value="job_type_ids[0]"/>
-	            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
-	                <t t-esc="jt and jt.name or ' - '" />
-	            </a>
-	            <div class="dropdown-menu" role="menu">
-	            	<t t-if="jobs">
-		                <t t-foreach="jobs" t-as="j">
-		                    <a role="menuitem" t-attf-href="/jobs?search_job_type=#{j.id}" class="dropdown-item">
-		                        <span class="switcher_pricelist" 
-		                        	t-att-name="j.name"
-		                        	t-att-data-pl_id="j.id" 
-		                        	t-esc="j.name" />
-		                    </a>
-		                </t>
-	                </t>
-	            </div>
-	        </t>
-        </div>        
+    	<t t-if="jobs">
+    		<t t-if="job_type_ids">
+		        <t t-set="job_types" t-value="job_type_ids" />
+		        <div t-attf-class="dropdown">
+		        	<t t-if="job_type_ids">
+			            <t t-set="job_type" t-value="job_type_ids"/>
+			            <t t-set="jt" t-value="job_type_ids[0]"/>
+			            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
+			                <t t-esc="jt and jt.name or ' - '" />
+			            </a>
+			            <div class="dropdown-menu" role="menu">
+			            	<t t-if="job_types">
+				                <t t-foreach="job_types" t-as="j">
+				                    <a role="menuitem" t-attf-href="/jobs?search_job_type=#{j.id}" class="dropdown-item">
+				                        <span class="switcher_pricelist" 
+				                        	t-att-name="j.name"
+				                        	t-att-data-pl_id="j.id" 
+				                        	t-esc="j.name" />
+				                    </a>
+				                </t>
+			                </t>
+			            </div>
+			        </t>
+		        </div>
+		    </t>
+	    </t>       
     </template>
 
 	<template id="index_inherit_template" inherit_id="website_hr_recruitment.index" name="Jobs List">
@@ -82,12 +89,6 @@
 							<t t-set="action" t-value="'/jobs'"/>
 							<t t-call="website_argos.job_type_search_box"/>
 						</div>
-						<div class="alert-btn ml-auto">
-							<a class="btn btn-primary">
-								<span class="fa fa-bell-o mr-2"/>
-								<span>Créer une alerte</span>
-							</a>
-						</div>
 					</div>
                 </div>
             </section>
@@ -111,8 +112,8 @@
                         	<div class="job-name-link mb16 d-flex align-items-center">
 	                            <h3>
 	                                <a t-attf-href="/jobs/detail/#{ slug(job) }">
-	                                    <span t-field="job.name"/>
-	                                </a>
+                                        <span t-field="job.name"/>
+                                    </a>
 	                            </h3>
 	                            <div class="share-link ml-auto">
 	                            	<div t-attf-class="s_share #{_classes}">

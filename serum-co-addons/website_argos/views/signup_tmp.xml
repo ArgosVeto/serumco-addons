@@ -22,6 +22,48 @@
         </xpath>
         </template>
 
+        <template id="auth_login_inherit_fields_banner" inherit_id="auth_signup.login" name="Log In">
+        <xpath expr="//form[@class='oe_login_form']" position="before">
+            <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                                <li class="breadcrumb-item"> Connexion</li>
+                              </ol>
+                        </div>
+                        <div class="col-lg-12 pt16 pb32 text-center">
+                            <h1>Connexion</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </xpath>
+        </template>
+
+         <template id="auth_reset_inherit_fields_banner" inherit_id="auth_signup.reset_password" name="Reset password">
+        <xpath expr="//form[@class='oe_reset_password_form']" position="before">
+            <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                                <li class="breadcrumb-item"> Mot De Passe Oublie </li>
+                              </ol>
+                        </div>
+                        <div class="col-lg-12 pt16 pb32 text-center">
+                            <h1>Mot De Passe Oublie</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </xpath>
+        </template>
+
 	
 	
 	<template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
@@ -59,6 +101,22 @@
                 <label for="confirm_password" class="col-form-label">Confirmer le mot de passe</label>
                 <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
             </div>
+
+            <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
+                <div class="check">
+                    <input type="checkbox" name="confirm_first">
+                        <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
+                    </input>
+                </div>
+            </div>
+
+             <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
+                <div class="check">
+                    <input type="checkbox" name="confirm_second">
+                        <span class="ml-2 confirm_second">J’accepte de recevoir la newsletter lorem ipsum dolor sit amet</span>
+                    </input>
+                </div>
+            </div>
         </template>
 	
 	
@@ -66,8 +124,8 @@
     <template id="auth_signup_signup_fields" inherit_id="auth_signup.signup" name="Sign up">
         <xpath expr="//div[@class='text-center oe_login_buttons pt-3']" position="replace">
             <div class="text-center oe_login_buttons pt-3">
-                <button type="submit" class="btn btn-primary btn-block">Valider mom inscription</button>
-                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Vous avez deja un compte ? Connectez-vous !</a>
+                <button type="submit" class="btn btn-primary">Valider mom inscription</button>
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm mt32" role="button">Vous avez deja un compte ? Connectez-vous !</a>
                 <div class="o_login_auth"/>
             </div>
         </xpath>

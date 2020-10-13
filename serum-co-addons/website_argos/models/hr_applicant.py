@@ -13,7 +13,7 @@ class HrApplicant(models.Model):
     address =  fields.Char(string="Address")
     country_id = fields.Many2one('res.country',string="Country")
     number_of_exp = fields.Char(string="Number of experience")
-    agglomeration_id = fields.Many2one('applicant.agglomeration',string="Agglomeration")
+    agglomeration_id = fields.Char(string="Agglomeration")
     job_type_id = fields.Many2one('job.type',string="Job Type")
     
 class Agglomeration(models.Model):
@@ -33,12 +33,6 @@ class HrJob(models.Model):
 
     job_type_id = fields.Many2one('job.type',string="Job Type")
     job_tag_ids = fields.Many2many('job.tag',string="Job Tag")
-    
-    
-    
-    
-from odoo import api, fields, models
-
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'

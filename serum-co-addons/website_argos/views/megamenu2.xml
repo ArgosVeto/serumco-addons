@@ -6,6 +6,12 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="heading-contents">
+							<!-- <t t-set="services" t-value="website.operating_unit_services()"/>
+							<t t-foreach="services" t-as="s">
+								<p class="m-0">
+									<a class="menu_item text-gamma" t-attf-href="/service-detail/#{slug(s.sudo())}" role="button"><span><t t-esc="s.name"/></span></a>
+								</p>
+							</t> -->
 							<p class="m-0"><a class="menu_item text-gamma" href="#">Consultation</a></p>
 							<p class="m-0"><a class="menu_item text-gamma" href="#">Imagerie Médicale</a></p>
 							<p class="m-0"><a class="menu_item text-gamma" href="#">Chirurgie vétérinaire</a></p>

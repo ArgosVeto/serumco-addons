@@ -258,6 +258,15 @@
 					  color: theme-color('primary');
 				}
 			}
+			#fav-product-carousel{
+				.carousel-item{
+					padding: 0 25px;
+				}
+				.carousel-control-prev, .carousel-control-next{
+					width: 0%;
+					opacity: 1;
+				}
+			}
 		    border-radius: 8px;
 		    background-color: rgba(99, 186, 233, 0.04);
 		    border: 0;

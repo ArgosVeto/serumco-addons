@@ -10,8 +10,30 @@
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="before">
 			<t t-if="category">
 				<section class="shop_categ_info s_blog_banner">
+					<div class="row m-0 my_content">
+	                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
+	                        <div class="top-links p-0">
+	                            <div class="container">
+	                                <ul class="nav navbar-nav flex-row">
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/">Accueil</a>
+	                                    </li>
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+	                                    </li>
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
+	                                    </li>
+	                                    <li class="nav-item m-0">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
 					<div class="container">
-						<div class="top-breadcrumbs">
+						<div class="top-breadcrumbs mt8">
 		                    <ol class="breadcrumb mb32">
 		                    	<li class="breadcrumb-item">
 				                    <a href="/">Accueil</a>
@@ -54,6 +76,44 @@
 		                </div>
 					</div>
 				</section>
+			</t>
+			<t t-else="">
+				<section class="shop_categ_info s_blog_banner pt-0">
+					<div class="row m-0 my_content">
+	                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
+	                        <div class="top-links p-0 bg-transparent">
+	                            <div class="container">
+	                                <ul class="nav navbar-nav flex-row">
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/shop-home">Accueil</a>
+	                                    </li>
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+	                                    </li>
+	                                    <li class="nav-item mr32">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
+	                                    </li>
+	                                    <li class="nav-item m-0">
+	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+					<div class="container">
+						<div class="top-breadcrumbs mt8">
+		                    <ol class="breadcrumb m-0">
+		                    	<li class="breadcrumb-item">
+				                    <a href="/">Accueil</a>
+				                </li>
+		                        <li class="breadcrumb-item">
+		                            <a href="/shop">Boutique</a>
+		                        </li>
+		                    </ol>
+		                </div>
+		            </div>
+		        </section>
 			</t>
 			<div class="shop_page_filter oe_website_sale d-none d-md-block">
 				<div class="container">
@@ -178,16 +238,19 @@
 			</div>
 		</xpath>
 		<xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="before">
-			<t t-if="product.public_categ_ids">
+			<t t-set="gamne_value" t-value="website.get_product_gamne_values(product)"/>
+			<t t-if="gamne_value">
                 <div class="argos_categ">
                     <p>
-                        <t t-foreach="product.public_categ_ids" t-as="categs">
-                            <a t-att-href="'/shop/category/%s' % slug(categs)">
-                                <span class="categ-name">
-                                    <t t-esc="categs.name"/>
-                                </span>
-                            </a>
-                        </t>
+                    	<t t-foreach="gamne_value" t-as="gv">
+                    		<a 
+            				t-att-href="website.default_category(gv)"
+            				role="button">
+			               	 	<span class="categ-name">
+			               	 		<t t-esc="gv.name"/>
+			               	 	</span>
+			              	</a>	
+                    	</t>
                     </p>
                 </div>
             </t>

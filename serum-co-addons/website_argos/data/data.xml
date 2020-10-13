@@ -4,16 +4,5 @@
         <record id="website_default_logo" model="res.config.settings">
             <field name="website_logo" type="base64" file="website_argos/static/src/img/argos-logo.png" />
         </record>
-
-        <!-- <record id="service_provide_value_1" model="operating.unit.service">
-            <field name="name">Service</field>
-        </record> -->
-        <!-- <record id="clinic_type_value_1" model="clinic.type">
-            <field name="name">Type</field>
-        </record>
- -->
-        <record id="job_type_value_1" model="job.type">
-            <field name="name">Type</field>
-        </record>
     </data>
 </odoo>

@@ -536,3 +536,21 @@
 		}
 	}
 }
+
+.mycart-popover{
+	.popover-body{
+		.alert-info{
+			color: white;
+			background-color: transparent;
+			border-color: white;
+		}
+		background-color: theme-color('primary');
+	}
+}
+
+.oe_website_sale{
+	.js_cart_lines.alert.alert-info{
+		background-color: theme-color('primary');
+		color: white;
+	}
+}

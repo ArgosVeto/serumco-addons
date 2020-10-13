@@ -124,7 +124,7 @@
 				                        	<p class="pt48 mt32 mb32 votre-profil"><strong>Votre profil</strong></p>
 											<label class="col-form-label" for="Resume">Importez votre CV</label>
 			                          	
-				                            <input type="file" class="form-control o_website_form_input" name="Resume" style="height: auto;"/>
+				                            <input type="file" class="form-control o_website_form_input custom-input" name="Resume" style="height: auto;"/>
 				                            <p class="mt16 mb-0">Nous acceptons les fichiers PDF, DOC, DOCX, JPG et PNG</p>
 				                        </div>
 			                		</div>
@@ -146,8 +146,8 @@
 				                        	<select id="agglomeration_id" name="agglomeration_id" t-attf-class="form-control">
 						                        <option value="">sélectionner...</option>
 						                        <t t-foreach="agglomeration_ids" t-as="a">
-						                            <option t-att-value="a.id">
-						                                <t t-esc="a.name" />
+						                            <option t-att-value="a">
+						                                <t t-esc="a" />
 						                            </option>
 						                        </t>
 						                    </select>

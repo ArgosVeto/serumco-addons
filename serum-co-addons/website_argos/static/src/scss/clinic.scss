@@ -76,7 +76,7 @@
 }
 
 .o_clinic_searchbar_form {
-		width: 66%;
+		width: 71%;
 	
 	.se-btn {
 		margin-left: 27px;
@@ -87,7 +87,8 @@
 	}
 	
 	 ::placeholder {
-		  color:theme-color('primary');
+		  color: #63bae9;
+		  opacity: 0.6;
 		}
 	
 	.form-control {
@@ -682,9 +683,9 @@
 	}
 	
 	.quote-image {
-		    position: absolute;
-		    left: 0px;
-		    top: -13px;
+	    position: absolute;
+	    left: 0px;
+	    top: -13px;
 	}
 
 }
@@ -706,5 +707,70 @@
 		right:0px !important;
 		top:0px !important;
 		
+	}
+}
+.clinic-rating{
+	h2{
+		margin-bottom:40px;
+	}
+	.o_portal_chatter_header{
+		display:none;
+	}
+	hr{
+		display:none;
+	}
+	.o_website_rating_static{
+		display:none;
+	}
+	.media-body{
+		position: relative;
+		padding: 30px 0;
+	}
+	p{
+		font-size: 16px;
+	    font-weight: normal;
+	    font-stretch: normal;
+	    font-style: oblique;
+	    line-height: 1.63;
+	    letter-spacing: normal;
+	    color: #8b8b8b;
+	    position: relative;
+	    margin-bottom: 1rem !important;
+	}
+	.quote-image {
+	    position: absolute;
+	    left: 0px;
+	    top: -15px;
+	}
+	.o_portal_chatter_message_title{
+
+		h5{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy !important;
+		    font-size: 12px;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9;
+		    text-transform: uppercase;
+		    &:after{
+		    	content: '|';
+		    	margin:0 10px;
+		    }
+		}
+		.o_portal_chatter_puslished_date{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy;
+		    font-size: 12px !important;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9 !important;
+		    text-transform: uppercase;
+		}
 	}
 }

@@ -62,7 +62,11 @@
 			<script src="/website_argos/static/src/js/biz_quickview.js" />
 			<script src="/website_argos/static/src/js/product_variant.js" />
 			<script src="/website_argos/static/src/js/cart_address.js"/>
+			<script src="/website_argos/static/src/js/chatter.js"/>
+			<script src="/website_argos/static/src/js/portal_chatter.js"/>
         </xpath>
+
+
     </template>
 
     <template id="website_argos_assets_editor" inherit_id="website.assets_editor" name="Bizople Theme Editor Assets">

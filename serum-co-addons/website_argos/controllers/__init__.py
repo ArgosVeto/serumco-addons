@@ -6,4 +6,4 @@ from . import main
 from . import clinic_main
 from . import protal
 from . import address
-# from . import cart_address
+from . import blog

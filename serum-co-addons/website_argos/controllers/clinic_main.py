@@ -10,7 +10,7 @@ import pytz
 from odoo.addons.http_routing.models.ir_http import slug
 
 
-# sss
+
 
 class Appointment(http.Controller):
 	@http.route([
@@ -64,14 +64,19 @@ class MailingList(http.Controller):
 class Application(http.Controller):	
 	@http.route(['''/application'''],type='http', auth="public", website=True)	
 	def application(self,**post):
+		cities = []
 		agglomeration_ids = request.env['applicant.agglomeration'].sudo().search([])
 		country_ids = request.env['res.country'].sudo().search([])
 		job_type_ids = request.env['job.type'].sudo().search([])
 		job_ids = request.env['hr.job'].sudo().search([])
+		operating_unit_ids = request.env['operating.unit'].sudo().search([])
+		for unit in operating_unit_ids:
+			if unit.city  and unit.city  not in cities:
+				cities.append(unit.city)
 		values = {
 			'country_ids':country_ids,
 			'job_ids':job_ids,
-			'agglomeration_ids':agglomeration_ids,
+			'agglomeration_ids':cities,
 		}
 		return request.env['ir.ui.view'].render_template("website_argos.application_template",values)
 
@@ -104,11 +109,11 @@ class Application(http.Controller):
 		if 'country_id' in kwargs and kwargs['country_id']:
 			applicant_vals.update({'country_id':int(kwargs['country_id'])})
 		if 'agglomeration_id' in kwargs and kwargs['agglomeration_id']:
-			applicant_vals.update({'agglomeration_id':int(kwargs['agglomeration_id'])})
+			applicant_vals.update({'agglomeration_id':kwargs['agglomeration_id']})
 		if 'job_id' in kwargs and kwargs['job_id']:
 			applicant_vals.update({'job_id':int(kwargs['job_id'])})
 		applicant_vals.update({'partner_name':partner_name,'name':name})
-		app_id = hr_applicant.create(applicant_vals)
+		app_id = hr_applicant.sudo().create(applicant_vals)
 		return request.redirect('/job-thank-you')
 
 class WebsiteHrRecruitment(WebsiteHrRecruitment):
