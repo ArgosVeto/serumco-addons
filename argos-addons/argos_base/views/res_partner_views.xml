@@ -15,7 +15,7 @@
         </field>
         <field name="ref" position="replace"/>
         <field name="function" position="before">
-          <field name="ref" string="ID GmVet"/>
+          <field name="ref" string="ID GmVet" invisible="1"/>
         </field>
         <field name="vat" position="after">
           <field name="has_tutor_curator"/>
@@ -53,6 +53,15 @@
         <xpath expr="//form/sheet/group/group[last()]/div[hasclass('o_row')]" position="attributes">
           <attribute name="invisible">1</attribute>
         </xpath>
+        <field name="state_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="vat" position="attributes">
+          <attribute name="attrs">{'readonly': [('parent_id','!=',False)], 'invisible': [('is_company','=',False)]}</attribute>
+        </field>
+        <xpath expr="//group[@name='sale']/field[@name='user_id']" position="before">
+          <field name="kinetec_code"/>
+        </xpath>
       </field>
     </record>
 
@@ -67,6 +76,9 @@
             <attribute name="attrs">{'invisible': [('is_company', '=', False)], 'required': [('is_company', '=',
               True)]}
             </attribute>
+          </xpath>
+          <xpath expr="//field[@name='siret']" position="after">
+            <field name="siren" attrs="{'invisible': [('is_company', '=', False)]}"/>
           </xpath>
         </data>
       </field>
