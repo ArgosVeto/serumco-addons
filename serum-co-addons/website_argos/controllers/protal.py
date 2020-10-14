@@ -38,8 +38,6 @@ class AuthSignupHomeSS(AuthSignupHome):
 		vals_qcontext = {}
 		if qcontext:
 			vals_qcontext = dict(qcontext)
-		if 'confirm_second' not in vals_qcontext.keys():
-			raise UserError(_("Veuillez confirmer J’accepte de recevoir la newsletter lorem ipsum dolor sit amet"))
 		if 'confirm_first' not in vals_qcontext.keys():
 			raise UserError(_("Veuillez confirmer J'ai lu et j'accepte les CGU et la politique de confidentialité"))
 		values = { key: qcontext.get(key) for key in ('login', 'name', 'password') }
