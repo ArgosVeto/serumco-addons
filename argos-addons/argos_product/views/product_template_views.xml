@@ -18,13 +18,11 @@
           <page string="Medical Informations" name="medical_information">
             <group>
               <group>
-                <field name="act_type" widget="radio"/>
                 <field name="species_ids" widget="many2many_tags"/>
                 <field name="race_ids" widget="many2many_tags" context="{'default_type': 'race'}"/>
                 <field name="nature"/>
                 <field name="administration_route_ids" widget="many2many_tags"/>
                 <field name="approval"/>
-                <field name="issue_condition"/>
               </group>
               <group>
                 <field name="active_substance_id"/>
@@ -33,10 +31,23 @@
                 <field name="qsp_quantity"/>
                 <field name="qsp_uom_id"/>
               </group>
+              <group>
+                <field name="act_type" widget="radio"/>
+              </group>
+              <group>
+                <field name="is_antibiotic"/>
+                <field name="is_critical_antibiotic"/>
+                <field name="is_antirabies"/>
+                <field name="is_drug"/>
+                <field name="is_refrigerated"/>
+              </group>
             </group>
             <group>
               <field name="indication"/>
             </group>
+          </page>
+          <page name="documentation" string="Documentations">
+            <field name="documentation_ids"/>
           </page>
         </notebook>
         <xpath expr="//label[@for='name']" position="attributes">
@@ -64,6 +75,12 @@
         <xpath expr="//field[@name='uom_id']" position="attributes">
           <attribute name="string">Sales uom</attribute>
         </xpath>
+        <field name="categ_id" position="attributes">
+          <attribute name="string">Argos Product Category</attribute>
+        </field>
+        <group name="packaging" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </group>
       </field>
     </record>
 

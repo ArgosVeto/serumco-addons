@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 14:14+0000\n"
-"PO-Revision-Date: 2020-09-15 14:14+0000\n"
+"POT-Creation-Date: 2020-09-30 14:50+0000\n"
+"PO-Revision-Date: 2020-09-30 14:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,11 @@ msgid "Approval"
 msgstr "Agrément"
 
 #. module: argos_product
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Argos Product Category"
+msgstr "Catégorie d'article Argos"
+
+#. module: argos_product
 #: model:ir.model.fields.selection,name:argos_product.selection__product_template__nature__chemical
 msgid "Chemical"
 msgstr "Chimique"
@@ -81,6 +86,8 @@ msgstr "Créé par"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__create_date
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__create_date
+#: model:ir.model.fields,field_description:argos_product.field_product_route__create_date
 msgid "Created on"
 msgstr "Créé le"
 
@@ -91,8 +98,31 @@ msgstr "Libellé client"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__display_name
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__display_name
+#: model:ir.model.fields,field_description:argos_product.field_product_route__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__doc_type
+#: model:ir.model.fields,field_description:argos_product.field_product_product__doc_type
+#: model:ir.model.fields,field_description:argos_product.field_product_template__doc_type
+msgid "Documentation Type"
+msgstr "Type de documentation"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__doc_url
+#: model:ir.model.fields,field_description:argos_product.field_product_product__doc_url
+#: model:ir.model.fields,field_description:argos_product.field_product_template__doc_url
+msgid "Documentation URL"
+msgstr "URL"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__documentation_ids
+#: model:ir.model.fields,field_description:argos_product.field_product_template__documentation_ids
+#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
+msgid "Documentations"
+msgstr "Documentations"
 
 #. module: argos_product
 #: model_terms:ir.ui.view,arch_db:argos_product.product_template_only_form_view_inherit
@@ -117,6 +147,8 @@ msgstr "Homéopathique"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__id
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__id
+#: model:ir.model.fields,field_description:argos_product.field_product_route__id
 msgid "ID"
 msgstr "ID"
 
@@ -140,13 +172,39 @@ msgstr "Libellé interne Argos"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_category__is_antibiotic
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_antibiotic
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_antibiotic
 msgid "Is Antibiotic"
 msgstr "Antibiotique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_antirabies
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_antirabies
+msgid "Is Antirabies"
+msgstr "Antirabique"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_category__is_critical
 msgid "Is Critical"
 msgstr "Critique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_critical_antibiotic
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_critical_antibiotic
+msgid "Is Critical Antibiotic"
+msgstr "Antibiotique critique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_drug
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_drug
+msgid "Is Drug"
+msgstr "Stupéfiant"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_refrigerated
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_refrigerated
+msgid "Is Refrigerated"
+msgstr "Réfrigéré"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__is_top_ten
@@ -155,23 +213,23 @@ msgid "Is Top Ten"
 msgstr "Top ten"
 
 #. module: argos_product
-#: model:ir.model.fields,field_description:argos_product.field_product_product__issue_condition
-#: model:ir.model.fields,field_description:argos_product.field_product_template__issue_condition
-msgid "Issue Condition"
-msgstr "Condition de délivrance"
-
-#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance____last_update
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation____last_update
+#: model:ir.model.fields,field_description:argos_product.field_product_route____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__write_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__write_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_route__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__write_date
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__write_date
+#: model:ir.model.fields,field_description:argos_product.field_product_route__write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
@@ -187,6 +245,7 @@ msgstr "Informations médicales"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__name
+#: model:ir.model.fields,field_description:argos_product.field_product_route__name
 msgid "Name"
 msgstr "Nom"
 
@@ -229,12 +288,28 @@ msgid "Product Category"
 msgstr "Catégorie d'article"
 
 #. module: argos_product
+#: model:ir.model,name:argos_product.model_product_documentation
+msgid "Product Documentation"
+msgstr "Documentation de produit"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_supplierinfo__maker_partner_id
 msgid "Product Maker"
 msgstr "Fabricant"
 
 #. module: argos_product
+#: model:ir.model,name:argos_product.model_product_route
+msgid "Product Route"
+msgstr "Voie d'administration"
+
+#. module: argos_product
+#: model:ir.actions.act_window,name:argos_product.product_route_action
+msgid "Product Routes"
+msgstr "Voies d'administration"
+
+#. module: argos_product
 #: model:ir.model,name:argos_product.model_product_template
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__product_template_id
 msgid "Product Template"
 msgstr "Modèle d'article"
 

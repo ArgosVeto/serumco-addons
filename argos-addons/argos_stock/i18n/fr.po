@@ -358,11 +358,11 @@ msgid "Transfer"
 msgstr "Transfert"
 
 #. module: argos_stock
+#: model:ir.ui.menu,name:argos_stock.product_route_menuitem
+msgid "Product Routes"
+msgstr "Voies d'administration"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.product_template_form_view_inherit
 msgid "Usage Tips"
 msgstr "Conseils d'utilisation"
-
-#. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "Weight in kg:"
-msgstr "Poids en kg:"

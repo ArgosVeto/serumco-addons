@@ -27,6 +27,7 @@
         'views/stock_picking_views.xml',
         'views/stock_menu_views.xml',
         'views/res_partner_views.xml',
+        'views/menu_views.xml',
     ],
     'application': False,
     'installable': True,

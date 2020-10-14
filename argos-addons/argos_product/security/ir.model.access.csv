@@ -2,3 +2,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_active_substance_reader,access_active_substance reader,model_active_substance,,1,0,0,0
 access_active_substance_user,access_active_substance user,model_active_substance,base.group_user,1,1,1,0
 access_active_substance_admin,access_active_substance admin,model_active_substance,base.group_erp_manager,1,1,1,1
+access_product_route_reader,access_product_route reader,model_product_route,,1,0,0,0
+access_product_route_user,access_product_route user,model_product_route,base.group_user,1,1,1,0
+access_product_route_admin,access_product_route admin,model_product_route,base.group_erp_manager,1,1,1,1
+access_product_documentation_reader,access_product_documentation reader,model_product_documentation,,1,0,0,0
+access_product_documentation_user,access_product_documentation user,model_product_documentation,base.group_user,1,1,1,0
+access_product_documentation_admin,access_product_documentation admin,model_product_documentation,base.group_erp_manager,1,documentation

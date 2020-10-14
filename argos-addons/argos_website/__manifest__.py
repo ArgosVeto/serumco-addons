@@ -29,6 +29,7 @@
         'data/res_config_settings.xml',
         'data/res_config_parameter.xml',
         'data/ir_sequence_data.xml',
+        'data/product_category_data.xml',
         # security
         # 'security/ir.model.access.csv',
         'security/res_groups.xml',
@@ -39,6 +40,7 @@
         'views/product_attribute_views.xml',
         'views/rating_rating_views.xml',
         'views/menu_views.xml',
+        'views/product_category_views.xml',
     ],
     'application': False,
     'installable': True,

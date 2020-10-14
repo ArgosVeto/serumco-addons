@@ -20,8 +20,7 @@ class ProductTemplate(models.Model):
     substance_uom_id = fields.Many2one('uom.uom', 'Active Substance Unity')
     qsp_quantity = fields.Integer('Qsp Quantity')
     qsp_uom_id = fields.Many2one('uom.uom', 'Qsp Unity')
-    issue_condition = fields.Char('Issue Condition')
-    administration_route_ids = fields.Many2many('documents.tag', 'product_template_tag_rel', 'product_template_id', 'document_tag_id',
+    administration_route_ids = fields.Many2many('product.route', 'product_template_route_rel', 'product_template_id', 'product_route_id',
                                                 'Administration Route')
     amm = fields.Char('AMM Code')
     price_sensivity = fields.Selection([('a', 'A'), ('b', 'B'), ('c', 'C')], 'Price Sensivity')
@@ -43,6 +42,12 @@ class ProductTemplate(models.Model):
     act_type = fields.Selection([('undefined', _('Undefined')), ('surgery', _('Surgery')),
                                  ('incineration', _('Incineration')), ('euthanasia', _('Euthanasia')),
                                  ('hospitalization', _('Hospitalization'))], string='Act Type', default='undefined')
+    is_antibiotic = fields.Boolean('Is Antibiotic')
+    is_critical_antibiotic = fields.Boolean('Is Critical Antibiotic')
+    is_antirabies = fields.Boolean('Is Antirabies')
+    is_drug = fields.Boolean('Is Drug')
+    is_refrigerated = fields.Boolean('Is Refrigerated')
+    documentation_ids = fields.One2many('product.documentation', 'product_template_id', 'Documentations')
 
     @api.depends('attribute_line_ids')
     def _compute_routing_value_ids(self):
