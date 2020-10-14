@@ -12,6 +12,7 @@ from odoo.addons.portal.controllers.web import Home
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 import json
+import base64
 from datetime import datetime
 from odoo.http import route
 from odoo.exceptions import UserError
@@ -69,7 +70,6 @@ class CustomerPortal(CustomerPortal):
 			'error': {},
 			'error_message': [],
 		})
-
 		if post and request.httprequest.method == 'POST':
 			error, error_message = self.details_form_validate(post)
 			values.update({'error': error, 'error_message': error_message})
@@ -112,6 +112,19 @@ class AuthSignupHome(Home):
 		return super(AuthSignupHome,self).web_login(*args, **kw)
 
 class PortalContent(http.Controller):
+	@http.route(['/job/resume-attachment'], type='json', auth="none")
+	def customer_resume_attachment(self,**post):
+		file_datas = str(post['file_upload1']).split(',')
+		ir_attachment = request.env['ir.attachment'].sudo().create(
+			{
+			'name':post['file_name'],
+			'datas': file_datas[1],
+			'type': 'binary',
+			'datas_fname':  post['file_upload1'],
+			'mimetype':str(post['mimetype']),
+			})
+		return ir_attachment.id
+
 	@http.route(['''/add-product-cart'''],type='http', auth="user", website=True)
 	def add_product_cart(self,**post):
 		if 'product_id' in post and post['product_id']:

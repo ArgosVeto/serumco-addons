@@ -36,7 +36,7 @@
 					                </div>
 					                <div class="col-lg-4 ">
 					                	<div class="mb16">
-						                   <a role="button" target="" href="#" class="btn btn-outline-primary d-block">
+						                   <a role="button" target="_blank" t-att-href="clinic_id.google_map_link" class="btn btn-outline-primary d-block">
 						                       <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Afficher la carte</span>
 						                   </a>
 						                </div> 

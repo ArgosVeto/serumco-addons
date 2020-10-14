@@ -64,6 +64,10 @@
 			<script src="/website_argos/static/src/js/cart_address.js"/>
 			<script src="/website_argos/static/src/js/chatter.js"/>
 			<script src="/website_argos/static/src/js/portal_chatter.js"/>
+			<script src="/website_argos/static/src/js/resume_upload.js"/>
+
+			
+
         </xpath>
 
 

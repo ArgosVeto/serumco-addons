@@ -114,6 +114,11 @@ class Application(http.Controller):
 			applicant_vals.update({'job_id':int(kwargs['job_id'])})
 		applicant_vals.update({'partner_name':partner_name,'name':name})
 		app_id = hr_applicant.sudo().create(applicant_vals)
+		if 'div_file1' in kwargs and kwargs['div_file1']:
+			ir_attachment_id = request.env['ir.attachment'].sudo().browse(int(kwargs['div_file1']))
+			if ir_attachment_id and app_id:
+				ir_attachment_id.res_id = app_id.id
+				ir_attachment_id.res_model = 'hr.applicant'				
 		return request.redirect('/job-thank-you')
 
 class WebsiteHrRecruitment(WebsiteHrRecruitment):

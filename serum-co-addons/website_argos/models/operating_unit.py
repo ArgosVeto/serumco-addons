@@ -25,6 +25,7 @@ class OperatingUnit(models.Model):
     last_name = fields.Char(string="Last Name")
     mrdv_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")
+    google_map_link = fields.Char (string="Google Map Link")
     show_in_footer = fields.Boolean(string="Show In Footer")
 
     def  clinic_working_status(self):
