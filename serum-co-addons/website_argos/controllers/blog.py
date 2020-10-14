@@ -3,6 +3,7 @@ from odoo import fields, http, _
 from odoo.addons.website_blog.controllers.main import WebsiteBlog
 import werkzeug
 from odoo.addons.website.controllers.main import QueryURL
+from odoo.addons.http_routing.models.ir_http import slug, unslug
 
 class WebsiteBlog(WebsiteBlog):
 	@http.route([
