@@ -10,6 +10,7 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
+        'argos_sale',
         'argos_contact',
         'sale_subscription',
     ],
