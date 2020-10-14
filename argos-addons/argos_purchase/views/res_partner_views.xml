@@ -22,4 +22,15 @@
     </field>
   </record>
 
+  <record id="res_partner_view_purchase_account_buttons_inherit" model="ir.ui.view">
+    <field name="name">res.partner.view.purchase.account.buttons.inherit</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="purchase.res_partner_view_purchase_account_buttons"/>
+    <field name="arch" type="xml">
+      <button class="oe_stat_button" name="%(purchase.act_res_partner_2_supplier_invoices)d" position="attributes">
+        <attribute name="attrs">{'invisible': [('supplier_rank', '&lt;', 1)]}</attribute>
+      </button>
+    </field>
+  </record>
+
 </odoo>

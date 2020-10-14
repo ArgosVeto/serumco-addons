@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 15:21+0000\n"
-"PO-Revision-Date: 2020-10-12 15:21+0000\n"
+"POT-Creation-Date: 2020-10-14 11:47+0000\n"
+"PO-Revision-Date: 2020-10-14 11:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -92,6 +92,18 @@ msgid "ID GmVet"
 msgstr "Identifiant Gmvt"
 
 #. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__is_centravet
+#: model:ir.model.fields,field_description:argos_base.field_res_users__is_centravet
+msgid "Is Centravet Supplier"
+msgstr "Transmission EDI Centravet"
+
+#. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__kinetec_code
+#: model:ir.model.fields,field_description:argos_base.field_res_users__kinetec_code
+msgid "Kinetec Code"
+msgstr "Code KINETEC"
+
+#. module: argos_base
 #: model:res.groups,name:argos_base.mrdv_group_user
 msgid "MRDV User"
 msgstr "Utilisateur MRDV"
@@ -160,6 +172,12 @@ msgid "Signup Token Type"
 msgstr "Type de jeton de connexion"
 
 #. module: argos_base
+#: model:ir.model.fields,field_description:argos_base.field_res_partner__siren
+#: model:ir.model.fields,field_description:argos_base.field_res_users__siren
+msgid "Siren"
+msgstr "SIREN"
+
+#. module: argos_base
 #: model:ir.model.fields,field_description:argos_base.field_res_partner__social_reason
 #: model:ir.model.fields,field_description:argos_base.field_res_users__social_reason
 msgid "Social Reason"
@@ -196,9 +214,3 @@ msgstr "Indéfini"
 #: model:mail.template,subject:argos_base.confirmation_mail_template
 msgid "Welcome"
 msgstr "Bienvenue"
-
-#. module: argos_base
-#: model:ir.model.fields,field_description:argos_base.field_res_partner__is_centravet
-#: model:ir.model.fields,field_description:argos_base.field_res_users__is_centravet
-msgid "Is Centravet supplier"
-msgstr "Transmission EDI Centravet"
