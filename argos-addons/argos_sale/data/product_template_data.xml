@@ -4,6 +4,7 @@
     <record id="product_incineration" model="product.template">
         <field name="name">Incineration</field>
         <field name="type">consu</field>
+        <field name="act_type">incineration</field>
     </record>
 
 </odoo>

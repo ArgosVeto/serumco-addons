@@ -38,6 +38,8 @@
             <button name="%(argos_sale.action_refer_consultation_to)d"
                     string="Refer To" type="action"
             />
+            <button name="button_edit_incineris" string="Incineris Convention" type="object"
+                    attrs="{'invisible': ['|', ('is_incineris', '=', False), ('conv_key', '!=', False)]}"/>
             <field name="argos_state" widget="statusbar" statusbar_visible="in_progress,consultation_done"/>
           </header>
           <sheet>
@@ -67,6 +69,8 @@
             </div>
             <group>
               <group>
+                <field name="conv_key" invisible="1"/>
+                <field name="is_incineris" invisible="1"/>
                 <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
                 <field name="invoice_status" invisible="1"/>
                 <field name="state" invisible="1"/>
@@ -446,15 +450,6 @@
       <field name="binding_view_types">form</field>
       <field name="state">code</field>
       <field name="code">action = records.reprint_convention()</field>
-    </record>
-
-    <record id="model_sale_order_action_delete_convention" model="ir.actions.server">
-      <field name="name">Delete Convention</field>
-      <field name="model_id" ref="sale.model_sale_order"/>
-      <field name="binding_model_id" ref="sale.model_sale_order"/>
-      <field name="binding_view_types">form</field>
-      <field name="state">code</field>
-      <field name="code">action = records.delete_convention()</field>
     </record>
 
     <record id="action_consultations" model="ir.actions.act_window">
