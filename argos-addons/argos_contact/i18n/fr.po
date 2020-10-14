@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 15:24+0000\n"
-"PO-Revision-Date: 2020-10-12 15:24+0000\n"
+"POT-Creation-Date: 2020-10-14 12:28+0000\n"
+"PO-Revision-Date: 2020-10-14 12:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -470,6 +470,16 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__left_ear
+msgid "Left Ear"
+msgstr "Oreille gauche"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__left_thigh
+msgid "Left Thigh"
+msgstr "Cuisse gauche"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__environment_ids
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__environment_ids
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__living
@@ -762,6 +772,16 @@ msgid "Responsible User"
 msgstr "Utilisateur responsable"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__right_ear
+msgid "Right Ear"
+msgstr "Oreille droite"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__right_thigh
+msgid "Right Thigh"
+msgstr "Cuisse droite"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__robe_id
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__robe_id
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__robe
@@ -852,8 +872,8 @@ msgid "Tattoo Date"
 msgstr "Date du tatouage"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner__tattoo_location_id
-#: model:ir.model.fields,field_description:argos_contact.field_res_users__tattoo_location_id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__tattoo_location
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__tattoo_location
 msgid "Tattoo Location"
 msgstr "Localisation tatouage"
 
@@ -862,11 +882,6 @@ msgstr "Localisation tatouage"
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__tattoo_number
 msgid "Tattoo Number"
 msgstr "N° du tatouage"
-
-#. module: argos_contact
-#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__tattoo
-msgid "Tattoo location"
-msgstr "Localisation tatouage"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__type

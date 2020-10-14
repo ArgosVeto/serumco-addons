@@ -28,7 +28,8 @@ class ResPartner(models.Model):
     chip_identification = fields.Char('Chip Identification')
     issue_date = fields.Date('Issue Date')
     location = fields.Char('Location')
-    tattoo_location_id = fields.Many2one('res.partner.parameter', 'Tattoo Location', domain=[('type', '=', 'tattoo')])
+    tattoo_location = fields.Selection([('right_ear', 'Right Ear'), ('left_ear', 'Left Ear'), ('right_thigh', 'Right Thigh'),
+                                        ('left_thigh', 'Left Thigh')], 'Tattoo Location')
     chip_date = fields.Date('Insertion Date')
     chip_location_id = fields.Many2one('res.partner.parameter', 'Chip Location', domain=[('type', '=', 'chip')])
     image = fields.Binary('Image')
