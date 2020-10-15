@@ -34,7 +34,7 @@
 			                                        <a class="nav-link" href="/my/account">Mes adresses</a>
 			                                    </li>
 			                                    <li class="nav-item mr32">
-			                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
+			                                        <a class="nav-link active" href="/my-clinic">Ma clinique</a>
 			                                    </li>
 			                                    <li class="nav-item mr32">
 			                                        <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>

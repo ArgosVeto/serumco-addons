@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+  if ($("nav").hasClass("o_portal_navbar")) {
+    $('.ac-order').addClass('active-order'); 
+  }
+
+  if ($("div").hasClass("no-gutters")) {
+    $('.ac-address').addClass('active-address'); 
+  }
+
+  if ($("div").hasClass("o_portal_my_home")) {
+    $('.ac-info').addClass('active-info'); 
+  }
 	
 	$(function() {
 		setTimeout(function(){ 
