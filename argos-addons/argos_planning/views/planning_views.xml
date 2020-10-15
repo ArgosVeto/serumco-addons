@@ -23,6 +23,7 @@
       <field name="arch" type="xml">
         <xpath expr="//calendar" position="attributes">
           <attribute name="color">state</attribute>
+          <attribute name="all_day">allday</attribute>
         </xpath>
         <xpath expr="//field[@name='employee_id']" position="after">
           <field name="operating_unit_id"/>
@@ -72,6 +73,7 @@
           </header>
         </xpath>
         <field name="start_datetime" position="before">
+          <field name="allday" invisible="1"/>
           <field name="background_event"/>
         </field>
         <field name="is_assigned_to_me" position="before">
@@ -93,10 +95,10 @@
               <field name="mrdv_job_id"/>
             </group>
             <group>
-              <field name="patient_id" required="1" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
+              <field name="patient_id" attrs="{'required': [('background_event','=',False)]}" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
                    'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
-              <field name="partner_id" required="1"/>
-              <field name="consultation_type_id"/>
+              <field name="partner_id" attrs="{'required': [('background_event','=',False)]}"/>
+              <field name="consultation_type_id" string="Appointment nature"/>
               <field name="pickup_time" invisible="1"/>
               <field name="more_info"/>
             </group>

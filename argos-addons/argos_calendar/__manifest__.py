@@ -18,6 +18,7 @@
     'data': [
         'views/calendar_templates.xml',
         'views/calendar_views.xml',
+        'views/res_config_settings_views.xml',
     ],
     'qweb': [
         "static/src/xml/web_calendar.xml",

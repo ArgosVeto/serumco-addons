@@ -21,32 +21,35 @@ class PlanningSlot(models.Model):
     _inherit = 'planning.slot'
 
     @api.model
-    def get_resources(self):
+    def get_resources(self, start_date, end_date):
         employee_resources = {}
+        start_date = fields.Date.from_string(start_date)
+        end_date = fields.Date.from_string(end_date)
         cur_operating_unit = self.env.user.default_operating_unit_id
         if cur_operating_unit:
-            cur_date_time = fields.Datetime.now()
-            for employee in self.env['planning.assignment'].sudo().search(
-                    [('operating_unit_id', '=', cur_operating_unit.id), ('start_date', '<=', cur_date_time),
-                     ('end_date', '>', cur_date_time)]).mapped('employee_id'):
+            domain = [('operating_unit_id', '=', cur_operating_unit.id), '|', '&', ('start_datetime', '>', start_date),
+                      ('start_datetime', '<=', start_date), '&', ('end_datetime', '>', start_date),
+                      ('end_datetime', '<', end_date)]
+            plannings = self.search(domain)
+            for employee in plannings.mapped('employee_id'):
                 employee_resources[employee.id] = employee.name
-        employee_resources[False] = _('To assign')
+            if plannings.filtered(lambda l: not l.employee_id):
+                employee_resources[False] = _('To assign')
         return {'employee_id': employee_resources}
 
     @api.model
     def get_resources_data(self, start_date, end_date):
         event_list = []
-        employee_resources = self.get_resources().get('employee_id')
         start_date = fields.Date.from_string(start_date)
         end_date = fields.Date.from_string(end_date)
+        employee_resources = self.get_resources((start_date - timedelta(days=1)).strftime('%Y-%m-%d'),
+                                                end_date.strftime('%Y-%m-%d')).get('employee_id')
         delta = end_date - start_date
         timeoff_color = 'rgba(0,0,0,.15)'
-
+        resource_calendar_id = self.env.company.resource_calendar_id
+        if self.env.user.default_operating_unit_id and self.env.user.default_operating_unit_id.calendar_id:
+            resource_calendar_id = self.env.user.default_operating_unit_id.calendar_id
         for key, val in employee_resources.items():
-            if key:
-                resource_calendar_id = self.env['hr.employee'].browse(key).resource_calendar_id
-            else:
-                resource_calendar_id = self.env.company.resource_calendar_id
             for i in range(delta.days + 1):
                 day_date = start_date + timedelta(days=i)
                 break_time = False

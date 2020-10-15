@@ -39,25 +39,23 @@ class PlanningSlot(models.Model):
     partner_phone = fields.Char(related='partner_id.phone', string='Customer phone')
 
     @api.model
-    def get_work_interval(self, start_date, employee=False, background=False):
-        timezone = self._context.get('tz') or self.env.user.partner_id.tz or 'UTC'
-        self_tz = self.with_context(tz=timezone)
-        start_date = fields.Datetime.context_timestamp(self_tz, start_date)
-        start_datetime = dt.combine(start_date, datetime.time(8, 0, 0))
-        end_datetime = dt.combine(start_date, datetime.time(20, 0, 0))
-        if background:
-            start_datetime = dt.combine(start_date, datetime.time.min)
-            end_datetime = dt.combine(start_date, datetime.time.max)
-        elif employee:
+    def get_work_interval(self, start_date, employee=False):
+        tz = self._context.get('tz') or self.env.user.partner_id.tz or 'UTC'
+        timezone = pytz.timezone(tz)
+        self_tz = self.with_context(tz=tz)
+
+        start_date = fields.Datetime.context_timestamp(self_tz, start_date).replace(tzinfo=None).astimezone(timezone)
+        start_datetime = dt.combine(start_date, datetime.time(8, 0, 0)).astimezone(pytz.utc)
+        end_datetime = dt.combine(start_date, datetime.time(20, 0, 0)).astimezone(pytz.utc)
+        if employee:
             work_interval = employee.resource_id._get_work_interval(start_datetime, end_datetime)
             if work_interval.get(employee.resource_id.id, False):
                 start_dt, end_dt = work_interval[employee.resource_id.id]
                 if start_dt:
-                    start_datetime = start_dt.astimezone(pytz.utc).replace(tzinfo=None)
+                    start_datetime = start_dt.astimezone(pytz.utc).replace(tzinfo=None).astimezone(timezone)
                 if end_dt:
-                    end_datetime = end_dt.astimezone(pytz.utc).replace(tzinfo=None)
-        return [start_datetime.astimezone(pytz.utc).replace(tzinfo=None),
-                end_datetime.astimezone(pytz.utc).replace(tzinfo=None)]
+                    end_datetime = end_dt.astimezone(pytz.utc).replace(tzinfo=None).astimezone(timezone)
+        return [start_datetime.replace(tzinfo=None), end_datetime.replace(tzinfo=None)]
 
     def write(self, vals):
         if vals.get('rendering', False):
@@ -75,13 +73,6 @@ class PlanningSlot(models.Model):
     def _on_allday_change(self):
         if self.allday:
             interval = self.get_work_interval(self.start_datetime, self.employee_id)
-            self.start_datetime = interval[0]
-            self.end_datetime = interval[1]
-
-    @api.onchange('background_event')
-    def _on_background_event_change(self):
-        if self.background_event:
-            interval = self.get_work_interval(self.start_datetime, self.employee_id, self.background_event)
             self.start_datetime = interval[0]
             self.end_datetime = interval[1]
 

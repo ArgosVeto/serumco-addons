@@ -146,6 +146,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
         init: function (parent, state, params) {
             this._super.apply(this, arguments);
             this.dispose_popover = true;
+            this.toggle_header = true;
         },
 
         _unselectEvent: function () {
@@ -153,7 +154,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                 if (!this.$('.o_cw_popover').length) {
                     this.event_click = false;
                 }
-                this.$('.fc-event').removeClass('o_cw_custom_highlight');
+                this.$('.fc-event').removeClass('o_cw_custom_agenda_highlight');
                 this.$('.o_cw_popover').popover('dispose');
             } else {
                 this._super.apply(this, arguments);
@@ -167,13 +168,8 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     self._renderOffTime();
                     self._renderActivityGrid();
                     self._renderTaskGrid();
-                    var $nowIndicator = self.$calendar.find('.fc-content-col .fc-now-indicator.fc-now-indicator-line').parent();
-                    $nowIndicator.off("DOMSubtreeModified");
-                    $nowIndicator.on('DOMSubtreeModified', function () {
-                        self._renderStickyTimeline();
-                    });
                     self._renderStickyTimeline();
-
+                    self._toogleCalendarHeader();
                     return res;
                 })
             } else {
@@ -277,7 +273,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
 
         _disposePopover: function (eventData) {
             if (this.dispose_popover && this.last_event == eventData.id && !this.drag_start) {
-                this.$('.fc-event').removeClass('o_cw_custom_highlight');
+                this.$('.fc-event').removeClass('o_cw_custom_agenda_highlight');
                 this.$('.o_cw_popover').popover('dispose');
                 this.event_click = false;
                 this.dispose_popover = false;
@@ -321,7 +317,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     eventClick: function (eventData, ev) {
                         self._unselectEvent();
                         self.event_click = true;
-                        self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).addClass('o_cw_custom_highlight');
+                        self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).addClass('o_cw_custom_agenda_highlight');
                         self._renderEventPopover(eventData, $(ev.currentTarget));
                     },
                     select: function (startDate, endDate, event, _js_event, resource) {
@@ -338,19 +334,19 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                         }
                         self.$calendar.fullCalendar('unselect');
                     },
-                    eventOverlap: function (stillEvent, movingEvent) {
-                        if (movingEvent.allDay) {
-                            return false;
-                        } else if (stillEvent.rendering == "background" || stillEvent.allDay) {
-                            return true;
-                        }
-                    },
-                    eventAllow: function (dropLocation, draggedEvent) {
-                        if (draggedEvent.allDay) {
-                            return false;
-                        }
-                        return true;
-                    },
+                    // eventOverlap: function (stillEvent, movingEvent) {
+                    //     if (movingEvent.allDay) {
+                    //         return false;
+                    //     } else if (stillEvent.rendering == "background" || stillEvent.allDay) {
+                    //         return true;
+                    //     }
+                    // },
+                    // eventAllow: function (dropLocation, draggedEvent) {
+                    //     if (draggedEvent.allDay) {
+                    //         return false;
+                    //     }
+                    //     return true;
+                    // },
                     resourceRender: function (resourceObj, $th) {
                         var parent = $th;
                         var wrapper = document.createElement('div');
@@ -359,17 +355,30 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                         wrapper.appendChild(span);
                         parent.empty().append(wrapper).addClass('rotate');
                     },
+                    eventAfterRender: function (event, element, view) {
+                        if (event.rendering != "background") {
+                            var $after_element = element.next();
+                            var zindex = element.css('z-index');
+                            var after_zindex = $after_element.css('z-index');
+                            var element_style = $after_element.attr('style');
+                            if ($after_element && after_zindex > zindex) {
+                                if (element_style.split(';')[0].split(' ').length == 5) {
+                                    element.width((element_style.split(';')[0].split(' ')[4].replace('%', '') / zindex) + '%');
+                                } else {
+                                    element.width(element_style.split(';')[0].split(' ')[2]);
+                                }
+                            }
+                        }
+                    },
                     eventRender: function (event, element, view) {
                         self.isSwipeEnabled = false;
                         var $render = $(self._eventRender(event));
                         element.find('.fc-content').html($render.html());
                         element.addClass($render.attr('class'));
                         element.attr('data-event-id', event.id);
-
                         if (!element.find('.fc-bg').length) {
                             element.find('.fc-content').after($('<div/>', {class: 'fc-bg'}));
                         }
-
                         if (view.name === 'month' && event.record) {
                             var start = event.r_start || event.start;
                             var end = event.r_end || event.end;
@@ -398,7 +407,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                         self.last_event = eventData.id;
                         self.dispose_popover = false;
                         self._unselectEvent();
-                        self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).addClass('o_cw_custom_hover');
+                        self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).addClass('o_cw_custom_agenda_hover');
                         var container_width = self.$calendar.find('.fc-view-container').outerWidth();
                         if (eventData.record && container_width >= 780) {
                             self._renderEventPopover(eventData, $(ev.currentTarget));
@@ -410,9 +419,9 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                             setTimeout(function () {
                                 self._disposePopover(eventData);
                             }, 100);
-                            self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).removeClass('o_cw_custom_hover');
+                            self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).removeClass('o_cw_custom_agenda_hover');
                         } else {
-                            self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).removeClass('o_cw_custom_hover');
+                            self.$calendar.find(_.str.sprintf('[data-event-id=%s]', eventData.id)).removeClass('o_cw_custom_agenda_hover');
                         }
                     },
                     eventDragStart: function (eventData, ev) {
@@ -457,9 +466,28 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             }
         },
 
-        _updateResourcesWidth() {
+        _toogleCalendarHeader: function () {
+            var self = this;
+            this.$calendar.find('th.fc-axis.fc-week-number:last').unbind();
+            this.$calendar.find('th.fc-axis.fc-week-number:last').on('click', function (ev) {
+                ev.stopPropagation();
+                self.toggle_header = !self.toggle_header;
+                self._toogleCalendarHeader();
+                $(window).trigger('resize');
+            });
+            this.$calendar.find('.fc-day-activity-grid').toggle(this.toggle_header);
+            this.$calendar.find('.fc-day-task-grid').toggle(this.toggle_header);
+            this.$calendar.find('.fc-day-grid').toggle(this.toggle_header);
+            if (this.toggle_header) {
+                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-chevron-down"></button>'));
+            } else {
+                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-chevron-right"></button>'));
+            }
+        },
+
+        _updateResourcesWidth: function () {
             var container_width = this.$calendar.find('.fc-view-container').outerWidth();
-            var width = this.$calendar.fullCalendar('getResources').length * 7 * 120;
+            var width = this.$calendar.fullCalendar('getResources').length * 7 * 140;
             if (width < container_width) {
                 width = container_width;
             }
@@ -494,7 +522,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     model: 'planning.slot',
                     method: 'get_resources_data',
                     args: [startDate, endDate],
-                    context: self.state.context,
+                    context: self.state.context
                 }).then(function (events) {
                     self.$calendar.fullCalendar('addEventSource', events);
                 });
@@ -504,6 +532,11 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
         _renderStickyTimeline: function () {
             var self = this;
             if (self.state.scale == 'week') {
+                var $nowIndicator = self.$calendar.find('.fc-content-col .fc-now-indicator.fc-now-indicator-line').parent();
+                $nowIndicator.off("DOMSubtreeModified");
+                $nowIndicator.on('DOMSubtreeModified', function () {
+                    self._renderStickyTimeline();
+                });
                 self.$calendar.find('.clone-time-grid-wrap').remove();
                 var timelineWidth = self.$calendar.find('.fc-axis.fc-time.fc-widget-content').outerWidth();
                 var $timeGrid = self.$calendar.find('.fc-time-grid.fc-unselectable').clone();

@@ -4,25 +4,25 @@
          t-attf-class="#{!event.color_index ? 'text-white' : ''} #{record.is_highlighted and record.is_highlighted.value ? 'o_event_hightlight' : ''} #{typeof color === 'number' ? _.str.sprintf('o_calendar_color_%s', color) : ''}">
       <div class="float-right" t-if="record.invoice_count > 0">
         <span>
-          <img src="/argos_calendar/static/src/img/invoice-bill.png" class="rounded-circle img-fluid"
+          <img src="/web/binary/invoice_icon" class="rounded-circle img-fluid"
                style="max-width: 20px"/>
         </span>
       </div>
       <div class="float-right" t-elif="record.order_count > 0">
         <span>
-          <img src="/argos_calendar/static/src/img/hospital.png" class="rounded-circle img-fluid"
+          <img src="/web/binary/hospital_icon" class="rounded-circle img-fluid"
                style="max-width: 20px"/>
         </span>
       </div>
       <div class="float-right" t-elif="record.state == 'in_progress'">
         <span>
-          <img src="/argos_calendar/static/src/img/medical.png" class="rounded-circle img-fluid"
+          <img src="/web/binary/medical_icon" class="rounded-circle img-fluid"
                style="max-width: 20px"/>
         </span>
       </div>
       <div class="float-right" t-elif="record.state == 'waiting'">
         <span>
-          <img src="/argos_calendar/static/src/img/hourglass.png" class="rounded-circle img-fluid"
+          <img src="/web/binary/hour_icon" class="rounded-circle img-fluid"
                style="max-width: 20px"/>
         </span>
       </div>
