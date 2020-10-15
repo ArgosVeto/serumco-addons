@@ -34,6 +34,63 @@ odoo.define('argos_calendar.CalendarController', function (require) {
             }
         },
 
+        _onViewUpdated: function (event) {
+            this._super.apply(this, arguments);
+            if (this.context.agenda_calendar) {
+                this.updateView(0);
+            }
+        },
+
+        _onOpenEvent: function (event) {
+            if (this.context.agenda_calendar) {
+                var self = this;
+                var id = event.data._id;
+                id = id && parseInt(id).toString() === id ? parseInt(id) : id;
+
+                if (!this.eventOpenPopup) {
+                    this._rpc({
+                        model: self.modelName,
+                        method: 'get_formview_id',
+                        //The event can be called by a view that can have another context than the default one.
+                        args: [[id]],
+                        context: event.context || self.context,
+                    }).then(function (viewId) {
+                        self.do_action({
+                            type: 'ir.actions.act_window',
+                            res_id: id,
+                            res_model: self.modelName,
+                            views: [[viewId || false, 'form']],
+                            target: 'current',
+                            context: event.context || self.context,
+                        });
+                    });
+                    return;
+                }
+
+                var options = {
+                    res_model: self.modelName,
+                    res_id: id || null,
+                    context: event.context || self.context,
+                    title: _t("Open: ") + event.data.title,
+                    on_saved: function () {
+                        if (event.data.on_save) {
+                            event.data.on_save();
+                        }
+                        var $calendar = self.renderer.$calendar;
+                        var $fc_view = $calendar.find('.fc-view-container');
+                        var scrollPosition = $fc_view.scrollLeft();
+                        self.updateView(scrollPosition, true);
+                    },
+                };
+                if (this.formViewId) {
+                    options.view_id = parseInt(this.formViewId);
+                }
+                new dialogs.FormViewDialog(this, options).open();
+            } else {
+                return this._super.apply(this, arguments);
+            }
+        },
+
         _onOpenCreate: function (event) {
             if (this.context.agenda_calendar) {
                 var self = this;
@@ -180,11 +237,20 @@ odoo.define('argos_calendar.CalendarController', function (require) {
             var $fc_view = $calendar.find('.fc-view-container');
             if (reload) {
                 Promise.all([this.reload()]).then(function () {
-                    $fc_view.scrollLeft(position);
+                    self.renderer._updateEventResources();
+                    self.renderer._renderActivityGrid();
+                    self.renderer._renderTaskGrid();
                     self.renderer._renderStickyTimeline();
+                    self.renderer._toogleCalendarHeader();
+                    $fc_view.scrollLeft(position);
                 });
             } else {
                 $fc_view.scrollLeft(position);
+                self.renderer._updateEventResources();
+                self.renderer._renderActivityGrid();
+                self.renderer._renderTaskGrid();
+                self.renderer._renderStickyTimeline();
+                self.renderer._toogleCalendarHeader();
                 self.renderer._renderStickyTimeline();
             }
         },

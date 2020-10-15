@@ -13,6 +13,7 @@
         <field name="partner_id"/>
         <field name="patient_id"/>
         <field name="partner_phone"/>
+        <field name="arrival_time"/>
         <field name="background_event" invisible="1"/>
         <field name="order_count" invisible="1"/>
         <field name="invoice_count" invisible="1"/>

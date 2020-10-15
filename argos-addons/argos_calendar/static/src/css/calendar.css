@@ -58,7 +58,7 @@
 }
 
 .calendar_agenda .fc-time-grid .fc-slats td {
-    height: 2em;
+    height: 1.8em;
 }
 
 .fc-day-activity-grid, .fc-day-task-grid {
@@ -71,8 +71,12 @@
     vertical-align: middle;
 }
 
-.fc-agenda-view .fc-day-activity-grid .fc-row, .fc-agenda-view .fc-day-task-grid .fc-row {
-    min-height: 2.2em;
+.fc-agenda-view .fc-head-container.fc-widget-header {
+    line-height: 0.8em;
+}
+
+.fc-agenda-view .fc-day-activity-grid .fc-row, .fc-agenda-view .fc-day-task-grid .fc-row, .fc-agenda-view .fc-day-grid .fc-row {
+    min-height: 2em;
 }
 
 .calendar_agenda .o_mail_systray_item {

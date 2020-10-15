@@ -22,7 +22,7 @@ odoo.define('argos_calendar.CalendarModel', function (require) {
                             return l.value == key || (l.value == false && key == "false");
                         });
                         if (f) {
-                            if(key == "false" || key == false){
+                            if (key == "false" || key == false) {
                                 f.label = _t('To assign');
                             }
                             new_filters.push(f);
@@ -46,10 +46,13 @@ odoo.define('argos_calendar.CalendarModel', function (require) {
             var self = this;
             return this._super.apply(this, arguments).then(function (result) {
                 if (self.fieldColumn) {
+                    var startDate = self.data.start_date.format('Y-M-D');
+                    var endDate = self.data.end_date.format('Y-M-D');
                     return self._rpc({
                         model: self.modelName,
                         method: 'get_resources',
-                        context: self.data.context,
+                        args: [startDate, endDate],
+                        context: self.data.context
                     }).then(function (events) {
                         self._compute_columns(self.data, events);
                         self._filter_visible_filters();
@@ -85,18 +88,12 @@ odoo.define('argos_calendar.CalendarModel', function (require) {
             var result = this._super.apply(this, arguments);
             result.schedulerLicenseKey = 'GPL-My-Project-Is-Open-Source';
             if (this.fieldColumn) {
-                // var minTime = '08:00';
-                // var maxTime = '20:00';
                 var slotDuration = '00:15:00';
                 // var slotLabelInterval = 15;
-                // result.minTime = minTime;
-                // result.maxTime = maxTime;
                 result.slotDuration = slotDuration;
-                // result.slotLabelInterval = slotLabelInterval;
                 result.dragScroll = true;
                 result.resources = [];
                 result.groupByDateAndResource = true;
-                // result.eventOverlap = false;
             }
             return result;
         },
