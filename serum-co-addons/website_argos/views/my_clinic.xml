@@ -14,7 +14,42 @@
 							data-name="Text block" data-oe-id="1373"
 							data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view"
 							data-oe-field="arch">
-							
+							<div class="row m-0 mx-md-3 my_content">
+			                    <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+			                        <div class="top-links p-0">
+			                            <div class="container">
+			                                <ul class="nav navbar-nav flex-row">
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/orders">Commandes</a>
+			                                    </li>
+			                                    <t t-if="next_appointment_id or pervious_appointment_id">
+			                                        <li class="nav-item mr32">
+			                                            <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+			                                        </li>
+			                                    </t>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/account">Mes adresses</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+			                                    </li>
+			                                    <li class="nav-item m-0">
+			                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
+			                                    </li>
+			                                </ul>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
@@ -32,6 +67,17 @@
 											</li>
 										</ol>
 									</div>
+									<div class="col-lg-12 heading">
+			                            <h1 class="mt16 mb32">
+			                                Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+			                            </h1>
+			                            <p>
+			                                Retrouvez sur cette page lorem ipsum dolor sit amet 
+			                            </p>
+			                            <p class="mb48">
+			                                Nous Contacter
+			                            </p>
+			                        </div>
 									<div class="col-lg-7 pt16 pb8">
 										<h1>
 											<t t-esc="clinic.name"/>
