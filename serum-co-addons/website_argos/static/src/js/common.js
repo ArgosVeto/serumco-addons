@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$(function() {
 		setTimeout(function(){ 
 			$('#vetowidget iframe html').append('<link rel="stylesheet" href="/website_argos/static/src/css/appointment.css" type="text/css" />');
-			console.log("AVVVVVVVVVVVVVVVVVVVVVV")
+			
 		}, 3000);
 		
 	});

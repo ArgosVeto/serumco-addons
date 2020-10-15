@@ -53,6 +53,7 @@
         'views/Service_hospitalisation_template.xml',
         'views/blog_template.xml',
         'views/blog_snippet_inherited.xml',
+        'views/blog_page_snippet.xml',
         'views/dynamicslider.xml',
         'views/slider_snippets.xml',
         'views/header.xml',
