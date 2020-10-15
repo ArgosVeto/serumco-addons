@@ -9,10 +9,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
     def create_invoices(self):
         sale_orders = self.env['sale.order'].browse(self._context.get('active_ids', []))
         for order in sale_orders:
-            for line in order.order_line:
-                if line.product_id.act_type == 'euthanasia':
-                    order.patient_id.write({
-                        'is_dead': True,
-                        'death_date': order.consultation_date
-                    })
+            if any(line.product_id.act_type in ['euthanasia', 'incineration'] for line in order.order_line):
+                order.patient_id.write({
+                    'is_dead': True,
+                    'death_date': order.consultation_date
+                })
         return super(SaleAdvancePaymentInv, self).create_invoices()

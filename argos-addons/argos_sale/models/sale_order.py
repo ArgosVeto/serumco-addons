@@ -24,7 +24,7 @@ class SaleOrder(models.Model):
     pathology_ids = fields.Many2many('res.partner.pathology', related='patient_id.pathology_ids', readonly=False)
     employee_id = fields.Many2one('hr.employee', domain="[('is_veterinary', '=', True)]")
     is_consultation = fields.Boolean('Is Consultation')
-    conv_key = fields.Char('Convention Key', compute='_compute_conv_key')
+    conv_key = fields.Char('Convention Key', copy=False)
     consultation_date = fields.Date('Consultation Date', default=lambda self: fields.Date.today())
     consultation_type_id = fields.Many2one('consultation.type', domain=[('is_canvas', '=', False)])
     observation = fields.Text('Observations')
@@ -42,6 +42,12 @@ class SaleOrder(models.Model):
     origin_order_id = fields.Many2one('sale.order', 'Origin of the consultation', readonly=True)
     refer_order_ids = fields.One2many('sale.order', 'origin_order_id', 'Referred', readonly=True)
     refer_count = fields.Integer('Refers count', compute='_count_refers')
+    is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
+
+    @api.depends('order_line', 'order_line.product_id', 'order_line.product_id.act_type')
+    def _compute_is_incineris(self):
+        for rec in self:
+            rec.is_incineris = any(line.product_id.act_type == 'incineration' for line in rec.order_line)
 
     @api.depends('refer_order_ids')
     def _count_refers(self):
@@ -59,18 +65,18 @@ class SaleOrder(models.Model):
         new_url = urlparse.urlunparse(url_parse)
         return new_url
 
-    @api.depends('employee_id', 'partner_id', 'patient_id')
-    def _compute_conv_key(self):
-        soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
+    def set_conv_key(self):
+        self.ensure_one()
+        soft_id = self.env['ir.config_parameter'].get_param('incineris.soft_id')
         editor_id = soft_id or ''
-        for rec in self:
-            vet_id = str(rec.employee_id.id)
-            owner_id = str(rec.partner_id.id)
-            patient_id = str(rec.patient_id.id)
-            timestamp = str(fields.Datetime.now())
-            rec.conv_key = '-'.join([editor_id, vet_id, owner_id, patient_id, timestamp])
+        vet_id = str(self.employee_id.id)
+        owner_id = str(self.partner_id.id)
+        patient_id = str(self.patient_id.id)
+        timestamp = str(fields.Datetime.now())
+        self.conv_key = '-'.join([editor_id, vet_id, owner_id, patient_id, timestamp])
+        return True
 
-    def action_edit_incineris(self):
+    def button_edit_incineris(self):
         self.ensure_one()
         if not self.is_consultation:
             raise UserError(_('Only consultation can generate incineris convention.'))
@@ -78,6 +84,7 @@ class SaleOrder(models.Model):
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
         species = self.patient_id.species_id and self.patient_id.species_id.is_incineris_species and \
                   self.patient_id.species_id.name or 'nac'
+        self.set_conv_key()
         params = {
             'action': 'create',
             'soft_id': soft_id or '',
@@ -123,26 +130,6 @@ class SaleOrder(models.Model):
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
         params = {
             'action': 'reprint',
-            'soft_id': soft_id,
-            'conv_key': self.conv_key,
-        }
-        new_url = self.parse_url(url, params)
-        return {
-            'type': 'ir.actions.act_url',
-            'url': new_url,
-            'target': 'new',
-        }
-
-    def delete_convention(self):
-        self.ensure_one()
-        if not self.is_consultation:
-            raise UserError(_('Only consultation can generate incineris convention.'))
-        if not self.conv_key:
-            raise ValidationError(_('Please generate convention first'))
-        url = self.env['ir.config_parameter'].get_param("incineris_url") or ''
-        soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
-        params = {
-            'action': 'delete',
             'soft_id': soft_id,
             'conv_key': self.conv_key,
         }
