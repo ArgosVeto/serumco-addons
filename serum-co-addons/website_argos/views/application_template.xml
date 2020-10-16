@@ -124,7 +124,7 @@
 				                        	<p class="pt48 mt32 mb32 votre-profil"><strong>Votre profil</strong></p>
 											<label class="col-form-label" for="Resume">Importez votre CV</label>
 
-											<input id="resume_file1" name="resume_file1" class="form-control o_website_form_input custom-input" accept="image/*,application/pdf" type="file" style="height: auto;"/>
+											<input id="resume_file1" required="true" name="resume_file1" class="form-control o_website_form_input custom-input" accept="image/*,application/pdf" type="file" style="height: auto;"/>
 
 											<input id="div_file1" type="hidden" name="div_file1"/>
 				                            <p class="mt16 mb-0">Nous acceptons les fichiers PDF, DOC, DOCX, JPG et PNG</p>
