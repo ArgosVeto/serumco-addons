@@ -147,6 +147,7 @@ class WebsiteHrRecruitment(WebsiteHrRecruitment):
 			job_type_id = request.env['job.type'].sudo().search([('id','=',int(kwargs['search_job_type']))])
 			subdomains.append([('job_type_id', '=', job_type_id.id)])
 		if 'search' in kwargs and kwargs['search']:
+			subdomains.append([('name','ilike',kwargs['search'])])
 			subdomains.append([('address_id.street','ilike',kwargs['search'])])
 			subdomains.append([('address_id.street2','ilike',kwargs['search'])])
 			subdomains.append([('address_id.city','ilike',kwargs['search'])])
