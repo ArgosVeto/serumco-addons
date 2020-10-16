@@ -491,3 +491,16 @@ $(function() {
       }
   });
 });
+
+$(document).ready(function(){
+    $('#contact_msg').on('change', function() {
+      if ( this.value == '1')
+      {
+        $(".colors").show();
+      }
+      else
+      {
+        $(".colors").hide();
+      }
+    });
+});

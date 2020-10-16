@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+		<record id="contact_question_1" model="contact.questions">
+            <field name="name">Contacter une clinique</field>
+        </record>
+        <record id="contact_question_2" model="contact.questions">
+            <field name="name">J'ai trouvé un animal</field>
+        </record>
+        
+        <record id="contact_question_3" model="contact.questions">
+            <field name="name">Demande d'informations</field>
+        </record>
+        
+        <record id="contact_question_4" model="contact.questions">
+            <field name="name">Service client clinique</field>
+        </record>
+        
+        <record id="contact_question_5" model="contact.questions">
+            <field name="name">Service clinique e-commerce</field>
+        </record>
+        <record id="contact_question_6" model="contact.questions">
+            <field name="name">Nous rejoindre</field>
+        </record>
+</odoo>
