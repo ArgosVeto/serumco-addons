@@ -162,7 +162,7 @@
 					                        <div class="mt16">
 				                				<span class="">Inserez votre lette de motivation ici</span>
 				                			</div>
-				                			<textarea class="form-control candidate-description o_website_form_input" name="description"></textarea>
+				                			<textarea required="true" class="form-control candidate-description  o_website_form_input" name="description"></textarea>
 				                		</div>
 			                		</div>
 
