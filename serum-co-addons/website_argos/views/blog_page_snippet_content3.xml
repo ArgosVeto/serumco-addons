@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content3" name="Blog Page Content3">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+					<section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+
+							<div class=" o_record_cover_image pt48 pb48">
+				        		<a href="#" class="video-popup" title="video popup">
+				        			<span class="fa fa-play text-primary"></span>
+				        			<img src="/website_argos/static/src/img/blog-article-04.png" class="img img-fluid mr-2"/>
+				        		</a>
+				        	</div>
+
+				        	<p>Sunt eius cum est natus et. Dolore deleniti saepe ab blanditiis dicta excepturi quia. Voluptatum ducimus eos esse dolorem magni voluptate porro hic. Qui sit enim ducimus est maxime. Repudiandae vero fugiat exercitationem et quos consequuntur. Fugiat reprehenderit quae amet et recusandae.</p>
+
+							<p>Dolores iste fugiat magni est occaecati. Explicabo velit aut qui fuga. Iusto sint nesciunt quo at et dicta.</p>
+
+							<p>Sint et tempora omnis delectus consequatur quia eveniet dignissimos. Voluptatem qui qui. Iure harum illo reiciendis sed hic velit. Repellendus ut placeat autem quis earum.</p>
+
+							<div class="d-flex align-items-center justify-content-center pt48 pb48">
+								<a class="btn-outline-primary btn-fiche mr16" href="/website_argos/static/src/docs/argos_doc.pdf">
+									<img src="/website_argos/static/src/img/job_pdf.svg" class="img img-fluid mr-2" />
+									<span>Télécharger le PDF</span>
+								</a>
+								<a href="#" class="btn btn-primary">Lorem ipsum</a>
+							</div>
+
+							<div class="b-in-hr">
+								<div class="s_hr text-left" data-name="Separator">
+							        <hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto"/>
+							    </div>
+		  					</div>
+
+			        	</div>
+			        </section>
+
+			    </div>
+			</div>
+		</section>
+	</template>
+</odoo>

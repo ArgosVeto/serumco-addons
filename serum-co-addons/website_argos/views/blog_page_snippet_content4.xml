@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content4" name="Blog Page Content4">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+					<section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+
+		  					<div class="Mask mt48 mb48">
+		  						<div class="DOCTEUR-VTRINAIRE-Copy mb8">DOCTEUR VÉTÉRINAIRE</div>
+		  						<div class="Pierre-Michel-Copy">Pierre Michel</div>
+		  						<div class="Clinique mt32">Clinique</div>
+		  						<div class="Clinique-vtrinaire mt8">Clinique vétérinaire Argos Saint-Aubin de Médoc</div>
+		  						<a class="btn btn-link mt16 En-savoir-plus" href="/clinic-detail">
+									<span class="mr8">Voir la fiche clinique</span>
+									<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
+								</a>
+								<div class=" mask_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/equipe-01.png" class="img img-fluid"/>
+					        		</a>
+					        	</div>
+		  					</div>
+
+			        	</div>
+			        </section>
+			        
+			    </div>
+			</div>
+		</section>
+	</template>
+</odoo>

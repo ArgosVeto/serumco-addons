@@ -375,11 +375,25 @@ class ClinicDetail(http.Controller):
 	def clinic_detail(self,**post):
 		subdomains = []
 		domain = [[('active', '=', True)]]
+		clinic_collect_ids = request.env['operating.unit'].sudo().search([('click_and_collect','=',True)])
+		clinic_appoint_ids = request.env['operating.unit'].sudo().search([('online_appointment_booking','=',True)])
 
-		if 'clinic-type' in post and post['clinic-type']:
-			clinic_type_ids = request.env['operating.unit.type'].sudo().search([('id','=',post['clinic-type'])])
-			subdomains.append([('type_id','=',clinic_type_ids.ids)])
-
+		if 'clinic-collect' in post and post['clinic-collect']:
+			clinic_type_ids = request.env['operating.unit'].sudo().search([('click_and_collect','=',True)])
+			subdomains.append([('click_and_collect','=',True)])
+			
+		if 'clinic-appoint' in post and post['clinic-appoint']:
+			clinic_type_ids = request.env['operating.unit'].sudo().search([('online_appointment_booking','=',True)])
+			subdomains.append([('online_appointment_booking','=',True)])
+		
+		if 'clinic-parking' in post and post['clinic-parking']:
+			clinic_type_ids = request.env['operating.unit'].sudo().search([('parking','=',True)])
+			subdomains.append([('parking','=',True)])
+		
+		if 'clinic-mobility' in post and post['clinic-mobility']:
+			clinic_type_ids = request.env['operating.unit'].sudo().search([('access_reduced_mobility','=',True)])
+			subdomains.append([('access_reduced_mobility','=',True)])
+		
 		if 'service-type' in post and post['service-type']:
 			service_ids = request.env['operating.unit.service'].sudo().search([('id','=',post['service-type'])])
 			subdomains.append([('service_ids', 'in', service_ids.ids)])
@@ -410,7 +424,7 @@ class ClinicDetail(http.Controller):
 			operating_unit_ids = operating_unit_ids.filtered(lambda x:x.id in unit_list)
 		type_ids = request.env['operating.unit.type'].sudo().search([])
 		service_ids = request.env['operating.unit.service'].sudo().search([])
-		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids}
+		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids, 'clinic_type_ids':clinic_collect_ids, 'clinic_appoint_ids':clinic_appoint_ids}
 		return request.env['ir.ui.view'].render_template("website_argos.clinic_template",values)
 
 	@http.route(['/add-fav-clinic-detail/<model("operating.unit"):operating_unit>'], type='http', auth="user", website=True)

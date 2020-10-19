@@ -2,14 +2,17 @@ $(document).ready(function(){
 
   if ($("nav").hasClass("o_portal_navbar")) {
     $('.ac-order').addClass('active-order'); 
+    $('.br-order-portal').addClass('breadcrumb-order'); 
   }
 
   if ($("div").hasClass("no-gutters")) {
     $('.ac-address').addClass('active-address'); 
+    $('.br-address-portal').addClass('breadcrumb-address'); 
   }
 
   if ($("div").hasClass("o_portal_my_home")) {
     $('.ac-info').addClass('active-info'); 
+    $('.br-info-portal').addClass('breadcrumb-info'); 
   }
 	
 	$(function() {

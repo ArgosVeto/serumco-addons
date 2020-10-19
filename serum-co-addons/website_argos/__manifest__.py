@@ -54,7 +54,6 @@
         'views/Service_hospitalisation_template.xml',
         'views/blog_template.xml',
         'views/blog_snippet_inherited.xml',
-        'views/blog_page_snippet.xml',
         'views/dynamicslider.xml',
         'views/slider_snippets.xml',
         'views/header.xml',
@@ -68,6 +67,11 @@
         'views/legal_notice.xml',
         'views/gtc.xml',
         'views/privacy_policy.xml',
+
+        'views/blog_page_snippet_content1.xml',
+        'views/blog_page_snippet_content2.xml',
+        'views/blog_page_snippet_content3.xml',
+        'views/blog_page_snippet_content4.xml',
 
 
         # 'views/partner_view.xml',

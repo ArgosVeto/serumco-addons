@@ -61,14 +61,15 @@
 
 
     <template id="clinic_type_search_tmp" name="Clinic Type Search">
-        <t t-set="type_val" t-value="type_ids" />
+        <t t-set="type_val" t-value="clinic_type_ids" />
         <t t-if="type_val">
         <div class="clinic-type-b">
-        	<t t-foreach="type_val" t-as="pl">
-	        	<a t-attf-href="/clinic-detail?clinic-type=#{pl.sudo().id}" class="mr-4 badge badge-pill badge-light">
-	        		<span t-att-name="pl.name" t-esc="pl.name" />
-	        	</a>
-        	</t>
+	       	<a t-attf-href="/clinic-detail?clinic-collect=1" class="mr-2 badge badge-pill badge-light">
+	       		<span>Click &amp; Collect</span>
+	       	</a>
+	       	<a t-attf-href="/clinic-detail?clinic-appoint=1" class="mr-2 badge badge-pill badge-light">
+	       		<span>Prise de RDV en ligne</span>
+	       	</a>
 		</div>
 		</t>
        
@@ -104,7 +105,7 @@
 	    		<div class="container">
 	    			<div class="row">
 
-	            		<div class="search_by_service mr-4">
+	            		<div class="search_by_service mr-2">
                        		<t t-call="website_argos.service_type_search_tmp"/>
 	                	</div>
                         <div class="search_by_type">
@@ -112,7 +113,7 @@
 	                	</div>
                         <div class="open_today">
                           <div class="clinic-type-b">
-				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-4 badge badge-pill badge-light">
+				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
 				        		<span>OUVERT AUJOURD HUI</span>
 				        	</a>
 				        	<!-- OUVERT AUJOURD HUI -->
@@ -121,25 +122,17 @@
                         <div class="criteria search_by_service">
                         	<t t-set="service" t-value="service_ids" />
 						        <div t-attf-class="dropdown">
-						        	<t t-if="service_ids">
-							            <t t-set="service" t-value="service_ids"/>
-							            <t t-set="ss" t-value="service_ids[0]"/>
 							            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
 							               <span>De Criteres</span>
 							            </a>
 							            <div class="dropdown-menu" role="menu">
-							            	<t t-if="service">
-								                <t t-foreach="service" t-as="s">
-								                    <a role="menuitem" t-attf-href="/clinic-detail?service-type=#{s.sudo().id}" class="dropdown-item">
-								                        <span class="switcher_pricelist" 
-								                        	t-att-name="s.name"
-								                        	t-att-data-pl_id="s.id" 
-								                        	t-esc="s.name"/>
-								                    </a>
-								                </t>
-							                </t>
+						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+						                        <span class="switcher_pricelist">Parking</span>
+						                    </a>
+						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+						                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
+						                    </a>
 							            </div>
-							        </t>
 						        </div>
                         </div>
                         <div class="see_map">
@@ -149,8 +142,8 @@
 							</div>
                         </div>
 
-                        <div class="clear-search mt8 ml8">
-				        	<a t-attf-href="/clinic-detail?clear_search=1" class="">
+                        <div class="clear-search mt8 ml8 clinic-type-b">
+				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
 				        		<span>CLEAR</span>
 				        	</a>
 						</div>

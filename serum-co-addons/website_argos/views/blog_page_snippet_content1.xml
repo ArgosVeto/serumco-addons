@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content1" name="Blog Page Content1">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+					
+	            	<section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+			        		<h3>Modi fugit nulla suscipit.</h3>
+			        		<p>Molestias iste at vitae. Deleniti omnis sit eligendi ut natus. Ratione repellendus libero quisquam in placeat quis blanditiis.</p>
+
+							<p>Porro sapiente pariatur sapiente et omnis eos eum quia. Recusandae libero aut maxime. Reprehenderit aut in et ut officia adipisci deserunt corrupti et.<span class="text1"> Sed eum ipsam placeat quaerat.</span></p>
+
+							<p>Rerum voluptates inventore. Exercitationem dolorum quia corrupti maxime et ea dignissimos aut. Quia perferendis nemo amet necessitatibus nostrum molestias quaerat sunt. Impedit praesentium consequatur officiis quisquam voluptatem veritatis. <span class="text2">Cum magni labore eos illo. Rerum ab excepturi optio illo minus illo.</span></p>
+
+							<ul class="mt32 mb32">
+								<li>Lorem ipsum dolor sit amet exercitationem dolorum quia corrupti maxime</li>
+								<li>Exercitationem dolorum quia corrupti maxime</li>
+								<li>Cum magni labore eos illo.</li>
+								<li>Rerum ab excepturi optio illo minus illo.</li>
+							</ul>
+
+							<div class="Aut-labore-reiciendi pt16 pb16">Aut labore reiciendis necessitatibus</div>
+
+							<p>Maxime ut id incidunt ut sed. Voluptatem modi voluptas sunt sit voluptas perferendis consequatur quo. Maiores rerum aut aperiam molestias distinctio sit. Distinctio et eum voluptas et architecto eos in. Pariatur qui in facilis ducimus ut reiciendis libero qui. Eveniet omnis dolor placeat.</p>
+ 
+							<p><span class="text3">Et autem dolorum.</span> Et aut est et. Ut et sunt aliquid id debitis excepturi sed.</p>
+ 
+							<p>Dolor quasi sunt quibusdam in facilis iure ut sunt. Debitis dolores ipsa reprehenderit. Praesentium dolor cum et quam optio excepturi atque quia nobis. Eos sit aut architecto ut eos. Voluptatum dicta laboriosam eligendi quam rerum.</p>
+			        	</div>
+			        </section>
+
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

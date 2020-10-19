@@ -442,11 +442,22 @@
             </div>
             <div class="container">
                 <div class="row my_content">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 br-order-portal">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
-                            <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
+                            <li class="breadcrumb-item"><a href="#">Commandes</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 br-address-portal">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes adresses</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 br-info-portal">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes infos personnelles</a></li>
                         </ol>
                     </div>
                     <div class="col-lg-12 heading">
@@ -508,8 +519,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
-                            <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes produits favoris</a></li>
                         </ol>
                     </div>
                     <div class="col-lg-12 heading">
@@ -571,8 +581,7 @@
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
-                            <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
                         </ol>
                     </div>
                     <div class="col-lg-12 heading">
