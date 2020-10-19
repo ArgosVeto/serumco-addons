@@ -507,3 +507,21 @@ $(document).ready(function(){
       }
     });
 });
+
+
+
+
+
+
+jQuery(function($) {
+ var path =  window.location.href;
+ var nopath = // because the 'href' property of the DOM element is the absolute path
+ console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',path)
+ $('.top-links a').each(function() {
+ console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',this.href)
+  if (this.href === path) {
+   console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',path)
+   $(this).addClass('active');
+  }
+ });
+});
