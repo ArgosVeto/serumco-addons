@@ -28,8 +28,8 @@ class PlanningSlot(models.Model):
         cur_operating_unit = self.env.user.default_operating_unit_id
         if cur_operating_unit:
             domain = [('operating_unit_id', '=', cur_operating_unit.id), '|', '&', ('start_datetime', '>', start_date),
-                      ('start_datetime', '<=', start_date), '&', ('end_datetime', '>', start_date),
-                      ('end_datetime', '<', end_date)]
+                      ('start_datetime', '<=', end_date), '&', ('end_datetime', '>', start_date),
+                      ('end_datetime', '<=', end_date)]
             plannings = self.search(domain)
             for employee in plannings.mapped('employee_id'):
                 employee_resources[employee.id] = employee.name
