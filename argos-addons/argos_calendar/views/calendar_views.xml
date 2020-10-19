@@ -28,10 +28,17 @@
     <field name="context">{'agenda_calendar': True, 'column': 'employee_id'}</field>
   </record>
 
+  <record id="agenda_calendar_action_server" model="ir.actions.server">
+    <field name="name">Agenda</field>
+    <field name="model_id" ref="planning.model_planning_slot"/>
+    <field name="state">code</field>
+    <field name="code">action=env['planning.slot'].action_open_agenda()</field>
+  </record>
+
   <menuitem
           id="agenda_menu_calendar"
           name="Agenda"
           sequence="20"
           parent="planning.planning_menu_my_planning"
-          action="agenda_calendar_action"/>
+          action="agenda_calendar_action_server"/>
 </odoo>

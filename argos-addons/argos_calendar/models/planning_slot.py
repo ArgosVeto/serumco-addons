@@ -214,3 +214,12 @@ class PlanningSlot(models.Model):
             'target': 'current',
             'context': context,
         }
+
+    def action_open_agenda(self):
+        action = self.env.ref('argos_calendar.agenda_calendar_action').read([])[0]
+        action_domain = []
+        if self.env.user.default_operating_unit_id:
+            action_domain = [('operating_unit_id', '=', self.env.user.default_operating_unit_id.id)]
+        action['domain'] = action_domain
+        action['id'] = self.env.ref('argos_calendar.agenda_calendar_action_server').read([])[0].get('id', False)
+        return action
