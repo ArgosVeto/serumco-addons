@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 14:50+0000\n"
-"PO-Revision-Date: 2020-09-30 14:50+0000\n"
+"POT-Creation-Date: 2020-10-16 11:24+0000\n"
+"PO-Revision-Date: 2020-10-16 11:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -59,8 +59,8 @@ msgid "Administration Route"
 msgstr "Voie d'administration"
 
 #. module: argos_product
-#: model:ir.model.fields,field_description:argos_product.field_product_product__approval
-#: model:ir.model.fields,field_description:argos_product.field_product_template__approval
+#: model:ir.model.fields,field_description:argos_product.field_product_product__approval_id
+#: model:ir.model.fields,field_description:argos_product.field_product_template__approval_id
 msgid "Approval"
 msgstr "Agrément"
 
@@ -81,11 +81,15 @@ msgstr "Prix de revient"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__create_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__create_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_documentation__create_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_route__create_uid
 msgid "Created by"
 msgstr "Créé par"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__create_date
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__create_date
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__create_date
 #: model:ir.model.fields,field_description:argos_product.field_product_route__create_date
 msgid "Created on"
@@ -98,6 +102,7 @@ msgstr "Libellé client"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__display_name
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__display_name
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__display_name
 #: model:ir.model.fields,field_description:argos_product.field_product_route__display_name
 msgid "Display Name"
@@ -147,6 +152,7 @@ msgstr "Homéopathique"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__id
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__id
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__id
 #: model:ir.model.fields,field_description:argos_product.field_product_route__id
 msgid "ID"
@@ -214,6 +220,7 @@ msgstr "Top ten"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance____last_update
+#: model:ir.model.fields,field_description:argos_product.field_product_approval____last_update
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation____last_update
 #: model:ir.model.fields,field_description:argos_product.field_product_route____last_update
 msgid "Last Modified on"
@@ -221,6 +228,7 @@ msgstr "Dernière modification le"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__write_uid
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__write_uid
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__write_uid
 #: model:ir.model.fields,field_description:argos_product.field_product_route__write_uid
 msgid "Last Updated by"
@@ -228,6 +236,7 @@ msgstr "Dernière mise à jour par"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__write_date
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__write_date
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__write_date
 #: model:ir.model.fields,field_description:argos_product.field_product_route__write_date
 msgid "Last Updated on"
@@ -245,6 +254,7 @@ msgstr "Informations médicales"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__name
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__name
 #: model:ir.model.fields,field_description:argos_product.field_product_route__name
 msgid "Name"
 msgstr "Nom"
@@ -267,6 +277,11 @@ msgid "Net Weight (in g)"
 msgstr "Poids unitaire net (g)"
 
 #. module: argos_product
+#: model:product.approval,renewal:argos_product.product_approval_1
+msgid "Non-renewable"
+msgstr "Non renouvelable"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__price_sensivity
 #: model:ir.model.fields,field_description:argos_product.field_product_template__price_sensivity
 msgid "Price Sensivity"
@@ -276,6 +291,16 @@ msgstr "Sensibilité prix"
 #: model:ir.model,name:argos_product.model_product_product
 msgid "Product"
 msgstr "Article"
+
+#. module: argos_product
+#: model:ir.model,name:argos_product.model_product_approval
+msgid "Product Approval"
+msgstr "Agrément"
+
+#. module: argos_product
+#: model:ir.actions.act_window,name:argos_product.product_approval_action
+msgid "Product Approvals"
+msgstr "Agréments"
 
 #. module: argos_product
 #: model:ir.model,name:argos_product.model_product_attribute
@@ -332,6 +357,13 @@ msgid "Race"
 msgstr "Races"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_approval__renewal
+#: model:ir.model.fields,field_description:argos_product.field_product_product__renewal
+#: model:ir.model.fields,field_description:argos_product.field_product_template__renewal
+msgid "Renewal"
+msgstr "Renouvellement"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_attribute__routing
 msgid "Routing"
 msgstr "Gamme"
@@ -362,6 +394,11 @@ msgstr "Espèces"
 #: model:ir.model,name:argos_product.model_product_supplierinfo
 msgid "Supplier Pricelist"
 msgstr "Liste de prix du fournisseur"
+
+#. module: argos_product
+#: model:product.approval,renewal:argos_product.product_approval_2
+msgid "To Renew X Times"
+msgstr "A renouveler X fois"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_category__tooltip_text

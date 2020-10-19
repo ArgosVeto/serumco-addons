@@ -6,7 +6,7 @@ from odoo import api, fields, models, _
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
-    administration_route_ids = fields.Many2many('documents.tag', 'Administration Route',
+    administration_route_ids = fields.Many2many('product.route', 'Administration Route',
                                                 related="product_id.administration_route_ids", store=False)
 
     def _get_new_picking_values(self):

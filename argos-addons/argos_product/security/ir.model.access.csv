@@ -8,3 +8,6 @@ access_product_route_admin,access_product_route admin,model_product_route,base.g
 access_product_documentation_reader,access_product_documentation reader,model_product_documentation,,1,0,0,0
 access_product_documentation_user,access_product_documentation user,model_product_documentation,base.group_user,1,1,1,0
 access_product_documentation_admin,access_product_documentation admin,model_product_documentation,base.group_erp_manager,1,documentation
+access_product_approval_reader,access_product_approval reader,model_product_approval,,1,0,0,0
+access_product_approval_user,access_product_approval user,model_product_approval,base.group_user,1,1,1,0
+access_product_approval_admin,access_product_approval admin,model_product_approval,base.group_erp_manager,1,1,1,1

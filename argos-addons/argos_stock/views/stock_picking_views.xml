@@ -35,16 +35,11 @@
       <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='description_picking']" position="after" >
         <field name="administration_route_ids" widget="many2many_tags" />
       </xpath>
-      <xpath expr="//header/button" position="before" >
-        <button name="action_prescription_send" string="Send by Email" type="object"
-                states="draft,waiting,confirmed,assigned,done"
-                class="btn-primary"/>
-      </xpath>
     </field>
   </record>
 
   <record id="action_arg_prescription" model="ir.actions.act_window">
-    <field name="name">Prescriptions</field>
+    <field name="name">Delivery</field>
     <field name="res_model">stock.picking</field>
     <field name="type">ir.actions.act_window</field>
     <field name="view_mode">tree,kanban,form,calendar</field>

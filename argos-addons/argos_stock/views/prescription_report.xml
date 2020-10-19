@@ -2,8 +2,8 @@
 <odoo>
   <report
       string="Prescription"
-      id="action_print_precription"
-      model="stock.picking"
+      id="action_print_prescription"
+      model="sale.order"
       report_type="qweb-pdf"
       name="argos_stock.report_template_prescription"
       file="argos_stock.report_template_prescription"

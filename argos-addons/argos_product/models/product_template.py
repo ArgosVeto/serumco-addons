@@ -13,7 +13,7 @@ class ProductTemplate(models.Model):
     race_ids = fields.Many2many('res.partner.parameter', 'product_template_race_rel', 'product_template_id', 'race_id', 'Race',
                                 domain=[('type', '=', 'race')])
     nature = fields.Selection([('chemical', 'Chemical'), ('homeo', 'Homeopathic'), ('immuno', 'Immunological')], 'Nature')
-    approval = fields.Char('Approval')
+    approval_id = fields.Many2one('product.approval', 'Approval')
     indication = fields.Text('Indications')
     active_substance_id = fields.Many2one('active.substance', 'Active Substance')
     substance_quantity = fields.Float('Active Substance Quantity')
@@ -48,11 +48,16 @@ class ProductTemplate(models.Model):
     is_drug = fields.Boolean('Is Drug')
     is_refrigerated = fields.Boolean('Is Refrigerated')
     documentation_ids = fields.One2many('product.documentation', 'product_template_id', 'Documentations')
+    renewal = fields.Char('Renewal')
 
     @api.depends('attribute_line_ids')
     def _compute_routing_value_ids(self):
         for rec in self:
             attributes = rec.attribute_line_ids.filtered(lambda line: line.attribute_id.routing)
             rec.routing_value_ids = attributes.mapped('value_ids')
+
+    @api.onchange('approval_id')
+    def _approval_id_change(self):
+        self.renewal = self.approval_id.renewal
 
 
