@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 09:09+0000\n"
-"PO-Revision-Date: 2020-10-15 09:09+0000\n"
+"POT-Creation-Date: 2020-10-20 03:13+0000\n"
+"PO-Revision-Date: 2020-10-20 03:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -341,6 +341,13 @@ msgstr "Statut"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__total_due
 msgid "Total Due"
 msgstr "Impayés"
+
+#. module: argos_planning
+#: code:addons/argos_planning/models/planning_slot.py:0
+#, python-format
+msgid ""
+"Unauthorized appointment assignment for an absent or unassigned veterinarian"
+msgstr "Affectation de rendez-vous non autorisée pour un vétérinaire absent ou non affecté"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
