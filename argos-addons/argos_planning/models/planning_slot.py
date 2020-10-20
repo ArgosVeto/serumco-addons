@@ -206,8 +206,9 @@ class PlanningSlot(models.Model):
 
     def check_veterinary_presence(self):
         cur_operating_unit = self.env.user.default_operating_unit_id
-        for rec in self.filtered(lambda l: l.employee_id):
-            presence_role_id = self.env.ref('argos_planning.planning_role_presence', raise_if_not_found=False).id
+        presence_role_id = self.env.ref('argos_planning.planning_role_presence', raise_if_not_found=False).id
+        absence_role_id = self.env.ref('argos_planning.planning_role_absence', raise_if_not_found=False).id
+        for rec in self.filtered(lambda l: l.employee_id and l.role_id.id != absence_role_id):
             domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
                       ('role_id', '=', presence_role_id), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
                       ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
