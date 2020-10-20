@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import ast
-import pytz
-import logging
 import datetime
-from datetime import timedelta, datetime as dt
+import logging
+from datetime import datetime as dt, timedelta
+from odoo.exceptions import ValidationError
+
+import pytz
 
 from odoo import models, fields, api, _
 
@@ -37,6 +39,7 @@ class PlanningSlot(models.Model):
     allday = fields.Boolean('All Day', default=False)
     background_event = fields.Boolean('Background', default=False)
     partner_phone = fields.Char(related='partner_id.phone', string='Customer phone')
+    patient_ids = fields.Many2many('res.partner', related='partner_id.patient_ids')
 
     @api.model
     def get_work_interval(self, start_date, employee=False):
@@ -67,7 +70,9 @@ class PlanningSlot(models.Model):
             interval = self.get_work_interval(start_datetime, employee_id)
             vals['start_datetime'] = interval[0]
             vals['end_datetime'] = interval[1]
-        return super(PlanningSlot, self).write(vals)
+        res = super(PlanningSlot, self).write(vals)
+        self.check_veterinary_presence()
+        return res
 
     @api.onchange('allday')
     def _on_allday_change(self):
@@ -196,4 +201,17 @@ class PlanningSlot(models.Model):
         res = super(PlanningSlot, self).create(vals)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
+        res.check_veterinary_presence()
         return res
+
+    def check_veterinary_presence(self):
+        cur_operating_unit = self.env.user.default_operating_unit_id
+        for rec in self.filtered(lambda l: l.employee_id):
+            presence_role_id = self.env.ref('argos_planning.planning_role_presence', raise_if_not_found=False).id
+            domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
+                      ('role_id', '=', presence_role_id), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
+                      ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
+                      ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
+                      ('end_datetime', '>=', rec.end_datetime)]
+            if not self.search(domain):
+                raise ValidationError(_('Unauthorized appointment assignment for an absent or unassigned veterinarian'))

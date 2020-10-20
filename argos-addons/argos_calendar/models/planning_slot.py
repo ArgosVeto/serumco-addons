@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import ast
 import math
-from datetime import date, datetime, timedelta, time
+from datetime import datetime, timedelta, time
 
 from odoo import models, fields, api, _
 from odoo.tools.float_utils import float_round
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 
 
 def float_to_time(hours):
