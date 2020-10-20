@@ -13,7 +13,6 @@
         'argos_operating_unit',
         'argos_stock',
         'argos_account',
-        'purchase_requisition',
         'purchase_operating_unit',
         'purchase_request',
         'purchase_order_approved',

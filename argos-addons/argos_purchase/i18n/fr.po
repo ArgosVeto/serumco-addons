@@ -554,3 +554,74 @@ msgstr "Créer une demande d'achat"
 #: model:ir.ui.menu,name:purchase.menu_purchase_form_action
 msgid "Purchase Orders"
 msgstr "Commandes validées"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_request__operating_unit_id
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_request_line__operating_unit_id
+msgid "Operating Unit"
+msgstr "Clinique"
+
+#. module: argos_purchase
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_order_view_form_inherit
+msgid "Operating Unit Picking"
+msgstr "Transfert des cliniques"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__operating_unit_request_line_ids
+msgid "Operating Unit Requested Lines"
+msgstr "Lignes d'autorisation d'achat du clinique"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__operating_unit_picking_ids
+msgid "Operating Units Internal Pickings"
+msgstr "Transferts internes des cliniques"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__operating_unit_picking_count
+msgid "Operating Units Pickings Count"
+msgstr "Nombre de transfert des cliniques"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_order.py:0
+#, python-format
+msgid "Operating units internal pickings"
+msgstr "Transferts internes des cliniques"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_order.py:0
+#, python-format
+msgid "Orders confirmed"
+msgstr "Commandes validées"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_request_line__picking_type_id
+msgid "Picking Type"
+msgstr "Type de transfert"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "Purchase request has already been completed."
+msgstr "L'autorisation d'achat est déjà terminée."
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order_line__request_line_ids
+msgid "Request Lines"
+msgstr "Lignes d'autorisation d'achat"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "There are some not approved purchase request."
+msgstr "Il y a des autorisations d'achat déjà validées."
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "Purchase related to some request has already been completed."
+msgstr "Des commandes de certaines autorisation d'achat ont déjà été validées."
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order_line__emergency
+msgid "Emergency"
+msgstr "Urgence"

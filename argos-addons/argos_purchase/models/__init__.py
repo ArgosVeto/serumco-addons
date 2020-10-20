@@ -2,6 +2,7 @@
 
 from . import product_template
 from . import purchase_order
+from . import purchase_order_line
 from . import purchase_confirmation_wizard
 from . import res_partner
 from . import stock_move_line

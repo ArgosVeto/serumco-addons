@@ -17,8 +17,4 @@
       <field name="sequence">20</field>
     </record>
   </data>
-
-  <data noupdate="1">
-    <delete model="ir.ui.menu" id="purchase_requisition.menu_purchase_requisition_pro_mgt"/>
-  </data>
 </odoo>
