@@ -19,11 +19,24 @@
           <attribute name="statusbar_visible">draft,purchase</attribute>
         </xpath>
         <xpath expr="//button[@name='button_confirm'][last()]" position="attributes">
-          <attribute name="context">{'check_centravet_tour': True, 'check_shipping_fees': True}</attribute>
+          <attribute name="context">{'check_shipping_fees': True}</attribute>
         </xpath>
-        <xpath expr="//button[@name='button_release'][last()]" position="attributes">
-          <attribute name="context">{'standard_process': True}</attribute>
+        <xpath expr="//field[@name='partner_id']" position="before">
+          <field name="is_centravet_order" invisible="1"/>
         </xpath>
+        <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+          <field name="emergency"
+                 attrs="{'readonly': [('parent.state', '!=', 'draft')], 'column_invisible': [('parent.is_centravet_order', '=', False)]}"/>
+        </xpath>
+        <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+          <button type="object" name="action_view_operating_pickings" class="oe_stat_button" icon="fa-truck"
+                  attrs="{'invisible':[('operating_unit_picking_ids','=',[])]}">
+            <field name="operating_unit_picking_count" widget="statinfo" string="Operating Unit Picking"
+                   help="Internal operation for operating unit"/>
+            <field name="operating_unit_picking_ids" invisible="1"/>
+          </button>
+        </xpath>
+
       </field>
     </record>
   </data>

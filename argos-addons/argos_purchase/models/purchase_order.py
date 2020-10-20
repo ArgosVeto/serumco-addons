@@ -22,8 +22,12 @@ class PurchaseOrder(models.Model):
         ('done', 'Locked'),
         ('cancel', 'Cancelled')
     ])
+    is_centravet_order = fields.Boolean('Is Centravet Purchase Order', related='partner_id.is_centravet')
     operating_unit_request_line_ids = fields.Many2many('purchase.request.line', 'order_requested_line_rel', 'purchase_order',
-                                                         'requested_line_id', 'Operating Unit Requested Lines')
+                                                       'requested_line_id', 'Operating Unit Requested Lines')
+    operating_unit_picking_ids = fields.Many2many('stock.picking', 'purchase_operating_unit_picking_rel', 'order_id', 'picking_id',
+                                                  'Operating Units Internal Pickings', copy=False)
+    operating_unit_picking_count = fields.Integer('Operating Units Pickings Count', compute='_compute_operating_unit_picking_count')
 
     def button_confirm(self):
         context = self._context.copy()
@@ -42,34 +46,52 @@ class PurchaseOrder(models.Model):
                 }
             else:
                 context.update(check_shipping_fees=False)
-        if self._context.get('check_centravet_tour', False):
-            if self.partner_id.is_centravet:
-                context.update(active_id=self.id)
-                return {
-                    'name': _('Confirmation'),
-                    'type': 'ir.actions.act_window',
-                    'view_mode': 'form',
-                    'res_model': 'purchase.confirmation.wizard',
-                    'views': [(False, 'form')],
-                    'target': 'new',
-                    'context': context,
-                }
+        emergency_orders, orders = self.split_centravet_emergency_order()
+        res = super(PurchaseOrder, emergency_orders + orders).button_confirm()
+        if emergency_orders and orders:
+            return {
+                'name': _('Orders confirmed'),
+                'type': 'ir.actions.act_window',
+                'view_mode': 'tree,form',
+                'res_model': 'purchase.order',
+                'domain': ['|', ('id', 'in', emergency_orders.ids), ('id', 'in', orders.ids)],
+                'target': 'current',
+                'context': context,
+            }
+        return res
+
+    def split_centravet_emergency_order(self):
+        emergency_orders = self.env['purchase.order']
+        orders = self.env['purchase.order']
+        for rec in self:
+            if rec.is_centravet_order:
+                if all(line.emergency for line in rec.order_line):
+                    emergency_orders |= rec
+                elif all(not line.emergency for line in rec.order_line):
+                    orders |= rec
+                else:
+                    emergency_order = rec.copy()
+                    emergency_order.order_line = [(2, line.id) for line in
+                                                  emergency_order.order_line.filtered(lambda line: not line.emergency)]
+                    rec.order_line = [(2, line.id) for line in rec.order_line.filtered(lambda line: line.emergency)]
+                    emergency_orders |= emergency_order
+                    orders |= rec
             else:
-                context.update(check_centravet_tour=False)
-        return super(PurchaseOrder, self).button_confirm()
+                emergency_orders |= rec
+        return emergency_orders, orders
 
     def button_release(self):
         for rec in self:
             rec.send_order_mail()
-            if rec.partner_id.is_centravet and rec.is_centravet_planned_tour():
+            if rec.is_centravet_order and rec.is_centravet_planned_tour():
                 rec.apply_discount(1)
         return super(PurchaseOrder, self).button_release()
 
     def button_approve(self, force=False):
-        centravet_orders = self.filtered(lambda order: order.partner_id.is_centravet)
-        if centravet_orders:
-            super(PurchaseOrder, centravet_orders).button_approve(force)
-        return (self - centravet_orders).button_release()
+        pending_orders = self.filtered(lambda order: order.is_centravet_order and all(not line.emergency for line in order.order_line))
+        if pending_orders:
+            super(PurchaseOrder, pending_orders).button_approve(force)
+        return super(PurchaseOrder, self - pending_orders).button_release()
 
     def _create_picking(self):
         res = super(PurchaseOrder, self)._create_picking()
@@ -78,11 +100,30 @@ class PurchaseOrder(models.Model):
                 rec.create_operating_unit_picking()
         return res
 
+    @api.depends('operating_unit_picking_ids')
+    def _compute_operating_unit_picking_count(self):
+        for rec in self:
+            if rec.operating_unit_picking_ids:
+                rec.operating_unit_picking_count = len(rec.operating_unit_picking_ids)
+            else:
+                rec.operating_unit_picking_count = 0
+
+    def action_view_operating_pickings(self):
+        self.ensure_one()
+        return {
+            'name': _('Operating units internal pickings'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree,form',
+            'res_model': 'stock.picking',
+            'domain': [('id', 'in', self.operating_unit_picking_ids.ids)],
+            'target': 'current',
+        }
+
     def send_order_mail(self):
         try:
             email_template = self.sudo().env.ref('argos_purchase.purchase_order_edi_mail_template_data')
             email_values = {}
-            mail_attachments = self.generate_purchase_mail_attachment(self.partner_id.is_centravet)
+            mail_attachments = self.generate_purchase_mail_attachment(self.is_centravet_order)
             email_values.update({'attachment_ids': [(6, 0, mail_attachments.ids)]})
             email_template.sudo().send_mail(self.id, force_send=True, email_values=email_values, raise_exception=True)
         except Exception as e:
@@ -162,13 +203,16 @@ class PurchaseOrder(models.Model):
             picking = picking_obj.create(picking_vals)
             moves_vals = self._prepare_operating_unit_stock_moves(picking, request_lines)
             stock_move_obj.create(moves_vals)
+            self.operating_unit_picking_ids = [(4, picking.id)]
         return True
 
     def get_request_line_by_operating_unit(self):
         result = {}
         operating_units = self.operating_unit_request_line_ids.mapped('operating_unit_id')
         for operating_unit in operating_units:
-            result[operating_unit] = self.operating_unit_request_line_ids.filtered(lambda line: line.operating_unit_id == operating_unit)
+            if operating_unit in self.order_line.mapped('request_line_ids').mapped('operating_unit_id'):
+                result[operating_unit] = self.operating_unit_request_line_ids.filtered(
+                    lambda line: line.operating_unit_id == operating_unit)
         return result
 
     @api.model
@@ -194,6 +238,7 @@ class PurchaseOrder(models.Model):
     @api.model
     def _prepare_operating_unit_stock_moves(self, picking, request_lines):
         values = []
+        request_lines = request_lines.filtered(lambda line: line in self.order_line.mapped('request_line_ids'))
         for request_line in request_lines:
             order_line_domain = [
                 ('order_id', '=', self.id),
