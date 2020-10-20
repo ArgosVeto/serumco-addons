@@ -19,8 +19,8 @@
 			    letter-spacing: normal;
 			    width: max-content;
 			}
-			.nav-item{
-				.nav-link.active{
+			.nav-item:first-child{
+				.nav-link{
 					border-bottom: 2px solid theme-color('primary');
 					font-family: AvenirLTStd-Heavy;
 				}
@@ -43,39 +43,6 @@
 		padding: 10px;
 	  	background-color: rgba(99, 186, 233, 0.04);
 	}
-	.common-portal{
-		.active-order .nav-link{
-			border-bottom: 2px solid theme-color('primary');
-			font-family: AvenirLTStd-Heavy;
-		}
-		.active-address .nav-link{
-			border-bottom: 2px solid theme-color('primary');
-			font-family: AvenirLTStd-Heavy;
-		}
-		.active-info .nav-link{
-			border-bottom: 2px solid theme-color('primary');
-			font-family: AvenirLTStd-Heavy;
-		}
-	}
-	.br-order-portal{
-		display:none;
-	}
-	.br-order-portal.breadcrumb-order{
-		display:block !important;
-	}
-	.br-address-portal{
-		display:none;
-	}
-	.br-address-portal.breadcrumb-address{
-		display:block !important;
-	}
-	.br-info-portal{
-		display:none;
-	}
-	.br-info-portal.breadcrumb-info{
-		display:block !important;
-	}
-
 	.heading{
 		h1{
 			font-family: Comfortaa-Bold;

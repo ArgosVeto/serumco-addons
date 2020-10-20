@@ -15,7 +15,7 @@
 						</div>
 						<group>
 							<group>
-								<field name="operating_unit_id" string="Clinical" invisible="not context.get('from_room', False)"/>
+								<field name="operating_unit_id" string="Clinical"/>
 								<field name="area"/>
 							</group>
 							<group></group>
@@ -40,7 +40,6 @@
 			<field name="name">Rooms</field>
 			<field name="res_model">operating.unit.room</field>
 			<field name="view_mode">tree,form</field>
-			<field name="context">{'from_room': True}</field>
 		</record>
 
 		<menuitem id="menu_operating_unit_room"

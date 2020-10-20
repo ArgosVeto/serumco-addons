@@ -8,7 +8,8 @@
       <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
       <field name="arch" type="xml">
         <div name="button_box" position="inside">
-          <button name="action_open_orders" string="Sale Report" icon="fa-bar-chart" type="object"/>
+          <button name="%(argos_sale.patient_sale_report_action)d" string="Sale Report" icon="fa-bar-chart"
+                  type="action"/>
         </div>
         <xpath expr="//form/sheet" position="before">
           <header>
@@ -51,7 +52,8 @@
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
         <div name="button_box" position="inside">
-          <button name="action_open_orders" string="Sale Report" icon="fa-bar-chart" type="object"/>
+          <button name="%(argos_sale.partner_sale_report_action)d" string="Sale Report" icon="fa-bar-chart"
+                  type="action"/>
         </div>
       </field>
     </record>

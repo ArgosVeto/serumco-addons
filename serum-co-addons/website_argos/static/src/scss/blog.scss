@@ -343,7 +343,6 @@
 		     
 		     .fa{
 				line-height: 3.5em;
-				font-size: 1.3em;
 			}
 			
 			.bg-100 {
@@ -409,286 +408,42 @@
 }
 
 .read-next-post {
-	.next {
-		
-		.o_wblog_return_name {
-			font-family: AvenirLTStd-Roman !important;
-			  font-size: 16px;
-			  font-weight: normal;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: normal;
-			  letter-spacing: normal;
-			  color: #8b8b8b;
-		}
-
-		.o_wblog_post_prv_name{
-	  		  font-family: AvenirLTStd-Roman !important;
-			  font-size: 16px;
-			  font-weight: normal;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: normal;
-			  letter-spacing: normal;
-			  color: #8b8b8b;
-		  	 &:before {
-	    		content: '\f177';
-			    font-family: FontAwesome;
-			    font-style: normal;
-			    font-weight: normal;
-			    text-decoration: inherit;
-			    margin-right: 13px;
-	    	}
-		}
-		
-		a { 
-			text-decoration:none !important;
-			
-			#o_wblog_post_name {
-				font-family: AvenirLTStd-Roman !important;
-			  font-size: 16px;
-			  font-weight: normal;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: normal;
-			  letter-spacing: normal;
-			  color: #8b8b8b;
-			  
-			  &:after {
-	    		content: '\f178';
-			    font-family: FontAwesome;
-			    font-style: normal;
-			    font-weight: normal;
-			    text-decoration: inherit;
-			    margin-left: 13px;
-	    	}
-		  }
-		 
-		}
-	}
-}
-.blog-page-snippet{
-	.b-in-social{
-		.text-link{
-			color:theme-color('primary') !important;
-		}
-		.text-mail{
-			color:theme-color('primary') !important;
-		}
-	}
-	#o_wblog_post_main{
-		 max-width: 772px;
-		.blog-page-content{
-			h3{
-				font-family: Comfortaa-Bold;
-				  font-size: 28px;
-				  font-weight: bold;
-				  font-stretch: normal;
-				  font-style: normal;
-				  line-height: 1.21;
-				  letter-spacing: normal;
-				  color: theme-color('primary');
-			}
-			p{
-				font-family: AvenirLTStd-Roman;
-				  font-size: 16px;
-				  font-weight: normal;
-				  font-stretch: normal;
-				  font-style: normal;
-				  line-height: 1.63;
-				  letter-spacing: normal;
-				  color: #8b8b8b;
-			}
-			.text1{
-				font-family: AvenirLTStd-Heavy;
-				  font-weight: 900;
-				  color: theme-color('primary');
-			}
-			.text2{
-				font-family: AvenirLTStd-Oblique;
-				  line-height: 26px;
-			}
-			.text3{
-				font-family: AvenirLTStd-Heavy;
-				  font-weight: 900;
-				  color: theme-color('secondary');
-			}
-			ul{
-				padding:0;
-
-				li{
-					margin:0 10px;
-					font-size: 16px;
+			.next {
+				
+				.o_wblog_return_name {
+					font-family: AvenirLTStd-Roman !important;
+					  font-size: 16px;
 					  font-weight: normal;
 					  font-stretch: normal;
 					  font-style: normal;
-					  line-height: 2.88;
+					  line-height: normal;
 					  letter-spacing: normal;
 					  color: #8b8b8b;
 				}
-				::marker {
-					color:theme-color('primary') !important;
+				
+				a { 
+					text-decoration:none !important;
+					
+					#o_wblog_post_name {
+						font-family: AvenirLTStd-Roman !important;
+					  font-size: 16px;
+					  font-weight: normal;
+					  font-stretch: normal;
+					  font-style: normal;
+					  line-height: normal;
+					  letter-spacing: normal;
+					  color: #8b8b8b;
+					  
+					  &:after {
+				    		content: '\f178';
+						    font-family: FontAwesome;
+						    font-style: normal;
+						    font-weight: normal;
+						    text-decoration: inherit;
+						    margin-left: 13px;
+				    	}
+					  
+				  }
 				}
 			}
-			.Aut-labore-reiciendi {
-			  font-family: AvenirLTStd-Heavy;
-			  font-size: 16px;
-			  font-weight: 900;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: 1.63;
-			  letter-spacing: normal;
-			  color: #201f4c;
-			}
-		}
-	}
-	.o_record_cover_image{
-		p{
-			font-family: AvenirLTStd-Roman;
-			font-size: 14px;
-			  font-weight: normal;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: 1.86;
-			  letter-spacing: normal;
-			  color: #8b8b8b;
-		}
-	}
-	.blog-quote {
-		position: relative;
-		.b-right{
-			border-left: 6px solid  rgba(99, 186, 233, 0.4);
-		 	height: 145px;
-		 	position: absolute;
-    		left: -25px;
-		}
-		.quote-text {
-			  font-size: 16px;
-			  font-weight: normal;
-			  font-stretch: normal;
-			  font-style: oblique;
-			  line-height: 1.63;
-			  letter-spacing: normal;
-			  color: #201f4c;
-			  
-			  .q-text{
-			  	position: relative;
-			  }
-		}
-		
-		.quote-name { 
-			font-family: AvenirLTStd-Heavy;
-			  font-size: 12px;
-			  font-weight: 900;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: 1.67;
-			  letter-spacing: 2px;
-			  color: theme-color('primary');
-			  text-transform: uppercase;
-		}
-		
-		.quote-image {
-		    position: absolute;
-		    left: 0px;
-		    top: -13px;
-		}
-
-	}
-	.Mask {
-	  border-radius: 8px;
-	  background-color: #f9fcfe;
-	  padding:25px;
-	  position:relative;
-
-	  	.DOCTEUR-VTRINAIRE-Copy {
-		  font-family: AvenirLTStd-Heavy;
-		  font-size: 12px;
-		  font-weight: 900;
-		  font-stretch: normal;
-		  font-style: normal;
-		  line-height: 1.67;
-		  letter-spacing: 2px;
-		  color: theme-color('primary');
-		  text-transform: uppercase;
-		}
-		.Pierre-Michel-Copy {
-		  font-family: AvenirLTStd-Heavy;
-		  font-size: 18px;
-		  font-weight: 900;
-		  font-stretch: normal;
-		  font-style: normal;
-		  line-height: 1.22;
-		  letter-spacing: normal;
-		  color: #201f4c;
-		}
-		.Clinique {
-		  font-family: AvenirLTStd-Heavy;
-		  font-size: 12px;
-		  font-weight: 900;
-		  font-stretch: normal;
-		  font-style: normal;
-		  line-height: 1.67;
-		  letter-spacing: 2px;
-		  color: theme-color('primary');
-		  text-transform: uppercase;
-		}
-		.Clinique-vtrinaire {
-		  font-family: AvenirLTStd-Heavy;
-		  font-size: 18px;
-		  font-weight: 900;
-		  font-stretch: normal;
-		  font-style: normal;
-		  line-height: 1.22;
-		  letter-spacing: normal;
-		  color: #201f4c;
-		}
-		.En-savoir-plus {
-		  font-family: AvenirLTStd-Heavy;
-		  font-size: 12px;
-		  font-weight: 900;
-		  font-stretch: normal;
-		  font-style: normal;
-		  line-height: 1.67;
-		  letter-spacing: 2px;
-		  text-align: right;
-		  color: theme-color('secondary');
-		  text-transform: uppercase;
-		}
-		.mask_image{
-			position:absolute;
-			right:0;
-			top:15px;
-		}
-		@media (max-width: 767.98px) {
-			.mask_image{
-				position:unset !important;
-				text-align: right;
-				margin-top: 10px;
-			}
-		}
-	}
-	.video-popup{
-		position: relative;
-
-		span{
-		    position: absolute;
-		    top: -20px;
-		    left: 46%;
-		    width: 60px;
-		    height: 60px;
-		    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
-		    background-color: #ffffff;
-		    border-radius: 100%;
-		    text-align: center;
-		    justify-content: center;
-		    line-height: 60px;
-		}
-	}
-	@media (max-width: 767.98px) {
-		.next{
-			display: unset !important;
-		}
-	}
-
 }

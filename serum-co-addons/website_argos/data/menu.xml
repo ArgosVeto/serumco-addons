@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
         <record id="menu_le_group_argos_menu" model="website.menu">
             <field name="name">Le groupe Argos</field>
             <field name="url">#</field>

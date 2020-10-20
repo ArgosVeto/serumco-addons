@@ -141,7 +141,7 @@ class ProductTemplate(models.Model):
                     continue
                 vals = {
                     'description_sale': row.get('libelle'),
-                    'additional_features': row.get('presentation'),
+                    'description': row.get('presentation'),
                     'weight': row.get('poids'),
                     'gtin': row.get('gtin'),
                     'ean': row.get('ean'),

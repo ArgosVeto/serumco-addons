@@ -6,4 +6,3 @@ from . import operating_unit
 from . import operating_unit_type
 from . import operating_unit_certification
 from . import operating_unit_service
-from . import ir_http

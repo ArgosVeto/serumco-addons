@@ -104,7 +104,7 @@
 
             <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
                 <div class="check">
-                    <input type="checkbox" name="confirm_first" required="true">
+                    <input type="checkbox" name="confirm_first">
                         <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
                     </input>
                 </div>

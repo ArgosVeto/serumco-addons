@@ -59,6 +59,7 @@
             <script src="/website_argos/static/src/js/bizcommon_fronted.js" type="text/javascript"/>
             <script type="text/javascript" src="/website_argos/static/src/js/ion.rangeSlider.min.js" />
             <script type="text/javascript" src="/website_argos/static/src/js/common.js" />
+            <script type="text/javascript" src="/website_argos/static/src/js/google_map.js" />
 			<script src="/website_argos/static/src/js/biz_quickview.js" />
 			<script src="/website_argos/static/src/js/product_variant.js" />
 			<script src="/website_argos/static/src/js/cart_address.js"/>

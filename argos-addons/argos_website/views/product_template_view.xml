@@ -18,11 +18,6 @@
           <field name="is_new"/>
         </field>
 
-        <field name="public_categ_ids" position="attributes">
-          <attribute name="readonly">1</attribute>
-          <attribute name="force_save">1</attribute>
-        </field>
-
       </field>
     </record>
 
