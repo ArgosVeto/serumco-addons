@@ -17,7 +17,7 @@
         'purchase_request',
         'purchase_order_approved',
         'purchase_discount',
-        'merge_purchase_order',
+        'purchase_subscription',
         'bi_convert_purchase_from_sales',
         'delivery',
         'resource',
