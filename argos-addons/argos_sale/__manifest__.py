@@ -17,6 +17,7 @@
         'sale_coupon',
         'sale_product_pack',
         'sale_product_configurator',
+        'sale_order_line_sequence',
         'argos_hr',
     ],
     'data': [

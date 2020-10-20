@@ -7,23 +7,18 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     prescription_count = fields.Integer('Prescription', compute='_compute_prescription_count')
-    is_delivered = fields.Boolean('Is Delivered', compute='_compute_is_delivered')
-
-    @api.depends('picking_ids', 'picking_ids.state')
-    def _compute_is_delivered(self):
-        for rec in self:
-            rec.is_delivered = not bool(rec.picking_ids.filtered(lambda pick: pick.state not in ['done', 'cancel']))
+    is_duplicate = fields.Boolean('Is Duplicate')
 
     def button_view_prescription(self):
         action = {
             'type': 'ir.actions.act_window',
-            'name': _('Prescriptions'),
+            'name': _('Delivery'),
             'view_mode': 'form',
             'res_model': 'stock.picking',
             'views': [(self.env.ref('argos_stock.prescription_argos_form_view').id, 'form')],
             'context': {},
         }
-        pickings = self.picking_ids.filtered(lambda p: p.is_arg_prescription and not p.backorder_id)
+        pickings = self.picking_ids.filtered(lambda p: p.is_arg_prescription)
         if len(pickings) > 1:
             action['domain'] = [('id', 'in', pickings.ids)]
             action['view_mode'] = 'tree,form'
@@ -35,17 +30,40 @@ class SaleOrder(models.Model):
     @api.depends('picking_ids', 'picking_ids.is_arg_prescription')
     def _compute_prescription_count(self):
         for order in self:
-            order.prescription_count = len(order.picking_ids.filtered(lambda sp: sp.is_arg_prescription and not sp.backorder_id))
+            order.prescription_count = len(order.picking_ids.filtered(lambda sp: sp.is_arg_prescription))
 
     def button_print_picking(self):
         self.ensure_one()
-        pickings = self.picking_ids.filtered(lambda pick: pick.state not in ['done', 'cancel'])
-        pickings.action_assign()
-        move_lines = pickings.move_line_ids
-        action = self.env.ref('argos_stock.action_print_picking').read()[0]
-        if move_lines:
-            action['context'] = {
-                'default_move_line_ids': move_lines.ids,
-                'default_picking_id': move_lines[0].picking_id.id,
-            }
-        return action
+        return self.env.ref('argos_stock.action_print_prescription').report_action(self)
+
+    def make_duplicate(self):
+        self.ensure_one()
+        self.is_duplicate = True
+        return True
+
+    def button_prescription_send(self):
+        self.ensure_one()
+        template = self.env.ref('argos_stock.mail_template_prescription_send')
+        lang = self._context.get('lang')
+        if template.lang:
+            lang = template._render_template(template.lang, 'sale.order', self.id)
+        context = {
+            'default_model': 'sale.order',
+            'default_res_id': self.id,
+            'default_use_template': bool(template.id),
+            'default_template_id': template.id,
+            'default_composition_mode': 'comment',
+            'mark_so_as_sent': True,
+            'proforma': self._context.get('proforma', False),
+            'force_email': True,
+            'model_description': self.with_context(lang=lang).name,
+        }
+        return {
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(False, 'form')],
+            'view_id': False,
+            'target': 'new',
+            'context': context,
+        }
