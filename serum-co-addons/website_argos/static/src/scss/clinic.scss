@@ -774,3 +774,51 @@
 		}
 	}
 }
+
+.search_by_service {
+	.dropdown-item.active {
+    	color: #212529;
+	}
+	
+		.dropdown-menu {
+			    border-radius: 8px;
+			    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
+			    background-color: #f6f6f6;
+			    border: 0;
+		        padding: 24px 15px;
+		        min-width: 356px;
+	}
+	
+	.dropdown-item {
+		margin: 0 0px 8px;
+		border-radius: 8px;
+	    background-color: #ffffff;
+	    font-family: AvenirLTStd-Roman;
+	    font-size: 15px;
+	    font-weight: normal;
+	    font-stretch: normal;
+	    font-style: normal;
+	    line-height: normal;
+	    letter-spacing: normal;
+	    color: #201f4c;
+	    padding: 15px 12px;
+	}
+}
+
+.search_by_service .dropdown-menu .dropdown-item.active {
+    background-color: #e6f4fb;
+}
+
+.search_by_service .dropdown-menu .dropdown-item.active::after {
+    content: "\f00c";
+    font-family: "FontAwesome" !important;
+    display: inline-block;
+    color: #63bae9;
+    float: right;
+    font-size: 20px;
+}
+
+.clinic-type-b .badge.active{
+	background: #63bae9;
+    color: white;
+}

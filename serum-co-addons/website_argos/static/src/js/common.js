@@ -1,9 +1,24 @@
 $(document).ready(function(){
+
+  if ($("nav").hasClass("o_portal_navbar")) {
+    $('.ac-order').addClass('active-order'); 
+    $('.br-order-portal').addClass('breadcrumb-order'); 
+  }
+
+  if ($("div").hasClass("no-gutters")) {
+    $('.ac-address').addClass('active-address'); 
+    $('.br-address-portal').addClass('breadcrumb-address'); 
+  }
+
+  if ($("div").hasClass("o_portal_my_home")) {
+    $('.ac-info').addClass('active-info'); 
+    $('.br-info-portal').addClass('breadcrumb-info'); 
+  }
 	
 	$(function() {
 		setTimeout(function(){ 
 			$('#vetowidget iframe html').append('<link rel="stylesheet" href="/website_argos/static/src/css/appointment.css" type="text/css" />');
-			console.log("AVVVVVVVVVVVVVVVVVVVVVV")
+			
 		}, 3000);
 		
 	});
@@ -479,3 +494,65 @@ $(function() {
       }
   });
 });
+
+$(document).ready(function(){
+    $('#contact_msg').on('change', function() {
+      if ( this.value == '1')
+      {
+        $(".colors").show();
+      }
+      else
+      {
+        $(".colors").hide();
+      }
+    });
+});
+
+
+
+
+
+
+jQuery(function($) {
+ var path =  window.location.href;
+ var nopath = // because the 'href' property of the DOM element is the absolute path
+ console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',path)
+ $('.top-links a').each(function() {
+ console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',this.href)
+  if (this.href === path) {
+   console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',path)
+   $(this).addClass('active');
+  }
+ });
+});
+
+
+jQuery(function($) {
+	 var path =  window.location.href;
+	 var nopath = // because the 'href' property of the DOM element is the absolute path
+	 $('.service-list-group-item a').each(function() {
+	  if (this.href === path) {
+	   $(this).addClass('active');
+	  }
+	 });
+	});
+
+jQuery(function($) {
+	 var path =  window.location.href;
+	 var nopath = // because the 'href' property of the DOM element is the absolute path
+	 $('.search_by_service a').each(function() {
+	  if (this.href === path) {
+	   $(this).addClass('active');
+	  }
+	 });
+	});
+
+jQuery(function($) {
+	 var path =  window.location.href;
+	 var nopath = // because the 'href' property of the DOM element is the absolute path
+	 $('.clinic-type-b a').each(function() {
+	  if (this.href === path) {
+	   $(this).addClass('active');
+	  }
+	 });
+	});

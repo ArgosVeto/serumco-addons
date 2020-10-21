@@ -718,3 +718,97 @@
   		}
   	}
 }
+
+#searched_clinic_detail {
+	.main-clinic{
+		border-top: solid 1px rgba(139, 139, 139, 0.16);
+		margin:31px 0;
+	}
+	.clinic-content{
+		border-top: solid 1px rgba(139, 139, 139, 0.16);
+		padding:20px 0;
+	}
+	.top-title{
+		font-family: AvenirLTStd-Heavy;
+		  font-size: 18px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  letter-spacing: normal;
+		  color: #201f4c;
+		  margin-bottom:8px;
+	}
+	.calendar-content{
+		margin-bottom:10px;
+		span{
+			font-family: AvenirLTStd-Heavy;
+			  font-size: 14px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.57;
+			  letter-spacing: normal;
+			  color: #8b8b8b;
+		}
+	}
+	.Lun-Mar-Mer-Jeu-Copy{
+		font-family: AvenirLTStd-Roman;
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 2.14;
+		  letter-spacing: normal;
+  		  color: theme-color('primary');
+	}
+	.h00---12h30-9h00---copy{
+		font-family: AvenirLTStd-Roman;
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 2.14;
+		  letter-spacing: normal;
+		  text-align: center;
+		  color: #8b8b8b;
+	}
+	.btn-primary {
+	    line-height: 25px;
+	    padding: 4px 13px !important;
+	    font-size: 11px;
+	}
+}
+
+.oe_website_sale .o_payment_form .card-body { 
+	border: none;
+    border-top: solid 1px rgba(139, 139, 139, 0.16) !important;
+    border-bottom: solid 1px rgba(139, 139, 139, 0.16) !important;
+    border-radius : 0px !important;
+}
+
+.o_payment_form label > input[type="radio"], .o_payment_form input[type="checkbox"] {
+    display: inline !important;
+}
+
+.order-xl-1 {
+	.card {
+		border:none !important;
+	}
+}
+
+#delivery_and_billing {
+	display:none;
+}
+
+.o_payment_form {
+	.payment_option_name {
+		font-family: AvenirLTStd-Heavy !important;
+		  font-size: 18px !important;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: normal !important;
+		  color: #201f4c !important;
+	}
+}

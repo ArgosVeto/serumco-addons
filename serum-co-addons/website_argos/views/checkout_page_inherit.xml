@@ -19,68 +19,77 @@
     
     <template id="clinic_load" name="Clinic load">
         <t t-if="clinic_ids">
-            <div class="row">
+            <div class="main-clinic row">
                 <t t-foreach="clinic_ids" t-as="cli">
-                    <div class="col-md-4 m16">
-                        <div><strong><t t-esc="cli.display_name"></t></strong></div>
-
-                        <t t-if="cli.street">
-                            <span class="street" t-field="cli.street" />
-                        </t>
-                        <t t-if="cli.street2">
-                            <span>, </span>                            
-                             <span class="street2" t-field="cli.street2" />
-                        </t>
-                        <t t-if="cli.zip">
-                            <span>, </span>                            
-                            <span class="zip" t-field="cli.zip" />
-                        </t>
-                        <t t-if="cli.city">
-                            <span>, </span>                            
-                            <span class="city" t-field="cli.city" />
-                        </t>
-                        <t t-if="cli.state_id">
-                            <span>, </span>                            
-                            <span class="state" t-field="cli.state_id.name" />
-                        </t>
-                        <t t-if="cli.country_id">
-                            <span>, </span>                            
-                            <span class="country" t-field="cli.country_id.name" />
-                        </t>
-                    </div>
-                    <div class="col-md-6 m16">
-                        <t t-if="cli.calendar_id">
-                        <div class="content mt8 mb8">
-                            <strong><span>Horaires d’ouverture</span></strong>
-                        </div>
-                        <t t-set="get_short_employee_slot" t-value="cli.calendar_id.get_short_employee_slot(cli.calendar_id)"/>
-                        <t t-if="get_short_employee_slot">
-                            <div class="row">
-                                <t t-foreach="get_short_employee_slot" t-as="wt">
-                                    <div class="col-lg-4">
-                                        <span class="Lun-Mar-Mer-Jeu-Copy">
-                                            <t t-esc="wt" />
-                                        </span>
+                    <div class="col-md-12">
+                        <div class="clinic-content row">
+                            <div class="col-md-4 m16">
+                                <div class="top-title"><strong><t t-esc="cli.display_name"></t></strong></div>
+                                <div class="Avenue-Pasteur d-flex align-items-start">
+                                    <t t-if="cli.street">
+                                        <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8 mt4" />
+                                    </t>
+                                    <p>
+                                        <t t-if="cli.street">
+                                            <span class="street" t-field="cli.street" />
+                                        </t>
+                                        <t t-if="cli.street2">
+                                            <span>, </span>                            
+                                             <span class="street2" t-field="cli.street2" />
+                                        </t>
+                                        <t t-if="cli.zip">
+                                            <span>, </span>                            
+                                            <span class="zip" t-field="cli.zip" />
+                                        </t>
+                                        <t t-if="cli.city">
+                                            <span>, </span>                            
+                                            <span class="city" t-field="cli.city" />
+                                        </t>
+                                        <t t-if="cli.state_id">
+                                            <span>, </span>                            
+                                            <span class="state" t-field="cli.state_id.name" />
+                                        </t>
+                                        <t t-if="cli.country_id">
+                                            <span>, </span>                            
+                                            <span class="country" t-field="cli.country_id.name" />
+                                        </t>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 m16">
+                                <t t-if="cli.calendar_id">
+                                    <div class="calendar-content">
+                                        <strong><span>Horaires d’ouverture</span></strong>
                                     </div>
-                                    <div class="col-lg-4 text-center">
-                                        <span class="h00---12h30-9h00---copy">
-                                            <t t-esc="get_short_employee_slot[wt]['start_time']" />
-                                        </span>
-                                    </div>
-                                    <div class="col-lg-4 text-center">
-                                        <span class="h00---12h30-9h00---copy">
-                                            <t t-esc="get_short_employee_slot[wt]['end_time']" />
-                                        </span>
-                                    </div>
+                                    <t t-set="get_short_employee_slot" t-value="cli.calendar_id.get_short_employee_slot(cli.calendar_id)"/>
+                                    <t t-if="get_short_employee_slot">
+                                        <div class="row">
+                                            <t t-foreach="get_short_employee_slot" t-as="wt">
+                                                <div class="col-lg-4">
+                                                    <span class="Lun-Mar-Mer-Jeu-Copy">
+                                                        <t t-esc="wt" />
+                                                    </span>
+                                                </div>
+                                                <div class="col-lg-4 text-center">
+                                                    <span class="h00---12h30-9h00---copy">
+                                                        <t t-esc="get_short_employee_slot[wt]['start_time']" />
+                                                    </span>
+                                                </div>
+                                                <div class="col-lg-4 text-center">
+                                                    <span class="h00---12h30-9h00---copy">
+                                                        <t t-esc="get_short_employee_slot[wt]['end_time']" />
+                                                    </span>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </t>
                                 </t>
                             </div>
-                        </t>
-                    </t>
+                            <div class="col-md-2"> 
+                                <a  t-att-href="'/update-delivery/%s' % slug(cli)"   class="btn btn-primary float-right p-0" role="button" title="Edit this address" aria-label="Edit this address"><i class='fa fa-edit mr4'/>Choisir</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-2 mt16"> 
-                        <a  t-att-href="'/update-delivery/%s' % slug(cli)"   class="btn btn-primary float-right p-0" role="button" title="Edit this address" aria-label="Edit this address"><i class='fa fa-edit'/>Add</a>
-                    </div>
-
                 </t>
             </div>
         </t>
@@ -267,8 +276,47 @@
             <t t-set="back_button_class" t-value="'btn btn-secondary continue-btn'"/>
         </xpath>
         <xpath expr="//div[@id='payment_method']//h3" position="replace">
-            <h3 class="mb24">Payment</h3>
+            <h3 class="mb24">Paiement</h3>
         </xpath>
+        <xpath expr="//div[hasclass('order-xl-1')]" position="attributes">
+            <attribute name="class">col-12 col-xl-8 order-xl-1</attribute>
+        </xpath>
+        <xpath  expr="//div[hasclass('order-xl-2')]/t[1]" position="after">
+        	<t t-if="order.operating_unit_id">
+                <div class=" mt32 click-collect">
+                    <div class="mb32">
+                        <div class="title">
+                            <h2>LIVRAISON : CLICK &amp; COLLECT</h2>
+                        </div>
+                        <div class="row mt24 ma-clinique">
+                            <div class="col-md-6 col-6">
+                                <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(order.operating_unit_id, 'clinic_banner')"/>
+                            </div>
+                            <div class="col-md-6 col-6">
+                                <h2 class="company"><t t-esc="order.operating_unit_id.name"/></h2>
+                                <p>
+                                    <span class="street"><t t-esc="order.operating_unit_id.street"/></span>
+                                    <span>,</span>
+                                    <span class="zip"><t t-esc="order.operating_unit_id.zip"/></span>
+                                    <span>, </span>
+                                    <span class="city"><t t-esc="order.operating_unit_id.city"/></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mb32">
+                        <a role="button" class="btn btn-outline-primary" t-attf-href="/clinic-detail/clinic-pratice/#{slug(order.operating_unit_id)}">
+                            <span>Voir la fiche clinique</span>
+                        </a>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        
+         <xpath expr="//div[hasclass('order-xl-2')]" position="attributes">
+            <attribute name="class">col-12 col-xl-4 order-xl-2</attribute>
+        </xpath>
+        
     </template>
 
 
@@ -339,7 +387,7 @@
                         </div>
                     </div>
                     <div class="text-center mb32">
-                        <a role="button" id="buy_now" class="btn btn-outline-primary" href="/clinic-detail">
+                        <a role="button" class="btn btn-outline-primary" t-attf-href="/clinic-detail/clinic-pratice/#{slug(order.operating_unit_id)}">
                             <span>Voir la fiche clinique</span>
                         </a>
                     </div>

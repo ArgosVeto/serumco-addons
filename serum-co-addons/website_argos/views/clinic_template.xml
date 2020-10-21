@@ -42,11 +42,11 @@
 	            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
 	                <t t-esc="ss and ss.name or ' - '" />
 	            </a>
-	            <div class="dropdown-menu" role="menu">
+	            <div class="dropdown-menu service-list-group-item" role="menu">
 	            	<t t-if="service">
 		                <t t-foreach="service" t-as="s">
 		                    <a role="menuitem" t-attf-href="/clinic-detail?service-type=#{s.sudo().id}" class="dropdown-item">
-		                        <span class="switcher_pricelist" 
+		                        <span 
 		                        	t-att-name="s.name"
 		                        	t-att-data-pl_id="s.id" 
 		                        	t-esc="s.name" />
