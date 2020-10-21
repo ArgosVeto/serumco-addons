@@ -21,6 +21,7 @@
         'argos_i18n',
         'argos_sale_project',
         'argos_planning_sale',
+        'argos_pos',
         'ks_dashboard_ninja',
     ],
     'data': [],

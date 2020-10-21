@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     partner_patient_ids = fields.Many2many(related='partner_id.patient_ids', string='Patient List')
-    argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')])
+    argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')], copy=False)
     partner_id = fields.Many2one(
         domain="[('contact_type', '=', 'contact'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
@@ -183,3 +183,11 @@ class SaleOrder(models.Model):
         self.action_cancel()
         self.action_draft()
         return True
+
+    def button_end_consultation(self):
+        self.ensure_one
+        self.write({
+            'pickup_time': fields.Datetime.now(),
+            'argos_state': 'consultation_done'
+        })
+
