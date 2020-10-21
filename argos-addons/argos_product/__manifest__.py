@@ -13,8 +13,12 @@
         'argos_contact',
     ],
     'data': [
-        'security/ir.model.access.csv',
+        # data
         'data/product_approval_data.xml',
+        'data/product_template_data.xml',
+        # security
+        'security/ir.model.access.csv',
+        # views
         'views/product_supplierinfo_views.xml',
         'views/product_template_views.xml',
         'views/product_attribute_views.xml',

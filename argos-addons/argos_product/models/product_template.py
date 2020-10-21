@@ -61,3 +61,6 @@ class ProductTemplate(models.Model):
         self.renewal = self.approval_id.renewal
 
 
+class StockPickingPrint(models.Model):
+    _name = 'stock.picking.print'
+    #TODO: to be deleted
