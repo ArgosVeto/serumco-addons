@@ -11,7 +11,7 @@
 						<section class="home-two-banner pt64 pb64">
 							<div class="container">
 								<div class="row">
-									<div class="col-md-6 mb16">
+									<div class="col-md-5 mb16">
 										<div class="text">
 											<div class="">
 							            		<ol class="breadcrumb">
@@ -52,7 +52,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6 mb16 text-center round-color">
+									<div class="col-md-6 offset-md-1 mb16 text-center round-color">
 										<div class="image text-center position-relative">
 											<img src="/website_argos/static/src/img/home-two-rdv.png" class="img img-fluid"/>
 											<div class="red-round-small"></div>

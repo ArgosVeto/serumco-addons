@@ -2,18 +2,18 @@
 	.text{
 		h3{
 			font-family: Comfortaa-Bold;
-		  	font-size: 40px;
 		  	font-weight: normal;
+		  	font-size: 36px;
 		  	font-stretch: normal;
 		  	font-style: normal;
 		  	line-height: 1.22;
 		  	letter-spacing: -0.6px;
-		  	margin-bottom: 16px;
+		  	margin-bottom: 24px;
 		}
 		p{
-			font-family: AvenirLTStd-Heavy;
-		  	font-size: 18px;
-		  	font-weight: 900;
+			font-family: AvenirLTStd-Roman;
+		  	font-size: 17px;
+		  	font-weight: 500;
 		  	font-stretch: normal;
 		  	font-style: normal;
 		  	line-height: 1.22;
@@ -21,7 +21,18 @@
 		  	margin-bottom: 32px;
 		  	color: #8b8b8b;
 		}
-		
+		form.o_clinic_type_searchbar_form.d-flex {
+			position: relative;
+			&::after{
+		    	font-family: "FontAwesome" !important;
+	    	    content: "\f0dd";
+	    	    display: inline-block;
+    	        position: absolute;
+			    right: 144px;
+			    top: 5px;
+			    color: theme-color('primary');
+		    }
+		}
 		select{
 	 	 	height: 44px;
 		  	border-radius: 8px;
@@ -35,18 +46,21 @@
 		    color: theme-color('primary');
             appearance: unset;
     		cursor: pointer;
+    		font-size: 14px;
 		    &::placeholder{
 		    	font-size: 16px;
 		    	line-height: 26px;
+		    	font-family: AvenirLTStd-Roman;
 		    }
 		    
 		}
 		option{
-			font-size: 15px;
+			font-size: 14px;
 		    line-height: 26px;
+		    font-family: AvenirLTStd-Roman;
 		}
 		.Valider-btn{
-			width: 142px;
+			width: 170px;
 		  	height: 44px;
 		  	border-radius: 6px;
 		  	background-color: theme-color('primary') !important;

@@ -129,6 +129,13 @@
 	        }
 		}
 	}
+	.product_sort_by_btn.clr_fltr{
+		a.btn{
+	      	&:after{
+	  		    display: none !important;
+	      	}
+		}
+	}
 	.product_sort_by_btn{
 		a.btn{
 			border-radius: 8px;

@@ -118,7 +118,7 @@
 			<div class="shop_page_filter oe_website_sale d-none d-md-block">
 				<div class="container">
 					<div class="d-flex align-items-center">
-						<div class="product_filters d-flex align-items-center">
+						<div class="product_filters d-flex align-items-center mr-auto">
 							<div class="category-filter d-none">
 								<a href="#" class="category-btn dropdown-toggle" data-toggle="dropdown">Category</a>
 								<div class="dropdown-menu" role="menu">
@@ -176,8 +176,15 @@
 				                </form>
 							</div>
 						</div>
+						<t t-if="attrib_set">
+							<div class="product_sort_by_btn clr_fltr ml-auto">
+								<a href="/shop" class="btn btn-secondary">
+									Clear All
+								</a>
+							</div>
+						</t>
 						<t t-if="request.website.viewref('website_sale.sort').active">
-							<div class="product_sort_by_btn ml-auto">
+							<div class="product_sort_by_btn">
 								<t t-set="list_price_desc_label">prix décroissant</t>
 					            <t t-set="list_price_asc_label">prix croissant</t>
 					            <t t-set="name_asc_label">Nom: A à Z</t>
