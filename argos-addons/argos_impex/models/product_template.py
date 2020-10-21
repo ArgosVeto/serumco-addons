@@ -292,9 +292,11 @@ class ProductTemplate(models.Model):
         logger = logger or self._context['logger']
         errors = []
         lines = []
+        document_obj = self.env['product.documentation']
         for row in reader:
             try:
-                if not row.get('code'):
+                code = row.get('code')
+                if not code:
                     logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
@@ -303,25 +305,23 @@ class ProductTemplate(models.Model):
                         _('The type is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The type column is missed!')))
                     continue
-                vals = {
-                    'default_code': row.get('code'),
-                    'doc_type': row.get('type'),
-                    'doc_url': row.get('doc'),
-                }
-                product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        product.write(vals)
-                    else:
-                        errors.append((row, _('No product with code %s found.') % row.get('code')))
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
-                    lines.append(reader.line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                product = self.search([('default_code', '=', code)], limit=1)
+                if not product:
+                    errors.append((row, _('No product with code %s found.') % code))
+                    continue
+                document = product.documentation_ids.filtered(lambda doc: doc.doc_type == row.get('type'))
+                if document:
+                    document.write({'doc_url': row.get('doc')})
+                else:
+                    document_obj.create({
+                        'product_template_id': product.id,
+                        'doc_type': row.get('type'),
+                        'doc_url': row.get('doc')
+                    })
+                if reader.line_num % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
+                lines.append(reader.line_num)
+                self._cr.commit()
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((row, repr(e)))

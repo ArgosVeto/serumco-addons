@@ -27,8 +27,6 @@ class ProductTemplate(models.Model):
     is_top_ten = fields.Boolean('Is Top Ten')
     routing_value_ids = fields.Many2many('product.attribute.value', compute='_compute_routing_value_ids')
     additional_features = fields.Text('Additional Features')
-    doc_type = fields.Char('Documentation Type')
-    doc_url = fields.Char('Documentation URL')
     aliment_type = fields.Char('Aliment Type')
     utilization = fields.Char('Utilization')
     composition = fields.Char('Composition')

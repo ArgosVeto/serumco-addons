@@ -7,7 +7,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="doc_type"/>
-          <field name="doc_url"/>
+          <field name="doc_url" widget="url"/>
         </tree>
       </field>
     </record>
@@ -19,7 +19,7 @@
           <sheet>
             <group>
               <field name="doc_type" required="1"/>
-              <field name="doc_url" required="1"/>
+              <field name="doc_url" required="1" widget="url"/>
             </group>
           </sheet>
         </form>
