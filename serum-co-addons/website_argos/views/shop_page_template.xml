@@ -179,7 +179,7 @@
 						<t t-if="attrib_set">
 							<div class="product_sort_by_btn clr_fltr ml-auto">
 								<a href="/shop" class="btn btn-secondary">
-									Clear All
+									Clear
 								</a>
 							</div>
 						</t>
