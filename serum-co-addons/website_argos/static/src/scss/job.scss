@@ -2,7 +2,7 @@
 	h1{
 		font-family: Comfortaa-Bold;
 	  	font-size: 64px;
-	  	font-weight: bold;
+	  	font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: 1.25;
@@ -12,7 +12,7 @@
 	h3{
 		font-family: Comfortaa-Bold;
 	  	font-size: 36px;
-	  	font-weight: bold;
+	  	font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: 1.22;
@@ -199,7 +199,7 @@
 	h2{
 		font-family: Comfortaa-Bold;
 	  	font-size: 40px;
-  		font-weight: bold;
+  		font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: normal;
@@ -296,7 +296,7 @@
 			}
 			font-family: Comfortaa-Bold;
 		  	font-size: 28px;
-		  	font-weight: bold;
+		  	font-weight: normal;
 		  	font-stretch: normal;
 		  	font-style: normal;
 		  	line-height: 1.21;
@@ -405,7 +405,7 @@
 		h1{
 			font-family: Comfortaa-Bold;
 		  	font-size: 40px;
-		  	font-weight: bold;
+		  	font-weight: normal;
 		  	font-stretch: normal;
 		  	font-style: normal;
 		  	line-height: normal;
@@ -437,7 +437,7 @@
 	h3{
 		font-family: Comfortaa-Bold;
 	  	font-size: 28px;
-	  	font-weight: bold;
+	  	font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: 1.21;
@@ -552,7 +552,10 @@
 	 	box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
 	  	background-color: #ffffff;
 	  	padding: 29px 23px 24px;
-  	    position: sticky;
+  	    
+	}
+	.job-right-content1{
+		position: sticky;
 		top: 0;
 	}
 	.job-right-share{
@@ -589,7 +592,7 @@
 
 .o_connected_user{
 	.job_detail_snippet{
-		.job-right-content {
+		.job-right-content1 {
 		    position: sticky;
     		top: 46px;
 		}
@@ -602,7 +605,7 @@
 	h1{
 		font-family: Comfortaa-Bold;
 		  font-size: 40px;
-		  font-weight: bold;
+		  font-weight: normal;
 		  font-stretch: normal;
 		  font-style: normal;
 		  line-height: normal;
@@ -613,7 +616,7 @@
 	h3{
 		font-family: Comfortaa-Bold;
 		  font-size: 28px;
-		  font-weight: bold;
+		  font-weight: normal;
 		  font-stretch: normal;
 		  font-style: normal;
 		  line-height: 1.21;

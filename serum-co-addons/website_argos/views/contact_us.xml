@@ -74,7 +74,7 @@
 												<label class="col-form-label" for="contact_msg">Objet du message
 												</label>
 											</div>
-											<div class="col-lg-12">
+											<div class="col-lg-12 selection-div">
 												<select id="contact_msg" name="contact_msg"
 													class="form-control">
 													<t t-foreach="contact_questions_ids" t-as="c">
@@ -90,7 +90,7 @@
 											<div class="col-lg-12">
 												<label class="col-form-label" for="contact_clinic">Contacter une clinique</label>
 											</div>
-											<div class="col-lg-12">
+											<div class="col-lg-12 selection-div">
 												<select id="clinic_contact_id"
 													name="clinic_contact_id" class="form-control">
 													<t t-foreach="clinic_ids" t-as="c">

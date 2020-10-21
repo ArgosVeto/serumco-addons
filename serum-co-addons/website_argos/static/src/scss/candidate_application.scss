@@ -2,7 +2,7 @@
 	h1{
 		font-family: Comfortaa-Bold;
 	  	font-size: 40px;
-	  	font-weight: bold;
+	  	font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: normal;
@@ -17,7 +17,7 @@
 	h3{
 		font-family: Comfortaa-Bold;
 	  	font-size: 28px;
-	  	font-weight: bold;
+	  	font-weight: normal;
 	  	font-stretch: normal;
 	  	font-style: normal;
 	  	line-height: 1.21;
@@ -72,6 +72,7 @@
 		  	letter-spacing: normal;
 		  	color: theme-color('gamma');
 		  	border-top: solid 1px rgba(139, 139, 139, 0.16);
+		  	width: 100%;
 	  	}
 	  	.check{
 	  		font-family: AvenirLTStd-Roman;

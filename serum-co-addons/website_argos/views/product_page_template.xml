@@ -110,20 +110,21 @@
                         </div>
                         <div class="cart-quantity d-flex align-items-center">
 	                        <t t-if="request.website.viewref('website_sale.product_quantity').active">
-	                            <div class="css_quantity input-group align-items-center" contenteditable="false">
+	                            <div class="css_quantity input-group d-flex align-items-center" contenteditable="false">
 	                                <div class="control-qty-cart ">
 	                                    <div class="control-qty d-flex">
-	                                        <div class="input-group-append">
-	                                            <a t-attf-href="#" class="btn qty_add float_left js_add_cart_json" aria-label="Add one" title="Add one">
-	                                                <i class="fa fa-plus"></i>
-	                                            </a>
-	                                        </div>
-	                                        <input type="text" class="form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
 	                                        <div class="input-group-prepend">
-	                                            <a t-attf-href="#" class="btn qty_remove js_add_cart_json" aria-label="Remove one" title="Remove one">
-	                                                <i class="fa fa-minus"></i>
-	                                            </a>
-	                                        </div>
+                                                <a t-attf-href="#" class="btn qty_remove js_add_cart_json" aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
+                                            </div>
+	                                        <input type="text" class="form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+                                            <div class="input-group-append">
+                                                <a t-attf-href="#" class="btn qty_add float_left js_add_cart_json" aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </div>
+	                                        
 	                                    </div>
 	                                </div>
 	                            </div>

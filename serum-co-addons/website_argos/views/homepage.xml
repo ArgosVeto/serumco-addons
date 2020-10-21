@@ -200,7 +200,7 @@
 											<h3 class="text-primary">Prendre rendez-vous</h3>
 											<p>Sed odit sequi numquam quis ducimus autem aut rerum culpa. Reiciendis et numquam voluptate quo perferendis in. Odio consequuntur aut voluptates fugit quae eligendi. Sed molestiae et expedita.</p>
 
-											<form class="o_clinic_type_homepage_form"  action="/appointment-two" method="get">
+											<form class="o_clinic_type_homepage_form o_clinic_type_searchbar_form d-flex"  action="/appointment-two" method="get">
 
 												<t t-set="get_clinic_ids" t-value="website.get_clinic()"/>
 												<select id="clinic_id" name="clinic_id" t-attf-class="form-control">

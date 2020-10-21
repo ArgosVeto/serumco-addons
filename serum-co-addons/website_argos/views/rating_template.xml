@@ -18,8 +18,10 @@
             <span style="margin-left:2px;" class="text1">
                 <t t-esc="rating_avg"/><span> / 5</span>
             </span>
-            <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
-            <t t-esc="product.rating_count"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+            
+            <a href="#discussion"><span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
+           	 <t t-esc="product.rating_count"/><span style="margin-left:5px;font-size:15px;">avis</span></span>
+        	</a>
         </div>
     </template>
     
@@ -52,12 +54,12 @@
 
 	<template id="products_item_rating_value" inherit_id="website_sale.products_item"
 		name="Website Product Rating">
-        <xpath expr="//div[@class='product_price']" position="after">
+        <!-- <xpath expr="//div[@class='product_price']" position="after">
             <input type="hidden" name="product_tmpl_id" t-att-value="product.id"/>
             <t t-set="combination" t-value="product._get_first_possible_combination()"/>
             <t t-if="combination" t-call="website_argos.product_variants">
             </t>
-        </xpath>
+        </xpath> -->
 	</template>
 
      <template inherit_id='website_sale.products_item' id="products_rating_value" name="Product Rating">

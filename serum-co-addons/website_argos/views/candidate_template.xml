@@ -300,7 +300,7 @@
 	            <div class="col-lg-3 col-md-4 text-right">
 	                <label class="col-form-label" for="country_id">Pays</label>
 	            </div>
-	            <div class="col-lg-7 col-md-8">
+	            <div class="col-lg-7 col-md-8 selection-div sel-pays">
 	            	<select id="country_id" name="country_id" t-attf-class="form-control">
                         <option value="">sélectionner...</option>
                         <t t-foreach="country_ids" t-as="c">

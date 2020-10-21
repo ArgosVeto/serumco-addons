@@ -220,13 +220,13 @@
 	<template id="product_icons_and_description" inherit_id="website_sale.products_item" name="Argos Products Icon and Description">
 		<xpath expr="//div[hasclass('oe_product_image')]" position="inside">
 			<div class="icons_and_description">
-				<t t-if="product.tag_ids">
+				<t t-if="product.public_categ_ids">
 					<div class="argos_tags">
 						<p>
-							<t t-foreach="product.tag_ids" t-as="tags">
+							<t t-foreach="product.public_categ_ids" t-as="categs">
 			            		<div class="tag-name">
-			            			<a t-att-href="'/shop?tag_id=%s' % tags.id" class="">
-		            					<t t-esc="tags.name"/>
+			            			<a t-att-href="keep('/shop/category/%s' % slug(categs), category=0)">
+		            					<t t-esc="categs.name"/>
 		            				</a>
 			            		</div>
 			            	</t>

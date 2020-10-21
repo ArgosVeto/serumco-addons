@@ -108,14 +108,16 @@
 							            </div>	
 							            <div class="col-md-4">
 							                <label class="col-form-label" for="country_id">Pays</label>
-							               <select id="country_id" name="country_id" t-attf-class="form-control">
-						                        <option value="">sélectionner...</option>
-						                        <t t-foreach="country_ids" t-as="c">
-						                            <option t-att-value="c.id">
-						                                <t t-esc="c.name"/>
-						                            </option>
-						                        </t>
-						                    </select>
+							                <div class="selection-div sel-pays">
+								               <select id="country_id" name="country_id" t-attf-class="form-control">
+							                        <option value="">sélectionner...</option>
+							                        <t t-foreach="country_ids" t-as="c">
+							                            <option t-att-value="c.id">
+							                                <t t-esc="c.name"/>
+							                            </option>
+							                        </t>
+							                    </select>
+							                </div>
 							            </div>
 			                		</div>
 
@@ -134,25 +136,29 @@
 			                		<div class="form-group row form-field o_website_form_required_custom mt16">
 				                        <div class="col-md-6">
 				                        	<label class="col-form-label" for="job_type">Type de metier</label>
-				                        	<select id="job_id" name="job_id" t-attf-class="form-control">
-						                        <option value="">sélectionner...</option>
-						                        <t t-foreach="job_ids" t-as="j">
-						                            <option t-att-value="j.id">
-						                                <t t-esc="j.name"/>
-						                            </option>
-						                        </t>
-						                    </select>
+				                        	<div class="selection-div sel-pays">
+					                        	<select id="job_id" name="job_id" t-attf-class="form-control">
+							                        <option value="">sélectionner...</option>
+							                        <t t-foreach="job_ids" t-as="j">
+							                            <option t-att-value="j.id">
+							                                <t t-esc="j.name"/>
+							                            </option>
+							                        </t>
+							                    </select>
+							                </div>
 				                        </div>
 				                        <div class="col-md-6">
 				                        	<label class="col-form-label" for="agglomeration">Agglomeration</label>
-				                        	<select id="agglomeration_id" name="agglomeration_id" t-attf-class="form-control">
-						                        <option value="">sélectionner...</option>
-						                        <t t-foreach="agglomeration_ids" t-as="a">
-						                            <option t-att-value="a">
-						                                <t t-esc="a" />
-						                            </option>
-						                        </t>
-						                    </select>
+				                        	<div class="selection-div sel-pays">
+					                        	<select id="agglomeration_id" name="agglomeration_id" t-attf-class="form-control">
+							                        <option value="">sélectionner...</option>
+							                        <t t-foreach="agglomeration_ids" t-as="a">
+							                            <option t-att-value="a">
+							                                <t t-esc="a" />
+							                            </option>
+							                        </t>
+							                    </select>
+							                </div>
 				                        </div>
 			                		</div>
 

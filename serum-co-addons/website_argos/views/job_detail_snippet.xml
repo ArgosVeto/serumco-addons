@@ -66,66 +66,68 @@
 						</div>
 					</div>
 					<div class="col-lg-4">
-						<div class="job-right-content">
-							<h3 class="mb16">Docteur(e) Vétérinaire H/F</h3>
-							<div class="d-flex mb16">
-								<p>
-									<img src="/website_argos/static/src/img/location.svg"/>
-								</p>
-								<p class="ml8">6 rue Principale, 31120 Portet-sur-Garonne</p>
-							</div>
-							<div class="d-flex mb16">
-								<p>
-									<img src="/website_argos/static/src/img/calender.svg"/>
-								</p>
-								<p class="ml8">À partir de Septembre 2020</p>
-							</div>
-							<div class="d-flex mb16">
-								<p>
-									<img src="/website_argos/static/src/img/note.svg"/>
-								</p>
-								<p class="ml8">CDI temps partiel, temps plein possible début 2021</p>
-							</div>
-							<div class="d-flex mb16">
-								<p>
-									<img src="/website_argos/static/src/img/euro.svg"/>
-								</p>
-								<p class="ml8">Rémunération basée sur le forfait heure de la convention collective</p>
-							</div>
-							<div class="d-flex mb16">
-								<p>
-									<img src="/website_argos/static/src/img/check.svg"/>
-								</p>
-								<div class="advantage ml8">
-									<h6>Avantages :</h6>
-									<ul>
-										<li>Vétérinaire senior accompagnant si profil débutant</li>
-										<li>Tickets restaurant</li>
-										<li>Rémunération variable selon le chiffre d'affaires de la clinique</li>
-										<li>Ordinateur portable personnel</li>
-									</ul>
+						<div class="job-right-content1">
+							<div class="job-right-content">
+								<h3 class="mb16">Docteur(e) Vétérinaire H/F</h3>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/location.svg"/>
+									</p>
+									<p class="ml8">6 rue Principale, 31120 Portet-sur-Garonne</p>
 								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/calender.svg"/>
+									</p>
+									<p class="ml8">À partir de Septembre 2020</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/note.svg"/>
+									</p>
+									<p class="ml8">CDI temps partiel, temps plein possible début 2021</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/euro.svg"/>
+									</p>
+									<p class="ml8">Rémunération basée sur le forfait heure de la convention collective</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/check.svg"/>
+									</p>
+									<div class="advantage ml8">
+										<h6>Avantages :</h6>
+										<ul>
+											<li>Vétérinaire senior accompagnant si profil débutant</li>
+											<li>Tickets restaurant</li>
+											<li>Rémunération variable selon le chiffre d'affaires de la clinique</li>
+											<li>Ordinateur portable personnel</li>
+										</ul>
+									</div>
+								</div>
+								<a href="/application" class="btn btn-primary d-block mt32">Postuler</a>
 							</div>
-							<a href="/application" class="btn btn-primary d-block mt32">Postuler</a>
-						</div>
-						<div class="job-right-share mt40 text-center">
-							<p class="mb32 text-center">Partager l’offre</p>
-							<div class="share-link">
-                            	<div t-attf-class="s_share #{_classes}">
-							        <a href="https://www.facebook.com/sharer/sharer.php?u={url}" t-attf-class="s_share_facebook #{_link_classes}" target="_blank">
-							            <i t-attf-class="fa fa-1x fa-facebook #{not _link_classes and 'rounded shadow-sm'}"/>
-							        </a>
-							        <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" t-attf-class="s_share_twitter #{_link_classes}" target="_blank">
-							            <i t-attf-class="fa fa-1x fa-twitter #{not _link_classes and 'rounded shadow-sm'}"/>
-							        </a>
-							        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={url}&amp;title={title}&amp;" t-attf-class="s_share_linkedin #{_link_classes}" target="_blank">
-							            <i t-attf-class="fa fa-1x fa-linkedin #{not _link_classes and 'rounded shadow-sm'}"/>
-							        </a>
-							        <a href="mailto:?body={url}&amp;subject={title}" t-attf-class="s_share_email #{_link_classes}">
-							            <i t-attf-class="fa fa-1x fa-envelope #{not _link_classes and 'rounded shadow-sm'}"/>
-							        </a>
-							    </div>
-                            </div>
+							<div class="job-right-share mt40 text-center">
+								<p class="mb32 text-center">Partager l’offre</p>
+								<div class="share-link">
+	                            	<div t-attf-class="s_share #{_classes}">
+								        <a href="https://www.facebook.com/sharer/sharer.php?u={url}" t-attf-class="s_share_facebook #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-facebook #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" t-attf-class="s_share_twitter #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-twitter #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={url}&amp;title={title}&amp;" t-attf-class="s_share_linkedin #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-linkedin #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="mailto:?body={url}&amp;subject={title}" t-attf-class="s_share_email #{_link_classes}">
+								            <i t-attf-class="fa fa-1x fa-envelope #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								    </div>
+	                            </div>
+							</div>
 						</div>
 					</div>
 				</div>

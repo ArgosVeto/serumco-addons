@@ -15,6 +15,7 @@ class Address(http.Controller):
 		values = {}
 		partner_id = False
 		error_message = ""
+		print ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 		if 'data' in post and post['data']:
 			predefine_data = json.loads(post['data'].replace("'", '"'))
 		if 'error' in post and post['error']:
@@ -91,5 +92,6 @@ class Address(http.Controller):
 				'predefine_data':predefine_data,
 				'state_ids':state_ids,			
 			})
+		print ("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
 		values.update({'partner_id':partner_id})
 		return request.render('website_argos.add_address',values)

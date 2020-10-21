@@ -1,3 +1,17 @@
+
+.argos-product-icons {
+	
+	.btn-link:disabled, .btn-link.disabled {
+	    color: #6c757d;
+	    pointer-events: none;
+	    background-color: rgba(222, 26, 70, 0.08) !important;
+   		border-color: rgba(222, 26, 70, 0.08) !important;
+   		border-radius: 50%;
+    	padding: 13px;
+	}
+	
+}
+
 .shop_categ_info{
 	.sub-categories{
 		.categ-btn{
@@ -6,7 +20,7 @@
 		  	background-color: #ffffff;
 		  	font-family: Comfortaa-Bold;
 		  	font-size: 16px;
-		  	font-weight: bold;
+		  	font-weight: normal;
 		  	font-stretch: normal;
 		  	font-style: normal;
 		  	line-height: normal;

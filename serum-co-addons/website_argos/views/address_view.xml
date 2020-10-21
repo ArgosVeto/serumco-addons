@@ -52,21 +52,25 @@
 
                                      <div t-attf-class="form-group col-lg-6 div_country">
                                         <label class="col-form-label" for="country_id">Pays</label>
-                                        <select id="country_id" name="country_id" t-attf-class="form-control">
-                                            <option value="">Pays...</option>
-                                            <t t-foreach="countries" t-as="c">
-                                                <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">
-                                                    <t t-esc="c.name" />
-                                                </option>
-                                            </t>
-                                        </select>
+                                        <div class="selection-div sel-add">
+                                            <select id="country_id" name="country_id" t-attf-class="form-control">
+                                                <option value="">Pays...</option>
+                                                <t t-foreach="countries" t-as="c">
+                                                    <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">
+                                                        <t t-esc="c.name" />
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div t-attf-class="form-group col-lg-6" id="div_state">
                                         <label class="col-form-label" for="state_id">State / Province</label>
-                                        <select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}">
-                                            <option value="">État / Province</option>
-                                        </select>
+                                        <div class="selection-div sel-add">
+                                            <select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}">
+                                                <option value="">État / Province</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                     <input type="hidden" name="submitted" value="1" />
