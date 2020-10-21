@@ -40,6 +40,7 @@
         'views/rating_rating_views.xml',
         'views/menu_views.xml',
         'views/product_category_views.xml',
+        'views/product_public_category_views.xml',
     ],
     'application': False,
     'installable': True,
