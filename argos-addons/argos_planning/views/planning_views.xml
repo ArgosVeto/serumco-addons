@@ -96,9 +96,10 @@
             </group>
             <group>
               <field name="patient_ids" invisible="1"/>
-              <field name="partner_id" attrs="{'required': [('background_event','=',False)]}"/>
+              <field name="role_type" invisible="1"/>
+              <field name="partner_id" attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"/>
               <field name="patient_id" domain="[('id','in',patient_ids)]"
-                     attrs="{'required': [('background_event','=',False)]}"
+                     attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"
                      context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
               <field name="consultation_type_id" string="Appointment nature"/>
               <field name="pickup_time" invisible="1"/>

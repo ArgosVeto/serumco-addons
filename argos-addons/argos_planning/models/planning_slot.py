@@ -40,6 +40,7 @@ class PlanningSlot(models.Model):
     background_event = fields.Boolean('Background', default=False)
     partner_phone = fields.Char(related='partner_id.phone', string='Customer phone')
     patient_ids = fields.Many2many('res.partner', related='partner_id.patient_ids')
+    role_type = fields.Selection(related='role_id.role_type')
 
     @api.model
     def get_work_interval(self, start_date, employee=False):
@@ -206,11 +207,12 @@ class PlanningSlot(models.Model):
 
     def check_veterinary_presence(self):
         cur_operating_unit = self.env.user.default_operating_unit_id
-        presence_role_id = self.env.ref('argos_planning.planning_role_presence', raise_if_not_found=False).id
-        absence_role_id = self.env.ref('argos_planning.planning_role_absence', raise_if_not_found=False).id
-        for rec in self.filtered(lambda l: l.employee_id and l.role_id.id != absence_role_id):
+        role_obj = self.env['planning.role']
+        presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
+        absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
+        for rec in self.filtered(lambda l: l.employee_id and l.role_id.id not in absence_role_ids):
             domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
-                      ('role_id', '=', presence_role_id), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
+                      ('role_id', 'in', presence_role_ids), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
                       ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
                       ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
                       ('end_datetime', '>=', rec.end_datetime)]
