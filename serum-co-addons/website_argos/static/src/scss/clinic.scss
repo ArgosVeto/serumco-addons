@@ -10,7 +10,12 @@
 		border-bottom-right-radius: 6px !important;
     	border-bottom-left-radius: 6px !important;
 	}
-
+	
+	.card-footer {
+	    padding: 0rem 1rem;
+	    background-color: rgba(0, 0, 0, 0.0);
+	    border-top: 0px solid rgba(0, 0, 0, 0.125);
+	}
 	
 	.card-img-top {
     width: 100%;
@@ -163,6 +168,13 @@
     
 }
 
+.card {
+	.btn-primary.disabled, .btn-primary:disabled {
+	    color: #FFFFFF;
+	    background-color: rgba(222, 26, 70, 0.08);
+	    border-color: rgba(222, 26, 70, 0.08);
+	}
+}
 .clinic-type-b {
 	.badge-light {
 		  border-radius: 24px;
@@ -178,7 +190,7 @@
 		  text-align: center;
 		  color:theme-color('primary');
 		  text-transform:uppercase;
-	      padding: 0.8em 2.6em;
+	      padding: 0.8em 1.2em;
 	      
 	      &:hover{
 	      	background-color: theme-color('primary');

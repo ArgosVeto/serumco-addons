@@ -26,6 +26,7 @@
     'data': [
         'data/data.xml',
         'data/operating_unit_data.xml',
+        'data/questiondata.xml',
         'views/assets.xml',
         'data/menu.xml',
         'security/ir.model.access.csv',
@@ -66,6 +67,11 @@
         'views/legal_notice.xml',
         'views/gtc.xml',
         'views/privacy_policy.xml',
+
+        'views/blog_page_snippet_content1.xml',
+        'views/blog_page_snippet_content2.xml',
+        'views/blog_page_snippet_content3.xml',
+        'views/blog_page_snippet_content4.xml',
 
 
         # 'views/partner_view.xml',

@@ -46,7 +46,7 @@
 														<img src="/website_argos/static/src/img/location.svg"/>
 													</div>
 													<div class="link ml-2">
-														<a class="nav-link p-0 text-primary" href="/prendre-rendez-vous-two">Je Trouve ma clinique</a>
+														<a class="nav-link p-0 text-primary" href="/clinic-detail">Je Trouve ma clinique</a>
 													</div>
 												</div>
 											</div>

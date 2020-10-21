@@ -10,7 +10,7 @@
                             <div class="container">
                                 <ul class="nav navbar-nav flex-row">
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="#">Vue d'ensemble</a>
+                                        <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
                                     </li>
                                     <li class="nav-item mr32">
                                         <a class="nav-link" href="/my/orders">Commandes</a>
@@ -315,7 +315,6 @@
             </div>
         </t>
     </template>
-
     
 
     <template id="clinic_shortlisted_template" name="Clinic Shortlisted">
@@ -402,4 +401,203 @@
             </t>
         </xpath>
     </template>
+
+    <template id="address_inherited" inherit_id="portal.portal_layout">
+        <xpath expr="//div[hasclass('o_portal','container','mt-3')]" position="before">
+            <div class="row m-0 mx-md-3 my_content ">
+                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+                    <div class="top-links p-0 common-portal">
+                        <div class="container">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                </li>
+                                <li class="nav-item ac-order mr32">
+                                    <a class="nav-link" href="/my/orders">Commandes</a>
+                                </li>
+                                <t t-if="next_appointment_id or pervious_appointment_id">
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                    </li>
+                                </t>
+                                <li class="nav-item ac-address mr32">
+                                    <a class="nav-link" href="/my/account">Mes adresses</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-clinic">Ma clinique</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+                                </li>
+                                <li class="nav-item ac-info mr32">
+                                    <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+                                </li>
+                                <li class="nav-item m-0">
+                                    <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row my_content">
+                    <div class="col-lg-12 br-order-portal">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Commandes</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 br-address-portal">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes adresses</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 br-info-portal">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes infos personnelles</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 heading">
+                        <h1 class="mt16 mb32">
+                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                        </h1>
+                        <p>
+                            Retrouvez sur cette page lorem ipsum dolor sit amet 
+                        </p>
+                        <p class="mb48">
+                            Nous Contacter
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="wishlist_inherited" inherit_id="website_sale_wishlist.product_wishlist">
+        <xpath expr="//div[@id='oe_structure_website_sale_wishlist_product_wishlist_1']" position="before">
+            <div class="row m-0 mx-md-3 my_content">
+                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+                    <div class="top-links p-0">
+                        <div class="container">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/orders">Commandes</a>
+                                </li>
+                                <t t-if="next_appointment_id or pervious_appointment_id">
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                    </li>
+                                </t>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/account">Mes adresses</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-clinic">Ma clinique</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link active" href="/shop/wishlist">Mes produits favoris</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+                                </li>
+                                <li class="nav-item m-0">
+                                    <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row my_content">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes produits favoris</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 heading">
+                        <h1 class="mt16 mb32">
+                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                        </h1>
+                        <p>
+                            Retrouvez sur cette page lorem ipsum dolor sit amet 
+                        </p>
+                        <p class="mb48">
+                            Nous Contacter
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="payment_method_inherited" inherit_id="payment.pay_methods">
+        <xpath expr="//div[hasclass('wrap')]" position="before">
+            <div class="row m-0 mx-md-3 my_content">
+                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+                    <div class="top-links p-0">
+                        <div class="container">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/orders">Commandes</a>
+                                </li>
+                                <t t-if="next_appointment_id or pervious_appointment_id">
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                    </li>
+                                </t>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/account">Mes adresses</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my-clinic">Ma clinique</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+                                </li>
+                                <li class="nav-item m-0">
+                                    <a class="nav-link active" href="/my/payment_method">Mes cartes bancaires</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row my_content">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-12 heading">
+                        <h1 class="mt16 mb32">
+                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                        </h1>
+                        <p>
+                            Retrouvez sur cette page lorem ipsum dolor sit amet 
+                        </p>
+                        <p class="mb48">
+                            Nous Contacter
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
 </odoo>

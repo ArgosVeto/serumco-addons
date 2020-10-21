@@ -88,7 +88,7 @@
 	                                        <a class="nav-link" href="/shop-home">Accueil</a>
 	                                    </li>
 	                                    <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+	                                        <a class="nav-link chat" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
 	                                    </li>
 	                                    <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
@@ -283,6 +283,14 @@
 	            	<img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
 	            </button>
 	        </t>
+		</xpath>
+	</template>
+
+	<template id="cart_popover_inherit" inherit_id="website_sale.cart_popover">
+		<xpath expr="//a[hasclass('btn','btn-primary')]" position="replace">
+			<a role="button" class="btn btn-primary" href="/shop/cart">
+               Voir mon panier
+             </a>
 		</xpath>
 	</template>
 

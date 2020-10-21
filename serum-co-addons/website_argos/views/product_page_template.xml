@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<template id="argos_product_detail_inherited" inherit_id="website_sale.product" name="Product Details">
 
+    <template id="product_detail_inherited" inherit_id="website_sale.product" priority="1">
+            <xpath expr="//div[@class='js_sale']/section[1]" position="before">
+            <section class="shop_categ_info s_blog_banner pt-0 pb-0">
+                <div class="row m-0 my_content">
+                    <div class="col-lg-12 mb-0 p-0">
+                        <div class="top-links p-0 bg-transparent">
+                            <div class="container">
+                                <ul class="nav navbar-nav flex-row">
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/shop-home">Accueil</a>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
+                                    </li>
+                                    <li class="nav-item m-0">
+                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+	<template id="argos_product_detail_inherited" inherit_id="website_sale.product" name="Product Details">
         <xpath expr="//ol[hasclass('breadcrumb')]" position="replace">
             <ol class="breadcrumb mb32">
                 <li class="breadcrumb-item">
@@ -270,11 +299,6 @@
         <xpath expr="//section[@id='product_full_spec']//div" position="replace" />
         <xpath expr="//section[@id='product_full_spec']//h3" position="replace" />
     </template>
-
-    <!-- <template id="discussion_rating_bizople" inherit_id="website_sale.product_comment">
-        <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="replace">
-        </xpath>
-    </template> -->
 
     <template id="product_description_bizople" inherit_id="website_sale.product">
          <xpath expr="//div[@id='product_full_description']" position="attributes">

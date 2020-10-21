@@ -28,24 +28,6 @@ class OperatingUnit(models.Model):
     google_map_link = fields.Char (string="Google Map Link")
     show_in_footer = fields.Boolean(string="Show In Footer")
 
-    @api.model
-    def clinic_detail_json(self):
-        domain = [('active', '=', True)]
-        operating_unit_ids = self.sudo().search(domain)
-        unit_dic = {}
-        for unit in operating_unit_ids:
-            lis = []
-            if unit.street:
-                lis.append(unit.street)
-            if unit.city:
-                lis.append(unit.city)
-            if unit.zip:
-                lis.append(unit.zip)
-            unit_dic.setdefault(unit.id, {})
-            unit_dic[unit.id]['name'] = unit.name
-            unit_dic[unit.id]['city'] = ','.join(rec for rec in lis)
-        return unit_dic
-
     def  clinic_working_status(self):
         not_working_time = False
         if self.calendar_id:

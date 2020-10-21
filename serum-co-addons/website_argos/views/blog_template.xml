@@ -168,7 +168,7 @@
 				            </t>
 				        </div>
 				        <div class="b-in-date">
-							<span>Chat, chien, tous</span><span  class="span-1"> | </span> <span>Le <time t-field="blog_post.post_date" class="text-nowrap b-date px-2" t-options='{"format": "d MMMM yyyy"}'/></span>
+							<span>Le <time t-field="blog_post.post_date" class="text-nowrap b-date px-2" t-options='{"format": "d MMMM yyyy"}'/></span>
 				        </div>
 				        
 				         <div class="b-in-hr">

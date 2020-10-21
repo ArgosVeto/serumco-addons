@@ -61,14 +61,15 @@
 
 
     <template id="clinic_type_search_tmp" name="Clinic Type Search">
-        <t t-set="type_val" t-value="type_ids" />
+        <t t-set="type_val" t-value="clinic_type_ids" />
         <t t-if="type_val">
         <div class="clinic-type-b">
-        	<t t-foreach="type_val" t-as="pl">
-	        	<a t-attf-href="/clinic-detail?clinic-type=#{pl.sudo().id}" class="mr-4 badge badge-pill badge-light">
-	        		<span t-att-name="pl.name" t-esc="pl.name" />
-	        	</a>
-        	</t>
+	       	<a t-attf-href="/clinic-detail?clinic-collect=1" class="mr-2 badge badge-pill badge-light">
+	       		<span>Click &amp; Collect</span>
+	       	</a>
+	       	<a t-attf-href="/clinic-detail?clinic-appoint=1" class="mr-2 badge badge-pill badge-light">
+	       		<span>Prise de RDV en ligne</span>
+	       	</a>
 		</div>
 		</t>
        
@@ -104,7 +105,7 @@
 	    		<div class="container">
 	    			<div class="row">
 
-	            		<div class="search_by_service mr-4">
+	            		<div class="search_by_service mr-2">
                        		<t t-call="website_argos.service_type_search_tmp"/>
 	                	</div>
                         <div class="search_by_type">
@@ -112,7 +113,7 @@
 	                	</div>
                         <div class="open_today">
                           <div class="clinic-type-b">
-				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-4 badge badge-pill badge-light">
+				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
 				        		<span>OUVERT AUJOURD HUI</span>
 				        	</a>
 				        	<!-- OUVERT AUJOURD HUI -->
@@ -121,50 +122,28 @@
                         <div class="criteria search_by_service">
                         	<t t-set="service" t-value="service_ids" />
 						        <div t-attf-class="dropdown">
-						        	<t t-if="service_ids">
-							            <t t-set="service" t-value="service_ids"/>
-							            <t t-set="ss" t-value="service_ids[0]"/>
 							            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
 							               <span>De Criteres</span>
 							            </a>
 							            <div class="dropdown-menu" role="menu">
-							            	<t t-if="service">
-								                <t t-foreach="service" t-as="s">
-								                    <a role="menuitem" t-attf-href="/clinic-detail?service-type=#{s.sudo().id}" class="dropdown-item">
-								                        <span class="switcher_pricelist" 
-								                        	t-att-name="s.name"
-								                        	t-att-data-pl_id="s.id" 
-								                        	t-esc="s.name"/>
-								                    </a>
-								                </t>
-							                </t>
-					                        <a role="menuitem" class="dropdown-item" t-attf-href="/clinic-detail?parking=True"><span>Parking</span></a>
+						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+						                        <span class="switcher_pricelist">Parking</span>
+						                    </a>
+						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+						                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
+						                    </a>
 							            </div>
-							        </t>
 						        </div>
                         </div>
-                        <div class="see_map googleMap">
+                        <div class="see_map">
                         	<div class="custom-control custom-switch">
-							  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch1" onclick="showhide(this)"/>
+							  <input type="checkbox" class="custom-control-input" id="customSwitch1"/>
 							  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
 							</div>
                         </div>
-                        <script type="text/javascript">
-                        	function showhide(customSwitch1) {
-                        	var checkbox = document.getElementById("customSwitch1");
-                        	if (checkbox.checked){
-                        	document.getElementById("googleMap").style.display = "block";
-                        	}
-                        	else{
-                        	document.getElementById("googleMap").style.display = "none";
-                        	}
-                        	gMap()
-						    
-						};
-                        </script>
 
-                        <div class="clear-search mt8 ml8">
-				        	<a t-attf-href="/clinic-detail?clear_search=1" class="">
+                        <div class="clear-search mt8 ml8 clinic-type-b">
+				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
 				        		<span>CLEAR</span>
 				        	</a>
 						</div>
@@ -173,22 +152,8 @@
                     </div>
                     </section>
                     <section class="s_text_block pt48 pb16">
-						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;callback=myMap"></script>
-		    			<div id="googleMap" class="" style="width: 30%; height: 400px; display: none; position: relative; overflow: hidden; float: right;"></div>
-
-						<script>
-						function myMap() {
-						var mapProp= {
-						  center:new google.maps.LatLng(51.508742,-0.120850),
-						  zoom:5,
-						};
-						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-						}
-						</script>
-
 		    			<div class="container">
-		    			<div class="row">
-
+		    			<div class="row d-flex align-items-stretch">
 	                    <t t-if="not operating_unit_ids">
 	                    	<div class="col-md-12 text-center text-secondary">
 	                        	<h3 class="text-secondary">No record found.</h3>
@@ -197,7 +162,7 @@
                     <t t-if="operating_unit_ids">
                     	<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
                         	<t t-foreach="operating_unit_ids" t-as="operating_unit">
-                        		<div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
+                        		<div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
 				                    <div class="card bg-white">
 				                        <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
                                         <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
@@ -238,16 +203,15 @@
 													</span>
 												</div>
 											</div>
-				                            
-	                                    <div class="">
-			                                 <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
+			                        </div>
+			                        <div class="card-footer">
+			                                 <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-none d-xl-inline-block mr-2">
 			                                    <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
 			                                </a>
 			                                 <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
 			                                    <span class="">Prendre RDV</span>
 			                                </a>
-			                            </div>	                                    	
-			                        </div>
+			                            </div>	
 			                    </div>
 			                </div>
                         	</t>
