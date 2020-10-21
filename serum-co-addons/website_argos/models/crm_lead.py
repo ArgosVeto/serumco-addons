@@ -29,3 +29,7 @@ class SaleOrder(models.Model):
     @api.constrains("team_id", "operating_unit_id")
     def _check_team_operating_unit(self):
         return True
+    
+    @api.constrains("operating_unit_id", "company_id")
+    def _check_company_operating_unit(self):
+        return True
