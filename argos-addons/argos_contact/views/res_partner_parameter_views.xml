@@ -28,6 +28,7 @@
             <group>
               <field name="type"/>
               <field name="gmvet_id" attrs="{'invisible': [('type', 'in', ['connection', 'tag'])]}"/>
+              <field name="category_id" attrs="{'invisible': [('type', '!=', 'race')]}"/>
             </group>
           </sheet>
         </form>

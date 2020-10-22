@@ -38,7 +38,7 @@ class ResPartner(models.Model):
     weight_ids = fields.One2many('res.partner.weight', 'partner_id', 'Weights')
     weight = fields.Float('Weight', compute='_compute_last_weight')
     owner_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'patient_id', 'owner_id', 'Owners',
-                                 domain="[('contact_type', '=', 'contact')]")
+                                 domain="[('contact_type', '=', 'contact'), ('customer_rank', '>', 0)]")
     contact_type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Contact Type', default='contact')
     patient_ids = fields.Many2many('res.partner', 'res_partner_patient_rel', 'owner_id', 'patient_id', 'Patients List',
                                    domain="[('contact_type', '=', 'patient')]")
@@ -77,6 +77,9 @@ class ResPartner(models.Model):
     def write(self, vals):
         if vals.get('is_dead'):
             vals['active'] = False
+        if self._context.get('default_contact_type', 'contact') in ['patient']:
+            if vals.get('name'):
+                vals['name'] = vals['name'].title()
         return super(ResPartner, self).write(vals)
 
     @api.depends("birthdate_date")
@@ -97,3 +100,9 @@ class ResPartner(models.Model):
                 rec.weight = rec.weight_ids[0].values
             else:
                 rec.weight = False
+
+    @api.model
+    def create(self, vals):
+        if self._context.get('default_contact_type', 'contact') in ['patient']:
+            vals['name'] = vals['name'].title()
+        return super(ResPartner, self).create(vals)
