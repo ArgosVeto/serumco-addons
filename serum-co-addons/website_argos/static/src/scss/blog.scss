@@ -393,7 +393,13 @@
 	}
 
 }
-	
+#o_wblog_post_main{
+	#o_wblog_post_content{
+		.breadcrumb{
+			display:none;
+		}
+	}
+}
 	
 #o_wblog_post_content_jump {
 	display:none !important;
@@ -658,7 +664,7 @@
 		.mask_image{
 			position:absolute;
 			right:0;
-			top:15px;
+			top: 20%;
 		}
 		@media (max-width: 767.98px) {
 			.mask_image{

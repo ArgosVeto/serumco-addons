@@ -28,10 +28,15 @@
 				</div>
 				<div class="o_panel_body">
 					<t t-snippet="website_argos.job_detail_snippet" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+
+					<t t-snippet="website_argos.blog_page_snippet_content" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content1" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content2" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content3" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content4" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+					<t t-snippet="website_argos.blog_page_snippet_content5" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+					<t t-snippet="website_argos.blog_page_snippet_content6" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+					<t t-snippet="website_argos.blog_page_snippet_content7" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 				</div>
 			</div>
 		</xpath>

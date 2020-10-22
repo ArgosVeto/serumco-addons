@@ -53,6 +53,7 @@
         'views/group_argos_template.xml',
         'views/Service_hospitalisation_template.xml',
         'views/blog_template.xml',
+        'views/blog_view.xml',
         'views/blog_snippet_inherited.xml',
         'views/dynamicslider.xml',
         'views/slider_snippets.xml',
@@ -68,10 +69,14 @@
         'views/gtc.xml',
         'views/privacy_policy.xml',
 
+        'views/blog_page_snippet_content.xml',
         'views/blog_page_snippet_content1.xml',
         'views/blog_page_snippet_content2.xml',
         'views/blog_page_snippet_content3.xml',
         'views/blog_page_snippet_content4.xml',
+        'views/blog_page_snippet_content5.xml',
+        'views/blog_page_snippet_content6.xml',
+        'views/blog_page_snippet_content7.xml',
 
 
         # 'views/partner_view.xml',

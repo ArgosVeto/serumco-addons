@@ -62,9 +62,13 @@ class MailingList(http.Controller):
 		return request.redirect('/subscribe-thank-you')
 
 class Application(http.Controller):	
-	@http.route(['''/application'''],type='http', auth="public", website=True)	
-	def application(self,**post):
+	@http.route(['''/application/<model("hr.job", "[('website_id', 'in', (False, current_website_id))]"):job>'''],type='http', auth="public", website=True)	
+	def application(self, job, **kwargs):
 		cities = []
+		jobs = []
+		if job.job_type_id.id:
+			jobs_post_domain = [('job_type_id', '=', job.job_type_id.id)]
+			jobs = request.env['hr.job'].sudo().search(jobs_post_domain)
 		agglomeration_ids = request.env['applicant.agglomeration'].sudo().search([])
 		country_ids = request.env['res.country'].sudo().search([])
 		job_type_ids = request.env['job.type'].sudo().search([])
@@ -75,6 +79,8 @@ class Application(http.Controller):
 				cities.append(unit.city)
 		values = {
 			'country_ids':country_ids,
+			'job': job,
+			'jobs':jobs,
 			'job_ids':job_ids,
 			'agglomeration_ids':cities,
 		}

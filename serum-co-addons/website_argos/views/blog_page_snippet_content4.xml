@@ -5,29 +5,26 @@
 			<div class="container">
 				<div class="row justify-content-center">
 
-					<section class="container mx-auto" id="o_wblog_post_main" >
+			        <section class="container mx-auto" id="o_wblog_post_main" >
 			        	<div class="blog-page-content">
+							<div class="blog-quote mt32 mb32">
+								<div class="b-right"/>
+								<div class="quote-text">
+									<div class="q-text">« Tum dicere exorsus est et inter mediocrem animadversionem atque haec subtilius velint tradere et aut in gravissimo bello animadversionis e ab eo est et iusto ometu degendae praesidia firmissima filium morte multavit si sine causa, nollem me ab eo est et iusto odio dignissimos ducimus, qui officia deserunt mollitia animi, ide ab eo est et iusto. »
+									<img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+									</div>
+								</div>
+								<div class="quote-name mt16">
+									<span>John Doe</span>
+								</div>
+							</div>
 
-		  					<div class="Mask mt48 mb48">
-		  						<div class="DOCTEUR-VTRINAIRE-Copy mb8">DOCTEUR VÉTÉRINAIRE</div>
-		  						<div class="Pierre-Michel-Copy">Pierre Michel</div>
-		  						<div class="Clinique mt32">Clinique</div>
-		  						<div class="Clinique-vtrinaire mt8">Clinique vétérinaire Argos Saint-Aubin de Médoc</div>
-		  						<a class="btn btn-link mt16 En-savoir-plus" href="/clinic-detail">
-									<span class="mr8">Voir la fiche clinique</span>
-									<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
-								</a>
-								<div class=" mask_image">
-					        		<a href="#">
-					        			<img src="/website_argos/static/src/img/equipe-01.png" class="img img-fluid"/>
-					        		</a>
-					        	</div>
-		  					</div>
+							<p>Quam quis laboriosam est est et accusamus eligendi sed dolore. Ipsum nobis repellat. Laudantium placeat autem aut. Id voluptates aliquid sed ex totam eos aperiam rerum. Veritatis alias architecto officiis est.</p>
 
 			        	</div>
 			        </section>
-			        
-			    </div>
+
+				</div>
 			</div>
 		</section>
 	</template>

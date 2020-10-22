@@ -3,6 +3,7 @@
 # See LICENSE file for full copyright and licensing details
 
 from odoo import api, fields, models, _
+from odoo.tools.translate import html_translate
 
 class HrApplicant(models.Model):
     _inherit = 'hr.applicant'
@@ -30,9 +31,15 @@ class JobTag(models.Model):
 
 class HrJob(models.Model):
     _inherit = 'hr.job'
-
+    
+    def _get_default_website_description(self):
+        return
+    
+    website_description = fields.Html('Website description', translate=html_translate, sanitize_attributes=False, default=_get_default_website_description, prefetch=False)
     job_type_id = fields.Many2one('job.type',string="Job Type")
     job_tag_ids = fields.Many2many('job.tag',string="Job Tag")
+    
+    
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'

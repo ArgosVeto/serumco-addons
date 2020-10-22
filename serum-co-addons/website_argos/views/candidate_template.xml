@@ -212,7 +212,7 @@
 		</xpath>
 
 		<xpath expr="//section[hasclass('o_job_bottom_bar')]//a[hasclass('btn')]" position="replace">
-			<a role="button" href="/application" class="btn btn-primary btn-lg">Apply Now!</a>
+			<a role="button" t-attf-href="/application/#{job.id}" class="btn btn-primary btn-lg">Apply Now!</a>
 		</xpath>
 	</template>
 

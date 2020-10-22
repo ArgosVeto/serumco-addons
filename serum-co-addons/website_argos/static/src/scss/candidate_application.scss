@@ -49,7 +49,7 @@
 	  	margin-bottom: 32px;
 	}
 	h5{
-		font-family: AvenirLTStd-Heavy;
+		font-family: AvenirLTStd-Heavy !important;
 	  	font-size: 20px;
 	  	font-weight: 900;
 	  	font-stretch: normal;
@@ -120,3 +120,13 @@
 	}
 }
 
+.Offres-demploi-simi {
+  font-family: Comfortaa-Bold;
+  font-size: 36px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: -0.54px;
+  text-align: center;
+  color: theme-color('primary');
+}

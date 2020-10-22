@@ -16,6 +16,12 @@ class res_config(models.TransientModel):
     infinite_load_image = fields.Binary(string='Infinite Load Image', related='website_id.infinite_load_image', readonly=False)
 
     
+class BlogPost(models.Model):
+    _inherit = "blog.post"
+
+    employee_id = fields.Many2one('hr.employee',string='Employee')
+
+    
 class Website(models.Model):
     _inherit = "website"
 

@@ -217,27 +217,27 @@
         t-attf-class="o_wblog_post_content_field #{'js_tweet' if opt_blog_post_select_to_tweet else ''} #{'js_comment' if opt_blog_post_select_to_comment else ''} #{'o_wblog_read_text' if opt_blog_post_readable else ''}"/>
 	
 	
-	<section class="o_wblog_post_top blog-page-snippet">
+	   <section class="o_wblog_post_top blog-page-snippet">
 			<div class="container">
 				<div class="row justify-content-center">
 
 					<section class="container mx-auto" id="o_wblog_post_main" >
 			        	<div class="blog-page-content">
-
 		  					<div class="Mask mt48 mb48">
-		  						<div class="DOCTEUR-VTRINAIRE-Copy mb8">DOCTEUR VÉTÉRINAIRE</div>
-		  						<div class="Pierre-Michel-Copy" t-field="blog_post.author_id.name"></div>
-		  						<div class="Clinique mt32">Clinique</div>
-		  						<div class="Clinique-vtrinaire mt8" t-field="blog_post.author_id.operating_unit_id.name"></div>
-		  						<a class="btn btn-link mt16 En-savoir-plus pl-0" t-attf-href="/clinic-detail/clinic-pratice/#{slug(blog_post.author_id.operating_unit_id)}">
-									<span class="mr8">Voir la fiche clinique</span>
-									<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
-								</a>
-								<div class=" mask_image">
-					        		<a href="#">
-					        			<img class="img img-fluid" t-att-src="website.image_url(blog_post.author_id, 'image_1920')" />
-					        		</a>
-					        	</div>
+		  					 	<div t-if="blog_post.employee_id.operating_unit_ids">
+		  					 		<t t-set="emp" t-value="blog_post.employee_id.operating_unit_ids[0]"/>
+			  						<div class="DOCTEUR-VTRINAIRE-Copy mb8">DOCTEUR VÉTÉRINAIRE</div>
+			  						<div class="Pierre-Michel-Copy" t-field="blog_post.employee_id.name"></div>
+			  						<div class="Clinique mt32">Clinique</div>
+			  						<div class="Clinique-vtrinaire mt8" t-field="emp.name"></div>
+			  						<a t-if="emp.name" class="btn btn-link mt16 En-savoir-plus pl-0" t-attf-href="/clinic-detail/clinic-pratice/#{slug(emp)}">
+										<span class="mr8">Voir la fiche clinique</span>
+										<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
+									</a>
+									<div class=" mask_image">
+					        			<img class="img img-fluid" t-att-src="website.image_url(blog_post.employee_id, 'image_1920')" />
+						        	</div>
+		  					 	</div>
 		  					</div>
 
 			        	</div>
