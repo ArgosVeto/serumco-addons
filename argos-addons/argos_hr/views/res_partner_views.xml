@@ -7,7 +7,7 @@
       <field name="inherit_id" ref="argos_contact.res_partner_view_form"/>
       <field name="arch" type="xml">
         <field name="environment_ids" position="before">
-          <field name="employee_id"/>
+          <field name="employee_id" context="{'default_is_veterinary': True}"/>
         </field>
       </field>
     </record>

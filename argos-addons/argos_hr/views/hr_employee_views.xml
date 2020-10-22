@@ -8,7 +8,7 @@
       <field name="arch" type="xml">
         <field name="department_id" position="before">
           <field name="registration_number"/>
-          <field name="order_number"/>
+          <field name="order_number" attrs="{'required': [('is_veterinary', '=', True)]}"/>
           <field name="operating_unit_ids" widget="many2many_tags"/>
         </field>
         <field name="departure_reason" position="after">
@@ -21,11 +21,22 @@
             <field name="issue_date"/>
           </group>
         </xpath>
-        <page name="hr_settings" position="after">
-          <page name="hr_signature" string="Signature" groups="hr.group_hr_user">
-            <field name="signature" widget="image"/>
-          </page>
-        </page>
+        <field name="mobile_phone" position="before">
+          <field name="is_veterinary"/>
+        </field>
+        <field name="work_location" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="department_id" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="km_home_work" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </field>
+        <field name="address_id" position="attributes">
+          <attribute name="domain">[('is_company', '=', True)]</attribute>
+          <attribute name="context">{'show_address': 1, 'default_is_company': True}</attribute>
+        </field>
       </field>
     </record>
   </data>

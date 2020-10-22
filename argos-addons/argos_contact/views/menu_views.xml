@@ -14,7 +14,7 @@
               parent="contacts.res_partner_menu_config"/>
 
     <menuitem id="res_partner_category_menuitem"
-              action="base.action_partner_category_form"
+              action="argos_contact.res_partner_category_species_action"
               name="Species"
               sequence="1"
               parent="argos_contact.res_partner_menu_config"/>
@@ -63,6 +63,16 @@
               action="res_partner_parameter_diet_action"
               name="Recommended Diet"
               sequence="60" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_tag_menuitem"
+              action="res_partner_parameter_tag_action"
+              name="Patient Tags"
+              sequence="61" parent="argos_contact.res_partner_menu_config"/>
+
+    <menuitem id="res_partner_parameter_connection_menuitem"
+              action="res_partner_parameter_connection_action"
+              name="Connection Origins"
+              sequence="1" parent="contacts.res_partner_menu_config"/>
 
   </data>
 </odoo>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _, tools
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class ResPartnerCategory(models.Model):
@@ -17,3 +18,14 @@ class ResPartnerCategory(models.Model):
         if not category:
             return self.create({'name': name, 'type': type})
         return category
+
+    @api.constrains('name')
+    def _check_unique_species(self):
+        for rec in self.filtered(lambda p: p.type == 'patient'):
+            domain = [
+                ('id', '!=', rec.id),
+                ('name', '=', rec.name),
+                ('type', '=', 'patient'),
+            ]
+            if self.search_count(domain):
+                raise ValidationError(_('Species must be unique'))

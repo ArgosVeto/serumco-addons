@@ -10,10 +10,14 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
+        'argos_sale',
         'argos_contact',
         'sale_subscription',
     ],
-    'data': [],
+    'data': [
+        'views/sale_subscription_views.xml',
+        'views/res_partner_views.xml',
+    ],
     'application': False,
     'installable': True,
     'auto_install': False,

@@ -11,6 +11,7 @@
     'depends': [
         'argos_base',
         'operating_unit',
+        'sale_operating_unit',
     ],
     'data': [],
     'application': False,
