@@ -13,9 +13,4 @@ class ProductCategory(models.Model):
         :param name:
         :return:
         """
-        if not name:
-            return False
-        category = self.search([('name', '=', name)], limit=1)
-        if not category:
-            category = self.create({'name': name})
-        return category.id
+        return self.search([('complete_name', '=', name)], limit=1)

@@ -18,10 +18,4 @@ class ProductPublicCategory(models.Model):
     name = fields.Char(required=False)
     category_ids = fields.One2many('product.category', 'public_category_id', 'Categories', required=False)
     product_category_parent_id = fields.Many2one(related='category_ids.parent_id', store=True, readonly=True)
-    parent_id = fields.Many2one(related='product_category_parent_id.public_category_id', readonly=True)
-
-    def name_get(self):
-        res = []
-        for category in self:
-            res.append((category.id, " / ".join(category.parents_and_self.mapped('name') or '')))
-        return res
+    parent_id = fields.Many2one(related='product_category_parent_id.public_category_id', readonly=True, store=True)

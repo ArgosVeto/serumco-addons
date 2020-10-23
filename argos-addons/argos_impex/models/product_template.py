@@ -120,7 +120,7 @@ class ProductTemplate(models.Model):
                     'description_sale': row.get('libelle'),
                     'additional_features': row.get('presentation'),
                     'weight': row.get('poids'),
-                    'categ_id': category_obj._get_category_by_name(row.get('categorie')),
+                    'categ_id': category_obj._get_category_by_name(row.get('categorie')).id,
                     'gtin': row.get('gtin'),
                     'ean': row.get('ean'),
                     'cip': row.get('cip'),
