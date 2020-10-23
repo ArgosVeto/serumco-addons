@@ -18,9 +18,9 @@
           <field name="ref" string="ID GmVet" invisible="1"/>
         </field>
         <field name="vat" position="after">
-          <field name="has_tutor_curator"/>
+          <field name="has_tutor_curator" attrs="{'invisible': [('customer_rank', '&lt;', 1)]}"/>
           <field name="tutor_curator_id"
-                 attrs="{'invisible': [('has_tutor_curator', '=', False)], 'required': [('has_tutor_curator', '=', True)]}"/>
+                 attrs="{'invisible': ['|', ('has_tutor_curator', '=', False), ('customer_rank', '&lt;', 1)], 'required': [('has_tutor_curator', '=', True), ('customer_rank', '&gt;', 0)]}"/>
         </field>
         <page name="internal_notes" position="before">
           <page name="communication" string="Communication">
@@ -45,7 +45,7 @@
           <field name="social_reason" attrs="{'invisible': [('is_company', '=', False)]}"/>
         </field>
         <xpath expr="//group[@name='purchase']" position="inside">
-          <field name="is_centravet"  attrs="{'invisible':[('parent_id', '!=', False)]}"/>
+          <field name="is_centravet" attrs="{'invisible':[('parent_id', '!=', False)]}"/>
         </xpath>
         <xpath expr="//label[@for='lang']" position="attributes">
           <attribute name="invisible">1</attribute>
@@ -61,6 +61,9 @@
         </field>
         <xpath expr="//group[@name='sale']/field[@name='user_id']" position="before">
           <field name="kinetec_code"/>
+        </xpath>
+        <xpath expr="//group[@name='sale']/field[@name='user_id']" position="attributes">
+          <attribute name="invisible">1</attribute>
         </xpath>
       </field>
     </record>
