@@ -17,8 +17,8 @@ class ServerFTP(models.Model):
         :return:
         """
         datas = super(ServerFTP, self).retrieve_data()
-        if not self._context.get('template') or not datas:
-            return False
+        if not self._context.get('template'):
+            return datas
         product_tmpl_obj = self.env['product.template']
         product_attr_obj = self.env['product.attribute']
         model_import_obj = self.env['ir.model.import.template']
