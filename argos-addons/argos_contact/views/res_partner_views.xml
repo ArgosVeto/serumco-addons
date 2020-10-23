@@ -8,7 +8,7 @@
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
         <xpath expr="//page[1]" position="before">
-          <page name="patients" string="Patients" autofocus="autofocus" attrs="{'invisible':[('supplier_rank','>', 0)]}">
+          <page name="patients" string="Patients" autofocus="autofocus" attrs="{'invisible':[('customer_rank','&lt;', 1)]}">
             <field name="patient_ids" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
                    'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
           </page>
@@ -69,7 +69,7 @@
               <group>
                 <field name="active" invisible="1"/>
                 <field name="species_id" context="{'default_type': 'patient'}" required="1"/>
-                <field name="race_id" context="{'default_type': 'race'}"/>
+                <field name="race_id" context="{'default_type': 'race'}" domain="[('type', '=', 'race'), ('category_id', '=', species_id)]"/>
                 <field name="gender_id" context="{'default_type': 'gender'}"/>
                 <field name="robe_id" context="{'default_type': 'robe'}"/>
                 <field name="birthdate_date"/>

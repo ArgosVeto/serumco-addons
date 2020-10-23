@@ -10,6 +10,7 @@ class ResPartnerParameter(models.Model):
     type = fields.Selection([('robe', 'Robe'), ('race', 'Race'), ('diet', 'Diet'), ('insurance', 'Insurance'),
                              ('living', 'Living Environment'), ('connection', 'Connection Origin'), ('gender', 'Gender'),
                              ('chip', 'Chip Location'), ('tag', 'Patient Tag')], required=True)
+    category_id = fields.Many2one('res.partner.category', 'Species', domain=[('type', '=', 'patient')])
 
     @api.model
     def _get_parameter_by_name(self, name, type):

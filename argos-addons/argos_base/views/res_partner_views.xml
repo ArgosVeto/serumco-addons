@@ -91,7 +91,7 @@
               sequence="1"/>
 
     <record id="contacts.action_contacts" model="ir.actions.act_window">
-      <field name="context">{'default_is_company': True, 'from_bo': True, 'default_contact_type': 'contact'}</field>
+      <field name="context">{'default_is_company': True, 'from_bo': True, 'default_contact_type': 'contact', 'active_test': False}</field>
       <field name="domain">[('contact_type','=','contact')]</field>
     </record>
 
