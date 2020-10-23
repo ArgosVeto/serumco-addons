@@ -8,7 +8,7 @@
 			<t name="Ma Clinique" t-name="my_clinic">
 				<t t-call="website.layout">
 					<div class="oe_structure oe_empty" id="wrap">
-						<t t-set="clinic" t-value="user_id.partner_id.operating_unit_id"/>
+						<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id"/>
 						<section
 							class="s_text_block pt32 s_common_banner_without_bg banner-content"
 							data-name="Text block" data-oe-id="1373"
@@ -42,9 +42,9 @@
 			                                    <li class="nav-item mr32">
 			                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
 			                                    </li>
-			                                    <li class="nav-item m-0">
+			                                    <!-- <li class="nav-item m-0">
 			                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-			                                    </li>
+			                                    </li> -->
 			                                </ul>
 			                            </div>
 			                        </div>
@@ -78,6 +78,7 @@
 			                                Nous Contacter
 			                            </p>
 			                        </div>
+			                        <t t-if ="user_id.partner_id.clinic_shortlisted_ids">
 									<div class="col-lg-7 pt16 pb8">
 										<h1>
 											<t t-esc="clinic.name"/>
@@ -126,11 +127,11 @@
 										<div class="red-round-big"></div>
 										<div class="red-round-small"></div>
 									</div>
-									
+									</t>
 								</div>
 							</div>
 						</section>
-
+						<t t-if ="user_id.partner_id.clinic_shortlisted_ids">
 						<section class="">
 							<div class="container">
 								<div class="row" style="align-items: start;">
@@ -516,6 +517,7 @@
 								</div>
 							</div>
 						</section>
+						</t>
 					</div>
 				</t>
 			</t>

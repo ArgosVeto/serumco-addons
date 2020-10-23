@@ -18,11 +18,11 @@
 		                                    <li class="nav-item mr32">
 		                                        <a class="nav-link" href="/my/orders">Commandes</a>
 		                                    </li>
-		                                    <t t-if="next_appointment_id or pervious_appointment_id">
+		                                    <!-- <t t-if="next_appointment_id or pervious_appointment_id"> -->
 		                                        <li class="nav-item mr32">
-		                                            <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+		                                            <a class="nav-link" href="/clinic-detail">Rendez-vous</a>
 		                                        </li>
-		                                    </t>
+		                                    <!-- </t> -->
 		                                    <li class="nav-item mr32">
 		                                        <a class="nav-link" href="/my/account">Mes adresses</a>
 		                                    </li>
@@ -35,9 +35,9 @@
 		                                    <li class="nav-item mr32">
 		                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
 		                                    </li>
-		                                    <li class="nav-item m-0">
+		                                   <!--  <li class="nav-item m-0">
 		                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-		                                    </li>
+		                                    </li> -->
 		                                </ul>
 		                            </div>
 		                        </div>
@@ -51,7 +51,7 @@
 											<a href="/">Accueil</a>
 										</li>
 										<li class="breadcrumb-item">
-											<a href="#">Rendez-vous</a>
+											<a href="/clinic-detail">Rendez-vous</a>
 										</li>
 									</ol>
 								</div>

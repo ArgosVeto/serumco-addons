@@ -110,9 +110,8 @@
 
     <menuitem id="menu_clinic"
         name="Clinic"
-        sequence="25"
-        parent="website.menu_website_configuration"/>
-
+        sequence="125"
+        parent="website.menu_website_global_configuration"/>
 
     <menuitem id="menu_sub_job_type" name="Job Type"
         sequence="30"

@@ -5,55 +5,45 @@
         <field name="model">operating.unit</field>
         <field name="inherit_id" ref="argos_operating_unit.operating_unit_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='certification_ids']" position="after">
-                <field name="visible_in_contact"/> 
-                <field name="facebook" widget="url"/>
-                <field name="google_map_link" widget="url"/>
-                <field name="mrdv_id"/>
-            </xpath>
-            <xpath expr="//page[@name='digital_service']" position="after">
-                <page string="Clinic Banner" name="clinic_image">
+            <xpath expr="//page[@name='centravet_info']" position="after">
+                <page string="Frontend Specification " name="frontend_specification ">
                     <group>
-                        <group>
+                       <field name="visible_in_contact"/> 
+                        <field name="facebook" widget="url"/>
+                        <field name="google_map_link" widget="url"/>
+                        <field name="mrdv_id"/>
+                    </group>
+                    <separator/>
+                    <group>
+                        <group string="Clinic Banner" name="clinic_image">
                             <field name="clinic_banner" widget="image" nolabel="1">
                             </field>
                         </group>
+                        <group name="clinic_image" string="Extra Image">
+                            <field name="clinic_image_ids" class="o_website_sale_clinic_image"  mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
+                        </group>
                     </group>
                     <group>
-	                    <group name="clinic_image" string="Extra Image">
-	                        <field name="clinic_image_ids" class="o_website_sale_clinic_image"  mode="kanban" options="{'create_text':'Add a Media'}" nolabel="1"/>
-	                    </group>
-	                </group>
-                </page>
-                <page string="Service" name="service_ids">
-                    <group>
-                        <field name="service_ids" widget="many2many_tags">
-                        </field>
-                    </group>
-                </page>
-                <page string="Clinic Description" name="clinic_description">
-                    <group>
-                        <field name="clinic_description" widget="html" nolabel="1">
-                        </field>
-                    </group>
-                </page>
-
-                <page string="Practical Services">
-                    <group>
+                        <group string="Service" name="service_ids">
+                            <field name="service_ids" widget="many2many_tags">
+                            </field>
+                        </group>
                         <group string="Practical Service">
                             <field name="practical_service_ids"  widget="many2many_tags"/>
                         </group>
-
-                         <group string="Payment Method">
-                            <field name="payment_method_ids"  widget="many2many_tags"/>
-                        </group>                       
                     </group>
                     <group>
+                        <group string="Payment Method">
+                            <field name="payment_method_ids"  widget="many2many_tags"/>
+                        </group> 
                         <group string="Show In Footer">
                             <field name="show_in_footer"/>
-                        </group>
-                        <group>
-                        </group>
+                        </group> 
+                    </group>
+                    <separator/>
+                    <group string="Clinic Description" name="clinic_description">
+                        <field name="clinic_description" widget="html" nolabel="1">
+                        </field>
                     </group>
                 </page>
             </xpath>

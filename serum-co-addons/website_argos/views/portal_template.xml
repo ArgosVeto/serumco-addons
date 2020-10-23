@@ -32,9 +32,9 @@
                                     <li class="nav-item mr32">
                                         <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                     </li>
-                                    <li class="nav-item m-0">
+                                    <!-- <li class="nav-item m-0">
                                         <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -175,9 +175,12 @@
                                                                 </div>
                                                             </div>
                                                     </div>
-                                                    <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block" href="#">
+                                                    <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-block d-sm-none" t-attf-href="tel:{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.phone}}">
                                                         <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
                                                         <span>Appeler</span>
+                                                    </a>
+                                                     <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-none d-md-block d-sm-block" t-att-href="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id">
+                                                        <span>Voir la fiche</span>
                                                     </a>
                                                 </t>
                                             </div>
@@ -220,7 +223,7 @@
                                                         </div>                                    
                                                     </t>
                                                 </div>
-                                                <a role="button" href="#" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block">Prendre un rendez-vous</a>
+                                                <a role="button" href="/prendre-rendez-vous" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block">Prendre un rendez-vous</a>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mt16 o-4">
@@ -432,9 +435,9 @@
                                 <li class="nav-item ac-info mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                                <li class="nav-item m-0">
+                                <!-- <li class="nav-item m-0">
                                     <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -506,9 +509,9 @@
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                                <li class="nav-item m-0">
+                               <!--  <li class="nav-item m-0">
                                     <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -568,9 +571,9 @@
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                                <li class="nav-item m-0">
+                               <!--  <li class="nav-item m-0">
                                     <a class="nav-link active" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
