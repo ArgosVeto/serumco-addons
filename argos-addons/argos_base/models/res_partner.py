@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _, tools
+from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 import logging
 from stdnum.fr.siret import is_valid as is_valid_siret

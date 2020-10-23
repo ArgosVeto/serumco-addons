@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _
+from odoo import fields, models
 
 
 class StockMove(models.Model):
@@ -14,4 +14,3 @@ class StockMove(models.Model):
         if self.group_id.sale_id.is_consultation:
             picking_vals['is_arg_prescription'] = True
         return picking_vals
-

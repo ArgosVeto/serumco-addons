@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, registry, http, api, _
+from odoo import models, fields
 
 
 class ProductTemplate(models.Model):

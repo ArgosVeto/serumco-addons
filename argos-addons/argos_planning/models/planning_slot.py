@@ -95,11 +95,13 @@ class PlanningSlot(models.Model):
 
     @api.model
     def _recover_away(self):
-        print('Away')
+        # TODO : implement this method
+        pass
 
     @api.model
     def _recover_presence(self):
-        print('Presence')
+        # TODO : implement this method
+        pass
 
     @api.model
     def _prepare_slot_data(self, post={}):

@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from collections import defaultdict
 
@@ -7,6 +7,7 @@ import logging
 
 from odoo.tools.misc import clean_context
 _logger = logging.getLogger(__name__)
+
 
 class MailActivity(models.Model):
     _inherit = 'mail.activity'
@@ -26,7 +27,7 @@ class MailActivity(models.Model):
             task = self.env['project.task'].search([('id', '=', self.res_id)], limit=1)
 
         sale_order_line = self.env['sale.order.line']
-        order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id),('product_id', '=', self.product_id.id)], limit=1)
+        order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id), ('product_id', '=', self.product_id.id)], limit=1)
 
         if order_line:
             order_line.write({

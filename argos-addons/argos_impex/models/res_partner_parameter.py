@@ -3,7 +3,7 @@
 import base64
 import io
 import csv
-from odoo import fields, models, registry, api, _
+from odoo import models, registry, api, _
 
 
 class ResPartnerParameter(models.Model):

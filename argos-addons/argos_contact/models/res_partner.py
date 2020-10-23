@@ -51,7 +51,8 @@ class ResPartner(models.Model):
     date_insurance_start = fields.Date('Date insurance start')
     date_insurance_end = fields.Date('Date insurance end')
     policy_insurance = fields.Char('Policy insurance')
-    tag_ids = fields.Many2many('res.partner.parameter', 'res_partner_tag_rel', 'patient_id', 'tag_id', 'Tags', domain=[('type', '=', 'tag')])
+    tag_ids = fields.Many2many('res.partner.parameter', 'res_partner_tag_rel', 'patient_id', 'tag_id', 'Tags',
+                               domain=[('type', '=', 'tag')])
 
     @api.depends('company_type', 'patient_ids')
     def _compute_contact_category(self):

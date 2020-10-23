@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields
+
 
 class SaleOrderRefer(models.TransientModel):
     _name = 'sale.order.refer'

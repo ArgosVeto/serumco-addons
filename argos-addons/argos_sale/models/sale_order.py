@@ -82,8 +82,8 @@ class SaleOrder(models.Model):
             raise UserError(_('Only consultation can generate incineris convention.'))
         url = self.env['ir.config_parameter'].get_param("incineris_url") or ''
         soft_id = self.env['ir.config_parameter'].get_param("incineris.soft_id")
-        species = self.patient_id.species_id and self.patient_id.species_id.is_incineris_species and \
-                  self.patient_id.species_id.name or 'nac'
+        species = self.patient_id.species_id and self.patient_id.species_id.is_incineris_species and self.patient_id.species_id.name or \
+                  'nac'
         self.set_conv_key()
         params = {
             'action': 'create',

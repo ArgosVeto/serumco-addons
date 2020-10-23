@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models
-import ast
 
 
 class ProjectTask(models.Model):

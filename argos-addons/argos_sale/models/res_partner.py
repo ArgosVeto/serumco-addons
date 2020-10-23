@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _
+from odoo import fields, models
 import ast
 
 
@@ -18,7 +18,7 @@ class ResPartner(models.Model):
     def _compute_act_ids(self):
         for rec in self:
             acts = self.env['sale.order.line'].search([('order_id.is_consultation', '=', True), ('product_id.act_type', '!=', 'undefined'),
-                                                          ('order_id.patient_id', '=', rec.id)])
+                                                       ('order_id.patient_id', '=', rec.id)])
             rec.act_ids = [(6, 0, acts.ids)]
 
     def button_create_consultation(self):

@@ -46,6 +46,6 @@ def format_date(date):
     for format in EXISTING_FORMATS:
         try:
             date = datetime.datetime.strptime(date, format)
-        except Exception as e:
+        except Exception:
             pass
     return date.strftime(DEFAULT_SERVER_DATE_FORMAT) if isinstance(date, datetime.date) else None

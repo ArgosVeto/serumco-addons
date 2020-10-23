@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _, tools
+from odoo import fields, models, api
 
 
 class PlanningAssignment(models.Model):
@@ -14,4 +14,5 @@ class PlanningAssignment(models.Model):
 
     @api.model
     def _recover_assignment(self):
-        print('Assignment')
+        # TODO : implement this method
+        pass

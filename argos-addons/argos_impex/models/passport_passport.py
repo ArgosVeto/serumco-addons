@@ -3,8 +3,7 @@
 import base64
 import io
 import csv
-from odoo import models, fields, registry, api, _
-from odoo.exceptions import UserError
+from odoo import models, registry, api, _
 from odoo.addons.argos_base.models import tools
 
 
@@ -35,7 +34,7 @@ class PassportPassport(models.Model):
                         try:
                             delivery_date = tools.format_date(row.get('dateDelivery'))
                             patient = patient_obj.search([('gmvet_id', '=', row.get('patient_id')), ('contact_type', '=', 'patient')],
-                                                            limit=1)
+                                                         limit=1)
                             species = row.get('species') and category_obj._get_category_by_name(row.get('species'), 'patient').id or False
                             vals = {
                                 'gmvet_id': row.get('id'),

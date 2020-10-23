@@ -5,7 +5,6 @@ import csv
 import io
 import base64
 from datetime import datetime
-import re
 import xml.etree.ElementTree as ET
 
 from odoo import models, fields, registry, api, _

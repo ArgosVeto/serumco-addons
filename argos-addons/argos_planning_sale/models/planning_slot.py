@@ -36,4 +36,3 @@ class PlanningSlot(models.Model):
             'default_operating_unit_id': self.operating_unit_id.id,
         })
         return action
-
