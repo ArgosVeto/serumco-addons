@@ -3,6 +3,8 @@
 from odoo import api, fields, models, _, tools
 from odoo.exceptions import ValidationError
 import logging
+from stdnum.fr.siret import is_valid as is_valid_siret
+from stdnum.fr.siren import is_valid as is_valid_siren
 
 _logger = logging.getLogger(__name__)
 
@@ -22,7 +24,7 @@ class ResPartner(models.Model):
     social_reason = fields.Char('Social Reason')
     is_centravet = fields.Boolean('Is Centravet Supplier')
     kinetec_code = fields.Char('Kinetec Code')
-    siren = fields.Char('Siren')
+    siren = fields.Char('Siren', size=9)
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):
@@ -76,3 +78,19 @@ class ResPartner(models.Model):
         if self._context.get('from_bo', False):
             vals = self._format_name_vals(vals)
         return super(ResPartner, self).write(vals)
+
+    @api.constrains('siret')
+    def _check_partner_siret(self):
+        if not self._context.get('from_bo', False):
+            return
+        for rec in self:
+            if rec.siret and not is_valid_siret(rec.siret):
+                raise ValidationError(_('Invalid format of Siret.'))
+
+    @api.constrains('siren')
+    def _check_partner_siren(self):
+        if not self._context.get('from_bo', False):
+            return
+        for rec in self:
+            if rec.siren and not is_valid_siren(rec.siren):
+                raise ValidationError(_('Invalid format of Siren.'))
