@@ -625,3 +625,163 @@ msgstr "Des commandes de certaines autorisation d'achat ont déjà été validé
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order_line__emergency
 msgid "Emergency"
 msgstr "Urgence"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__cutoff_id
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_order_view_form_inherit
+msgid "Accrued Expense"
+msgstr "Factures non-parvenue"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__cutoff_move_ids
+msgid "Accrued Expense moves"
+msgstr "Entrées facture non-parvenue"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__cutoff_move_count
+msgid "Accrued Expense moves count"
+msgstr "Nombre d'entrée du facture non-parvenue"
+
+#. module: argos_purchase
+#: model_terms:ir.ui.view,arch_db:argos_purchase.stock_pooled_request_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: argos_purchase
+#: model_terms:ir.ui.view,arch_db:argos_purchase.stock_pooled_request_view_form
+msgid "Create pooled picking"
+msgstr "Créer le transfert mutualisé"
+
+#. module: argos_purchase
+#: model:ir.actions.act_window,name:argos_purchase.action_stock_pooled_request
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_request_view_form_inherit
+msgid "Create pooled stock picking"
+msgstr "Créer le transfert de stock mutualisé"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/purchase_order.py:0
+#, python-format
+msgid "Cutoff"
+msgstr "Arrêté"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request__dest_location_id
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__dest_location_id
+msgid "Destination Location"
+msgstr "Emplacement de destination"
+
+#. module: argos_purchase
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_order_view_form_inherit
+msgid "Internal operation for operating unit"
+msgstr "Transfert interne pour les cliniques"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_pooled_request.py:0
+#, python-format
+msgid "Internal pickings"
+msgstr "Transferts internes"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__is_centravet_order
+msgid "Is Centravet Purchase Order"
+msgstr "Commande centravet"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__source_location_id
+msgid "Origin Location"
+msgstr "Emplacement source"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_picking.py:0
+#, python-format
+msgid "Please configure a vendor journal for %s"
+msgstr "Veuillez configurer un journal d'achat pour %s"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_purchase_request_line__pooled_stock
+#: model_terms:ir.ui.view,arch_db:argos_purchase.product_template_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_request_line_view_search_inherit
+msgid "Pooled stock"
+msgstr "Stock mutualisé"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_pooled_request.py:0
+#, python-format
+msgid "Pooled stock request"
+msgstr "Requête de stock mutualisé"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__product_id
+msgid "Product"
+msgstr "Article"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_account_cutoff__purchase_cutoff
+msgid "Purchase Cutoff"
+msgstr "Arrêté de commande"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__quantity_available
+msgid "Quantity available"
+msgstr "Quantité disponible"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__requested_quantity
+msgid "Requested quantity"
+msgstr "Quantité demandée"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request__requesting_operating_unit_id
+msgid "Requesting Operating Unit"
+msgstr "Clinique de la requête"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_pooled_request.py:0
+#, python-format
+msgid "Some request lines has no operating unit."
+msgstr "La clinique de certaines lignes de requête n'est pas précisée"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_pooled_request.py:0
+#, python-format
+msgid ""
+"Some request lines products is not configured for pooled stock picking."
+msgstr ""
+"Certains produits des lignes d'autorisation ne sont pas configurés pour le stock mutualisé."
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__stock_pooled_request_id
+msgid "Stock pooled request"
+msgstr "Requête de stock mutualisé"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request__line_ids
+msgid "Stock pooled request lines"
+msgstr "Lignes de requête de stock mutualisé"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_picking.py:0
+#, python-format
+msgid "Unable to find the account %s for accrued expense"
+msgstr "Le compte %s de non-parvenu n'existe pas"
+
+#. module: argos_purchase
+#: model:ir.model.fields,field_description:argos_purchase.field_stock_pooled_request_line__uom_id
+msgid "Unit of measure"
+msgstr "Unité de mesure"
+
+#. module: argos_purchase
+#: model:ir.model.fields,help:argos_purchase.field_account_cutoff__purchase_cutoff
+msgid "Used for a single purchase order cutoff"
+msgstr "Utilisé pour la facture non-parvenue d'une commande"
+
+#. module: argos_purchase
+#: code:addons/argos_purchase/models/stock_pooled_request.py:0
+#, python-format
+msgid "You can create a pooled request only for one operating unit at time."
+msgstr "Vous ne pouvez créer une requête de stock mutualisé que pour une seule clinique à la fois."

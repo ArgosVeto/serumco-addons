@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from odoo import models, api, _
 from odoo.exceptions import UserError
 
 
@@ -33,9 +33,8 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         res = super(PurchaseRequestLineMakePurchaseOrder, self).make_purchase_order()
         if self._check_multiple_operating_unit_request():
             purchases = self.env['purchase.order'].search(res['domain'])
-            request_lines = self.item_ids.filtered(lambda item: item.line_id.operating_unit_id and
-                                                                item.line_id.product_id.type in ['product', 'consu'] and
-                                                                item.line_id.picking_type_id != self.get_default_picking_type().id)
+            request_lines = self.item_ids.filtered(lambda item: item.line_id.operating_unit_id and item.line_id.product_id.type in [
+                'product', 'consu'] and item.line_id.picking_type_id != self.get_default_picking_type().id)
             purchases.operating_unit_request_line_ids = [(6, 0, request_lines.mapped('line_id').ids)]
         return res
 

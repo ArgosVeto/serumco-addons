@@ -18,7 +18,7 @@
         'purchase_order_approved',
         'purchase_discount',
         'purchase_subscription',
-        'bi_convert_purchase_from_sales',
+        'account_cutoff_accrual_picking',
         'delivery',
         'resource',
     ],
@@ -28,6 +28,7 @@
         #data
         'data/ir_sequence_data.xml',
         'data/purchase_order_edi_template.xml',
+        'data/server_ftp_data.xml',
         #views
         'views/res_partner_views.xml',
         'views/product_template_views.xml',
@@ -36,6 +37,7 @@
         'views/stock_move_line_views.xml',
         'views/purchase_request_views.xml',
         'views/menu_views.xml',
+        'views/stock_pooled_request_views.xml',
     ],
     'application': False,
     'installable': True,

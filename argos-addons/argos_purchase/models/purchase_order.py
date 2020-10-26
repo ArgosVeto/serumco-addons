@@ -28,22 +28,32 @@ class PurchaseOrder(models.Model):
     operating_unit_picking_ids = fields.Many2many('stock.picking', 'purchase_operating_unit_picking_rel', 'order_id', 'picking_id',
                                                   'Operating Units Internal Pickings', copy=False)
     operating_unit_picking_count = fields.Integer('Operating Units Pickings Count', compute='_compute_operating_unit_picking_count')
+    cutoff_id = fields.Many2one('account.cutoff', 'Accrued Expense', copy=False)
+    cutoff_move_ids = fields.Many2many('account.move', 'purchase_order_cutoff_move_rel', 'purchase_id',
+                                       'cutoff_move_id', 'Accrued Expense moves')
+    cutoff_move_count = fields.Integer('Accrued Expense moves count', compute='compute_cutoff_move_count')
 
     def button_confirm(self):
         context = self._context.copy()
         if self._context.get('check_shipping_fees', False):
             carrier_id = self.partner_id.property_delivery_carrier_id
-            if carrier_id and carrier_id.free_over and self.amount_untaxed < carrier_id.amount:
-                context.update(active_id=self.id)
-                return {
-                    'name': _('Confirmation'),
-                    'type': 'ir.actions.act_window',
-                    'view_mode': 'form',
-                    'res_model': 'purchase.confirmation.wizard',
-                    'views': [(False, 'form')],
-                    'target': 'new',
-                    'context': context,
-                }
+            if carrier_id and carrier_id.free_over:
+                order_amount = 0
+                if self.is_centravet_order and self.order_line.filtered(lambda line: line.emergency):
+                    order_amount = sum(self.order_line.filtered(lambda line: line.emergency).mapped('price_subtotal'))
+                else:
+                    order_amount = self.amount_untaxed
+                if order_amount < carrier_id.amount:
+                    context.update(active_id=self.id)
+                    return {
+                        'name': _('Confirmation'),
+                        'type': 'ir.actions.act_window',
+                        'view_mode': 'form',
+                        'res_model': 'purchase.confirmation.wizard',
+                        'views': [(False, 'form')],
+                        'target': 'new',
+                        'context': context,
+                    }
             else:
                 context.update(check_shipping_fees=False)
         emergency_orders, orders = self.split_centravet_emergency_order()
@@ -82,7 +92,7 @@ class PurchaseOrder(models.Model):
 
     def button_release(self):
         for rec in self:
-            rec.send_order_mail()
+            rec.send_order()
             if rec.is_centravet_order and rec.is_centravet_planned_tour():
                 rec.apply_discount(1)
         return super(PurchaseOrder, self).button_release()
@@ -91,7 +101,7 @@ class PurchaseOrder(models.Model):
         pending_orders = self.filtered(lambda order: order.is_centravet_order and all(not line.emergency for line in order.order_line))
         if pending_orders:
             super(PurchaseOrder, pending_orders).button_approve(force)
-        return super(PurchaseOrder, self - pending_orders).button_release()
+        return (self - pending_orders).button_release()
 
     def _create_picking(self):
         res = super(PurchaseOrder, self)._create_picking()
@@ -119,28 +129,27 @@ class PurchaseOrder(models.Model):
             'target': 'current',
         }
 
-    def send_order_mail(self):
+    def send_order(self):
         try:
-            email_template = self.sudo().env.ref('argos_purchase.purchase_order_edi_mail_template_data')
-            email_values = {}
-            mail_attachments = self.generate_purchase_mail_attachment(self.is_centravet_order)
-            email_values.update({'attachment_ids': [(6, 0, mail_attachments.ids)]})
-            email_template.sudo().send_mail(self.id, force_send=True, email_values=email_values, raise_exception=True)
+            if not self.is_centravet_order:
+                email_template = self.sudo().env.ref('argos_purchase.purchase_order_edi_mail_template_data')
+                email_values = {}
+                mail_attachments = self.generate_purchase_mail_attachment()
+                email_values.update({'attachment_ids': [(6, 0, mail_attachments.ids)]})
+                email_template.sudo().send_mail(self.id, force_send=True, email_values=email_values, raise_exception=True)
+            else:
+                file_data = self.generate_purchase_edi_file()
+                sequence = self.env['ir.sequence'].next_by_code('centravet.purchase.order.seq')
+                operating_unit = self.operating_unit_id or self.env.user.default_operating_unit_id
+                server = self.env.ref('argos_purchase.server_ftp_argos_purchase_order_data', raise_if_not_found=False)
+                filename = '%s%sC%s.csv' % (server.filename, operating_unit.code, sequence)
+                server.store_data(filename, file_data)
         except Exception as e:
             _logger.error(repr(e))
 
-    @api.model
-    def get_centravet_subscriber_code(self):
-        return self.env['ir.config_parameter'].sudo().get_param('centravet.subscriber_code')
-
-    def generate_purchase_mail_attachment(self, centravet=False):
-        if centravet:
-            file_data = base64.b64encode(self.generate_purchase_edi_file().getvalue().encode('utf-8'))
-            sequence = self.env['ir.sequence'].next_by_code('centravet.purchase.order.seq')
-            file_name = self.get_centravet_subscriber_code() + 'C' + sequence + '.csv'
-        else:
-            file_data = base64.b64encode(self.generate_purchase_report_file())
-            file_name = self.name + '.pdf'
+    def generate_purchase_mail_attachment(self):
+        file_data = base64.b64encode(self.generate_purchase_report_file())
+        file_name = self.name + '.pdf'
         return self.env['ir.attachment'].create({
             'name': file_name,
             'datas': file_data,
@@ -153,19 +162,18 @@ class PurchaseOrder(models.Model):
         return result
 
     def generate_purchase_edi_file(self):
-        subscriber_code = self.get_centravet_subscriber_code()
         csv_data = io.StringIO()
         csv_writer = csv.writer(csv_data, delimiter=',')
         for line in self.order_line:
             csv_writer.writerow([
                 self.name,
-                subscriber_code,
+                self.operating_unit_id.code,
                 self.operating_unit_id.email or '',
                 self.operating_unit_id.password or '',
-                self.operating_unit_id.code or '',
+                self.operating_unit_id.argos_code or '',
                 line.product_id.cip or '',
                 line.product_qty or 0,
-                line.name or '',
+                line.name[:60] or '',
                 'PYXIS',
                 '',
                 '',
@@ -262,7 +270,8 @@ class PurchaseOrder(models.Model):
                 'warehouse_id': picking.picking_type_id.warehouse_id.id,
             }
             for move_dict in values:
-                move_difference = list(set(move_dict) - set(value))
+                move_difference = set(move_dict.items()) - set(value.items())
+                move_difference = dict(move_difference).keys()
                 if move_difference == ['product_uom_qty'] or not move_difference:
                     move_dict['product_uom_qty'] += value['product_uom_qty']
                     value = False
@@ -272,3 +281,47 @@ class PurchaseOrder(models.Model):
                     value.update({'move_orig_ids': [(4, move.id) for move in order_lines.mapped('move_ids')]})
                 values.append(value)
         return values
+
+    @api.depends('cutoff_move_ids')
+    def compute_cutoff_move_count(self):
+        for rec in self:
+            if rec.cutoff_move_ids:
+                rec.cutoff_move_count = len(rec.cutoff_move_ids)
+            else:
+                rec.cutoff_move_count = 0
+
+    def action_view_cutoff(self):
+        return {
+            'name': _('Cutoff'),
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree, form',
+            'res_model': 'account.move',
+            'domain': [('id', 'in', self.cutoff_move_ids.ids)],
+            'views': [(False, 'tree'), (False, 'form')],
+            'target': 'current',
+        }
+
+    def reverse_cutoff_move(self):
+        for rec in self:
+            if rec.cutoff_id and rec.cutoff_id.move_id:
+                reverse = self.env['account.move.reversal'].create({'move_id': rec.cutoff_id.move_id.id})
+                result = reverse.reverse_moves()
+                reverse_moves = False
+                if result.get('res_id', False):
+                    reverse_moves = self.env['account.move'].browse(result.get('res_id'))
+                elif result.get('domain', False):
+                    reverse_moves = self.env['account.move'].search(result.get('domain'))
+                if reverse_moves:
+                    reverse_moves.action_post()
+                    rec.cutoff_move_ids = [(4, move.id) for move in reverse_moves]
+        return True
+
+    @api.depends('order_line.invoice_lines.move_id', 'order_line.invoice_lines.move_id.state')
+    def _compute_invoice(self):
+        super(PurchaseOrder, self)._compute_invoice()
+        for rec in self:
+            if rec.cutoff_id and rec.cutoff_id.move_id:
+                cutoff_reversed_entry = self.env['account.move'].search([('reversed_entry_id', '=', rec.cutoff_id.move_id.id)])
+                if any(invoice.state == 'posted' for invoice in rec.invoice_ids.filtered(lambda inv: inv.type == 'in_invoice')) \
+                        and not cutoff_reversed_entry:
+                    rec.reverse_cutoff_move()
