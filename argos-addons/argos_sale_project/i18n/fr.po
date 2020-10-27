@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 14:24+0000\n"
-"PO-Revision-Date: 2020-09-15 14:24+0000\n"
+"POT-Creation-Date: 2020-10-26 08:21+0000\n"
+"PO-Revision-Date: 2020-10-26 08:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -95,6 +95,11 @@ msgid "External"
 msgstr "Externe"
 
 #. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
+msgid "Get result"
+msgstr "Récupérer résultat"
+
+#. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__id
 msgid "ID"
 msgstr "ID"
@@ -175,6 +180,11 @@ msgid "Parameter"
 msgstr "Paramètre"
 
 #. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
+msgid "Parameters"
+msgstr "Paramètres"
+
+#. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__patient_id
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__patient_id
 msgid "Patient"
@@ -186,12 +196,30 @@ msgid "Project Task Result Line"
 msgstr "Ligne de résultat"
 
 #. module: argos_sale_project
+#: code:addons/argos_sale_project/models/project_task.py:0
+#, python-format
+msgid "Recovering result ..."
+msgstr "Récupération du résultat ..."
+
+#. module: argos_sale_project
+#: code:addons/argos_sale_project/models/project_task.py:0
+#, python-format
+msgid "Request successfully sent ..."
+msgstr "Requête envoyée avec succès ..."
+
+#. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__result_ids
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__task_id
 #: model_terms:ir.ui.view,arch_db:argos_sale_project.res_partner_view_form_inherit
 #: model_terms:ir.ui.view,arch_db:argos_sale_project.sale_order_view_form_inherit
 msgid "Result"
 msgstr "Résultat"
+
+#. module: argos_sale_project
+#: code:addons/argos_sale_project/models/project_task.py:0
+#, python-format
+msgid "Result - "
+msgstr "Résultat - "
 
 #. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__result_date
@@ -207,9 +235,26 @@ msgid "Result Lines"
 msgstr "Lignes de résultat"
 
 #. module: argos_sale_project
+#: code:addons/argos_sale_project/models/project_task.py:0
+#, python-format
+msgid "Result not yet available."
+msgstr "Le résultat n'est pas encore disponible."
+
+#. module: argos_sale_project
 #: model:ir.model,name:argos_sale_project.model_sale_order
 msgid "Sales Order"
 msgstr "Bon de commande"
+
+#. module: argos_sale_project
+#: code:addons/argos_sale_project/models/project_task.py:0
+#, python-format
+msgid "Sending request ..."
+msgstr "Envoi de la requête en cours ..."
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_server_ftp
+msgid "Server FTP"
+msgstr "Serveur FTP"
 
 #. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__species_id

@@ -873,6 +873,11 @@ msgid "SMS Delivery error"
 msgstr "Erreur de livraison SMS"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_category__scil_species_id
+msgid "Scil Species Id"
+msgstr "ID SCIL"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__score
 msgid "Score"
 msgstr "Score corporel"
