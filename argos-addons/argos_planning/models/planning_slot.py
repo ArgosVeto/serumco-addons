@@ -111,6 +111,7 @@ class PlanningSlot(models.Model):
         type_obj = self.env['consultation.type']
         unit_obj = self.env['operating.unit']
         partner_obj = self.env['res.partner']
+        employee_obj = self.env['hr.employee']
         return {
             'mrdv_event_id': post.get('mrdvEventId'),
             'mrdv_job_id': post.get('mrdvJobId'),
@@ -118,7 +119,7 @@ class PlanningSlot(models.Model):
             'role_id': role_obj._get_role_by_type(post.get('type')).id,
             'name': post.get('title'),
             'state': post.get('status'),
-            'more_info': post.get('CustomerMoreInfo'),
+            'more_info': post.get('customerMoreInfo'),
             'start_datetime': post.get('startDate'),
             'end_datetime': post.get('endDate'),
             'consultation_type_id': type_obj._get_consultation_type(post.get('consultationName')).id,
@@ -127,6 +128,7 @@ class PlanningSlot(models.Model):
             'patient_id': partner_obj._get_patient_by_name(post.get('petName'), post.get('animalName'),
                                                            post.get('customerName'),
                                                            post.get('customerPhone')).id,
+            'employee_id': employee_obj.search([('name', '=', post.get('employeeName'))]).id,
         }
 
     def button_validate(self):
