@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class PurchaseRequestLine(models.Model):
@@ -8,3 +8,4 @@ class PurchaseRequestLine(models.Model):
 
     operating_unit_id = fields.Many2one('operating.unit', 'Operating Unit', related='request_id.operating_unit_id')
     picking_type_id = fields.Many2one('stock.picking.type', 'Picking Type', related='request_id.picking_type_id')
+    pooled_stock = fields.Boolean('Pooled stock', related='product_id.pooled_stock')
