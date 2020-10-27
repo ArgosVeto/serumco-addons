@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-22 14:48+0000\n"
-"PO-Revision-Date: 2020-10-22 14:48+0000\n"
+"POT-Creation-Date: 2020-10-26 17:21+0000\n"
+"PO-Revision-Date: 2020-10-26 17:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -137,6 +137,11 @@ msgid "Attachment Count"
 msgstr "Nombre de pièces jointes"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__passport_passport__status__available
+msgid "Available"
+msgstr "Disponible"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__category_id
 msgid "Category"
 msgstr "Catégorie"
@@ -158,9 +163,8 @@ msgid "Chip Identification"
 msgstr "Identification de la puce"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner__chip_location_id
-#: model:ir.model.fields,field_description:argos_contact.field_res_users__chip_location_id
-#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner_parameter__type__chip
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner__chip_location
+#: model:ir.model.fields,field_description:argos_contact.field_res_users__chip_location
 msgid "Chip Location"
 msgstr "Localisation puce"
 
@@ -267,9 +271,19 @@ msgid "Death Reason"
 msgstr "Raison du décès"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__passport_passport__status__delivered
+msgid "Delivered"
+msgstr "Délivré"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__delivery_date
 msgid "Delivery date"
 msgstr "Date de livraison"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__passport_passport__status__destroyed
+msgid "Destroyed"
+msgstr "Détruit"
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_diet_action
@@ -300,6 +314,11 @@ msgstr "Abonnés (canaux)"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Abonnés (Animaux)"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__garrot
+msgid "Garrot"
+msgstr "Garrot"
 
 #. module: argos_contact
 #: model:ir.actions.act_window,name:argos_contact.res_partner_parameter_gender_action
@@ -427,6 +446,11 @@ msgid "Internal Notes"
 msgstr "Notes internes"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__interscapular
+msgid "Interscapular"
+msgstr "Interscapulaire"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_is_follower
 msgid "Is Follower"
 msgstr "Est abonné"
@@ -470,9 +494,24 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__left_chin
+msgid "Left Chin"
+msgstr "Gouttière jugulaire gauche"
+
+#. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__left_ear
 msgid "Left Ear"
 msgstr "Oreille gauche"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__left_groin
+msgid "Left Groin"
+msgstr "Aine gauche"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__left_neck
+msgid "Left Neck"
+msgstr "Encolure gauche"
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__left_thigh
@@ -548,6 +587,11 @@ msgid "Natural"
 msgstr "Naturelle"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__neck
+msgid "Neck"
+msgstr "Nuque"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "Date limite de la prochaine activité"
@@ -570,7 +614,7 @@ msgstr "Notes"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__number
 msgid "Number"
-msgstr "Numero"
+msgstr "Numéro"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_needaction_counter
@@ -598,6 +642,11 @@ msgid "Number of unread messages"
 msgstr "Nombre de messages non lus"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__operating_unit_id
+msgid "Operating Unit"
+msgstr "Clinique"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__owner_ids
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__owner_ids
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
@@ -615,10 +664,8 @@ msgid "Partner Tags"
 msgstr "Étiquettes du partenaire"
 
 #. module: argos_contact
-#: model:ir.actions.act_window,name:argos_contact.passport_passport_action
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__name
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__passport_id
-#: model:ir.ui.menu,name:argos_contact.passport_passport_menuitem
 #: model_terms:ir.ui.view,arch_db:argos_contact.passport_view_form
 msgid "Passport"
 msgstr "Passeport"
@@ -627,6 +674,12 @@ msgstr "Passeport"
 #: model:ir.model,name:argos_contact.model_passport_passport
 msgid "Passport Passport"
 msgstr "Passeport"
+
+#. module: argos_contact
+#: model:ir.actions.act_window,name:argos_contact.passport_passport_action
+#: model:ir.ui.menu,name:argos_contact.passport_passport_menuitem
+msgid "Passports"
+msgstr "Passeports"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__pathology_ids
@@ -662,6 +715,11 @@ msgstr "Nom"
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
 msgid "Patient"
 msgstr "Animal"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__patient_name
+msgid "Patient Name"
+msgstr "Nom de l'animal"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_parameter_view_form
@@ -772,9 +830,24 @@ msgid "Responsible User"
 msgstr "Utilisateur responsable"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__right_chin
+msgid "Right Chin"
+msgstr "Gouttière jugulaire droite"
+
+#. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__right_ear
 msgid "Right Ear"
 msgstr "Oreille droite"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__right_groin
+msgid "Right Groin"
+msgstr "Aine droite"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__right_neck
+msgid "Right Neck"
+msgstr "Encolure droite"
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__tattoo_location__right_thigh
@@ -812,6 +885,11 @@ msgid "Score (NEC)"
 msgstr "Score corporel (NEC)"
 
 #. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__shoulder
+msgid "Shoulder"
+msgstr "Entre les deux omoplates"
+
+#. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__source
 msgid "Source"
 msgstr "Source"
@@ -835,7 +913,7 @@ msgstr "Le nom de l'espèce doit être unique."
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__status
 msgid "Status"
-msgstr "Etats"
+msgstr "Etat"
 
 #. module: argos_contact
 #: model:ir.model.fields,help:argos_contact.field_res_partner_weight__activity_state
@@ -900,6 +978,11 @@ msgstr "Type d'activité d'exception enregistrée."
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__typical_workshop
 msgid "Typical Workshop"
 msgstr "Atelier typique"
+
+#. module: argos_contact
+#: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__under_stenal
+msgid "Under Stenal"
+msgstr "Sous sternal"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__message_unread

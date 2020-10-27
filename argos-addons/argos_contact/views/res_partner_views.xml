@@ -81,11 +81,11 @@
                 <field name="tattoo_location"/>
                 <field name="tattoo_date"/>
                 <field name="chip_identification"/>
-                <field name="chip_location_id" context="{'default_type': 'chip'}"/>
+                <field name="chip_location"/>
                 <field name="chip_date"/>
               </group>
               <group>
-                <field name="passport_id"/>
+                <field name="passport_id" domain="[('status', 'not in', ['delivered'])]"/>
                 <field name="issue_date"/>
                 <field name="location"/>
                 <field name="environment_ids" widget="many2many_tags" context="{'default_type': 'living'}"/>

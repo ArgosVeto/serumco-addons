@@ -27,11 +27,14 @@ class ResPartner(models.Model):
     tattoo_date = fields.Date('Tattoo Date')
     chip_identification = fields.Char('Chip Identification')
     issue_date = fields.Date('Issue Date')
-    location = fields.Char('Location')
+    location = fields.Char('Location', related='passport_id.operating_unit_id.name')
     tattoo_location = fields.Selection([('right_ear', 'Right Ear'), ('left_ear', 'Left Ear'), ('right_thigh', 'Right Thigh'),
                                         ('left_thigh', 'Left Thigh')], 'Tattoo Location')
     chip_date = fields.Date('Insertion Date')
-    chip_location_id = fields.Many2one('res.partner.parameter', 'Chip Location', domain=[('type', '=', 'chip')])
+    chip_location = fields.Selection([('left_chin', 'Left Chin'), ('right_chin', 'Right Chin'), ('left_neck', 'Left Neck'),
+                                     ('right_neck', 'Right Neck'), ('under_stenal', 'Under Stenal'), ('shoulder', 'Shoulder'),
+                                     ('neck', 'Neck'), ('left_groin', 'Left Groin'), ('right_groin', 'Right Groin'),
+                                     ('garrot', 'Garrot'), ('interscapular', 'Interscapular')], 'Chip Location')
     image = fields.Binary('Image')
     passport_id = fields.Many2one('passport.passport', 'Passport')
     pathology_ids = fields.Many2many('res.partner.pathology', 'res_partner_pathology_rel', 'partner_id', 'pathology_id', 'Pathologies')
@@ -78,6 +81,14 @@ class ResPartner(models.Model):
     def write(self, vals):
         if vals.get('is_dead'):
             vals['active'] = False
+        if vals.get('passport_id'):
+            date = vals.get('issue_date') or fields.Date.today()
+            vals['issue_date'] = date
+            passport = self.env['passport.passport'].browse(vals['passport_id'])
+            passport.write({
+                'delivery_date': date,
+                'status': 'delivered',
+            })
         if self._context.get('default_contact_type', 'contact') in ['patient']:
             if vals.get('name'):
                 vals['name'] = vals['name'].title()
@@ -106,4 +117,12 @@ class ResPartner(models.Model):
     def create(self, vals):
         if self._context.get('default_contact_type', 'contact') in ['patient']:
             vals['name'] = vals['name'].title()
+        if vals.get('passport_id'):
+            date = vals.get('issue_date') or fields.Date.today()
+            vals['issue_date'] = date
+            passport = self.env['passport.passport'].browse(vals['passport_id'])
+            passport.write({
+                'delivery_date': date,
+                'status': 'delivered',
+            })
         return super(ResPartner, self).create(vals)
