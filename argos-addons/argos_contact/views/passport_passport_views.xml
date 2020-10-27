@@ -14,6 +14,8 @@
 						</div>
 						<group>
 							<group>
+								<field name="operating_unit_id"/>
+								<field name="patient_name"/>
 								<field name="address"/>
 								<field name="city"/>
 								<field name="delivery_date"/>
@@ -43,7 +45,7 @@
 		</record>
 
 		<record id="passport_passport_action" model="ir.actions.act_window">
-			<field name="name">Passport</field>
+			<field name="name">Passports</field>
 			<field name="res_model">passport.passport</field>
 			<field name="view_mode">tree,form</field>
 		</record>

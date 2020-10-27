@@ -56,7 +56,7 @@
 
     <menuitem id="passport_passport_menuitem"
               action="passport_passport_action"
-              name="Passport"
+              name="Passports"
               sequence="58" parent="argos_contact.res_partner_menu_config"/>
 
     <menuitem id="res_partner_parameter_diet_menuitem"
