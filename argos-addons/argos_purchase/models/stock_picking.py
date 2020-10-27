@@ -27,7 +27,7 @@ class StockPicking(models.Model):
         if not cutoff_journal:
             raise Warning(_('Please configure a vendor journal for %s' % self.company_id.name))
         if not cutoff_account:
-            raise Warning(_('Unable to find the account %s for accrued expense' % cutoff_account_code))
+            raise Warning(_('Unable to find the account %s for accrued expense' % cutoff_account.code))
         cutoff_values = self._prepare_purchase_cutoff(cutoff_account, cutoff_journal, self.company_id, purchase.name)
         cutoff = account_cutoff_obj.create(cutoff_values)
         cutoff_lines_values = self._prepare_purchase_cutoff_line(cutoff)
