@@ -107,7 +107,7 @@
 										</ul>
 									</div>
 								</div>
-								<a href="/application" class="btn btn-primary d-block mt32">Postuler</a>
+								<div id="applybtnn" class="text-center"></div>
 							</div>
 							<div class="job-right-share mt40 text-center">
 								<p class="mb32 text-center">Partager l’offre</p>

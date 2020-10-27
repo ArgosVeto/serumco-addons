@@ -1,5 +1,10 @@
 $(document).ready(function(){
+	
 
+    $("#editor").clone().appendTo("#applybtnn");
+	$("#editor").html("Postuler");
+
+	
   if ($("nav").hasClass("o_portal_navbar")) {
     $('.ac-order').addClass('active-order'); 
     $('.br-order-portal').addClass('breadcrumb-order'); 
