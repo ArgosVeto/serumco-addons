@@ -10,6 +10,7 @@ class ResPartnerCategory(models.Model):
     is_incineris_species = fields.Boolean()
     type = fields.Selection([('contact', 'Contact'), ('patient', 'Patient')], 'Type', default='contact')
     gmvet_id = fields.Char('Gmvet id')
+    scil_species_id = fields.Integer('Scil Species Id')
 
     @api.model
     def _get_category_by_name(self, name, type):

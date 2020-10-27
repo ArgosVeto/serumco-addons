@@ -14,10 +14,13 @@
         'argos_purchase',
         'argos_sale',
         'project',
+        'arkeup_ftp',
     ],
     'data': [
         # security
         'security/ir.model.access.csv',
+        # data
+        'data/server_ftp_data.xml',
         # views
         'views/maintenance_equipment_views.xml',
         'views/sale_order_views.xml',

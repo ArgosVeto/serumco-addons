@@ -13,12 +13,14 @@
               <field name="task_id" invisible="1"/>
               <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-              <field name="equipment_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-              <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="equipment_id" attrs="{'readonly': [('state', '!=', 'draft')], 'required': [('type', '=', 'internal')]}"/>
+              <field name="tag_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'draft')]}" string="Parameters"/>
               <field name="note"/>
               <field name="state" invisible="1"/>
-              <button type="object" name="action_launch_analysis" string="Launch"
+              <button type="object" name="button_launch_analysis" string="Launch"
                       attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+              <button type="object" name="button_get_result" string="Get result" icon="fa-repeat text-success"
+                      attrs="{'invisible': [('state', '!=', 'waiting')]}"/>
               <button type="object" name="action_open_result" string="View result" icon="fa-list-ul"
                       attrs="{'invisible': [('state', '!=', 'done')]}"/>
             </tree>
