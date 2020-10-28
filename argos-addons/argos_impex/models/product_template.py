@@ -776,6 +776,7 @@ class ProductTemplate(models.Model):
         if not content or not template:
             return
         category_obj = self.env['product.category']
+        approval_obj = self.env['product.approval']
         csvfile = io.StringIO(content)
         reader = csv.reader(csvfile, delimiter=';')
         logger = logger or self._context['logger']
@@ -802,7 +803,7 @@ class ProductTemplate(models.Model):
                     # 'none': row[10], # Laboratoire/Fournisseur : missing
                     # 'none': row[11], # Statut de l'article : missing
                     # 'none': row[12], # Classe thérapeutique européenne : missing
-                    'approval': row[13],
+                    'approval_id': approval_obj.search([('name', '=', row[13])], limit=1).id,
                     'weight': row[14],  # Poids unitaire NET
                     # 'none': row[15], # Sous-unité de revente : missing
                     # 'none': row[16], # Gestion du stock : missing
