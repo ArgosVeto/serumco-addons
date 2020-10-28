@@ -18,6 +18,7 @@
         'purchase_order_approved',
         'purchase_discount',
         'purchase_subscription',
+        'purchase_requisition',
         'account_cutoff_accrual_picking',
         'delivery',
         'resource',
