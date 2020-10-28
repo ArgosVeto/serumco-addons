@@ -21,9 +21,9 @@
         # views
         'views/res_partner_parameter_views.xml',
         'views/res_partner_category_views.xml',
+        'views/res_partner_weight_views.xml',
         'views/res_partner_views.xml',
         'views/res_partner_pathology_views.xml',
-        'views/res_partner_weight_views.xml',
         'views/passport_passport_views.xml',
         'views/menu_views.xml',
     ],

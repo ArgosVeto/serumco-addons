@@ -20,6 +20,7 @@
               <field name="comments"/>
             </tree>
           </field>
+          <button name="%(argos_sale_project.action_patient_analysis_graph)d" type="action" string="View graph"/>
         </page>
         <page name="imagery" position="inside">
           <field name="imagery_task_ids" readonly="1">

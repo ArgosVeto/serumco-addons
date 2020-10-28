@@ -15,5 +15,22 @@
         </tree>
       </field>
     </record>
+    <record id="project_task_line_view_graph" model="ir.ui.view">
+			<field name="name">project.task.line.view.graph</field>
+			<field name="model">project.task.line</field>
+			<field name="arch" type="xml">
+				<graph string="Analysis" type="line">
+					<field name="result_date" type="col"/>
+					<field name="parameter_id" type="row"/>
+					<field name="value" type="measure"/>
+				</graph>
+			</field>
+		</record>
+    <record id="action_patient_analysis_graph" model="ir.actions.act_window">
+			<field name="name">Analysis</field>
+			<field name="res_model">project.task.line</field>
+			<field name="view_mode">graph</field>
+			<field name="domain">[('patient_id', '=', active_id)]</field>
+		</record>
   </data>
 </odoo>
