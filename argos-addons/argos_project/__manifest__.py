@@ -10,11 +10,10 @@
     'description': '',
     'sequence': -81,
     'depends': [
-        'argos_base',
         'project',
         'mail',
         'industry_fsm',
-        'sale',
+        'argos_sale',
     ],
     'data': [
         'views/assets.xml',

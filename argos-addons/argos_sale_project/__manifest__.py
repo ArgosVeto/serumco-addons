@@ -12,8 +12,7 @@
     'depends': [
         'argos_contact',
         'argos_purchase',
-        'argos_sale',
-        'project',
+        'argos_project',
         'arkeup_ftp',
     ],
     'data': [
