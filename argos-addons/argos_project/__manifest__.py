@@ -8,6 +8,7 @@
     'license': 'AGPL-3',
     'website': 'https://arkeup.com',
     'description': '',
+    'sequence': -81,
     'depends': [
         'argos_base',
         'project',
