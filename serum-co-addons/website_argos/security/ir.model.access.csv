@@ -15,7 +15,7 @@ access_product_per_page_count_bizople_portal,access_product_per_page_count_bizop
 access_product_per_page_bizople,access_product_per_page_bizople,model_product_per_page_bizople,,1,1,1,1
 
 
-access_clinic_favorite,access_clinic_favorite,model_clinic_favorite,base.group_user,1,1,1,1
+access_clinic_favorite,access_clinic_favorite,model_clinic_favorite,,1,1,1,1
 
 access_clinic_image,access_clinic_image,model_clinic_image,base.group_user,1,1,1,1
 access_practical_service,access_practical_service,model_practical_service,base.group_user,1,1,1,1

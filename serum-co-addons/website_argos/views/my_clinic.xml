@@ -8,7 +8,6 @@
 			<t name="Ma Clinique" t-name="my_clinic">
 				<t t-call="website.layout">
 					<div class="oe_structure oe_empty" id="wrap">
-						<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id"/>
 						<section
 							class="s_text_block pt32 s_common_banner_without_bg banner-content"
 							data-name="Text block" data-oe-id="1373"
@@ -50,6 +49,8 @@
 			                        </div>
 			                    </div>
 			                </div>
+			                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+							<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id"/>
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
@@ -130,6 +131,7 @@
 									</t>
 								</div>
 							</div>
+							</t>
 						</section>
 						<t t-if ="user_id.partner_id.clinic_shortlisted_ids">
 						<section class="">
@@ -517,6 +519,10 @@
 								</div>
 							</div>
 						</section>
+						</t>
+						
+						<t t-if ="not user_id.partner_id.clinic_shortlisted_ids">
+							<h2 class="text-center text-secondary">No Favourite Clinic Selected</h2>
 						</t>
 					</div>
 				</t>
