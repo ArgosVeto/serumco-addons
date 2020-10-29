@@ -26,6 +26,7 @@
         'views/product_route_views.xml',
         'views/product_documentation_views.xml',
         'views/product_approval_views.xml',
+        'views/product_pricelist_views.xml',
     ],
     'application': False,
     'installable': True,

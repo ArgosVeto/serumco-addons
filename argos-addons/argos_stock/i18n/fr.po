@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 11:37+0000\n"
-"PO-Revision-Date: 2020-10-16 11:37+0000\n"
+"POT-Creation-Date: 2020-10-29 13:37+0000\n"
+"PO-Revision-Date: 2020-10-29 13:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,15 +33,6 @@ msgstr ""
 #: model:ir.actions.report,print_report_name:argos_stock.action_print_prescription
 msgid "'Prescription - %s - %s' % (object.partner_id.name or '', object.name)"
 msgstr "'Ordonnance - %s - %s' % (object.partner_id.name or '', object.name)"
-
-#. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid ""
-"<br/>\n"
-"              <span>Prohibited renewal</span>"
-msgstr ""
-"<br/>\n"
-"              <span>Renouvellement interdit</span>"
 
 #. module: argos_stock
 #: model:mail.template,body_html:argos_stock.mail_template_prescription_send
