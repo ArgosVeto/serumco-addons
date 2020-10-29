@@ -50,7 +50,7 @@
 			                    </div>
 			                </div>
 			                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-							<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id"/>
+							<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
@@ -405,55 +405,14 @@
 										<t t-call="website_blog.s_latest_posts_big_picture"/>
 										</div>
 										<div class="service-innerp pb56">
-											<h3 class="Nos-services pb16">Les avis de nos clients</h3>
-											<div class="clinc-quote mt32 mb32">
-												<div class="quote-text">
-													<p>« Tum dicere exorsus est et inter mediocrem animadversionem atque
-													haec subtilius velint tradere et aut in gravissimo bello
-													animadversionis metu degendae praesidia firmissima filium
-													morte multavit si sine causa, nollem me ab eo est et iusto
-													odio dignissimos ducimus, qui officia deserunt mollitia animi,
-													id. »
-													<img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
-													</p>
-												</div>
-												<div class="quote-name">
-													<span>John Doe    |    Le 07/07/2020</span>
-												</div>
-											</div>
-											
-											<div class="clinc-quote mt32 mb32">
-												<div class="quote-text">
-													<p>« Tum dicere exorsus est et inter mediocrem animadversionem atque
-													haec subtilius velint tradere et aut in gravissimo bello
-													animadversionis metu degendae praesidia firmissima filium
-													morte multavit si sine causa, nollem me ab eo est et iusto
-													odio dignissimos ducimus, qui officia deserunt mollitia animi,
-													id. »
-													<img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
-													</p>
-												</div>
-												<div class="quote-name">
-													<span>John Doe    |    Le 07/07/2020</span>
-												</div>
-											</div>
-											
-											<div class="clinc-quote mt32 mb32">
-												<div class="quote-text">
-													<p>« Tum dicere exorsus est et inter mediocrem animadversionem atque
-													haec subtilius velint tradere et aut in gravissimo bello
-													animadversionis metu degendae praesidia firmissima filium
-													morte multavit si sine causa, nollem me ab eo est et iusto
-													odio dignissimos ducimus, qui officia deserunt mollitia animi,
-													id. »
-													<img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
-													</p>
-												</div>
-												<div class="quote-name">
-													<span>John Doe    |    Le 07/07/2020</span>
-												</div>
-											</div>
-										</div>
+									<div class="clinic-rating">
+										<h2>Les avis de nos clients</h2>
+										<t t-call="portal.message_thread">
+											<t t-set="object" t-value="clinic"/>
+											<t t-set="display_rating" t-value="True"/>
+										</t>
+									</div>
+								</div>
 									</div>
 									<div class="col-lg-4 clinic-detail-sticky side-block-c">
 										<div class="">

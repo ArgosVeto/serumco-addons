@@ -34,8 +34,9 @@ access_product_tab,access_product_tab,model_product_tab,base.group_user,1,1,1,1
 access_product_tab_website,access_product_tab_website,model_product_tab,,1,0,0,0
 
 
-access_account_operating_portal,access_account_operating_portal,operating_unit.model_operating_unit,base.group_user,1,1,1,1
+access_account_operating_portal,access_account_operating_portal,operating_unit.model_operating_unit,,1,1,1,1
 
 access_group_multi_operating_unit,access_group_multi_operating_unit,operating_unit.model_operating_unit,operating_unit.group_multi_operating_unit,1,1,1,1
 
 access_account_operating_public,access_account_operating_public,model_operating_unit,base.group_public,1,1,1,1
+

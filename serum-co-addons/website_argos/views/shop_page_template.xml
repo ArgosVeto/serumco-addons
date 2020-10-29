@@ -52,26 +52,15 @@
 		                </div>
 		                <div class="sub-categories mt32">
 		                	<ul class="nav nav-pills flex-row">
-								<li class="nav-item mb-3 mb-md-0">
-									<a href="#" class="nav-link categ-btn">
-						                <span>Croquettes</span>
-						            </a>
-								</li>
-								<li class="nav-item mb-3 mb-md-0">
-									<a href="#" class="nav-link categ-btn">
-						                <span>Pâtés</span>
-						            </a>
-								</li>
-								<li class="nav-item mb-3 mb-md-0">
-									<a href="#" class="nav-link categ-btn">
-						                <span>Chat stérilisé</span>
-						            </a>
-								</li>
-								<li class="nav-item mb-3 mb-md-0">
-									<a href="#" class="nav-link categ-btn">
-						                <span>Alimentation premium</span>
-						            </a>
-								</li>
+								<t t-foreach="category" t-as="c">
+							        <t t-if="c.child_id" >
+						                <t t-foreach="c.child_id" t-as="c">
+						                    <t t-if="not search or c.id in search_categories_ids">
+						                        <t t-call="website_sale.categories_recursive" />
+						                    </t>
+						                </t>
+					            	</t>
+			                    </t>
 		                	</ul>
 		                </div>
 					</div>
@@ -119,7 +108,7 @@
 				<div class="container">
 					<div class="d-flex align-items-center">
 						<div class="product_filters d-flex align-items-center mr-auto">
-							<div class="category-filter d-none">
+							<div class="category-filter">
 								<a href="#" class="category-btn dropdown-toggle" data-toggle="dropdown">Category</a>
 								<div class="dropdown-menu" role="menu">
 									<ul class="nav nav-pills flex-column">
@@ -128,7 +117,15 @@
 									            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
 									                <span t-field="c.name"/>
 									            </a>
+									            
 									        </li>
+									        <t t-if="c.child_id" >
+								                <t t-foreach="c.child_id" t-as="c">
+								                    <t t-if="not search or c.id in search_categories_ids">
+								                        <t t-call="website_sale.categories_recursive" />
+								                    </t>
+								                </t>
+							            	</t>
 					                    </t>
 									</ul>
 								</div>
