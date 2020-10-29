@@ -22,6 +22,8 @@
         'website_sale_wishlist',
         'sale_operating_unit',
         'website_rating',
+        'website_map',
+        'website_seo',
     ],
     'data': [
         'data/data.xml',
