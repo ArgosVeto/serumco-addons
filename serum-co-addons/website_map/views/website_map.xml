@@ -57,6 +57,7 @@
 
 	 <template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
 	 	<xpath expr="//div/div[@class='container']" position="before">
+	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
 			<div id="googleMap" class="" style="width: 30%; height: 400px; display: none; position: relative; overflow: hidden; float: right;"></div>
 
