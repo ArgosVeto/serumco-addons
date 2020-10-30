@@ -118,6 +118,7 @@
 			position: relative;
 		}
 		position: relative;
+		z-index:1;
 	}
 
 	@media (max-width: 767.98px) {
@@ -510,6 +511,7 @@
 		}
 		display: inline-block;
 		position:relative;
+		z-index:1;
 	}
 	.text{
 		h3{
@@ -816,6 +818,7 @@
     		z-index: -1;
 		}
 		position: relative;
+		z-index:1;
 	}
 	@media (max-width: 767.98px) {
 		.order{
@@ -905,6 +908,7 @@
     		z-index: -1;
 		}
 		position: relative;
+		z-index:1;
 	}
 	@media (max-width: 767.98px) {
 		.text{

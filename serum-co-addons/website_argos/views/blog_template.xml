@@ -65,7 +65,7 @@
                 <t t-if="tag">                
                     <t t-set="ss" t-value="tag[0]"/>
                     <a role="button" href="#" class="dropdown-toggle btn ge btn-link nav-link" data-toggle="dropdown">
-                        <t t-esc="ss and ss.name or ' - '" />
+                        Les actualités de Argos by Trier ar thématique
                     </a>
                     <div class="dropdown-menu" role="menu">
                         <t t-if="tag">
