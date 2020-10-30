@@ -45,7 +45,7 @@
         <div t-attf-class="dropdown">
                 <t t-set="ss" t-value="blog[0]"/>
                 <a role="button" href="#" class="dropdown-toggle btn ge btn-link nav-link" data-toggle="dropdown">
-                    <t t-esc="ss and ss.name or ' - '" />
+                    Trier par thématique
                 </a>
                 <div class="dropdown-menu" role="menu">
                         <t t-foreach="blog" t-as="s">
@@ -65,7 +65,7 @@
                 <t t-if="tag">                
                     <t t-set="ss" t-value="tag[0]"/>
                     <a role="button" href="#" class="dropdown-toggle btn ge btn-link nav-link" data-toggle="dropdown">
-                        Les actualités de Argos by Trier ar thématique
+                        Trier par Animal
                     </a>
                     <div class="dropdown-menu" role="menu">
                         <t t-if="tag">
