@@ -10,10 +10,6 @@
         <page name="inventory" position="attributes">
           <attribute name="string">Logistics</attribute>
         </page>
-        <group name="group_lots_and_weight" position="inside">
-          <field name="net_weight" string="Net Weight (in g)"/>
-          <field name="gross_weight" string="Gross Weight (in g)"/>
-        </group>
         <notebook position="inside">
           <page string="Medical Informations" name="medical_information">
             <group>
@@ -36,11 +32,13 @@
                 <field name="act_type" widget="radio"/>
               </group>
               <group>
+                <field name="is_medicine"/>
                 <field name="is_antibiotic"/>
                 <field name="is_critical_antibiotic"/>
                 <field name="is_antirabies"/>
                 <field name="is_drug"/>
                 <field name="is_refrigerated"/>
+                <field name="is_vaccine"/>
               </group>
             </group>
             <group>
