@@ -22,6 +22,12 @@ msgid "AMM Code"
 msgstr "Code AMM"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__act_type
+#: model:ir.model.fields,field_description:argos_product.field_product_template__act_type
+msgid "Act Type"
+msgstr "Type d'acte"
+
+#. module: argos_product
 #: model:ir.model,name:argos_product.model_active_substance
 #: model:ir.model.fields,field_description:argos_product.field_product_product__active_substance_id
 #: model:ir.model.fields,field_description:argos_product.field_product_template__active_substance_id
@@ -110,15 +116,11 @@ msgstr "Nom affiché"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__doc_type
-#: model:ir.model.fields,field_description:argos_product.field_product_product__doc_type
-#: model:ir.model.fields,field_description:argos_product.field_product_template__doc_type
 msgid "Documentation Type"
 msgstr "Type de documentation"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__doc_url
-#: model:ir.model.fields,field_description:argos_product.field_product_product__doc_url
-#: model:ir.model.fields,field_description:argos_product.field_product_template__doc_url
 msgid "Documentation URL"
 msgstr "URL"
 
@@ -133,17 +135,6 @@ msgstr "Documentations"
 #: model_terms:ir.ui.view,arch_db:argos_product.product_template_only_form_view_inherit
 msgid "Features"
 msgstr "Caractéristiques"
-
-#. module: argos_product
-#: model:ir.model.fields,field_description:argos_product.field_product_product__gross_weight
-#: model:ir.model.fields,field_description:argos_product.field_product_template__gross_weight
-msgid "Gross Weight"
-msgstr "Poids unitaire brut (g)"
-
-#. module: argos_product
-#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
-msgid "Gross Weight (in g)"
-msgstr "Poids unitaire brut (g)"
 
 #. module: argos_product
 #: model:ir.model.fields.selection,name:argos_product.selection__product_template__nature__homeo
@@ -207,6 +198,12 @@ msgid "Is Drug"
 msgstr "Stupéfiant"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_medicine
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_medicine
+msgid "Is Medicine"
+msgstr "Médicament"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__is_refrigerated
 #: model:ir.model.fields,field_description:argos_product.field_product_template__is_refrigerated
 msgid "Is Refrigerated"
@@ -217,6 +214,12 @@ msgstr "Réfrigéré"
 #: model:ir.model.fields,field_description:argos_product.field_product_template__is_top_ten
 msgid "Is Top Ten"
 msgstr "Top ten"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__is_vaccine
+#: model:ir.model.fields,field_description:argos_product.field_product_template__is_vaccine
+msgid "Is Vaccine"
+msgstr "Vaccin"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance____last_update
@@ -264,17 +267,6 @@ msgstr "Nom"
 #: model:ir.model.fields,field_description:argos_product.field_product_template__nature
 msgid "Nature"
 msgstr "Nature"
-
-#. module: argos_product
-#: model:ir.model.fields,field_description:argos_product.field_product_product__net_weight
-#: model:ir.model.fields,field_description:argos_product.field_product_template__net_weight
-msgid "Net Weight"
-msgstr "Poids unitaire net (g)"
-
-#. module: argos_product
-#: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
-msgid "Net Weight (in g)"
-msgstr "Poids unitaire net (g)"
 
 #. module: argos_product
 #: model:product.approval,renewal:argos_product.product_approval_1

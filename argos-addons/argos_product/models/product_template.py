@@ -7,8 +7,6 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
     _order = 'is_top_ten desc, name'
 
-    net_weight = fields.Float('Net Weight')
-    gross_weight = fields.Float('Gross Weight')
     species_ids = fields.Many2many('res.partner.category', 'product_template_species_rel', 'product_template_id', 'species_id', 'Species')
     race_ids = fields.Many2many('res.partner.parameter', 'product_template_race_rel', 'product_template_id', 'race_id', 'Race',
                                 domain=[('type', '=', 'race')])
@@ -45,6 +43,8 @@ class ProductTemplate(models.Model):
     is_antirabies = fields.Boolean('Is Antirabies')
     is_drug = fields.Boolean('Is Drug')
     is_refrigerated = fields.Boolean('Is Refrigerated')
+    is_medicine = fields.Boolean('Is Medicine')
+    is_vaccine = fields.Boolean('Is Vaccine')
     documentation_ids = fields.One2many('product.documentation', 'product_template_id', 'Documentations')
     renewal = fields.Char('Renewal')
 

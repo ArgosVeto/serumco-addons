@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="product_template_view_form_inherit" model="ir.ui.view">
+      <field name="name">product.template.view.form.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="account.product_template_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='properties']" position="inside">
+          <group>
+            <field name="can_be_expensed"/>
+          </group>
+        </xpath>
+      </field>
+    </record>
+    <record id="product_template_expense_view_form_inherit" model="ir.ui.view">
+      <field name="name">product.template.expense.view.form.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="hr_expense.view_product_hr_expense_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@name='options']/div[last()]" position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -14,6 +14,7 @@
         'account_payment',
         'account_accountant',
         'argos_operating_unit',
+        'hr_expense',
     ],
     'data': [
         # data
@@ -22,6 +23,7 @@
         'views/res_partner_views.xml',
         'views/res_bank_views.xml',
         'views/operating_unit_views.xml',
+        'views/product_template_views.xml',
     ],
     'application': False,
     'installable': True,
