@@ -9,3 +9,4 @@ from . import product_category
 from . import product_route
 from . import product_documentation
 from . import product_approval
+from . import product_pricelist

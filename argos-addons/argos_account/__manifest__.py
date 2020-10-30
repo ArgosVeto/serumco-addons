@@ -13,6 +13,7 @@
         'argos_base',
         'account_payment',
         'account_accountant',
+        'argos_operating_unit',
     ],
     'data': [
         # data
@@ -20,6 +21,7 @@
         # views
         'views/res_partner_views.xml',
         'views/res_bank_views.xml',
+        'views/operating_unit_views.xml',
     ],
     'application': False,
     'installable': True,

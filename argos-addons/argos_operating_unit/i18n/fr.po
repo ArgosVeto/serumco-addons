@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 19:11+0000\n"
-"PO-Revision-Date: 2020-09-28 19:11+0000\n"
+"POT-Creation-Date: 2020-10-29 07:49+0000\n"
+"PO-Revision-Date: 2020-10-29 07:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,12 @@ msgid "Clinical"
 msgstr "Clinique"
 
 #. module: argos_operating_unit
+#: code:addons/argos_operating_unit/models/operating_unit.py:0
+#, python-format
+msgid "Consult room number must be between 0 and 9."
+msgstr "Le nombre de salles de consultation doit être compris entre 0 et 9."
+
+#. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__consult_room_number
 msgid "Consultation Rooms Number"
 msgstr "Nombre de salles de consultation"
@@ -133,6 +139,11 @@ msgstr "Créé par"
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__create_date
 msgid "Created on"
 msgstr "Créé le"
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_service__description
+msgid "Description"
+msgstr "Description"
 
 #. module: argos_operating_unit
 #: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_view_form
@@ -174,6 +185,11 @@ msgstr "Equipements"
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_type__id
 msgid "ID"
 msgstr "ID"
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__image_1920
+msgid "Image"
+msgstr "Image"
 
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit_certification____last_update
@@ -292,6 +308,12 @@ msgid "Restore"
 msgstr "Désarchiver"
 
 #. module: argos_operating_unit
+#: code:addons/argos_operating_unit/models/operating_unit_room.py:0
+#, python-format
+msgid "Room area must be less than 1000m²."
+msgstr "La superficie d'une salle doit être inférieure à 1000m²."
+
+#. module: argos_operating_unit
 #: model:ir.actions.act_window,name:argos_operating_unit.action_open_operating_unit_view
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__rooms_ids
 #: model:ir.ui.menu,name:argos_operating_unit.menu_operating_unit_room
@@ -299,6 +321,11 @@ msgstr "Désarchiver"
 #: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_view_form
 msgid "Rooms"
 msgstr "Salles"
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__siret
+msgid "SIRET"
+msgstr "SIRET"
 
 #. module: argos_operating_unit
 #: model_terms:ir.ui.view,arch_db:argos_operating_unit.operating_unit_view_form
@@ -321,6 +348,11 @@ msgstr "Service"
 #: model:ir.ui.menu,name:argos_operating_unit.menu_operating_unit_service
 msgid "Services"
 msgstr "Services"
+
+#. module: argos_operating_unit
+#: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__siren
+msgid "Siren"
+msgstr "SIREN"
 
 #. module: argos_operating_unit
 #: model:ir.model.fields,field_description:argos_operating_unit.field_operating_unit__state_id

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class OperatingUnit(models.Model):
@@ -16,6 +17,9 @@ class OperatingUnit(models.Model):
     email = fields.Char(related='partner_id.email', inherited=True, readonly=False)
     phone = fields.Char(related='partner_id.phone', inherited=True, readonly=False)
     mobile = fields.Char(related='partner_id.mobile', inherited=True, readonly=False)
+    image_1920 = fields.Image(related='partner_id.image_1920', inherited=True, readonly=False)
+    siret = fields.Char(related='partner_id.siret', inherited=True, readonly=False)
+    siren = fields.Char(related='partner_id.siren', inherited=True, readonly=False)
     emergency_phone = fields.Char('Emergency Phone')
     type_id = fields.Many2one('operating.unit.type', 'Clinic Type')
     vat = fields.Char(related='partner_id.vat', inherited=True, readonly=False)
@@ -63,3 +67,11 @@ class OperatingUnit(models.Model):
     @api.model
     def _get_operating_unit_by_location(self, location=False):
         return self.search([('name', '=', location)], limit=1)
+
+    @api.constrains('consult_room_number')
+    def _check_consult_room_number(self):
+        if not self._context.get('from_bo', False):
+            return
+        for rec in self:
+            if not (0 <= rec.consult_room_number < 10):
+                raise ValidationError(_('Consult room number must be between 0 and 9.'))

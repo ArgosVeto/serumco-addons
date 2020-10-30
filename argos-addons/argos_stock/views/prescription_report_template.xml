@@ -188,7 +188,6 @@
                 <t t-esc="line_count"/>line(s)
               </span>
               <br/>
-              <span>Prohibited renewal</span>
             </div>
             <div class="row">
               <div class="col-7"/>
