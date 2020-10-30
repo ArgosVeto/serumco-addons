@@ -113,6 +113,7 @@
                     <field name="source"/>
                   </tree>
                 </field>
+                <button name="%(argos_contact.action_res_partner_weight_graph)d" type="action" string="View graph"/>
               </page>
               <page string="Surgery"/>
               <page string="Vaccination"/>

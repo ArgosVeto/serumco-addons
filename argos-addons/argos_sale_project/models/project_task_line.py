@@ -14,9 +14,9 @@ class TaskResultLine(models.Model):
     min = fields.Float('Minimum')
     max = fields.Float('Maximum')
     comments = fields.Text('Comments')
-    patient_id = fields.Many2one(related='task_id.patient_id')
+    patient_id = fields.Many2one(related='task_id.patient_id', store=True)
     name = fields.Char(related='task_id.name')
-    result_date = fields.Datetime(related='task_id.result_date')
+    result_date = fields.Datetime(related='task_id.result_date', store=True)
 
     @api.model
     def create_result_line(self, task_id, dict):

@@ -50,10 +50,30 @@
 			</field>
 		</record>
 
+		<record id="res_partner_weight_view_graph" model="ir.ui.view">
+			<field name="name">res.patient.weight.view.graph</field>
+			<field name="model">res.partner.weight</field>
+			<field name="arch" type="xml">
+				<graph string="Patient Weight" type="line">
+					<field name="date" type="col"/>
+					<field name="partner_id" type="row"/>
+					<field name="values" type="measure" string="Weight"/>
+					<field name="nec" type="measure"/>
+				</graph>
+			</field>
+		</record>
+
 		<record id="res_partner_weight_action" model="ir.actions.act_window">
 			<field name="name">Weights</field>
 			<field name="res_model">res.partner.weight</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,graph</field>
+		</record>
+
+		<record id="action_res_partner_weight_graph" model="ir.actions.act_window">
+			<field name="name">Weights</field>
+			<field name="res_model">res.partner.weight</field>
+			<field name="view_mode">graph</field>
+			<field name="domain">[('partner_id', '=', active_id)]</field>
 		</record>
 
 	</data>
