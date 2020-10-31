@@ -29,23 +29,47 @@ class ProductTemplate(models.Model):
 
     def manage_supinfo(self, row={}):
         self.ensure_one()
-        if not row.get('fournisseur'):
-            return
-        partner_obj = self.env['res.partner']
         if not row:
             return False
-        supplier = partner_obj.search([('name', '=', row.get('fournisseur'))], limit=1)
+        partner_obj = self.env['res.partner']
+        supplier = partner_obj.search([('is_centravet', '=', True)], limit=1)
         if not supplier:
-            supplier = partner_obj.create({'name': row.get('fournisseur')})
-        sellers = self.seller_ids.filtered(lambda s: s.name == supplier)
-        if not sellers:
-            vals = [(0, 0, {
-                'name': supplier.id,
-                'product_tmpl_id': self.id,
-                'sequence': 0})]
-            self.seller_ids = vals
-            return True
+            return False
+        vals = {
+            'name': supplier.id,
+            'min_qty': 1,
+            'is_import': True,
+            'price': float(row[19].strip()),
+            'product_tmpl_id': self.id,
+            'sequence': 0,
+            'company_id': False,
+            'is_discount': False,
+            'maker_partner_id': self.manage_manufacturer(row[10]).id
+        }
+        sellers = self.seller_ids.filtered(lambda s: s.name == supplier and not s.is_discount and s.is_import)
+        if sellers:
+            sellers.write(vals)
+        else:
+            if row[20].strip():
+                qty = float(row[18])
+                vals.update({'is_discount': True,
+                             'min_qty': qty,
+                             'price': float(row[20].strip()),
+                             'date_start': len(row[21]) == 8 and fields.datetime.strptime(row[21], '%Y%m%d'),
+                             'date_end': len(row[22]) == 8 and fields.datetime.strptime(row[22], '%Y%m%d')})
+                sellers = self.seller_ids.filtered(lambda s: s.name == supplier and s.is_discount and s.is_import and s.min_qty == qty)
+                if sellers:
+                    sellers.write(vals)
+            self.seller_ids = [(0, 0, vals)]
         return True
+
+    def manage_manufacturer(self, name):
+        self.ensure_one()
+        partner_obj = self.env['res.partner']
+        partner = partner_obj.search([('name', '=', name)], limit=1)
+        if not partner:
+            partner = partner_obj.create({'name': name})
+        return partner
 
     @api.model
     def schedule_import_process(self, **kwargs):
@@ -130,7 +154,6 @@ class ProductTemplate(models.Model):
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 if product:
                     product.write(vals)
-                    product.manage_supinfo(row)
                     lines.append(reader.line_num)
                     self._cr.commit()
                 else:
@@ -713,55 +736,6 @@ class ProductTemplate(models.Model):
         self.manage_import_report(source, lines, template, errors, logger)
         return True
 
-    def manage_supplier_index_gtin(self, row):
-        if not row or len(row) < 17:
-            return
-        lenrow = len(row)
-        if lenrow > 10 and row[10].strip() and float(row[19].strip()):
-            supplier = self.env['res.partner']._get_partner_by_name(row[10])  # Laboratoire/Fournisseur
-            price_no_prom = float(row[19].strip())
-            supplier_info_vals = {
-                'name': supplier.id,
-                'min_qty': 1,  # Quantié tarif
-                'is_import': True,
-                'price': price_no_prom,  # Prix de l'unitaire hors promotion
-            }
-            supp_info = self.seller_ids.filtered(
-                lambda si:
-                    si.name.id == supplier.id
-                    and not si.is_discount
-                    and si.is_import
-            )
-            if supp_info:
-                supp_info.write(supplier_info_vals)
-            else:
-                self.write({'seller_ids': [(0, 0, supplier_info_vals)]})
-            if lenrow > 20 and row[20].strip():
-                priceprom = float(row[20].strip())
-                if priceprom > 0 and float(row[18]) > 0:
-                    supplier_info_vals_prom = {
-                        'name': supplier.id,
-                        'is_discount': True,
-                        'is_import': True,
-                        'min_qty': float(row[18]),  # Quantié tarif
-                        'price': priceprom,  # Pris de l'unitaire en promotion
-                    }
-                    if lenrow > 21 and len(row[21]) == 8:
-                        supplier_info_vals_prom['date_start'] = datetime.strptime(row[21], '%Y%m%d')
-                    if lenrow > 22 and len(row[22]) == 8:
-                        supplier_info_vals_prom['date_end'] = datetime.strptime(row[22], '%Y%m%d')
-                    supp_info = self.seller_ids.filtered(
-                        lambda si:
-                            si.name.id == supplier.id
-                            and si.is_discount
-                            and si.is_import
-                            and si.min_qty == float(row[18])
-                    )
-                    if supp_info:
-                        supp_info.write(supplier_info_vals_prom)
-                    else:
-                        self.write({'seller_ids': [(0, 0, supplier_info_vals_prom)]})
-
     @api.model
     def processing_import_catalogue_global_data(self, content=None, template=False, source=False, logger=False):
         """
@@ -828,7 +802,7 @@ class ProductTemplate(models.Model):
                 else:
                     vals.update({'default_code': default_code})
                     product = self.create(vals)
-                product.manage_supplier_index_gtin(row)
+                product.manage_supinfo(row)
                 if line_num % 500 == 0:
                     logger.info(_('Import in progress ... %s lines treated.') % line_num)
                 lines.append(line_num)
