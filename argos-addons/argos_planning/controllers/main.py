@@ -56,7 +56,7 @@ class PlanningWebservice(http.Controller):
             _logger.info(_('Cancelling Event %s') % OdooCalendarId)
             slot_obj = request.env['planning.slot']
             slot = slot_obj.search([('mrdv_event_id', '=', mdrvEventId), ('mrdv_job_id', '=', mdrvJobId), ('id', '=', OdooCalendarId)])
-            slot.write({'state': 'cancel'})
+            slot.button_cancel()
             return {'message': 'OK'}
         except Exception as e:
             return {'message': repr(e)}

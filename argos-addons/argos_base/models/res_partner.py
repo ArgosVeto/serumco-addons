@@ -25,6 +25,7 @@ class ResPartner(models.Model):
     is_centravet = fields.Boolean('Is Centravet Supplier')
     kinetec_code = fields.Char('Kinetec Code')
     siren = fields.Char('Siren', size=9)
+    has_activity = fields.Boolean('Has Activity')
 
     @api.model
     def _get_partner_by_name(self, name=False, phone=False):

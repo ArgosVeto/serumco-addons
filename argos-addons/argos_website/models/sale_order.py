@@ -18,6 +18,11 @@ class SaleOrder(models.Model):
             self.filtered(lambda so: so.website_id).generate_centravet_orders()
         except Exception as e:
             _logger.error(repr(e))
+        orders = self.filtered(lambda so: so.website_id)
+        new_orders = orders.filtered(lambda so: not so.partner_id.has_activity)
+        new_orders.send_first_mail()
+        new_orders.mapped('partner_id').write({'has_activity': True})
+        orders.send_review_email()
         return res
 
     def generate_centravet_orders(self):
@@ -64,4 +69,22 @@ class SaleOrder(models.Model):
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
             filename = '%s%sV%s.WBV' % (server.filename, order.operating_unit_id.code, sequence)
             server.store_data(filename, csv_data)
+        return True
+
+    def send_first_mail(self):
+        for rec in self:
+            try:
+                email_template = self.env.ref('argos_website.website_welcome_mail_template')
+                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
+            except Exception as e:
+                _logger.error(repr(e))
+        return True
+
+    def send_review_email(self):
+        for rec in self:
+            try:
+                email_template = self.env.ref('argos_website.review_mail_template')
+                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
+            except Exception as e:
+                _logger.error(repr(e))
         return True
