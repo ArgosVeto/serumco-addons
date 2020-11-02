@@ -6,7 +6,8 @@
     <field name="priority">10</field>
     <field name="arch" type="xml">
       <calendar string="Agenda" date_start="start_datetime" date_stop="end_datetime" color="role_id" all_day="allday"
-                form_view_id="%(argos_planning.planning_slot_view_form_inherit)d" event_open_popup="true" quick_add="False">
+                form_view_id="%(argos_planning.planning_slot_view_form_inherit)d" event_open_popup="true"
+                quick_add="False">
         <field name="state" readonly="1"/>
         <field name="name" string="RDV Reason"/>
         <field name="role_id" string="RDV Type"/>

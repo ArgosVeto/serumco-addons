@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, time
 
 from odoo import models, fields, api, _
 from odoo.tools.float_utils import float_round
+from odoo.exceptions import UserError
 
 
 def float_to_time(hours):
@@ -17,6 +18,31 @@ def float_to_time(hours):
 
 class PlanningSlot(models.Model):
     _inherit = 'planning.slot'
+
+    calendar_event_ids = fields.One2many('calendar.event', 'planning_slot_id', string='Meetings')
+
+    def unlink(self):
+        self.mapped('calendar_event_ids').write({'active': False})
+        return super(PlanningSlot, self).unlink()
+
+    def button_not_honored(self):
+        self.ensure_one()
+        self.write({'state': 'not_honored'})
+        self.calendar_event_ids.write({'active': False})
+        return True
+
+    def button_cancel(self):
+        self.ensure_one()
+        self.write({'state': 'cancel'})
+        self.calendar_event_ids.write({'active': False})
+        return True
+
+    def button_validate(self):
+        self.ensure_one()
+        self.write({'state': 'validated'})
+        self.with_context(active_test=False).calendar_event_ids.write({'active': True})
+        self.send_confirmation_mail()
+        return True
 
     @api.model
     def get_resources(self, start_date, end_date):

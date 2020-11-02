@@ -41,6 +41,8 @@ class PlanningSlot(models.Model):
     partner_phone = fields.Char(related='partner_id.phone', string='Customer phone')
     patient_ids = fields.Many2many('res.partner', related='partner_id.patient_ids')
     role_type = fields.Selection(related='role_id.role_type')
+    website_planning = fields.Boolean(string='Website planning', default=False, copy=False)
+    unexpected_rdv = fields.Boolean(string='Unexpected appointment', default=False, copy=False)
 
     @api.model
     def get_work_interval(self, start_date, employee=False):
@@ -72,7 +74,8 @@ class PlanningSlot(models.Model):
             vals['start_datetime'] = interval[0]
             vals['end_datetime'] = interval[1]
         res = super(PlanningSlot, self).write(vals)
-        self.check_veterinary_presence()
+        if not self.filtered(lambda l: l.website_planning):
+            self.check_veterinary_presence()
         return res
 
     @api.onchange('allday')
@@ -131,9 +134,27 @@ class PlanningSlot(models.Model):
             'employee_id': employee_obj.search([('name', '=', post.get('employeeName'))]).id,
         }
 
+    def send_confirmation_mail(self):
+        self.ensure_one()
+        try:
+            email_template = self.env.ref('argos_planning.planning_validation_mail_template')
+            employee = self.env['hr.employee.public'].browse(self.mapped('employee_id').id)
+            template_context = {
+                'employee': employee,
+            }
+            email_template.with_context(**template_context).send_mail(self.id, force_send=True, raise_exception=True)
+        except Exception as e:
+            _logger.error(repr(e))
+
     def button_validate(self):
         self.ensure_one()
         self.write({'state': 'validated'})
+        self.send_confirmation_mail()
+        return True
+
+    def button_not_honored(self):
+        self.ensure_one()
+        self.write({'state': 'not_honored'})
         return True
 
     def button_set_to_waiting(self):
@@ -206,7 +227,8 @@ class PlanningSlot(models.Model):
         res = super(PlanningSlot, self).create(vals)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
-        res.check_veterinary_presence()
+        if not res.website_planning:
+            res.check_veterinary_presence()
         return res
 
     def check_veterinary_presence(self):
@@ -214,7 +236,8 @@ class PlanningSlot(models.Model):
         role_obj = self.env['planning.role']
         presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
         absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
-        for rec in self.filtered(lambda l: l.employee_id and l.role_id.id not in absence_role_ids):
+        for rec in self.filtered(lambda
+                                         l: l.employee_id and l.role_id and l.role_id.id not in absence_role_ids and l.role_id not in presence_role_ids):
             domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
                       ('role_id', 'in', presence_role_ids), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
                       ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),

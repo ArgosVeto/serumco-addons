@@ -69,12 +69,15 @@
             <button name="button_progress" type="object" class="btn btn-primary" string="New consultation"/>
             <button name="button_cancel" type="object" string="Cancel"
                     attrs="{'invisible': [('state', 'not in', ['draft', 'validated'])]}"/>
+            <button name="button_not_honored" type="object" string="Not honored"
+                    attrs="{'invisible': [('state', 'not in', ['draft', 'validated'])]}"/>
             <field name="state" widget="statusbar"/>
           </header>
         </xpath>
         <field name="start_datetime" position="before">
           <field name="allday" invisible="1"/>
           <field name="background_event"/>
+          <field name="unexpected_rdv"/>
         </field>
         <field name="is_assigned_to_me" position="before">
           <div class="oe_button_box" name="button_box">
