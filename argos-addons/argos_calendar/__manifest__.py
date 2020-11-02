@@ -11,6 +11,8 @@
     'description': '',
     'depends': [
         'calendar',
+        'website_calendar',
+        'project',
         'argos_base',
         'argos_planning',
         'argos_planning_sale',
@@ -19,6 +21,8 @@
         'views/calendar_templates.xml',
         'views/calendar_views.xml',
         'views/res_config_settings_views.xml',
+        'views/website_calendar_templates.xml',
+        'views/calendar_appointment_views.xml',
     ],
     'qweb': [
         "static/src/xml/web_calendar.xml",

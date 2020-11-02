@@ -27,5 +27,525 @@
       ]]>
       </field>
     </record>
+
+    <record id="planning_validation_mail_template" model="mail.template">
+      <field name="name">Planning Validation Mail</field>
+      <field name="model_id" ref="planning.model_planning_slot"/>
+      <field name="subject">Planning Validation</field>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="email_to">${object.partner_id.email}</field>
+      <field name="auto_delete" eval="True"/>
+      <field name="body_html">
+        <![CDATA[
+          <!-- Outlook [if gte mso 15]>
+          <xml>
+              <o:OfficeDocumentSettings>
+                  <o:AllowPNG></o:AllowPNG>
+                  <o:PixelsPerInch>96</o:PixelsPerInch>
+              </o:OfficeDocumentSettings>
+          </xml>
+          <![endif]-->
+          <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="format-detection" content="date=no">
+          <meta name="format-detection" content="address=no">
+          <meta name="format-detection" content="telephone=no">
+          <!-- LINK -->
+          <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&amp;display=swap" rel="stylesheet">
+          <title>Rendez-vous confirmé</title>
+
+
+          <style type="text/css" media="screen">
+              /* Linked Styles */
+              body {
+                  padding: 0 !important;
+                  margin: 0 !important;
+                  display: block !important;
+                  min-width: 100% !important;
+                  width: 100% !important;
+                  background: #3e3b46;
+                  -webkit-text-size-adjust: none
+              }
+
+              argos_a {
+                  color: #de1a46;
+                  text-decoration: none
+              }
+
+              argos_p {
+                  padding: 0 !important;
+                  margin: 0 !important
+              }
+
+              img {
+                  -ms-interpolation-mode: bicubic; /* Allow smoother rendering of resized image in Internet Explorer */
+              }
+
+              .h5-white a {
+                  color: #ffffff;
+                  text-decoration: none;
+              }
+
+              .h3 a {
+                  color: #f1f1f1;
+                  text-decoration: none;
+              }
+
+              .text-right a {
+                  color: #c4bab2;
+                  text-decoration: none;
+              }
+
+              /* Linked Styles - TEST*/
+              /* body { padding:0 !important; margin:0 !important; display:block !important; min-width:100% !important; width:100% !important; background:#f4f4f4; -webkit-text-size-adjust:none }
+              a { color:#8737ff; text-decoration:none }
+              p { padding:0 !important; margin:0 !important }
+              img { -ms-interpolation-mode: bicubic; /* Allow smoother rendering of resized image in Internet Explorer  }
+              /*.mcnPreviewText { display: none !important; }*/
+
+              /* Mobile styles */
+              @media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
+                  div[class='mobile-br-5'] {
+                      height: 5px !important;
+                  }
+
+                  div[class='mobile-br-6'] {
+                      height: 5px !important;
+                      background: #ffffff !important;
+                      display: block !important;
+                  }
+
+                  div[class='mobile-br-10'] {
+                      height: 10px !important;
+                  }
+
+                  div[class='mobile-br-15'] {
+                      height: 15px !important;
+                  }
+
+                  th[class='m-td'],
+                  td[class='m-td'],
+                  div[class='hide-for-mobile'],
+                  span[class='hide-for-mobile'] {
+                      display: none !important;
+                      width: 0 !important;
+                      height: 0 !important;
+                      font-size: 0 !important;
+                      line-height: 0 !important;
+                      min-height: 0 !important;
+                  }
+
+                  span[class='mobile-block'] {
+                      display: block !important;
+                  }
+
+                  div[class='img-m-center'] {
+                      text-align: center !important;
+                  }
+
+                  td[class='text-top'],
+                  div[class='text-footer'],
+                  div[class='text-footer-right'],
+                  div[class='text-top2'],
+                  td[class='text-top3'] {
+                      text-align: center !important;
+                  }
+
+                  div[class='text-nav'],
+                  td[class='text-nav'] {
+                      line-height: 22px !important;
+                  }
+
+                  td[class='text-right'],
+                  div[class='text-right'] {
+                      text-align: left !important;
+                  }
+
+                  div[class='fluid-img'] img,
+                  td[class='fluid-img'] img {
+                      width: 100% !important;
+                      max-width: 100% !important;
+                      height: auto !important;
+                  }
+
+                  table[class='mobile-shell'] {
+                      width: 100% !important;
+                      min-width: 100% !important;
+                  }
+
+                  table[class='center'] {
+                      margin: 0 auto;
+                  }
+
+                  td[class='column'],
+                  td[class='column-top'],
+                  th[class='column-top'],
+                  th[class='column'] {
+                      float: left !important;
+                      width: 100% !important;
+                      display: block !important;
+                  }
+
+                  td[class='td'] {
+                      width: 100% !important;
+                      min-width: 100% !important;
+                  }
+
+                  td[class='auto'] {
+                      width: auto !important;
+                  }
+
+                  td[class='w140'] {
+                      width: 140px !important;
+                  }
+
+                  td[class='content-spacing'] {
+                      width: 15px !important;
+                  }
+              }
+          </style>
+
+
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+              <tbody>
+              <tr>
+                  <td align="center" valign="top">
+                      <table width="650" border="0" cellspacing="0" cellpadding="0" class="mobile-shell">
+                          <tbody>
+                          <tr>
+                              <td class="td"
+                                  style="width:650px;min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0">
+
+                                  <!-- Header -->
+                                  <div class="img-center" style="font-size:0pt;line-height:0pt; text-align:center;"><a
+                                          href="https://argos-veterinaire.com/" target="_blank"><img
+                                          src="https://argos-veterinaire.com/wp-content/uploads/2020/09/Header.png" border="0"
+                                          width="100%" alt="valeurs-argos"></a></div>
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tbody>
+                                      <tr>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                                  <!-- END Header -->
+
+
+                                  <!-- Body -->
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tbody>
+                                      <tr>
+                                          <td>
+
+                                              <!-- RDV Confirmé -->
+                                              <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                                  <tbody>
+                                                  <tr>
+                                                      <td class="content-spacing"
+                                                          style="font-size:0pt;line-height:0pt; text-align:left" width="30">&nbsp;
+                                                      </td>
+
+                                                      <td>
+
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="40" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+
+                                                          <div class="h2"
+                                                               style="color:#23214b;font-family: Arial, Helvetica, sans-serif; font-size:30px; line-height:40px; text-align:center">
+                                                              <b>Votre rendez-vous<br> est <span
+                                                                      style="color:#63bae9"> confirmé</span> !</b></div>
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="20" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+
+
+                                                          <div class="img-center"
+                                                               style="font-size:0pt;line-height:0pt; text-align:center; padding-bottom: 10px;">
+                                                              <img src="https://argos-veterinaire.com/wp-content/uploads/2020/09/icon-calendrier-V.png"
+                                                                   border="0" width="150" alt="Bienvenue"></div>
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="30" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+
+
+                                                          <div class="p"
+                                                               style="color:#777777;font-family: Helvetica, Arial, sans-serif; font-size:20px; font-weight:200; line-height:28px; text-align:center;">
+                                                              Bonjour <span style="color:#63bae9">${object.partner_id.title.name} ${object.partner_id.name}</span>,
+                                                              nous avons le plaisir de vous confirmer votre rendez-vous avec le
+                                                              <span style="color:#63bae9">${object.employee_id.name}</span> le
+                                                              <span style="color:#63bae9"><b>${format_datetime(object.start_datetime, tz=ctx.get('employee').tz or 'UTC', dt_format='short')}</b></span>
+                                                              pour <span style="color:#63bae9">${object.patient_id.name}</span>.
+                                                          </div>
+
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="40" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+
+                                                          <div class="p"
+                                                               style="color:#777777;font-family: Helvetica, Arial, sans-serif; font-size:20px; font-weight:200; line-height:28px; text-align:center;">
+                                                              En cas d’imprévu vous pouvez nous prévenir directement au <br><a
+                                                                  href="tel:" style="color:#de1a46">${object.operating_unit_id.phone}</a>
+                                                              ou modifier votre rendez-vous depuis votre espace client.
+
+                                                          </div>
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="30" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+
+                                                          <!-- CTA -->
+                                                          <div align="center">
+                                                              <a href="/my/appointments"
+                                                                 style="background-color:#de1a46;background:#de1a46;border-radius:40px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:700;line-height:45px;text-align:center; width:220px; -webkit-text-size-adjust:none;padding: 0px 0px;"
+                                                                 target="_blank">Gérer mes rendez-vous</a>
+                                                          </div>
+                                                          <!--/ CTA -->
+
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                                 class="spacer"
+                                                                 style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td height="30" class="spacer"
+                                                                      style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                      &nbsp;
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </td>
+
+                                                      <td class="content-spacing"
+                                                          style="font-size:0pt;line-height:0pt; text-align:left" width="30">&nbsp;
+                                                      </td>
+                                                  </tr>
+                                                  </tbody>
+                                              </table>
+                                              <!-- END RDV Confirmé -->
+
+                                          </td>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                                  <!-- END Body -->
+
+                                  <!-- Bandeau Rassurance -->
+                                  <div class="img-center" style="font-size:0pt;line-height:0pt; text-align:center;"><img
+                                          src="https://argos-veterinaire.com/wp-content/uploads/2020/09/Bandeau-rassurance.png"
+                                          border="0" width="100%" alt="valeurs-argos"></div>
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                      <tbody>
+                                      <tr>
+
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                                  <!-- END Bandeau Rassurance -->
+
+                                  <!-- Footer -->
+                                  <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e5f3fb" align="center">
+                                      <tbody>
+                                      <tr>
+
+                                          <td>
+                                              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer"
+                                                     style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                  <tbody>
+                                                  <tr>
+                                                      <td height="50" class="spacer"
+                                                          style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                          &nbsp;
+                                                      </td>
+                                                  </tr>
+                                                  </tbody>
+                                              </table>
+
+                                              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                  <tbody>
+                                                  <tr>
+
+                                                      <th style="text-align:left;font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0"
+                                                          valign="top">
+                                                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                              <tbody>
+                                                              <tr>
+                                                                  <td align="center">
+
+                                                                      <table class="center" border="0" cellspacing="0"
+                                                                             cellpadding="0">
+                                                                          <tbody>
+                                                                          <tr>
+                                                                              <td class="img"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center; padding-right:20px;"
+                                                                                  width="30"><a
+                                                                                      href="https://www.instagram.com/argosveterinaire/?hl=fr"
+                                                                                      target="_blank"><img
+                                                                                      src="https://argos-veterinaire.com/wp-content/uploads/2020/09/icon-IG.png"
+                                                                                      border="0" width="50" alt="instgram"></a>
+                                                                              </td>
+                                                                              <td class="img"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center; padding-right:20px;"
+                                                                                  width="30"><a
+                                                                                      href="https://www.facebook.com/argosveterinairefrance"
+                                                                                      target="_blank"><img
+                                                                                      src="https://argos-veterinaire.com/wp-content/uploads/2020/09/icon-FB.png"
+                                                                                      border="0" width="50" alt="facebook"></a>
+                                                                              </td>
+                                                                              <td class="img"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center;"
+                                                                                  width="30"><a
+                                                                                      href="https://www.youtube.com/channel/UCpS4khvnL_yeDcAvqXmC6ow"
+                                                                                      target="_blank"><img
+                                                                                      src=" https://argos-veterinaire.com/wp-content/uploads/2020/09/icon-YT.png"
+                                                                                      border="0" width="50" alt="linkedin"></a>
+                                                                              </td>
+                                                                          </tr>
+                                                                          </tbody>
+                                                                      </table>
+
+                                                                      <table width="100%" border="0" cellspacing="0"
+                                                                             cellpadding="0" class="spacer"
+                                                                             style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                          <tbody>
+                                                                          <tr>
+                                                                              <td height="30" class="spacer"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                                  &nbsp;
+                                                                              </td>
+                                                                          </tr>
+                                                                          </tbody>
+                                                                      </table>
+
+                                                                      <div class="text-footer-center"
+                                                                           style="color:#63bae9;font-family: Helvetica, Arial, sans-serif; font-size:8px; line-height:22px; text-align:center; padding:0px 20px 0px 20px ;">
+                                                                          Copyright © Argos 2020 I Pour être sûr(e) de recevoir
+                                                                          tous nos e-mails, ajoutez abc@argos-veterinaire.com à
+                                                                          votre carnet d'adresses. Si vous ne souhaitez plus
+                                                                          recevoir nos communications, cliquez sur "Gérer mes
+                                                                          préférences" en bas de l'e-mail.
+                                                                          Conformément à la LOI 78-17 et au Règlement Général de
+                                                                          Protection des Données (RGPD), vous disposez d'un droit
+                                                                          d'accès, de rectification, d'opposition, de demande
+                                                                          d'effacement et de portabilité de vos données que vous
+                                                                          pouvez exercer en vous adressant à tout moment au xxx
+                                                                          par e-mail à xxx ou par courrier à l'adresse xxx.
+                                                                      </div>
+
+                                                                      <table width="100%" border="0" cellspacing="0"
+                                                                             cellpadding="0" class="spacer"
+                                                                             style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                          <tbody>
+                                                                          <tr>
+                                                                              <td height="30" class="spacer"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                                  &nbsp;
+                                                                              </td>
+                                                                          </tr>
+                                                                          </tbody>
+                                                                      </table>
+
+                                                                      <div class="text-footer-center"
+                                                                           style="color:#63bae9;font-family: Helvetica, Arial, sans-serif; line-height:22px; text-align:center">
+                                                                          <a href="https://argos-veterinaire.com/" target="_blank"
+                                                                             class="link-u"
+                                                                             style="color:#63bae9;text-decoration:underline">www.argos-veterinaire.com</a>
+                                                                          &nbsp; - &nbsp;
+                                                                          <a href="" target="_blank" class="link-u"
+                                                                             style="color:#63bae9;text-decoration:underline"><span
+                                                                                  class="link-u"
+                                                                                  style="color:#63bae9;text-decoration:underline">Besoin d'aide ?</span></a>
+                                                                          &nbsp; - &nbsp;
+                                                                          <a href="" target="_blank" class="link-u"
+                                                                             style="color:#63bae9;text-decoration:underline"><span
+                                                                                  class="link-u"
+                                                                                  style="color:#63bae9;text-decoration:underline">Gérer mes préférences</span></a>
+                                                                      </div>
+
+                                                                      <table width="100%" border="0" cellspacing="0"
+                                                                             cellpadding="0" class="spacer"
+                                                                             style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                          <tbody>
+                                                                          <tr>
+                                                                              <td height="50" class="spacer"
+                                                                                  style="font-size:0pt;line-height:0pt; text-align:center; width:100%; min-width:100%">
+                                                                                  &nbsp;
+                                                                              </td>
+                                                                          </tr>
+                                                                          </tbody>
+                                                                      </table>
+
+                                                                  </td>
+                                                              </tr>
+                                                              </tbody>
+                                                          </table>
+                                                      </th>
+
+                                                  </tr>
+                                                  </tbody>
+                                              </table>
+
+                                              <!-- HDIE FOR MOBILE <div class="hide-for-mobile"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="40" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table> </div> -->
+
+                                          </td>
+                                      </tr>
+                                      </tbody>
+                                  </table>
+                                  <!-- END Footer -->
+                              </td>
+                          </tr>
+                          </tbody>
+                      </table>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      ]]>
+      </field>
+    </record>
   </data>
 </odoo>
