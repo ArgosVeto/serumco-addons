@@ -43,6 +43,13 @@ class OperatingUnit(models.Model):
     web_shop_password = fields.Char('Web Shop Password')
     service_ids = fields.Many2many('operating.unit.service', 'operating_unit_service_tag_rel', 'operating_unit_id',
                                    'service_id', 'Services')
+    reply_email = fields.Char('Reply To', compute='_compute_reply_email')
+
+    @api.depends('name')
+    def _compute_reply_email(self):
+        mail_domain = self.env['ir.config_parameter'].get_param('argos.mail.domain')
+        for record in self:
+            record.reply_email = '%s%s' %(record.name, mail_domain)
 
     @api.depends('zip')
     def _compute_argos_code(self):
