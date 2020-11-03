@@ -7,7 +7,7 @@
       <field name="subject">Welcome</field>
       <field name="email_from">${object.operating_unit_id.name or ''}</field>
       <field name="email_to">${object.partner_id.email | safe}</field>
-      <field name="reply_to">${object.operating_unit_id.email | safe}</field>
+      <field name="reply_to">${object.operating_unit_id.reply_email | safe}</field>
       <field name="body_html" type="html">
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
