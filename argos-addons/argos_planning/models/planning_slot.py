@@ -203,6 +203,7 @@ class PlanningSlot(models.Model):
     def button_cancel(self):
         self.ensure_one()
         self.write({'state': 'cancel'})
+        self.send_cancellation_mail()
         return True
 
     def button_set_to_draft(self):
@@ -229,6 +230,9 @@ class PlanningSlot(models.Model):
             res.send_notification_mail()
         if not res.website_planning:
             res.check_veterinary_presence()
+        if res.partner_id and not res.partner_id.has_activity:
+            res.send_first_mail()
+            res.partner_id.has_activity = True
         return res
 
     def check_veterinary_presence(self):
@@ -245,3 +249,19 @@ class PlanningSlot(models.Model):
                       ('end_datetime', '>=', rec.end_datetime)]
             if not self.search(domain):
                 raise ValidationError(_('Unauthorized appointment assignment for an absent or unassigned veterinarian'))
+
+    def send_cancellation_mail(self):
+        self.ensure_one()
+        try:
+            email_template = self.env.ref('argos_planning.planning_cancel_mail_template')
+            email_template.send_mail(self.id, force_send=True, raise_exception=True)
+        except Exception as e:
+            _logger.error(repr(e))
+
+    def send_first_mail(self):
+        self.ensure_one()
+        try:
+            email_template = self.env.ref('argos_planning.planning_welcome_mail_template')
+            email_template.send_mail(self.id, force_send=True, raise_exception=True)
+        except Exception as e:
+            _logger.error(repr(e))
