@@ -53,6 +53,7 @@ class WebsiteSale(WebsiteSale):
     def _get_products_availabilities(self, products, token, centravet_code, log_res_id=None, log_model_name=None):
         # TODO: Config system parameter: centravet.subscriber_code api.centravet.stock
         subscriber_code = request.env['ir.config_parameter'].sudo().get_param('centravet.subscriber_code')
+        # TODO "str.format est plys pythonic, cette forme de concatenation est obsolete  au python3
         URL = request.env['ir.config_parameter'].sudo().get_param('api.centravet.stock') + '/' + subscriber_code + '?codeClinique=' + \
               centravet_code\
               + \
@@ -78,6 +79,9 @@ class WebsiteSale(WebsiteSale):
     def check_product_availability(self, product_id, product_qty):
         # TODO: attendre que l'integrateur qui s'occupe du front finisse pour savoir comment avoir accès au clinical_code sans l'obj "order"
         centravet_code = "330704"
+        #FIXME: requete inutile de search
+        # Equivalent a Select ID Where ID=X.
+        # Autant Read direct > request.env['product.product'].browse(product_id.id)
         product_obj = request.env['product.product'].search([('id', '=', product_id)], limit=1)
         if product_obj:
             token = self._get_auth_token(product_obj.id, 'product.product')

@@ -13,6 +13,7 @@ class SaleOrderLine(models.Model):
     has_promotion = fields.Boolean(compute='_compute_program_ids')
     coupon_program_ids = fields.Many2many('sale.coupon.program', compute='_compute_program_ids')
 
+
     @api.depends('product_id')
     def _compute_is_add_subline_allowed(self):
         for rec in self:

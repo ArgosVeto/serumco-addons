@@ -4,6 +4,8 @@ from odoo import api, fields, models, _
 import urllib.parse as urlparse
 from odoo.exceptions import UserError, ValidationError
 import logging
+import json
+import requests
 
 _logger = logging.getLogger(__name__)
 
@@ -43,6 +45,72 @@ class SaleOrder(models.Model):
     refer_order_ids = fields.One2many('sale.order', 'origin_order_id', 'Referred', readonly=True)
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
+
+    api_information = fields.Text(compute="compute_api_information")
+
+    def _response_status_check(self, code):
+        if code == 400:
+            ret = 'missing information'
+        elif code == 401:
+            ret = 'unauthorized'
+        elif code == 403:
+            ret = 'forbidden'
+        elif code == 404:
+            ret = 'not found request'
+        elif code == 200:
+            ret = 'Success'
+        else:
+            ret = 'not identified'
+        return ret
+
+
+    #Oliger de reecrire la fonction de connexion (Lilian)
+    def get_auth_token(self, log_res_id=None, log_model_name=None):
+        # TODO: Config system parameter: api.centravet.auth.token, api.centravet.stock, api.centravet.login.password
+        URL = self.env['ir.config_parameter'].sudo().get_param('api.centravet.auth.token')
+        headers = {'Content-Type': 'application/json'}
+        mail = self.env['ir.config_parameter'].sudo().get_param('api.centravet.login.mail')
+        password = self.env['ir.config_parameter'].sudo().get_param('api.centravet.login.password')
+        payload = {'email': mail, 'password': password}
+
+        response = requests.post(url=URL, headers=headers, data=json.dumps(payload))
+
+        reason = self._response_status_check(response.status_code)
+
+        self.env['soap.wsdl.log'].sudo().create({
+            'name': 'API stock centravet AUTH',
+            'res_id': log_res_id,
+            'model_id': self.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
+            'msg': "Ask API authorization token",
+            'date': fields.Datetime.today(),
+            'state': 'successful' if response.status_code == 200 else 'error',
+            'reason': reason,
+        })
+
+        return response.json() if response.status_code == 200 else False
+
+    @api.depends()
+    def compute_api_information(self):
+        token = self.get_auth_token(self, 'sale.order')
+        headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
+        endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
+        for rec in self:
+            centravet_code = rec.operating_unit_id.code #codeClinique
+            centravet_web_shop = rec.operating_unit_id.web_shop_id #codeBoutique
+            url = '{endpoint}/{idCommande}/timeline'
+            print(token)
+            final_url = url.format(
+                endpoint=endpoint,
+                idCommande=rec.id,
+            )
+            print(final_url)
+            payload = {
+                'codeClinique': '330325',
+                'codeBoutique': '330705',
+            }
+            response = requests.get(url=final_url, headers=headers, params=payload)
+            print(response)
+            rec.api_information = response
 
     @api.depends('order_line', 'order_line.product_id', 'order_line.product_id.act_type')
     def _compute_is_incineris(self):

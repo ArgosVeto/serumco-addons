@@ -24,10 +24,13 @@ class MailActivity(models.Model):
 
     def add_product_to_sale_order(self):
         if self.product_id:
+            #FIXME: requete inutile de search
+            # Equivalent a Select ID Where ID=X.
             task = self.env['project.task'].search([('id', '=', self.res_id)], limit=1)
 
         sale_order_line = self.env['sale.order.line']
-        order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id), ('product_id', '=', self.product_id.id)], limit=1)
+        order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id),
+                                             ('product_id', '=', self.product_id.id)], limit=1)
 
         if order_line:
             order_line.write({

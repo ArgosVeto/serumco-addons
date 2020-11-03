@@ -521,5 +521,16 @@
       <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
     </record>
 
+      <record id="view_quotation_tree_argos" model="ir.ui.view">
+        <field name="name">view_quotation_tree_argos</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='state']" position="after">
+            <field name="api_information"/>
+          </xpath>
+        </field>
+    </record>
+
   </data>
 </odoo>

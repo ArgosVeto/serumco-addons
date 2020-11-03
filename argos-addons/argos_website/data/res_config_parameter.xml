@@ -11,6 +11,11 @@
     <field name="value">http://transnet6.centravet.net/openwebveto/V1/stocks</field>
   </record>
 
+    <record id="api_centravet_sale" model="ir.config_parameter">
+    <field name="key">api.centravet.sale</field>
+    <field name="value">http://transnet6.centravet.net/openwebveto/V1/orders</field>
+  </record>
+
   <record id="api_centravet_login_mail" model="ir.config_parameter">
     <field name="key">api.centravet.login.mail</field>
     <field name="value">digital@argos-veterinaire.com</field>
