@@ -328,3 +328,103 @@ msgstr "Poids en kg:"
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "line(s)"
 msgstr "ligne(s)"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__batch_recall
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__batch_recall
+msgid "batch recall by laboratory - destruction on site"
+msgstr "Rappel de lots par laboratoire - destruction sur place"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__use_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__use_date
+msgid "Use date after first use passed"
+msgstr "Date d'utilisation après premier usage dépassée"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__storage_condition
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__storage_condition
+msgid "Storage conditions not respected"
+msgstr "Conditions de conservation non respectées"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__scrap_reason
+#: model:ir.model.fields,field_description:argos_stock.field_stock_scrap__scrap_reason
+msgid "Scrap reason"
+msgstr "Motif de rebut"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__return_reason
+msgid "Return Reason"
+msgstr "Motif de retour"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_return_picking__return_reason
+msgid "Return reason"
+msgstr "Motif de retour"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__damaged
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__damaged
+msgid "Products damaged upon receipt"
+msgstr "Produits endommagés à réception"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__product_deteriorated
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__product_deteriorated
+msgid "Products deteriorated in the clinic"
+msgstr "Produits détériorés en clinique"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_date
+msgid "Non-compliant products - expiration date too short"
+msgstr "Produits non conformes - date de péremption trop courte"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_promotional
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_promotional
+msgid "Non-compliant products - promotional conditions"
+msgstr "Produits non conformes - conditions promotionnelles"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_conservation
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_conservation
+msgid "Non-compliant products - storage conditions (cold, etc.) not respected"
+msgstr "Produits non conformes - conditions de conservation (froid, ...) non respectées"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__no_order
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__no_order
+msgid "Not ordered products"
+msgstr "Produits non commandés"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__error
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__error
+msgid "Order error"
+msgstr "Erreur de commande"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__expiration_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__expiration_date
+msgid "Expiration date passed"
+msgstr "Date de péremption dépassée"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__return_medicine
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__return_medicine
+msgid "Customer return cannot be reintegrated to stock - medicine"
+msgstr "Retour client non réintégrable en stock - médicament"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__return_other
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__return_other
+msgid "Customer return cannot be reintegrated to stock - other"
+msgstr "Retour client non réintégrable - autre"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__batch_recall
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__batch_recall
+msgid "Batch recall by laboratory"
+msgstr "Rappel de lots par laboratoire"
