@@ -67,6 +67,9 @@ class SaleOrder(models.Model):
 
     #Oliger de reecrire la fonction de connexion (Lilian)
     def get_auth_token(self, log_res_id=None, log_model_name=None):
+        """
+        Function to get token api centravet, and log connexion.
+        """
         # TODO: Config system parameter: api.centravet.auth.token, api.centravet.stock, api.centravet.login.password
         URL = self.env['ir.config_parameter'].sudo().get_param('api.centravet.auth.token')
         headers = {'Content-Type': 'application/json'}
@@ -91,6 +94,9 @@ class SaleOrder(models.Model):
         return response.json() if response.status_code == 200 else False
 
     def get_compute_api_information(self):
+        """
+        Code call by button to get information about sale.order in Centravet API
+        """
         token = self.get_auth_token(self, 'sale.order')
         headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
         endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
@@ -116,6 +122,9 @@ class SaleOrder(models.Model):
                 return False
 
     def convert_date_is8601(self, is8601_datetime):
+        """
+        Convert date str to datetime pythonic format
+        """
         if is8601_datetime:
             return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=-2))
         else:
