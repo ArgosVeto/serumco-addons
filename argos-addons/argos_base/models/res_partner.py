@@ -37,18 +37,18 @@ class ResPartner(models.Model):
             return partner
         return self.create({'name': name, 'phone': phone})
 
-    @api.constrains('lastname', 'firstname', 'email')
-    def _check_unique_partner(self):
-        for rec in self.filtered(lambda p: not p.is_company):
-            if rec.lastname and rec.firstname and rec.email:
-                domain = [
-                    ('id', '!=', rec.id),
-                    ('lastname', '=', rec.lastname),
-                    ('firstname', '=', rec.firstname),
-                    ('email', '=', rec.email),
-                ]
-                if self.search_count(domain):
-                    raise ValidationError(_('Partner must be unique'))
+    # @api.constrains('lastname', 'firstname', 'email')
+    # def _check_unique_partner(self):
+    #     for rec in self.filtered(lambda p: not p.is_company):
+    #         if rec.lastname and rec.firstname and rec.email:
+    #             domain = [
+    #                 ('id', '!=', rec.id),
+    #                 ('lastname', '=', rec.lastname),
+    #                 ('firstname', '=', rec.firstname),
+    #                 ('email', '=', rec.email),
+    #             ]
+    #             if self.search_count(domain):
+    #                 raise ValidationError(_('Partner must be unique'))
 
     def send_confirmation_mail(self):
         self.ensure_one()
