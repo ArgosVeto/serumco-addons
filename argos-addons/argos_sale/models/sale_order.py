@@ -6,6 +6,8 @@ from odoo.exceptions import UserError, ValidationError
 import logging
 import json
 import requests
+from datetime import datetime, timedelta
+
 
 _logger = logging.getLogger(__name__)
 
@@ -46,17 +48,16 @@ class SaleOrder(models.Model):
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
 
-    api_information = fields.Text(compute="compute_api_information")
 
     def _response_status_check(self, code):
         if code == 400:
-            ret = 'missing information'
+            ret = 'missing (idCommande) information.'
         elif code == 401:
-            ret = 'unauthorized'
+            ret = 'You doesnt can authentificate or not subscript this service.'
         elif code == 403:
             ret = 'forbidden'
         elif code == 404:
-            ret = 'not found request'
+            ret = 'Sale order number doesnt fint in API.'
         elif code == 200:
             ret = 'Success'
         else:
@@ -89,29 +90,68 @@ class SaleOrder(models.Model):
 
         return response.json() if response.status_code == 200 else False
 
-    @api.depends()
-    def compute_api_information(self):
+    def get_compute_api_information(self):
         token = self.get_auth_token(self, 'sale.order')
         headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
         endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
         for rec in self:
+            #TODO use centravet code et shop + idCommande
             centravet_code = rec.operating_unit_id.code #codeClinique
             centravet_web_shop = rec.operating_unit_id.web_shop_id #codeBoutique
+
             url = '{endpoint}/{idCommande}/timeline'
-            print(token)
             final_url = url.format(
                 endpoint=endpoint,
-                idCommande=rec.id,
+                # idCommande=rec.name,
+                idCommande='330301C3339',
             )
-            print(final_url)
             payload = {
-                'codeClinique': '330325',
-                'codeBoutique': '330705',
+                'codeClinique': '330301',
+                'codeBoutique': '330999',
             }
             response = requests.get(url=final_url, headers=headers, params=payload)
-            print(response)
-            rec.api_information = response
+            if response.status_code == 200:
+                return response.text
+            else:
+                return False
 
+    def convert_date_is8601(self, is8601_datetime):
+        if is8601_datetime:
+            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=-2))
+        else:
+            return False
+
+    def compute_api_information(self):
+        """
+        call api centravet to get information dates about sale.order
+        display in tree view
+        """
+        res = self.get_compute_api_information()
+        if res:
+            api_datas = json.loads(res)
+            vals = {
+                'description': "Sale: " + self.name,
+                'date_sent': self.convert_date_is8601(api_datas["dateSent"]),
+                'date_integrated': self.convert_date_is8601(api_datas["dateIntegrated"]),
+                'date_prepared': self.convert_date_is8601(api_datas["datePrepared"]),
+                'date_delivered': self.convert_date_is8601(api_datas["dateDelivered"]),
+                'date_billed': self.convert_date_is8601(api_datas["dateBilled"]),
+            }
+        else:
+            vals = {'description': 'Can not access to API, please check connexion parameters and idCommande'}
+
+        api_information_id = self.env['api.information.wizard'].create(vals)
+        form = self.env.ref('argos_sale.sale_api_information_wizard', False)
+        return {
+            'name': _('Api Informations'),
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': [form.id],
+            'res_model': 'api.information.wizard',
+            'res_id': api_information_id.id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+        }
     @api.depends('order_line', 'order_line.product_id', 'order_line.product_id.act_type')
     def _compute_is_incineris(self):
         for rec in self:

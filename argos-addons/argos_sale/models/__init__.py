@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from . import wizard
 from . import sale_order
 from . import consultation_type
 from . import sale_coupon_program

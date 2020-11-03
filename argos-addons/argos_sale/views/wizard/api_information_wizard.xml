@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="sale_api_information_wizard" model="ir.ui.view">
+    <field name="name">sale_api_information_wizard</field>
+    <field name="model">api.information.wizard</field>
+    <field name="arch" type="xml">
+      <form>
+          <group>
+              <field name="description" nolabel="1 "/>
+              <field name="date_sent"/>
+              <field name="date_integrated"/>
+              <field name="date_prepared"/>
+              <field name="date_delivered"/>
+              <field name="date_billed"/>
+              <footer>
+              </footer>
+          </group>
+      </form>
+    </field>
+  </record>
+</odoo>

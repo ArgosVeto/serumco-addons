@@ -37,6 +37,8 @@
         'views/res_partner_views.xml',
         'views/product_template_views.xml',
         'views/assets.xml',
+        # wizard views
+        'views/wizard/api_information_wizard.xml',
     ],
     'qweb': ['static/src/xml/tooltips.xml'],
     'application': False,
