@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 11:35+0000\n"
-"PO-Revision-Date: 2020-10-16 11:35+0000\n"
+"POT-Creation-Date: 2020-11-03 14:06+0000\n"
+"PO-Revision-Date: 2020-11-03 14:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -93,10 +93,6 @@ msgstr "(1) Rayer les mentions inutiles."
 #: model:ir.model.fields,field_description:argos_sale.field_operating_unit__act_ids
 #: model:ir.model.fields,field_description:argos_sale.field_res_partner__act_ids
 #: model:ir.model.fields,field_description:argos_sale.field_res_users__act_ids
-msgid "Acts"
-msgstr "Actes"
-
-#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Acts"
 msgstr "Actes"
@@ -147,6 +143,12 @@ msgstr "Analyses"
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Animal"
 msgstr "Animal"
+
+#. module: argos_sale
+#: code:addons/argos_sale/models/sale_order.py:0
+#, python-format
+msgid "Api Informations"
+msgstr "Informations Api Centravet"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__argos_state
@@ -233,13 +235,9 @@ msgstr "Date de consultation"
 
 #. module: argos_sale
 #: model:ir.model,name:argos_sale.model_consultation_type
-msgid "Consultation Type"
-msgstr "Type de consultation"
-
-#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_type_id
 msgid "Consultation Type"
-msgstr "Raison du rendez-vous"
+msgstr "Type de consultation"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_type_view_form
@@ -285,12 +283,14 @@ msgid "Create Invoice"
 msgstr "Créer une facture"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__create_uid
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_uid
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__create_uid
 msgid "Created by"
 msgstr "Créé par"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__create_date
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__create_date
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__create_date
 msgid "Created on"
@@ -307,14 +307,40 @@ msgid "Customer Observation"
 msgstr "Observation du client"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_billed
+msgid "Date Billed"
+msgstr "Date de facturation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_delivered
+msgid "Date Delivered"
+msgstr "Date de livraison"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_integrated
+msgid "Date Integrated"
+msgstr "Date d'intégration"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_prepared
+msgid "Date Prepared"
+msgstr "Date de préparation"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_sent
+msgid "Date Sent"
+msgstr "Date de reception"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Delivered"
 msgstr "Livré"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__description
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Description"
-msgstr "Description"
+msgstr "Informations"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__diagnostic_ids
@@ -327,6 +353,7 @@ msgid "Disc.%"
 msgstr "Rem.%"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__display_name
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__display_name
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__display_name
 msgid "Display Name"
@@ -382,9 +409,9 @@ msgid ""
 "six months."
 msgstr ""
 "Je déclare sur l'honneur que cet animal n'a, à ma connaissance ni mordu ni "
-"griffé aucune personne ni aucun animal, depuis 15jours, qu'il n'a pas été en contact"
-" avec des animaux enragés ou suspects et qu'il n'est pas allé à l'étranger dans les six "
-"derniers mois."
+"griffé aucune personne ni aucun animal, depuis 15jours, qu'il n'a pas été en"
+" contact avec des animaux enragés ou suspects et qu'il n'est pas allé à "
+"l'étranger dans les six derniers mois."
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
@@ -392,10 +419,11 @@ msgid "I, the undersigned,"
 msgstr "Je soussigné,"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__id
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__id
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
@@ -470,21 +498,24 @@ msgstr "Est une référence"
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Item"
-msgstr "Item"
+msgstr ""
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard____last_update
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type____last_update
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__write_uid
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_uid
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__write_date
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__write_date
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__write_date
 msgid "Last Updated on"
@@ -519,7 +550,7 @@ msgstr "Nouvelle consultation"
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Note"
-msgstr "Note"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
@@ -529,7 +560,7 @@ msgstr "N° tatouage"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__observation
 msgid "Observations"
-msgstr "Observations"
+msgstr ""
 
 #. module: argos_sale
 #: code:addons/argos_sale/models/sale_order.py:0
@@ -549,14 +580,9 @@ msgid "Origin of the consultation"
 msgstr "Origine de la consultation"
 
 #. module: argos_sale
-#: model:ir.model.fields,field_description:argos_sale.field_sale_order__name
-msgid "Order Reference"
-msgstr "Référence commande"
-
-#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__pathology_ids
 msgid "Pathologies"
-msgstr "Pathologies"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -605,7 +631,7 @@ msgstr "Modèle d'article"
 #: code:addons/argos_sale/static/src/xml/tooltips.xml:0
 #, python-format
 msgid "Promotions"
-msgstr "Promotions"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -616,7 +642,7 @@ msgstr "Quantité:"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__race_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Race"
-msgstr "Race"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -799,28 +825,24 @@ msgid "and declares:"
 msgstr "et déclare:"
 
 #. module: argos_sale
+#: model:ir.model,name:argos_sale.model_api_information_wizard
+msgid "api.information.wizard"
+msgstr ""
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "days"
 msgstr "jours"
 
 #. module: argos_sale
-#: model:ir.actions.act_window,name:argos_sale.partner_sale_report_action
-msgid "partner.sale.report.action"
-msgstr "Analyse des ventes"
-
-#. module: argos_sale
-#: model:ir.actions.act_window,name:argos_sale.patient_sale_report_action
-msgid "patient.sale.report.action"
-msgstr "Analyse des ventes"
-
-#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "signature"
-msgstr "signature"
+msgstr ""
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid ""
 "to proceed with the euthanasia of the animal whose description follows:"
 msgstr ""
-"de bien vouloir procéder à l'euthanasie de l'animal dont le signalement suit:"
+"de bien vouloir procéder à l'euthanasie de l'animal dont le signalement "
+"suit:"

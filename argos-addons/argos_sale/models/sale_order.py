@@ -4,6 +4,10 @@ from odoo import api, fields, models, _
 import urllib.parse as urlparse
 from odoo.exceptions import UserError, ValidationError
 import logging
+import json
+import requests
+from datetime import datetime, timedelta
+
 
 _logger = logging.getLogger(__name__)
 
@@ -44,6 +48,119 @@ class SaleOrder(models.Model):
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
 
+
+    def _response_status_check(self, code):
+        if code == 400:
+            ret = 'missing (idCommande) information.'
+        elif code == 401:
+            ret = 'You doesnt can authentificate or not subscript this service.'
+        elif code == 403:
+            ret = 'forbidden'
+        elif code == 404:
+            ret = 'Sale order number doesnt fint in API.'
+        elif code == 200:
+            ret = 'Success'
+        else:
+            ret = 'not identified'
+        return ret
+
+
+    #Oliger de reecrire la fonction de connexion (Lilian)
+    def get_auth_token(self, log_res_id=None, log_model_name=None):
+        """
+        Function to get token api centravet, and log connexion.
+        """
+        # TODO: Config system parameter: api.centravet.auth.token, api.centravet.stock, api.centravet.login.password
+        URL = self.env['ir.config_parameter'].sudo().get_param('api.centravet.auth.token')
+        headers = {'Content-Type': 'application/json'}
+        mail = self.env['ir.config_parameter'].sudo().get_param('api.centravet.login.mail')
+        password = self.env['ir.config_parameter'].sudo().get_param('api.centravet.login.password')
+        payload = {'email': mail, 'password': password}
+
+        response = requests.post(url=URL, headers=headers, data=json.dumps(payload))
+
+        reason = self._response_status_check(response.status_code)
+
+        self.env['soap.wsdl.log'].sudo().create({
+            'name': 'API stock centravet AUTH',
+            'res_id': log_res_id,
+            'model_id': self.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
+            'msg': "Ask API authorization token",
+            'date': fields.Datetime.today(),
+            'state': 'successful' if response.status_code == 200 else 'error',
+            'reason': reason,
+        })
+
+        return response.json() if response.status_code == 200 else False
+
+    def get_compute_api_information(self):
+        """
+        Code call by button to get information about sale.order in Centravet API
+        """
+        token = self.get_auth_token(self, 'sale.order')
+        headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
+        endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
+        for rec in self:
+            #TODO use centravet code et shop + idCommande
+            centravet_code = rec.operating_unit_id.code #codeClinique
+            centravet_web_shop = rec.operating_unit_id.web_shop_id #codeBoutique
+
+            url = '{endpoint}/{idCommande}/timeline'
+            final_url = url.format(
+                endpoint=endpoint,
+                # idCommande=rec.name,
+                idCommande='330301C3339',
+            )
+            payload = {
+                'codeClinique': '330301',
+                'codeBoutique': '330999',
+            }
+            response = requests.get(url=final_url, headers=headers, params=payload)
+            if response.status_code == 200:
+                return response.text
+            else:
+                return False
+
+    def convert_date_is8601(self, is8601_datetime):
+        """
+        Convert date str to datetime pythonic format
+        """
+        if is8601_datetime:
+            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=-2))
+        else:
+            return False
+
+    def compute_api_information(self):
+        """
+        call api centravet to get information dates about sale.order
+        display in tree view
+        """
+        res = self.get_compute_api_information()
+        if res:
+            api_datas = json.loads(res)
+            vals = {
+                'description': "Sale: " + self.name,
+                'date_sent': self.convert_date_is8601(api_datas["dateSent"]),
+                'date_integrated': self.convert_date_is8601(api_datas["dateIntegrated"]),
+                'date_prepared': self.convert_date_is8601(api_datas["datePrepared"]),
+                'date_delivered': self.convert_date_is8601(api_datas["dateDelivered"]),
+                'date_billed': self.convert_date_is8601(api_datas["dateBilled"]),
+            }
+        else:
+            vals = {'description': 'Can not access to API, please check connexion parameters and idCommande'}
+
+        api_information_id = self.env['api.information.wizard'].create(vals)
+        form = self.env.ref('argos_sale.sale_api_information_wizard', False)
+        return {
+            'name': _('Api Informations'),
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': [form.id],
+            'res_model': 'api.information.wizard',
+            'res_id': api_information_id.id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+        }
     @api.depends('order_line', 'order_line.product_id', 'order_line.product_id.act_type')
     def _compute_is_incineris(self):
         for rec in self:
