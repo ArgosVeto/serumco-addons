@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<template id="mega_menu_two_snippet" name="Services Menu">
-		<section class="mega_menu_one_snippet">
+		<section class="mega_menu_one_snippet" data-name="Services Menu">
 			<div class="container p-0">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="heading-contents">
-							<!-- <t t-set="services" t-value="website.operating_unit_services()"/>
-							<t t-foreach="services" t-as="s">
-								<p class="m-0">
-									<a class="menu_item text-gamma" t-attf-href="/service-detail/#{slug(s.sudo())}" role="button"><span><t t-esc="s.name"/></span></a>
-								</p>
-							</t> -->
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Consultation</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Imagerie Médicale</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Chirurgie vétérinaire</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Hospitalisation</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Médecine préventive</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/service-detail/consultation-generale-4">Consultation</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/service-detail/imagerie-medicale-6">Imagerie Médicale</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/service-detail/chirurgie-5">Chirurgie vétérinaire</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/Service-hospitalisation">Hospitalisation</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#" data-original-title="" title="" aria-describedby="tooltip70584"><font class="text-alpha" style="" data-original-title="" title="" aria-describedby="tooltip258685">Médecine préventive</font></a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="heading-contents">
-							<p class="m-0"><a href="#" class="menu_item text-gamma">NAC</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Dentisterie</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Laboratoire</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Ophtalmologie</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Nutrition</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">NAC</a></p>
+							<p class="m-0"><a href="/en_CA/service-detail/dentisterie-3" class="menu_item text-gamma">Dentisterie</a></p>
+							<p class="m-0"><a href="/en_CA/service-detail/laboratoire-1" class="menu_item text-gamma">Laboratoire</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">Ophtalmologie</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip864306"><font class="text-alpha" style="" data-original-title="" title="" aria-describedby="tooltip671979">Nutrition</font></a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="heading-contents">
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Echographie</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Orthopédie</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Dermatologie</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Cancérologie</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">Echographie</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">Orthopédie</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">Dermatologie</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma" data-original-title="" title="">Cancérologie<br/></a></p><p class="m-0"><font class="text-alpha" style=""><a href="/en_CA/" class="menu_item text-gamma" data-original-title="" title="" style="transition-property: all;">Bien-être</a></font><a href="#" class="menu_item text-gamma" data-original-title="" title=""></a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="right-img">
-							<img src="/website_argos/static/src/img/sous-menu_services.jpg" class="img img-fluid"/>
-							<p class="image-text text-gamma">Médecine préventive</p>
+							<img src="/website_argos/static/src/img/push_menu-offre_services-500px.jpg" class="img img-fluid rounded" data-original-title="" title="" aria-describedby="tooltip346721"/>
+							<p class="image-text text-gamma"><font class="text-epsilon" style="">Découvrez nos conseils nutrition</font></p>
 						</div>
 					</div>
 				</div>

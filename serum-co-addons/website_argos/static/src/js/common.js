@@ -553,3 +553,11 @@ jQuery(function($) {
 	  }
 	 });
 	});
+
+$(function () {
+    var $src = $('#firstname'),
+        $dst = $('#name');
+    $src.on('input', function () {
+        $dst.val($src.val());
+    });
+});

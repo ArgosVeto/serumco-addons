@@ -38,7 +38,7 @@ class AuthSignupHomeSS(AuthSignupHome):
 		vals_qcontext = {}
 		if qcontext:
 			vals_qcontext = dict(qcontext)
-		values = { key: qcontext.get(key) for key in ('login', 'name', 'password') }
+		values = { key: qcontext.get(key) for key in ('login', 'name', 'password','firstname','lastname') }
 		chk_password = True
 		if not values:
 			raise UserError(_("The form was not properly filled in."))

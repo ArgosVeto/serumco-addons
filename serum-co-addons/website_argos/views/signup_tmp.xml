@@ -69,13 +69,19 @@
 	<template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
             
             <div class="mt12 mb12 row">
-            		<div class="form-group field-last_name col-md-6 o_website_form_required_custom">
-                <label for="last_name" class="col-form-label">Nom</label>
-                <input type="text" name="last_name" t-att-value="last_name" id="last_name" class="form-control form-control-sm" placeholder=""/>
+            		<div class="form-group field-lastname col-md-6 o_website_form_required_custom">
+                <label for="lastname" class="col-form-label">Nom</label>
+                <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder=""/>
             </div>
 			
-            <div class="form-group field-name col-md-6 o_website_form_required_custom">
-                <label for="name" class="col-form-label">Prenom</label>
+			 <div class="form-group field-firstname col-md-6 o_website_form_required_custom">
+                <label for="firstname" class="col-form-label">Prenom</label>
+                <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John Doe"
+                    required="required" t-att-readonly="'readonly' if only_passwords else None"
+                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+            </div>
+			
+            <div class="form-group field-name col-md-6 o_website_form_required_custom d-none">
                 <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe"
                     required="required" t-att-readonly="'readonly' if only_passwords else None"
                     t-att-autofocus="'autofocus' if login and not only_passwords else None" />

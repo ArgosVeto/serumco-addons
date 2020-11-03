@@ -54,55 +54,26 @@
 						            		<div class="row align-items-center">
 						            			<t t-foreach="gamne_value" t-as="gv">		
 						            				<div class="col pr-5 pl-0">
-							            				<a class="btn btn-primary"
+							            				<a class=""
 							            				t-att-href="website.default_category(gv)"
 							            				role="button">
-										               	 	<b><t t-esc="gv.name"/></b>
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
+																t-att-src="website.image_url(gv, 'image')" />
 										              	</a>
 									              	</div>
 								            	</t>
-							            		<!-- <div class="col pr-5 pl-0">
-							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/osalia.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/royal-canin.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/proplan.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col pl-5 pr-0">
-							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
-							            		</div> -->
 							            	</div>
 						            	</div>
 						            	<div class="carousel-item" >
 						            		<div class="row align-items-center">
 						            			<t t-foreach="gamne_value" t-as="gv">
 						            				<div class="col pr-5 pl-0">
-							            				<a class="btn btn-primary" t-att-href="website.default_category(gv)" role="button">
-										               	 	<b><t t-esc="gv.name"/></b>
+							            				<a class="" t-att-href="website.default_category(gv)" role="button">
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
+																t-att-src="website.image_url(gv, 'image')" />
 										              	</a>
 										            </div>
 							            		</t>
-
-							            		<!-- <div class="col pr-5 pl-0">
-							            			<img src="/website_argos/static/src/img/tonivet.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/osalia.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/royal-canin.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col px-5">
-							            			<img src="/website_argos/static/src/img/proplan.png" class="img img-fluid" />
-							            		</div>
-							            		<div class="col pl-5 pr-0">
-							            			<img src="/website_argos/static/src/img/entovet.png" class="img img-fluid" />
-							            		</div> -->
 							            	</div>
 							            </div>
 						          	</div>

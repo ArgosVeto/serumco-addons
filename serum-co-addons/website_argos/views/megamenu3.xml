@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<template id="mega_menu_three_snippet" name="Boutique en ligne Menu">
-		<section class="mega_menu_one_snippet">
+		<section class="mega_menu_one_snippet" data-name="Boutique en ligne Menu">
 			<div class="container p-0">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-3 pt0">
 						<div class="heading-contents">
-							<p class="m-0 heading text-primary">Animal</p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Chat</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Chien</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Lapin</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Furet</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Lorem</a></p>
-							<p class="m-0"><a class="menu_item text-gamma" href="#">Ipsum</a></p>
+							<p class="m-0 heading text-primary o_default_snippet_text">Animal</p>
+							<p class="m-0"><font style="color: rgb(0, 0, 0); font-size: 18px;"><a href="/en_CA/shop-home">Acceuil</a></font></p><p class="m-0"><a class="menu_item text-gamma" href="/en_CA/shop?attrib=2-22" data-original-title="" title="" aria-describedby="tooltip903103">Chat</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/shop?attrib=2-33" data-original-title="" title="" aria-describedby="tooltip175356">Chien</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/shop?attrib=3-9" data-original-title="" title="" aria-describedby="tooltip747558">Lapin</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="/en_CA/shop?attrib=3-10" data-original-title="" title="" aria-describedby="tooltip940445">Furet</a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#" data-original-title="" title=""></a></p>
+							<p class="m-0"><a class="menu_item text-gamma" href="#" data-original-title="" title="" aria-describedby="tooltip238397"></a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="heading-contents">
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Nouveautés</a></p>
-							<p class="m-0 mt-2 heading text-primary">Marques</p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Lorem</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Ipsum</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">Dolor sit</a></p>
-							<p class="m-0"><a href="#" class="menu_item text-gamma">+ 134 autres marques…</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma o_default_snippet_text">Nouveautés</a></p>
+							<p class="m-0 mt-2 heading text-primary o_default_snippet_text">Marques</p>
+							<p class="m-0"><a href="/en_CA/shop?search=&amp;attrib=22-152" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip423712">Proplan dog</a></p>
+							<p class="m-0"><a href="/en_CA/shop?search=&amp;attrib=22-224" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip63425">Proplan cat</a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip241095"></a></p>
+							<p class="m-0"><a href="#" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip991959"></a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="right-img menu-3">
-							<img src="/website_argos/static/src/img/sous-menu_produits_01.jpg" class="img img-fluid mix-blend"/>
+							<img src="/website_argos/static/src/img/sous-menu_produits_01.jpg" class="img img-fluid mix-blend" data-original-title="" title="" aria-describedby="tooltip74140"/>
 							<p class="image-text image-text-2 text-primary">Marque lorem</p>
-							<p class="image-text text-gamma"><a href="#" class="text-gamma">Lorem ipsum dolor sit amet</a></p>
+							<p class="image-text text-gamma"><a href="#" class="text-gamma" data-original-title="" title="" aria-describedby="tooltip437293">Lorem ipsum dolor sit amet</a></p>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="right-img menu-3">
 							<img src="/website_argos/static/src/img/sous-menu_produits_02.jpg" class="img img-fluid"/>
-							<p class="image-text image-text-2 text-primary">Marque lorem</p>
-							<p class="image-text text-gamma"><a href="#" class="text-gamma">Lorem ipsum dolor sit amet</a></p>
+							<p class="image-text image-text-2 text-primary o_default_snippet_text">Marque lorem</p>
+							<p class="image-text text-gamma"><a href="#" class="text-gamma o_default_snippet_text">Lorem ipsum dolor sit amet</a></p>
 						</div>
 					</div>
 				</div>
