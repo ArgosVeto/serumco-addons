@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="email_compose_message_wizard_form_custom">
+            <field name="name">mail.compose.message.form.custom</field>
+            <field name="model">mail.compose.message</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='subject']" position="after">
+                  <field name="is_report" widget="boolean_toggle"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>
