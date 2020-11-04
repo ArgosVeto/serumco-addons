@@ -64,7 +64,6 @@ class Website(models.Model):
         att_value = False
         if gamne_values:
             att_value = gamne_values[0].value_ids
-            att_value = att_value[0:5]
         return att_value
 
     @api.model

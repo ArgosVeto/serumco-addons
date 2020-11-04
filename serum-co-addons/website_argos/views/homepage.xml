@@ -46,7 +46,24 @@
 								<div class="title">
 									<h1 class="text-primary">Nos marques</h1>
 								</div>
-								<div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+								<div id="owl-demo" class="owl-carousel owl-theme">
+          
+									<t t-set="gamne_value" t-value="website.get_gamne_values()"/>
+									<t t-if="gamne_value">
+										<t t-foreach="gamne_value" t-as="gv">
+				            				<div class="col">
+					            				<a class=""
+					            				t-att-href="website.default_category(gv)"
+					            				role="button">
+								               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
+														t-att-src="website.image_url(gv, 'image')" />
+								              	</a>
+							              	</div>
+						            	</t>
+									</t>
+									 
+								</div>
+								<!-- <div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
 									<t t-set="gamne_value" t-value="website.get_gamne_values()"/>
 									<t t-if="gamne_value">
 						          	<div class="carousel-inner" role="listbox">
@@ -88,7 +105,7 @@
 						              	</a>
 						            </div>
 						        </t>
-						        </div>
+						        </div> -->
 							</div>
 						</section>
 						<div class="oe_structure"/>

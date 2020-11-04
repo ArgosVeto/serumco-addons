@@ -136,6 +136,7 @@
 				                    <input type="hidden" name="search" t-att-value="search" />
 				                    <ul class="nav nav-pills flex-row">
 				                    	<t t-foreach="attributes" t-as="a">
+				                    		<t t-if="a.is_attribute_visible">
 				                    		<li t-if="a.value_ids and len(a.value_ids) &gt; 1" class="nav-item">
 			                    				<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>
 				                                <div class="dropdown-menu" role="menu">
@@ -168,6 +169,7 @@
 					                                </t>
 				                                </div>
 				                    		</li>
+				                    		</t>
 				                    	</t>
 				                    </ul>
 				                </form>
@@ -240,6 +242,9 @@
 				<div class="argos-product-icons d-none d-md-block">
 				</div>
 			</div>
+		</xpath>
+		<xpath expr="//h6[hasclass('o_wsale_products_item_title')]/a[@t-field='product.name']" position="replace">
+			<a itemprop="name" t-att-href="product_href" t-att-content="product.description_sale" t-field="product.description_sale" />
 		</xpath>
 		<xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="before">
 			<t t-set="gamne_value" t-value="website.get_product_gamne_values(product)"/>
