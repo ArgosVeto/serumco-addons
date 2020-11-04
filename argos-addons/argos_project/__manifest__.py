@@ -16,8 +16,11 @@
         'argos_sale',
     ],
     'data': [
+        'views/report_surgery.xml',
         'views/assets.xml',
         'views/mail_activity_views.xml',
+        'views/mail_compose_message_views.xml',
+        'views/project_task_views.xml',
     ],
     'qweb': [
         'static/src/xml/activity_dropdown.xml',
