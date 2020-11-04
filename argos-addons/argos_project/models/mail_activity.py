@@ -13,7 +13,8 @@ class MailActivity(models.Model):
     _inherit = 'mail.activity'
 
     product_id = fields.Many2one('product.product', 'Product')
-    product_quantity = fields.Integer('Quantity', default=1)
+    product_quantity = fields.Float('Quantity', default=1.0)
+    product_uom_id = fields.Many2one('uom.uom', 'Unit of measure')
     done = fields.Boolean('Done', default=False)
 
     @api.constrains('product_id')
@@ -28,23 +29,23 @@ class MailActivity(models.Model):
             # Equivalent a Select ID Where ID=X.
             task = self.env['project.task'].search([('id', '=', self.res_id)], limit=1)
 
-        sale_order_line = self.env['sale.order.line']
-        order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id),
-                                             ('product_id', '=', self.product_id.id)], limit=1)
+            sale_order_line = self.env['sale.order.line']
+            order_line = sale_order_line.search([('order_id', '=', task.sale_order_id.id), ('product_id', '=', self.product_id.id),
+                                                 ('product_uom', '=', self.product_uom_id.id)], limit=1)
 
-        if order_line:
-            order_line.write({
-                'product_uom_qty': order_line.product_uom_qty + self.product_quantity,
-            })
-        else:
-            sale_order_line.create({
-                'order_id': task.sale_order_id.id,
-                'product_id': self.product_id.id,
-                'project_id': task.project_id.id,
-                'task_id': task.id,
-                'product_uom_qty': self.product_quantity,
-                'product_uom': self.product_id.product_tmpl_id.uom_id.id,
-            })
+            if order_line:
+                order_line.write({
+                    'product_uom_qty': order_line.product_uom_qty + self.product_quantity,
+                })
+            else:
+                sale_order_line.create({
+                    'order_id': task.sale_order_id.id,
+                    'product_id': self.product_id.id,
+                    'project_id': task.project_id.id,
+                    'task_id': task.id,
+                    'product_uom_qty': self.product_quantity,
+                    'product_uom': self.product_uom_id.id,
+                })
 
     def action_done_schedule_next(self):
         """override"""

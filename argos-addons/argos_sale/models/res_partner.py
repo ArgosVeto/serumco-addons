@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models
+from odoo import fields, models, api
 import ast
 
 
@@ -9,11 +9,20 @@ class ResPartner(models.Model):
 
     consultation_ids = fields.Many2many('sale.order', compute='_compute_consultation_ids', string='Consultations')
     act_ids = fields.Many2many('sale.order.line', compute='_compute_act_ids', string='Acts')
+    hospitalization_ids = fields.Many2many('sale.order.line', compute='_compute_hospitalization_ids', string='Hospitalizations', store=True)
 
     def _compute_consultation_ids(self):
         for rec in self:
             consultations = self.env['sale.order'].search([('is_consultation', '=', True), ('patient_id', '=', rec.id)])
             rec.consultation_ids = [(6, 0, consultations.ids)]
+
+    @api.depends('consultation_ids', 'act_ids')
+    def _compute_hospitalization_ids(self):
+        for rec in self:
+            hospitalization = self.env['sale.order.line'].search([('order_id.is_consultation', '=', True),
+                                                                  ('product_id.act_type', '=', 'hospitalization'),
+                                                                  ('order_id.patient_id', '=', rec.id)])
+            rec.hospitalization_ids = [(6, 0, hospitalization.ids)]
 
     def _compute_act_ids(self):
         for rec in self:

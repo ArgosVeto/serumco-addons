@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models
+from odoo import models, fields
 
 
 class SaleAdvancePaymentInv(models.TransientModel):
@@ -9,6 +9,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
     def create_invoices(self):
         sale_orders = self.env['sale.order'].browse(self._context.get('active_ids', []))
         for order in sale_orders:
+            for project in order.project_ids:
+                project.write({'billed': True})
+            order.write({'invoice_creation_date': fields.Date.today()})
             if any(line.product_id.act_type in ['euthanasia', 'incineration'] for line in order.order_line):
                 order.patient_id.write({
                     'is_dead': True,

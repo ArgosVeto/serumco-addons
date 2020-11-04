@@ -41,6 +41,12 @@ msgid "Analysis Type"
 msgstr "Type d'analyse"
 
 #. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.project_project_view_form_custom
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.view_project_project_filter_custom
+msgid "Billed"
+msgstr "Facturé"
+
+#. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__comments
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__comments
 msgid "Comments"
@@ -162,6 +168,11 @@ msgid "Minimum"
 msgstr "Limite inférieure"
 
 #. module: argos_sale_project
+#: model_terms:ir.ui.view,arch_db:argos_sale_project.view_project_project_filter_custom
+msgid "Not Billed"
+msgstr "Non facturé"
+
+#. module: argos_sale_project
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task__note
 msgid "Note"
 msgstr "Note"
@@ -191,6 +202,11 @@ msgstr "Paramètres"
 #: model:ir.model.fields,field_description:argos_sale_project.field_project_task_line__patient_id
 msgid "Patient"
 msgstr "Animal"
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_project_project
+msgid "Project"
+msgstr "Projet"
 
 #. module: argos_sale_project
 #: model:ir.model,name:argos_sale_project.model_project_task_line
@@ -241,6 +257,11 @@ msgstr "Lignes de résultat"
 #, python-format
 msgid "Result not yet available."
 msgstr "Le résultat n'est pas encore disponible."
+
+#. module: argos_sale_project
+#: model:ir.model,name:argos_sale_project.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Facture de paiement d'avance"
 
 #. module: argos_sale_project
 #: model:ir.model,name:argos_sale_project.model_sale_order
@@ -297,3 +318,8 @@ msgstr "Voir résultat"
 #: model:ir.model.fields.selection,name:argos_sale_project.selection__project_task__state__waiting
 msgid "Waiting"
 msgstr "En attente"
+
+#. module: argos_sale_project
+#: model:ir.model.fields,field_description:argos_sale_project.field_project_project__billed
+msgid "billed"
+msgstr "facturé"

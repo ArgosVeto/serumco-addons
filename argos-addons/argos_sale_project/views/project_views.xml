@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="project_project_view_form_custom" model="ir.ui.view">
+      <field name="name">project.project.form.sale.custom</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="before">
+          <label for="billed" class="oe_inline" string="Billed"/>
+          <field name="billed" class="oe_inline oe_input_align"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_project_project_filter_custom" model="ir.ui.view">
+        <field name="name">project.project.select</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+              <separator/>
+                <filter string="Billed" name="billed" domain="[('billed', '=', True)]"/>
+                <filter string="Not Billed" name="not_billed" domain="[('billed', '=', False)]"/>
+              <separator/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="context">{'search_default_not_billed': 1}</field>
+    </record>
+  </data>
+</odoo>
