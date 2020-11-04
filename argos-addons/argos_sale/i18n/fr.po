@@ -207,6 +207,11 @@ msgid "Command Lines"
 msgstr "Lignes de commande"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__comment
+msgid "Comment"
+msgstr "Commentaire"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__comments
 #: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
 msgid "Comments"
@@ -230,6 +235,7 @@ msgstr "Canevas"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_date
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__consultation_date
 msgid "Consultation Date"
 msgstr "Date de consultation"
 
@@ -380,6 +386,11 @@ msgid "Employee"
 msgstr "Vétérinaire"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "End date"
+msgstr "Date de fin"
+
+#. module: argos_sale
 #: model:ir.actions.report,name:argos_sale.report_euhtanasia_request_pdf
 msgid "Euthanasia Request"
 msgstr "Demande d'euthanasie"
@@ -394,6 +405,13 @@ msgstr "Genre"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__has_promotion
 msgid "Has Promotion"
 msgstr "A une promotion"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_operating_unit__hospitalization_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_partner__hospitalization_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_users__hospitalization_ids
+msgid "Hospitalizations"
+msgstr "Hospitalisations"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__hypothese_ids
@@ -423,7 +441,7 @@ msgstr "Je soussigné,"
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__id
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
@@ -449,6 +467,12 @@ msgstr "Incinération"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Incineris Convention"
 msgstr "Convention d'incinération"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__invoice_creation_date
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__invoice_creation_date
+msgid "Invoice creation date"
+msgstr "Date de création de facture"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -550,7 +574,7 @@ msgstr "Nouvelle consultation"
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Note"
-msgstr ""
+msgstr "Note"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
@@ -560,7 +584,7 @@ msgstr "N° tatouage"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__observation
 msgid "Observations"
-msgstr ""
+msgstr "Observations"
 
 #. module: argos_sale
 #: code:addons/argos_sale/models/sale_order.py:0
@@ -582,7 +606,7 @@ msgstr "Origine de la consultation"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__pathology_ids
 msgid "Pathologies"
-msgstr ""
+msgstr "Pathologies"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -631,7 +655,7 @@ msgstr "Modèle d'article"
 #: code:addons/argos_sale/static/src/xml/tooltips.xml:0
 #, python-format
 msgid "Promotions"
-msgstr ""
+msgstr "Promotions"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -642,7 +666,7 @@ msgstr "Quantité:"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__race_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Race"
-msgstr ""
+msgstr "Race"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -780,6 +804,11 @@ msgid "Species"
 msgstr "Espèce"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "Start date"
+msgstr "Date de début"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Terms and conditions..."
 msgstr "Conditions générales..."
@@ -837,7 +866,7 @@ msgstr "jours"
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "signature"
-msgstr ""
+msgstr "signature"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf

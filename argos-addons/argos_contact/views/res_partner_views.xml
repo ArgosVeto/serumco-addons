@@ -117,7 +117,7 @@
               </page>
               <page string="Surgery"/>
               <page string="Vaccination"/>
-              <page string="Hospitalization"/>
+              <page name="hospitalization" string="Hospitalization"/>
               <page name="analysis" string="Analysis"/>
               <page name="imagery" string="Imagery"/>
               <page name="picking" string="Pickings"/>

@@ -31,6 +31,17 @@
             </field>
           </group>
         </page>
+        <page name="hospitalization" position="inside">
+          <field name="hospitalization_ids" nolabel="1">
+            <tree>
+              <field name="order_id"/>
+              <field name="product_id"/>
+              <field name="consultation_date" string="Start date" />
+              <field name="invoice_creation_date" string="End date" />
+              <field name="comment"/>
+            </tree>
+          </field>
+        </page>
       </field>
     </record>
 

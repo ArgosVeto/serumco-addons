@@ -12,6 +12,9 @@ class SaleOrderLine(models.Model):
     is_add_subline_allowed = fields.Boolean(compute='_compute_is_add_subline_allowed')
     has_promotion = fields.Boolean(compute='_compute_program_ids')
     coupon_program_ids = fields.Many2many('sale.coupon.program', compute='_compute_program_ids')
+    consultation_date = fields.Date(related='order_id.consultation_date')
+    invoice_creation_date = fields.Date(related='order_id.invoice_creation_date')
+    comment = fields.Text('Comment')
 
 
     @api.depends('product_id')

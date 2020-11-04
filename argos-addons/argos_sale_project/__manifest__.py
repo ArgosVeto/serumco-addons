@@ -23,6 +23,7 @@
         # views
         'views/maintenance_equipment_views.xml',
         'views/sale_order_views.xml',
+        'views/project_views.xml',
         'views/project_task_line_views.xml',
         'views/project_task_views.xml',
         'views/res_partner_views.xml',

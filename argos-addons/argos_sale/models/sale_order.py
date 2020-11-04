@@ -47,6 +47,7 @@ class SaleOrder(models.Model):
     refer_order_ids = fields.One2many('sale.order', 'origin_order_id', 'Referred', readonly=True)
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
+    invoice_creation_date = fields.Date('Invoice creation date')
 
 
     def _response_status_check(self, code):
