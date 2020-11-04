@@ -108,12 +108,11 @@ class SaleOrder(models.Model):
             url = '{endpoint}/{idCommande}/timeline'
             final_url = url.format(
                 endpoint=endpoint,
-                # idCommande=rec.name,
-                idCommande='330301C3339',
+                idCommande=rec.name,
             )
             payload = {
-                'codeClinique': '330301',
-                'codeBoutique': '330999',
+                'codeClinique': centravet_code,
+                'codeBoutique': centravet_web_shop,
             }
             response = requests.get(url=final_url, headers=headers, params=payload)
             if response.status_code == 200:
