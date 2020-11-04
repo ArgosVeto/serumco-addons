@@ -2,6 +2,7 @@
 
 import csv
 import io
+import base64
 
 from odoo import api, models
 import logging
@@ -68,6 +69,7 @@ class SaleOrder(models.Model):
                                      ''])
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
             filename = '%s%sV%s.WBV' % (server.filename, order.operating_unit_id.code, sequence)
+            order.save_centravet_attachment(filename, csv_data)
             server.store_data(filename, csv_data)
         return True
 
@@ -88,3 +90,13 @@ class SaleOrder(models.Model):
             except Exception as e:
                 _logger.error(repr(e))
         return True
+
+    def save_centravet_attachment(self, filename, content):
+        self.ensure_one()
+        self.env['ir.attachment'].create({
+            'type': 'binary',
+            'res_model': self._name,
+            'res_id': self.id,
+            'datas': base64.b64encode(content.getvalue().encode('utf-8')),
+            'name': filename
+        })
