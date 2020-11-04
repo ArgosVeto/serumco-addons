@@ -15,10 +15,7 @@ class SaleOrder(models.Model):
 
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
-        try:
-            self.filtered(lambda so: so.website_id).generate_centravet_orders()
-        except Exception as e:
-            _logger.error(repr(e))
+        self.filtered(lambda so: so.website_id).generate_centravet_orders()
         orders = self.filtered(lambda so: so.website_id)
         new_orders = orders.filtered(lambda so: not so.partner_id.has_activity)
         new_orders.send_first_mail()
@@ -70,7 +67,10 @@ class SaleOrder(models.Model):
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
             filename = '%s%sV%s.WBV' % (server.filename, order.operating_unit_id.code, sequence)
             order.save_centravet_attachment(filename, csv_data)
-            server.store_data(filename, csv_data)
+            try:
+                server.store_data(filename, csv_data)
+            except Exception as e:
+                _logger.error(repr(e))
         return True
 
     def send_first_mail(self):
