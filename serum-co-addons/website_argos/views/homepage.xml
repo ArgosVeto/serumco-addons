@@ -4,7 +4,7 @@
 	<template id="homepage_clinic_search_box" name="Homepage Clinic Searchbox">
         <div role="search">
              <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
-                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Adresse/Code Postal/Ville…" t-att-value="search"/>
+                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Nom/Adresse/Code postal/Ville/Departement..." t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-light oe_search_button search-btn" aria-label="Search" title="Search">Rechercher</button>
                 </div>         
