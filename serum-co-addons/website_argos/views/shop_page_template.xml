@@ -292,7 +292,7 @@
 				</button>
 				</t>
 			<!-- Modal -->
-			<t t-if="product.sudo().qty_available > 0">
+			<t t-if="product.sudo().qty_available == 0">
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
