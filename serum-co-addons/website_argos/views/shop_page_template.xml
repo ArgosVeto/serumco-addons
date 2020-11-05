@@ -108,7 +108,7 @@
 				<div class="container">
 					<div class="d-flex align-items-center">
 						<div class="product_filters d-flex align-items-center mr-auto">
-							<div class="category-filter">
+							<!-- <div class="category-filter">
 								<a href="#" class="category-btn dropdown-toggle" data-toggle="dropdown">Category</a>
 								<div class="dropdown-menu" role="menu">
 									<ul class="nav nav-pills flex-column">
@@ -129,7 +129,7 @@
 					                    </t>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 							<div class="attribute_filter">
 								<form class="js_attributes" method="get">
 				                    <input t-if="category" type="hidden" name="category" t-att-value="category.id" />
