@@ -22,6 +22,7 @@
         'website_sale_wishlist',
         'sale_operating_unit',
         'website_rating',
+        'website_crm_partner_assign',
     ],
     'data': [
         'data/data.xml',
