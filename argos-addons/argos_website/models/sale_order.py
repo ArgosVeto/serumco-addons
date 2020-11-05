@@ -65,10 +65,11 @@ class SaleOrder(models.Model):
                                      '',
                                      ''])
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
-            filename = '%s%sV%s.WBV' % (server.filename, order.operating_unit_id.code, sequence)
+            filename = '%sV%s.WBV' % (order.operating_unit_id.code, sequence)
+            file_path = '%s%s' % (server.filename, filename)
             order.save_centravet_attachment(filename, csv_data)
             try:
-                server.store_data(filename, csv_data)
+                server.store_data(file_path, csv_data)
             except Exception as e:
                 _logger.error(repr(e))
         return True
@@ -93,6 +94,8 @@ class SaleOrder(models.Model):
 
     def save_centravet_attachment(self, filename, content):
         self.ensure_one()
+        if not filename or not content:
+            return
         self.env['ir.attachment'].create({
             'type': 'binary',
             'res_model': self._name,
