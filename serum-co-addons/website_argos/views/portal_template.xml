@@ -179,7 +179,7 @@
                                                         <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
                                                         <span>Appeler</span>
                                                     </a>
-                                                     <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-none d-md-block d-sm-block" t-att-href="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id">
+                                                     <a role="button" class="btn btn-primary btn-lg mt-auto d-none d-md-block d-sm-block" t-attf-href="/clinic-detail/clinic-pratice/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}"> 
                                                         <span>Voir la fiche</span>
                                                     </a>
                                                 </t>

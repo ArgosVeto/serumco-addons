@@ -144,19 +144,6 @@
 
 								<div class="pt32">
 									<p class="Moyens-paiement">Moyens de paiement acceptés</p>
-									<t t-if="operating_unit.payment_method_ids">
-										<div class="col-md-12">
-											<div class="row">
-												<t t-foreach="operating_unit.payment_method_ids" t-as="pm">
-													<div class="col-md-2 Rectangle mr-4">
-														<span>
-															<t t-esc="pm.name" />
-														</span>
-													</div>
-												</t>
-											</div>
-										</div>
-									</t>
 								</div>
 							</div>
 

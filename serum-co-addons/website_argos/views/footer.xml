@@ -143,26 +143,18 @@
 								<div class="col-md-3">
 									<a href="#demo1" class="heading text-white d-block" data-toggle="collapse" aria-expanded="false">Produits</a>
 									<div id="demo1" class="collapse">
-										<t t-set="cash_value" t-value="website.get_cash_values()"/>
-										<t t-if="cash_value">
-											<ul class="footer-links">
-												<!-- <t t-set="default_category" t-value="website.default_category()"/> -->
-
-												<t t-foreach="cash_value" t-as="c">
-													<li class="nav-item">
-														<t t-set="default_category" t-value="website.default_category(c)"/>
-
-														<a class="nav-link"
-														t-att-href="website.default_category(c)">
-
-															<!-- t-att-href="'/shop/category/%s?category=%s&amp;search=&amp;attrib=%s-%s' %(,c.id,c.attribute_id.id,c.id)" -->
-															<!-- t-att-href="'/shop?cash=%s' % slug(c)" -->
-															<t t-esc="c.name"/>
-														</a>
-													</li>
-												</t>
-											</ul>
-										</t>
+					                    <ul class="" id="">
+						                    <t t-set="categories" t-value="website.get_categories() if website else None"/>
+							                <t t-if="categories">
+							                    <t t-foreach="categories['categories']" t-as="categ">
+							                          <li class="dropdown dropdown-submenu nav-item">
+											            <a class="nav-link" t-att-href="'/shop/category/%s' % (categ.id)">
+											            	<span t-esc="categ.name"/>
+											            </a>
+											        </li>
+							                    </t>
+							                </t>
+							            </ul>
 									</div>
 								</div>
 								<div class="col-md-3">

@@ -526,7 +526,7 @@ class ClinicDetail(http.Controller):
 								not_working_time = True
 					time_range = {'start_time':start_time,'end_time':end_time}
 					working_timing.update({week_slot[str(day_week)]:time_range})	
-		values = {'service_ids':service_ids,'operating_unit':operating_unit_id,'working_timing':working_timing,'not_working_time':not_working_time}
+		values = {'service_ids':service_ids, 'payment_method_ids':payment_method_ids, 'operating_unit':operating_unit_id,'working_timing':working_timing,'not_working_time':not_working_time}
 		return request.env['ir.ui.view'].render_template("website_argos.clinic_pratice",values)
 
 class ClinicContact(http.Controller):	
