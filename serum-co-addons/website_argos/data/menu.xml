@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
-      <!--   <record id="menu_le_group_argos_menu" model="website.menu">
+    <data noupdate="1">
+        <record id="menu_le_group_argos_menu" model="website.menu">
             <field name="name">Le groupe Argos</field>
             <field name="url">#</field>
             <field name="parent_id" ref="website.main_menu"/>
@@ -141,13 +141,13 @@
 			</div>
 		</section>
             </field>
-        </record> -->
+        </record>
 
-        <delete model="website.menu" id="website_hr_recruitment.menu_jobs"/>
+<!--         <delete model="website.menu" id="website_hr_recruitment.menu_jobs"/>
         <delete model="website.menu" id="website.menu_home"/>
         <delete model="website.menu" id="website.menu_contactus"/>
         <delete model="website.menu" id="website_crm_partner_assign.menu_resellers"/>
         <delete model="website.menu" id="website_sale.menu_shop"/>
-
+ -->
      </data>
 </odoo>
