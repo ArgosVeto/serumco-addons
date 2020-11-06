@@ -39,6 +39,13 @@ class SaleOrder(models.Model):
             partner = order.partner_id
             partner_shipping = order.partner_shipping_id
             for line in order.order_line:
+                operating_unit = order.operating_unit_id
+                if operating_unit.click_and_collect:
+                    code = operating_unit.web_shop_id
+                    password = operating_unit.web_shop_password
+                else:
+                    code = operating_unit.code
+                    password = operating_unit.password
                 csv_writer.writerow([order.name,
                                      partner.email or '',
                                      partner.name,
@@ -47,11 +54,11 @@ class SaleOrder(models.Model):
                                      partner_shipping.zip or '',
                                      partner_shipping.city or '',
                                      partner.phone or partner.mobile or '',
-                                     order.operating_unit_id.code or '',
+                                     code or '',
                                      baseurl or '',
-                                     order.operating_unit_id.email or '',
+                                     operating_unit.email or '',
                                      '',
-                                     order.operating_unit_id.password or '',
+                                     password or '',
                                      'WVTCDK',
                                      code_version or '',
                                      line.product_id.default_code or '',
@@ -65,7 +72,7 @@ class SaleOrder(models.Model):
                                      '',
                                      ''])
             sequence = self.env['ir.sequence'].next_by_code('centravet.sale.order.seq')
-            filename = '%sV%s.WBV' % (order.operating_unit_id.code, sequence)
+            filename = '%sV%s.WBV' % (code, sequence)
             file_path = '%s%s' % (server.filename, filename)
             order.save_centravet_attachment(filename, csv_data)
             try:

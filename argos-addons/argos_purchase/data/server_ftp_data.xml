@@ -6,7 +6,7 @@
       <field name="url">ftp.centravet.net</field>
       <field name="login">upload_cen</field>
       <field name="password">U2001Ken#</field>
-      <field name="filename">/</field>
+      <field name="filename">/upload_cen/</field>
     </record>
 
   </data>
