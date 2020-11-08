@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <template id="minimal_layout_inherit" inherit_id="web.minimal_layout">
+      <xpath expr="//head" position="inside">
+        <link rel='stylesheet' href="/argos_contact/static/src/css/export_medical_history_report.css"/>
+      </xpath>
+    </template>
+
+    <template id="export_medical_history_document">
+      <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <span t-if="'name' in fields_to_print"><h1>Medical History of <span t-esc="partner['name']"/></h1> <br/></span>
+            <p>
+              Export Date : <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/><br/>
+              Export Period : from <span t-esc="date_start" t-options='{"widget": "date"}'/> to <span t-esc="date_end"
+                                                                                                    t-options='{"widget": "date"}'/><br/><br/>
+
+              <span t-if="'operating_unit_id' in fields_to_print">Favorite Clinic : <span
+                  t-esc="partner['operating_unit_id'][1]"/><br/></span>
+            </p>
+            <h2 style="color:#63bae9;">ANIMAL</h2>
+            <hr/>
+            <div class="div1">
+              <div class="div-left">
+                <p>
+                  <span t-if="'species_id' in fields_to_print">Species :<span t-esc="partner['species_id'][1]"/><br/></span>
+                  <span t-if="'race_id' in fields_to_print">Race : <span t-esc="partner['race_id'][1]"/><br/></span>
+                  <span t-if="'robe_id' in fields_to_print">Coat : <span t-esc="partner['robe_id'][1]"/><br/></span>
+                  <span t-if="'gender_id' in fields_to_print">Gender : <span t-esc="partner['gender_id'][1]"/><br/></span>
+                  <span t-if="'birthdate_date' in fields_to_print">Date Of Birth (Optional) : <span
+                      t-esc="partner['birthdate_date']" t-options='{"widget": "date"}'/><br/></span>
+                  <span t-if="'age_formatted' in fields_to_print">Age : <span t-esc="partner['age_formatted']"/><br/></span>
+                  <span t-if="'weight' in fields_to_print">Weight : <span t-esc="partner['weight']"/><br/></span>
+                  <span t-if="'passport_id' in fields_to_print">Passeport : <span t-esc="partner['passport_id'][1]"/><br/><br/></span>
+                  <span t-if="'tattoo_number' in fields_to_print or 'chip_identification' in fields_to_print">Identification Number : <br/>
+                  <table>
+                    <tr>
+                      <span t-if="'tattoo_number' in fields_to_print"><th>Tattoo</th></span>
+                      <span t-if="'chip_identification' in fields_to_print"><th>Chip</th></span>
+                    </tr>
+                    <tr>
+                      <span t-if="'tattoo_number' in fields_to_print"><td><span t-esc="partner['tattoo_number']"/></td></span>
+                      <span t-if="'chip_identification' in fields_to_print"><td><span t-esc="partner['chip_identification']"/></td></span>
+                    </tr>
+                  </table>
+                  </span>
+                </p>
+              </div>
+              <div class="div-right">
+                <span t-if="'image' in fields_to_print"><img
+                    t-att-src="'data:image/png;base64,%s' % to_text(partner['image'])" width="200px" height="200px"/></span>
+              </div>
+            </div>
+            <br/><br/><br/>
+            <span t-if="'owner_ids' in fields_to_print"><h2 style="color:#63bae9;">OWNER(S)</h2>
+              <hr/>
+              <br/>
+              <table style="width: 100%;">
+                <tr>
+                  <th>Last Name, First Name :</th>
+                  <th>Adress</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                </tr>
+                <tr t-foreach="owners" t-as="o">
+                  <td><span t-esc="o['display_name']"/></td>
+                  <td><span t-esc="o['city']"/>, <span t-esc="o['country_id'][1]"/></td>
+                  <td><span t-esc="o['phone']"/></td>
+                  <td><span t-esc="o['email']"/></td>
+                </tr>
+              </table>
+              <br/><br/>
+            </span>
+            <span t-if="'consultation_ids' in fields_to_print"><h2 style="color:#63bae9;">MEDICAL EVENT(S)</h2>
+              <hr/>
+              <br/>
+              <table style="width: 100%;">
+                <tr>
+                  <th>Date</th>
+                  <th>Clinic</th>
+                  <th>Veterinarian</th>
+                  <th>Event</th>
+                  <th>Diagnostic</th>
+                  <th>Hypotheses</th>
+                  <th>Comment</th>
+                </tr>
+                <tr t-foreach="consultations" t-as="c">
+                  <td><span t-esc="c['consultation_date']"/></td>
+                  <td><span t-esc="partner['operating_unit_id'][1]"/></td>
+                  <td><span t-esc="partner['employee_id'][1]"/></td>
+                  <td></td>
+                  <td><span t-esc="c['diagnostic_ids']"/></td>
+                  <td><span t-esc="c['hypothese_ids']"/></td>
+                  <td></td>
+                </tr>
+              </table>
+              <br/><br/><br/>
+            </span>
+            <h2 style="color:#63bae9;">HOSPITALIZATIONS</h2>
+            <hr/>
+            <br/>
+            <table style="width: 100%;">
+              <tr>
+                <th>Date</th>
+                <th>Clinic</th>
+                <th>Veterinarian</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Comment</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+            <br/><br/><br/>
+            <span t-if="'result_line_ids' in fields_to_print"><h2 style="color:#63bae9;">ANALYZES</h2>
+              <hr/>
+              <br/>
+              <table style="width: 100%;">
+                <tr>
+                  <th>Date</th>
+                  <th>Clinic</th>
+                  <th>Veterinarian</th>
+                  <th>Parameter</th>
+                  <th>Result</th>
+                  <th>Mini</th>
+                  <th>Maxi</th>
+                  <th>Unit</th>
+                  <th>Comment</th>
+                </tr>
+                <tr t-foreach="analysis" t-as="a">
+                  <td><span t-esc="a['result_date'][1]"/></td>
+                  <td><span t-esc="partner['operating_unit_id'][1]"/></td>
+                  <td><span t-esc="partner['employee_id'][1]"/></td>
+                  <td><span t-esc="a['parameter_id'][1]"/></td>
+                  <td><span t-esc="a['value'][1]"/></td>
+                  <td><span t-esc="a['min'][1]"/></td>
+                  <td><span t-esc="a['max'][1]"/></td>
+                  <td><span t-esc="a['comments'][1]"/></td>
+                </tr>
+              </table>
+              <br/><br/><br/>
+            </span>
+            <h2 style="color:#63bae9;">VACCINATION</h2>
+            <hr/>
+            <br/>
+            <table style="width: 100%;">
+              <tr>
+                <th>Date</th>
+                <th>Clinic</th>
+                <th>Veterinarian</th>
+                <th>Vaccine</th>
+                <th>Vaccine Lot Number</th>
+                <th>Next vaccine date</th>
+                <th>Comment</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+            <br/><br/><br/>
+            <h2 style="color:#63bae9;">REPORT</h2>
+            <hr style="border: 1px solid;"></hr>
+          </div>
+        </t>
+      </t>
+    </template>
+
+    <report
+        id="export_medical_history_report"
+        string="Medical_History_report"
+        model="export.medical.history"
+        report_type="qweb-pdf"
+        name="argos_contact.export_medical_history_document"
+        file="argos_contact.export_medical_history_document"/>
+  </data>
+</odoo>

@@ -26,6 +26,8 @@
         'views/res_partner_pathology_views.xml',
         'views/passport_passport_views.xml',
         'views/menu_views.xml',
+        'views/template_report.xml',
+        'views/export_medical_history_views.xml'
     ],
     'application': False,
     'installable': True,
