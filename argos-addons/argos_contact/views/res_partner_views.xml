@@ -104,7 +104,7 @@
               </page>
               <page name="medical_events" string="Medical Events"/>
               <page string="Weights">
-                <field name="weight_ids" nolabel="1">
+                <field name="weight_ids" nolabel="1" context="{'default_partner_id': active_id}">
                   <tree>
                     <field name="date"/>
                     <field name="values"/>

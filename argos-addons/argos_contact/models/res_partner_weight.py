@@ -10,7 +10,6 @@ class ResPartnerWeight(models.Model):
     _order = 'date desc'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char('Name')
     date = fields.Date('Date')
     values = fields.Float('Values')
     source = fields.Char('Source')
