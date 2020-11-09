@@ -224,6 +224,11 @@ msgstr "Confirmer"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "End"
+msgstr "Terminer"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Consultation"
 msgstr "Consultation"
 

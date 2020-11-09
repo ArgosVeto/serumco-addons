@@ -19,12 +19,15 @@
       <field name="arch" type="xml">
         <form string="Consultation">
           <header>
+            <button name="button_end_consultation"
+                    string="End" type="object" class="btn-primary"
+                    attrs="{'invisible': [('argos_state', 'not in', ['in_progress'])]}"/>
             <button name="action_create_invoice" string="Create Invoice"
                     type="object" context="{'default_advance_payment_method': 'percentage'}"
-                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"
+                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'no'), '|', ('state', '!=', 'sale'), ('is_consultation', '=', True)]}"
                     class="btn-primary"/>
             <button name="action_create_invoice" string="Create Invoice" type="object"
-                    attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
+                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'to invoice'), ('is_consultation', '=', True)]}"/>
             <button name="action_confirm" id="action_confirm"
                     string="Confirm" class="btn-primary" type="object"
                     attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
@@ -69,6 +72,7 @@
             </div>
             <group>
               <group>
+                <field name="is_consultation" invisible="1"/>
                 <field name="conv_key" invisible="1"/>
                 <field name="is_incineris" invisible="1"/>
                 <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
