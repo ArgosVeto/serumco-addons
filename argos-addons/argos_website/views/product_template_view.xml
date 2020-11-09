@@ -23,6 +23,25 @@
           <attribute name="force_save">1</attribute>
         </field>
 
+        <xpath expr="//group[@name='product_template_images']" position="after">
+          <group>
+            <group>
+              <field name="image_1024" widget="image" options="{'preview_image': 'image_128', 'size': [32, 32]}" string="Thumbnail"/>
+              <field name="aliment_type"/>
+              <field name="utilization"/>
+              <field name="composition"/>
+              <field name="analytic_constitution"/>
+            </group>
+            <group>
+              <field name="additives"/>
+              <field name="energetic_value"/>
+              <field name="daily_ratio_recommended"/>
+              <field name="indications"/>
+              <field name="waters_content"/>
+            </group>
+          </group>
+        </xpath>
+
       </field>
     </record>
 

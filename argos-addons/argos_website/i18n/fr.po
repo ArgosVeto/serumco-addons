@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-02 08:51+0000\n"
-"PO-Revision-Date: 2020-11-02 08:51+0000\n"
+"POT-Creation-Date: 2020-11-06 11:50+0000\n"
+"PO-Revision-Date: 2020-11-06 11:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1941,6 +1941,11 @@ msgstr "Service momentanément indisponible."
 #: model_terms:ir.ui.view,arch_db:argos_website.products_custom
 msgid "This product is not in stock at the moment."
 msgstr "Ce produit n'est pas en stock en ce moment."
+
+#. module: argos_website
+#: model_terms:ir.ui.view,arch_db:argos_website.product_template_form_view_inherit
+msgid "Thumbnail"
+msgstr "Vignette"
 
 #. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.api_error
