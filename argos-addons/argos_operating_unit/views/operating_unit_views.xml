@@ -75,6 +75,41 @@
                   </group>
                 </group>
               </page>
+              <page name="partnership" string="Partnership">
+                <group colspan="2" col="2">
+                  <separator string="Geolocation" colspan="2"/>
+                  <button
+                        string="Geolocate"
+                        name="geo_localize"
+                        colspan="2"
+                        icon="fa-check"
+                        type="object"/>
+                  <div>
+                    <span class="oe_inline">( On</span>
+                    <field name="date_localization" nolabel="1" class="oe_inline"/>
+                    <span>: Lat :</span>
+                    <field name="partner_latitude" nolabel="1" class="oe_inline"/>
+                    <span>; Long:</span>
+                    <field name="partner_longitude" nolabel="1" class="oe_inline"/>
+                    <span>)</span>
+                  </div>
+                </group>
+                <group>
+                  <group>
+                    <separator string="Partner Activation" colspan="2"/>
+                    <field name="grade_id" widget="selection"/>
+                    <field name="activation" widget="selection"/>
+                    <field name="partner_weight"/>
+                  </group>
+                  <group>
+                    <separator string="Partner Review" colspan="2"/>
+                    <field name="date_review"/>
+                    <field name="date_review_next"/>
+                    <field name="date_partnership"/>
+                    <field name="partnership_end_date"/>
+                  </group>
+                </group>
+              </page>
             </notebook>
           </sheet>
         </group>
