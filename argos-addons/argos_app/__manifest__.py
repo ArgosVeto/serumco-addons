@@ -22,6 +22,7 @@
         'argos_sale_project',
         'argos_planning_sale',
         'ks_dashboard_ninja',
+        'manatec_consent_manager_basic',
     ],
     'data': [],
     'application': True,

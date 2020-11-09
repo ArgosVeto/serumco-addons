@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<section class="container">
+    <div class="row oe_spaced">
+        <div class="col-sm-12">
+            <h1 class="oe_slogan">
+                 Cookie - Consent Manager Basic
+            </h1>
+        </div>
+        <div class="col-sm-12">
+            <p class="oe_slogan h3">This module allows your customers to give their consent to various cookies on your website. Without a consent the functionality is disabled and the corresponding cookies deleted as requested by GDPR. The basic version provides an indication of essential cookies that are necessary for the operation of the site and the possibility for your customers to opt-out of google analytics.</p>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="alert alert-info" role="alert">
+                <b>Info:</b> Please also note this additional module which gives your customers the possibility to give their consent to activate the odoo livechat.
+                You can download it for free in the <a href="https://apps.odoo.com/apps/modules/13.0/manatec_consent_manager_livechat/">odoo appstore</a>.
+            </div>
+        </div>
+
+        <div class="col-sm-12 mt32">
+            <h3>Consent Manager Interface</h3>
+            <p>The main interface gives your customers an overview of which personal information is processed. All non-essential settings can be approved or rejected here with a single click.</p>
+        </div>
+        <div class="col-sm-12">
+            <div style="max-height: 1000px;">
+                <a href="screenshots/consent_manager_interface.png">
+                    <img class="oe_picture oe_screenshot mx-auto" src="screenshots/consent_manager_interface.png">
+                </a>
+            </div>
+            <figcaption class="figure-caption text-center">Consent manager main interface</figcaption>
+        </div>
+
+        <div class="col-sm-12 mt32">
+            <h3>Consent Manager Settings</h3>
+            <p>In the settings interface your customers can manage individual options.</p>
+        </div>
+        <div class="col-sm-12">
+            <div style="max-height: 1000px;">
+                <a href="screenshots/consent_manager_interface.png">
+                    <img class="oe_picture oe_screenshot mx-auto" src="screenshots/consent_manager_settings.png">
+                </a>
+            </div>
+            <figcaption class="figure-caption text-center">Consent manager settings interface</figcaption>
+        </div>
+        <div class="col-sm-12 mt32">
+            <h3>Configuration</h3>
+            <p>You can adjust the configuration in the configuration file (static/src/js/klaro.config.js).
+With the value "privacyPolicy" you configure the link to your privacy policy. You can also explicitly provide a path and a domain for a given cookie. This is necessary if google analytics set cookies for a path that is not "/" or a domain that is not the current domain. If you do not set these values properly, the cookie can't be deleted.</p>
+        </div>
+        <div class="col-sm-12">
+            <div style="max-height: 1000px;">
+                <a href="screenshots/consent_manager_configuration.png">
+                    <img class="oe_picture oe_screenshot mx-auto" src="screenshots/consent_manager_configuration.png">
+                </a>
+            </div>
+            <figcaption class="figure-caption text-center">Consent manager configuration</figcaption>
+        </div>
+    </div>
+</section>
+
+<section class="container oe_dark" style="background: #EFEFEF;">
+    <div class="row oe_spaced">
+        <div class="col-sm-12 oe_centeralign">
+            <h2 class="oe_slogan">
+                Contact & Support
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-sm-1 col-sm-3 oe_centeralign oe_mb32" style="font-size:18px;">
+            <p>
+                Do you like this module?
+                <br/>
+                <a href="https://www.odoo.com/apps/modules/browse?search=manatec" target="_blank">
+                    Try out our other apps!
+                </a>
+            </p>
+        </div>
+
+        <div class="col-sm-4 oe_centeralign oe_mb32">
+            <p>
+                <a href="https://www.manatec.de" target="_blank">
+                    <img class="img-responsive" src="manatec_logo.png" height="75"/>
+                </a>
+            </p>
+        </div>
+
+        <div class="col-sm-3 oe_centeralign oe_mb32" style="font-size:18px;">
+            <p>
+                Challenges with this module, wishes for more functions or questions about Odoo?
+                <a href="https://www.manatec.de/contactus" target="_blank">
+                    Contact us!
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+</body>
+
+<footer>
+    <div class="container">
+        <div class="row oe_spaced">
+            <div class="col-sm-4">
+                <h5 class="oe_slogan" style="text-align: left">Version: 1.0.0</h5>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="oe_slogan" style="text-align: center">Release Date: 24.03.2020</h5>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="oe_slogan" style="text-align: right">&copy; manaTec</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
