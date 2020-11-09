@@ -23,6 +23,7 @@
         'views/res_config_settings_views.xml',
         'views/website_calendar_templates.xml',
         'views/calendar_appointment_views.xml',
+        'data/mail_template_data.xml',
     ],
     'qweb': [
         "static/src/xml/web_calendar.xml",
