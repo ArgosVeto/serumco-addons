@@ -26,7 +26,7 @@
     <field name="name">Agenda</field>
     <field name="res_model">planning.slot</field>
     <field name="view_mode">calendar,tree,form</field>
-    <field name="context">{'agenda_calendar': True, 'column': 'employee_id'}</field>
+    <field name="context">{'agenda_calendar': True, 'column': 'employee_id', 'search_default_active_rdv': 1}</field>
   </record>
 
   <record id="agenda_calendar_action_server" model="ir.actions.server">

@@ -242,6 +242,7 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                     self.renderer._renderTaskGrid();
                     self.renderer._renderStickyTimeline();
                     self.renderer._toogleCalendarHeader();
+                    self.renderer._updateCalendarStyle();
                     $fc_view.scrollLeft(position);
                 });
             } else {
@@ -251,6 +252,7 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                 self.renderer._renderTaskGrid();
                 self.renderer._renderStickyTimeline();
                 self.renderer._toogleCalendarHeader();
+                self.renderer._updateCalendarStyle();
                 self.renderer._renderStickyTimeline();
             }
         },
