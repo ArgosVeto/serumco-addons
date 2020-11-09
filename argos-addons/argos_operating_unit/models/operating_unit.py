@@ -82,3 +82,7 @@ class OperatingUnit(models.Model):
         for rec in self:
             if not (0 <= rec.consult_room_number < 10):
                 raise ValidationError(_('Consult room number must be between 0 and 9.'))
+
+    def geo_localize(self):
+        self.ensure_one()
+        return self.partner_id.geo_localize()
