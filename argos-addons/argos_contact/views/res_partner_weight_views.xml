@@ -7,15 +7,10 @@
 			<field name="arch" type="xml">
 				<form string="Weight" create="false" delete="false" edit="false">
 					<sheet>
-						<div class="oe_title">
-							<h1>
-								<field name="name" required="1"/>
-							</h1>
-						</div>
 						<group>
 							<group>
-								<field name="date"/>
 								<field name="values"/>
+								<field name="date"/>
 								<field name="score" string="Score (NEC)"/>
 								<field name="area" string="Area (m²)"/>
 								<field name="source"/>
@@ -54,14 +49,25 @@
 			<field name="name">res.patient.weight.view.graph</field>
 			<field name="model">res.partner.weight</field>
 			<field name="arch" type="xml">
-				<graph string="Patient Weight" type="line">
+				<graph string="Patient Weight">
 					<field name="date" type="col"/>
 					<field name="partner_id" type="row"/>
-					<field name="values" type="measure" string="Weight"/>
-					<field name="nec" type="measure"/>
+					<field name="values" type="measure"/>
 				</graph>
 			</field>
 		</record>
+
+		<record id="res_partner_weight_view_search" model="ir.ui.view">
+      <field name="name">res.partner.weight.view.search</field>
+      <field name="model">res.partner.weight</field>
+      <field name="arch" type="xml">
+        <search string="Weight">
+          <group expand="0" string="Group By">
+            <filter string="Date" name="group_by_date" domain="[]" context="{'group_by': 'date:day'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
 
 		<record id="res_partner_weight_action" model="ir.actions.act_window">
 			<field name="name">Weights</field>
@@ -74,6 +80,8 @@
 			<field name="res_model">res.partner.weight</field>
 			<field name="view_mode">graph</field>
 			<field name="domain">[('partner_id', '=', active_id)]</field>
+			<field name="search_view_id" ref="res_partner_weight_view_search"/>
+      <field name="context">{'search_default_group_by_date': 1}</field>
 		</record>
 
 	</data>

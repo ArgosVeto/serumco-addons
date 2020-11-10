@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 14:53+0000\n"
-"PO-Revision-Date: 2020-10-27 14:53+0000\n"
+"POT-Creation-Date: 2020-11-09 13:34+0000\n"
+"PO-Revision-Date: 2020-11-09 13:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -237,6 +237,7 @@ msgstr "Créé le"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_search
 msgid "Date"
 msgstr "Date"
 
@@ -344,6 +345,11 @@ msgstr "Identifiant Gmvet"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_category__gmvet_id
 msgid "Gmvet id"
 msgstr "ID Gmvet"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_search
+msgid "Group By"
+msgstr "Regrouper par"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__hide_messages
@@ -577,7 +583,6 @@ msgstr "Date de disparition"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__name
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__name
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__name
 msgid "Name"
 msgstr "Nom"
 
@@ -589,7 +594,7 @@ msgstr "Naturelle"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__nec
 msgid "Nec"
-msgstr "NEC"
+msgstr "Score corporel (NEC)"
 
 #. module: argos_contact
 #: model:ir.model.fields.selection,name:argos_contact.selection__res_partner__chip_location__neck
@@ -1013,7 +1018,7 @@ msgstr "Vaccination"
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__values
 msgid "Values"
-msgstr "Valeurs"
+msgstr "Poids (kg)"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_view_form
@@ -1034,7 +1039,7 @@ msgstr "Historique des communications sur le site Web"
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner__weight
 #: model:ir.model.fields,field_description:argos_contact.field_res_users__weight
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_form
-#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_graph
+#: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_search
 msgid "Weight"
 msgstr "Poids"
 

@@ -42,6 +42,17 @@ class ResPartner(models.Model):
         })
         return action
 
+    def button_create_order(self):
+        self.ensure_one()
+        action = self.env.ref('sale.action_quotations_with_onboarding').read()[0]
+        action['views'] = [(self.env.ref('sale.view_order_form').id, 'form')]
+        if self.owner_ids:
+            action['context'] = ast.literal_eval(action['context'])
+            action['context'].update({
+                'default_partner_id': self.owner_ids[0].id,
+            })
+        return action
+
     def action_open_orders(self):
         self.ensure_one()
         action = self.env.ref('argos_sale.action_open_sales').read()[0]
