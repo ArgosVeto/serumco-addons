@@ -67,60 +67,61 @@
 	
 	
 	<template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
-            
-            <div class="mt12 mb12 row">
-            		<div class="form-group field-lastname col-md-6 o_website_form_required_custom">
-                <label for="lastname" class="col-form-label">Nom</label>
-                <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder=""/>
-            </div>
-			
-			 <div class="form-group field-firstname col-md-6 o_website_form_required_custom">
-                <label for="firstname" class="col-form-label">Prenom</label>
-                <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John Doe"
-                    required="required" t-att-readonly="'readonly' if only_passwords else None"
-                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
-            </div>
-			
-            <div class="form-group field-name col-md-6 o_website_form_required_custom d-none">
-                <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe"
-                    required="required" t-att-readonly="'readonly' if only_passwords else None"
-                    t-att-autofocus="'autofocus' if login and not only_passwords else None" />
-            </div>
-            </div>
-            <div class="form-group field-login o_website_form_required_custom">
-                <label for="login" class="col-form-label">Adresse email</label>
-                <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus"
-                    autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
-            </div>
-			
-
-            <div class="form-group field-password pt-2 o_website_form_required_custom">
-                <label for="password" class="col-form-label">Mot de passe</label>
-                <input type="password" name="password" id="password" class="form-control form-control-sm"
-                    required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
-            	<p class="caractres-minimu">
-            		10 caractères minimum, 1 majuscule, 1 minuscule, 1 caractère spécial, 1 chiffre
-            	</p>
-            </div>
-
-            <div class="form-group field-confirm_password o_website_form_required_custom">
-                <label for="confirm_password" class="col-form-label">Confirmer le mot de passe</label>
-                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
-            </div>
-
-            <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
-                <div class="check">
-                    <input type="checkbox" name="confirm_first" required="true">
-                        <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
-                    </input>
+            <div class="container">
+                <div class="mt12 mb12 row">
+                    <div class="form-group field-lastname col-md-6 o_website_form_required_custom">
+                        <label for="lastname" class="col-form-label">Nom</label>
+                        <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder=""/>
+                    </div>
+        			
+        			<div class="form-group field-firstname col-md-6 o_website_form_required_custom">
+                        <label for="firstname" class="col-form-label">Prenom</label>
+                        <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John Doe"
+                            required="required" t-att-readonly="'readonly' if only_passwords else None"
+                            t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                    </div>
+        			
+                    <div class="form-group field-name col-md-6 o_website_form_required_custom d-none">
+                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe"
+                            required="required" t-att-readonly="'readonly' if only_passwords else None"
+                            t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                    </div>
                 </div>
-            </div>
 
-             <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
-                <div class="check">
-                    <input type="checkbox" name="confirm_second">
-                        <span class="ml-2 confirm_second">J’accepte de recevoir la newsletter lorem ipsum dolor sit amet</span>
-                    </input>
+                <div class="form-group field-login o_website_form_required_custom">
+                    <label for="login" class="col-form-label">Adresse email</label>
+                    <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus"
+                        autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                </div>
+    			
+                <div class="form-group field-password pt-2 o_website_form_required_custom">
+                    <label for="password" class="col-form-label">Mot de passe</label>
+                    <input type="password" name="password" id="password" class="form-control form-control-sm"
+                        required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+                	<p class="caractres-minimu">
+                		10 caractères minimum, 1 majuscule, 1 minuscule, 1 caractère spécial, 1 chiffre
+                	</p>
+                </div>
+
+                <div class="form-group field-confirm_password o_website_form_required_custom">
+                    <label for="confirm_password" class="col-form-label">Confirmer le mot de passe</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+                </div>
+
+                <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
+                    <div class="check">
+                        <input type="checkbox" name="confirm_first" required="true">
+                            <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
+                        </input>
+                    </div>
+                </div>
+
+                <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
+                    <div class="check">
+                        <input type="checkbox" name="confirm_second">
+                            <span class="ml-2 confirm_second">J’accepte de recevoir la newsletter lorem ipsum dolor sit amet</span>
+                        </input>
+                    </div>
                 </div>
             </div>
         </template>
@@ -129,9 +130,9 @@
 	
     <template id="auth_signup_signup_fields" inherit_id="auth_signup.signup" name="Sign up">
         <xpath expr="//div[@class='text-center oe_login_buttons pt-3']" position="replace">
-            <div class="text-center oe_login_buttons pt-3">
+            <div class="text-center oe_login_buttons pt-3 container">
                 <button type="submit" class="btn btn-primary">Valider mom inscription</button>
-                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm mt32" role="button">Vous avez deja un compte ? Connectez-vous !</a>
+                <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm mt32 p-0" role="button">Vous avez deja un compte ? Connectez-vous !</a>
                 <div class="o_login_auth"/>
             </div>
         </xpath>

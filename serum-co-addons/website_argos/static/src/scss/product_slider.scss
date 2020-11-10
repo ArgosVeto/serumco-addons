@@ -215,6 +215,10 @@
 			    right: 10px;
 			}
 		}
+		.bottom-text {
+			text-align: left !important;
+			margin-left:16px;
+		}
 		.owl-nav{
 			display:none !important;
 		}	
@@ -495,9 +499,18 @@
 			    right: 10px;
 			}
 		}
+		.bottom-text {
+			text-align: left !important;
+			margin-left:16px;
+		}
 		.owl-nav{
 			display:none !important;
-		}		
+		}	
+		#multi_dynamic_slider_tabs{
+			a{
+				margin-right:8px !important;
+			}
+		}
 	}
 	@media (min-width: 768px) and (max-width: 991.98px) {
 		.title-block{
@@ -712,6 +725,10 @@
 	@media (max-width: 767px) {
 		.owl-nav{
 			display:none !important;
+		}
+		.bottom-text {
+			text-align: left !important;
+			margin-left:16px;
 		}
 	}
 	@media (min-width: 768px) and (max-width: 991.98px) {

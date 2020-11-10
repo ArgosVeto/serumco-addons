@@ -76,4 +76,13 @@
 	box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
     background-color: #ffffff;
     border: 0;
+    @media (max-width: 767.98px) {
+    	.mega_menu_one_snippet{
+    		padding:0;
+
+    		.heading-contents p.heading {
+    			margin-top: 15px !important;
+    		}
+    	}
+    }
 }

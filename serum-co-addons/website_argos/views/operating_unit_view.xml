@@ -33,9 +33,9 @@
                         </group>
                     </group>
                     <group>
-                        <group string="Payment Method">
+                       <!--  <group string="Payment Method">
                             <field name="payment_method_ids"  widget="many2many_tags"/>
-                        </group> 
+                        </group>  -->
                         <group string="Show In Footer">
                             <field name="show_in_footer"/>
                         </group> 

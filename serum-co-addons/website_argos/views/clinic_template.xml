@@ -129,10 +129,10 @@
 												</div>
 				                        </div>
 				                        <div class="card-footer">
-				                                 <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-none d-xl-inline-block mr-2">
+				                                 <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary  d-xl-inline-block mr-2">
 				                                    <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
 				                                </a>
-				                                 <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+				                                 <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-xl-inline-block">
 				                                    <span class="">Prendre RDV</span>
 				                                </a>
 				                            </div>	
@@ -205,7 +205,7 @@
 							            </div>
 						        </div>
                         </div>
-                        <div class="see_map">
+                        <div class="see_map d-none d-md-block">
                         	<div class="custom-control custom-switch">
 							  <input type="checkbox" class="custom-control-input" id="customSwitch1"/>
 							  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
@@ -226,7 +226,7 @@
 		        	<div class="oe_structure">
 		            <section class="s_text_block mt16 oe_structure">
 		            	<div class="container">
-		            		<div class="row">
+		            		<div class="row d-none d-md-block">
 				            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae arcu non sem placerat blandit et at sapien. Praesent tempor et est porta efficitur. Aliquam ac felis non turpis sollicitudin efficitur vel ut leo. Nunc sit amet felis aliquet, aliquam lacus at, aliquet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non maximus ligula, ac consequat ligula. Mauris sit amet lectus eleifend nunc facilisis pellentesque. Integer gravida sapien ut sagittis commodo.</p>
 								<p>Phasellus eget ex massa. Nunc massa lectus, bibendum sit amet molestie eu, dignissim sit amet ipsum. Nullam aliquet accumsan neque eu lacinia. Cras et vulputate est, et gravida risus. Sed vestibulum magna vitae nulla volutpat suscipit. Mauris imperdiet, metus sit amet vestibulum aliquet, nisl quam condimentum lorem, eget tincidunt velit ante ut dolor. Aliquam et egestas libero, at ullamcorper risus. Mauris vitae tincidunt sapien. Sed at odio non lectus hendrerit egestas. Sed et dui magna. Nunc accumsan vulputate ipsum, sit amet cursus massa porta id.</p>
 								
@@ -237,6 +237,19 @@
 		            	</div>
 		            </section>
 		            </div>
+	            <div class="d-block d-md-none mobile-breadcrumb mb16">
+	            	<div class="container">
+		            	<div class="row">
+			            	<div class="col-lg-12">
+			            		<div class="Vous-tes-ici">Vous êtes ici</div>
+			            		<ol class="breadcrumb">
+								    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+								    <li class="breadcrumb-item"> Trouver une clinique</li>
+								  </ol>
+			            	</div>
+			            </div>
+			        </div>
+	            </div>
         </t>
 	</template>
 	

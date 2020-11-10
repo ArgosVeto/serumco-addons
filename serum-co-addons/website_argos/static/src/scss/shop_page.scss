@@ -253,6 +253,46 @@
 }
 
 .argos_shop{
+	.bottom-content{
+		p{
+			font-size: 16px;
+			  font-weight: normal;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.63;
+			  letter-spacing: normal;
+			  color: #8b8b8b;
+			  font-family: AvenirLTStd-Roman;
+			  a{
+				font-family: AvenirLTStd-Heavy;
+				  font-weight: 900;
+				  color: theme-color('primary');
+				  text-decoration: underline !important;
+			}
+		}
+
+		.line{
+		  height: 1px;
+		  border: solid 1px rgba(139, 139, 139, 0.16);
+		}
+		h3{
+			font-family: AvenirLTStd-Heavy;
+			  font-size: 16px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.63;
+			  letter-spacing: normal;
+			  color: theme-color('primary');
+			  margin-bottom:16px;
+		}
+		@media (max-width: 767.98px) {
+			.breadcrumb {
+			    display: flex !important;
+			    margin:0;
+			}
+		}
+	}
 	.products_pager{
 		li.page-item.disabled{
 			display: none !important; 

@@ -242,6 +242,20 @@
 	}
 	padding-top: 220px;
 	padding-bottom: 184px;
+	@media (max-width: 767.98px) {
+		padding-top:0;
+		.container{
+			.title h1 {
+				font-size: 30px !important;
+			}
+			.owl-nav{
+				top: -148% !important;
+				.owl-prev {
+		    		right: 15% !important;
+		    	}
+			}
+	    }
+	}
 }
 
 .home-animals{
@@ -457,7 +471,7 @@
 		.clinic-content{
 			.text{
 				h3{
-				  	font-size: 28px;
+				  	font-size: 25px;
 				  	margin-bottom: 8px;
 				}
 				p{
@@ -560,6 +574,7 @@
 		    border: 0;
 		    box-shadow: none;
 		    color: theme-color('primary');
+		    font-size: 16px;
 		}
 		.clinic-btn{
 			width: 106px;
@@ -596,6 +611,18 @@
 			h3{
 			  	font-size: 28px;
 			  	margin-bottom: 13px;
+			}
+			.o_clinic_type_homepage_form{
+				display: block !important;
+				#clinic_id{
+					margin-bottom:16px;
+				}
+				.Consulter-btn{
+					width: 100%;
+				}
+			}
+			.o_clinic_type_homepage_form::after{
+				right: 16px !important;
 			}
 			.js_subscribe{
 				display: block;
@@ -691,6 +718,16 @@
 			}
 		}
 	    padding-left: 100px;
+	}
+	.carousel-indicators{
+		bottom: -35px;
+		li{
+			background-color: rgba(99, 186, 233, 0.16);
+			width:18px;
+		}
+		li.active{
+			background-color: theme-color('primary');
+		}
 	}
 	@media (max-width: 767.98px) {
 		.order{
@@ -843,7 +880,7 @@
 		}
 		.text{
 			h3{
-			  	font-size: 28px;
+			  	font-size: 25px;
 			  	margin-bottom: 13px;
 			}
 			.btn{
@@ -1007,7 +1044,8 @@
 			.text{
 				h3{
 				  	font-size: 28px;
-				  	margin-bottom: 13px;
+				  	margin-bottom: 15px;
+				  	line-height:40px;
 				}
 				p{
 				  	margin-bottom: 0;
@@ -1020,7 +1058,7 @@
     		background-position: top;
 		    background-repeat: no-repeat;
 		}
-	    padding-bottom: 80px;
+	    padding-bottom: 0px;
 	}
 	padding-bottom: 150px;
 }

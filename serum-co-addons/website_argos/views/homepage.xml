@@ -41,7 +41,7 @@
 							</div>
 						</section>
 						<div class="oe_structure"/>
-						<section class="home-brands d-none d-md-block">
+						<section class="home-brands">
 							<div class="container">
 								<div class="title">
 									<h1 class="text-primary">Nos marques</h1>
@@ -271,6 +271,12 @@
 								                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
 								              	</a>
 								            </div>
+								            <div class="indicators  d-block d-md-none">
+									            <ol class="carousel-indicators">
+									            	<li data-target="#service-carousel" data-slide-to="0" class="active"/>
+									            	<li data-target="#service-carousel" data-slide-to="1"/>
+									          	</ol>
+									          </div>
 								        </div>
 								    <!-- </t> -->
 									</div>

@@ -125,21 +125,21 @@
 		@media (max-width: 767.98px) {
 			.news-content{
 				.text{
-					
-					.input-group-append {
-						    margin-left: 15px;
-						}
-					
+					.js_subscribe{
+						display: block !important;
+					}
 					.js_subscribed_btn {
 					    padding: 0px 11px;
 					    height: 46px;
 					    line-height: 46px;
+					    width: 100%;
 					}
 					
 					.js_subscribe_btn  {
 						padding: 0px 11px;
 					    height: 46px;
 					    line-height: 46px;
+					    width: 100%;
 					}
 				
 					select{

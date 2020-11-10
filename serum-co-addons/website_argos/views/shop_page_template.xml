@@ -4,6 +4,28 @@
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="attributes">
 			<attribute name="class">container oe_website_sale argos_shop</attribute>
 		</xpath>
+		<xpath expr="//div[hasclass('oe_website_sale')]" position="inside">
+			<div class="bottom-content d-block d-md-none pt48">
+				<p>Eaque ratione sapiente et quo quaerat voluptas non amet. Quam ex hic hic. Ut sequi et. Nihil ut nesciunt. Omnis molestias ratione nihil voluptatibus. Voluptatem ut dolor. Omnis nihil enim dolores. Laboriosam neque commodi eum id alias officiis dolorem qui. Quibusdam eos nulla corporis vel debitis iste…</p>
+				<p><a href="#">Lire la suite</a></p>
+				<div class="line mt32 mb16"/>
+				<div class="">
+					<h3>Vous êtes ici</h3>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+		                    <a href="/">Accueil</a>
+		                </li>
+		                <li class="breadcrumb-item">
+		                    <a href="/shop">Boutique</a>
+		                </li>
+		                <li t-if="category" class="breadcrumb-item active">
+	                        <span><t t-esc="category.name"/></span>
+	                    </li>
+		            </ol>
+				</div>
+			</div>
+
+		</xpath>
 	</template>
 
 	<template id="argos_top_product_pager_inherit" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
@@ -281,18 +303,18 @@
 			<t t-if="request.website.viewref('website_sale_wishlist.add_to_wishlist').active">
 				<t t-set="in_wish" t-value="product._is_in_wishlist()"/>
 	            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
-	            <t t-if="product.sudo().qty_available > 0">
+	            <t>
 		            <button t-if="product_variant_id" type="button" role="button" class="btn btn-link o_add_wishlist" t-att-disabled='in_wish and product.qty_available > 0 or None' title="Add to Wishlist" t-att-data-product-template-id="product.id" t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
 		            	<img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
 		            </button>
 	            </t>
-	             <t t-if="product.sudo().qty_available == 0">
+	             <!-- <t t-if="product.sudo().qty_available == 0">
 	            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
 				  <img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
 				</button>
-				</t>
+				</t> -->
 			<!-- Modal -->
-			<t t-if="product.sudo().qty_available == 0">
+			<!-- <t t-if="product.sudo().qty_available == 0">
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -311,7 +333,7 @@
 			    </div>
 			  </div>
 			</div>
-			</t>
+			</t> -->
 	        </t>
 		</xpath>
 	</template>

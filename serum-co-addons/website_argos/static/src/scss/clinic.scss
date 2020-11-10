@@ -388,7 +388,43 @@
 	  text-align: center;
 	  color: #8b8b8b;
 	}
-    
+    .time-slot-head a{
+    	font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	  text-decoration:none;
+    }
+    @media (min-width: 768px) {
+		#demo{
+			display: block !important;
+		}
+	}
+	@media (max-width: 767.98px) {
+		order:1 !important;
+		 .time-slot-head a{
+		 	border-radius: 8px;
+  			background-color: rgba(139, 139, 139, 0.04);
+  			padding:20px 10px;
+		 }
+		.heading:after {
+		    content: "\f0dd";
+		    font-family: "FontAwesome" !important;
+		    display: inline-block;
+		    float: right;
+		    font-size: 15px;
+		    transition: 0.2s;
+		    -webkit-transition: 0.2s;
+		}
+		.heading[aria-expanded="true"]:after {
+		    transform: rotate(180deg);
+		    -webkit-transform: rotate(180deg);
+		}
+	}
 }
 
 .Avenue-Pasteur {
@@ -429,7 +465,16 @@
 .bg-heart {
 	background-color: rgba(222, 26, 70, 0.08);
 }
-
+.clinic-btn-icon{
+	.fav-btn {
+    	position: unset !important;
+    }
+    .side-block-c{
+    	position: unset !important;
+    	padding:0 !important;
+    	box-shadow: none !important;
+    }
+}
 .Clinique-actuellemen {
 	  font-family: AvenirLTStd-Heavy;
 	  font-size: 16px;
@@ -459,6 +504,7 @@
 	  color: theme-color('primary');
 		padding-top: 30px;
     	padding-bottom: 30px;
+    	margin:0;
 	}
 
 	.Services-mdicaux {
@@ -498,7 +544,7 @@
 		  border-radius: 4px;
 		  background-color: rgba(99, 186, 233, 0.04);
 		  text-align: center;
-		  padding: 7px;
+		  padding: 8px;
 		  margin-top: 20px;
 		  
 		  span{
@@ -513,7 +559,24 @@
 		  }
 		  
 		}
+	.top-text {
+		span{
+			font-size:12px;
+			line-height:20px;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color:theme-color('secondary');
+			font-weight: 900;
+			font-family: AvenirLTStd-Heavy;
+			font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
 
+		}
+		a:hover{
+			text-decoration:none;
+		}
+	}
 }
 
 .partners-grid {
@@ -833,4 +896,21 @@
 .clinic-type-b .badge.active{
 	background: #63bae9;
     color: white;
+}
+.mobile-breadcrumb{
+	margin-left: 16px;
+	.Vous-tes-ici {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 16px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.63;
+	  letter-spacing: normal;
+	  color: theme-color('primary');
+	  margin-bottom:16px;
+	}
+	.breadcrumb{
+		display:flex !important;
+	}
 }

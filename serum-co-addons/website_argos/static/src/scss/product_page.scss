@@ -89,17 +89,17 @@
 	    			text-decoration:none;
 	    		}
 	    	}
-	    	.o_add_wishlist{
-	    		  font-size: 16px;
-				  font-weight: normal;
-				  font-stretch: normal;
-				  font-style: normal;
-				  line-height: normal;
-				  letter-spacing: normal;
-				  color: #8b8b8b;
-				  font-family:"AvenirLTStd-Roman";
-	    	}
 	    }
+	    .o_add_wishlist{
+    		  font-size: 16px;
+			  font-weight: normal;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: normal;
+			  letter-spacing: normal;
+			  color: #8b8b8b;
+			  font-family:"AvenirLTStd-Roman";
+    	}
     	.argos_tags{
 			.tag-name{
 				border-radius: 4px;
@@ -313,6 +313,23 @@
 			  	line-height: 1.86;
 			  	letter-spacing: normal;
 			}
+			p{
+				margin:0;
+			}
+			@media (max-width: 767.98px) {
+				height: 74px !important;
+				line-height: normal;
+				.image{
+					img{
+						margin-right: 2rem !important;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 767.98px) {
+		.breadcrumb{
+			display: flex !important;
 		}
 	}
 }
@@ -370,6 +387,56 @@
 		}
 		.active.nav-link:after{
 			opacity: 1;
+		}
+	}
+	#accordion{
+		.card{
+			border:none !important;
+			border-top: solid 1px rgba(139, 139, 139, 0.16) !important;
+			padding:25px 0 !important;
+			&:last-child{
+				border-bottom: solid 1px rgba(139, 139, 139, 0.16) !important;
+			}
+		}
+		.card-header{
+			border:none !important;
+			padding:0 !important;
+		}
+		.card-body{
+			border:none !important;
+			padding:0 !important;
+		}
+		button{
+			font-family: AvenirLTStd-Heavy;
+			  font-size: 16px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: normal;
+			  letter-spacing: normal;
+			  color: theme-color('primary');
+			  padding:0;
+			  width: 100%;
+    		  text-align: left;
+			 &:hover{
+			 	text-decoration:none;
+			 }
+		}
+		.btn-link:before {
+		    content: '\f068';
+		    font-family: 'FontAwesome';
+		    display: inline-block;
+		    margin: 0 .5em 0 .75em;
+		    float: right;
+		    color: #63bae9;
+		    font-weight: 400;
+		    font-size: 18px;
+		}
+		.btn-link.collapsed:before {
+		    content: '\f067';
+		    font-family: 'FontAwesome';
+		    float: right;
+		    color: #63bae9;
 		}
 	}
 }
@@ -628,7 +695,7 @@
 	}
 	@media (max-width: 767.98px) {
 		.alternative_product1{
-			max-width: unset !important;
+			max-width: 50% !important;
 		}
 	}
 }
