@@ -1,0 +1,38 @@
+h1{
+color:#de1a46;
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+
+}
+
+hr{
+border: 1px solid;
+}
+
+table, td, th {
+border: 1px solid;
+text-align: center;
+}
+
+table {
+border-collapse: collapse;
+}
+
+th, td {
+padding: 15px;
+}
+
+.div1 {
+display: inline-block;
+width: 100%;
+}
+.div-right {
+float: right;
+}
+.div-left {
+float: left;
+}
+
+.th2{
+ color:#63bae9;
+}

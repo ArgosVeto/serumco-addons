@@ -6,3 +6,4 @@ from . import res_partner_weight
 from . import res_partner_category
 from . import res_partner_pathology
 from . import res_partner_parameter
+from . import export_medical_history

@@ -1057,3 +1057,333 @@ msgstr "Poids"
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__zip_code
 msgid "Zip Code"
 msgstr "Code postal"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Export Period: from"
+
+msgstr "Période concernée par l’export : du "
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "ANALYZES"
+msgstr "ANALYSES"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "ANIMAL"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Adress"
+msgstr "Adresse"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Age"
+msgstr ""
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__partner_id
+msgid "Animal"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Chip"
+msgstr "Puce"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Clinic"
+msgstr "Clinique"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Coat"
+msgstr "Robe"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Comment"
+msgstr "Commentaires"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_uid
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_uid
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__create_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_date
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_date
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__create_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Date"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Date Of Birth (Optional)"
+msgstr "Date de naissance (le cas échéant)"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Diagnostic"
+msgstr "Diagnostique"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__display_name
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__display_name
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__display_name
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__display_name
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__display_name
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__display_name
+msgid "Display Name"
+msgstr "Afficher Nom"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Email"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Event"
+msgstr "Evénement"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Export Date"
+msgstr "Date de l’export"
+
+#. module: argos_contact
+#: model:ir.actions.act_window,name:argos_contact.export_medical_history_action
+#: model:ir.actions.act_window,name:argos_contact.export_medical_history_action_server
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_view_form
+msgid "Export Medical History"
+msgstr "Exporter l'historique medical"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Favorite Clinic"
+msgstr "Clinique favorite"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__field_ids
+msgid "Fields To Export"
+msgstr "Champs à Exporter"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Gender"
+msgstr "Sexe"
+
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "HOSPITALIZATIONS"
+msgstr "HOSPITALISATIONS"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Hypotheses"
+msgstr "Hypothèses"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__id
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__id
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__id
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Identification Number"
+msgstr "N° identification"
+
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__is_complete
+msgid "Is Complete"
+msgstr "Est complet"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history____last_update
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport____last_update
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category____last_update
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter____last_update
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology____last_update
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Last Name, First Name"
+msgstr "Nom, prénom"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_uid
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_uid
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__write_uid
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_date
+#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_date
+#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__write_date
+#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "MEDICAL EVENT(S)"
+msgstr "ÉVÉNEMENTS MÉDICAUX"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Maxi"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Medical History of"
+msgstr "Historique médical de"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Mini"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Next vaccine date"
+msgstr "Date prochain vaccin"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "OWNER(S)"
+msgstr "PROPRIÉTAIRE(S)"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Parameter"
+msgstr "Paramètre"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Passeport"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Phone Number"
+msgstr "N° téléphone"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_view_form
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "REPORT"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Race"
+msgstr ""
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Result"
+msgstr "Résultat"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Species"
+msgstr "Espèce"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Tattoo"
+msgstr "Tatouage"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Unit"
+msgstr "Unité"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "VACCINATION"
+msgstr ""
+
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Vaccine"
+msgstr "Vaccin"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Vaccine Lot Number"
+msgstr ""
+
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Veterinarian"
+msgstr "N° lot vaccin"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Weight"
+msgstr "Poids"
+
+#. module: argos_contact
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "to"
+msgstr "au"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__date_start
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__date_end
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
+msgid "End Date"
+msgstr "Date de fin"
