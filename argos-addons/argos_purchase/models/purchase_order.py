@@ -270,8 +270,7 @@ class PurchaseOrder(models.Model):
                 'warehouse_id': picking.picking_type_id.warehouse_id.id,
             }
             for move_dict in values:
-                move_difference = set(move_dict.items()) - set(value.items())
-                move_difference = dict(move_difference).keys()
+                move_difference = list(set(move_dict) - set(value))
                 if move_difference == ['product_uom_qty'] or not move_difference:
                     move_dict['product_uom_qty'] += value['product_uom_qty']
                     value = False

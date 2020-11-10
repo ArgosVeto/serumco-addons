@@ -168,11 +168,9 @@ msgstr "Demande de prix envoyée"
 #: code:addons/argos_purchase/models/purchase_confirmation_wizard.py:0
 #, python-format
 msgid ""
-"Shipping fees is not free for the order amount. You may add products to "
-"fullfill fees."
+"Shipping fees not reached."
 msgstr ""
-"Le frais de port n'est pas gratuit pour le montant de la commande. Vous pouvez ajouter des produits "
-"pour atteindre le montant requis."
+"Frais de port non atteint."
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__state
@@ -628,9 +626,13 @@ msgstr "Urgence"
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__cutoff_id
-#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_order_view_form_inherit
 msgid "Accrued Expense"
 msgstr "Factures non-parvenue"
+
+#. module: argos_purchase
+#: model_terms:ir.ui.view,arch_db:argos_purchase.purchase_order_view_form_inherit
+msgid "Accrued Expense"
+msgstr "FNP"
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__cutoff_move_ids

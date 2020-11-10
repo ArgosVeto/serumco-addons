@@ -33,4 +33,18 @@
     </field>
   </record>
 
+  <record id="res_partner_discount_form_view" model="ir.ui.view">
+    <field name="name">res.partner.discount.form.view</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="purchase_discount.res_partner_form_view"/>
+    <field name="arch" type="xml">
+      <field name="default_supplierinfo_discount" position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </field>
+      <xpath expr="//div[@name='supplierinfo_discount_disabled']" position="attributes">
+        <attribute name="attrs">{'invisible': True}</attribute>
+      </xpath>
+    </field>
+  </record>
+
 </odoo>
