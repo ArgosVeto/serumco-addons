@@ -266,30 +266,30 @@ class ProductTemplate(models.Model):
         logger = logger or self._context['logger']
         errors = []
         lines = []
+        product_obj = self.env['product.product']
         for row in reader:
             try:
                 if not row.get('code'):
                     logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
+                if not row.get('codeA'):
+                    logger.error(_('The codeA is needed to continue processing this article. Line %s') % reader.line_num)
+                    errors.append((row, _('The codeA column is missed!')))
+                    continue
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        accessory = self.search([('default_code', '=', row.get('codeA')), ('default_code', '!=', False)], limit=1)
-                        if accessory:
-                            product.write({'accessory_product_ids': [(4, accessory.id)]})
-                            lines.append(reader.line_num)
-                        else:
-                            errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
+                if product:
+                    product_accessory = product_obj.search([('default_code', '=', row.get('codeA'))], limit=1)
+                    if product_accessory:
+                        product.write({'accessory_product_ids': [(4, product_accessory.id)]})
+                        lines.append(reader.line_num)
+                        self._cr.commit()
                     else:
-                        errors.append((row, _('No product with code %s found.') % row.get('code')))
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                        errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
+                else:
+                    errors.append((row, _('No product with code %s found.') % row.get('code')))
+                if reader.line_num % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
