@@ -1,8 +1,27 @@
 from odoo import models, api, fields, _, http
 from odoo.http import request
 from odoo.addons.website_argos.controllers.clinic_main import ClinicDetail
+from odoo.addons.website_argos.controllers.main import bizcommonSliderSettings
 from odoo.osv import expression
+import httpagentparser
+from device_detector import DeviceDetector
 
+
+class bizcommonSliderSettings(bizcommonSliderSettings):
+
+    @http.route(['/website_argos/multi_tab_product_call'], type='json', auth='public', website=True)
+    def product_multi_product_image_dynamic_slider(self, **post):
+        slider_data = request.env['multi.tab.product.slider'].sudo().search(
+            [('id', '=', int(post.get('slider_filter')))])
+        slider_data.identify_device()
+        values = {
+            's_id': slider_data.no_of_tabs + '-' + str(slider_data.id),
+            'counts': slider_data.no_of_tabs,
+            'auto_slide': slider_data.auto_slide,
+            'auto_play_time': slider_data.sliding_speed,
+            'mobile': slider_data.is_mobile,
+        }
+        return values
 
 class ClinicDetail(ClinicDetail):
 
@@ -135,3 +154,20 @@ class HrJob(models.Model):
             unit_dic[unit.id]['name'] = unit.name
             unit_dic[unit.id]['city'] = ','.join(rec for rec in lis)
         return unit_dic
+
+
+class MobileResponsive(models.Model):
+	_inherit = "multi.tab.product.slider"
+
+	is_mobile = fields.Boolean("Is Mobile")
+
+	def identify_device(self):
+		slider_ids = self.sudo().search([])
+		dic = {}
+		for rec in slider_ids:
+			agent = request.httprequest.environ.get('HTTP_USER_AGENT')
+			device = DeviceDetector(agent).parse()
+			if device.device_type() == 'smartphone':
+				rec.is_mobile = True
+			else:
+				rec.is_mobile = False

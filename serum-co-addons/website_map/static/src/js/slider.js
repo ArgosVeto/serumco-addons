@@ -40,7 +40,14 @@ odoo.define('website_map.slider_js', function(require) {
                         ajax.jsonRpc('/website_argos/multi_tab_product_call', 'call', {
                             'slider_filter': slider_filter
                         }).then(function(res) {
-                            $('div.product_tab_slider_owl .owl-carousel').owlCarousel({
+                            var location = window.location.href
+                            var hash = window.location.href + '#loaded'
+                            if (location != hash && !window.location.hash) {
+                                window.location = window.location + '#loaded';
+                                window.location.reload();
+                            }
+                            if (res.mobile === true){
+                                $('div.product_tab_slider_owl .owl-carousel').owlCarousel({
                                 loop:false,
                                 dots:false,
                                 autoplay: res.auto_slide,
@@ -53,9 +60,42 @@ odoo.define('website_map.slider_js', function(require) {
                                     '<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'
                                 ],
                                 rewind:true,
-                                items: 1,
-
+                                items: 4,
+                                responsive: {
+                                    0: {
+                                        items: 1,
+                                    },
+                                    420: {
+                                        items: 1,
+                                    },
+                                    767: {
+                                        items: 3,
+                                    },
+                                    1000: {
+                                        items: 4,
+                                    },
+                                
+                                },
                             });
+                            }
+                            if (res.mobile === false){
+                                $('div.product_tab_slider_owl .owl-carousel').owlCarousel({
+                                    loop:false,
+                                    dots:false,
+                                    autoplay: res.auto_slide,
+                                    autoplayTimeout:res.auto_play_time,
+                                    autoplayHoverPause:true,
+                                    margin:30,
+                                    nav:true,
+                                    navText: [
+                                        '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>',
+                                        '<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'
+                                    ],
+                                    rewind:true,
+                                    items: 1,
+
+                                });
+                            }
                             setTimeout(function(){
                                 var divWidth = $('.product_tab_slider_owl .product-item .p-item-image a').width(); 
                                 $('.product_tab_slider_owl .product-item .p-item-image a').height(divWidth);
