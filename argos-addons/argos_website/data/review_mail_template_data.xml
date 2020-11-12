@@ -197,7 +197,7 @@
                                           veterinarian of<span style="color:#63bae9">${object.operating_unit_id.name}
                                         </span> for the support of <span style="color:#63bae9">
                                           ${object.patient_id.name}
-                                        </span> on <span style="color:#63bae9">${object.start_datetime}</span> with
+                                        </span> on <span style="color:#63bae9">${object.arrival_time}</span> with
                                           your veterinary <span style="color:#63bae9">
                                           ${object.employee_id.name}</span>.
                                         </div>
