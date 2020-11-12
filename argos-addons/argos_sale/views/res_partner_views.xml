@@ -25,8 +25,14 @@
           <group string="Acts">
             <field name="act_ids" nolabel="1">
               <tree>
-                <field name="order_id"/>
+                <field name="order_id" string="Consultation"/>
+                <field name="consultation_date"/>
                 <field name="product_id"/>
+                <field name="order_partner_id"/>
+                <field name="employee_id"/>
+                <field name="company_id"/>
+                <field name="operating_unit_id"/>
+                <field name="attachment_ids" widget="many2many_binary"/>
               </tree>
             </field>
           </group>
@@ -34,10 +40,20 @@
         <page name="hospitalization" position="inside">
           <field name="hospitalization_ids" nolabel="1">
             <tree>
-              <field name="order_id"/>
+              <field name="order_id" string="Consultation"/>
               <field name="product_id"/>
               <field name="consultation_date" string="Start date" />
               <field name="invoice_creation_date" string="End date" />
+              <field name="comment"/>
+            </tree>
+          </field>
+        </page>
+        <page name="surgery" position="inside">
+          <field name="surgery_ids" nolabel="1">
+            <tree>
+              <field name="order_id" string="Consultation"/>
+              <field name="consultation_date" string="Date"/>
+              <field name="attachment_ids" widget="many2many_binary"/>
               <field name="comment"/>
             </tree>
           </field>

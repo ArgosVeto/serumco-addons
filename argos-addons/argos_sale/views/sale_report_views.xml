@@ -64,8 +64,7 @@
                       </tr>
                       <tr>
                           <td>N° tattoo</td>
-                          <!--TODO: add when field added and translate too -->
-                          <td>CHAMP MANQUANT !!</td>
+                          <td><t t-esc="doc.patient_id.tattoo_number"/></td>
                       </tr>
                       <tr>
                           <td>Id. electronic</td>

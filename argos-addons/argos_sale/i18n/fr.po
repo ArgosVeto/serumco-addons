@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 13:45+0000\n"
-"PO-Revision-Date: 2020-11-09 13:45+0000\n"
+"POT-Creation-Date: 2020-11-12 08:09+0000\n"
+"PO-Revision-Date: 2020-11-12 08:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -161,6 +161,12 @@ msgid "Arrival Time"
 msgstr "Heure de début"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__attachment_ids
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__attachment_ids
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Belonging to"
 msgstr "Appartenant à"
@@ -169,11 +175,6 @@ msgstr "Appartenant à"
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid "Born (age)"
 msgstr "Né(e) le (age)"
-
-#. module: argos_sale
-#: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
-msgid "CHAMP MANQUANT !!"
-msgstr "CHAMP MANQUANT !!"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.order_refer_order_form
@@ -224,11 +225,7 @@ msgstr "Confirmer"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
-msgid "End"
-msgstr "Terminer"
-
-#. module: argos_sale
-#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Consultation"
 msgstr "Consultation"
 
@@ -323,6 +320,11 @@ msgid "Customer Observation"
 msgstr "Observation du client"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
+msgid "Date"
+msgstr "Date"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_billed
 msgid "Date Billed"
 msgstr "Date de facturation"
@@ -392,8 +394,14 @@ msgstr "Pack modifiable"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__employee_id
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__employee_id
 msgid "Employee"
 msgstr "Vétérinaire"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "End"
+msgstr "Terminer"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
@@ -625,6 +633,7 @@ msgstr "Pathologies & Intolérances"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__patient_id
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__patient_id
 #: model:ir.model.fields,field_description:argos_sale.field_sale_report__patient_id
 msgid "Patient"
 msgstr "Animal"
@@ -817,6 +826,13 @@ msgstr "Espèce"
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Start date"
 msgstr "Date de début"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_operating_unit__surgery_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_partner__surgery_ids
+#: model:ir.model.fields,field_description:argos_sale.field_res_users__surgery_ids
+msgid "Surgeries"
+msgstr "Chirurgies"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form

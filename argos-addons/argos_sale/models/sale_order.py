@@ -48,7 +48,12 @@ class SaleOrder(models.Model):
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
     invoice_creation_date = fields.Date('Invoice creation date')
+    attachment_ids = fields.Many2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
 
+    def _compute_attachment_ids(self):
+        for rec in self:
+            rec.attachment_ids = self.env['ir.attachment'].search(
+                [('res_id', '=', rec.id), ('res_model', '=', rec._name)])
 
     def _response_status_check(self, code):
         if code == 400:
@@ -307,4 +312,3 @@ class SaleOrder(models.Model):
             'pickup_time': fields.Datetime.now(),
             'argos_state': 'consultation_done'
         })
-

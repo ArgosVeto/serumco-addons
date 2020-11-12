@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="sale_order_view_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.view.form.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="argos_sale.consultation_view_order_form"/>
+      <field name="arch" type="xml">
+        <button name="button_referrals_view" position="after">
+          <button type="object"
+                  name="action_view_project_ids"
+                  class="oe_stat_button"
+                  icon="fa-puzzle-piece"
+                  string="Project Overview"
+                  attrs="{'invisible': [('project_ids', '=', [])]}"
+                  groups="project.group_project_manager">
+            <field name="project_ids" invisible="1"/>
+          </button>
+          <button type="object"
+                  name="action_view_task"
+                  class="oe_stat_button"
+                  icon="fa-tasks"
+                  attrs="{'invisible': [('tasks_count', '=', 0)]}"
+                  groups="project.group_project_user">
+            <field name="tasks_count" widget="statinfo" string="Tasks"/>
+          </button>
+        </button>
+      </field>
+    </record>
+
+  </data>
+</odoo>

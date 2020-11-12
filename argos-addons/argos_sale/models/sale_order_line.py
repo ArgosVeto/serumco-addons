@@ -15,7 +15,14 @@ class SaleOrderLine(models.Model):
     consultation_date = fields.Date(related='order_id.consultation_date')
     invoice_creation_date = fields.Date(related='order_id.invoice_creation_date')
     comment = fields.Text('Comment')
+    patient_id = fields.Many2one(related='order_id.patient_id')
+    employee_id = fields.Many2one(related='order_id.employee_id')
+    attachment_ids = fields.Many2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
 
+    def _compute_attachment_ids(self):
+        for rec in self:
+            rec.attachment_ids = self.env['ir.attachment'].search(
+                [('res_id', '=', rec.id), ('res_model', '=', rec._name)])
 
     @api.depends('product_id')
     def _compute_is_add_subline_allowed(self):

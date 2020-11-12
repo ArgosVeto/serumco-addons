@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models
+from odoo import models, fields
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -8,6 +8,8 @@ _logger = logging.getLogger(__name__)
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
+
+    sale_patient_id = fields.Many2one(related='sale_order_id.patient_id')
 
     def action_create_report(self):
         return {

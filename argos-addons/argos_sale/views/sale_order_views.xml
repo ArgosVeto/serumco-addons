@@ -438,12 +438,13 @@
         <tree string="Consultations">
           <field name="consultation_date"/>
           <field name="partner_id"/>
-          <field name="patient_id"/>
+          <field name="patient_id" invisible="context.get('from_patient', False)"/>
           <field name="employee_id"/>
           <field name="diagnostic_ids" widget="many2many_tags"/>
           <field name="hypothese_ids" widget="many2many_tags"/>
           <field name="company_id"/>
           <field name="operating_unit_id" string="Operating Unit"/>
+          <field name="attachment_ids" widget="many2many_binary" invisible="not context.get('from_patient', False)"/>
           <field name="state" invisible="1"/>
           <field name="argos_state" invisible="1"/>
         </tree>
