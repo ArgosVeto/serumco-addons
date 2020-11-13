@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, _
 
 
 class SaleOrderRefer(models.TransientModel):
@@ -15,6 +15,7 @@ class SaleOrderRefer(models.TransientModel):
     def get_refer_values(self, order):
         self.ensure_one()
         return {
+            'consultation_date': False,
             'refer_employee_id': order.employee_id.id,
             'referent_partner_id': self.env.user.partner_id.id,
             'is_referral': True,
@@ -34,6 +35,12 @@ class SaleOrderRefer(models.TransientModel):
         consultation = self.env['sale.order'].browse(self._context.get('active_id'))
         vals_overriden = self.get_refer_values(consultation)
         new_consultation = consultation.copy(vals_overriden)
+        self.env['mail.message'].create({
+            'body': _('Refer %s has been created from this order') % (new_consultation.name),
+            'message_type': 'comment',
+            'model': 'sale.order',
+            'res_id': consultation.id,
+        })
         action = self.env.ref('argos_sale.action_consultations').read()[0]
         action.update({
             'views': [(self.env.ref('argos_sale.consultation_view_order_form').id, 'form')],

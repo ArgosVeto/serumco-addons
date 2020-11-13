@@ -89,7 +89,8 @@
                 <field name="weight"/>
                 <field name="pathology_ids" widget="many2many_tags" string="Pathologies &amp; Intolerance"/>
                 <field name="consultation_type_id" string="Reason For Appointment"/>
-                <field name="referent_partner_id"/>
+                <field name="is_referral" invisible="1"/>
+                <field name="referent_partner_id" attrs="{'invisible': [('is_referral', '=', False)]}"/>
                 <field name="customer_observation"/>
                 <field name="canvas_id" context="{'default_is_canvas': True}"/>
                 <field name="observation"/>
