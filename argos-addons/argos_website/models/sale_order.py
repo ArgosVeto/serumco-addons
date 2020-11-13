@@ -16,11 +16,10 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         self.filtered(lambda so: so.website_id).generate_centravet_orders()
-        orders = self.filtered(lambda so: so.website_id)
-        new_orders = orders.filtered(lambda so: not so.partner_id.has_activity)
+        new_orders = self.filtered(lambda so: not so.partner_id.has_activity)
         new_orders.send_first_mail()
         new_orders.mapped('partner_id').write({'has_activity': True})
-        orders.send_review_email()
+        self.send_review_email()
         return res
 
     def generate_centravet_orders(self):
