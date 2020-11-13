@@ -428,3 +428,64 @@ msgstr "Retour client non réintégrable - autre"
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__batch_recall
 msgid "Batch recall by laboratory"
 msgstr "Rappel de lots par laboratoire"
+
+#. module: argos_stock
+#: model:ir.actions.act_window,name:argos_stock.registers_argos_move_line_action
+#: model:ir.ui.menu,name:argos_stock.stock_move_line_registers
+msgid "Registers"
+msgstr "Registres"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__chip
+msgid "Chip ID"
+msgstr "Identification de la puce"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__partner_id
+msgid "Customer/Address"
+msgstr "Client/Adresse"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__employee_id
+msgid "Delivered By"
+msgstr "Délivré par"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption
+msgid "Expiration Date"
+msgstr "Date de péremption "
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__order_number
+msgid "Order n°"
+msgstr "N° d'ordre"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__passport
+msgid "Passport"
+msgstr "Passeport"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__prescription
+#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
+msgid "Prescription n°"
+msgstr "N° d'ordonnance"
+
+#. module: argos_stock
+#: model:ir.actions.act_window,name:argos_stock.registers_argos_move_line_action
+#: model:ir.ui.menu,name:argos_stock.stock_move_line_registers
+msgid "Registers"
+msgstr "Registres"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__tattoo
+msgid "Tattoo n°"
+msgstr "N° du tatouage"
+
+
+#. module: argos_stock
+#: model:ir.model.fields,help:argos_stock.field_stock_move_line__peremption
+msgid ""
+"This is the date on which the goods with this Serial Number may become "
+"dangerous and must not be consumed."
+msgstr "Ceci est la date à laquelle les marchandises avec ce numéro de série commencent à se détériorer, sans pour autant être dangereuses"

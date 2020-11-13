@@ -13,6 +13,7 @@
         'sale_stock',
         'argos_product',
         'argos_sale',
+        'product_expiry'
     ],
     'data': [
         # security
@@ -29,6 +30,7 @@
         'views/menu_views.xml',
         'views/stock_return_picking_views.xml',
         'views/stock_scrap_views.xml',
+        'views/stock_move_line_registers_views.xml',
     ],
     'application': False,
     'installable': True,
