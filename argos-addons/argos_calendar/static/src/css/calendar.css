@@ -194,3 +194,9 @@
     position: relative;
     top: 50%;
 }
+
+.event_icon{
+    position: absolute;
+    top: 25px;
+    right: 0px;
+}

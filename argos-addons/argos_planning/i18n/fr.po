@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-06 13:34+0000\n"
-"PO-Revision-Date: 2020-11-06 13:34+0000\n"
+"POT-Creation-Date: 2020-11-13 07:36+0000\n"
+"PO-Revision-Date: 2020-11-13 07:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1720,14 +1720,24 @@ msgid "<span class=\"align-middle\">for this customer.</span>"
 msgstr "<span class=\"align-middle\">pour ce client.</span>"
 
 #. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "<span>week(s)</span>"
+msgstr "<span>semaine(s)</span>"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_search_inherit
 msgid "Active appointment"
 msgstr "Rendez-vous actif"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "Agglomeration"
+msgstr "Agglomération"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_role__allday
@@ -1854,6 +1864,11 @@ msgid "End Date"
 msgstr "Date de fin"
 
 #. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "End date"
+msgstr "Date de fin"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__id
 msgid "ID"
 msgstr ""
@@ -1928,6 +1943,11 @@ msgid "Patient Planning Slots"
 msgstr "Rendez-vous"
 
 #. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__patient_ids
+msgid "Patients List"
+msgstr "Animaux"
+
+#. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__source__phone
 #: model:ir.model.fields.selection,name:argos_planning.selection__res_partner__source__phone
 msgid "Phone"
@@ -1937,6 +1957,14 @@ msgstr "Téléphone"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__pickup_time
 msgid "Pick-up Time"
 msgstr "Heure de prise en charge"
+
+#. module: argos_planning
+#: code:addons/argos_planning/models/res_partner.py:0
+#: model_terms:ir.ui.view,arch_db:argos_planning.res_partner_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:argos_planning.res_partner_view_form_patient
+#, python-format
+msgid "Planning"
+msgstr ""
 
 #. module: argos_planning
 #: model:ir.model,name:argos_planning.model_planning_assignment
@@ -1973,6 +2001,11 @@ msgid "Planning Slots"
 msgstr "Rendez-vous"
 
 #. module: argos_planning
+#: model:mail.template,subject:argos_planning.planning_validation_mail_template
+msgid "Planning Validation"
+msgstr "Validation de la planification"
+
+#. module: argos_planning
 #: model:ir.actions.server,name:argos_planning.ir_cron_planning_recovery_ir_actions_server
 #: model:ir.cron,cron_name:argos_planning.ir_cron_planning_recovery
 #: model:ir.cron,name:argos_planning.ir_cron_planning_recovery
@@ -1990,7 +2023,13 @@ msgid "Rdv"
 msgstr "Rendez-vous"
 
 #. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "Repeat Every"
+msgstr "Répéter tous les"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_role__role_type
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__role_type
 msgid "Role Type"
 msgstr "Type"
 
@@ -2010,6 +2049,11 @@ msgstr "Source du premier rendez-vous"
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__start_date
 msgid "Start Date"
+msgstr "Date de début"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+msgid "Start date"
 msgstr "Date de début"
 
 #. module: argos_planning
@@ -2049,6 +2093,7 @@ msgstr "Validé"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__employee_id
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
 msgid "Veterinary"
 msgstr "Vétérinaire"
 
@@ -2068,6 +2113,11 @@ msgstr "Temps d'attente"
 #: model:ir.model.fields.selection,name:argos_planning.selection__res_partner__source__web
 msgid "Web"
 msgstr ""
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__website_planning
+msgid "Website planning"
+msgstr "Planification en ligne"
 
 #. module: argos_planning
 #: model:mail.template,subject:argos_planning.planning_welcome_mail_template

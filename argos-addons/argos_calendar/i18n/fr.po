@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 06:09+0000\n"
-"PO-Revision-Date: 2020-11-09 06:09+0000\n"
+"POT-Creation-Date: 2020-11-13 13:28+0000\n"
+"PO-Revision-Date: 2020-11-13 13:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -538,6 +538,11 @@ msgid "(timezone:"
 msgstr "(fuseau horaire :"
 
 #. module: argos_calendar
+#: model_terms:ir.ui.view,arch_db:argos_calendar.replanning_form
+msgid "+1 (650) 691-3277"
+msgstr "+1 (650) 691-3277"
+
+#. module: argos_calendar
 #: code:addons/argos_calendar/controllers/portal.py:0
 #, python-format
 msgid ", All Day"
@@ -715,6 +720,14 @@ msgstr "Annulé"
 #, python-format
 msgid "Clients with unfulfilled appointments"
 msgstr "Clients avec des rendez-vous non honoré"
+
+#. module: argos_calendar
+#. openerp-web
+#: code:addons/argos_calendar/static/src/js/calendar_controller.js:0
+#: code:addons/argos_calendar/static/src/js/calendar_controller.js:0
+#, python-format
+msgid "Close"
+msgstr "Fermer"
 
 #. module: argos_calendar
 #: model:ir.model,name:argos_calendar.model_res_company
@@ -959,11 +972,6 @@ msgid "RDV Reason"
 msgstr "Motif du RDV"
 
 #. module: argos_calendar
-#: model_terms:ir.ui.view,arch_db:argos_calendar.planning_view_agenda
-msgid "RDV Type"
-msgstr "Type de RDV"
-
-#. module: argos_calendar
 #: model:ir.model.fields,field_description:argos_calendar.field_calendar_appointment_type__species_id
 msgid "Species"
 msgstr "Espèce"
@@ -1091,6 +1099,13 @@ msgid "Your appointment is in less than"
 msgstr "Votre rendez-vous est dans moins de"
 
 #. module: argos_calendar
+#. openerp-web
+#: code:addons/argos_calendar/static/src/xml/web_calendar.xml:0
+#, python-format
+msgid "for:"
+msgstr "pour: "
+
+#. module: argos_calendar
 #: model_terms:ir.ui.view,arch_db:argos_calendar.appointment_info
 #: model_terms:ir.ui.view,arch_db:argos_calendar.appointment_validated_inherit
 #: model_terms:ir.ui.view,arch_db:argos_calendar.portal_my_plannings
@@ -1106,3 +1121,10 @@ msgstr "heures."
 #: model_terms:ir.ui.view,arch_db:argos_calendar.replanning_form
 msgid "on"
 msgstr "le"
+
+#. module: argos_calendar
+#. openerp-web
+#: code:addons/argos_calendar/static/src/xml/web_calendar.xml:0
+#, python-format
+msgid "reason:"
+msgstr "motif:"

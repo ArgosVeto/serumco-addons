@@ -1,18 +1,37 @@
 <?xml version="1.0"?>
 <odoo>
+  <record id="planning_slot_view_form_inherit_calendar" model="ir.ui.view">
+    <field name="name">planning.slot.view.form.inherit.calendar</field>
+    <field name="model">planning.slot</field>
+    <field name="inherit_id" ref="argos_planning.planning_slot_view_form_inherit"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <field name="template_id" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
+      <field name="template_creation" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </field>
+      <label for="template_creation" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </label>
+    </field>
+  </record>
+
   <record id="planning_view_agenda" model="ir.ui.view">
     <field name="name">planning.slot.agenda</field>
     <field name="model">planning.slot</field>
     <field name="priority">10</field>
     <field name="arch" type="xml">
       <calendar string="Agenda" date_start="start_datetime" date_stop="end_datetime" color="role_id" all_day="allday"
-                form_view_id="%(argos_planning.planning_slot_view_form_inherit)d" event_open_popup="true"
+                form_view_id="%(argos_calendar.planning_slot_view_form_inherit_calendar)d" event_open_popup="true"
                 quick_add="False">
         <field name="state" readonly="1"/>
-        <field name="name" string="RDV Reason"/>
-        <field name="role_id" string="RDV Type"/>
+        <field name="name" invisible="1"/>
+        <field name="role_id" invisible="1"/>
         <field name="partner_id"/>
         <field name="patient_id"/>
+        <field name="consultation_type_id" string="RDV Reason"/>
         <field name="partner_phone"/>
         <field name="arrival_time"/>
         <field name="background_event" invisible="1"/>
@@ -42,4 +61,6 @@
           sequence="20"
           parent="planning.planning_menu_my_planning"
           action="agenda_calendar_action_server"/>
+
+  <delete model="ir.ui.menu" search="[('id','=',ref('planning.planning_menu_calendar', raise_if_not_found=False))]" />
 </odoo>
