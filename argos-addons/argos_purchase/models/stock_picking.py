@@ -18,6 +18,10 @@ class StockPicking(models.Model):
                     cutoff_account = self.env.company.default_accrued_expense_account_id
                     cutoff_account = cutoff_account or self.env['account.account'].search([('code', '=', '408100')], limit=1)
                     picking.create_purchase_cutoff(purchase, cutoff_account)
+                    if not purchase.invoice_ids:
+                        invoice = picking.create_purchase_invoice({'purchase_id': purchase.id, 'type': 'in_invoice', 'company_id':
+                            picking.company_id.id})
+                        purchase.invoice_ids = invoice
 
     @api.model
     def create_purchase_cutoff(self, purchase, cutoff_account):
@@ -59,3 +63,8 @@ class StockPicking(models.Model):
         for val in purchase_line_dict.values():
             line_values = cutoff.picking_prepare_cutoff_line(val, account_mapping)
         return line_values
+
+    def create_purchase_invoice(self, vals):
+        invoice = self.env["account.move"].new(vals)
+        invoice._onchange_purchase_auto_complete()
+        return invoice

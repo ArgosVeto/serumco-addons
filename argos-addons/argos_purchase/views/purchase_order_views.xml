@@ -38,7 +38,7 @@
         </xpath>
         <xpath expr="//div[@name='button_box']/button[@name='action_view_invoice'][last()]" position="before">
           <field name="cutoff_move_ids" invisible="1"/>
-          <button name="action_view_cutoff" type="object"  class="oe_stat_button" icon="fa-pencil-square-o"
+          <button name="action_view_cutoff" type="object"  class="oe_stat_button" icon="fa-align-justify"
                   attrs="{'invisible':[('cutoff_move_count', '=', 0)]}">
             <field name="cutoff_move_count" widget="statinfo" string="Accrued Expense"/>
           </button>

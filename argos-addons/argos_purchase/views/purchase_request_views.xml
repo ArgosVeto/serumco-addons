@@ -24,7 +24,8 @@
           <attribute name="invisible">1</attribute>
         </field>
         <xpath expr="//button[@name='button_done']" position="before">
-          <button name="%(action_stock_pooled_request)d" type="action" string="Create pooled stock picking"/>
+          <button name="%(action_stock_pooled_request)d" type="action" string="Create pooled stock picking"
+                  attrs="{'invisible':[('state', '!=', 'approved')]}"/>
         </xpath>
         <xpath expr="//field[@name='product_qty']" position="after">
           <field name="pooled_stock"/>

@@ -25,6 +25,7 @@
     'data': [
         #security
         'security/ir.model.access.csv',
+        'security/purchase_request_rules.xml',
         #data
         'data/ir_sequence_data.xml',
         'data/purchase_order_edi_template.xml',
