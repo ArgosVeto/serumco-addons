@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 13:34+0000\n"
-"PO-Revision-Date: 2020-11-09 13:34+0000\n"
+"POT-Creation-Date: 2020-11-10 13:34+0000\n"
+"PO-Revision-Date: 2020-11-10 13:34+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -218,6 +218,7 @@ msgid "Contact Type"
 msgstr "Type de contact"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_uid
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_uid
@@ -227,6 +228,7 @@ msgid "Created by"
 msgstr "Créé par"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_date
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_date
@@ -237,6 +239,7 @@ msgstr "Créé le"
 
 #. module: argos_contact
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
+#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
 #: model_terms:ir.ui.view,arch_db:argos_contact.res_partner_weight_view_search
 msgid "Date"
 msgstr "Date"
@@ -293,6 +296,7 @@ msgid "Diet"
 msgstr "Alimentation"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__display_name
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__display_name
@@ -375,6 +379,7 @@ msgid "Hospitalization"
 msgstr "Hospitalisation"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__id
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__id
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__id
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__id
@@ -473,6 +478,7 @@ msgid "Issue Date"
 msgstr "Date d'émission"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category____last_update
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter____last_update
@@ -482,6 +488,7 @@ msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_uid
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_uid
@@ -491,6 +498,7 @@ msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: argos_contact
+#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_date
 #: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_date
@@ -1115,32 +1123,6 @@ msgid "Comment"
 msgstr "Commentaires"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_uid
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_uid
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__create_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__create_uid
-msgid "Created by"
-msgstr "Créé par"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__create_date
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__create_date
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__create_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__create_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__create_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__create_date
-msgid "Created on"
-msgstr "Créé le"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__date
-#: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
-msgid "Date"
-msgstr ""
-
-#. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
 msgid "Date Of Birth (Optional)"
 msgstr "Date de naissance (le cas échéant)"
@@ -1149,16 +1131,6 @@ msgstr "Date de naissance (le cas échéant)"
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
 msgid "Diagnostic"
 msgstr "Diagnostique"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__display_name
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__display_name
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__display_name
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__display_name
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__display_name
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__display_name
-msgid "Display Name"
-msgstr "Afficher Nom"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
@@ -1209,16 +1181,6 @@ msgid "Hypotheses"
 msgstr "Hypothèses"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__id
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__id
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__id
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__id
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__id
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__id
-msgid "ID"
-msgstr "Identifiant"
-
-#. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
 msgid "Identification Number"
 msgstr "N° identification"
@@ -1230,39 +1192,9 @@ msgid "Is Complete"
 msgstr "Est complet"
 
 #. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history____last_update
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport____last_update
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category____last_update
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter____last_update
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology____last_update
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight____last_update
-msgid "Last Modified on"
-msgstr "Dernière modification le"
-
-#. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document
 msgid "Last Name, First Name"
 msgstr "Nom, prénom"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_uid
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_uid
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__write_uid
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__write_uid
-msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
-
-#. module: argos_contact
-#: model:ir.model.fields,field_description:argos_contact.field_export_medical_history__write_date
-#: model:ir.model.fields,field_description:argos_contact.field_passport_passport__write_date
-#: model:ir.model.fields,field_description:argos_contact.field_pathology_category__write_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_parameter__write_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_pathology__write_date
-#: model:ir.model.fields,field_description:argos_contact.field_res_partner_weight__write_date
-msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
 
 #. module: argos_contact
 #: model_terms:ir.ui.view,arch_db:argos_contact.export_medical_history_document

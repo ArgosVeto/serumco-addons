@@ -10,7 +10,10 @@ class SaleAdvancePaymentInv(models.TransientModel):
         sale_orders = self.env['sale.order'].browse(self._context.get('active_ids', []))
         for order in sale_orders:
             for project in order.project_ids:
-                project.write({'billed': True})
+                project.write({
+                    'billed': True,
+                    'active': False,
+                })
             order.write({'invoice_creation_date': fields.Date.today()})
             if any(line.product_id.act_type in ['euthanasia', 'incineration'] for line in order.order_line):
                 order.patient_id.write({

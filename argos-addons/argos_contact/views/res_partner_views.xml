@@ -115,7 +115,7 @@
                 </field>
                 <button name="%(argos_contact.action_res_partner_weight_graph)d" type="action" string="View graph"/>
               </page>
-              <page string="Surgery"/>
+              <page name="surgery" string="Surgery"/>
               <page string="Vaccination"/>
               <page name="hospitalization" string="Hospitalization"/>
               <page name="analysis" string="Analysis"/>
@@ -197,7 +197,7 @@
       <field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
         'form_view_ref': 'argos_contact.res_partner_view_form',
         'kanban_view_ref': 'argos_contact.patient_kanban_form',
-        'default_contact_type': 'patient', }
+        'default_contact_type': 'patient', 'from_patient': True}
       </field>
       <field name="domain">[('contact_type', '=', 'patient')]</field>
     </record>
