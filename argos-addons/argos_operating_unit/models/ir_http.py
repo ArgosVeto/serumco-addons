@@ -21,5 +21,5 @@ class IrHttp(models.AbstractModel):
             res['user_operating_units'] = user_operating_units
             res['user_operating_unit_ids'] = user_operating_unit_ids
             res['display_switch_company_menu'] = (user.has_group('base.group_multi_company') and len(
-                user.company_ids) > 1) or len(user.operation_unit_ids) > 1
+                user.company_ids) > 1) or len(user.operating_unit_ids) > 1
         return res
