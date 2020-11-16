@@ -26,11 +26,13 @@ class SaleOrder(models.Model):
         Generate csv order and send it to the centravet FTP
         :return:
         """
-        baseurl = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        watermark = self.env['ir.config_parameter'].sudo().get_param('centravet.watermark')
-        subscriber_code = self.env['ir.config_parameter'].sudo().get_param('centravet.subscriber_code')
-        code_version = self.env['ir.config_parameter'].sudo().get_param('code.version')
+        param_obj = self.env['ir.config_parameter'].sudo()
+        baseurl = param_obj.get_param('web.base.url')
+        watermark = param_obj.get_param('centravet.watermark')
+        subscriber_code = param_obj.get_param('centravet.subscriber_code')
+        code_version = param_obj.get_param('code.version')
         server = self.env.ref('argos_sale.server_ftp_argos_sale_order_data', raise_if_not_found=False)
+        billing_methods_code = param_obj.get_param('billing.methods.code')
         for order in self:
             csv_data = io.StringIO()
             csv_writer = csv.writer(csv_data, delimiter=',')
@@ -55,7 +57,7 @@ class SaleOrder(models.Model):
                                      code or '',
                                      baseurl or '',
                                      operating_unit.email or '',
-                                     '',
+                                     billing_methods_code or '',
                                      password or '',
                                      'WVTCDK',
                                      code_version or '',
