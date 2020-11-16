@@ -268,3 +268,6 @@ class PlanningSlot(models.Model):
                                                                               raise_exception=True)
                 except Exception as e:
                     _logger.error(repr(e))
+
+    def action_close_dialog(self):
+        return {'type': 'ir.actions.client', 'tag': 'reload'}

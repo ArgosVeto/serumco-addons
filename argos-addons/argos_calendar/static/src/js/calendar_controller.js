@@ -80,11 +80,22 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                         var $fc_view = $calendar.find('.fc-view-container');
                         var scrollPosition = $fc_view.scrollLeft();
                         self.updateView(scrollPosition, true);
-                    },
+                    }
                 };
                 if (this.formViewId) {
                     options.view_id = parseInt(this.formViewId);
                 }
+                options.buttons = [{
+                    text: _t("Close"),
+                    classes: "btn-secondary o_form_button_cancel pull-right",
+                    close: true,
+                    click: function () {
+                        var $calendar = self.renderer.$calendar;
+                        var $fc_view = $calendar.find('.fc-view-container');
+                        var scrollPosition = $fc_view.scrollLeft();
+                        self.updateView(scrollPosition, true);
+                    },
+                }];
                 new dialogs.FormViewDialog(this, options).open();
             } else {
                 return this._super.apply(this, arguments);
@@ -154,12 +165,24 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                     if (this.previousOpen) {
                         this.previousOpen.close();
                     }
+
                     this.previousOpen = new dialogs.FormViewDialog(self, {
                         res_model: this.modelName,
                         context: context,
                         title: title,
                         view_id: this.formViewId || false,
                         disable_multiple_selection: true,
+                        buttons: [{
+                            text: _t("Close"),
+                            classes: "btn-secondary o_form_button_cancel pull-right",
+                            close: true,
+                            click: function () {
+                                var $calendar = self.renderer.$calendar;
+                                var $fc_view = $calendar.find('.fc-view-container');
+                                var scrollPosition = $fc_view.scrollLeft();
+                                self.updateView(scrollPosition, true);
+                            },
+                        }],
                         on_saved: function () {
                             if (event.data.on_save) {
                                 event.data.on_save();

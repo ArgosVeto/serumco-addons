@@ -12,6 +12,50 @@ odoo.define('argos_calendar.CalendarModel', function (require) {
             return this._super.apply(this, arguments);
         },
 
+        _loadCalendar: function () {
+            if (this.fieldColumn && !this.initial_load) {
+                var self = this;
+                this.data.fc_options = this._getFullCalendarOptions();
+
+                var defs = _.map(this.data.filters, this._loadFilter.bind(this));
+
+                return Promise.all(defs.concat(this._update_inactive_filters())).then(function () {
+                    return self._rpc({
+                        model: self.modelName,
+                        method: 'search_read',
+                        context: self.data.context,
+                        fields: self.fieldNames,
+                        domain: self.data.domain.concat(self._getRangeDomain()).concat(self._getFilterDomain())
+                    }).then(function (events) {
+                        self._parseServerData(events);
+                        self.data.unfiltered_data = _.map(events, self._recordToCalendarEvent.bind(self));
+                        self.data.data = _.filter(self.data.unfiltered_data, function(filter){
+                            return self.data.inactive_filters.indexOf(filter.record.role_id[0]) == -1;
+                        });
+                        self.initial_load = true;
+                        return Promise.all([
+                            self._loadColors(self.data, self.data.data),
+                            self._loadRecordsToFilters(self.data, self.data.unfiltered_data)
+                        ]);
+                    });
+                });
+            } else {
+                return Promise.all([this._super.apply(this, arguments)]);
+            }
+        },
+
+        _update_inactive_filters: function () {
+            var self = this;
+            return self._rpc({
+                model: 'planning.slot',
+                method: 'get_inactive_filters',
+                context: self.data.context,
+            }).then(function (inactive_filters) {
+                self.data.inactive_filters = inactive_filters;
+                return inactive_filters;
+            });
+        },
+
         _filter_visible_filters: function () {
             var self = this;
             _.each(self.data.filters, function (filter) {
@@ -89,7 +133,8 @@ odoo.define('argos_calendar.CalendarModel', function (require) {
             result.schedulerLicenseKey = 'GPL-My-Project-Is-Open-Source';
             if (this.fieldColumn) {
                 var slotDuration = '00:15:00';
-                // var slotLabelInterval = 15;
+                result.minTime = '08:00';
+                result.maxTime = '20:00';
                 result.slotDuration = slotDuration;
                 result.dragScroll = true;
                 result.resources = [];

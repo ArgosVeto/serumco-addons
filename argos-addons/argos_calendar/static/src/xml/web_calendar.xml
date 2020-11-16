@@ -35,9 +35,18 @@
       </div>
       <div>
         <t t-if="record.role_id">
-          <span class="o_event_title" t-esc="record.role_id[1]"/>
+          <div style="display: inline-block; font-size: 12px; padding: 2px;">
+            <span class="o_event_customer" t-esc="record.partner_id[1]"/><br/>
+            <span class="o_event_title" t-esc="record.role_id[1]"/><br/>
+            <t t-if="record.patient_id">
+              <b>for:</b> <span class="o_event_patient" t-esc="record.patient_id[1]"/><br/>
+            </t>
+            <t t-if="record.consultation_type_id">
+              <b>reason:</b> <span class="o_event_type" t-esc="record.consultation_type_id[1]"/>
+            </t>
+          </div>
         </t>
-        <div class="float-right event_icon">
+        <div class="event_icon">
           <span t-if="record.invoice_count > 0">
             <img src="/web/binary/invoice_icon" class="rounded-circle img-fluid"
                  style="max-width: 20px"/>

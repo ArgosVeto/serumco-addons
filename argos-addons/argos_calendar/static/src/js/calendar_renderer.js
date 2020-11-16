@@ -199,30 +199,8 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             return this._super.apply(this, arguments);
         },
 
-        _renderFilters: function () {
-            var self = this;
-            return Promise.all([this._super.apply(this, arguments)]).then(function (res) {
-                if (self.state.context.agenda_calendar && !self.initial_filter) {
-                    self._rpc({
-                        model: 'planning.slot',
-                        method: 'get_inactive_filters',
-                        context: self.state.context,
-                    }).then(function (inactive_filters) {
-                        _.each(inactive_filters, function (f) {
-                            self.trigger_up('changeFilter', {
-                                'fieldName': 'role_id',
-                                'value': f,
-                                'active': false,
-                            });
-                            self.initial_filter = true;
-                        });
-                    });
-                }
-                return res;
-            });
-        },
-
         _renderFiltersOneByOne: function (filterIndex) {
+            var self = this;
             if (this.state.context.agenda_calendar) {
                 filterIndex = filterIndex || 0;
                 var arrFilters = _.sortBy(_.toArray(this.state.filters), function (f) {
@@ -233,6 +211,10 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     var options = arrFilters[filterIndex];
                     _.each(options.filters, function (f) {
                         f.display = true;
+                        if (f.avatar_model == 'planning.role' && !self.initial_filter &&  self.state.inactive_filters.includes(parseInt(f.value))) {
+                            f.active = false;
+                            self.initial_filter = true;
+                        }
                     });
                     if (!_.find(options.filters, function (f) {
                         return f.display == null || f.display;
@@ -501,6 +483,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                 this.$sidebar_container.toggleClass('d-md-block d-flex');
             }
             this.$sidebar_container.find('.o_calendar_sidebar').toggle(this.toogle_sidebar);
+
             if (this.toogle_sidebar) {
                 this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-left" style="color: #63BAE9"></button>'));
             } else {

@@ -8,7 +8,8 @@
       <field name="arch" type="xml">
         <xpath expr="//filter[@name='past']" position="after">
           <filter name="unexpected_rdv" string="Unexpected appointment" domain="[('unexpected_rdv', '=', True)]"/>
-          <filter name="active_rdv" string="Active appointment" domain="[('state', 'not in', ['cancel','not_honored'])]"/>
+          <filter name="active_rdv" string="Active appointment"
+                  domain="[('state', 'not in', ['cancel','not_honored'])]"/>
         </xpath>
       </field>
     </record>
@@ -87,11 +88,6 @@
             <field name="state" widget="statusbar"/>
           </header>
         </xpath>
-        <field name="start_datetime" position="before">
-          <field name="allday" invisible="1"/>
-          <field name="background_event"/>
-          <field name="unexpected_rdv"/>
-        </field>
         <field name="is_assigned_to_me" position="before">
           <div class="oe_button_box" name="button_box">
             <button attrs="{'invisible': [('arrival_time', '=', False)]}">
@@ -99,27 +95,53 @@
             </button>
           </div>
         </field>
-        <xpath expr="//field[@name='role_id']" position="after">
-          <field name="operating_unit_id"/>
-          <field name="active" invisible="1"/>
+        <xpath expr="//sheet/group[2]/group[1]" position="replace">
+          <group>
+            <field name="source" invisible="1"/>
+            <field name="mrdv_event_id" invisible="1"/>
+            <field name="mrdv_job_id" invisible="1"/>
+            <field name="patient_ids" invisible="1"/>
+            <field name="role_type" invisible="1"/>
+            <field name="pickup_time" invisible="1"/>
+            <field name="partner_id" attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"/>
+            <field name="patient_id" domain="[('id','in',patient_ids)]"
+                   attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"
+                   context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
+            <field name="consultation_type_id" string="Appointment nature"/>
+            <field name="more_info"/>
+          </group>
         </xpath>
-        <xpath expr="//field[@name='template_autocomplete_ids']" position="before">
+        <xpath expr="//sheet/group[2]/group[2]" position="replace">
+          <group>
+            <field name="active" invisible="1"/>
+            <field name="employee_id" string="Veterinary"/>
+            <field name="role_id"/>
+            <field name="operating_unit_id"/>
+            <field name="company_id" groups="base.group_multi_company" string="Agglomeration"/>
+          </group>
+        </xpath>
+        <xpath expr="//sheet/group[3]" position="replace">
           <group>
             <group>
-              <field name="source"/>
-              <field name="mrdv_event_id"/>
-              <field name="mrdv_job_id"/>
+              <field name="start_datetime" string="Start date"/>
+              <field name="end_datetime" string="End date"/>
+              <field name="allocated_hours" widget="float_time"/>
+              <field name="allocated_percentage" groups="planning.group_planning_show_percentage"/>
             </group>
             <group>
-              <field name="patient_ids" invisible="1"/>
-              <field name="role_type" invisible="1"/>
-              <field name="partner_id" attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"/>
-              <field name="patient_id" domain="[('id','in',patient_ids)]"
-                     attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"
-                     context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
-              <field name="consultation_type_id" string="Appointment nature"/>
-              <field name="pickup_time" invisible="1"/>
-              <field name="more_info"/>
+              <field name="allday" invisible="1"/>
+              <field name="background_event"/>
+              <field name="unexpected_rdv"/>
+              <field name="repeat" groups="planning.group_planning_manager"/>
+              <label for="repeat_interval" string="Repeat Every" attrs="{'invisible': [('repeat', '=', False)]}"/>
+              <div class="o_row" attrs="{'invisible': [('repeat', '=', False)]}">
+                <field name="repeat_interval" class="oe_inline" nolabel="1"/>
+                <span>week(s)</span>
+                <field name="repeat_type" class="oe_inline" nolabel="1" attrs="{'required': [('repeat', '=', True)]}"/>
+                <field name="repeat_until" class="oe_inline"
+                       attrs="{'invisible': [('repeat_type', '!=', 'until')], 'required': [('repeat_type', '=', 'until')]}"
+                       nolabel="1"/>
+              </div>
             </group>
           </group>
         </xpath>
