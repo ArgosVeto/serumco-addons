@@ -149,7 +149,11 @@ class PlanningSlot(models.Model):
     def button_validate(self):
         self.ensure_one()
         self.write({'state': 'validated'})
+        if self.partner_id and not self.partner_id.has_activity:
+            self.send_first_mail()
+            self.partner_id.write({'has_activity': True})
         self.send_confirmation_mail()
+        self.send_review_email()
         return True
 
     def button_not_honored(self):
@@ -230,9 +234,6 @@ class PlanningSlot(models.Model):
             res.send_notification_mail()
         if not res.website_planning:
             res.check_veterinary_presence()
-        if res.partner_id and not res.partner_id.has_activity:
-            res.send_first_mail()
-            res.partner_id.has_activity = True
         return res
 
     def check_veterinary_presence(self):
@@ -265,3 +266,12 @@ class PlanningSlot(models.Model):
             email_template.send_mail(self.id, force_send=True, raise_exception=True)
         except Exception as e:
             _logger.error(repr(e))
+
+    def send_review_email(self):
+        for rec in self:
+            try:
+                email_template = self.env.ref('argos_planning.review_mail_template')
+                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
+            except Exception as e:
+                _logger.error(repr(e))
+        return True

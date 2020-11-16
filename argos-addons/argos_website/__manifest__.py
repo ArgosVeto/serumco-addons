@@ -30,7 +30,6 @@
         'data/res_config_parameter.xml',
         'data/ir_sequence_data.xml',
         'data/welcome_mail_template_data.xml',
-        'data/review_mail_template_data.xml',
         # security
         # 'security/ir.model.access.csv',
         'security/res_groups.xml',

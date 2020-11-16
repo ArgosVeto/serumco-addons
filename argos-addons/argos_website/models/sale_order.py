@@ -19,7 +19,6 @@ class SaleOrder(models.Model):
         new_orders = self.filtered(lambda so: not so.partner_id.has_activity)
         new_orders.send_first_mail()
         new_orders.mapped('partner_id').write({'has_activity': True})
-        self.send_review_email()
         return res
 
     def generate_centravet_orders(self):
@@ -84,15 +83,6 @@ class SaleOrder(models.Model):
         for rec in self:
             try:
                 email_template = self.env.ref('argos_website.website_welcome_mail_template')
-                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
-            except Exception as e:
-                _logger.error(repr(e))
-        return True
-
-    def send_review_email(self):
-        for rec in self:
-            try:
-                email_template = self.env.ref('argos_website.review_mail_template')
                 email_template.send_mail(rec.id, force_send=True, raise_exception=True)
             except Exception as e:
                 _logger.error(repr(e))

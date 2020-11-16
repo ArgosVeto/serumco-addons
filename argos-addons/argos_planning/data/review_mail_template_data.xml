@@ -3,12 +3,12 @@
   <data>
     <record id="review_mail_template" model="mail.template">
       <field name="name">ARGOS - Leave opinion</field>
-      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="model_id" ref="planning.model_planning_slot"/>
       <field name="subject">Leave a review</field>
       <field name="email_from">${object.operating_unit_id.name or ''}</field>
       <field name="email_to">${object.partner_id.email | safe}</field>
       <field name="reply_to">${object.operating_unit_id.reply_email | safe}</field>
-      <field name="scheduled_date">${object.date_order + relativedelta(days=1)}</field>
+      <field name="scheduled_date">${object.start_datetime + relativedelta(days=1)}</field>
       <field name="body_html" type="html">
 
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -197,7 +197,7 @@
                                           veterinarian of<span style="color:#63bae9">${object.operating_unit_id.name}
                                         </span> for the support of <span style="color:#63bae9">
                                           ${object.patient_id.name}
-                                        </span> on <span style="color:#63bae9">${object.arrival_time}</span> with
+                                        </span> on <span style="color:#63bae9">${object.start_datetime}</span> with
                                           your veterinary <span style="color:#63bae9">
                                           ${object.employee_id.name}</span>.
                                         </div>
