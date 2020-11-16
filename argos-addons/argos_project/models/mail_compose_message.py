@@ -29,13 +29,14 @@ class MailComposer(models.TransientModel):
                 'mimetype': 'application/pdf'
             }
             attachment_obj.create(attachment)
-            task = self.env['project.task'].browse(self.res_id)
-            if task.sale_line_id:
-                attachment.update({
-                    'res_model': 'sale.order.line',
-                    'res_id': task.sale_line_id.id,
-                })
-                attachment_obj.create(attachment)
+            if self.model == 'project.task' and self.res_id:
+                task = self.env['project.task'].browse(self.res_id)
+                if task.sale_line_id:
+                    attachment.update({
+                        'res_model': 'sale.order.line',
+                        'res_id': task.sale_line_id.id,
+                    })
+                    attachment_obj.create(attachment)
         self.send_mail()
         return {'type': 'ir.actions.client', 'tag': 'reload', 'infos': 'mail_sent'}
 
