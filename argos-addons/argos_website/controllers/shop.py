@@ -39,7 +39,7 @@ class WebsiteSale(WebsiteSale):
         reason = self._response_status_check(response.status_code)
 
         request.env['soap.wsdl.log'].sudo().create({
-            'name': 'API stock centravet AUTH',
+            'description': 'API Centravet AUTH',
             'res_id': log_res_id,
             'model_id': request.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
             'msg': "Ask API authorization token",
@@ -65,13 +65,14 @@ class WebsiteSale(WebsiteSale):
         reason = self._response_status_check(response.status_code)
 
         request.env['soap.wsdl.log'].sudo().create({
-            'name': 'API stock check product availability',
+            'description': 'API stock check product availability',
             'res_id': log_res_id,
             'model_id': request.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
             'msg': "Ask API to check if products are available",
             'date': fields.Datetime.today(),
             'state': 'successful' if response.status_code == 200 else 'error',
             'reason': reason,
+            'user_id': request.env.user.id,
         })
 
         return response.json() if (response.status_code == 200) else False

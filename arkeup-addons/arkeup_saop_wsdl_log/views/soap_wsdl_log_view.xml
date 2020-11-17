@@ -28,6 +28,7 @@
                 <field name="create_date" string="Create Date" readonly="1"/>
               </group>
               <group>
+                <field name="description"/>
                 <field name="user_id"/>
                 <field name="msg" attrs="{'readonly': [('state', '!=', 'new')]}" groups="base.group_system"/>
               </group>
@@ -46,6 +47,7 @@
       <field name="arch" type="xml">
         <tree string="Soap Wsdl Requests" create="0">
           <field name="name"/>
+          <field name="description"/>
           <field name="create_date" string="Create Date"/>
           <field name="partner_id"/>
           <field name="res_id"/>

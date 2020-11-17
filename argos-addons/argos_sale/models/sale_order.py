@@ -87,19 +87,19 @@ class SaleOrder(models.Model):
         reason = self._response_status_check(response.status_code)
 
         self.env['soap.wsdl.log'].sudo().create({
-            'name': 'API stock centravet AUTH',
+            'description': 'API Centravet AUTH',
             'res_id': log_res_id,
             'model_id': self.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
             'msg': "Ask API authorization token",
             'date': fields.Datetime.today(),
             'state': 'successful' if response.status_code == 200 else 'error',
             'reason': reason,
+            'user_id': self.env.user.id,
         })
 
         return response.json() if response.status_code == 200 else False
 
     def get_compute_api_information(self):
-        print("get_compute_api_information")
         """
         Code call by button to get information about sale.order in Centravet API
         """
@@ -125,22 +125,20 @@ class SaleOrder(models.Model):
             }
             response = requests.get(url=final_url, headers=headers, params=payload)
             reason = self._response_status_check(response.status_code)
-
             self.env['soap.wsdl.log'].sudo().create({
-                'name': 'API centravet orders',
-                'res_id': self,
+                'description': 'API Centravet Orders',
+                'res_id': self.id,
                 'model_id': self.env['ir.model'].sudo().search([('model', '=', 'sale.order')], limit=1).id,
-                'msg': """Ask API orders informations
-url: {},""".format(response.url),
+                'msg': response.url,
                 'date': fields.Datetime.today(),
                 'state': 'successful' if response.status_code == 200 else 'error',
                 'reason': reason,
+                'user_id': self.env.user.id
             })
 
             if response.status_code == 200:
                 return response.text
-            else:
-                return False
+            return False
 
     def convert_date_is8601(self, is8601_datetime):
         """
