@@ -71,7 +71,6 @@ class SaleOrder(models.Model):
         return ret
 
 
-    #Oliger de reecrire la fonction de connexion (Lilian)
     def get_auth_token(self, log_res_id=None, log_model_name=None):
         """
         Function to get token api centravet, and log connexion.
@@ -100,27 +99,44 @@ class SaleOrder(models.Model):
         return response.json() if response.status_code == 200 else False
 
     def get_compute_api_information(self):
+        print("get_compute_api_information")
         """
         Code call by button to get information about sale.order in Centravet API
         """
         token = self.get_auth_token(self, 'sale.order')
         headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
         endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
-        for rec in self:
-            #TODO use centravet code et shop + idCommande
-            centravet_code = rec.operating_unit_id.code #codeClinique
-            centravet_web_shop = rec.operating_unit_id.web_shop_id #codeBoutique
+        code_plateforme = self.env['ir.config_parameter'].sudo().get_param('centravet.subscriber_code')
 
+        for rec in self:
             url = '{endpoint}/{idCommande}/timeline'
             final_url = url.format(
                 endpoint=endpoint,
                 idCommande=rec.name,
             )
+            if rec.operating_unit_id.click_and_collect:
+                code_clinique = rec.operating_unit_id.web_shop_id
+            else:
+                code_clinique = rec.operating_unit_id.code
+
             payload = {
-                'codeClinique': centravet_code,
-                'codeBoutique': centravet_web_shop,
+                'codeClinique': code_clinique,
+                'codeBoutique': code_plateforme,
             }
             response = requests.get(url=final_url, headers=headers, params=payload)
+            reason = self._response_status_check(response.status_code)
+
+            self.env['soap.wsdl.log'].sudo().create({
+                'name': 'API centravet orders',
+                'res_id': self,
+                'model_id': self.env['ir.model'].sudo().search([('model', '=', 'sale.order')], limit=1).id,
+                'msg': """Ask API orders informations
+url: {},""".format(response.url),
+                'date': fields.Datetime.today(),
+                'state': 'successful' if response.status_code == 200 else 'error',
+                'reason': reason,
+            })
+
             if response.status_code == 200:
                 return response.text
             else:
