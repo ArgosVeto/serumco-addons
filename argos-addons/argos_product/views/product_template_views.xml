@@ -39,6 +39,7 @@
                 <field name="is_drug"/>
                 <field name="is_refrigerated"/>
                 <field name="is_vaccine"/>
+                <field name="no_update_import"/>
               </group>
             </group>
             <group>

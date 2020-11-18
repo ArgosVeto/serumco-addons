@@ -152,7 +152,7 @@ class ProductTemplate(models.Model):
                     'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)],
                     'is_published': True}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                if product:
+                if product and not product.no_update_import:
                     product.write(vals)
                     lines.append(reader.line_num)
                     self._cr.commit()

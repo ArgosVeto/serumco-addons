@@ -47,6 +47,7 @@ class ProductTemplate(models.Model):
     is_vaccine = fields.Boolean('Is Vaccine')
     documentation_ids = fields.One2many('product.documentation', 'product_template_id', 'Documentations')
     renewal = fields.Char('Renewal')
+    no_update_import = fields.Boolean('No update via import')
 
     @api.depends('attribute_line_ids')
     def _compute_routing_value_ids(self):
