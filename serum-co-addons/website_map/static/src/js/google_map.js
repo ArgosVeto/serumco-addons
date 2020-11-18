@@ -1,5 +1,17 @@
 var myLatLng;
 var jobLatLng;
+function around_func(){
+ var jobaround = document.getElementById("around_me3");
+        jobaround.onclick = function(){
+            getLocation(function(pos){
+                var jobLatLng = {lat:pos.coords.latitude,lng:pos.coords.longitude}
+                var map = new google.maps.Map(document.getElementById("googleMap2"), {
+                  zoom: 10,
+                  center: jobLatLng,
+                }); 
+              });
+          }
+        }
 function getLocation(callback) {
   if (navigator.geolocation) {
     myLatLng=navigator.geolocation.getCurrentPosition(callback);
@@ -32,7 +44,7 @@ var rpc = require('web.rpc')
           $.each(data, function(key, val){
             var geocoders = new google.maps.Geocoder();
             var cities = val['city']
-            var names = val['name']
+            // var names = val['name']
             geocoders.geocode({'address': cities}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                     var latitude = results[0].geometry.location.lat();
@@ -45,7 +57,7 @@ var rpc = require('web.rpc')
 
                     new google.maps.Marker({
                         position: jobLatLng2,
-                        label:names,
+                        // label:names,
                         map,
                         zoom:10,
                     });
@@ -83,7 +95,7 @@ odoo.define('website_map.googleMap', function (require) {
           $.each(data, function(key, val){
             var geocoders = new google.maps.Geocoder();
             var cities = val['city']
-            var names = val['name']
+            // var names = val['name']
             geocoders.geocode({'address': cities}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                     var latitude = results[0].geometry.location.lat();
@@ -96,6 +108,7 @@ odoo.define('website_map.googleMap', function (require) {
 
                     new google.maps.Marker({
                         position: myLatLng2,
+                        // label:names,
                         map,
                         zoom:10,
                     });
@@ -118,7 +131,7 @@ odoo.define('website_map.googleMap', function (require) {
           $.each(data, function(key, val){
             var geocoder = new google.maps.Geocoder();
             var city = val['city']
-            var name = val['name']
+            // var name = val['name']
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode({'address': city}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -128,6 +141,7 @@ odoo.define('website_map.googleMap', function (require) {
                 } 
                 new google.maps.Marker({
                     position: myLatLng1,
+                    // label:name,
                     map,
                     zoom:10,
                 });

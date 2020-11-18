@@ -8,22 +8,41 @@
 	</template>
 	<template id="clinic_search_box_inherit" inherit_id="website_argos.clinic_search_box">
 		<xpath expr="//div/form/div[2]" position="replace">
-			<div class="">
-               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="gMap()" id="around_me">
-                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
-               </a>
-            </div>
+			<t t-if="request.session.uid">
+				<div class="">
+	               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="gMap()" id="around_me">
+	                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
+	               </a>
+	            </div>
+	        </t>
+	        <t t-if="not request.session.uid">
+				<div class="">
+	               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="around_func()" id="around_me3">
+	                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
+	               </a>
+	            </div>
+	        </t>
 		</xpath>
 	</template>
 
 	<template id="clinic_template_inherit" inherit_id="website_argos.clinic_template">
 		<xpath expr="//t/section[2]/div/div/div[5]" position="replace">
-			<div class="see_map googleMap">
-            	<div class="custom-control custom-switch">
-				  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch1" onclick="showhide(this)"/>
-				  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
-				</div>
-            </div>
+			<t t-if="request.session.uid">
+				<div class="see_map googleMap">
+	            	<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch1" onclick="showhide(this)"/>
+					  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
+					</div>
+	            </div>
+	        </t>
+	        <t t-if="not request.session.uid">
+	        	<div class="see_map">
+	            	<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch3" onclick="showhides(this)"/>
+					  <label class="custom-control-label" for="customSwitch3">Voir La Carte</label>
+					</div>
+	            </div>
+	        </t>
             <script type="text/javascript">
             	function showhide(customSwitch1) {
             	var checkbox = document.getElementById("customSwitch1");
@@ -33,6 +52,18 @@
             	}
             	else{
             	document.getElementById("googleMap").style.display = "none";
+            	location.reload();
+            	}
+			    
+			};
+            	function showhides(customSwitch3) {
+            	var checkbox = document.getElementById("customSwitch3");
+            	if (checkbox.checked){
+            	document.getElementById("googleMap2").style.display = "block";
+            	myMap2()
+            	}
+            	else{
+            	document.getElementById("googleMap2").style.display = "none";
             	location.reload();
             	}
 			    
@@ -59,7 +90,8 @@
 	 	<xpath expr="//div/div[@class='container']" position="before">
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
-			<div id="googleMap" class="" style="width: 30%; height: 400px; display: none; position: relative; overflow: hidden; float: right;"></div>
+			<div id="googleMap" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
+			<div id="googleMap2" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
 
 			<script>
 			function myMap() {
@@ -68,6 +100,13 @@
 			  zoom:8,
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			function myMap2() {
+			var mapProp2= {
+			  center:new google.maps.LatLng(46.603354,1.8883335),
+			  zoom:8,
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
 			}
 			</script>
 		</xpath>
