@@ -20,6 +20,10 @@
         'website_sale_coupon',
         'jitsi_meet_integration',
         'website_rating',
+        'sale_operating_unit',
+        'sale',
+        'account',
+        'account_operating_unit',
     ],
     'data': [
         # data

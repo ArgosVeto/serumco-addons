@@ -5,6 +5,7 @@
 		<field name="name">Rating management</field>
 		<field name="sequence">100</field>
 	</record>
+
 	<record id="group_rating_management" model="res.groups">
 		<field name="name">Rating manager</field>
 		<field name="implied_ids" eval="[(4, ref('website.group_website_designer'))]"/>
@@ -14,5 +15,52 @@
 		/>
 		<field name="category_id" ref="module_category_rating_management"/>
 	</record>
+
+	<!-- heritage pour etendre les droits portal user sale.order -->
+	<record id="sale_operating_unit.ir_rule_sale_order_allowed_operating_units" model="ir.rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user sale.order.line-->
+	<record id="sale_operating_unit.ir_rule_sale_order_line_allowed_operating_units" model="ir.rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user sale.order-->
+    <record model="ir.rule" id="sale.sale_order_comp_rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user sale.order.line-->
+	<record model="ir.rule" id="sale.sale_order_line_comp_rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user account.move-->
+    <record id="account.account_move_comp_rule" model="ir.rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user account.move.line-->
+	<record id="account.account_move_line_comp_rule" model="ir.rule">
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal user account.move-->
+	<record id="account_operating_unit.ir_rule_move_line_allowed_operating_units" model="ir.rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+	<!-- heritage pour etendre les droits portal account.move.line-->
+	<record id="account_operating_unit.ir_rule_move_allowed_operating_units" model="ir.rule">
+        <field name="global" eval="False"/>
+		<field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
 
 </odoo>
