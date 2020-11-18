@@ -96,7 +96,6 @@ odoo.define('website_map.googleMap', function (require) {
 
                     new google.maps.Marker({
                         position: myLatLng2,
-                        label:names,
                         map,
                         zoom:10,
                     });
@@ -129,7 +128,6 @@ odoo.define('website_map.googleMap', function (require) {
                 } 
                 new google.maps.Marker({
                     position: myLatLng1,
-                    label:name,
                     map,
                     zoom:10,
                 });
