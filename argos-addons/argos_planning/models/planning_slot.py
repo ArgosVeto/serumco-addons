@@ -17,6 +17,9 @@ class PlanningSlot(models.Model):
     _name = 'planning.slot'
     _inherit = ['planning.slot', 'mail.thread', 'mail.activity.mixin']
 
+    def _default_consultation_type_id(self):
+        return self.env['consultation.type'].search([('is_default', '=', True)], limit=1)
+
     mrdv_event_id = fields.Integer('Mrdv Id')
     mrdv_job_id = fields.Integer('Mrdv Job Id')
     source = fields.Selection([('ounit', 'Operating Unit'), ('phone', 'Phone'), ('web', 'Web')], 'Source',
@@ -24,7 +27,8 @@ class PlanningSlot(models.Model):
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
     partner_id = fields.Many2one('res.partner', 'Customer', domain="[('contact_type', '=', 'contact')]")
     operating_unit_id = fields.Many2one('operating.unit', 'Operating Unit')
-    consultation_type_id = fields.Many2one('consultation.type', 'Consultation Type', domain=[('is_canvas', '=', False)])
+    consultation_type_id = fields.Many2one('consultation.type', 'Consultation Type', domain=[('is_canvas', '=', False)],
+                                           default=_default_consultation_type_id)
     active = fields.Boolean('Active', default=True)
     state = fields.Selection(
         [('draft', 'Draft'), ('validated', 'Validated'), ('waiting', 'Waiting'), ('in_progress', 'In Progress'),

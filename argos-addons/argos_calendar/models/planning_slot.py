@@ -21,8 +21,19 @@ def float_to_time(hours):
 class PlanningSlot(models.Model):
     _inherit = 'planning.slot'
 
+    def _default_role_id(self):
+        return self.env['planning.role'].search([('role_type', '=', 'rdv')], limit=1)
+
     calendar_event_ids = fields.One2many('calendar.event', 'planning_slot_id', string='Meetings')
     available_slot_alert = fields.Boolean(string='Available slot alert', default=False)
+    role_id = fields.Many2one('planning.role', string="Role", default=_default_role_id)
+
+    @api.onchange('partner_id')
+    def _on_partner_change(self):
+        if self.partner_id and len(self.partner_id.patient_ids) == 1:
+            self.patient_id = self.partner_id.patient_ids[0].id
+        else:
+            self.patient_id = False
 
     def button_not_honored(self):
         self.ensure_one()
