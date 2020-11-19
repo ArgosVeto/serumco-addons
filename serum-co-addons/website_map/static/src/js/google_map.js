@@ -3,6 +3,7 @@ var jobLatLng;
 function around_func(){
  var jobaround = document.getElementById("around_me3");
         jobaround.onclick = function(){
+            document.getElementById("googleMap2").style.display = "block";
             getLocation(function(pos){
                 var jobLatLng = {lat:pos.coords.latitude,lng:pos.coords.longitude}
                 var map = new google.maps.Map(document.getElementById("googleMap2"), {
@@ -75,7 +76,7 @@ function gMap() {
 odoo.define('website_map.googleMap', function (require) {
     var rpc = require('web.rpc')
      $('.googleMap').ready(function initMap() {
-        myLatLng={ lat: 46.603354, lng: 1.8883335 };
+        myLatLng={ lat: 44.837789, lng: -0.57918 };
         var map = new google.maps.Map(document.getElementById("googleMap"), {
           zoom: 10,
           center: myLatLng,
@@ -83,6 +84,7 @@ odoo.define('website_map.googleMap', function (require) {
         var around = document.getElementById("around_me")
         around.onclick = function(){
             getLocation(function (position) {
+            document.getElementById("googleMap").style.display = "block";
             var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
             var map = new google.maps.Map(document.getElementById("googleMap"), {
               zoom: 10,
