@@ -54,12 +54,12 @@ var klaroConfig = {
             privacyPolicyUrl: '/privacy',
             consentModal: {
                 description:
-                    'Ici on se fait kiffer la praline.',
+                    '[TEXTE A PERSONNALISER]',
             },
             purposes: {
                 analytics: {
-                    title: 'Analytique',
-                    description: 'On va tout analyser tkt',
+                    title: 'Google Analytics',
+                    description: '[Google Analytics TEXT]',
                 },
                 security: {
                     title: 'Securité'
@@ -68,19 +68,19 @@ var klaroConfig = {
                     title: 'Livechat'
                 },
                 advertising: {
-                    title: 'Publicité',
-                    description: 'Tu veux une Thermos ?',
+                    title: 'Partenaires publicitaires',
+                    description: '[Partenaires publicitaires TEXT]',
                 },
                 styling: {
                     title: 'Styling'
                 },
                 social: {
-                    title: 'Social',
-                    description: 'Bien la famille, imotep ?',
+                    title: 'Réseaux sociaux',
+                    description: '[Réseaux sociaux TEXT]',
                 },
                 basic: {
-                    title: 'Basic',
-                    description: 'Basic, siege bacqué, jantes alu',
+                    title: 'Essentiels',
+                    description: '[Essentiel TEXT]',
                 },
             },
         },
@@ -97,7 +97,7 @@ var klaroConfig = {
                     description: 'Basic is a simple service to blablabla '
                 },
                 fr: {
-                    description: 'Basic bah c est la base, tu peux pas le virer celui la !'
+                    description: '[Essentiel TEXT_2]'
                 },
             },
             purposes: ['basic'],
@@ -116,13 +116,13 @@ var klaroConfig = {
             default: true,
             translations: {
                 zz: {
-                    title: 'Google Analytic'
+                    title: 'Google Analytics'
                 },
                 en: {
                     description: 'Google Analytic is a simple service to blablabla'
                 },
                 fr: {
-                    description: 'Google Analytic la base l ami'
+                    description: '[Google Analytics TEXT_2]'
                 },
             },
             purposes: ['analytics'],
@@ -147,7 +147,7 @@ var klaroConfig = {
                     description: 'Google Adds is a simple, self-hosted analytics service.'
                 },
                 fr: {
-                    description: 'Google Adds pour te vendre un beau Renault Capture'
+                    description: '[Google ADDS TEXT]'
                 },
             },
             purposes: ['advertising'],
@@ -172,7 +172,7 @@ var klaroConfig = {
                     description: 'Twitter is a simple, self-hosted analytics service.'
                 },
                 fr: {
-                    description: 'Twitter pour voir si tu as pas des tweet bizar'
+                    description: '[Twitter TEXT]'
                 },
             },
             purposes: ['social'],
@@ -197,32 +197,7 @@ var klaroConfig = {
                     description: 'Facebook is a simple, self-hosted analytics service.'
                 },
                 fr: {
-                    description: 'Facebook pour demander ton cousin en ami'
-                },
-            },
-            purposes: ['social'],
-
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
-            ],
-            required: false,
-            optOut: false,
-            onlyOnce: true,
-        },
-        {
-            name: 'youtube',
-            default: true,
-            translations: {
-                zz: {
-                    title: 'Youtube'
-                },
-                en: {
-                    description: 'Youtube is a simple, self-hosted analytics service.'
-                },
-                de: {
-                    description: 'Youtube, POUCE BLEU stp !'
+                    description: '[Facebook TEXT]'
                 },
             },
             purposes: ['social'],
