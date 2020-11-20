@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 
-    $("#editor").clone().appendTo("#applybtnn");
+   $("#editor").clone().appendTo("#applybtnn");
 	$("#editor").html("Postuler");
 
 	
@@ -18,6 +18,10 @@ $(document).ready(function(){
   if ($("div").hasClass("o_portal_my_home")) {
     $('.ac-info').addClass('active-info'); 
     $('.br-info-portal').addClass('breadcrumb-info'); 
+  }
+
+  if ($("section").hasClass("service-tt")) {
+    $('.sidebar-content').addClass('d-md-sidebar-content'); 
   }
 	
 	$(function() {
@@ -146,22 +150,25 @@ $(function() {
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
   });
   $(".bottom-show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
   });
   $("#close_mbl_sidebar").on("click", function(e) {
     $(".sidebar-wrapper").removeClass("toggled");
+    $("#wrapwrap").removeClass("mobile_overlay");
     e.stopPropagation()
   });
   $(document).on("click", function(e) {
     if (!$(e.target).closest('.sidebar-wrapper').length) {
       $(".sidebar-wrapper").removeClass("toggled");
+      $("#wrapwrap").removeClass("mobile_overlay");
     }
   });
-
 
   /* cart sidebar js */
   $(".show_cart_sidebar").on("click", function(e) {
@@ -575,3 +582,70 @@ $(document).ready(function() {
   });
  
 });
+
+
+// $(document).ready(function() {
+//   var showChar = 300;
+//   var ellipsestext = "...";
+//   var moretext = "more";
+//   var lesstext = "less";
+//     var content = $(this).html();
+//     var textcontent = $(".clinic_description_length").text();
+
+//     if (textcontent.length > showChar) {
+//       $(".clinic_description_length").after('<a href="" class="morelink">' + moretext + '</a>');
+//     }
+
+
+//   $(".morelink").click(function() {
+//     if ($(".clinic_description_length").hasClass("less")) {
+//       $(".clinic_description_length").removeClass("less");
+//       $(".clinic_description_length").html(moretext);
+//         $(".clinic_description_length").prev().children('.morecontent').fadeToggle(500, function(){
+//           $(".clinic_description_length").prev().fadeToggle(500);
+//         });
+       
+//     } else {
+//       $(".clinic_description_length").addClass("less");
+//       $(".clinic_description_length").html(lesstext);
+//         $(".clinic_description_length").prev().children('.container').fadeToggle(500, function(){
+//           $(".clinic_description_length").next().fadeToggle(500);
+//         });
+//     }
+//     return false;
+// });
+// });
+
+
+// $(function() {
+//     var clinic_description_length = $('.clinic_description_length').height();
+//     if(clinic_description_length > 140){
+//         var text = $('.clinic_description_length'),
+//         btn = $('.desc-more-btn');
+//         h = text[0].scrollHeight;
+//         if(h < 140) {
+//             btn.addClass('less');
+//             btn.css('display', 'block');
+//         }
+
+//         btn.click(function(e)
+//         {
+//             e.stopPropagation();
+//             var target = $(e.target);
+//             var text = $(target).prev('.clinic_description_length');
+//             btn = $(this);
+//             h = text[0].scrollHeight;
+//           if ($(target).hasClass('less')) {
+//               $(target).removeClass('less');
+//               $(target).addClass('more');
+//               $(target).text('- Show less');
+//               text.animate({'height': h});
+//           }else {
+//               $(target).addClass('less');
+//               $(target).removeClass('more');
+//               $(target).text('+ Show more');
+//               text.animate({'height': '155px'});
+//           }
+//         });
+//     }
+// });

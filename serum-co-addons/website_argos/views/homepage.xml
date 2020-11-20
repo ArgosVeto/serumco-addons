@@ -142,9 +142,12 @@
 											</div>
 										</div>
 										<div class="col-md-6 px16">
-											<div class="image-box">
-												<div class="image">
+											<div class="image-box ">
+												<div class="image d-none d-md-block">
 													<img src="/website_argos/static/src/img/home_chien.jpg" class="img img-fluid" />
+												</div>
+												<div class="image d-block d-md-none">
+													<img src="/website_argos/static/src/img/home-dog.png" class="img img-fluid" />
 												</div>
 												<div class="text">
 													<p class="animal-name text-black">Chien</p>
@@ -276,7 +279,7 @@
 									            	<li data-target="#service-carousel" data-slide-to="0" class="active"/>
 									            	<li data-target="#service-carousel" data-slide-to="1"/>
 									          	</ol>
-									          </div>
+									         </div>
 								        </div>
 								    <!-- </t> -->
 									</div>
