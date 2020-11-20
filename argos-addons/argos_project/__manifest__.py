@@ -22,6 +22,7 @@
         'views/mail_compose_message_views.xml',
         'views/project_task_views.xml',
         'views/sale_order_views.xml',
+        'views/template_cr_surgery.xml',
     ],
     'qweb': [
         'static/src/xml/activity_dropdown.xml',

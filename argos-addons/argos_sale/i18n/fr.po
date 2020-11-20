@@ -120,6 +120,7 @@ msgstr "Ajouter composant"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Address"
 msgstr "Adresse"
 
@@ -173,6 +174,7 @@ msgstr "Appartenant à"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Born (age)"
 msgstr "Né(e) le (age)"
 
@@ -194,6 +196,7 @@ msgstr "Chapitres"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "City"
 msgstr "Ville"
 
@@ -416,6 +419,7 @@ msgstr "Demande d'euthanasie"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__gender_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Gender"
 msgstr "Genre"
 
@@ -463,6 +467,7 @@ msgstr "ID"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Id. electronic"
 msgstr "Id. electronique"
 
@@ -581,6 +586,7 @@ msgstr "Modifier consultation terminée"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__name
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Name"
 msgstr "Nom"
 
@@ -596,6 +602,7 @@ msgstr "Note"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "N° tattoo"
 msgstr "N° tatouage"
 
@@ -684,6 +691,7 @@ msgstr "Quantité:"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__race_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Race"
 msgstr "Race"
 
@@ -825,6 +833,7 @@ msgstr "Vu par"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__species_id
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Species"
 msgstr "Espèce"
 
@@ -907,3 +916,130 @@ msgid ""
 msgstr ""
 "de bien vouloir procéder à l'euthanasie de l'animal dont le signalement "
 "suit:"
+
+#. module: argos_sale
+#: model:ir.actions.report,print_report_name:argos_sale.report_surveillance_certificate
+msgid ""
+"'Surveillance Certificate - %s - %s' % (object.partner_id.name or '', "
+"object.name)"
+msgstr ""
+"'Certificat De Surveillance - %s - %s' % (object.partner_id.name or '', "
+"object.name)"
+
+#. module: argos_sale
+#: model:ir.actions.report,name:argos_sale.report_surveillance_certificate
+msgid "Surveillance Certificate"
+msgstr "Certificat De Surveillance"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ", health veterinarian at"
+msgstr ", vétérinaire sanitaire à"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"<br/>\n"
+"                certify that the"
+msgstr ""
+"<br/>\n"
+"                certifie que le"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"Adopted on ____________________ at the refuge of ____________________, where he had been"
+" staying since ____________________"
+msgstr ""
+"Adopté le ____________________ au refuge de ____________________, où il séjournait"
+" depuis le ____________________"
+
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Deemed held by"
+msgstr "Réputé détenu par"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Deemed to belong to"
+msgstr "Réputé appartenir à"
+
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "I, the undersigned, Dr"
+msgstr "Je soussigné, Dr"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"In witness whereof, this certificate has been drawn up to serve and assert legal rights. Made in\n"
+"                ____________________\n"
+"                on"
+msgstr ""
+"En foi de quoi, le présent certificat à été rédigé pour servir et valoir ce que de droit. Fait à\n"
+"                ____________________\n"
+"                le"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Last name and"
+msgstr "Nom et"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"Note: This certificate is personal and inalienable. The costs relating to its establishment are the\n"
+"                responsibility of the owner or keeper of the animal (article 1385 of the civil code). It must be stamped, if necessary,\n"
+"                with the stamp of the authority vested with police powers."
+msgstr ""
+"Nota: Le présent certifiçat est personnel et inaliénable. Les frais relatifs à son établissement sont à la\n"
+"                charge du propriétaire ou du détenteur de l'animal (article 1385 du code civil). Il devra être revêtu, s'il y a lieu,\n"
+"                du cachet de l'autorité investie des pouvoirs de police."
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"Rural Code, article 211-25, ministerial decree of 23 September 1999 relating to the duration and methods of veterinary\n"
+"                surveillance of dogs and cats transferred to the manager of a shelter for their adoption and coming from a structure\n"
+"                providing the service of pound."
+msgstr ""
+"Code rural, article 211-25, arrêté ministériel du 23 septembre 1999 relatif à la durée et aux modalités de la surveillance vétérinaire\n"
+"                des chiens et des chats cédés au gestionnaire d'un refuge pour son adoption et provenant d'une structure\n"
+"                assurant le service de fourrière."
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Stamp and signature of veterinary surgeon"
+msgstr "Cachet et Signature du vétérinaire
+"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "Visa from the police commissioner or the town hall of"
+msgstr "Visa du commissaire de police ou de la mairie de"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "first name"
+msgstr "Prénom"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid "veterinary surveillance certificate"
+msgstr "certificat de surveillance vétérinaire"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
+msgid ""
+"was reviewed by me\n"
+"                this day. He is in good health and has no symptoms of rabies in particular."
+msgstr ""
+"a été examiné par moi\n"
+"                Il est en bonne santé et ne présente notamment aucun symptôme de rage."
