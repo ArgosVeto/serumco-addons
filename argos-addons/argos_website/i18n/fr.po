@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-16 08:28+0000\n"
-"PO-Revision-Date: 2020-11-16 08:28+0000\n"
+"POT-Creation-Date: 2020-11-20 08:13+0000\n"
+"PO-Revision-Date: 2020-11-20 08:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1198,6 +1198,12 @@ msgid "Service temporarily unavailable."
 msgstr "Service momentanément indisponible."
 
 #. module: argos_website
+#: code:addons/argos_website/controllers/main.py:0
+#, python-format
+msgid "This email does not match to any Argos account"
+msgstr "Cet email ne correspond à aucun compte Argos Vétérinaire"
+
+#. module: argos_website
 #: model_terms:ir.ui.view,arch_db:argos_website.api_error
 #: model_terms:ir.ui.view,arch_db:argos_website.product_custom
 #: model_terms:ir.ui.view,arch_db:argos_website.products_custom
@@ -1257,6 +1263,12 @@ msgstr "Catégorie d'articles du site Web"
 #: model:mail.template,subject:argos_website.website_welcome_mail_template
 msgid "Welcome"
 msgstr "Bienvenue"
+
+#. module: argos_website
+#: code:addons/argos_website/controllers/main.py:0
+#, python-format
+msgid "Wrong password"
+msgstr "Votre mot de passe est incorrect"
 
 #. module: argos_website
 #. openerp-web
