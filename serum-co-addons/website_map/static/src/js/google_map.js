@@ -72,6 +72,59 @@ var rpc = require('web.rpc')
     });
 });
 };
+function around_me() {
+odoo.define('website_map.arounded', function (require) {
+    var rpc = require('web.rpc')  
+    $('.around').ready(function initMap() {
+        myLatLng={ lat: 44.837789, lng: -0.57918 };
+        var map = new google.maps.Map(document.getElementById("googleMap"), {
+          zoom: 10,
+          center: myLatLng,
+        });
+      });
+    document.getElementById("googleMap").style.display = "block";
+            loca = getLocation(function (position) {
+            var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
+            var map = new google.maps.Map(document.getElementById("googleMap"), {
+              zoom: 10,
+              center: myLatLng,
+            });
+            rpc.query({
+          model: 'operating.unit',
+          method: 'clinic_detail_json'
+        }).then(function (data){
+          $.each(data, function(key, val){
+            var geocoders = new google.maps.Geocoder();
+            var cities = val['city']
+            // var names = val['name']
+            geocoders.geocode({'address': cities}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    var myLatLng2 = { lat: latitude, lng: longitude };
+                }
+                var locations = google.maps.geometry.spherical.computeDistanceBetween(
+                    new google.maps.LatLng(myLatLng2),new google.maps.LatLng(myLatLng));
+                if (locations/1000 <= 100){
+
+                    new google.maps.Marker({
+                        position: myLatLng2,
+                        // label:names,
+                        map,
+                        zoom:10,
+                    });
+                }
+            });
+          })
+        })
+
+//onclick function end
+
+    });
+
+        
+});
+}
 function gMap() {
 odoo.define('website_map.googleMap', function (require) {
     var rpc = require('web.rpc')
