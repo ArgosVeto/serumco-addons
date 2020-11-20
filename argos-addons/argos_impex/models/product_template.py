@@ -146,16 +146,17 @@ class ProductTemplate(models.Model):
                     'gtin': row.get('gtin'),
                     'ean': row.get('ean'),
                     'cip': row.get('cip'),
-                    'sale_ok': True,
-                    'purchase_ok': True,
                     'type': 'product',
-                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)],
-                    'is_published': True}
+                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)]}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                if product and not product.no_update_import:
+                if product:
+                    if not product.no_update_import:
+                        vals['sale_ok']: True
+                        vals['purchase_ok']: True
+                        vals['is_published']: True
                     product.write(vals)
                     lines.append(reader.line_num)
-                    self._cr.commit()
+                    self._cr.commit
                 else:
                     errors.append((row, _('No product with code %s found!') % row.get('code')))
                 if reader.line_num % 150 == 0:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-
+<!--<field name="no_update_import"/>-->
     <record id="product_template_form_view_inherit" model="ir.ui.view">
       <field name="name">product.template.form.view.inherit</field>
       <field name="model">product.template</field>
@@ -39,7 +39,6 @@
                 <field name="is_drug"/>
                 <field name="is_refrigerated"/>
                 <field name="is_vaccine"/>
-                <field name="no_update_import"/>
               </group>
             </group>
             <group>
@@ -50,6 +49,9 @@
             <field name="documentation_ids"/>
           </page>
         </notebook>
+        <xpath expr="//label[@for='name']" position="attributes">
+          <attribute name="string">Internal Label</attribute>
+        </xpath>
         <xpath expr="//label[@for='name']" position="attributes">
           <attribute name="string">Internal Label</attribute>
         </xpath>
