@@ -171,7 +171,7 @@
 		        </div>
 	    	</section>
 	    	
-	    	<section class="s_text_block pt32 pb16 s_blog_banner service-tt">
+	    	<section class="s_text_block pt32 pb16 s_blog_banner service-tt d-none d-md-block">
 	    		<div class="container">
 	    			<div class="row">
 

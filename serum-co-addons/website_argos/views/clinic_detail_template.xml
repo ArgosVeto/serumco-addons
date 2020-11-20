@@ -158,8 +158,8 @@
 						<div class="col-lg-12 pt16 pb8 position-relative">
 							<img class="card-img-top" id="banner-img"
 								t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-							<div class="red-round-big"></div>
-							<div class="red-round-small"></div>
+							<div class="red-round-big d-none d-md-block"></div>
+							<div class="red-round-small d-none d-md-block"></div>
 						</div>
 					</div>
 				</div>
@@ -248,7 +248,11 @@
 								<div class="mb16">
 									<t t-if="operating_unit.clinic_description">
 										<div t-field="operating_unit.clinic_description"
-											class="oe_no_empty" />
+											class="oe_no_empty clinic_description_length">
+					                    </div>
+					                    <a class="text-primary desc-more-btn" onclick="myFunction()" id="myBtn">
+				                          Lire la suite
+				                        </a>
 									</t>
 								</div>
 							</div>
@@ -256,31 +260,98 @@
 							<div class="partners-grid pt48 pb32">
 								<h3>Notre équipe</h3>
 								<t t-if="operating_unit.employee_ids">
-									<div class="row">
-										<t t-foreach="operating_unit.employee_ids" t-as="contact">
-											<div class="col-md-6 mt16 mb16">
-												<div class="p-grid">
-													<div class="mt8 text-details">
-														<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
-														<h5 class="Pierre-Michel-Copy mt4">
-															<span class="Pierre-Michel-Copy" itemprop="contact"
-																t-att-content="contact.name" t-field="contact.name" />
-														</h5>
-														<p class="Mollitia-id-dolores-Copy mt16">
-															<span t-esc="contact.note" />
-														</p>
-													</div>
-													<div class="text-right img-doc">
-														<img class="img img-fluid"
-															t-att-src="website.image_url(contact, 'image_1920')" />
+									<div class="d-none d-md-block">
+										<div class="row ">
+											<t t-foreach="operating_unit.employee_ids" t-as="contact">
+												<div class="col-md-6 mt16 mb16">
+													<div class="p-grid">
+														<div class="mt8 text-details">
+															<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+															<h5 class="Pierre-Michel-Copy mt4">
+																<span class="Pierre-Michel-Copy" itemprop="contact"
+																	t-att-content="contact.name" t-field="contact.name" />
+															</h5>
+															<p class="Mollitia-id-dolores-Copy mt16">
+																<span t-esc="contact.note" />
+															</p>
+														</div>
+														<div class="text-right img-doc">
+															<img class="img img-fluid"
+																t-att-src="website.image_url(contact, 'image_1920')" />
+														</div>
 													</div>
 												</div>
-											</div>
-										</t>
+											</t>
+										</div>
 									</div>
+									<div class="d-block d-md-none">
+										<div class="row ">
+											<div id="employee-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24 w-100" data-ride="carousel" data-pause="hover" data-interval="7000">
+		                                        <div class="carousel-inner" role="listbox">
+		                                        	<t t-set="count" t-value="0"/>
+		                                            <t t-foreach="operating_unit.employee_ids" t-as="contact">
+		                                            	<t t-if="count == 0">
+		                                                    <div class="carousel-item active w-100" >
+		                                                        <div class="col-md-12 mt16 mb16">
+																	<div class="p-grid">
+																		<div class="mt8 text-details">
+																			<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+																			<h5 class="Pierre-Michel-Copy mt4">
+																				<span class="Pierre-Michel-Copy" itemprop="contact"
+																					t-att-content="contact.name" t-field="contact.name" />
+																			</h5>
+																			<p class="Mollitia-id-dolores-Copy mt16">
+																				<span t-esc="contact.note" />
+																			</p>
+																		</div>
+																		<div class="text-right img-doc">
+																			<img class="img img-fluid"
+																				t-att-src="website.image_url(contact, 'image_1920')" />
+																		</div>
+																	</div>
+																</div>
+		                                                    </div>
+		                                                </t>
+		                                                <t t-else="">
+		                                                	 <div class="carousel-item w-100" >
+		                                                        <div class="col-md-12 mt16 mb16">
+																	<div class="p-grid">
+																		<div class="mt8 text-details">
+																			<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+																			<h5 class="Pierre-Michel-Copy mt4">
+																				<span class="Pierre-Michel-Copy" itemprop="contact"
+																					t-att-content="contact.name" t-field="contact.name" />
+																			</h5>
+																			<p class="Mollitia-id-dolores-Copy mt16">
+																				<span t-esc="contact.note" />
+																			</p>
+																		</div>
+																		<div class="text-right img-doc">
+																			<img class="img img-fluid"
+																				t-att-src="website.image_url(contact, 'image_1920')" />
+																		</div>
+																	</div>
+																</div>
+		                                                    </div>
+		                                                </t>
+		                                                <t t-set="count" t-value="count + 1"/>
+		                                            </t>
+		                                        </div>
+		                                        <div class="slider-control">
+		                                            <a class="left carousel-control-prev font-14" data-target="#employee-carousel" role="button" data-slide="prev">
+		                                                <img src="/website_argos/static/src/img/left.svg"/>
+		                                                <b class="sr-only font-normal o_default_snippet_text">Previous</b>
+		                                            </a>
+		                                            <a class="right carousel-control-next font-14" data-target="#employee-carousel" role="button" data-slide="next">
+		                                                <img src="/website_argos/static/src/img/right.svg"/>
+		                                                <b class="sr-only font-normal o_default_snippet_text">Next</b>
+		                                            </a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
 								</t>
 							</div>
-
 
 							<div class="service-innerp">
 								<h3 class="Nos-services pb16">Nos tarifs</h3>

@@ -442,10 +442,13 @@
     height: 50px;
     width: 50px;
     text-align: center;
-    line-height: 3;
+    a{
+    	line-height:50px;
+    }
 }
    .socialicons .fav-btn{
     	background-color: rgba(222, 26, 70, 0.08);
+    	line-height: 0 !important;
     	&:hover{
     		background-color: rgba(222, 26, 70, 0.08);
     	}
@@ -468,6 +471,7 @@
 .clinic-btn-icon{
 	.fav-btn {
     	position: unset !important;
+    	line-height: 0 !important;
     }
     .side-block-c{
     	position: unset !important;
@@ -577,6 +581,10 @@
 			text-decoration:none;
 		}
 	}
+	.clinic_description_length{
+		height:140px;
+		overflow:hidden;
+	}
 }
 
 .partners-grid {
@@ -630,6 +638,16 @@
 		  color: #8b8b8b;
 		}
 	
+	}
+	.carousel-indicators{
+		bottom: -35px;
+		li{
+			background-color: rgba(99, 186, 233, 0.16);
+			width:18px;
+		}
+		li.active{
+			background-color: theme-color('primary');
+		}
 	}
 }
 
