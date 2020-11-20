@@ -145,7 +145,7 @@ class SaleOrder(models.Model):
         Convert date str to datetime pythonic format
         """
         if is8601_datetime:
-            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=-2))
+            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S"))
         else:
             return False
 
@@ -159,11 +159,11 @@ class SaleOrder(models.Model):
             api_datas = json.loads(res)
             vals = {
                 'description': "Sale: " + self.name,
-                'date_sent': self.convert_date_is8601(api_datas["dateSent"]),
-                'date_integrated': self.convert_date_is8601(api_datas["dateIntegrated"]),
-                'date_prepared': self.convert_date_is8601(api_datas["datePrepared"]),
-                'date_delivered': self.convert_date_is8601(api_datas["dateDelivered"]),
-                'date_billed': self.convert_date_is8601(api_datas["dateBilled"]),
+                'date_sent': self.convert_date_is8601(api_datas["dateSentUTC"]),
+                'date_integrated': self.convert_date_is8601(api_datas["dateIntegratedUTC"]),
+                'date_prepared': self.convert_date_is8601(api_datas["datePreparedUTC"]),
+                'date_delivered': self.convert_date_is8601(api_datas["dateDeliveredUTC"]),
+                'date_billed': self.convert_date_is8601(api_datas["dateBilledUTC"]),
             }
         else:
             vals = {'description': 'Can not access to API, please check connexion parameters and idCommande'}
