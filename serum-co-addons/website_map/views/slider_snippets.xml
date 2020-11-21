@@ -707,6 +707,11 @@
         </div>
     </template>
 
+    <template id="ecomm_multi_slider_products_inherit" inherit_id='website_argos.ecomm_multi_slider_products'>
+        <xpath expr="//div[@class='pwp-info']" position="after">
+            <div style="width: 369px;margin-left: -56px;margin-top: 30px;"><hr/></div>            
+        </xpath>
+    </template>
 
     <record id="multi_slider_form_view_inherit" model="ir.ui.view">
         <field name="name">multi.slider.form.view</field>
