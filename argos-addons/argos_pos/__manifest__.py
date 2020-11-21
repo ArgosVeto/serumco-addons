@@ -13,8 +13,10 @@
         'point_of_sale',
         'pos_load_so',
     ],
-    'data': [],
-    'qweb': [],
+    'data': [
+        'views/point_of_sale.xml',
+    ],
+    'qweb': ['static/src/xml/pos.xml'],
     'application': False,
     'installable': True,
     'auto_install': False,
