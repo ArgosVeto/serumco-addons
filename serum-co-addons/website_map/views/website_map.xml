@@ -10,7 +10,7 @@
 		<xpath expr="//div/form/div[2]" position="replace">
 			<t t-if="request.session.uid">
 				<div class="">
-	               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="gMap()" id="around_me">
+	               <a role="button" target="" href="#" class="around btn btn-outline-primary  ml-4" onclick="around_me()" id="around_me">
 	                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
 	               </a>
 	            </div>

@@ -42,6 +42,8 @@
         'views/product_view.xml',
         'views/product_view_inherited.xml',
         'views/operating_unit_service_view.xml',
+
+
         'views/homepage.xml',
         'views/homepage_two.xml',
         'views/homepage_three.xml',

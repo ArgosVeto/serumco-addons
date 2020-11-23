@@ -3,7 +3,7 @@
 
 	<template id="website_argos_header_search_inherit" inherit_id="website.website_search_box">
 		<xpath expr="//input" position="replace">
-			<input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Rechercher un produit…" t-att-value="search"/>
+			<input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
 		</xpath>
 	</template>
 
@@ -146,12 +146,12 @@
 	    	<div class="sidebar-content">
 				<div class="search">
 					<t t-call="website_sale.s_products_searchbar_input" />
-					<div class="close-mbl-sidebar bg-primary text-center">
+					<div class="close-mbl-sidebar text-center">
 						<span class="text-white" id="close_mbl_sidebar">
 							<img src="/website_argos/static/src/img/close.png"/></span>
 					</div>
 				</div>
-				<div class="card bg-white">
+				<div class="card bg-white sidebar-card">
                 	<ul class="nav navbar-nav align-items-md-center" id="top_menu">
                 		<li class="nav-item">
                 			<a href="/" class="nav-link">
@@ -181,16 +181,16 @@
 						<div class="dropdown-menu js_usermenu py-4" role="menu">
 							<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 								<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-								<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
-								<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
-								<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
-								<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
-								<a t-attf-href="#" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
-								<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
-								<!-- <a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a> -->
-								<a id="o_logout" class="dropdown-item px-0"
-									t-attf-href="/web/session/logout?redirect=/"
-									role="menuitem">Logout</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
+											<!-- <a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a> -->
+											<a id="o_logout" class="dropdown-item px-0"
+												t-attf-href="/web/session/logout?redirect=/"
+												role="menuitem">Déconnexion</a>
 							</div>
 							<div groups="base.group_public" class="">
 								<a class="dropdown-item px-0" t-attf-href="/web/login">
@@ -208,6 +208,46 @@
 							<span class="text-primary">Panier</span>
 						</a>
 					</div>
+	          	</div>
+
+	          	<div class="clinic-filter-sidebar card bg-white">
+	          		<div class="Filtrer">Filtrer les résultats</div>
+	          		<div class="clinic-filter-content">
+	          			<div class="search_by_service mr-2">
+                       		<t t-call="website_argos.service_type_search_tmp"/>
+	                	</div>
+	                	<div class="search_by_type">
+                        	<t t-call="website_argos.clinic_type_search_tmp"/>
+	                	</div>
+	                	<div class="open_today">
+	                        <div class="clinic-type-b">
+					        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
+					        		<span>OUVERT AUJOURD HUI</span>
+					        	</a>
+							</div>
+	                    </div>
+	                    <div class="criteria search_by_service">
+                        	<t t-set="service" t-value="service_ids" />
+					        <div t-attf-class="dropdown show">
+					            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
+					               <span>De Criteres</span>
+					            </a>
+					            <div class="dropdown-menu show" role="menu">
+				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+				                        <span class="switcher_pricelist">Parking</span>
+				                    </a>
+				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+				                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
+				                    </a>
+					            </div>
+					        </div>
+                        </div>
+                        <div class="clear-search mt8 ml8 clinic-type-b">
+				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
+				        		<span>CLEAR</span>
+				        	</a>
+						</div>
+	          		</div>
 	          	</div>
 	    	</div>
 	    </nav>

@@ -2,29 +2,98 @@
 <templates xml:space="preserve">
 	<t t-extend="portal.chatter_messages">
 		<t t-jquery=".o_portal_chatter_messages" t-operation="replace">
-        	<div class="o_portal_chatter_messages">
-            <t t-foreach="widget.get('messages') || []" t-as="message">
-                <div class="media o_portal_chatter_message" t-att-id="'message-' + message.id">
-                    <div class="media-body">
-                        <div class="product-rating-star">
-                            <t t-if="message['rating_value']">
-                                <t t-call="website_rating.rating_stars_static">
-                                    <t t-set="val" t-value="message.rating_value"/>
+            <div class="o_portal_chatter_messages">
+                <div class="d-none d-md-block">
+                    <t t-foreach="widget.get('messages') || []" t-as="message">
+                        <div class="media o_portal_chatter_message" t-att-id="'message-' + message.id">
+                            <div class="media-body">
+                                <div class="product-rating-star">
+                                    <t t-if="message['rating_value']">
+                                        <t t-call="website_rating.rating_stars_static">
+                                            <t t-set="val" t-value="message.rating_value"/>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="position-relative">
+                                	 <t t-raw="message.body"/>
+                                	 <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                </div>
+                                <div class="o_portal_chatter_message_title">
+                                    <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+                                    <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+           
+                <div class="d-block d-md-none">
+                    <div id="rating-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24 w-100" data-ride="carousel" data-pause="hover" data-interval="7000">
+                        <div class="carousel-inner" role="listbox">
+                            <t t-set="count" t-value="0"/>
+                            <t t-foreach="widget.get('messages') || []" t-as="message">
+                                <t t-if="count == 0">
+                                    <div class="carousel-item active w-100" >
+                                         <div class="media o_portal_chatter_message" t-att-id="'message-' + message.id">
+                                            <div class="media-body">
+                                                <div class="product-rating-star">
+                                                    <t t-if="message['rating_value']">
+                                                        <t t-call="website_rating.rating_stars_static">
+                                                            <t t-set="val" t-value="message.rating_value"/>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                                <div class="position-relative">
+                                                     <t t-raw="message.body"/>
+                                                     <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                                </div>
+                                                <div class="o_portal_chatter_message_title">
+                                                    <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+                                                    <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </t>
+                                <t t-else="">
+                                     <div class="carousel-item w-100" >
+                                         <div class="media o_portal_chatter_message" t-att-id="'message-' + message.id">
+                                            <div class="media-body">
+                                                <div class="product-rating-star">
+                                                    <t t-if="message['rating_value']">
+                                                        <t t-call="website_rating.rating_stars_static">
+                                                            <t t-set="val" t-value="message.rating_value"/>
+                                                        </t>
+                                                    </t>
+                                                </div>
+                                                <div class="position-relative">
+                                                     <t t-raw="message.body"/>
+                                                     <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                                </div>
+                                                <div class="o_portal_chatter_message_title">
+                                                    <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+                                                    <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-set="count" t-value="count + 1"/>
                             </t>
                         </div>
-                        <div class="position-relative">
-                        	 <t t-raw="message.body"/>
-                        	 <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
-                        </div>
-                        <div class="o_portal_chatter_message_title">
-                            <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
-                            <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                        <div class="slider-control">
+                            <a class="left carousel-control-prev font-14" data-target="#rating-carousel" role="button" data-slide="prev">
+                                <img src="/website_argos/static/src/img/left.svg"/>
+                                <b class="sr-only font-normal o_default_snippet_text">Previous</b>
+                            </a>
+                            <a class="right carousel-control-next font-14" data-target="#rating-carousel" role="button" data-slide="next">
+                                <img src="/website_argos/static/src/img/right.svg"/>
+                                <b class="sr-only font-normal o_default_snippet_text">Next</b>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </t>
-        </div>
+             </div>
         </t>
     </t>
     
