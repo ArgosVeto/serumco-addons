@@ -208,6 +208,7 @@ class BizopleWebsiteSale(WebsiteSale):
             session = request.session
             cate_for_price = None
             search_product = Product.search(domain)
+            print(search_product)
             website_domain = request.website.website_domain()
             pricelist_context, pricelist = self._get_pricelist_context()
             categs_domain = [('parent_id', '=', False)] + website_domain
@@ -247,7 +248,7 @@ class BizopleWebsiteSale(WebsiteSale):
             if not brand_list:
                 request.session["brand_name"] = ''
             product_count = len(search_product)
-            
+
             if cate_for_price:
                 request.session['curr_category'] = float(cate_for_price)
             if request.session.get('default_paging_no'):
@@ -277,10 +278,10 @@ class BizopleWebsiteSale(WebsiteSale):
             active_brand_list = list(set(brand_set))
 
             if search:
-                domain.append(("name", 'ilike', search.strip()))            
+                domain.append(("name", 'ilike', search.strip()))
             if not request.env.user.has_group('base.group_system'):
                     domain.append(("website_published", '=', True))
-            product_tmpl_ids = request.env['product.template'].search(domain).ids            
+            product_tmpl_ids = request.env['product.template'].search(domain).ids
             result.qcontext.update({
                 'search': search,
                 'total_product_count': len(product_tmpl_ids),
@@ -639,6 +640,18 @@ class WebsiteSale(WebsiteSale):
             attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
         else:
             attributes = ProductAttribute.browse(attributes_ids)
+
+        ProductFitlersObj = request.env['product.filter']
+        print(ProductFitlersObj, products, attributes_ids)
+        if products:
+            # get all products without limit
+            filters = ProductFitlersObj.search(
+                [('product_tmpl_ids', 'in', search_product.ids)])
+        else:
+            filters = ProductFitlersObj.browse(attributes_ids)
+
+        print(filters)
+        print(filters.product_filter_line_ids)
 
         layout_mode = request.session.get('website_sale_shop_layout_mode')
         if not layout_mode:
