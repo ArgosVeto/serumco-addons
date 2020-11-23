@@ -267,7 +267,8 @@ class WebsiteSale(WebsiteSale):
 			return request.redirect('/add-address?new-address=1')
 		for f in self._get_mandatory_billing_fields():
 			if not order.partner_id[f]:
-				return request.redirect('/add-address?new-address=1')
+#				return request.redirect('/add-address?partner_id=%d' % order.partner_id.id)
+				return request.redirect('/shop/address?partner_id=%d' % order.partner_id.id)
 
 		values = self.checkout_values(**post)
 
@@ -338,14 +339,27 @@ class ClinicDetail(http.Controller):
 		sale_order_id = request.session['sale_order_id']
 		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
 		fav_clinic = False
+		sale_order.operating_unit_id = False
 		if partner.clinic_shortlisted_ids:
 			fav_clinic = partner.clinic_shortlisted_ids[0].favorite_clinic_id
-		if sale_order and fav_clinic:
+		if sale_order and fav_clinic and fav_clinic.click_and_collect:
 			sale_order.operating_unit_id = fav_clinic.id
 			sale_order.fav_clinic = True
 			sale_order.all_clinic = False
 		values = {'website_sale_order':sale_order}
 		return request.env['ir.ui.view'].render_template("website_argos.load_clinic_add_tmp",values)
+
+	@http.route(['/update-fav-delivery-address'], type='json', auth="public")
+	def update_fav_delivery_address(self,**post):
+		partner = request.env.user.partner_id
+		fav_clinic = False
+		click_and_collect = False
+		if partner.clinic_shortlisted_ids:
+			fav_clinic = partner.clinic_shortlisted_ids[0].favorite_clinic_id
+			click_and_collect = fav_clinic.click_and_collect
+		values = {'clinic_fav' : fav_clinic,
+		          'click_and_collect' : click_and_collect}
+		return request.env['ir.ui.view'].render_template("website_argos.load_fav_clinic_add_tmp",values)
 
 	@http.route(['/update-delivery/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
 	def update_delivery(self,operating_unit, **post):
@@ -369,6 +383,7 @@ class ClinicDetail(http.Controller):
 			subdomains.append([('zip','ilike',post['cn'])])
 		if subdomains:
 			domain.append(expression.OR(subdomains))
+		domain.append([('click_and_collect','=',True)])
 		domain = expression.AND(domain)
 		clinic_ids = request.env['operating.unit'].sudo().search(domain)
 		values = {'clinic_ids': clinic_ids}
