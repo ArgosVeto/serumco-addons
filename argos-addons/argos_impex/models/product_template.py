@@ -151,8 +151,6 @@ class ProductTemplate(models.Model):
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 if product:
                     if not product.no_update_import:
-                        vals['sale_ok']: True
-                        vals['purchase_ok']: True
                         vals['is_published']: True
                     product.write(vals)
                     lines.append(reader.line_num)
@@ -793,12 +791,22 @@ class ProductTemplate(models.Model):
                     # 'none': row[26], # Zone libre 2 : missing
                     'description_sale': row[5],
                     # 'description': "",
-                    'sale_ok': True,
-                    'purchase_ok': True,
+                    # 'sale_ok': True,
+                    # 'purchase_ok': True,
                     'type': 'product',
                 }
                 product = self.search([('default_code', '=', default_code)], limit=1)
                 if product:
+                    if not product.no_update_import:
+                        # if template.id == 52:
+                        #     if row[11] == 'M':
+                        #         pass
+                        #     elif row[11] == 'S':
+                        #         pass
+                        #     elif row[11] == 'C':
+                        #         pass
+                        vals['sale_ok']: True
+                        vals['purchase_ok']: True
                     product.write(vals)
                 else:
                     vals.update({'default_code': default_code})
