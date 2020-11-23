@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="mail_tempalte_cr_surgery" model="mail.template">
+      <field name="name">ARGOS - Template CR Surgury</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="subject">CR Surgury</field>
+      <field name="body_html" type="html">
+        <div>
+          <h1 style="text-align: center;"><strong>SURGERY REPORT</strong></h1><br/><br/><br/>
+          <p style="font-size: 13;">
+            <strong>Owner :</strong> ${object.partner_id.title.name}
+            ${object.partner_id.firstname} ${object.partner_id.lastname} <br/>
+            ${object.partner_id.street} ${object.partner_id.street2}, ${object.partner_id.zip} ${object.partner_id.city}<br/>
+            <strong>Animal :</strong> ${object.sale_line_id.patient_id.name}, ${object.sale_line_id.patient_id.species_id.name},
+            ${object.sale_line_id.patient_id.race_id.name}, ${object.sale_line_id.patient_id.age_formatted},
+            ${object.sale_line_id.patient_id.gender_id.name}<br/>
+          </p><br/>
+          <p style="text-align: right; font-size: 13;"><strong>Attending Veterinarian:</strong> ${object.sale_line_id.employee_id
+          .name}</p><br/>
+          <h2 style="text-align: center;"><strong>
+            Reason for surgery: </strong>Sterilization</h2><br/><br/>
+          <p style="font-size: 13;">
+            <strong>Anesthetic Protocol:</strong><br/>
+            Weight before surgery: ${object.sale_order_id.weight} kg <br/>
+            Premedication: Intramuscular injection of Medetomidine (SEDEDORM ®) 20 µg / kg and Ketamine (ANAESTAMINE ®) 15 mg / kg.Kétamine
+            (ANAESTAMINE ®) 15 mg/kg.<br/>
+          </p><br/>
+          <p style="font-size: 13;">
+            <strong>Operating method:</strong><br/>
+
+            A 0.5 cm incision is made on the skin of the scrotum, opposite each of the testicles.<br/>
+            An incision on each of the vagina, tunics independently surrounding each testicle, is made in order to access them. Ligation
+            between the vas deferens and the vessels is performed before resection of the testes.<br/>
+            No suturing is necessary. The scrotal skin will heal on its own within a few days.<br/>
+          </p><br/>
+          <p style="font-size: 13;">
+            <strong>Treatments administered intraoperatively: </strong><br/>
+            A subcutaneous injection of Meloxicam (METACAM Chat ®) at a dose of 0.2 mg / kg is performed.<br/>
+            Injection of a Medetomidine antagonist: Atipamezole (NOSEDORM ®) by intramuscular route at half the dose of Medetomidine
+            injected for anesthesia, in order to facilitate recovery.<br/>
+          </p><br/>
+          <p style="font-size: 13;">
+            <strong>Prescriptions and special instructions: See advice sheet.</strong>
+          </p>
+        </div>
+      </field>
+    </record>
+  </data>
+</odoo>
