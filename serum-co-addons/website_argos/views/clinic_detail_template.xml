@@ -250,8 +250,8 @@
 										<div t-field="operating_unit.clinic_description"
 											class="oe_no_empty clinic_description_length">
 					                    </div>
-					                    <a class="text-primary desc-more-btn" onclick="myFunction()" id="myBtn">
-				                          Lire la suite
+					                    <a class="text-primary desc-more-btn d-block d-md-none" onclick="desc_more_function()" id="myBtn">
+				                          Lire la suite <span class="ml-2 fa fa-caret-down "/>
 				                        </a>
 									</t>
 								</div>
