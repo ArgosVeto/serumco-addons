@@ -24,7 +24,7 @@
           <field name="patient_id"/>
           <field name="partner_id" required="1"/>
           <field name="consultation_type_id"/>
-          <field name="more_info"/>
+          <field name="more_info" string="More customer info"/>
         </xpath>
       </field>
     </record>
@@ -108,7 +108,7 @@
                    attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"
                    context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
             <field name="consultation_type_id" string="Appointment nature"/>
-            <field name="more_info"/>
+            <field name="more_info" string="More customer info"/>
           </group>
         </xpath>
         <xpath expr="//sheet/group[2]/group[2]" position="replace">
