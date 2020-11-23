@@ -6,6 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
+
 "POT-Creation-Date: 2020-11-20 08:14+0000\n"
 "PO-Revision-Date: 2020-11-20 08:14+0000\n"
 "Last-Translator: \n"
@@ -2647,6 +2648,12 @@ msgstr "Récupération des rendez-vous %s"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__more_info
 msgid "More Information"
 msgstr "Plus d'informations"
+
+#. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:argos_planning.planning_view_form_quickcreate_inherit
+msgid "More customer info"
+msgstr "Plus d’infos du client"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__mrdv_event_id

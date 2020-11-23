@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-13 07:37+0000\n"
-"PO-Revision-Date: 2020-11-13 07:37+0000\n"
+"POT-Creation-Date: 2020-11-19 07:14+0000\n"
+"PO-Revision-Date: 2020-11-19 07:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -348,6 +348,11 @@ msgstr "Date de préparation"
 #: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__date_sent
 msgid "Date Sent"
 msgstr "Date de reception"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_consultation_type__is_default
+msgid "Default"
+msgstr "Par défaut"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
