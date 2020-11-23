@@ -6,8 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-19 06:55+0000\n"
-"PO-Revision-Date: 2020-11-19 06:55+0000\n"
+
+"POT-Creation-Date: 2020-11-20 08:14+0000\n"
+"PO-Revision-Date: 2020-11-20 08:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2492,7 +2493,7 @@ msgstr "Nature du RDV"
 #: code:addons/argos_planning/controllers/main.py:0
 #, python-format
 msgid "Archiving Event %s"
-msgstr ""
+msgstr "Archivage du rendez-vous %s"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__arrival_time
@@ -2530,6 +2531,12 @@ msgstr "Annuler"
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_slot__state__cancel
 msgid "Cancelled"
 msgstr "Annulé"
+
+#. module: argos_planning
+#: code:addons/argos_planning/controllers/main.py:0
+#, python-format
+msgid "Cancelling Event %s"
+msgstr "Annulation du rendez-vous %s"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__operating_unit_id
@@ -2630,6 +2637,12 @@ msgstr "Dernière mise à jour le"
 #: model:mail.template,subject:argos_planning.review_mail_template
 msgid "Leave a review"
 msgstr "Laissez un avis"
+
+#. module: argos_planning
+#: code:addons/argos_planning/controllers/main.py:0
+#, python-format
+msgid "Listing Events %s"
+msgstr "Récupération des rendez-vous %s"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__more_info
@@ -2760,6 +2773,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__presence
 msgid "Presence"
 msgstr "Présence"
+
+#. module: argos_planning
+#: code:addons/argos_planning/controllers/main.py:0
+#, python-format
+msgid "Pushing Event %s"
+msgstr "Création du rendez-vous %s"
 
 #. module: argos_planning
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__rdv
