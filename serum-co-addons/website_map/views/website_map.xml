@@ -87,60 +87,6 @@
 	</template>
 
 	 <template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
-	 	<xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
-            <div class="s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
-                <div class="card bg-white">
-                    <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
-                    <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-                       <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-                            <img src="/website_argos/static/src/img/heart.svg"></img>
-                        </a>
-                    </t>
-                    <t t-else="">
-                      <a role="button"  class="btn btn-primary fav-btn"
-                         t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-                        <img src="/website_argos/static/src/img/heart.svg"></img>
-                        </a> 
-                    </t>
-                   
-                    <div class="card-body">
-                        <h3 class="card-title o_default_snippet_text">
-                            <a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/clinic-detail/clinic-pratice/#{slug(operating_unit.sudo())}"/>
-                        </h3>
-
-                        <t t-set="not_working_time" t-value="operating_unit.clinic_working_status()"/>
-
-                       <t t-if="not_working_time">
-                            <i class="fa fa-circle" style="color:#1ade8d;"></i>
-                            <span>Clinique actuellement ouverte</span>
-                        </t>
-                        <t t-else="">
-                            <i class="fa fa-circle" style="color:red;"></i>
-                            <span>Clinique actuellement fermée</span>
-                        </t>
-                        
-                        <div class="clinic-link d-flex">
-                            <div class="image-l">
-                                <img src="/website_argos/static/src/img/location.svg"/>
-                            </div>
-                            <div class="link">
-                                <span class="Avenue-Pasteur">
-                                    <span class="street" t-field="operating_unit.street"/><span>, </span><span class="zip" t-field="operating_unit.zip"/><span>, </span><span class="city" t-field="operating_unit.city"/>
-                                </span>
-                            </div>
-                        </div>
-                </div>
-                <div class="card-footer">
-                         <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-none d-xl-inline-block mr-2">
-                            <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
-                        </a>
-                         <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
-                            <span class="">Prendre RDV</span>
-                        </a>
-                    </div>  
-            	</div>
-        	</div>
-    	</xpath>
 	 	<xpath expr="//div/div[@class='container']" position="before">
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
