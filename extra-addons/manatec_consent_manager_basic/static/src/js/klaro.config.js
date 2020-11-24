@@ -1,215 +1,103 @@
-var klaroConfig = {
-    testing: false,
-    elementID: 'klaro',
-    storageMethod: 'cookie',
-    storageName: 'klaro',
-    htmlTexts: false,
-    cookieDomain: '.odoo.com',
-    cookieExpiresAfterDays: 30,
-    default: false,
-    mustConsent: false,
+window.klaroConfig = {
+    privacyPolicy: '/politique_cookies',
     acceptAll: true,
-    hideDeclineAll: false,
-    hideLearnMore: false,
-    translations: {
-        /*
-        The `zz` key contains default translations that will be used as fallback values.
-            This can e.g. be useful for defining a fallback privacy policy URL.
-        */
-        zz: {
-            privacyPolicyUrl: '/privacy',
-
-        },
-
-        en: {
-            privacyPolicyUrl: '/privacy',
-            consentModal: {
-                description:
-                    'Here you can see and customize the information that we collect about you. ' +
-                    'Entries marked as "Example" are just for demonstration purposes and are not ' +
-                    'really used on this website.',
-            },
-            purposes: {
-                analytics: {
-                    title: 'Analytics'
-                },
-                security: {
-                    title: 'Security'
-                },
-                livechat: {
-                    title: 'Livechat'
-                },
-                advertising: {
-                    title: 'Advertising'
-                },
-                styling: {
-                    title: 'Styling'
-                },
-                social: {
-                    title: 'Social'
-                },
-            },
-        },
-        fr: {
-            privacyPolicyUrl: '/privacy',
-            consentModal: {
-                description:
-                    '[TEXTE A PERSONNALISER]',
-            },
-            purposes: {
-                analytics: {
-                    title: 'Google Analytics',
-                    description: '[Google Analytics TEXT]',
-                },
-                security: {
-                    title: 'Securité'
-                },
-                livechat: {
-                    title: 'Livechat'
-                },
-                advertising: {
-                    title: 'Partenaires publicitaires',
-                    description: '[Partenaires publicitaires TEXT]',
-                },
-                styling: {
-                    title: 'Styling'
-                },
-                social: {
-                    title: 'Réseaux sociaux',
-                    description: '[Réseaux sociaux TEXT]',
-                },
-                basic: {
-                    title: 'Essentiels',
-                    description: '[Essentiel TEXT]',
-                },
-            },
-        },
-    },
-    services: [
-                {
-            name: 'essential',
+    apps : [
+        {
+            name : 'essential',
             default: true,
-            translations: {
-                zz: {
-                    title: 'Essential'
-                },
-                en: {
-                    description: 'Basic is a simple service to blablabla '
-                },
-                fr: {
-                    description: '[Essentiel TEXT_2]'
-                },
-            },
-            purposes: ['basic'],
-
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
-            ],
             required: true,
-            optOut: false,
-            onlyOnce: true,
+            // title : 'Essential',
+            // purposes: ['essential'],
         },
         {
-            name: 'google_analytic',
+            name : 'cookies-analytics',
             default: true,
-            translations: {
-                zz: {
-                    title: 'Google Analytics'
-                },
-                en: {
-                    description: 'Google Analytic is a simple service to blablabla'
-                },
-                fr: {
-                    description: '[Google Analytics TEXT_2]'
-                },
-            },
-            purposes: ['analytics'],
-
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
+            // title : 'Cookies Analytics',
+            // purposes: ['statistics'],
+            cookies : [
+                [/^_ga/i],
+                [/^_gat/i],
+                [/^_gid/i],
             ],
-            required: false,
-            optOut: false,
-            onlyOnce: true,
         },
         {
-            name: 'google_ads',
+            name : 'cookies-fonctionnal',
             default: true,
-            translations: {
-                zz: {
-                    title: 'Google Adds'
-                },
-                en: {
-                    description: 'Google Adds is a simple, self-hosted analytics service.'
-                },
-                fr: {
-                    description: '[Google ADDS TEXT]'
-                },
-            },
-            purposes: ['advertising'],
-
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
-            ],
-            required: false,
-            optOut: false,
-            onlyOnce: true,
+            // title : 'Cookies Fonctionnals',
+            // purposes: ['statistics'],
         },
         {
-            name: 'twitter',
+            name : 'cookies-advertisings',
             default: true,
-            translations: {
-                zz: {
-                    title: 'Twitter'
-                },
-                en: {
-                    description: 'Twitter is a simple, self-hosted analytics service.'
-                },
-                fr: {
-                    description: '[Twitter TEXT]'
-                },
-            },
-            purposes: ['social'],
-
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
-            ],
-            required: false,
-            optOut: false,
-            onlyOnce: true,
+            // title : 'Cookies Advertisings',
+            // purposes: ['statistics'],
         },
-        {
-            name: 'facebook',
-            default: true,
-            translations: {
-                zz: {
-                    title: 'Facebook'
-                },
-                en: {
-                    description: 'Facebook is a simple, self-hosted analytics service.'
-                },
-                fr: {
-                    description: '[Facebook TEXT]'
-                },
-            },
-            purposes: ['social'],
 
-            cookies: [
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
-                [/^_pk_.*$/, '/', 'localhost'],
-                'piwik_ignore',
-            ],
-            required: false,
-            optOut: false,
-            onlyOnce: true,
+        {
+            name : 'cookies-socials',
+            default: true,
+            // title : 'Cookies Socials',
+            // purposes: ['statistics'],
+
         },
     ],
+    translations: {
+        // If you erase the "consentModal" translations, Klaro will use the
+        // bundled translations.
+        en: {
+            consentModal: {
+                description:
+                    "We use cookies and similar technologies. Some cookies are essential for this websites functionality, some help us to understand how you use our site and to improve your experience.",
+            },
+            consentNotice: {
+                learnMore: "Settings",
+                description: "ccccc",
+            },
+            'google-analytics': {
+                description: 'Google Analytics is a tracking tool for traffic analysis of websites. We use Google Analytics to understand the user behaviour of visitors to our website and to improve the general user experience.',
+            },
+            'essential': {
+                description: 'Essentials serve the functionality of the website. We use Essential cookies for general functionality and navigation on the site.',
+            },
+            purposes: {
+                statistics: 'Visitor Statistics',
+                essential: 'Essential'
+            }
+        },
+        fr: {
+            poweredBy:"",
+            acceptAll: "Accepter tout",
+            acceptSelected: "Accepter",
+            consentModal: {
+                description:
+                    "Nous utilisons les cookies afin de vous proposer un service amélioré et personnalisé. Vous pouvez les accepter ou les refuser en totalité ou par typologie.\n" +
+                    "Afin de poursuivre votre navigation sur le site, nous vous invitons à faire un choix concernant le dépôt de cookies.",
+            },
+            consentNotice: {
+                learnMore: "Paramêtres",
+                description: "En poursuivant votre navigation, vous acceptez notre usage des cookies conformément à notre politique de gestion des Données personnelles et cookies. Vous pouvez à tout moment gérer vos préférences en modifiant vos paramètres cookies.",
+
+            },
+            'essential': {
+                description: 'Essentiels',
+            },
+            'cookies-analytics': {
+                description: 'Les cookies analytiques',
+            },
+            'cookies-fonctionnal': {
+                description: 'Les cookies fonctionnels',
+            },
+            'cookies-advertisings': {
+                description: 'Les cookies publicitaires',
+            },
+            'cookies-socials': {
+                description: 'Les cookies réseaux sociaux',
+            },
+
+            purposes: {
+                statistics: 'Visitor Statistics',
+                essential: 'Essential'
+            }
+        }
+    }
 };
