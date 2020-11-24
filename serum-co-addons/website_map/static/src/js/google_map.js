@@ -105,7 +105,7 @@ odoo.define('website_map.arounded', function (require) {
                 }
                 var locations = google.maps.geometry.spherical.computeDistanceBetween(
                     new google.maps.LatLng(myLatLng2),new google.maps.LatLng(myLatLng));
-                if (locations/1000 <= 100){
+                if (locations/1000 <= 50){
 
                     new google.maps.Marker({
                         position: myLatLng2,
@@ -206,3 +206,43 @@ odoo.define('website_map.googleMap', function (require) {
     });
 });
 };
+odoo.define('website_map.arounded', function (require) {
+  var rpc = require('web.rpc')
+  var igo = document.getElementById("i_go")
+  var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
+          zoom: 10,
+          center: new google.maps.LatLng(44.837789,-0.57918),
+        });
+  igo.onclick = function(){
+            getLocation(function (position) {
+            rpc.query({
+          model: 'operating.unit',
+          method: 'clinic_detail'
+        }).then(function (data){
+          $.each(data, function(key, val){
+            var geocoders = new google.maps.Geocoder();
+            var cities = val['city']
+            // var names = val['name']
+            geocoders.geocode({'address': cities}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+                    var myLatLng2 = { lat: latitude, lng: longitude };
+                }
+                    new google.maps.Marker({
+                        position: myLatLng2,
+                        // label:cities,
+                        map,
+                        center:myLatLng2,
+                        zoom:10,
+                    });
+            });
+          })
+        })
+
+//onclick function end
+
+    });
+
+        }
+});
