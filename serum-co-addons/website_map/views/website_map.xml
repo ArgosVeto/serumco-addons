@@ -8,22 +8,41 @@
 	</template>
 	<template id="clinic_search_box_inherit" inherit_id="website_argos.clinic_search_box">
 		<xpath expr="//div/form/div[2]" position="replace">
-			<div class="">
-               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="gMap()" id="around_me">
-                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
-               </a>
-            </div>
+			<t t-if="request.session.uid">
+				<div class="">
+	               <a role="button" target="" href="#" class="around btn btn-outline-primary  ml-4" onclick="around_me()" id="around_me">
+	                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
+	               </a>
+	            </div>
+	        </t>
+	        <t t-if="not request.session.uid">
+				<div class="">
+	               <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" onclick="around_func()" id="around_me3">
+	                   <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
+	               </a>
+	            </div>
+	        </t>
 		</xpath>
 	</template>
 
 	<template id="clinic_template_inherit" inherit_id="website_argos.clinic_template">
 		<xpath expr="//t/section[2]/div/div/div[5]" position="replace">
-			<div class="see_map googleMap">
-            	<div class="custom-control custom-switch">
-				  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch1" onclick="showhide(this)"/>
-				  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
-				</div>
-            </div>
+			<t t-if="request.session.uid">
+				<div class="see_map googleMap">
+	            	<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch1" onclick="showhide(this)"/>
+					  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
+					</div>
+	            </div>
+	        </t>
+	        <t t-if="not request.session.uid">
+	        	<div class="see_map">
+	            	<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input customSwitch1" id="customSwitch3" onclick="showhides(this)"/>
+					  <label class="custom-control-label" for="customSwitch3">Voir La Carte</label>
+					</div>
+	            </div>
+	        </t>
             <script type="text/javascript">
             	function showhide(customSwitch1) {
             	var checkbox = document.getElementById("customSwitch1");
@@ -33,6 +52,18 @@
             	}
             	else{
             	document.getElementById("googleMap").style.display = "none";
+            	location.reload();
+            	}
+			    
+			};
+            	function showhides(customSwitch3) {
+            	var checkbox = document.getElementById("customSwitch3");
+            	if (checkbox.checked){
+            	document.getElementById("googleMap2").style.display = "block";
+            	myMap2()
+            	}
+            	else{
+            	document.getElementById("googleMap2").style.display = "none";
             	location.reload();
             	}
 			    
@@ -56,10 +87,65 @@
 	</template>
 
 	 <template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
+	 	<!-- <xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
+            <div class="s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
+                <div class="card bg-white">
+                    <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
+                    <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+                       <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+                            <img src="/website_argos/static/src/img/heart.svg"></img>
+                        </a>
+                    </t>
+                    <t t-else="">
+                      <a role="button"  class="btn btn-primary fav-btn"
+                         t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+                        <img src="/website_argos/static/src/img/heart.svg"></img>
+                        </a> 
+                    </t>
+                   
+                    <div class="card-body">
+                        <h3 class="card-title o_default_snippet_text">
+                            <a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/clinic-detail/clinic-pratice/#{slug(operating_unit.sudo())}"/>
+                        </h3>
+
+                        <t t-set="not_working_time" t-value="operating_unit.clinic_working_status()"/>
+
+                       <t t-if="not_working_time">
+                            <i class="fa fa-circle" style="color:#1ade8d;"></i>
+                            <span>Clinique actuellement ouverte</span>
+                        </t>
+                        <t t-else="">
+                            <i class="fa fa-circle" style="color:red;"></i>
+                            <span>Clinique actuellement fermée</span>
+                        </t>
+                        
+                        <div class="clinic-link d-flex">
+                            <div class="image-l">
+                                <img src="/website_argos/static/src/img/location.svg"/>
+                            </div>
+                            <div class="link">
+                                <span class="Avenue-Pasteur">
+                                    <span class="street" t-field="operating_unit.street"/><span>, </span><span class="zip" t-field="operating_unit.zip"/><span>, </span><span class="city" t-field="operating_unit.city"/>
+                                </span>
+                            </div>
+                        </div>
+                </div>
+                <div class="card-footer">
+                         <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-none d-xl-inline-block mr-2">
+                            <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
+                        </a>
+                         <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+                            <span class="">Prendre RDV</span>
+                        </a>
+                    </div>  
+            	</div>
+        	</div>
+    	</xpath> -->
 	 	<xpath expr="//div/div[@class='container']" position="before">
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
-			<div id="googleMap" class="" style="width: 30%; height: 400px; display: none; position: relative; overflow: hidden; float: right;"></div>
+			<div id="googleMap" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
+			<div id="googleMap2" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
 
 			<script>
 			function myMap() {
@@ -68,6 +154,13 @@
 			  zoom:8,
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			function myMap2() {
+			var mapProp2= {
+			  center:new google.maps.LatLng(46.603354,1.8883335),
+			  zoom:8,
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
 			}
 			</script>
 		</xpath>
@@ -107,6 +200,33 @@
 		<xpath expr="//div[@id='jobs_grid']/div[1]" position="after">
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=jobMap"></script>
 		    <div id="googleMapjob" class="googleMapjob" style="width: 100%; height: 400px;display:none; position: relative; overflow: hidden;"></div>
+		</xpath>
+	</template>
+
+	<template id="clinic_practice_inherit" inherit_id="website_argos.clinic_pratice">
+		<xpath expr="//t/section[2]/div/div/div/div[3]/div[1]" position="replace">
+			<div class="d-flex align-items-center">
+				<h3 class="Nos-services">Localisation</h3>
+				<a id="i_go" href="#" class="ml-auto top-text">
+					<span class="mr-2">J'y vais</span>
+					<span><img src="/website_argos/static/src/img/right.png"/></span>
+				</a>
+			</div>
+		</xpath>
+		<xpath expr="//t/section[2]/div/div/div/div[3]/div[2]" position="replace">
+			<div class="mb32">
+		    	<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
+				<script>
+					function ClinicMap() {
+					var mapProp2= {
+					  center:new google.maps.LatLng(44.837789,-0.57918),
+					  zoom:8,
+					};
+					var map = new google.maps.Map(document.getElementById("googleMap_clinic"),mapProp2);
+					}
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=ClinicMap"></script>
+			</div>
 		</xpath>
 	</template>
 </odoo>

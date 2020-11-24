@@ -21,7 +21,7 @@ class OperatingUnit(models.Model):
     visible_in_contact = fields.Boolean(string="Visible In Contact")
     clinic_image_ids = fields.One2many('clinic.image', 'clinic_image_id', string="Extra image", copy=True)
     practical_service_ids = fields.Many2many("practical.service",string="Practical Service")
-    payment_method_ids = fields.Many2many("payment.acquirer",string="Payment Methods")
+    # payment_method_ids = fields.Many2many("payment.acquirer",string="Payment Methods")
     last_name = fields.Char(string="Last Name")
     mrdv_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")

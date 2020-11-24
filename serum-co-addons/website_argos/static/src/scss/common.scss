@@ -189,3 +189,15 @@ section.s_text_block.pt32.s_common_banner_without_bg.banner-content{
 		}
 	}
 }
+.mobile_overlay{
+	position:relative;
+}
+.mobile_overlay::before{
+	opacity: 0.4;
+   	background-color: #201f4c;
+   	position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    z-index: 1040;
+}

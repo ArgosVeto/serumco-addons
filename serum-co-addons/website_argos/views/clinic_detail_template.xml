@@ -33,12 +33,25 @@
 									data-oe-id="1415" data-oe-field="arch"
 									data-oe-xpath="/t[1]/t[1]/section[2]/div[1]/div[1]/t[2]/t[2]/div[1]/div[1]/div[1]/p[1]">
 
-									
-
 									<t t-if="not_working_time">
 										<i class="fa fa-circle" style="color:#1ade8d;;"></i>
 										<span>Clinique actuellement ouverte</span>
+										<div class="clinic-link d-flex mt16 mb16 d-block d-md-none">
+											<div class="mr-2">
+												<img src="/website_argos/static/src/img/location.svg" />
+											</div>
+											<div class="link">
+												<span class="Avenue-Pasteur">
+													<span class="street" t-field="operating_unit.street" />
+													<span>, </span>
+													<span class="zip" t-field="operating_unit.zip" />
+													<span>, </span>
+													<span class="city" t-field="operating_unit.city" />
+												</span>
+											</div>
+										</div>
 									</t>
+
 									<t t-else="">
 										<i class="fa fa-circle" style="color:red;"></i>
 										<span>Clinique actuellement fermée</span>
@@ -46,25 +59,94 @@
 								</p>
 							</div>
 						</div>
-						<div class="col-lg-5 pt16 pb8">
-							<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}"
-								class="btn btn-primary ml-4">
-								<img src="/website_argos/static/src/img/phone-white.svg"
-									class="img img-fluid mr-2" />
-								<span class="">appeler</span>
-							</a>
-							<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
-							<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-                               <a role="button"  class="btn btn-primary ml-4"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
-                            	</a>
-                            </t>
-                            <t t-else="">
-                        		<a role="button"  class="btn btn-outline-primary ml-3"
-                        	  	 t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
-                            	</a> 
-                            </t>
+						<div class="col-lg-5 pt16 pb8 clinic-btn-icon">
+							<div class="clinic-buttons d-none d-md-block">
+								<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}"
+									class="btn btn-primary ml-4">
+									<img src="/website_argos/static/src/img/phone-white.svg"
+										class="img img-fluid mr-2" />
+									<span class="">appeler</span>
+								</a>
+								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
+								<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+	                               <a role="button"  class="btn btn-primary ml-4"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
+	                            	</a>
+	                            </t>
+	                            <t t-else="">
+	                        		<a role="button"  class="btn btn-outline-primary ml-3"
+	                        	  	 t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
+	                            	</a> 
+	                            </t>
+	                        </div>
+	                        <div class="clinic-link d-flex d-block d-md-none">
+								<div class="socialicons mr-4">
+									<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
+									<t t-if="clinic_shortlisted">
+										<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+		                                   <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    	<img src="/website_argos/static/src/img/heart.svg"></img>
+		                                	</a>
+		                                </t>
+		                                <t t-else="">
+			                        	  <a role="button"  class="btn btn-primary fav-btn"
+			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+		                                	</a> 
+		                                </t>
+		                            </t>
+		                            <t t-else="">
+			                        	<a role="button"  class="btn btn-primary fav-btn"
+			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+		                               	</a> 
+		                            </t>
+                            	</div>
+
+								<div class="socialicons msg-btn mr-4">
+									<a t-att-href="'mailto:%s' % (operating_unit.email)" target="_blank">
+										<img src="/website_argos/static/src/img/message.svg" />
+									</a>
+								</div>
+								<div class="socialicons fcbk-btn mr-4">
+									<a t-att-href="operating_unit.facebook" target="_blank">
+										<img src="/website_argos/static/src/img/facebook.svg" />
+									</a>
+								</div>
+
+							</div>
+							<div class="side-block-c d-block d-md-none">
+								<div class="clinic-link mt24">
+									<t t-if="working_timing">
+										<div class="content time-slot-head mt16 mb16">
+				                            <a href="#demo" class="heading d-block" data-toggle="collapse" aria-expanded="false">Horaires d’ouverture</a>
+				                        </div>
+				                        <div id="demo" class="collapse">
+											<div class="row">
+												<t t-set="dayofweek" t-value="list(working_timing.keys())" />
+												<t t-foreach="working_timing" t-as="wt">
+													<div class="col-4 col-lg-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">
+															<t t-esc="wt" />
+														</span>
+													</div>
+													<div class="col-4 col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">
+															<t t-esc="working_timing[wt]['start_time']" />
+														</span>
+													</div>
+													<div class="col-4 col-lg-5 text-center">
+														<span class="h00---12h30-9h00---copy">
+															<t t-esc="working_timing[wt]['end_time']" />
+														</span>
+													</div>
+												</t>
+											</div>
+										</div>
+									</t>
+								</div>
+							</div>
 						</div>
 						<!-- 
 						<a role="button" target="" href="#"
@@ -76,8 +158,8 @@
 						<div class="col-lg-12 pt16 pb8 position-relative">
 							<img class="card-img-top" id="banner-img"
 								t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-							<div class="red-round-big"></div>
-							<div class="red-round-small"></div>
+							<div class="red-round-big d-none d-md-block"></div>
+							<div class="red-round-small d-none d-md-block"></div>
 						</div>
 					</div>
 				</div>
@@ -112,7 +194,7 @@
 										<div class="col-md-12">
 											<div class="row">
 												<t t-foreach="operating_unit.service_ids" t-as="s">
-													<div class="col-md-2 Rectangle mr-4">
+													<div class=" Rectangle mr-4">
 														<span>
 															<t t-esc="s.name" />
 														</span>
@@ -148,7 +230,13 @@
 							</div>
 
 							<div class="service-innerp">
-								<h3 class="Nos-services">Localisation</h3>
+								<div class="d-flex align-items-center">
+									<h3 class="Nos-services">Localisation</h3>
+									<a href="/" class="ml-auto top-text">
+										<span class="mr-2">J'y vais</span>
+										<span><img src="/website_argos/static/src/img/right.png"/></span>
+									</a>
+								</div>
 								<div class="mb32">
 									<img class="img img-fluid"
 										src="/website_argos/static/src/img/location.png" />
@@ -160,7 +248,11 @@
 								<div class="mb16">
 									<t t-if="operating_unit.clinic_description">
 										<div t-field="operating_unit.clinic_description"
-											class="oe_no_empty" />
+											class="oe_no_empty clinic_description_length">
+					                    </div>
+					                    <a class="text-primary desc-more-btn d-block d-md-none" onclick="desc_more_function()" id="myBtn">
+				                          Lire la suite <span class="ml-2 fa fa-caret-down "/>
+				                        </a>
 									</t>
 								</div>
 							</div>
@@ -168,31 +260,98 @@
 							<div class="partners-grid pt48 pb32">
 								<h3>Notre équipe</h3>
 								<t t-if="operating_unit.employee_ids">
-									<div class="row">
-										<t t-foreach="operating_unit.employee_ids" t-as="contact">
-											<div class="col-md-6 mt16 mb16">
-												<div class="p-grid">
-													<div class="mt8 text-details">
-														<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
-														<h5 class="Pierre-Michel-Copy mt4">
-															<span class="Pierre-Michel-Copy" itemprop="contact"
-																t-att-content="contact.name" t-field="contact.name" />
-														</h5>
-														<p class="Mollitia-id-dolores-Copy mt16">
-															<span t-esc="contact.note" />
-														</p>
-													</div>
-													<div class="text-right img-doc">
-														<img class="img img-fluid"
-															t-att-src="website.image_url(contact, 'image_1920')" />
+									<div class="d-none d-md-block">
+										<div class="row ">
+											<t t-foreach="operating_unit.employee_ids" t-as="contact">
+												<div class="col-md-6 mt16 mb16">
+													<div class="p-grid">
+														<div class="mt8 text-details">
+															<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+															<h5 class="Pierre-Michel-Copy mt4">
+																<span class="Pierre-Michel-Copy" itemprop="contact"
+																	t-att-content="contact.name" t-field="contact.name" />
+															</h5>
+															<p class="Mollitia-id-dolores-Copy mt16">
+																<span t-esc="contact.note" />
+															</p>
+														</div>
+														<div class="text-right img-doc">
+															<img class="img img-fluid"
+																t-att-src="website.image_url(contact, 'image_1920')" />
+														</div>
 													</div>
 												</div>
-											</div>
-										</t>
+											</t>
+										</div>
 									</div>
+									<div class="d-block d-md-none">
+										<div class="row ">
+											<div id="employee-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24 w-100" data-ride="carousel" data-pause="hover" data-interval="7000">
+		                                        <div class="carousel-inner" role="listbox">
+		                                        	<t t-set="count" t-value="0"/>
+		                                            <t t-foreach="operating_unit.employee_ids" t-as="contact">
+		                                            	<t t-if="count == 0">
+		                                                    <div class="carousel-item active w-100" >
+		                                                        <div class="col-md-12 mt16 mb16">
+																	<div class="p-grid">
+																		<div class="mt8 text-details">
+																			<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+																			<h5 class="Pierre-Michel-Copy mt4">
+																				<span class="Pierre-Michel-Copy" itemprop="contact"
+																					t-att-content="contact.name" t-field="contact.name" />
+																			</h5>
+																			<p class="Mollitia-id-dolores-Copy mt16">
+																				<span t-esc="contact.note" />
+																			</p>
+																		</div>
+																		<div class="text-right img-doc">
+																			<img class="img img-fluid"
+																				t-att-src="website.image_url(contact, 'image_1920')" />
+																		</div>
+																	</div>
+																</div>
+		                                                    </div>
+		                                                </t>
+		                                                <t t-else="">
+		                                                	 <div class="carousel-item w-100" >
+		                                                        <div class="col-md-12 mt16 mb16">
+																	<div class="p-grid">
+																		<div class="mt8 text-details">
+																			<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+																			<h5 class="Pierre-Michel-Copy mt4">
+																				<span class="Pierre-Michel-Copy" itemprop="contact"
+																					t-att-content="contact.name" t-field="contact.name" />
+																			</h5>
+																			<p class="Mollitia-id-dolores-Copy mt16">
+																				<span t-esc="contact.note" />
+																			</p>
+																		</div>
+																		<div class="text-right img-doc">
+																			<img class="img img-fluid"
+																				t-att-src="website.image_url(contact, 'image_1920')" />
+																		</div>
+																	</div>
+																</div>
+		                                                    </div>
+		                                                </t>
+		                                                <t t-set="count" t-value="count + 1"/>
+		                                            </t>
+		                                        </div>
+		                                        <div class="slider-control">
+		                                            <a class="left carousel-control-prev font-14" data-target="#employee-carousel" role="button" data-slide="prev">
+		                                                <img src="/website_argos/static/src/img/left.svg"/>
+		                                                <b class="sr-only font-normal o_default_snippet_text">Previous</b>
+		                                            </a>
+		                                            <a class="right carousel-control-next font-14" data-target="#employee-carousel" role="button" data-slide="next">
+		                                                <img src="/website_argos/static/src/img/right.svg"/>
+		                                                <b class="sr-only font-normal o_default_snippet_text">Next</b>
+		                                            </a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
 								</t>
 							</div>
-
 
 							<div class="service-innerp">
 								<h3 class="Nos-services pb16">Nos tarifs</h3>
@@ -338,7 +497,7 @@
 								</div>
 							</div>
 
-							<div class="oe_structure">
+							<div class="oe_structure d-none d-md-block">
 							<t t-call="website_blog.s_latest_posts_big_picture"/>
 							</div>
 							<div class="service-innerp pb56">
@@ -351,7 +510,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 clinic-detail-sticky side-block-c side-block">
+						<div class="col-lg-4 clinic-detail-sticky side-block-c side-block d-none d-md-block">
 							<div class="">
 								<h3>
 									<t t-esc="operating_unit.name" />
@@ -412,25 +571,30 @@
 
 							<div class="clinic-link mt24">
 								<t t-if="working_timing">
-									<div class="row">
-										<t t-set="dayofweek" t-value="list(working_timing.keys())" />
-										<t t-foreach="working_timing" t-as="wt">
-											<div class="col-4 col-lg-2">
-												<span class="Lun-Mar-Mer-Jeu-Copy">
-													<t t-esc="wt" />
-												</span>
-											</div>
-											<div class="col-4 col-lg-5 text-center">
-												<span class="h00---12h30-9h00---copy">
-													<t t-esc="working_timing[wt]['start_time']" />
-												</span>
-											</div>
-											<div class="col-4 col-lg-5 text-center">
-												<span class="h00---12h30-9h00---copy">
-													<t t-esc="working_timing[wt]['end_time']" />
-												</span>
-											</div>
-										</t>
+									<div class="content time-slot-head mt16 mb16">
+			                            <a href="#demo" class="heading d-block" data-toggle="collapse" aria-expanded="false">Horaires d’ouverture</a>
+			                        </div>
+			                        <div id="demo" class="collapse">
+										<div class="row">
+											<t t-set="dayofweek" t-value="list(working_timing.keys())" />
+											<t t-foreach="working_timing" t-as="wt">
+												<div class="col-4 col-lg-2">
+													<span class="Lun-Mar-Mer-Jeu-Copy">
+														<t t-esc="wt" />
+													</span>
+												</div>
+												<div class="col-4 col-lg-5 text-center">
+													<span class="h00---12h30-9h00---copy">
+														<t t-esc="working_timing[wt]['start_time']" />
+													</span>
+												</div>
+												<div class="col-4 col-lg-5 text-center">
+													<span class="h00---12h30-9h00---copy">
+														<t t-esc="working_timing[wt]['end_time']" />
+													</span>
+												</div>
+											</t>
+										</div>
 									</div>
 								</t>
 

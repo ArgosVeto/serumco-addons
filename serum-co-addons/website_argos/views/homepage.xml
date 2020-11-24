@@ -41,7 +41,7 @@
 							</div>
 						</section>
 						<div class="oe_structure"/>
-						<section class="home-brands d-none d-md-block">
+						<section class="home-brands">
 							<div class="container">
 								<div class="title">
 									<h1 class="text-primary">Nos marques</h1>
@@ -142,9 +142,12 @@
 											</div>
 										</div>
 										<div class="col-md-6 px16">
-											<div class="image-box">
-												<div class="image">
+											<div class="image-box ">
+												<div class="image d-none d-md-block">
 													<img src="/website_argos/static/src/img/home_chien.jpg" class="img img-fluid" />
+												</div>
+												<div class="image d-block d-md-none">
+													<img src="/website_argos/static/src/img/home-dog.png" class="img img-fluid" />
 												</div>
 												<div class="text">
 													<p class="animal-name text-black">Chien</p>
@@ -218,7 +221,7 @@
 										</div>
 									</div>
 									<div class="col-md-7 order">
-										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-touch="false" data-wrap="false" data-ride="" data-pause="hover" data-interval="false">
 											<t t-set="services" t-value="website.operating_unit_services()"/>
 											<!-- <t t-if="services"> -->
 
@@ -241,7 +244,7 @@
 									            		</t>        		
 									            	</div>
 								            	</div>
-								            	<div class="carousel-item">
+								            	<div class="carousel-item ">
 								            		<div class="row">
 								            			<t t-foreach="services" t-as="s">
 									            			<div class="col-6 mb-3">
@@ -271,6 +274,12 @@
 								                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
 								              	</a>
 								            </div>
+								            <div class="indicators  d-block d-md-none">
+									            <ol class="carousel-indicators">
+									            	<li data-target="#service-carousel" data-slide-to="0" class="active"/>
+									            	<li data-target="#service-carousel" data-slide-to="1"/>
+									          	</ol>
+									         </div>
 								        </div>
 								    <!-- </t> -->
 									</div>

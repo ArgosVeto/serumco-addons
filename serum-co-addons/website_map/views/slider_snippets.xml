@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <template id="star_inherit" inherit_id="website_argos.product_item_stars">
+        <xpath expr="//div/span[@class='text1']" position="replace">
+            <span class="text1" style="margin-left:2px;">
+                <t t-esc="rating_avg"/><span> / 5</span>
+            </span>            
+        </xpath>
+    </template>
     <template id='ecomm_five_tab_first_big_img_multi_slider_products'>
         <t t-set="combination_info"
             t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
@@ -15,7 +22,7 @@
                         <t t-esc="'-'+'%s'%(dis_per)+'&#x25;'"/></span>
                    </div>
               </t>
-            <div class="slider-icons">
+              <div class="slider-icons">
                 <div class="wislist_biz d-inline-block">
                     <t
                         t-if="product.env.ref('website_sale_wishlist.add_to_wishlist').active and product.product_variant_ids">
@@ -55,7 +62,7 @@
                 <a t-att-href="'/shop/product/%s' % slug(product)">
                     <img class="front" t-att-alt="product.name"
                         t-att-title="product.name"
-                        t-att-src="website.image_url(product, 'image_1920','397x397')" style="width: 397px; height: 397px; object-fit: cover;"/>
+                        t-att-src="website.image_url(product, 'image_1920','397*397')" style="display:block;width: 397px; height: 397px; object-fit: cover;"/>
                 </a>
             </div>
             <div class="pwp-info">
@@ -83,13 +90,13 @@
                     <h3 style="margin-top: 18px;">
                         <t t-call="website_argos.product_item_stars"/>
                     </h3>
-                    <h3>
+                    <h3 id="price">
                         <a t-attf-href="/shop/product/#{ slug(product) }">
                             <span t-field="product.list_price" t-options='{"widget": "monetary","display_currency": product.currency_id,}' style="color:black"/>
                         </a>
                     </h3>
                 </div>
-                <div class="title-desc" style="width: 450px;height: 78px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap; line-height: 1.39;">
+                <div class="title-desc" style="width: 450px;height: 78px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap; line-height: 1.39;margin-top: 10px;">
                     <span t-field='product.description_web'/>
                 </div>
                 <t t-if="product.attribute_line_ids">
@@ -107,7 +114,7 @@
                 </t>
                 <div class="o_wsale_product_btn" style="margin-top:20px;">
                     <form action="/shop/cart/update" method="post">
-                        <div class="row" style="width:200%;">
+                       <div class="row" style="width:200%;">
                         <div class="css_quantity input-group d-flex align-items-center cart_div_biz" contenteditable="false" style="width:110px;margin-left: 20px;">
                             <div class="control-qty-cart ">
                                 <div class="control-qty d-flex">
@@ -148,8 +155,9 @@
     <template id='ecomm_five_tab_multi_slider_products'>
         <t t-set="combination_info"
             t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)" />
-        <div class="product-item" style="width: 259px; height: 444px;"
-            t-att-data-publish="product.website_published and 'on' or 'off'">
+        <div class="product-item" id="product_item"
+            t-att-data-publish="product.website_published and 'on' or 'off'"
+            style="width: 259px; height: 444px;">
             <t t-if="combination_info['has_discounted_price']">
                <t t-set="diff_amount"
                   t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
@@ -160,7 +168,7 @@
                         <t t-esc="'-'+'%s'%(dis_per)+'&#x25;'"/></span>
                    </div>
               </t>
-            <div class="slider-icons" style="position:relative;z-index:9999">
+              <div class="slider-icons" style="position:relative;z-index:9999">
                 <t t-if="product.tag_ids">
                     <div class="argos_tags" style="position:absolute;">
                         <p>
@@ -179,7 +187,7 @@
                 <a t-att-href="'/shop/product/%s' % slug(product)" style="height:207px; width:207px;">
                     <img class="front" t-att-alt="product.name"
                         t-att-title="product.name"
-                        t-att-src="website.image_url(product, 'image_1920','207x207')" style="position:relative;"/>
+                        t-att-src="website.image_url(product, 'image_1920')" style="position:relative;"/>
                     <!-- <div style="position:absolute; top:0;left:0">
                         <div style="width: 96px;height: 22px; border-radius: 4px; border: solid 1px rgba(99, 186, 233, 0.4); background-color: #ffffff; color: #41ABE4;">
                             <span>Alimentation</span>
@@ -242,9 +250,9 @@
                                 t-att-value="request.csrf_token()" />
                             <input name="product_id"
                                 t-att-value="product.product_variant_id.id" type="hidden" />
-                            <button class="btn btn-link a-submit d-inline-block"><img src="/website_argos/static/src/img/cart.png" class="img img-fluid"/> Ajouter
+                            <button class="btn btn-link a-submit d-inline-block"><img src="/website_argos/static/src/img/cart.png" class="img img-fluid"/><span> Ajouter</span>
                             <span class="text-primary ml-1 mr-1 text-bold"> - </span>
-                            <t t-call="website_sale.product_price" />
+                            <span><t t-call="website_sale.product_price" /></span>
                         </button>
                         </div>
                     </form>
@@ -420,7 +428,7 @@
                                         </div>
                                     </t>
 
-                                    <t t-if="slider_details.no_of_tabs == '4'">
+                                    <t t-if="slider_details.no_of_tabs == '4' or slider_details.is_mobile == True">
                                         <div class="active multi_hide" t-att-id="'multi-collection1_%s' %(slider_details.id)">
                                             <div class="owl-carousel"
                                                 t-att-id="'multi-collection1-%s-%s' %(slider_header.no_of_tabs, slider_details.id)"
@@ -467,7 +475,7 @@
                                         </div>
                                     </t>
 
-                                    <t t-if="slider_details.no_of_tabs == '5'">
+                                    <t t-if="slider_details.no_of_tabs == '5' and slider_details.is_mobile == False">
                                         <div class="active multi_hide" t-att-id="'multi-collection1_%s' %(slider_details.id)">
                                             <div class="row owl-carousel" t-att-id="'multi-collection1-%s-%s' %(slider_header.no_of_tabs,slider_details.id)" t-if="slider_details">
                                                 <t t-set="count" t-value="0"/>
@@ -491,7 +499,7 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width:550px; float:left; height: 920px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>
@@ -534,12 +542,12 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width: 550px; float:left; height: 920px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>
                                                             <t t-if="count &lt;= 4 and count != 0">
-                                                                <div style="float:left;width:25%">
+                                                                <div style="float:left;width:25%;">
                                                                     <t t-call="website_map.ecomm_five_tab_multi_slider_products"/>
                                                                 </div>
                                                             </t>
@@ -577,12 +585,12 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width: 550px; float:left; height: 920px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>
                                                             <t t-if="count &lt;= 4 and count != 0">
-                                                                <div style="float:left;width:25%">
+                                                                <div style="float:left;width:25%;">
                                                                     <t t-call="website_map.ecomm_five_tab_multi_slider_products"/>
                                                                 </div>
                                                             </t>
@@ -620,7 +628,7 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width: 550px; float:left; height: 920px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>
@@ -663,12 +671,12 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width: 550px; float:left; height: 920px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>
                                                             <t t-if="count &lt;= 4 and count != 0">
-                                                                <div style="float:left;width:25%">
+                                                                <div style="float:left;width:25%;">
                                                                     <t t-call="website_map.ecomm_five_tab_multi_slider_products"/>
                                                                 </div>
                                                             </t>
@@ -698,4 +706,21 @@
             </div>
         </div>
     </template>
+
+    <template id="ecomm_multi_slider_products_inherit" inherit_id='website_argos.ecomm_multi_slider_products'>
+        <xpath expr="//div[@class='pwp-info']" position="after">
+            <div style="width: 369px;margin-left: -56px;margin-top: 30px;"><hr/></div>            
+        </xpath>
+    </template>
+
+    <record id="multi_slider_form_view_inherit" model="ir.ui.view">
+        <field name="name">multi.slider.form.view</field>
+        <field name="model">multi.tab.product.slider</field>
+        <field name="inherit_id" ref="website_argos.multi_slider_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="is_mobile" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

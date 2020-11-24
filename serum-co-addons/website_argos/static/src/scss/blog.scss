@@ -193,7 +193,9 @@
 	li:first-child {
 		position: absolute;
     	left: 0;
+
     	a {
+    		padding: 1.4rem 0.75rem !important;
 	    	&:before {
 	    		content: '\f177';
 			    font-family: FontAwesome;
@@ -209,6 +211,7 @@
 		position: absolute;
     	right: 0;
     	a {
+    		padding: 1.4rem 0.75rem !important;
 	    	&:after {
 	    		content: '\f178';
 			    font-family: FontAwesome;

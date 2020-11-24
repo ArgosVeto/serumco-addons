@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 
-    $("#editor").clone().appendTo("#applybtnn");
+   $("#editor").clone().appendTo("#applybtnn");
 	$("#editor").html("Postuler");
 
 	
@@ -18,6 +18,10 @@ $(document).ready(function(){
   if ($("div").hasClass("o_portal_my_home")) {
     $('.ac-info').addClass('active-info'); 
     $('.br-info-portal').addClass('breadcrumb-info'); 
+  }
+
+  if ($("section").hasClass("service-tt")) {
+    $('.sidebar-content').addClass('d-md-sidebar-content'); 
   }
 	
 	$(function() {
@@ -146,22 +150,25 @@ $(function() {
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
   });
   $(".bottom-show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
   });
   $("#close_mbl_sidebar").on("click", function(e) {
     $(".sidebar-wrapper").removeClass("toggled");
+    $("#wrapwrap").removeClass("mobile_overlay");
     e.stopPropagation()
   });
   $(document).on("click", function(e) {
     if (!$(e.target).closest('.sidebar-wrapper').length) {
       $(".sidebar-wrapper").removeClass("toggled");
+      $("#wrapwrap").removeClass("mobile_overlay");
     }
   });
-
 
   /* cart sidebar js */
   $(".show_cart_sidebar").on("click", function(e) {
@@ -575,3 +582,12 @@ $(document).ready(function() {
   });
  
 });
+
+
+function desc_more_function() {
+  if ($(".clinic_description_length").hasClass("show")) {
+    $(".clinic_description_length").removeClass("show");
+  } else {
+    $(".clinic_description_length").addClass("show");
+  }
+}
