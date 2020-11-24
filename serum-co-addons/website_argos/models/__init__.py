@@ -11,4 +11,3 @@ from . import partner
 from . import hr_applicant
 from . import crm_lead
 from . import resource_calendar
-from . import sale_order

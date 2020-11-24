@@ -221,7 +221,7 @@
 										</div>
 									</div>
 									<div class="col-md-7 order">
-										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-touch="false" data-wrap="false" data-ride="" data-pause="hover" data-interval="false">
 											<t t-set="services" t-value="website.operating_unit_services()"/>
 											<!-- <t t-if="services"> -->
 
@@ -244,7 +244,7 @@
 									            		</t>        		
 									            	</div>
 								            	</div>
-								            	<div class="carousel-item">
+								            	<div class="carousel-item ">
 								            		<div class="row">
 								            			<t t-foreach="services" t-as="s">
 									            			<div class="col-6 mb-3">
