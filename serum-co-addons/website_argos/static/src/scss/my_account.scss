@@ -25,6 +25,15 @@
 					font-family: AvenirLTStd-Heavy;
 				}
 			}
+			.nav-item.active{
+				.nav-link{
+					border-bottom: 2px solid theme-color('primary');
+					font-family: AvenirLTStd-Heavy;
+					&:hover{
+						color: theme-color('primary') !important;
+					}
+				}
+			}
 			@media (max-width: 767.98px) {
 				.nav-item{
 					margin-right: 16px !important;
