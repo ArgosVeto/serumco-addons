@@ -1,11 +1,19 @@
 window.klaroConfig = {
-    privacyPolicy: '/datenschutz',
+    privacyPolicy: '/politique_cookies',
+    acceptAll: true,
     apps : [
         {
-            name : 'google-analytics',
+            name : 'essential',
             default: true,
-            title : 'Google Analytics',
-            purposes: ['statistics'],
+            required: true,
+            // title : 'Essential',
+            // purposes: ['essential'],
+        },
+        {
+            name : 'cookies-analytics',
+            default: true,
+            // title : 'Cookies Analytics',
+            // purposes: ['statistics'],
             cookies : [
                 [/^_ga/i],
                 [/^_gat/i],
@@ -13,37 +21,29 @@ window.klaroConfig = {
             ],
         },
         {
-            name : 'essential',
+            name : 'cookies-fonctionnal',
             default: true,
-            required: true,
-            title : 'Essential',
-            purposes: ['essential'],
+            // title : 'Cookies Fonctionnals',
+            // purposes: ['statistics'],
+        },
+        {
+            name : 'cookies-advertisings',
+            default: true,
+            // title : 'Cookies Advertisings',
+            // purposes: ['statistics'],
+        },
+
+        {
+            name : 'cookies-socials',
+            default: true,
+            // title : 'Cookies Socials',
+            // purposes: ['statistics'],
+
         },
     ],
     translations: {
         // If you erase the "consentModal" translations, Klaro will use the
         // bundled translations.
-        de: {
-            consentModal: {
-                description:
-                    "Wir nutzen Cookies auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern.",
-            },
-            consentNotice: {
-                learnMore: "Einstellungen",
-            },
-            'google-analytics': {
-                description: 'Google Analytics ist ein Trackingtool zur Datenverkehrsanalyse von Webseiten. Wir nutzen Google Analytics, um das Nutzerverhalten der Besucher unserer Website zu verstehen und die allgemeine User-Experience zu verbessern.',
-            },
-            'essential': {
-                description: 'Essentials dienen der Funktionalität der Website. Wir nutzen Essential-Cookies zur generellen Funktionalität und zur Navigation auf der Website.',
-            },
-            purposes: {
-                statistics: 'Besucher Statistiken',
-                essential: 'Essentiell',
-            },
-            ok: "Akzeptieren",
-            acceptSelected: "Auswahl akzeptieren"
-        },
         en: {
             consentModal: {
                 description:
@@ -51,6 +51,7 @@ window.klaroConfig = {
             },
             consentNotice: {
                 learnMore: "Settings",
+                description: "ccccc",
             },
             'google-analytics': {
                 description: 'Google Analytics is a tracking tool for traffic analysis of websites. We use Google Analytics to understand the user behaviour of visitors to our website and to improve the general user experience.',
@@ -58,6 +59,41 @@ window.klaroConfig = {
             'essential': {
                 description: 'Essentials serve the functionality of the website. We use Essential cookies for general functionality and navigation on the site.',
             },
+            purposes: {
+                statistics: 'Visitor Statistics',
+                essential: 'Essential'
+            }
+        },
+        fr: {
+            poweredBy:"",
+            acceptAll: "Accepter tout",
+            acceptSelected: "Accepter",
+            consentModal: {
+                description:
+                    "Nous utilisons les cookies afin de vous proposer un service amélioré et personnalisé. Vous pouvez les accepter ou les refuser en totalité ou par typologie.\n" +
+                    "Afin de poursuivre votre navigation sur le site, nous vous invitons à faire un choix concernant le dépôt de cookies.",
+            },
+            consentNotice: {
+                learnMore: "Paramêtres",
+                description: "En poursuivant votre navigation, vous acceptez notre usage des cookies conformément à notre politique de gestion des Données personnelles et cookies. Vous pouvez à tout moment gérer vos préférences en modifiant vos paramètres cookies.",
+
+            },
+            'essential': {
+                description: 'Essentiels',
+            },
+            'cookies-analytics': {
+                description: 'Les cookies analytiques',
+            },
+            'cookies-fonctionnal': {
+                description: 'Les cookies fonctionnels',
+            },
+            'cookies-advertisings': {
+                description: 'Les cookies publicitaires',
+            },
+            'cookies-socials': {
+                description: 'Les cookies réseaux sociaux',
+            },
+
             purposes: {
                 statistics: 'Visitor Statistics',
                 essential: 'Essential'
