@@ -342,6 +342,15 @@
 	</template>
 
 	<template id="cart_popover_inherit" inherit_id="website_sale.cart_popover">
+		 <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
+			  <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+				  <t t-call="website_sale.cart_line_product_link">
+					<strong><t t-esc="name_line"/></strong>
+				  </t>
+			 </t>
+			 <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
+		</xpath>
+
 		<xpath expr="//a[hasclass('btn','btn-primary')]" position="replace">
 			<a role="button" class="btn btn-primary" href="/shop/cart">
                Voir mon panier
