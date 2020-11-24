@@ -285,10 +285,24 @@ class SaleOrder(models.Model):
         except Exception as e:
             _logger.error(repr(e))
 
+    def get_portal_partner(self, partner_id):
+        if isinstance(partner_id, int):
+            partner_id = self.env['res.partner'].browse(partner_id)
+        if partner_id.portal_user_id:
+            if partner_id.portal_user_id.partner_id:
+                return partner_id.portal_user_id.partner_id.ids
+            else:
+                return False
+        else:
+            return False
+
     @api.model
     def create(self, vals):
         vals['arrival_time'] = fields.Datetime.now()
         res = super(SaleOrder, self).create(vals)
+        portal_partner_ids = self.get_portal_partner(vals['partner_id'])
+        if portal_partner_ids:
+            res.message_subscribe(partner_ids=portal_partner_ids)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
         return res
