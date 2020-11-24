@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+    <template id="my_appointment_template" name="my appointment">
+        <div class="mb8" t-if="record">
+            <div class="row mt24 mon-prochain">
+                <div class="col-md-12">
+                    <div class="date-time">
+                        <t t-set="week_day" t-value="record.start_datetime.strftime('%A')"/>
+                        <span t-esc="week_day and week_day.title()"/>
+                        <span t-field="record.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
+                        <span>-</span>
+                        <span t-field="record.start_datetime" t-options='{"format": "HH:mm"}'/>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt24 mon-prochain">
+                <div class="col-md-4 col-4">
+                    <img class="img img-fluid" t-att-src="website.image_url(record.operating_unit_id, 'clinic_banner')" />
+                </div>
+                <div class="col-md-8 col-8 main-info">
+                    <strong t-esc="record.operating_unit_id.name"/>
+                    <div t-if="record.employee_id">
+                       <span>Dr. <t t-esc="record.employee_id.name"/></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <t t-if="record and add_to_my_calendar">
+             <a role="button" t-att-href="'/planning/%s/ics' % record.id" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
+         </t>
+    </template>
+
    <!--  reqw -->
     <template id="portal_template" name="Portal Template">
         <t t-call="website.layout">
@@ -17,7 +48,7 @@
                                     </li>
                                     <t t-if="next_appointment_id or pervious_appointment_id">
                                         <li class="nav-item mr32">
-                                            <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                            <a class="nav-link" href="/my-appointment">Mes RDV</a>
                                         </li>
                                     </t>
                                     <li class="nav-item mr32">
@@ -117,35 +148,9 @@
                                                         <a href="/my-appointment">Voir tout</a>
                                                     </div>
                                                 </div>
-
-                                                <div class="mb32">
-                                                    <t t-if="next_appointment_id">
-                                                        <div class="row mt24 mon-prochain">
-                                                            <div class="col-md-12">
-                                                                <div class="date-time">
-                                                                    <span>Mercredi</span>
-                                                                    <span t-field="next_appointment_id.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
-                                                                    <span>--</span>
-                                                                    <span t-field="next_appointment_id.start_datetime" t-options='{"format": "HH:MM"}'/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mt24 mon-prochain">
-                                                            <div class="col-md-6 col-6">
-                                                                <img class="img img-fluid" t-att-src="website.image_url(next_appointment_id.operating_unit_id, 'clinic_banner')" />
-                                                            </div>
-                                                            <div class="col-md-6 col-6 main-info">
-                                                                <h1><t t-esc="next_appointment_id.operating_unit_id.name"/></h1>            
-                                                                <p class="mt8">
-                                                                    <span t-field="next_appointment_id.employee_id.name"/>
-                                                                </p>
-                                                            </div>
-                                                        </div>                                    
-                                                    </t>
-                                                </div>
-                                                <t t-if="next_appointment_id">
-                                                    <a role="button" href="#" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
+                                                <t t-call="website_argos.my_appointment_template">
+                                                    <t t-set="record" t-value="next_appointment_id"/>
+                                                    <t t-set="add_to_my_calendar" t-value="True"/>
                                                 </t>
                                             </div>
                                         </div>
@@ -189,40 +194,16 @@
                                             <div class="card p-3">
                                                 <div class="row title-row">
                                                     <div class="col-md-8 col-8 text-left">
-                                                        <strong>MON RDV PRECEDENT</strong>
+                                                        <strong>MON PRECEDENT RDV</strong>
                                                     </div>
                                                     <div class="col-md-4 col-4 text-right">
                                                         <a href="/my-appointment">Voir tout</a>
                                                     </div>
                                                 </div>
-
-                                                <div class="mb32">
-                                                    <t t-if="pervious_appointment_id">
-
-                                                        <div class="row mt24 mon-prochain">
-                                                            <div class="col-md-12">
-                                                                <div class="date-time">
-                                                                    <span>Mercredi</span>
-                                                                    <span t-field="pervious_appointment_id.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
-                                                                    <span>--</span>
-                                                                    <span t-field="pervious_appointment_id.start_datetime" t-options='{"format": "HH:MM"}'/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mt24 mon-prochain">
-                                                            <div class="col-md-6 col-6">
-                                                                <img class="img img-fluid" t-att-src="website.image_url(pervious_appointment_id.operating_unit_id, 'clinic_banner')" />
-                                                            </div>
-                                                            <div class="col-md-6 col-6 main-info">
-                                                                <h1><t t-esc="pervious_appointment_id.operating_unit_id.name"/></h1>            
-                                                                <div class="mt8">
-                                                                    <span t-field="pervious_appointment_id.employee_id.name"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>                                    
-                                                    </t>
-                                                </div>
+                                                 <t t-call="website_argos.my_appointment_template">
+                                                    <t t-set="record" t-value="pervious_appointment_id"/>
+                                                    <t t-set="add_to_my_calendar" t-value="False"/>
+                                                </t>
                                                 <a role="button" href="/prendre-rendez-vous" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block">Prendre un rendez-vous</a>
                                             </div>
                                         </div>
@@ -420,7 +401,7 @@
                                 </li>
                                 <t t-if="next_appointment_id or pervious_appointment_id">
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                        <a class="nav-link" href="/my-appointment">Mes RDV</a>
                                     </li>
                                 </t>
                                 <li class="nav-item ac-address mr32">
@@ -494,7 +475,7 @@
                                 </li>
                                 <t t-if="next_appointment_id or pervious_appointment_id">
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                        <a class="nav-link" href="/my-appointment">Mes RDV</a>
                                     </li>
                                 </t>
                                 <li class="nav-item mr32">
@@ -556,7 +537,7 @@
                                 </li>
                                 <t t-if="next_appointment_id or pervious_appointment_id">
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                        <a class="nav-link" href="/my-appointment">Mes RDV</a>
                                     </li>
                                 </t>
                                 <li class="nav-item mr32">

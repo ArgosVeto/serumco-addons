@@ -5,6 +5,7 @@
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.http import request
 from odoo import fields, http, _
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, date_utils
 from odoo.addons.portal.controllers.portal import CustomerPortal,pager as portal_pager
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 import urllib
@@ -14,9 +15,8 @@ from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 import json
 import base64
 from datetime import datetime
-from odoo.http import route
+from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
-
 
 class AuthSignupHomeSS(AuthSignupHome):
 	def check_password(self,passwd):
@@ -133,19 +133,32 @@ class PortalContent(http.Controller):
 
 
 	@http.route(['''/my-appointment'''],type='http', auth="user", website=True)
-	def my_appointment(self,**post):
+	def my_appointment(self, **post):
 		old_appointment_ids = False
 		new_appointment_ids = False
-		employee_id = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-		if employee_id:
-			now = datetime.now()
-			old_app_dommain = [('employee_id','=',employee_id.id),('mrdv_event_id','!=',0),('start_datetime','<=',now)]
-			new_app_dommain = [('employee_id','=',employee_id.id),('mrdv_event_id','!=',0),('start_datetime','>=',now)]
-			old_appointment_ids = request.env['planning.slot'].sudo().search(old_app_dommain)
-			new_appointment_ids = request.env['planning.slot'].sudo().search(new_app_dommain)
+		partner = request.env.user.partner_id
+		if partner:
+			now = fields.datetime.now()
+			old_app_dommain = [('partner_id','=',partner.id),('mrdv_event_id','!=',0),('start_datetime','<=',now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))]
+			new_app_dommain = [('partner_id','=',partner.id),('mrdv_event_id','!=',0),('start_datetime','>=',now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))]
+			old_appointment_ids = request.env['planning.slot'].sudo().search(old_app_dommain, order="start_datetime desc")
+			new_appointment_ids = request.env['planning.slot'].sudo().search(new_app_dommain, order="start_datetime")
 		values  = {'new_appointment_ids':new_appointment_ids,'old_appointment_ids':old_appointment_ids}
 		return request.env['ir.ui.view'].render_template("website_argos.my_appointment",values)
-		
+
+	@route(['''/planning/<model("planning.slot"):planning>/ics'''], type='http',
+		   auth="public")
+	def event_ics_file(self, planning, **kwargs):
+		files = planning._get_ics_file()
+		if not planning.id in files:
+			return request.not_found()
+		content = files[planning.id]
+		return request.make_response(content, [
+			('Content-Type', 'application/octet-stream'),
+			('Content-Length', len(content)),
+			('Content-Disposition', content_disposition('%s.ics' % planning.name))
+		])
+
 	@http.route(['''/my-content'''],type='http', auth="user", website=True)
 	def portal_content(self,**post):
 		values = {}
@@ -153,17 +166,12 @@ class PortalContent(http.Controller):
 		next_appointment_id = False
 		pervious_appointment_id = False
 
-		employee_id = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-		if employee_id:
-			now = datetime.now()
-			next_dommain = [('employee_id','=',employee_id.id),('mrdv_event_id','!=',0),('start_datetime','>=',now)]
-			next_appointment_id = request.env['planning.slot'].sudo().search(next_dommain,limit=1)
-			pervious_dommain = [('employee_id','=',employee_id.id),('mrdv_event_id','!=',0),('start_datetime','<=',now)]
-			pervious_appointment_id = request.env['planning.slot'].sudo().search(pervious_dommain,limit=1)
-
+		now = fields.datetime.now()
 		partner = request.env.user.partner_id
-		fav_clinic = False
-		fav_clinic = partner.clinic_shortlisted_ids
+
+		next_appointment_id = request.env['planning.slot'].sudo().search([('partner_id', '=', partner.id), ('mrdv_event_id', '!=', 0),('start_datetime', '>=', now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))], order="start_datetime", limit=1)
+		pervious_appointment_id = request.env['planning.slot'].sudo().search([('partner_id', '=', partner.id), ('mrdv_event_id', '!=', 0),('start_datetime', '<=', now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))], order="start_datetime desc", limit=1)
+		fav_clinic = partner.clinic_shortlisted_ids or False
 		order_ids = request.env['sale.order'].sudo().search([('partner_id','=',partner.id)],limit=2)
 	
 		product_wishlist_ids = request.env['product.wishlist'].sudo().search([('partner_id','=',partner.id)])

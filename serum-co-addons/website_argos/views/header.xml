@@ -85,7 +85,7 @@
 										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 											<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
 											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
-											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Mes RDV</a>
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
 											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
