@@ -27,6 +27,7 @@ odoo.define('website_argos.cart_address', function(require) {
                 })
             });
        }
+ 
 
        function get_all_clinic(){
         var all_clinic = document.getElementById("all_clinic");

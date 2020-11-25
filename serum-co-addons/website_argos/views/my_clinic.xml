@@ -26,7 +26,7 @@
 			                                    </li>
 			                                    <t t-if="next_appointment_id or pervious_appointment_id">
 			                                        <li class="nav-item mr32">
-			                                            <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+			                                            <a class="nav-link" href="/my-appointment">Mes RDV</a>
 			                                        </li>
 			                                    </t>
 			                                    <li class="nav-item mr32">

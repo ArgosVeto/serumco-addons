@@ -25,6 +25,15 @@
 					font-family: AvenirLTStd-Heavy;
 				}
 			}
+			.nav-item.active{
+				.nav-link{
+					border-bottom: 2px solid theme-color('primary');
+					font-family: AvenirLTStd-Heavy;
+					&:hover{
+						color: theme-color('primary') !important;
+					}
+				}
+			}
 			@media (max-width: 767.98px) {
 				.nav-item{
 					margin-right: 16px !important;
@@ -223,8 +232,8 @@
 
 			.mon-prochain{
 				img{
-					border-radius: 4px;
-					max-height: 80px;
+					border-radius: 5px;
+					max-height: 90px;
 				}
 				.date-time{
 					span{
@@ -245,7 +254,7 @@
 				.main-info{
 					h1{
 						font-family: AvenirLTStd-Heavy !important;
-						  font-size: 16px;
+						  font-size: 14px;
 						  font-weight: 900;
 						  font-stretch: normal;
 						  font-style: normal;
@@ -253,17 +262,24 @@
 						  letter-spacing: normal;
 						  color: theme-color('gamma');
 					}
-					p{
-						font-family: AvenirLTStd-Roman;
-						  font-size: 14px;
-						  font-weight: normal;
-						  font-stretch: normal;
-						  font-style: normal;
-						  line-height: normal;
-						  letter-spacing: normal;
-						  color: #8b8b8b;
-						  margin-bottom: 0;
-					}
+					strong{
+					  font-family: AvenirLTStd-Heavy;
+					  font-size: 16px;
+					  font-weight: 900;
+					  font-stretch: normal;
+					  font-style: normal;
+					  line-height: 1.38;
+					  letter-spacing: normal;
+					  color: theme-color('gamma');
+					  padding-left:0px!important;
+				}
+				span{
+					  font-size: 14px;
+					  margin-top:0px;
+				}
+				a{
+					 margin-bottom:0px!important;
+				}
 				}
 			}
 
@@ -337,3 +353,40 @@
 .o_portal .breadcrumb, .o_portal_wrap .o_portal_navbar .breadcrumb {
     display:none;
 }
+
+.mon-rendez-vous{
+        date{
+         font-family: AvenirLTStd-Roman;
+              font-size: 16px;
+              font-weight: 900;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.38;
+              letter-spacing: normal;
+              background-color: #6c757d;
+              color: #ffffff;
+;
+        }
+        strong{
+            font-family: AvenirLTStd-Heavy;
+              font-size: 16px;
+              font-weight: 900;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.38;
+              letter-spacing: normal;
+              color: theme-color('gamma');
+        }
+        p{
+            font-family: AvenirLTStd-Roman;
+              font-size: 14px;
+              font-weight: normal;
+              font-stretch: normal;
+              font-style: normal;
+              line-height: 1.86;
+              letter-spacing: normal;
+              color: #8b8b8b;
+              margin-bottom: 0;
+              margin-top: 8px;
+        }
+    }

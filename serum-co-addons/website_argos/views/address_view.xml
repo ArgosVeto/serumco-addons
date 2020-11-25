@@ -96,7 +96,7 @@
                 </div>
             </div>
         </t>
-   </template>
+    </template>
 
 
     <template id="payment_inherit" inherit_id="website_sale.payment">
@@ -127,7 +127,7 @@
                 <div class="col-md-6">
                     <div class="link">
                             <div class="content">
-                                <h3 class="clinic-name" t-field="clinic_fav.name"/>
+                                <h3 class="fav-clinic-name" t-field="clinic_fav.name"/>
         	                    <div class="Avenue-Pasteur d-flex align-items-start">
                                     <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8" />
                                     <p class="m-0">
@@ -176,7 +176,9 @@
             </t>
         </t>
         <t t-if="not clinic_fav">
-            <p style="color:red">Vous n'avez pas de clinique favorite, veuillez en sélectionner une via la recherche ci-dessous.</p>
+           <t t-if="not website_sale_order.all_clinic">
+            <p class="mess-clinic" style="color:red">Vous n'avez pas de clinique favorite, veuillez en sélectionner une via la recherche ci-dessous.</p>
+           </t>
         </t>
     </template>
 
@@ -321,10 +323,12 @@
                     <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
                     <span>Retour</span>
                 </a>
-                <a role="button" href="/shop/confirm_order" class="btn btn-primary">
-                    <span>Passer au paiement</span>
-                    <span class="fa fa-long-arrow-right ml8" />
-                </a>
+                <t t-if="website_sale_order.operating_unit_id">
+                    <a role="button" href="/shop/confirm_order" class="btn btn-primary btn-paiement">
+                        <span>Passer au paiement</span>
+                        <span class="fa fa-long-arrow-right ml8" />                    
+                    </a>
+                </t>
             </div>
         </div>
 	    </xpath>

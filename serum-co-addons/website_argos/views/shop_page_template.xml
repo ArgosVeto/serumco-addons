@@ -30,7 +30,6 @@
 
 	<template id="argos_top_product_pager_inherit" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="before">
-			<t t-if="category">
 				<section class="shop_categ_info s_blog_banner">
 					<div class="row m-0 my_content">
 	                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
@@ -40,15 +39,27 @@
 	                                    <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/">Accueil</a>
 	                                    </li>
-	                                    <li class="nav-item mr32">
+	                                    <!-- <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
-	                                    </li>
-	                                    <li class="nav-item mr32">
+	                                    </li> -->
+	                                    <!-- <li t-if="category" class="nav-item active mr32">
+	                                    	<a class="nav-link text-primary">
+					                            <span><t t-esc="category.name"/></span>
+					                        </a>
+				                        </li> -->
+				                        <t t-foreach="categories" t-as="c">
+					                        <li class="nav-item mr32">
+									            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+									                <span t-field="c.name"/>
+									            </a>
+									        </li>
+									    </t>
+	                                    <!-- <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
 	                                    </li>
 	                                    <li class="nav-item m-0">
 	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
-	                                    </li>
+	                                    </li> -->
 	                                </ul>
 	                            </div>
 	                        </div>
@@ -68,27 +79,28 @@
 		                        </li>
 		                    </ol>
 		                </div>
-		                <div class="categ-info">
-		                	<h1><t t-esc='category.name'/></h1>
-		                	<p class="lead"><t t-esc='category.description'/></p>
-		                </div>
-		                <div class="sub-categories mt32">
-		                	<ul class="nav nav-pills flex-row">
-								<t t-foreach="category" t-as="c">
-							        <t t-if="c.child_id" >
-						                <t t-foreach="c.child_id" t-as="c">
-						                    <t t-if="not search or c.id in search_categories_ids">
-						                        <t t-call="website_sale.categories_recursive" />
-						                    </t>
-						                </t>
-					            	</t>
-			                    </t>
-		                	</ul>
-		                </div>
+		                <t t-if="category">
+			                <div class="categ-info">
+			                	<h1><t t-esc='category.name'/></h1>
+			                	<!-- <p class="lead"><t t-esc='category.description'/></p> -->
+			                </div>
+			                <!-- <div class="sub-categories mt32">
+			                	<ul class="nav nav-pills flex-row">
+									<t t-foreach="category" t-as="c">
+								        <t t-if="c.child_id" >
+							                <t t-foreach="c.child_id" t-as="c">
+							                    <t t-if="not search or c.id in search_categories_ids">
+							                        <t t-call="website_sale.categories_recursive" />
+							                    </t>
+							                </t>
+						            	</t>
+				                    </t>
+			                	</ul>
+			                </div> -->
+			            </t>
 					</div>
 				</section>
-			</t>
-			<t t-else="">
+			<!-- <t t-else="">
 				<section class="shop_categ_info s_blog_banner pt-0">
 					<div class="row m-0 my_content">
 	                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
@@ -97,15 +109,6 @@
 	                                <ul class="nav navbar-nav flex-row">
 	                                    <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/shop-home">Accueil</a>
-	                                    </li>
-	                                    <li class="nav-item mr32">
-	                                        <a class="nav-link chat" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
-	                                    </li>
-	                                    <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
-	                                    </li>
-	                                    <li class="nav-item m-0">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
 	                                    </li>
 	                                </ul>
 	                            </div>
@@ -125,7 +128,7 @@
 		                </div>
 		            </div>
 		        </section>
-			</t>
+			</t> -->
 			<div class="shop_page_filter oe_website_sale d-none d-md-block">
 				<div class="container">
 					<div class="d-flex align-items-center">
@@ -158,7 +161,7 @@
 				                    <input type="hidden" name="search" t-att-value="search" />
 				                    <ul class="nav nav-pills flex-row">
 				                    	<t t-foreach="attributes" t-as="a">
-				                    		<t t-if="a.is_attribute_visible">
+				                    		<!-- <t t-if="a.is_attribute_visible"> -->
 				                    		<li t-if="a.value_ids and len(a.value_ids) &gt; 1" class="nav-item">
 			                    				<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>
 				                                <div class="dropdown-menu" role="menu">
@@ -191,7 +194,7 @@
 					                                </t>
 				                                </div>
 				                    		</li>
-				                    		</t>
+				                    		<!-- </t> -->
 				                    	</t>
 				                    </ul>
 				                </form>
@@ -339,6 +342,15 @@
 	</template>
 
 	<template id="cart_popover_inherit" inherit_id="website_sale.cart_popover">
+		 <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
+			  <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+				  <t t-call="website_sale.cart_line_product_link">
+					<strong><t t-esc="name_line"/></strong>
+				  </t>
+			 </t>
+			 <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
+		</xpath>
+
 		<xpath expr="//a[hasclass('btn','btn-primary')]" position="replace">
 			<a role="button" class="btn btn-primary" href="/shop/cart">
                Voir mon panier

@@ -13,14 +13,21 @@
                                         <a class="nav-link" href="/shop-home">Accueil</a>
                                     </li>
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
+                                        <!-- <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a> -->
+                                        <t t-foreach="product.public_categ_ids" t-as="categs">
+                                            <a t-att-href="'/shop/category/%s' % slug(categs)" class="nav-link active">
+                                                <span class="categ-name">
+                                                    <t t-esc="categs.name"/>
+                                                </span>
+                                            </a>
+                                        </t>
                                     </li>
-                                    <li class="nav-item mr32">
+                                    <!-- <li class="nav-item mr32">
                                         <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
                                     </li>
                                     <li class="nav-item m-0">
                                         <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -402,5 +409,35 @@
                 <h5 class="mb-1"><t t-esc="rat.publisher_name"/></h5>
             </t>
          </xpath>
+    </template>
+
+    <template id="bottom_breadcrumbs" inherit_id="website_sale.product_comment" priority="25">
+        <xpath expr="//section[hasclass('container')]" position="after">
+            <div class="container d-block d-md-none">
+                <h3 class="text-primary">Vous êtes ici</h3>
+                <ol class="breadcrumb mb32 d-flex">
+                    <li class="breadcrumb-item">
+                        <a href="/shop-home">Accueil</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/shop">Boutique</a>
+                    </li>
+                    <t t-if="product.public_categ_ids">
+                        <li class="breadcrumb-item">
+                           <t t-foreach="product.public_categ_ids" t-as="categs">
+                                <a t-att-href="'/shop/category/%s' % slug(categs)">
+                                    <span class="categ-name">
+                                        <t t-esc="categs.name"/>
+                                    </span>
+                                </a>
+                            </t>
+                        </li>
+                    </t>
+                    <li class="breadcrumb-item active">
+                        <span t-field="product.name" />
+                    </li>
+                </ol>
+            </div>
+        </xpath>
     </template>
 </odoo>

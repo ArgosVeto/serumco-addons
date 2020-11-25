@@ -22,6 +22,17 @@
 	    color: theme-color('gamma');
 	    margin-bottom: 0;
 	}
+    strong{
+          font-family: AvenirLTStd-Heavy;
+          font-size: 18px;
+          font-weight: 900;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.38;
+          letter-spacing: normal;
+          color: theme-color('gamma');
+          padding-left:0px!important;
+          }
 	p{
 		font-family: AvenirLTStd-Roman;
 	    font-size: 14px;
