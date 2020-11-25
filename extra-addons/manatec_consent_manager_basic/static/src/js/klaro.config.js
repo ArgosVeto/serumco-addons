@@ -51,7 +51,6 @@ window.klaroConfig = {
             },
             consentNotice: {
                 learnMore: "Settings",
-                description: "ccccc",
             },
             'google-analytics': {
                 description: 'Google Analytics is a tracking tool for traffic analysis of websites. We use Google Analytics to understand the user behaviour of visitors to our website and to improve the general user experience.',
