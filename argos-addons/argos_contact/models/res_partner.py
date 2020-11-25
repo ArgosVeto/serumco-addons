@@ -57,7 +57,7 @@ class ResPartner(models.Model):
     tag_ids = fields.Many2many('res.partner.parameter', 'res_partner_tag_rel', 'patient_id', 'tag_id', 'Tags',
                                domain=[('type', '=', 'tag')])
 
-    portal_user_id = fields.Many2one('res.users',  domain=[('share', '=', True)])
+    # portal_user_id = fields.Many2one('res.users',  domain=[('share', '=', True)])
 
     @api.depends('company_type', 'patient_ids')
     def _compute_contact_category(self):
