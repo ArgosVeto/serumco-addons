@@ -267,8 +267,7 @@ class WebsiteSale(WebsiteSale):
 			return request.redirect('/add-address?new-address=1')
 		for f in self._get_mandatory_billing_fields():
 			if not order.partner_id[f]:
-#				return request.redirect('/add-address?partner_id=%d' % order.partner_id.id)
-				return request.redirect('/shop/address?partner_id=%d' % order.partner_id.id)
+				return request.redirect('/add-address?new-address=1')
 
 		values = self.checkout_values(**post)
 
