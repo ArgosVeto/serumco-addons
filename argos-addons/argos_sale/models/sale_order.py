@@ -300,9 +300,10 @@ class SaleOrder(models.Model):
     def create(self, vals):
         vals['arrival_time'] = fields.Datetime.now()
         res = super(SaleOrder, self).create(vals)
-        portal_partner_ids = self.get_portal_partner(vals['partner_id'])
-        if portal_partner_ids:
-            res.message_subscribe(partner_ids=portal_partner_ids)
+        # TODO: integration V2 manage multiple contact for one portal access
+        # portal_partner_ids = self.get_portal_partner(vals['partner_id'])
+        # if portal_partner_ids:
+        #     res.message_subscribe(partner_ids=portal_partner_ids)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
         return res
