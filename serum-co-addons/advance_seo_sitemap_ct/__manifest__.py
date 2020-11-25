@@ -22,7 +22,7 @@
     ],
 
     # Author
-    'author': 'Apagen Solutions PVT LTD',
+    'author': '',
     'website': '',
     'installable': True,
     'auto_install': False,

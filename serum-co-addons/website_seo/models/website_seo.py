@@ -201,7 +201,9 @@ class WebsiteSeo(models.Model):
 		return True
 
 	def save_meta_info(self):
-		titles , descriptions, keyword = self.website_meta_title , self.website_meta_description, self.website_meta_keyword
+		titles = self.website_meta_title
+		descriptions = self.website_meta_description
+		keyword = self.website_meta_keyword
 		if self.model_name == 'product':
 			products = self.env['product.template'].search([('seo_auto_update','=',True),('website_published','=',True)])
 			for product in products:
