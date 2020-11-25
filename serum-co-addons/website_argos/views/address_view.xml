@@ -121,6 +121,67 @@
         </xpath>        
     </template>
 
+	<template id="load_fav_clinic_add_tmp" name="Load Clinic Add">
+        <t t-if="clinic_fav">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="link">
+                            <div class="content">
+                                <h3 class="fav-clinic-name" t-field="clinic_fav.name"/>
+        	                    <div class="Avenue-Pasteur d-flex align-items-start">
+                                    <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8" />
+                                    <p class="m-0">
+            	                        <span class="street" t-field="clinic_fav.street" />
+            	                        <span>, </span>
+            	                        <span class="zip" t-field="clinic_fav.zip" />
+            	                        <span>, </span>
+            	                        <span class="city" t-field="clinic_fav.city" />
+                                    </p>
+        	                    </div>
+                            </div> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <t t-if="clinic_fav.calendar_id">
+                        <div class="content time-slot-head mt8 mb8">
+                            <strong><span>Horaires d’ouverture</span></strong>
+                        </div>
+                        <t t-set="get_short_employee_slot" t-value="clinic_fav.calendar_id.get_short_employee_slot(clinic_fav.calendar_id)"/>
+                        <t t-if="get_short_employee_slot">
+                            <div class="row time-slot">
+                                <t t-foreach="get_short_employee_slot" t-as="wt">
+                                    <div class="col-lg-4">
+                                        <span class="Lun-Mar-Mer-Jeu-Copy text-primary">
+                                            <t t-esc="wt" />
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-4 text-center">
+                                        <span class="h00---12h30-9h00---copy">
+                                            <t t-esc="get_short_employee_slot[wt]['start_time']" />
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <span class="h00---12h30-9h00---copy">
+                                            <t t-esc="get_short_employee_slot[wt]['end_time']" />
+                                        </span>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </div>
+            <t t-if="not click_and_collect">
+                <p style="text-align: center; color:red">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
+            </t>
+        </t>
+        <t t-if="not clinic_fav">
+           <t t-if="not website_sale_order.all_clinic">
+            <p class="mess-clinic" style="color:red">Vous n'avez pas de clinique favorite, veuillez en sélectionner une via la recherche ci-dessous.</p>
+           </t>
+        </t>
+    </template>
+
 	<template id="load_clinic_add_tmp" name="Load Clinic Add">
         <t t-if="website_sale_order">
             <div class="row">
@@ -178,7 +239,7 @@
 
 	<template id="clinic_search" name="Clinic Searchbox">
         <div class="mb24">
-            <input type="radio" id="all_clinic"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic"><span class="ml8">je souhaite être livré dans une autre clinique</span></input>
+            <input type="radio" id="all_clinic"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic"><span class="ml8">Je souhaite être livré dans une autre clinique</span></input>
         </div>
 
         <div class="row clinic_searching d-flex">
@@ -204,18 +265,29 @@
                         <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
                          <div class="fav-clinic pb48">
                             <div class="mb24">
-                                <input type="radio" id="fav_cli"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None"   t-att-value="website_sale_order.fav_clinic"><span class="ml8">je souhaite etre livre dans ma clinique favorite</span></input>
+                                <input type="radio" id="fav_cli"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None"   t-att-value="website_sale_order.fav_clinic"><span class="ml8">Je souhaite être livré dans ma clinique favorite</span></input>
+                                    <div class="mt48 load_fav_clinic_add_tmp">
+                                        <t t-call="website_argos.load_fav_clinic_add_tmp"/>
+                                    </div>
                             </div>
-			                <div class="load_clinic_add_tmp">
-			                    <t t-call="website_argos.load_clinic_add_tmp"/>
-			                </div>
 			            </div> 
-			            <div class="mt16">
+		            <div class="mt16">
 			                <div class="mt48 pb48 find_match_cli">
 			                    <t t-call="website_argos.clinic_search"/>
 			                </div>
 			            </div>
                     </div>
+                </div>
+
+                <div class="row user-info mb48">
+                    <div class="col-lg-12">
+                        <h3 class="o_page_header user-address-head mt48 mb32">Adresse de livraison</h3>
+                         <div class="row">
+			                <div class="load_clinic_add_tmp">
+			                    <t t-call="website_argos.load_clinic_add_tmp"/>
+			                </div>
+		                </div>
+            		</div>
                 </div>
 
                 <div class="row user-info mb48">
@@ -251,10 +323,12 @@
                     <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
                     <span>Retour</span>
                 </a>
-                <a role="button" href="/shop/confirm_order" class="btn btn-primary">
-                    <span>Passer au paiement</span>
-                    <span class="fa fa-long-arrow-right ml8" />
-                </a>
+                <t t-if="website_sale_order.operating_unit_id">
+                    <a role="button" href="/shop/confirm_order" class="btn btn-primary btn-paiement">
+                        <span>Passer au paiement</span>
+                        <span class="fa fa-long-arrow-right ml8" />                    
+                    </a>
+                </t>
             </div>
         </div>
 	    </xpath>

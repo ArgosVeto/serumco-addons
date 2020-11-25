@@ -18,22 +18,37 @@ odoo.define('website_argos.cart_address', function(require) {
                     }
                 })
             });
-        }
-        
-        function get_all_clinic(){
-            var all_clinic = document.getElementById("all_clinic");
-             if(all_clinic.checked){                
-                $(".clinic_searching").show();
+            ajax.rpc('/update-fav-delivery-address').then(function(data){
+                $(".clinic_searching").hide();
+                ajax.rpc('/update-fav-delivery-address').then(function(data){
+                    if (data) {
+                        $(".load_fav_clinic_add_tmp").html(data)
+                    }
+                })
+            });
+       }
+ 
+
+       function get_all_clinic(){
+        var all_clinic = document.getElementById("all_clinic");
+         if(all_clinic.checked){                
+            $(".clinic_searching").show();
+            $(".load_fav_clinic_add_tmp").hide();
             }
         }
-
         function get_fav_cli(){
             var fav_cli = document.getElementById("fav_cli");
-             if(fav_cli.checked){
+            if(fav_cli.checked){
+                $(".load_fav_clinic_add_tmp").show();
                 $(".clinic_searching").hide();
                 ajax.rpc('/update-delivery-address').then(function(data){
                     if (data) {
                         $(".load_clinic_add_tmp").html(data)
+                    }
+                })
+                ajax.rpc('/update-fav-delivery-address').then(function(data){
+                    if (data) {
+                        $(".load_fav_clinic_add_tmp").html(data)
                     }
                 })
             }
