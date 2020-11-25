@@ -4,7 +4,7 @@
   "summary"              :  """Website Webkul Addons allows Odoo users to manage all Webkul’s Odoo website Related modules from single page.""",
   "category"             :  "Hidden",
   "version"              :  "1.0.0",
-  "author"               :  "Apagen Solutions Pvt. Ltd.",
+  "author"               :  "",
   "description"          :  """Website Webkul Addons
 Webkul
 Addons

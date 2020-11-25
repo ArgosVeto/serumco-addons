@@ -28,7 +28,7 @@ SEO-URL Redirect, Website Multiple URL Rewrite, Bulk URL redirect
         'demo/assets_demo.xml',
         'demo/website_seo_redirection_demo.xml',
     ],
-    'author': 'Apagen Solutions PVT LTD',
+    'author': '',
     'installable': True,
     'license': 'AGPL-3',
     'external_dependencies': {'python': ['qrcode', 'pyotp']},

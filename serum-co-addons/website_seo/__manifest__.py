@@ -5,7 +5,7 @@
   "category"             :  "Website",
   "version"              :  "2.2.1",
   "sequence"             :  1,
-  "author"               :  "Apagen Solutions Pvt. Ltd.",
+  "author"               :  "",
   "license"              :  "Other proprietary",
   "description"          :  """Website SEO Suite
                                 Website Search Engine Optimization Suite
