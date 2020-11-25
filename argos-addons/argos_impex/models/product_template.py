@@ -146,16 +146,15 @@ class ProductTemplate(models.Model):
                     'gtin': row.get('gtin'),
                     'ean': row.get('ean'),
                     'cip': row.get('cip'),
-                    'sale_ok': True,
-                    'purchase_ok': True,
                     'type': 'product',
-                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)],
-                    'is_published': True}
+                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)]}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 if product:
+                    if not product.no_update_import:
+                        vals['is_published']: True
                     product.write(vals)
                     lines.append(reader.line_num)
-                    self._cr.commit()
+                    self._cr.commit
                 else:
                     errors.append((row, _('No product with code %s found!') % row.get('code')))
                 if reader.line_num % 150 == 0:
@@ -792,12 +791,22 @@ class ProductTemplate(models.Model):
                     # 'none': row[26], # Zone libre 2 : missing
                     'description_sale': row[5],
                     # 'description': "",
-                    'sale_ok': True,
-                    'purchase_ok': True,
+                    # 'sale_ok': True,
+                    # 'purchase_ok': True,
                     'type': 'product',
                 }
                 product = self.search([('default_code', '=', default_code)], limit=1)
                 if product:
+                    if not product.no_update_import:
+                        # if template.id == 52:
+                        #     if row[11] == 'M':
+                        #         pass
+                        #     elif row[11] == 'S':
+                        #         pass
+                        #     elif row[11] == 'C':
+                        #         pass
+                        vals['sale_ok']: True
+                        vals['purchase_ok']: True
                     product.write(vals)
                 else:
                     vals.update({'default_code': default_code})
