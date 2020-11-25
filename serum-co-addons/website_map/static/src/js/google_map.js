@@ -208,13 +208,11 @@ odoo.define('website_map.googleMap', function (require) {
 };
 odoo.define('website_map.arounded', function (require) {
   var rpc = require('web.rpc')
-  var igo = document.getElementById("i_go")
   var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
           zoom: 10,
           center: new google.maps.LatLng(44.837789,-0.57918),
         });
-  igo.onclick = function(){
-            getLocation(function (position) {
+  getLocation(function (position) {
             rpc.query({
           model: 'operating.unit',
           method: 'clinic_detail'
@@ -244,5 +242,4 @@ odoo.define('website_map.arounded', function (require) {
 
     });
 
-        }
 });
