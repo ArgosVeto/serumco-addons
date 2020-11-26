@@ -4,6 +4,7 @@ import ast
 import datetime
 import logging
 from datetime import datetime as dt, timedelta
+from dateutil.relativedelta import relativedelta
 from odoo.exceptions import ValidationError
 
 import pytz
@@ -47,6 +48,7 @@ class PlanningSlot(models.Model):
     role_type = fields.Selection(related='role_id.role_type')
     website_planning = fields.Boolean(string='Website planning', default=False, copy=False)
     unexpected_rdv = fields.Boolean(string='Unexpected appointment', default=False, copy=False)
+    is_reminder_sent = fields.Boolean('Reminder Sent', copy=False)
 
     @api.model
     def get_work_interval(self, start_date, employee=False):
@@ -278,4 +280,22 @@ class PlanningSlot(models.Model):
                 email_template.send_mail(rec.id, force_send=True, raise_exception=True)
             except Exception as e:
                 _logger.error(repr(e))
+        return True
+
+    def _send_reminder_sms(self):
+        for rec in self:
+            rec._message_sms_with_template(
+                template_xmlid='argos_planning.planning_reminder_sms_template',
+                partner_ids=rec.partner_id.ids,
+            )
+
+    @api.model
+    def cron_send_reminder(self):
+        tomorrow = fields.Date.today() + relativedelta(days=1)
+        appointment_role_ids = self.env['planning.role'].search([('role_type', '=', 'rdv')]).ids
+        slots = self.search([('state', '=', 'validated'), ('role_id', 'in', appointment_role_ids)]).filtered(
+            lambda p: p.start_datetime.date() == tomorrow and not p.is_reminder_sent)
+        if slots:
+            slots._send_reminder_sms()
+            slots.write({'is_reminder_sent': True})
         return True

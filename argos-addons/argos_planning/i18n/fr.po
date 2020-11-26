@@ -6,9 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-
-"POT-Creation-Date: 2020-11-20 08:14+0000\n"
-"PO-Revision-Date: 2020-11-20 08:14+0000\n"
+"POT-Creation-Date: 2020-11-26 07:04+0000\n"
+"PO-Revision-Date: 2020-11-26 07:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2459,6 +2458,11 @@ msgid "<span>week(s)</span>"
 msgstr "<span>semaine(s)</span>"
 
 #. module: argos_planning
+#: model:sms.template,name:argos_planning.planning_reminder_sms_template
+msgid "ARGOS - Appointment reminder"
+msgstr "ARGOS - Rappel de RDV"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
 msgid "Active"
 msgstr "Actif"
@@ -2763,6 +2767,13 @@ msgid "Planning Validation"
 msgstr "Validation de la planification"
 
 #. module: argos_planning
+#: model:ir.actions.server,name:argos_planning.planning_reminder_cron_data_ir_actions_server
+#: model:ir.cron,cron_name:argos_planning.planning_reminder_cron_data
+#: model:ir.cron,name:argos_planning.planning_reminder_cron_data
+msgid "Planning: Planning slot reminder"
+msgstr "Planning: Rappel de RDV"
+
+#. module: argos_planning
 #: model:ir.actions.server,name:argos_planning.ir_cron_planning_recovery_ir_actions_server
 #: model:ir.cron,cron_name:argos_planning.ir_cron_planning_recovery
 #: model:ir.cron,name:argos_planning.ir_cron_planning_recovery
@@ -2784,6 +2795,22 @@ msgstr "Création du rendez-vous %s"
 #: model:ir.model.fields.selection,name:argos_planning.selection__planning_role__role_type__rdv
 msgid "Rdv"
 msgstr "Rendez-vous"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_planning_slot__is_reminder_sent
+msgid "Reminder Sent"
+msgstr "Rappel envoyé"
+
+#. module: argos_planning
+#: model:sms.template,body:argos_planning.planning_reminder_sms_template
+msgid ""
+"Reminder of your appointment with ${object.employee_id.name} for ${object.patient_id.name} at ${object.start_datetime} at your ${object.operating_unit_id.name}.\n"
+"If you can't, please call us at ${object.operating_unit_id.phone}\n"
+"      "
+msgstr ""
+"Rappel de votre RDV avec ${object.employee_id.name} pour ${object.patient_id.name} le ${object.start_datetime} dans votre ${object.operating_unit_id.name}.\n"
+"En cas d’empêchement, merci de nous appeler au ${object.operating_unit_id.phone}\n"
+"      "
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
