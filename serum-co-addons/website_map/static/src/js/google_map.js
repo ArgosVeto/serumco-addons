@@ -210,7 +210,7 @@ let markers = [];
 var add;
 var map;
 var citylng;
-odoo.define('website_map.arounded', function (require) {
+odoo.define('website_map.arounded_detailed', function (require) {
   var rpc = require('web.rpc')
   var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
           zoom: 10,
