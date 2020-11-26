@@ -8,7 +8,8 @@ from odoo.addons.website_hr_recruitment.controllers.main import WebsiteHrRecruit
 from datetime import datetime,date
 import pytz
 from odoo.addons.http_routing.models.ir_http import slug
-
+import logging
+_logger = logging.getLogger(__name__)
 
 
 
@@ -334,23 +335,54 @@ class ClinicDetail(http.Controller):
 
 	@http.route(['/update-delivery-address'], type='json', auth="public")
 	def update_delivery_address(self,**post):
+		bouton_paiement = True
 		partner = request.env.user.partner_id
 		sale_order_id = request.session['sale_order_id']
 		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
 		fav_clinic = False
+		sale_order.operating_unit_id = False
 		if partner.clinic_shortlisted_ids:
 			fav_clinic = partner.clinic_shortlisted_ids[0].favorite_clinic_id
-		if sale_order and fav_clinic:
+		if sale_order and fav_clinic and fav_clinic.click_and_collect:
+			_logger.info("clinique favorite")
+			_logger.info('bouton-paiement {}'.format(bouton_paiement))
 			sale_order.operating_unit_id = fav_clinic.id
 			sale_order.fav_clinic = True
 			sale_order.all_clinic = False
-		values = {'website_sale_order':sale_order}
+			bouton_paiement = True
+			_logger.info('bouton-paiement {}'.format(bouton_paiement))
+		values = {'website_sale_order':sale_order,
+		          'bouton_paiement': bouton_paiement}
 		return request.env['ir.ui.view'].render_template("website_argos.load_clinic_add_tmp",values)
+
+	@http.route(['/update-fav-delivery-address'], type='json', auth="public")
+	def update_fav_delivery_address(self,**post):
+		partner = request.env.user.partner_id
+		bouton_paiement = True
+		fav_clinic = False
+		click_and_collect = False
+		if partner.clinic_shortlisted_ids:
+			fav_clinic = partner.clinic_shortlisted_ids[0].favorite_clinic_id
+			click_and_collect = fav_clinic.click_and_collect
+		sale_order_id = request.session['sale_order_id']
+		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
+		sale_order.operating_unit_id = False
+		_logger.info("clinique favorite 1")
+		if (sale_order) and (not click_and_collect):
+			_logger.info("clinique favorite 2")
+			sale_order.write({'operating_unit_id': False})
+			sale_order.all_clinic = True
+			sale_order.fav_clinic = False
+		values = {'website_sale_order':sale_order,
+			      'clinic_fav' : fav_clinic,
+				  'bouton_paiement' : bouton_paiement,
+		          'click_and_collect' : click_and_collect}
+		return request.env['ir.ui.view'].render_template("website_argos.load_fav_clinic_add_tmp",values)
 
 	@http.route(['/update-delivery/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
 	def update_delivery(self,operating_unit, **post):
+		_logger.info("update-delivery 1")
 		order = request.website.sale_get_order()
-		order.operating_unit_id = operating_unit.id
 		order.operating_unit_id = operating_unit.id
 		order.all_clinic = True
 		order.fav_clinic = False
@@ -369,6 +401,7 @@ class ClinicDetail(http.Controller):
 			subdomains.append([('zip','ilike',post['cn'])])
 		if subdomains:
 			domain.append(expression.OR(subdomains))
+		domain.append([('click_and_collect','=',True)])
 		domain = expression.AND(domain)
 		clinic_ids = request.env['operating.unit'].sudo().search(domain)
 		values = {'clinic_ids': clinic_ids}
