@@ -206,6 +206,10 @@ odoo.define('website_map.googleMap', function (require) {
     });
 });
 };
+let markers = [];
+var add;
+var map;
+var citylng;
 odoo.define('website_map.arounded', function (require) {
   var rpc = require('web.rpc')
   var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
@@ -226,14 +230,16 @@ odoo.define('website_map.arounded', function (require) {
                     var latitude = results[0].geometry.location.lat();
                     var longitude = results[0].geometry.location.lng();
                     var myLatLng2 = { lat: latitude, lng: longitude };
+                    citylng = myLatLng2
                 }
-                    new google.maps.Marker({
+                const marker = new google.maps.Marker({
                         position: myLatLng2,
                         // label:cities,
                         map,
                         center:myLatLng2,
                         zoom:10,
                     });
+                markers.push(marker);
             });
           })
         })
@@ -241,5 +247,38 @@ odoo.define('website_map.arounded', function (require) {
 //onclick function end
 
     });
+var i_go = document.getElementById("i_go");
+  i_go.onclick = function () {
+    getLocation(function (position) {
+    var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+    directionsService.route(
+    {
+      origin: myLatLng,
+      destination: citylng,
+      travelMode: google.maps.TravelMode.DRIVING,
+    },
+    (response, status) => {
+      if (status === "OK") {
+        deleteMarkers();
+        directionsRenderer.setDirections(response);
+      } else {
+        window.alert("Sorry! unable to find route");
+      }
+    }
+  );
 
 });
+  }
+});
+function setMapOnAll(map) {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+function deleteMarkers() {
+  setMapOnAll(null);
+  markers = [];
+}
