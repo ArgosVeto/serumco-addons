@@ -337,7 +337,7 @@ class ClinicDetail(http.Controller):
 	def update_delivery_address(self,**post):
 		bouton_paiement = True
 		partner = request.env.user.partner_id
-		sale_order_id = request.session['sale_order_id']
+		sale_order_id = request.session.get('sale_order_id')
 		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
 		fav_clinic = False
 		sale_order.operating_unit_id = False

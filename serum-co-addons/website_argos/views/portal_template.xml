@@ -2,7 +2,7 @@
 <odoo>
 
     <template id="my_appointment_template" name="my appointment">
-        <div class="mb8" t-if="record">
+        <div class="mb10" t-if="record">
             <div class="row mt24 mon-prochain">
                 <div class="col-md-12">
                     <div class="date-time">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-8 col-8 main-info">
                     <strong t-esc="record.operating_unit_id.name"/>
-                    <div t-if="record.employee_id">
+                    <div class="mb24" t-if="record.employee_id">
                        <span>Dr. <t t-esc="record.employee_id.name"/></span>
                     </div>
                 </div>
@@ -93,8 +93,7 @@
                         </div>
                         <div class="col-md-12 main-content">
                             <div class="row">
-
-                                <div class="col-md-4 mb16">
+                                <div class="col-md-4 o-1">
                                     <div class="card p-3">
                                         <div class="row title-row">
                                             <div class="col-md-6 col-6 text-left">
@@ -104,15 +103,21 @@
                                                 <a href="/my/orders">Voir tout</a>
                                             </div>
                                         </div>
-                                        <div class="mb32">
+                                        <div>
                                             <t t-if="order_ids">
+                                                <t t-set="order_number" t-value="len(order_ids)"/>
+                                                 <t t-set="order_counter" t-value="0"/>
                                                 <t t-foreach="order_ids" t-as="order">
                                                     <t t-if="order.order_line">
-
-
-                                                    
+                                                    <t t-set="order_counter" t-value="order_counter+1"/>
                                                     <t t-foreach="order.order_line[0]" t-as="line">
-                                                        <div class="row mx-0 px-24 bottom-border">
+                                                        <t t-if="order_counter > 1">
+                                                            <t t-set="domainClass" t-value="'row mx-0 px-12'"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="domainClass" t-value="'row mx-0 px-12 bottom-border'"/>
+                                                        </t>
+                                                        <div t-att-class="domainClass">
                                                             <div class="col-md-6 col-6 pl-0">
                                                                 <span t-field="line.product_id.image_1920"
                                                                     t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
@@ -130,165 +135,256 @@
                                                     </t>
                                                 </t>
                                                 </t>
+                                                <a class="btn btn-primary btn-lg d-none d-md-block d-sm-block" href="/my/orders">Gérer mes commandes</a>
                                             </t>
                                         </div>
-                                        <a class="mt-auto btn btn-primary d-block" href="/my/orders">Gérer mes commandes</a>
-                                    </div>                              
+                                    </div>
                                 </div>
 
-                                <div class="col-md-8 mb16">
-                                    <div class="row">
-                                        <div class="col-md-6 o-1">
-                                            <div class="card p-3">
-                                                <div class="row title-row">
-                                                    <div class="col-md-8 col-8 text-left">
-                                                        <strong>MON PROCHAIN RDV</strong>
-                                                    </div>
-                                                    <div class="col-md-4 col-4 text-right">
-                                                        <a href="/my-appointment">Voir tout</a>
-                                                    </div>
-                                                </div>
-                                                <t t-call="website_argos.my_appointment_template">
-                                                    <t t-set="record" t-value="next_appointment_id"/>
-                                                    <t t-set="add_to_my_calendar" t-value="True"/>
-                                                </t>
+                                <div class="col-md-4 o-3">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MON PROCHAIN RDV</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/my-appointment">Voir tout</a>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 o-3">
-                                            <div class="card p-3">
-                                                <div class="row title-row">
-                                                    <div class="col-md-6 col-6 text-left">
-                                                        <strong>MA CLINIQUE</strong>
-                                                    </div>
-                                                </div>
-
-                                                <t t-if="request.env.user.partner_id.clinic_shortlisted_ids">
-                                                    <div class="mb32">
-                                                            <div class="row mt24 ma-clinique">
-                                                                <div class="col-md-6 col-6">
-                                                                    <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id, 'clinic_banner')"/>
-                                                                </div>
-                                                                <div class="col-md-6 col-6">
-                                                                    <strong><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.name"/></strong>
-                                                                    <p>
-                                                                        <span class="street"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.street"/></span>
-                                                                            <span>, </span>
-                                                                        <span class="zip"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.zip"/></span>
-                                                                            <span>, </span>
-                                                                        <span class="city"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.city"/></span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                    </div>
-                                                    <a role="button" id="buy_now" class="btn btn-primary btn-lg mt-auto d-block d-sm-none" t-attf-href="tel:{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.phone}}">
-                                                        <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
-                                                        <span>Appeler</span>
-                                                    </a>
-                                                     <a role="button" class="btn btn-primary btn-lg mt-auto d-none d-md-block d-sm-block" t-attf-href="/clinic-detail/clinic-pratice/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}"> 
-                                                        <span>Voir la fiche</span>
-                                                    </a>
-                                                </t>
+                                        <t t-call="website_argos.my_appointment_template">
+                                            <t t-set="record" t-value="next_appointment_id"/>
+                                            <t t-set="add_to_my_calendar" t-value="True"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-5">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-6 col-6 text-left">
+                                                <strong>MA CLINIQUE</strong>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 o-2">
-                                            <div class="card p-3">
-                                                <div class="row title-row">
-                                                    <div class="col-md-8 col-8 text-left">
-                                                        <strong>MON PRECEDENT RDV</strong>
-                                                    </div>
-                                                    <div class="col-md-4 col-4 text-right">
-                                                        <a href="/my-appointment">Voir tout</a>
-                                                    </div>
-                                                </div>
-                                                 <t t-call="website_argos.my_appointment_template">
-                                                    <t t-set="record" t-value="pervious_appointment_id"/>
-                                                    <t t-set="add_to_my_calendar" t-value="False"/>
-                                                </t>
-                                                <a role="button" href="/prendre-rendez-vous" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block">Prendre un rendez-vous</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mt16 o-4">
-                                            <div class="card p-3">
-                                                <div class="row title-row">
-                                                    <div class="col-md-6 col-6 text-left">
-                                                        <strong>MES PRODUITS FAVORIS</strong>
-                                                    </div>
-                                                    <div class="col-md-6 col-6 text-right">
-                                                        <a href="/shop/wishlist">Voir tout</a>
-                                                    </div>
-                                                </div>
-                                                <div class="mb32">
-                                                    <t t-if="product_wishlist_ids">
-                                                        <div id="fav-product-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24" data-ride="carousel" data-pause="hover" data-interval="7000">
-                                                            <div class="carousel-inner" role="listbox">
-                                                                <t t-set="count" t-value="0"/>
-                                                                <t t-foreach="product_wishlist_ids" t-as="fav_pro">
-                                                                    <t t-if="count == 0">
-                                                                        <div class="carousel-item active" >
-                                                                            <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
-                                                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
-                                                                            <div class="row mt24 mes-product">
-                                                                                <div class="col-md-6 col-6">
-                                                                                    <span t-field="fav_pro.product_id.image_1920"
-                                                                                        t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
-                                                                                        class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
-                                                                                </div>
-                                                                                <div class="col-md-6 col-6">
-                                                                                    <p t-field="fav_pro.product_id.public_categ_ids"/>
-                                                                                    <strong><t t-esc="fav_pro.product_id.name"/></strong>
-                                                                                </div>
-                                                                            </div>
-                                                                            <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
-                                                                            <button type="submit" id="form_submit"
-                                                                            class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
-                                                                            Ajouter
-                                                                        </button>
-                                                                        </form>
-                                                                        </div>
-                                                                    </t>
-                                                                    <t t-else="">
-                                                                        <div class="carousel-item" >
-                                                                            <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
-                                                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-
-                                                                            <div class="row mt24 mes-product">
-                                                                                <div class="col-md-6 col-6">
-                                                                                    <span t-field="fav_pro.product_id.image_1920"
-                                                                                        t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
-                                                                                        class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
-                                                                                </div>
-                                                                                <div class="col-md-6 col-6">
-                                                                                    <p t-field="fav_pro.product_id.public_categ_ids"/>
-                                                                                    <strong><t t-esc="fav_pro.product_id.name"/></strong>
-                                                                                </div>
-                                                                            </div>
-                                                                            <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
-                                                                            <button type="submit" id="form_submit"
-                                                                            class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
-                                                                            Ajouter
-                                                                        </button>
-                                                                        </form>
-                                                                        </div>
-                                                                    </t>
-                                                                    <t t-set="count" t-value="count + 1"/>
-                                                                </t>
-                                                            </div>
-                                                            <div class="slider-control">
-                                                                <a class="left carousel-control-prev font-14" data-target="#fav-product-carousel" role="button" data-slide="prev">
-                                                                    <img src="/website_argos/static/src/img/left.svg"/>
-                                                                    <b class="sr-only font-normal o_default_snippet_text">Previous</b>
-                                                                </a>
-                                                                <a class="right carousel-control-next font-14" data-target="#fav-product-carousel" role="button" data-slide="next">
-                                                                    <img src="/website_argos/static/src/img/right.svg"/>
-                                                                    <b class="sr-only font-normal o_default_snippet_text">Next</b>
-                                                                </a>
-                                                            </div>
+                                        <t t-if="request.env.user.partner_id.clinic_shortlisted_ids">
+                                            <div class="mb40">
+                                                    <div class="row mt24 ma-clinique">
+                                                        <div class="col-md-6 col-6">
+                                                            <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id, 'clinic_banner')"/>
                                                         </div>
-                                                    </t>
-                                                </div>
+                                                        <div class="col-md-6 col-6">
+                                                            <strong><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.name"/></strong>
+                                                            <p>
+                                                                <span class="street"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.street"/></span>
+                                                                    <span>, </span>
+                                                                <span class="zip"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.zip"/></span>
+                                                                    <span>, </span>
+                                                                <span class="city"><t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.city"/></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <a role="button" id="buy_now" class="btn btn-primary btn-lg d-block d-sm-none" t-attf-href="tel:{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.phone}}">
+                                                <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
+                                                <span>Appeler</span>
+                                            </a>
+                                             <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/clinic-detail/clinic-pratice/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
+                                                <span>Voir la fiche</span>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4 o-2">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mon adresse</strong>
                                             </div>
                                         </div>
+                                        <div  class="nom-address row" t-if="partner">
+                                            <div class="col-md-2 col-2">
+                                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <p>
+                                                    <strong class="display-block" t-field="partner.name"/>
+                                                    <t t-if="partner.street"><span class="display-block" t-field="partner.street"/></t>
+                                                    <t t-if="partner.zip or partner.city"><span class="display-block" t-esc='"%s, %s" %(partner.zip, partner.city)'/> </t>
+                                                    <t t-if="partner.country_id"><span class="display-block" t-field="partner.country_id.name"/></t>
+                                                    <t t-if="partner.phone"><span class="display-block" t-field="partner.phone"/></t>
+                                                    <t t-if="partner.email"><strong class="display-block email" t-field="partner.email"/></t>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <a role="button" href="/my/account" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Modifier mon adresse</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-4">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MON PRECEDENT RDV</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/my-appointment">Voir tout</a>
+                                            </div>
+                                        </div>
+                                         <t t-call="website_argos.my_appointment_template">
+                                            <t t-set="record" t-value="pervious_appointment_id"/>
+                                            <t t-set="add_to_my_calendar" t-value="False"/>
+                                        </t>
+                                        <a role="button" href="/prendre-rendez-vous" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Prendre un rendez-vous</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-6">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MES PRODUITS FAVORIS</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/shop/wishlist">Voir tout</a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <t t-if="product_wishlist_ids">
+                                                <div id="fav-product-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24" data-ride="carousel" data-pause="hover" data-interval="7000">
+                                                    <div class="carousel-inner" role="listbox">
+                                                        <t t-set="count" t-value="0"/>
+                                                        <t t-foreach="product_wishlist_ids" t-as="fav_pro">
+                                                            <t t-if="count == 0">
+                                                                <div class="carousel-item active" >
+                                                                    <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
+                                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                                                                    <div class="row mt24 mes-product">
+                                                                        <div class="col-md-6 col-6">
+                                                                            <span t-field="fav_pro.product_id.image_1920"
+                                                                                t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                                class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-6">
+                                                                            <p t-field="fav_pro.product_id.public_categ_ids"/>
+                                                                            <strong><t t-esc="fav_pro.product_id.name"/></strong>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
+                                                                    <button type="submit" id="form_submit"
+                                                                    class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
+                                                                    Ajouter
+                                                                </button>
+                                                                </form>
+                                                                </div>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <div class="carousel-item" >
+                                                                    <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
+                                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                                                                    <div class="row mt24 mes-product">
+                                                                        <div class="col-md-6 col-6">
+                                                                            <span t-field="fav_pro.product_id.image_1920"
+                                                                                t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                                class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-6">
+                                                                            <p t-field="fav_pro.product_id.public_categ_ids"/>
+                                                                            <strong><t t-esc="fav_pro.product_id.name"/></strong>
+                                                                        </div>
+                                                                    </div>
+                                                                    <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
+                                                                    <button type="submit" id="form_submit"
+                                                                    class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
+                                                                    Ajouter
+                                                                </button>
+                                                                </form>
+                                                                </div>
+                                                            </t>
+                                                            <t t-set="count" t-value="count + 1"/>
+                                                        </t>
+                                                    </div>
+                                                    <div class="slider-control">
+                                                        <a class="left carousel-control-prev font-14" data-target="#fav-product-carousel" role="button" data-slide="prev">
+                                                            <img src="/website_argos/static/src/img/left.svg"/>
+                                                            <b class="sr-only font-normal o_default_snippet_text">Previous</b>
+                                                        </a>
+                                                        <a class="right carousel-control-next font-14" data-target="#fav-product-carousel" role="button" data-slide="next">
+                                                            <img src="/website_argos/static/src/img/right.svg"/>
+                                                            <b class="sr-only font-normal o_default_snippet_text">Next</b>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4 o-7">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes préférences de contact</strong>
+                                            </div>
+                                        </div>
+                                        <div  class="mes-prefernces" t-if="partner">
+                                                <input id="last_send_letter" type="hidden" t-att-value="partner.send_letter"/>
+                                                <input id="last_send_email" type="hidden" t-att-value="partner.send_email"/>
+                                                <input id="last_send_sms" type="hidden" t-att-value="partner.send_sms"/>
+                                                <input id="last_to_call" type="hidden" t-att-value="partner.to_call"/>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-2">
+                                                       <input type="checkbox" name="send_letter" t-att-checked="partner.send_letter"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-8">
+                                                        <label for="send_letter">Courrier</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-2">
+                                                       <input type="checkbox" name="send_email" t-att-checked="partner.send_email"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-8">
+                                                        <label for="send_mail"> E-mail</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-2">
+                                                       <input type="checkbox" name="send_sms" t-att-checked="partner.send_sms"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-8">
+                                                        <label for="send_sms"> SMS</label>
+                                                    </div>
+                                                </div>
+                                                 <div class="row">
+                                                    <div class="col-md-2 col-2">
+                                                       <input type="checkbox" name="to_call" t-att-checked="partner.to_call"/>
+                                                    </div>
+                                                    <div class="col-md-8 col-8">
+                                                        <label for="to_call">Téléphone</label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <button href="#"  id="update_my_preference" class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">Mettre à jour</button>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4 o-8">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes cartes bancaires</strong>
+                                            </div>
+                                        </div>
+                                        <div  class="mes-cartes row" t-if="partner">
+                                            <div class="col-md-2 col-2">
+                                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                 <p style="font-size: 14px;">
+                                                    <t t-foreach="partner.payment_token_ids" t-as="py">
+                                                        <span t-esc="py.name"  class="display-block"/>
+                                                    </t>
+                                                 </p>
+                                            </div>
+                                        </div>
+                                        <a role="button" href="/my/payment_method" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes cartes bancaires</a>
                                     </div>
                                 </div>
 
