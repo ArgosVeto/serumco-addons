@@ -207,9 +207,9 @@ class PortalContent(http.Controller):
 		partner = request.env.user.partner_id
 		if kw:
 			vals = {'send_sms' : kw.get('send_sms'),
-					'send_email': kw.get('send_sms'),
-					'send_letter': kw.get('send_sms'),
-					'to_call': kw.get('send_sms'),
+					'send_email': kw.get('send_email'),
+					'send_letter': kw.get('send_letter'),
+					'to_call': kw.get('to_call'),
 					}
 			partner.sudo().write(vals)
 
