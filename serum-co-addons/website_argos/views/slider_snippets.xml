@@ -172,6 +172,7 @@
 
 	<template id="s_bizople_theme_multi_product_tab_snippet"
 		name="Multi Tab Product Slider">
+		<div class="oe_structure"/>
 		<section class="oe_multi_category_slider pt64"
 			data-multi-cat-slider-type="" contentEditable="false"
 			data-disp="multi_product">
