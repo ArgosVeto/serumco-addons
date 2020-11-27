@@ -5,7 +5,7 @@
   "category"             :  "Tools",
   "version"              :  "1.0.0",
   "sequence"             :  1,
-  "author"               :  "Apagen Solutions Pvt. Ltd.",
+  "author"               :  "",
   "description"          :  """""",
   "data"                 :  ['wizard/wizard_message_view.xml'],
   "images"               :  ['static/description/Banner.png'],

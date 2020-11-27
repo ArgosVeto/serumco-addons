@@ -161,3 +161,15 @@ class Website(models.Model):
         
     is_infinite_load = fields.Boolean(string='Infinite Load', default=True,readonly=False)
     infinite_load_image = fields.Binary('Infinite Load Image', readonly=False)
+
+
+class ProductPublicCategory(models.Model):
+    _inherit = 'product.public.category'
+    
+    def name_get(self):
+        res=[]
+        for categ in self:
+            res.append((categ.id, categ.name))
+            return res
+
+    

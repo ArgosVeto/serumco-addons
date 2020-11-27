@@ -226,7 +226,35 @@
                         <t t-foreach="product.tab_ids" t-as="tab">
                             <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="tab-pane fade" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)">
                                 <section class="mt16 mb16">
-                                    <div t-field="tab.content" class="oe_structure" />
+                                    <t t-if="tab.sequence == 1">
+                                        <p>Composition :</p><t t-esc="product.composition"/>
+                                        <p>Constituants Analytiques :</p><t t-esc="product.analytic_constitution"/>
+                                        <p>Additifs :</p><t t-esc="product.additives"/>
+                                        <p>Valeurs Energétique :</p><t t-esc="product.energetic_value"/>
+                                        <p>Teneur en Eau :</p><t t-esc="product.waters_content"/>
+                                    </t>
+                                    <t t-if="tab.sequence == 2">
+                                        <p>Ration journalière recommandée :</p><t t-esc="product.daily_ratio_recommended"/>
+                                        <p>Indications :</p><t t-esc="product.indications"/>
+                                    </t>
+                                    <t t-if="tab.sequence == 3">
+                                        <t t-foreach="product.documentation_ids" t-as="doc">
+                                           <t t-if="doc.doc_type == 'MOE'">
+                                                <p><a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/></a></p>
+                                           </t>
+                                           <t t-if="doc.doc_type == 'TEC'">
+                                                <p><a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/></a></p>
+                                           </t>
+                                        </t>
+                                    </t>
+                                    <t t-if="tab.sequence == 4">
+                                        <t t-foreach="product.documentation_ids" t-as="doc">
+                                           <t t-if="doc.doc_type == 'CNS'">
+                                                <p><a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/></a></p>
+                                           </t>
+                                        </t>
+                                    </t>
+                                   <!--div t-field="tab.content" class="oe_structure" /-->
                                 </section>
                             </div>
                         </t>
@@ -262,6 +290,7 @@
                                 <div class="card-body">
                                     <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="collapse" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)" data-parent="#accordion">
                                         <section class="mt16 mb16">
+                                              <p>Teneur en eau</p>
                                             <div t-field="tab.content" class="oe_structure" />
                                         </section>
                                     </div>

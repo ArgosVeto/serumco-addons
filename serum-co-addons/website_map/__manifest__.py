@@ -1,10 +1,10 @@
-# Developed by Apagen Solutions Pvt. Ltd.
 
 {
     'name': 'Website Maps',
     'category': 'Website',
     'version': '13.0.0.0',
     'summary': '''Website Maps''',
+    'author':'',
     'description': """Website Maps""",
     'depends': [
         'argos_hr',
