@@ -335,7 +335,7 @@ class ClinicDetail(http.Controller):
 	@http.route(['/update-delivery-address'], type='json', auth="public")
 	def update_delivery_address(self,**post):
 		partner = request.env.user.partner_id
-		sale_order_id = request.session['sale_order_id']
+		sale_order_id = request.session.get('sale_order_id')
 		sale_order = request.env['sale.order'].sudo().browse(sale_order_id).exists() if sale_order_id else None
 		fav_clinic = False
 		if partner.clinic_shortlisted_ids:
