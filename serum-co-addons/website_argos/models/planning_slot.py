@@ -3,7 +3,11 @@
 # See LICENSE file for full copyright and licensing details
 
 from odoo import api, fields, models, _
+from odoo.tools.misc import get_lang
+from datetime import datetime
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as dtf
 import pytz
+from babel.dates import format_datetime, format_date
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -45,3 +49,10 @@ class PlanningSlot(models.Model):
                 cal_planning.add('location').value = slot.sudo().operating_unit_id.partner_id._display_address() or ''
             result[slot.id] = cal.serialize().encode('utf-8')
         return result
+
+    def get_day_name(self, date_time):
+        if date_time:
+            return format_datetime(date_time, 'EEEE', locale=get_lang(self.env).code)
+        else:
+            return 'Jour'
+

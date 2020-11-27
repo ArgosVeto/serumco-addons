@@ -6,7 +6,7 @@
             <div class="row mt24 mon-prochain">
                 <div class="col-md-12">
                     <div class="date-time">
-                        <t t-set="week_day" t-value="record.start_datetime.strftime('%A')"/>
+                        <t t-set="week_day" t-value="record.get_day_name(record.start_datetime)"/>
                         <span t-esc="week_day and week_day.title()"/>
                         <span t-field="record.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
                         <span>-</span>
