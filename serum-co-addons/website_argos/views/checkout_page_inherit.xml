@@ -257,7 +257,12 @@
                                     </td>
                                     <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
                                         <div>
-                                            <strong t-field="line.name_short" />
+                                            <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+                                                  <t t-call="website_sale.cart_line_product_link">
+                                                    <strong><t t-esc="name_line"/></strong>
+                                                  </t>
+                                             </t>
+                                             <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
                                         </div>
                                         <div class="quantity">
                                             <p>

@@ -1,5 +1,62 @@
+odoo.define('website_argos.common', function (require) {
+
 $(document).ready(function(){
-	
+
+        var ajax = require('web.ajax');
+
+
+         var change_my_preference  = function () {
+           var button = $("button[id='update_my_preference']");
+           var send_letter = $("input[name='send_letter']");
+           var send_sms = $("input[name='send_sms']");
+           var send_email = $("input[name='send_email']");
+           var to_call = $("input[name='to_call']");
+           var last_send_sms = $("input[id='last_send_sms']").val() === "True";
+           var last_send_email = $("input[id='last_send_email']").val() === "True";
+           var last_send_letter = $("input[id='last_send_letter']").val() === "True";
+           var last_to_call = $("input[id='last_to_call']").val() === "True";
+           console.log(($(send_letter).is(':checked') === last_send_letter) && ($(send_sms).is(':checked') === last_send_sms) && ($(send_email).is(':checked') === last_send_email) && ($(to_call).is(':checked') === last_to_call));
+             if (($(send_letter).is(':checked') === last_send_letter) && ($(send_sms).is(':checked') === last_send_sms) && ($(send_email).is(':checked') === last_send_email) && ($(to_call).is(':checked') === last_to_call)){
+             $(button).addClass('disabled');
+            } else {
+                $(button).removeClass('disabled');
+            }
+            };
+
+
+         $('input[name="send_letter"]').on("change", function () {
+           change_my_preference()
+        });
+
+         $('input[name="send_email"]').on("change", function () {
+          change_my_preference()
+        });
+
+        $('input[name="send_sms"]').on("change", function () {
+          change_my_preference()
+        });
+
+
+         $('input[name="to_call"]').on("change", function () {
+         change_my_preference()
+        });
+
+
+
+        $('button[id="update_my_preference"]').on("click", function () {
+          var button = $("button[id='update_my_preference']");
+          ajax.jsonRpc("/update/preference/contact", 'call',{
+                'send_sms': $("input[name='send_sms']").is(':checked'),
+                'send_email': $("input[name='send_email']").is(':checked'),
+                'send_letter': $("input[name='send_letter']").is(':checked'),
+                'to_call':$("input[name='to_call']").is(':checked'),
+                }).then(function (data) {
+                    if (data) {
+                        $(button).addClass('disabled');
+                    }
+                });
+        });
+
 
    $("#editor").clone().appendTo("#applybtnn");
 	$("#editor").html("Postuler");
@@ -145,6 +202,7 @@ $(document).ready(function(){
 
     $('[data-toggle="popover"]').popover()
 });
+
 
 $(function() {
   /* menu sidebar js */
@@ -591,3 +649,4 @@ function desc_more_function() {
     $(".clinic_description_length").addClass("show");
   }
 }
+});
