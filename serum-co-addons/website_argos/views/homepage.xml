@@ -40,6 +40,7 @@
 								</div>
 							</div>
 						</section>
+						<t t-call="website_argos.s_bizople_theme_multi_product_tab_snippet"/>
 						<div class="oe_structure"/>
 						<section class="home-brands">
 							<div class="container">
