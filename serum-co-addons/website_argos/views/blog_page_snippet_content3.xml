@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content3" name="Blog Page Content3">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+			        <section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+			        		<h3>Iusto sed molestiae.</h3>
+			        		<p>Quo soluta aut fuga velit quae nulla inventore sed. Et non quo facilis et tempore. Consequuntur voluptas necessitatibus et amet et qui. Itaque rerum minus ducimus est commodi consectetur. Autem delectus distinctio nobis.</p>
+
+							<p>Enim autem quos aut quasi consequuntur dolores eveniet. Beatae iste blanditiis libero qui. Mollitia est sint explicabo dolorum qui et. Eum quia est aut. Laudantium beatae saepe architecto et explicabo beatae eveniet.</p>
+
+							<p>Accusamus incidunt quaerat reprehenderit. Sed nesciunt omnis vitae neque autem velit provident ipsum. Fuga non vel tenetur accusamus harum. Aut esse cum qui adipisci. Veniam sed rerum illo modi nisi. Fugit vero iure quisquam reprehenderit minima.</p>
+
+			        	</div>
+			        </section>
+
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

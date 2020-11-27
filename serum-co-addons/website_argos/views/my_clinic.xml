@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="my_clinic" model="ir.ui.view">
+		<field name="name">Ma Clinique</field>
+		<field name="type">qweb</field>
+		<field name="key">website.my_clinic</field>
+		<field name="arch" type="xml">
+			<t name="Ma Clinique" t-name="my_clinic">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section
+							class="s_text_block pt32 s_common_banner_without_bg banner-content"
+							data-name="Text block" data-oe-id="1373"
+							data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view"
+							data-oe-field="arch">
+							<div class="row m-0 mx-md-3 my_content">
+			                    <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+			                        <div class="top-links p-0">
+			                            <div class="container">
+			                                <ul class="nav navbar-nav flex-row">
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/orders">Commandes</a>
+			                                    </li>
+			                                    <t t-if="next_appointment_id or pervious_appointment_id">
+			                                        <li class="nav-item mr32">
+			                                            <a class="nav-link" href="/my-appointment">Mes RDV</a>
+			                                        </li>
+			                                    </t>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/account">Mes adresses</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link active" href="/my-clinic">Ma clinique</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+			                                    </li>
+			                                    <li class="nav-item mr32">
+			                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+			                                    </li>
+			                                    <!-- <li class="nav-item m-0">
+			                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
+			                                    </li> -->
+			                                </ul>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+							<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item">
+												<a href="/">Accueil</a>
+											</li>
+											<li class="breadcrumb-item">
+												<a href="/clinic-detail">Trouver une clinique</a>
+											</li>
+											<li class="breadcrumb-item">
+												<a href="#">
+													<t t-esc="clinic.name" />
+												</a>
+											</li>
+										</ol>
+									</div>
+									<div class="col-lg-12 heading">
+			                            <h1 class="mt16 mb32">
+			                                Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+			                            </h1>
+			                            <p>
+			                                Retrouvez sur cette page lorem ipsum dolor sit amet 
+			                            </p>
+			                            <p class="mb48">
+			                                Nous Contacter
+			                            </p>
+			                        </div>
+			                        <t t-if ="user_id.partner_id.clinic_shortlisted_ids">
+									<div class="col-lg-7 pt16 pb8">
+										<h1>
+											<t t-esc="clinic.name"/>
+										</h1>
+										<div class="mt32 mb16">
+											<p class="Clinique-actuellemen" data-oe-model="ir.ui.view"
+												data-oe-id="1415" data-oe-field="arch"
+												data-oe-xpath="/t[1]/t[1]/section[2]/div[1]/div[1]/t[2]/t[2]/div[1]/div[1]/div[1]/p[1]">
+
+												
+
+												<t t-if="not_working_time">
+													<i class="fa fa-circle" style="color:#1ade8d;;"></i>
+													<span>Clinique actuellement ouverte</span>
+												</t>
+												<t t-else="">
+													<i class="fa fa-circle" style="color:red;"></i>
+													<span>Clinique actuellement ouverte</span>
+												</t>									
+											</p>
+										</div>
+									</div>
+									<div class="col-lg-5 pt16 pb8">
+										<a role="button" target="" t-attf-href="tel:{{clinic.phone}}"
+											class="btn btn-primary ml-4">
+											<img src="/website_argos/static/src/img/phone-white.svg"
+												class="img img-fluid mr-2" />
+											<span class="">appeler</span>
+										</a>
+										<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
+										<t t-if="any(clinic.id == cs for cs in clinic_shortlisted)">
+			                               <a role="button"  class="btn btn-outline-primary ml-4"  t-attf-href="/add-clinic/#{clinic.sudo().id}">
+			                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
+			                            	</a>
+			                            </t>
+			                            <t t-else="">
+			                        		<a role="button"  class="btn btn-outline-primary ml-4"
+			                        	  	 t-attf-href="/add-clinic/#{clinic.sudo().id}">
+			                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
+			                            	</a> 
+			                            </t>
+									</div>
+									<div class="col-lg-12 pt16 pb8 position-relative">
+										<img class="card-img-top" id="banner-img"
+											t-att-src="website.image_url(clinic, 'clinic_banner')" />
+										<div class="red-round-big"></div>
+										<div class="red-round-small"></div>
+									</div>
+									</t>
+								</div>
+							</div>
+							</t>
+						</section>
+						<t t-if ="user_id.partner_id.clinic_shortlisted_ids">
+						<section class="">
+							<div class="container">
+								<div class="row" style="align-items: start;">
+									<div class="col-lg-8">
+										<div class="col-lg-12 pt32 pb32 clinic_images">
+											<div class="row">
+												<t t-if="clinic.clinic_image_ids">
+													<t t-foreach="clinic.clinic_image_ids" t-as="c_i">
+														<div class="col-3">
+															<script>
+																 function changeImage(e) {
+																        document.getElementById('banner-img').src = e;
+																    }
+															</script>
+															<img class="img img-fluid rounded" t-att-name="website.image_url(c_i, 'image_1920')" onclick="changeImage(this.name);"
+																t-att-src="website.image_url(c_i, 'image_1920')" />
+														</div>
+													</t>
+												</t>
+											</div>
+										</div>
+										<div class="service-innerp">
+											<h3 class="Nos-services pb8">Nos services</h3>
+											<div class="pt16">
+												<p class="Services-mdicaux">Services médicaux</p>
+												<t t-if="clinic.service_ids">
+													<div class="col-md-12">
+														<div class="row">
+															<t t-foreach="clinic.service_ids" t-as="s">
+																<div class="col-md-2 Rectangle mr-4">
+																	<span>
+																		<t t-esc="s.name" />
+																	</span>
+																</div>
+															</t>
+														</div>
+													</div>
+												</t>
+											</div>
+
+
+											<div class="pt32">
+												<p class="Services-pratiques">Services Pratiques</p>
+												<t t-if="clinic.practical_service_ids">
+													<div class="col-md-12">
+														<div class="row">
+															<t t-foreach="clinic.practical_service_ids" t-as="s">
+																<div class="Rectangle mr-4">
+																	<span>
+																		<t t-esc="s.name" />
+																	</span>
+																</div>
+															</t>
+														</div>
+													</div>
+												</t>
+											</div>
+
+
+											<div class="pt32">
+												<p class="Moyens-paiement">Moyens de paiement acceptés</p>
+												<t t-if="clinic.payment_method_ids">
+													<div class="col-md-12">
+														<div class="row">
+															<t t-foreach="clinic.payment_method_ids" t-as="pm">
+																<div class="col-md-2 Rectangle mr-4">
+																	<span>
+																		<t t-esc="pm.name" />
+																	</span>
+																</div>
+															</t>
+														</div>
+													</div>
+												</t>
+											</div>
+										</div>
+
+										<div class="service-innerp">
+											<h3 class="Nos-services">Localisation</h3>
+											<div class="mb32">
+												<img class="img img-fluid"
+													src="/website_argos/static/src/img/location.png" />
+											</div>
+										</div>
+
+										<div class="service-innerp">
+											<h3 class="Nos-services pb16">La Clinique</h3>
+											<div class="mb16">
+												<t t-if="clinic.clinic_description">
+													<div t-field="clinic.clinic_description"
+														class="oe_no_empty" />
+												</t>
+											</div>
+										</div>
+
+										<div class="partners-grid pt48 pb32">
+											<h3>Notre équipe</h3>
+											<t t-if="clinic.employee_ids">
+												<div class="row">
+													<t t-foreach="clinic.employee_ids" t-as="contact">
+														<div class="col-md-6 mt16 mb16">
+															<div class="p-grid">
+																<div class="mt8 text-details">
+																	<span class="DOCTEUR-VTRINAIRE-Copy-2" t-esc="contact.job_title" />
+																	<h5 class="Pierre-Michel-Copy mt4">
+																		<span class="Pierre-Michel-Copy" itemprop="contact"
+																			t-att-content="contact.name" t-field="contact.name" />
+																	</h5>
+																	<p class="Mollitia-id-dolores-Copy mt16">
+																		<span t-esc="contact.note" />
+																	</p>
+																</div>
+																<div class="text-right img-doc">
+																	<img class="img img-fluid"
+																		t-att-src="website.image_url(contact, 'image_1920')" />
+																</div>
+															</div>
+														</div>
+													</t>
+												</div>
+											</t>
+										</div>
+
+
+										<div class="service-innerp">
+											<h3 class="Nos-services pb16">Nos tarifs</h3>
+											<div class="nos-tarifs">
+												<div id="accordion" class="accordion">
+													<div class="card">
+														<div class="card-header">
+															<a class="card-link d-block" data-toggle="collapse"
+																href="#collapseOne">
+																Chat
+															</a>
+														</div>
+														<div id="collapseOne" class="collapse show"
+															data-parent="#accordion">
+															<div class="card-body">
+																<div class="specs">
+																	<ul>
+																		<li class="">Consultation</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin Typhus/Coryza</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin T/C + Leucose</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Identification</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Castration chat</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Stérilisation chatte</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="card">
+														<div class="card-header">
+															<a class="collapsed card-link d-block" data-toggle="collapse"
+																href="#collapseTwo">
+																Chien
+															</a>
+														</div>
+														<div id="collapseTwo" class="collapse"
+															data-parent="#accordion">
+															<div class="card-body">
+																<div class="specs">
+																	<ul>
+																		<li class="">Consultation</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin Typhus/Coryza</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin T/C + Leucose</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Identification</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Castration chat</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Stérilisation chatte</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="card">
+														<div class="card-header">
+															<a class="collapsed card-link d-block" data-toggle="collapse"
+																href="#collapseThree">
+																Nouveaux animaux de compagnie
+															</a>
+														</div>
+														<div id="collapseThree" class="collapse"
+															data-parent="#accordion">
+															<div class="card-body">
+																<div class="specs">
+																	<ul>
+																		<li class="">Consultation</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin Typhus/Coryza</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Vaccin T/C + Leucose</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Identification</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Castration chat</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																	<ul>
+																		<li class="">Stérilisation chatte</li>
+																		<li class="dotted-line"></li>
+																		<li class="">60 €</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="oe_structure">
+										<t t-call="website_blog.s_latest_posts_big_picture"/>
+										</div>
+										<div class="service-innerp pb56">
+									<div class="clinic-rating">
+										<h2>Les avis de nos clients</h2>
+										<t t-call="portal.message_thread">
+											<t t-set="object" t-value="clinic"/>
+											<t t-set="display_rating" t-value="True"/>
+										</t>
+									</div>
+								</div>
+									</div>
+									<div class="col-lg-4 clinic-detail-sticky side-block-c">
+										<div class="">
+											<h3>
+												<t t-esc="clinic.name" />
+											</h3>
+										</div>
+										<div class="clinic-link d-flex">
+											<div class="mr-2">
+												<img src="/website_argos/static/src/img/location.svg" />
+											</div>
+											<div class="link">
+												<span class="Avenue-Pasteur">
+													<span class="street" t-field="clinic.street" />
+													<span>, </span>
+													<span class="zip" t-field="clinic.zip" />
+													<span>, </span>
+													<span class="city" t-field="clinic.city" />
+												</span>
+											</div>
+										</div>
+
+										<div class="clinic-link d-flex mt16">
+											<div class="socialicons mr-4 heart-btn">
+												<img src="/website_argos/static/src/img/heart.svg" />
+											</div>
+											<div class="socialicons msg-btn mr-4">
+												<img src="/website_argos/static/src/img/message.svg" />
+											</div>
+											<div class="socialicons fcbk-btn mr-4">
+												<img src="/website_argos/static/src/img/facebook.svg" />
+											</div>
+										</div>
+
+										<div class="clinic-link mt24">
+											<t t-if="working_timing">
+												<div class="row">
+													<t t-set="dayofweek" t-value="list(working_timing.keys())" />
+													<t t-foreach="working_timing" t-as="wt">
+														<div class="col-4 col-lg-2">
+															<span class="Lun-Mar-Mer-Jeu-Copy">
+																<t t-esc="wt" />
+															</span>
+														</div>
+														<div class="col-4 col-lg-5 text-center">
+															<span class="h00---12h30-9h00---copy">
+																<t t-esc="working_timing[wt]['start_time']" />
+															</span>
+														</div>
+														<div class="col-4 col-lg-5 text-center">
+															<span class="h00---12h30-9h00---copy">
+																<t t-esc="working_timing[wt]['end_time']" />
+															</span>
+														</div>
+													</t>
+												</div>
+											</t>
+										</div>
+										<div class="clinic-link mt24">
+											<a href="/prendre-rendez-vous" class="btn btn-primary btn-block">Prendre renvez-vous</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						</t>
+						
+						<t t-if ="not user_id.partner_id.clinic_shortlisted_ids">
+							<h2 class="text-center text-secondary">No Favourite Clinic Selected</h2>
+						</t>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+	<record id="my_clinic_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/my-clinic</field>
+		<field name="view_id" ref="my_clinic" />
+	</record>
+</odoo>

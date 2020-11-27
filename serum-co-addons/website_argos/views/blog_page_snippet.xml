@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet" name="Blog Page">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class=" justify-content-center">
+					<div class="col-lg-12">
+	            		<ol class="breadcrumb">
+						    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+						    <li class="breadcrumb-item"><a href="/group-argos">Le groupe Argos</a></li>
+						    <li class="breadcrumb-item">  Journée mondiale contre l’abandon des animaux de compagnie</li>
+						  </ol>
+	            	</div>
+	            	<section id="o_wblog_post_top">
+	            		<div class="o_wblog_post_title pt64">
+		            		<div id="o_wblog_post_name">Journée mondiale contre l’abandon<br></br> des animaux de compagnie</div>
+		            		<div class="b-in-tag">
+		            			<a class="badge border mr-1" href="#">Lorem</a>
+		            			<a class="badge border mr-1" href="#">Ipsum dolor</a>
+		            			<a class="badge border mr-1" href="#">Sit amet</a>
+		            		</div>
+		            		<div class="b-in-date">
+								<span>Chat, chien, tous    |    Le 6 septembre 2020</span>
+					        </div>
+					        <div class="b-in-hr">
+								<div class="s_hr text-left pt32" data-name="Separator">
+							        <hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto"/>
+							    </div>
+					        </div>
+					        <div class="b-in-social">
+								<div class="text-center pt32 pb32">
+							        <span class="text-so">Partager l'article</span>
+							    </div>
+					            <div class="o_wblog_social_links d-flex flex-wrap text-center justify-content-center">
+					                <t t-set="classes">bg-100 mx-1 mb-2 rounded-circle d-flex align-items-center justify-content-center text-decoration-none</t>
+					                <a href="#" aria-label="LinkedIn" title="Share on LinkedIn" t-attf-class="o_linkedin #{classes}"><i class="fa fa-link text-link" aria-label="LinkedIn" title="LinkedIn"/></a>
+					                <a href="#" aria-label="Mail" title="Share on Mail" t-attf-class="o_mail #{classes}"><i class="fa fa-envelope-o text-mail" aria-label="Mail" title="Mail"/></a>
+					                <a href="#" aria-label="Facebook" title="Share on Facebook" t-attf-class="o_facebook #{classes}"><i class="fa fa-facebook text-facebook"/></a>
+					                <a href="#" aria-label="Twitter" title="Share on Twitter" t-attf-class="o_twitter #{classes}"><i class="fa fa-twitter text-twitter" aria-label="Twitter" title="Twitter"/></a>
+					            </div>
+					        </div>
+				        	<div class=" o_record_cover_image mt48">
+				        		<a href="#">
+				        			<img src="/website_argos/static/src/img/blog-article-01.png" class="img img-fluid mr-2"/>
+				        		</a>
+				        	</div>
+		            	</div>
+	            	</section>
+
+	            	<section class="container pt-4 pb-5 mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+			        		<h3>Modi fugit nulla suscipit.</h3>
+			        		<p>Molestias iste at vitae. Deleniti omnis sit eligendi ut natus. Ratione repellendus libero quisquam in placeat quis blanditiis.</p>
+
+							<p>Porro sapiente pariatur sapiente et omnis eos eum quia. Recusandae libero aut maxime. Reprehenderit aut in et ut officia adipisci deserunt corrupti et.<span class="text1"> Sed eum ipsam placeat quaerat.</span></p>
+
+							<p>Rerum voluptates inventore. Exercitationem dolorum quia corrupti maxime et ea dignissimos aut. Quia perferendis nemo amet necessitatibus nostrum molestias quaerat sunt. Impedit praesentium consequatur officiis quisquam voluptatem veritatis. <span class="text2">Cum magni labore eos illo. Rerum ab excepturi optio illo minus illo.</span></p>
+
+							<ul class="mt32 mb32">
+								<li>Lorem ipsum dolor sit amet exercitationem dolorum quia corrupti maxime</li>
+								<li>Exercitationem dolorum quia corrupti maxime</li>
+								<li>Cum magni labore eos illo.</li>
+								<li>Rerum ab excepturi optio illo minus illo.</li>
+							</ul>
+
+							<div class="Aut-labore-reiciendi pt16 pb16">Aut labore reiciendis necessitatibus</div>
+
+							<p>Maxime ut id incidunt ut sed. Voluptatem modi voluptas sunt sit voluptas perferendis consequatur quo. Maiores rerum aut aperiam molestias distinctio sit. Distinctio et eum voluptas et architecto eos in. Pariatur qui in facilis ducimus ut reiciendis libero qui. Eveniet omnis dolor placeat.</p>
+ 
+							<p><span class="text3">Et autem dolorum.</span> Et aut est et. Ut et sunt aliquid id debitis excepturi sed.</p>
+ 
+							<p>Dolor quasi sunt quibusdam in facilis iure ut sunt. Debitis dolores ipsa reprehenderit. Praesentium dolor cum et quam optio excepturi atque quia nobis. Eos sit aut architecto ut eos. Voluptatum dicta laboriosam eligendi quam rerum.</p>
+			        	</div>
+			        </section>
+
+			        <section class="image-section">
+			        	<div class="row justify-content-center">
+			        		<div class="col-lg-5">
+			        			<div class=" o_record_cover_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/blog-article-02.png" class="img img-fluid"/>
+					        		</a>
+					        		<p class="mt8">Voluptas similique est dolore.</p>
+					        	</div>
+			        		</div>
+			        		<div class="col-lg-5">
+			        			<div class=" o_record_cover_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/blog-article-03.png" class="img img-fluid"/>
+					        		</a>
+					        		<p class="mt8">Dolorem laboriosam aspernatur sunt nemo eaque tempore.</p>
+					        	</div>
+			        		</div>
+			        	</div>
+			        </section>
+
+			        <section class="container pt-4 pb-5 mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+			        		<h3>Iusto sed molestiae.</h3>
+			        		<p>Quo soluta aut fuga velit quae nulla inventore sed. Et non quo facilis et tempore. Consequuntur voluptas necessitatibus et amet et qui. Itaque rerum minus ducimus est commodi consectetur. Autem delectus distinctio nobis.</p>
+ 
+							<p>Enim autem quos aut quasi consequuntur dolores eveniet. Beatae iste blanditiis libero qui. Mollitia est sint explicabo dolorum qui et. Eum quia est aut. Laudantium beatae saepe architecto et explicabo beatae eveniet.</p>
+ 
+							<p>Accusamus incidunt quaerat reprehenderit. Sed nesciunt omnis vitae neque autem velit provident ipsum. Fuga non vel tenetur accusamus harum. Aut esse cum qui adipisci. Veniam sed rerum illo modi nisi. Fugit vero iure quisquam reprehenderit minima.</p>
+
+							<div class="blog-quote mt32 mb32">
+								<div class="b-right"/>
+								<div class="quote-text">
+									<div class="q-text">« Tum dicere exorsus est et inter mediocrem animadversionem atque haec subtilius velint tradere et aut in gravissimo bello animadversionis e ab eo est et iusto ometu degendae praesidia firmissima filium morte multavit si sine causa, nollem me ab eo est et iusto odio dignissimos ducimus, qui officia deserunt mollitia animi, ide ab eo est et iusto. »
+									<img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+									</div>
+								</div>
+								<div class="quote-name mt16">
+									<span>John Doe</span>
+								</div>
+							</div>
+
+							<p>Quam quis laboriosam est est et accusamus eligendi sed dolore. Ipsum nobis repellat. Laudantium placeat autem aut. Id voluptates aliquid sed ex totam eos aperiam rerum. Veritatis alias architecto officiis est.</p>
+
+							<div class=" o_record_cover_image pt48 pb48">
+				        		<a href="#" class="video-popup" title="video popup">
+				        			<span class="fa fa-play text-primary"></span>
+				        			<img src="/website_argos/static/src/img/blog-article-04.png" class="img img-fluid mr-2"/>
+				        		</a>
+				        	</div>
+
+				        	<p>Sunt eius cum est natus et. Dolore deleniti saepe ab blanditiis dicta excepturi quia. Voluptatum ducimus eos esse dolorem magni voluptate porro hic. Qui sit enim ducimus est maxime. Repudiandae vero fugiat exercitationem et quos consequuntur. Fugiat reprehenderit quae amet et recusandae.</p>
+ 
+							<p>Dolores iste fugiat magni est occaecati. Explicabo velit aut qui fuga. Iusto sint nesciunt quo at et dicta.</p>
+ 
+							<p>Sint et tempora omnis delectus consequatur quia eveniet dignissimos. Voluptatem qui qui. Iure harum illo reiciendis sed hic velit. Repellendus ut placeat autem quis earum.</p>
+
+							<div class="d-flex align-items-center justify-content-center pt48 pb48">
+								<a class="btn-outline-primary btn-fiche mr16" href="/website_argos/static/src/docs/argos_doc.pdf">
+									<img src="/website_argos/static/src/img/job_pdf.svg" class="img img-fluid mr-2" />
+									<span>Télécharger le PDF</span>
+								</a>
+								<a href="#" class="btn btn-primary">Lorem ipsum</a>
+							</div>
+
+							<div class="b-in-hr">
+								<div class="s_hr text-left" data-name="Separator">
+							        <hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto"/>
+							    </div>
+	      					</div>
+
+	      					<div class="Mask mt48 mb48">
+	      						<div class="DOCTEUR-VTRINAIRE-Copy mb8">DOCTEUR VÉTÉRINAIRE</div>
+	      						<div class="Pierre-Michel-Copy">Pierre Michel</div>
+	      						<div class="Clinique mt32">Clinique</div>
+	      						<div class="Clinique-vtrinaire mt8">Clinique vétérinaire Argos Saint-Aubin de Médoc</div>
+	      						<a class="btn btn-link mt16 En-savoir-plus" href="/clinic-detail">
+									<span class="mr8">Voir la fiche clinique</span>
+									<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
+								</a>
+								<div class=" mask_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/equipe-01.png" class="img img-fluid"/>
+					        		</a>
+					        	</div>
+	      					</div>
+
+			        	</div>
+			        </section>
+
+			        <section class="o_wblog_post_top">
+			        	<div class="o_wblog_post_title">
+				        	<div class="b-in-hr">
+								<div class="s_hr text-left" data-name="Separator">
+							        <hr class="border-600 s_hr_1px s_hr_solid w-100 mx-auto"/>
+							    </div>
+	      					</div>
+
+	      					 <div class="b-in-social">
+								<div class="text-center pt32 pb32">
+							        <span class="text-so">Partager l'article</span>
+							    </div>
+					            <div class="o_wblog_social_links d-flex flex-wrap text-center justify-content-center">
+					                <t t-set="classes">bg-100 mx-1 mb-2 rounded-circle d-flex align-items-center justify-content-center text-decoration-none</t>
+					                <a href="#" aria-label="LinkedIn" title="Share on LinkedIn" t-attf-class="o_linkedin #{classes}"><i class="fa fa-link text-link" aria-label="LinkedIn" title="LinkedIn"/></a>
+					                <a href="#" aria-label="Mail" title="Share on Mail" t-attf-class="o_mail #{classes}"><i class="fa fa-envelope-o text-mail" aria-label="Mail" title="Mail"/></a>
+					                <a href="#" aria-label="Facebook" title="Share on Facebook" t-attf-class="o_facebook #{classes}"><i class="fa fa-facebook text-facebook"/></a>
+					                <a href="#" aria-label="Twitter" title="Share on Twitter" t-attf-class="o_twitter #{classes}"><i class="fa fa-twitter text-twitter" aria-label="Twitter" title="Twitter"/></a>
+					            </div>
+					        </div>
+					    </div>
+			        </section>
+
+			        <section class="o_wblog_post_footer mt48">
+			        	<div class=" mt-2">
+			                <div class="container read-next-post">
+			                    <div t-attf-class="mb-4 mx-auto #{ readableClass if opt_blog_post_readable else ''}">
+			                        <hr/>
+			                        <div class="next d-flex align-items-center">
+			                        	<div class="text-left mr-auto">
+		                                	<a href="#">
+			                                    <span id="o_wblog_post_prv_name " placeholder="Blog Post Title" class="h2 o_wblog_post_prv_name">Argos Vétérinaire change d’identité !</span>
+			                                </a>
+		                                </div>
+			                        	<div class="text-center pull-center">
+			                        		<a href="/blog">
+			                        			<span class="o_wblog_return_name">Retour au Blog</span>
+			                               </a>
+			                               </div>
+			                               <div class="text-right ml-auto">
+			                                	<a href="#">
+				                                    <span  id="o_wblog_post_name" placeholder="Blog Post Title" class="h2">Voyager avec son animal de compagnie</span>
+				                                </a>
+			                                </div>                               
+			                        	</div>                        
+			                         <hr/>
+			                    </div>
+			                </div>
+				        </div>
+			        </section>
+
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

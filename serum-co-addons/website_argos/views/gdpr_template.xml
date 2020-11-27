@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="argos_gdpr" model="ir.ui.view">
+		<field name="name">Argos GDPR</field>
+		<field name="type">qweb</field>
+		<field name="key">website.argos_gdpr</field>
+		<field name="arch" type="xml">
+			<t name="Argos GDPR" t-name="argos_gdpr">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="home-banner pb32">
+							<div class="container">
+								<div class="title d-flex">
+									<h1 class="text-primary">Argos, votre clinique vétérinaire</h1>
+									<img src="/website_argos/static/src/img/banner-arrow.svg" class="d-none d-md-block"/>
+								</div>
+								<div class="banner-content">
+									<div class="red-round-big" />
+									<div class="red-round-small" />
+									<div class="image-text">
+										<img src="/website_argos/static/src/img/home-banner.jpg"
+											class="img img-fluid" />
+										<div class="text">
+											<h3 class="text-gamma">Quaerat beatae fuga sed repudiandae ea</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="home-banner pb128">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-6 mb16">
+									<h3 class="Vos-paramtres-de-co">Vos paramètres de cookies</h3>
+									<p class="pt8 Nous-utilisons-des-c">
+										Nous utilisons des cookies, y compris des cookies tiers, à
+										des fins de fonctionnement, d’analyses statistiques, de
+										personnalisation de votre expérience, afin de vous proposer
+										des contenus ciblés adaptés à vos centres d’intêrets et
+										analyser la performance de nos campagnes publicitaires. Vous
+										pouvez accepter ces cookies en cliquant sur <span class="text-style-1">"Tout accepter et
+										continuer"</span> ou cliquer sur <span class="text-style-1">"Paramétrer les cookies" </span> pour gérer
+										vos préférences.
+									</p>
+									</div>
+									<div class="col-md-6 text-right mb16">
+										<a href="#" class="btn btn-primary mr-4 mb8">Tout accepter et continuer</a>
+										<a href="#" class="btn btn-outline-primary mb8">Paramétrer les cookies</a>
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+
+	<record id="argos_gdpr_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/gdpr</field>
+		<field name="view_id" ref="argos_gdpr" />
+	</record>
+</odoo>

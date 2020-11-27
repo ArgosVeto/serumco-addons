@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content2" name="Blog Page Content2">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+			        <section class="image-section">
+			        	<div class="row justify-content-center">
+			        		<div class="col-lg-6">
+			        			<div class=" o_record_cover_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/blog-article-02.png" class="img img-responsive"/>
+					        		</a>
+					        		<p class="mt8">Voluptas similique est dolore.</p>
+					        	</div>
+			        		</div>
+			        		<div class="col-lg-6">
+			        			<div class=" o_record_cover_image">
+					        		<a href="#">
+					        			<img src="/website_argos/static/src/img/blog-article-03.png" class="img img-responsive"/>
+					        		</a>
+					        		<p class="mt8">Dolorem laboriosam aspernatur sunt nemo eaque tempore.</p>
+					        	</div>
+			        		</div>
+			        	</div>
+			        </section>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+seo_manager,website.seo,model_website_seo,sales_team.group_sale_manager,1,1,1,1
+seo_all,website.seo,model_website_seo,,1,0,0,0
+seo_attribute,website.seo.attribute,model_website_seo_attribute,sales_team.group_sale_manager,1,1,1,1
+seo_attribute_all,seo.attribute,model_website_seo_attribute,,1,0,0,0

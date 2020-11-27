@@ -1,0 +1,952 @@
+.clinic-grid {
+	.card {
+		  border-radius: 8px;
+	    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
+	    background-color: #ffffff !important;
+	    border: 0px;
+	}
+
+	.card-body {
+		border-bottom-right-radius: 6px !important;
+    	border-bottom-left-radius: 6px !important;
+	}
+	
+	.card-footer {
+	    padding: 0rem 1rem;
+	    background-color: rgba(0, 0, 0, 0.0);
+	    border-top: 0px solid rgba(0, 0, 0, 0.125);
+	}
+	
+	.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.5rem - 1px);
+    border-top-right-radius: calc(0.5rem - 1px);
+    max-height: 200px;
+    min-height: 191px;
+}
+
+	h3 {
+	  font-size: 20px;
+	  font-weight: lighter;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.5;
+	  letter-spacing: -0.3px;
+	}
+	
+  
+  .Clinique-actuellemen {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 16px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  color: #201f4c;
+	  
+	  i {
+	    font-size: 12px;
+	    margin-right: 6px;
+	    line-height: 2;
+	  }
+	  
+	}
+
+	.Avenue-Pasteur {
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.86;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	}
+	
+	.image-l {
+		margin-right: 8px;
+	}
+  
+}
+.c-tex-block {
+	font-family: AvenirLTStd-Roman;
+	  font-size: 16px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.63;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+      padding: 85px 0px;
+}
+
+.o_clinic_searchbar_form {
+		width: 71%;
+	
+	.se-btn {
+		margin-left: 27px;
+	}
+		
+	.input-group-append {
+ 		margin-left: 25px;
+	}
+	
+	 ::placeholder {
+		  color: #63bae9;
+		  opacity: 0.6;
+		}
+	
+	.form-control {
+		    height: 50px;
+		    border-radius: 6px;
+		    box-shadow: 0 2px 4px 0 rgba(32, 31, 76, 0.04);
+			border: solid 1px rgba(99, 186, 233, 0.4);
+			background-color: #ffffff;
+			font-family: AvenirLTStd-Roman;
+			  font-size: 15px;
+			  font-weight: normal;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.73;
+			  letter-spacing: normal;
+			  color:theme-color('primary');
+			  
+		}
+	
+	.form-control:not(:last-child), .input-group > .custom-select:not(:last-child) {
+		    border-top-right-radius: 6px;
+		    border-bottom-right-radius: 6px;
+		}
+	
+	 .input-group-append > .btn{
+	     border-top-left-radius: 0.25rem !important;
+	     border-bottom-left-radius: 0.25rem !important;
+	}
+	@media (max-width: 767.98px) {
+		.form-control {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		.btn{
+			display: block;
+			width: 100%;
+			margin-left: 0 !important;
+		}
+		.se-btn {
+			.oe_search_button{
+				display: block;
+    			width: 100%;
+			}
+			margin-left: 0;
+			margin-bottom: 15px;
+		}
+
+	    display: block;
+    	width: 100%;
+	}
+}
+
+.fav-btn {
+	position: absolute;
+    top: 16px;
+    background-color: rgba(255, 255, 255, 0.64);
+    color: white;
+    font-size: 16px;
+    padding: 14px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    right: 8px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    
+    &:hover{
+    	background-color: rgba(255, 255, 255, 0.64);
+    }
+    
+}
+
+.card {
+	.btn-primary.disabled, .btn-primary:disabled {
+	    color: #FFFFFF;
+	    background-color: rgba(222, 26, 70, 0.08);
+	    border-color: rgba(222, 26, 70, 0.08);
+	}
+}
+.clinic-type-b {
+	.badge-light {
+		  border-radius: 24px;
+		  border: solid 1px rgba(99, 186, 233, 0.4);
+		  background-color: #ffffff;
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 12px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: 2px;
+		  text-align: center;
+		  color:theme-color('primary');
+		  text-transform:uppercase;
+	      padding: 0.8em 1.2em;
+	      
+	      &:hover{
+	      	background-color: theme-color('primary');
+	      	color: #fff;
+	      }
+	}
+}
+
+.service-tt {
+		.ge {
+			font-family: AvenirLTStd-Heavy;
+			  font-size: 12px;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.67;
+			  letter-spacing: 2px;
+			  text-align: right;
+			  color:theme-color('primary');
+			  text-transform:uppercase;
+		}
+	
+		.dropdown-toggle::after {
+		    display: inline-block;
+		    margin-left: 0.255em;
+		    vertical-align: 0.1em;
+	        content: '\f078';
+			font-family: FontAwesome;
+		    border-top: 0em solid;
+		    border-right: 0em solid transparent;
+		    border-bottom: 0;
+		    border-left: 0em solid transparent;
+		}
+}
+
+.criteria  {
+	.ge {
+		
+		span::before {
+		    display: inline-block;
+		    margin-right: 0.55em;
+	        content: '\f067';
+			font-family: FontAwesome;
+		    border-top: 0em solid;
+		    border-right: 0em solid transparent;
+		    border-bottom: 0;
+		    border-left: 0em solid transparent;
+		}
+		
+		}
+}
+
+.see_map {
+	.custom-switch {
+	    padding-left: 3.25rem;
+	    padding-top: 6px;
+	    @media (max-width: 767.98px) {
+	    	padding-left: 4rem;
+		 	padding-top: 10px;
+		}
+	}
+	
+	.custom-control-label {
+	    position: relative;
+	    margin-bottom: 0;
+	    vertical-align: top;
+	    font-family: AvenirLTStd-Heavy;
+		  font-size: 12px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.67;
+		  letter-spacing: 2px;
+		  text-align: right;
+		  color: theme-color('primary');
+		  text-transform:uppercase;	
+	}
+
+	.custom-control-label::before {
+  		background-color: rgba(99, 186, 233, 0.4);
+  		border: transparent;
+	}
+
+	.custom-switch .custom-control-label::after {
+	    background-color: #ffffff;
+	}
+
+	.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    	background-color: transparent;
+	}
+	
+}
+
+
+.banner-content{
+		
+		img {
+			border-radius: 8px;
+		}
+		
+		.red-round-big{
+			width: 137px;
+  			height: 137px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 53px;
+    		left: -52px;
+    		z-index: -1;
+		}
+		.red-round-small{
+			width: 60px;
+  			height: 60px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: 56px;
+		    right: -16px;
+    		z-index: -1;
+		}
+}
+
+.o_connected_user .clinic-detail-sticky.side-sticky{
+    position: sticky;
+    top: 46px;
+    margin-left: -14px;
+    @media (max-width: 767.98px) {
+    	margin-left: 0;
+    }
+}
+
+.clinic-detail-sticky.side-sticky{
+   	position: sticky;
+    top: 0px;
+    margin-left: -14px;
+    @media (max-width: 767.98px) {
+    	margin-left: 0;
+    }
+}
+
+.clinic-detail-sticky{
+	.fav-btn{
+		transform: translate(0);
+    	-ms-transform: translate(0);
+	}
+}
+
+.side-block-c {
+	border-radius: 8px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
+    background-color: #ffffff;
+    position: relative;
+    top: -50px;
+    left: -14px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding: 25px;
+    
+    h3 {
+		  font-size: 28px;
+		  font-weight: lighter;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.21;
+		  letter-spacing: -0.42px;
+		  color: theme-color('primary');
+    }
+   .content{
+   	  font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+   }
+   .Lun-Mar-Mer-Jeu-Copy {
+		  font-family: AvenirLTStd-Roman;
+		  font-size: 14px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 2.14;
+		  letter-spacing: normal;
+		  color: theme-color('primary');
+		}
+   .h00---12h30-9h00---copy {
+	  font-family: AvenirLTStd-Roman;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 2.14;
+	  letter-spacing: normal;
+	  text-align: center;
+	  color: #8b8b8b;
+	}
+    .time-slot-head a{
+    	font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	  text-decoration:none;
+    }
+    @media (min-width: 768px) {
+		#demo{
+			display: block !important;
+		}
+	}
+	@media (max-width: 767.98px) {
+		order:1 !important;
+		 .time-slot-head a{
+		 	border-radius: 8px;
+  			background-color: rgba(139, 139, 139, 0.04);
+  			padding:20px 10px;
+		 }
+		.heading:after {
+		    content: "\f0dd";
+		    font-family: "FontAwesome" !important;
+		    display: inline-block;
+		    float: right;
+		    font-size: 15px;
+		    transition: 0.2s;
+		    -webkit-transition: 0.2s;
+		}
+		.heading[aria-expanded="true"]:after {
+		    transform: rotate(180deg);
+		    -webkit-transform: rotate(180deg);
+		}
+	}
+}
+
+.Avenue-Pasteur {
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.86;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	}
+
+.socialicons {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    a{
+    	line-height:50px;
+    }
+}
+   .socialicons .fav-btn{
+    	background-color: rgba(222, 26, 70, 0.08);
+    	line-height: 0 !important;
+    	&:hover{
+    		background-color: rgba(222, 26, 70, 0.08);
+    	}
+    }
+    .socialicons.heart-btn{
+    	background-color: rgba(222, 26, 70, 0.08);
+    }
+    .socialicons.msg-btn{
+    	background-color: rgba(99, 186, 233, 0.08);
+    }
+    .socialicons.fcbk-btn{
+    	background-color: rgba(24, 119, 242, 0.08);
+    }
+
+
+
+.bg-heart {
+	background-color: rgba(222, 26, 70, 0.08);
+}
+.clinic-btn-icon{
+	.fav-btn {
+    	position: unset !important;
+    	line-height: 0 !important;
+    }
+    .side-block-c{
+    	position: unset !important;
+    	padding:0 !important;
+    	box-shadow: none !important;
+    }
+}
+.Clinique-actuellemen {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 16px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  color: #201f4c;
+	  
+	  i {
+	  	 color: #1ade8d;
+	    font-size: 12px;
+	    margin-right: 6px;
+	    line-height: 2;
+	  }
+	  
+}
+
+.service-innerp {
+	.Nos-services {
+	  font-weight: lighter;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.21;
+	  letter-spacing: normal;
+	  color: theme-color('primary');
+		padding-top: 30px;
+    	padding-bottom: 30px;
+    	margin:0;
+	}
+
+	.Services-mdicaux {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	}
+
+	.Services-pratiques {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	}
+
+	.Moyens-paiement {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 18px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.22;
+	  letter-spacing: normal;
+	  color: #8b8b8b;
+	}
+
+	.Rectangle {
+		  border-radius: 4px;
+		  background-color: rgba(99, 186, 233, 0.04);
+		  text-align: center;
+		  padding: 8px;
+		  margin-top: 20px;
+		  
+		  span{
+		  	font-family: AvenirLTStd-Roman;
+			  font-size: 16px;
+			  font-weight: normal;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: normal;
+			  letter-spacing: normal;
+			  color: theme-color('primary');
+		  }
+		  
+		}
+	.top-text {
+		span{
+			font-size:12px;
+			line-height:20px;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color:theme-color('secondary');
+			font-weight: 900;
+			font-family: AvenirLTStd-Heavy;
+			font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+
+		}
+		a:hover{
+			text-decoration:none;
+		}
+	}
+	
+	@media (max-width: 767.98px) {
+		.clinic_description_length{
+			margin-bottom: 20px;
+			height:150px;
+			overflow:hidden;
+		}
+		.desc-more-btn{
+			font-family: AvenirLTStd-Heavy;
+			  font-size: 16px;
+			  font-weight: 900;
+			  font-stretch: normal;
+			  font-style: normal;
+			  line-height: 1.63;
+			  letter-spacing: normal;
+			  color: theme-color('primary');
+		}
+		.clinic_description_length.show{
+			height:auto !important;
+			overflow:unset !important;
+		}
+	}
+}
+
+.partners-grid {
+	.p-grid{
+		border-radius: 8px;
+  		background-color: rgba(99, 186, 233, 0.04);
+  		min-height: 378px;
+  		
+  		.text-details {
+  			padding:20px;
+  		}
+	
+	.img-doc {
+		img {
+			position: absolute;
+		    right: 21px;
+		    bottom: 0;
+		}
+	}
+	.DOCTEUR-VTRINAIRE-Copy-2 {
+		  font-family: AvenirLTStd-Heavy;
+		  font-size: 12px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.67;
+		  letter-spacing: 2px;
+		  color: theme-color('primary');
+		  text-transform: uppercase;
+		}
+	
+	.Pierre-Michel-Copy {
+		  font-family: AvenirLTStd-Heavy !important;
+		  font-size: 18px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.22;
+		  letter-spacing: normal;
+		  color: #201f4c;
+		}
+	
+	.Mollitia-id-dolores-Copy {
+		  font-family: AvenirLTStd-Roman !important;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: #8b8b8b;
+		}
+	
+	}
+	.carousel-indicators{
+		bottom: -35px;
+		li{
+			background-color: rgba(99, 186, 233, 0.16);
+			width:18px;
+		}
+		li.active{
+			background-color: theme-color('primary');
+		}
+	}
+}
+
+.nos-tarifs {
+	
+	.accordion {
+		
+		.card {
+			border: 0px solid rgba(0, 0, 0, 0);
+		    margin: 21px 0px;
+
+		}
+		
+		.collapse {
+			border-top: 1px solid #e0f1fa;
+		}
+		
+		.card-header {
+			border-radius: 8px;
+    		background-color: rgba(99, 186, 233, 0.04);
+    		border: 0px;
+		    padding: 0.9rem 1.25rem;
+		}
+		
+		.card-body {
+			background-color: rgba(99, 186, 233, 0.04) !important;
+			
+			.specs ul {
+				    display: grid;
+				    grid-template-columns: max-content auto max-content;
+				    line-height: 24px;
+				    margin-bottom: 23px;
+				    list-style: none;
+				    padding: 0;
+				    
+				    li {
+				    	font-family: AvenirLTStd-Roman;
+					  font-size: 16px;
+					  font-weight: normal;
+					  font-stretch: normal;
+					  font-style: normal;
+					  line-height: 1.63;
+					  letter-spacing: normal;
+					  color: #201f4c;
+					  position: relative;
+				    }
+				}
+			
+			.specs ul li.dotted-line::after {
+				    content: "";
+				    position: absolute;
+				    left: 0;
+				    top: 50%;
+				    width: 100%;
+				    border-top: 2px dotted rgba(32, 31, 76, 0.32);
+				}
+			
+			 .specs ul li:first-child {
+				    text-align: left;
+				    padding-right: 15px;
+				}
+			
+			.specs ul li:last-child {
+			    text-align: right;
+			    padding-left: 15px;
+			}
+			
+		}
+		
+		.card .card-link.collapsed:before {
+		    content: '\f0d7';
+		    font-family: 'FontAwesome';
+		    float: right;
+		    color: theme-color('primary');
+		}
+		
+		.card .card-link:before {
+		    content: '\f0d8';
+		    font-family: 'FontAwesome';
+		    display: inline-block;
+		    margin: 0 .5em 0 .75em;
+		    float: right;
+		    color: theme-color('primary');
+		}
+	
+		.card-link {
+			font-family: Comfortaa-Bold;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: theme-color('primary');
+		}
+	
+	}
+
+}
+
+.clinc-quote {
+	.quote-text {
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: oblique;
+		  line-height: 1.63;
+		  letter-spacing: normal;
+		  color: #8b8b8b;
+		  
+		  p {
+		  	position: relative;
+		  }
+	}
+	
+	.quote-name { 
+		font-family: AvenirLTStd-Heavy;
+		  font-size: 12px;
+		  font-weight: 900;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: 1.67;
+		  letter-spacing: 2px;
+		  color: theme-color('primary');
+		      text-transform: uppercase;
+	}
+	
+	.quote-image {
+	    position: absolute;
+	    left: 0px;
+	    top: -13px;
+	}
+
+}
+
+.clinic_images {
+	img {
+		min-height: 105px;
+		@media (max-width: 767.98px) {
+			min-height: 60px;
+		    margin-bottom: 10px;
+		}
+	}
+}
+
+
+.side-block {
+	.fav-btn { 
+		position: relative !important;
+		right:0px !important;
+		top:0px !important;
+		
+	}
+}
+.clinic-rating{
+	h2{
+		margin-bottom:40px;
+	}
+	.o_portal_chatter_header{
+		display:none;
+	}
+	hr{
+		display:none;
+	}
+	.o_website_rating_static{
+		display:none;
+	}
+	.media-body{
+		position: relative;
+		padding: 30px 0;
+	}
+	p{
+		font-size: 16px;
+	    font-weight: normal;
+	    font-stretch: normal;
+	    font-style: oblique;
+	    line-height: 1.63;
+	    letter-spacing: normal;
+	    color: #8b8b8b;
+	    position: relative;
+	    margin-bottom: 1rem !important;
+	}
+	.quote-image {
+	    position: absolute;
+	    left: 0px;
+	    top: -15px;
+	}
+	.o_portal_chatter_message_title{
+
+		h5{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy !important;
+		    font-size: 12px;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9;
+		    text-transform: uppercase;
+		    &:after{
+		    	content: '|';
+		    	margin:0 10px;
+		    }
+		}
+		.o_portal_chatter_puslished_date{
+			display: inline-block;
+			font-family: AvenirLTStd-Heavy;
+		    font-size: 12px !important;
+		    font-weight: 900;
+		    font-stretch: normal;
+		    font-style: normal;
+		    line-height: 1.67;
+		    letter-spacing: 2px;
+		    color: #63bae9 !important;
+		    text-transform: uppercase;
+		}
+	}
+}
+
+.search_by_service {
+	.dropdown-item.active {
+    	color: #212529;
+	}
+	
+		.dropdown-menu {
+			    border-radius: 8px;
+			    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.04);
+			    background-color: #f6f6f6;
+			    border: 0;
+		        padding: 24px 15px;
+		        min-width: 356px;
+	}
+	
+	.dropdown-item {
+		margin: 0 0px 8px;
+		border-radius: 8px;
+	    background-color: #ffffff;
+	    font-family: AvenirLTStd-Roman;
+	    font-size: 15px;
+	    font-weight: normal;
+	    font-stretch: normal;
+	    font-style: normal;
+	    line-height: normal;
+	    letter-spacing: normal;
+	    color: #201f4c;
+	    padding: 15px 12px;
+	}
+}
+
+.search_by_service .dropdown-menu .dropdown-item.active {
+    background-color: #e6f4fb;
+}
+
+.search_by_service .dropdown-menu .dropdown-item.active::after {
+    content: "\f00c";
+    font-family: "FontAwesome" !important;
+    display: inline-block;
+    color: #63bae9;
+    float: right;
+    font-size: 20px;
+}
+
+.clinic-type-b .badge.active{
+	background: #63bae9;
+    color: white;
+}
+.mobile-breadcrumb{
+	margin-left: 16px;
+	.Vous-tes-ici {
+	  font-family: AvenirLTStd-Heavy;
+	  font-size: 16px;
+	  font-weight: 900;
+	  font-stretch: normal;
+	  font-style: normal;
+	  line-height: 1.63;
+	  letter-spacing: normal;
+	  color: theme-color('primary');
+	  margin-bottom:16px;
+	}
+	.breadcrumb{
+		display:flex !important;
+	}
+}

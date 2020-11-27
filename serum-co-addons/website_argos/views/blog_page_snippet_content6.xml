@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content6" name="Blog Page Content6">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+					<section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+
+							<div class="d-flex align-items-center justify-content-center pt48 pb48">
+								<a class="btn-outline-primary btn-fiche mr16" href="/website_argos/static/src/docs/argos_doc.pdf">
+									<img src="/website_argos/static/src/img/job_pdf.svg" class="img img-fluid mr-2" />
+									<span>Télécharger le PDF</span>
+								</a>
+								<a href="#" class="btn btn-primary">Lorem ipsum</a>
+							</div>
+
+							<div class="b-in-hr">
+								<div class="s_hr text-left" data-name="Separator">
+							        <hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto"/>
+							    </div>
+		  					</div>
+
+			        	</div>
+			        </section>
+
+			    </div>
+			</div>
+		</section>
+	</template>
+
+</odoo>

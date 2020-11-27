@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="all_my_appointment" name="All ay appointment">
+		<t t-if="recordset">
+			<div class="col-lg-12 mt32">
+				<t t-if="next">
+					<h4>Mes prochains RDV</h4>
+				</t>
+				<t t-if="last">
+					<h4>Mes précédents RDV</h4>
+				</t>
+				<div class="row">
+					<t t-foreach="recordset" t-as="rec">
+						<div class="col-lg-6 mb32">
+							<div class="row">
+								<div class="col-lg-6">
+									<img class="img img-fluid" t-att-src="website.image_url(rec.operating_unit_id, 'clinic_banner')" />
+								</div>
+								<div class="col-lg-6 d-flex flex-column">
+									<div class="date-time">
+										<t t-set="week_day" t-value="rec.start_datetime.strftime('%A')"/>
+										<span t-esc="week_day and week_day.title()"/>
+										<span t-field="rec.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
+										<span>-</span>
+										<span t-field="rec.start_datetime" t-options='{"format": "HH:mm"}'/>
+									</div>
+									<strong t-esc="rec.operating_unit_id.name"/>
+									<p class="mt8" t-if="rec.employee_id">
+										Dr. <span t-field="rec.employee_id.name"/>
+									</p>
+									<t t-if="rec and show_add_to_calendar">
+										<a role="button" t-att-href="'/planning/%s/ics' % rec.id" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
+									</t>
+								</div>
+							</div>
+						</div>
+					</t>
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="my_appointment" name="All Appointment">
+			<t t-call="website.layout">
+				<div class="oe_structure oe_empty" id="wrap">
+					<section
+						class="s_text_block pt32 s_common_banner_without_bg banner-content">
+						<div class="row m-0 mx-md-3 my_content">
+		                    <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+		                        <div class="top-links p-0">
+		                            <div class="container">
+		                                <ul class="nav navbar-nav flex-row">
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+		                                    </li>
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/my/orders">Commandes</a>
+		                                    </li>
+		                                    <!-- <t t-if="next_appointment_id or pervious_appointment_id"> -->
+		                                        <li class="nav-item mr32">
+		                                            <a class="nav-link" href="/my-appointment">Mes RDV</a>
+		                                        </li>
+		                                    <!-- </t> -->
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/my/account">Mes adresses</a>
+		                                    </li>
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
+		                                    </li>
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+		                                    </li>
+		                                    <li class="nav-item mr32">
+		                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
+		                                    </li>
+		                                   <!--  <li class="nav-item m-0">
+		                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
+		                                    </li> -->
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+						<div class="container">
+							<div class="row my-appointment">
+								<div class="col-lg-12">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/">Accueil</a>
+										</li>
+										<li class="breadcrumb-item">
+											<a href="/clinic-detail">Rendez-vous</a>
+										</li>
+									</ol>
+								</div>
+
+								<div class="col-lg-12 heading">
+		                            <h1 class="mt16 mb32">
+		                                Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+		                            </h1>
+		                            <p>
+		                                Retrouvez sur cette page lorem ipsum dolor sit amet 
+		                            </p>
+		                            <p class="mb48">
+		                                Nous Contacter
+		                            </p>
+		                        </div>
+                                <t t-call="website_argos.all_my_appointment">
+									<t t-set="next" t-value="True"/>
+									<t t-set="recordset" t-value="new_appointment_ids"/>
+									<t t-set="show_add_to_calendar" t-value="True"/>
+								</t>
+								<t t-call="website_argos.all_my_appointment">
+									<t t-set="last" t-value="True"/>
+									<t t-set="recordset" t-value="old_appointment_ids"/>
+									<t t-set="show_add_to_calendar" t-value="False"/>
+								</t>
+
+							</div>
+						</div>
+					</section>
+				</div>
+			</t>
+	</template>
+	
+</odoo>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="argos_appointment_three" model="ir.ui.view">
+		<field name="name">Prendre rendez-vous-three</field>
+		<field name="type">qweb</field>
+		<field name="key">website.argos_appointment_three</field>
+		<field name="arch" type="xml">
+			<t name="Prendre rendez-vous" t-name="argos_appointment_three">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="s_text_block_three pt32 pb32" data-name="Text block" data-oe-id="1373" data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view" data-oe-field="arch">
+					        <div class="container">
+					            <div class="row">
+					            	<div class="col-lg-8">
+					            		<div class="">
+						            		<ol class="breadcrumb">
+											    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+											    <li class="breadcrumb-item"><a href="/prendre-rendez-vous"></a> Prendre rendez-vous</li>
+											    <li class="breadcrumb-item">Cabinet Vétérinaire Argos Grabels </li>
+											</ol>
+						            	</div>
+						                <div class="pt16 pb8">
+						                	<h1>Connectez-vous </h1>
+						                    <p class="text-three">RDV le Vendredi 10 Juillet 2020 à 16h00 avec le Dr Karine GENTRIC
+											<br></br>Première consultation pour Chat</p>
+						                </div>
+						                <div class="d-flex align-ites-center connecte-text">
+						                	<h2 class="Dj-un-compte-Argos">Déjà un compte Argos ?</h2>
+						                	<div class="ml-auto">
+						                		<a href="#" class="btn btn-primary connecte-btn">Je me connecte</a>
+						                	</div>
+						                </div>
+						                <div class="Prendre-form">
+						                	<h2 class="Dj-un-compte-Argos mt32 mb24">Nouveau sur Argos ?</h2>
+						                	<p class="form-text">Saisissez vos informations ci-dessous pour continuer.</p>
+
+						                	<div class="argos-form contact-argos">
+						                		<form id="contactus_form" t-ignore="true"
+												action="/clinic-contact/confirm" method="post"
+												class="row s_website_form container-fluid mt32"
+												enctype="multipart/form-data"
+												data-success_page="/contactus-thank-you">
+												<input type="hidden" name="csrf_token"
+													t-att-value="request.csrf_token()" />
+												<div
+													class="col-md-6 form-group form-field o_website_form_custom ">
+													<div class="col-lg-12 pad-0">
+														<label class="col-form-label" for="Name">Votre prénom</label>
+													</div>
+													<div class="col-lg-11 pad-0">
+														<input type="text"
+															class="form-control o_website_form_input" name="name"
+															required="" />
+													</div>
+												</div>
+
+												<div
+													class="col-md-6 form-group form-field ">
+													<div class="col-lg-12 pad-0">
+														<label class="col-form-label" for="email_from">Votre nom
+														</label>
+													</div>
+													<div class="col-lg-11 pad-0">
+														<input type="text"
+															class="form-control o_website_form_input" name="name"
+															required="" />
+													</div>
+												</div>
+
+												<div
+													class="form-group row form-field  col-md-12">
+													<div class="col-lg-12">
+														<label class="col-form-label" for="contact_msg">Votre adresse e-mail
+														</label>
+													</div>
+													<div class="col-lg-12">
+														<input type="email"
+															class="form-control o_website_form_input" name="email_from"
+															required="" />
+													</div>
+												</div>
+
+												<div
+													class="form-group row form-field  col-md-12">
+													<div class="col-lg-12">
+														<label class="col-form-label" for="contact_msg">Confirmer votre adresse e-mail
+														</label>
+													</div>
+													<div class="col-lg-12">
+														<input type="email"
+															class="form-control o_website_form_input" name="email_from"
+															required="" />
+													</div>
+												</div>
+
+												<div
+													class="form-group row form-field  col-md-12">
+													<div class="col-lg-12">
+														<label class="col-form-label" for="contact_clinic">Choisissez un mot de passe</label>
+													</div>
+													<div class="col-lg-12">
+														<input type="text"
+															class="form-control o_website_form_input" name="name"
+															required="" />
+													</div>
+												</div>
+
+												<div
+													class="form-group row form-field  col-md-12">
+													<div class="col-lg-12">
+														<label class="col-form-label" for="message">Numéro de téléphone</label>
+													</div>
+													<div class="col-lg-12 d-flex number ">
+														<div class="selection-div sel-pays">
+															<select class="form-control" id="clinic" name="clinic">
+														        <option>France (+33)</option>
+														        <option>Us (+1)</option>
+														        <option>India (+91)</option>
+														        <option>Spain (+34)</option>
+														        <option>Maxico (+52)</option>
+													      	</select>
+													    </div>
+														<input type="text"
+															class="form-control o_website_form_input" name="phone"
+															required="" />
+													</div>
+												</div>
+												<div class="col-md-12">
+													<p class="Un-code-va-vous-tre">Un code va vous être envoyé sur ce numéro pour valider votre compte.</p>
+												</div>
+												<div class="col-md-12 d-flex align-ites-center">
+													<div class="image mr-3">
+														<img src="/website_argos/static/src/img/check.png" class="img img-fluid "/>
+													</div>
+													<p class="Jaccepte-les-condit">J'accepte les conditions générales d'utilisation de MonRendezVousVeto</p>
+												</div>
+												<div
+													class="form-group form-field">
+													<div class="col-md-12">
+														<button type="submit" id="form_submit"
+															class="btn btn-primary mb16 mt32 btn-block">
+															Je m'inscris
+														</button>
+													</div>
+												</div>
+											</form>
+						                	</div>
+						                </div>
+					                </div>
+					                <div class="col-lg-4 ">
+					                	<div class="mb16">
+						                   <a role="button" target="" href="#" class="btn btn-outline-primary d-block">
+						                       <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Afficher la carte</span>
+						                   </a>
+						                </div> 
+					                	<div class="side-block-c side-block">
+											<div class="">
+												<h3>
+													Cabinet vétérinaire Argos du Haillan
+												</h3>
+											</div>
+											<div class="clinic-link d-flex">
+												<div class="mr-2">
+													<img src="/website_argos/static/src/img/location.svg" />
+												</div>
+												<div class="link">
+													<span class="Avenue-Pasteur">
+														<span>284 Avenue Pasteur, 33185 Le Haillan</span>
+													</span>
+												</div>
+											</div>
+
+											<div class="clinic-link d-flex mt16">
+												<div class="socialicons heart-btn mr-4 bg-heart">
+													<img src="/website_argos/static/src/img/heart.svg" />
+												</div>
+												<div class="socialicons msg-btn mr-4">
+													<img src="/website_argos/static/src/img/message.svg" />
+												</div>
+												<div class="socialicons fcbk-btn mr-4">
+													<img src="/website_argos/static/src/img/facebook.svg" />
+												</div>
+											</div>
+											<div class="content mt16 mb16">
+												<span>Horaires d’ouverture</span>
+											</div>
+											<div class="clinic-link">
+												<div class="row">
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Lun.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Mar.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Mer.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Jeu.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Ven.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">9h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">14h00 - 19h00</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Sam.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">8h00 - 12h30</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+													<div class="col-lg-2 col-2">
+														<span class="Lun-Mar-Mer-Jeu-Copy">Dim.</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+													<div class="col-lg-5 col-5 text-center">
+														<span class="h00---12h30-9h00---copy">fermé</span>
+													</div>
+												</div>
+											</div>
+											<div class="clinic-link mt24">
+												<a href="/prendre-rendez-vous-four" class="btn btn-primary btn-block">Voir la fiche clinique</a>
+											</div>
+										</div>
+					                </div>
+					            </div>
+					        </div>
+				    	</section>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+	<record id="argos_appointment_three_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/prendre-rendez-vous-three</field>
+		<field name="view_id" ref="argos_appointment_three" />
+	</record>
+</odoo>

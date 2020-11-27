@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="mega_menu_one_snippet" name="Le groupe Argos Menu">
+		<section class="mega_menu_one_snippet" data-name="Le groupe Argos Menu">
+			<div class="container p-0">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="heading-contents">
+							<p class="m-0 heading text-primary o_default_snippet_text">Qui sommes-nous ?</p>
+							<p class="m-0"><a class="menu_item text-gamma o_default_snippet_text" href="/group-argos">Le groupe Argos</a></p>
+							<p class="m-0"><a class="menu_item text-gamma o_default_snippet_text" href="#">Comité Scientifique Argos</a></p>
+							<p class="m-0"><a class="menu_item text-gamma lineheight o_default_snippet_text" href="#">Fédération des chiens guides d'aveugles</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="heading-contents">
+							<p class="m-0 heading text-primary o_default_snippet_text">Nos métiers</p>
+							<p class="m-0"><a href="/job-fiche" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip595343">Vétérinaire</a></p>
+							<p class="m-0"><a href="/job-fiche" class="menu_item text-gamma" data-original-title="" title="">Auxiliaire Vétérinaire</a></p>
+							<p class="m-0"><a href="/jobs" class="menu_item text-gamma" data-original-title="" title="" aria-describedby="tooltip594902">Les formations</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="heading-contents">
+							<p class="m-0 heading text-primary o_default_snippet_text">Carrières</p>
+							<p class="m-0"><a href="/rejoindre-argos" class="menu_item text-gamma">Rejoindre le groupe Argos</a></p>
+							<p class="m-0"><a href="/jobs" class="menu_item text-gamma">Nos offres d'emploi</a></p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="right-img">
+							<a href="/en_CA/jobs"><img src="/website_argos/static/src/img/push_menu-offre_emploi-500px.jpg" class="img img-fluid rounded" data-original-title="" title="" aria-describedby="tooltip282181"/></a>
+							<p class="image-text">Découvrez nos offres d'emploi</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

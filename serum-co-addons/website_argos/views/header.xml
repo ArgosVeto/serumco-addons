@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<template id="website_argos_header_search_inherit" inherit_id="website.website_search_box">
+		<xpath expr="//input" position="replace">
+			<input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
+		</xpath>
+	</template>
+
+	<template id="website_argos_header" inherit_id="portal.frontend_layout" name="Header">
+		<xpath expr="//header" position="replace">
+			<header id="argos_header" t-attf-class="argos-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 d-flex">
+							<div class="argos-logo">
+								<a href="/" class="navbar-brand logo m-0">
+						            <span t-field="website.logo" t-options="{'widget': 'image'}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name" />
+						        </a>
+							</div>
+							<div class="mobile-icons d-flex d-md-none ml-auto align-items-center justify-content-end">
+								<div class="search">
+									<a class="nav-link p-0 text-secondary" href="/clinic-detail">
+										<img src="/website_argos/static/src/img/location.svg"/>
+									</a>
+								</div>
+								<div class="user ml24">
+									<a class="nav-link p-0 text-secondary" href="/prendre-rendez-vous">
+										<img src="/website_argos/static/src/img/calender.svg"/>
+									</a>
+								</div>
+								<div class="cart ml24">
+									<a class="nav-link p-0 text-secondary" href="/shop/cart">
+										<img src="/website_argos/static/src/img/cart.svg"/>
+									</a>
+								</div>
+								<div class="sidebar ml24">
+									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
+										<img src="/website_argos/static/src/img/sidebar.svg"/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5 header-menus d-none d-md-block">
+							<nav class="navbar navbar-expand-md p-0" id="bizople-header">
+								<div class="collapse navbar-collapse" id="argos-navbar">
+									<ul class="nav navbar-nav" id="top_menu">
+										<t t-foreach="website.menu_id.child_id" t-as="submenu">
+											<t t-call="website.submenu">
+												<t t-set="item_class" t-value="'nav-item'" />
+												<t t-set="link_class" t-value="'nav-link'" />
+											</t>
+										</t>
+									</ul>
+								</div>
+							</nav>
+						</div>
+						<div class="col-md-5 d-none d-md-block">
+							<div class="d-flex justify-content-end align-items-center">
+								<div class="clinic-link d-flex justify-content-end align-items-center">
+									<div class="image">
+										<img src="/website_argos/static/src/img/location.svg"/>
+									</div>
+									<div class="link">
+										<a class="nav-link p-0 text-secondary" href="/clinic-detail">Trouver une clinique</a>
+									</div>
+								</div>
+								<div class="appointment-btn ml32">
+									<a class="btn btn-primary p-0" href="/prendre-rendez-vous"><span>Prendre RDV</span></a>
+								</div>
+								<div class="search ml19">
+									<a href="#" class="search-btn dropdown-toggle" data-toggle="dropdown">
+										<img src="/website_argos/static/src/img/search.svg"/>
+									</a>
+									<div class="dropdown-menu search-dropdown" role="menu">
+										<t t-call="website_sale.s_products_searchbar_input" />
+									</div>
+								</div>
+								<div class="user ml4">
+									<a href="#" class="icon-btn dropdown-toggle acc-dropdown" data-toggle="dropdown">
+										<img src="/website_argos/static/src/img/user.svg"/>
+										<img src="/website_argos/static/src/img/red-user.svg" class="red"/>
+									</a>
+									<div class="dropdown-menu js_usermenu" role="menu">
+										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
+											<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Mes RDV</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
+											<!-- <a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a> -->
+											<a id="o_logout" class="dropdown-item px-0"
+												t-attf-href="/web/session/logout?redirect=/"
+												role="menuitem">Déconnexion</a>
+										</div>
+										<div groups="base.group_public" class="">
+											<a class="dropdown-item px-0" t-attf-href="/web/login">
+												<span>Se connecter</span>
+											</a>
+											<a class="dropdown-item px-0" t-attf-href="/web/signup">
+												<span>S'enregistrer</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="cart  ml4" id="top_menu">
+									<a href="/shop/cart" class="cart-link p-0 m-0 o_wsale_my_cart">
+										<img src="/website_argos/static/src/img/cart.svg"/>
+										<img src="/website_argos/static/src/img/red-cart.svg" class="red"/>
+									</a>
+								</div>
+
+								<!-- to remove wishlist error in shop page added inline css to the wishlist div -->
+								<div class="header-wishlist align-middle" style="position: absolute; z-index: -10; opacity: 0; visibility: hidden;">
+									<t t-if="request.env.ref('website_sale_wishlist.add_to_wishlist').active">
+										<t t-set='wishcount'
+											t-value="len(request.env['product.wishlist'].current())" />
+										<div id="my_wish" class="nav-item header_wishlist o_wsale_my_wish d-block">
+											<a href="/shop/wishlist" class="nav-link py-0">
+												<span class="icon icon-Heart text-secondary align-middle" />
+												<sup
+													t-attf-class="my_wish_quantity o_animate_blink badge badge-primary">
+													<t t-esc='wishcount' />
+												</sup>
+											</a>
+										</div>
+									</t>
+								</div>
+								<!-- wishlist code end -->
+							</div>
+						</div>
+					</div>
+					<div class="header-search d-block d-md-none">
+						<t t-call="website_sale.s_products_searchbar_input" />
+					</div>
+				</div>
+				<t t-call="website_argos.bizople_mbl_side_bar"/>
+			</header>
+		</xpath>
+	</template>
+
+	<template id="bizople_mbl_side_bar" name="Bizople Side Bar">
+    	<nav id="sidebar" class="sidebar-wrapper bg-white d-block d-md-none">
+	    	<div class="sidebar-content">
+				<div class="search">
+					<t t-call="website_sale.s_products_searchbar_input" />
+					<div class="close-mbl-sidebar text-center">
+						<span class="text-white" id="close_mbl_sidebar">
+							<img src="/website_argos/static/src/img/close.png"/></span>
+					</div>
+				</div>
+				<div class="card bg-white sidebar-card">
+                	<ul class="nav navbar-nav align-items-md-center" id="top_menu">
+                		<li class="nav-item">
+                			<a href="/" class="nav-link">
+                				<span>Accueil</span>
+                			</a>
+                		</li>
+						<t t-foreach="website.menu_id.child_id" t-as="submenu">
+							<t t-call="website.submenu">
+								<t t-set="item_class" t-value="'nav-item'" />
+								<t t-set="link_class" t-value="'nav-link'" />
+							</t>
+						</t>
+					</ul>
+					<div class="clinic-link d-flex align-items-center">
+						<div class="image mr-2">
+							<img src="/website_argos/static/src/img/location.svg"/>
+						</div>
+						<div class="link">
+							<a class="nav-link p-0 text-secondary" href="/clinic-detail">Trouver une clinique</a>
+						</div>
+					</div>
+					<div class="sidebar-user ml4">
+						<a href="#" class="icon-btn dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
+							<img src="/website_argos/static/src/img/user.svg" class="mr-2"/>
+							<span class="text-primary">Mon compte</span>
+						</a>
+						<div class="dropdown-menu js_usermenu py-4" role="menu">
+							<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
+								<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
+											<!-- <a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a> -->
+											<a id="o_logout" class="dropdown-item px-0"
+												t-attf-href="/web/session/logout?redirect=/"
+												role="menuitem">Déconnexion</a>
+							</div>
+							<div groups="base.group_public" class="">
+								<a class="dropdown-item px-0" t-attf-href="/web/login">
+									<span>Sign in</span>
+								</a>
+								<a class="dropdown-item px-0" t-attf-href="/web/signup">
+									<span>Register</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="sidebar-cart ml4" id="top_menu">
+						<a href="/shop/cart" class="cart-link p-0 m-0 d-flex align-items-center">
+							<img src="/website_argos/static/src/img/cart.svg" class="mr-2"/>
+							<span class="text-primary">Panier</span>
+						</a>
+					</div>
+	          	</div>
+
+	          	<div class="clinic-filter-sidebar card bg-white">
+	          		<div class="Filtrer">Filtrer les résultats</div>
+	          		<div class="clinic-filter-content">
+	          			<div class="search_by_service mr-2">
+                       		<t t-call="website_argos.service_type_search_tmp"/>
+	                	</div>
+	                	<div class="search_by_type">
+                        	<t t-call="website_argos.clinic_type_search_tmp"/>
+	                	</div>
+	                	<div class="open_today">
+	                        <div class="clinic-type-b">
+					        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
+					        		<span>OUVERT AUJOURD HUI</span>
+					        	</a>
+							</div>
+	                    </div>
+	                    <div class="criteria search_by_service">
+                        	<t t-set="service" t-value="service_ids" />
+					        <div t-attf-class="dropdown show">
+					            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
+					               <span>De Criteres</span>
+					            </a>
+					            <div class="dropdown-menu show" role="menu">
+				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+				                        <span class="switcher_pricelist">Parking</span>
+				                    </a>
+				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+				                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
+				                    </a>
+					            </div>
+					        </div>
+                        </div>
+                        <div class="clear-search mt8 ml8 clinic-type-b">
+				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
+				        		<span>CLEAR</span>
+				        	</a>
+						</div>
+	          		</div>
+	          	</div>
+	    	</div>
+	    </nav>
+    </template>
+
+</odoo>

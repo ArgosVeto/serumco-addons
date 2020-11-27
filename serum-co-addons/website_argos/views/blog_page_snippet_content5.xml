@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_page_snippet_content5" name="Blog Page Content5">
+		<section class="o_wblog_post_top blog-page-snippet">
+			<div class="container">
+				<div class="row justify-content-center">
+
+					<section class="container mx-auto" id="o_wblog_post_main" >
+			        	<div class="blog-page-content">
+
+							<div class=" o_record_cover_image pt48 pb48">
+				        		<a href="#" class="video-popup" title="video popup">
+				        			<span class="fa fa-play text-primary"></span>
+				        			<img src="/website_argos/static/src/img/blog-article-04.png" class="img img-fluid mr-2"/>
+				        		</a>
+				        	</div>
+
+				        	<p>Sunt eius cum est natus et. Dolore deleniti saepe ab blanditiis dicta excepturi quia. Voluptatum ducimus eos esse dolorem magni voluptate porro hic. Qui sit enim ducimus est maxime. Repudiandae vero fugiat exercitationem et quos consequuntur. Fugiat reprehenderit quae amet et recusandae.</p>
+
+							<p>Dolores iste fugiat magni est occaecati. Explicabo velit aut qui fuga. Iusto sint nesciunt quo at et dicta.</p>
+
+							<p>Sint et tempora omnis delectus consequatur quia eveniet dignissimos. Voluptatem qui qui. Iure harum illo reiciendis sed hic velit. Repellendus ut placeat autem quis earum.</p>
+
+			        	</div>
+			        </section>
+
+			    </div>
+			</div>
+		</section>
+	</template>
+
+</odoo>

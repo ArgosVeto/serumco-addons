@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_mail_message_public,access_mail_message public,mail.model_mail_message,base.group_public,0,0,1,0
+access_product_filter,access_product_filter admin,model_product_filter,base.group_user,1,1,1,1
+access_product_filter_line,access_product_filter_line admin,model_product_filter_line,base.group_user,1,1,1,1
+access_product_template_filter_line,access_product_template_filter_line admin,model_product_template_filter_line,base.group_user,1,1,1,1

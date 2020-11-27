@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="contact_questions_form_view" model="ir.ui.view">
+        <field name="name">contact.questions.form.view</field>
+        <field name="model">contact.questions</field>
+        <field name="arch" type="xml">
+            <form string="Contact questions">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="contact_questions_tree_view" model="ir.ui.view">
+        <field name="name">contact.questions.tree.view</field>
+        <field name="model">contact.questions</field>
+        <field name="arch" type="xml">
+            <tree string="Contact questions">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_contact_questions" model="ir.actions.act_window">
+        <field name="name">Contact questions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">contact.questions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+           </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sub_contact_questions" name="Contact questions"
+        sequence="15"
+        parent="website_argos.menu_clinic"
+        action="action_contact_questions"/>
+
+</odoo>

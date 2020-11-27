@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>        
+	<record id="partner_clinic_form_view" model="ir.ui.view">
+		<field name="name">partner.clinic.form.view</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+			<form string="Clinic">
+                <sheet>
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "image_128"}'/>
+                    <div class="oe_title">
+                    	<h1>
+                            <field name="name" placeholder="Name" required="1"/>
+                        </h1>
+                        <h1>
+                            <field name="clinic_name" placeholder="Clinic_name" required="1"/>
+                        </h1>
+                    </div>
+                     <div class="o_row">
+                        <field name="parent_id" widget="res_partner_many2one"  invisible="1"/>
+                    </div>
+
+                    <group>
+                        <group>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                        	 <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                            </div>
+                             <field name="vat" placeholder="e.g. BE0477472701" attrs="{'readonly': [('parent_id','!=',False)]}"/>
+                             <field name="company_id"/>
+                        </group>
+
+                        <group>
+                            <field name="is_clinic_detail"/>
+                            <field name="type" groups="base.group_no_one"/>
+                        	<field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="email" widget="email" context="{'gravatar_image': True}"/>
+                         </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Service" name="service_ids">
+                            <group>
+                                <field name="service_ids" widget="many2many_tags">
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+			</form>
+		</field>
+	</record>
+
+    <record id="partner_clinic_tree_view" model="ir.ui.view">
+        <field name="name">partner.clinic.tree.view</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Clinic">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="city"/>
+                <field name="state_id"/>
+                <field name="phone"/>
+                <field name="mobile"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_clinic" model="ir.actions.act_window">
+        <field name="name">Clinic</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+       <!--  <field name="search_view_id" ref="view_res_partner_filter_job"/> -->
+        <!-- <field name="domain">[('user_type', 'in', ('candidate', 'company'))]</field> -->
+        <field name="context"></field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+           </p>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_clinic_view_tree">
+       <field name="act_window_id" ref="action_clinic"/>
+       <field name="view_mode">tree</field>
+       <field name="view_id" ref="partner_clinic_tree_view"/>
+   </record>
+
+    <record model="ir.actions.act_window.view" id="action_clinic_view_form">
+       <field name="act_window_id" ref="action_clinic"/>
+       <field name="view_mode">form</field>
+       <field name="view_id" ref="partner_clinic_form_view"/>
+   </record>
+
+   <menuitem id="menu_clinic" name="Clinic"
+        sequence="5"
+        parent="website.website_visitor_menu"
+        action="action_clinic"/>
+</odoo>

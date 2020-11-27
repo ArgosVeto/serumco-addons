@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="Service_hospitalisation_homepage" model="ir.ui.view">
+		<field name="name">Service Hospitalisation</field>
+		<field name="type">qweb</field>
+		<field name="key">website.Service_hospitalisation_homepage</field>
+		<field name="arch" type="xml">
+			<t name="Service Hospitalisation" t-name="Service_hospitalisation_homepage">
+				<t t-call="website.layout">
+					<div class="oe_structure oe_empty" id="wrap">
+						<section class="Service-hospitalisation-banner pt64 pb64">
+							<div class="container">
+								<div class="">
+				            		<ol class="breadcrumb">
+									    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+									    <li class="breadcrumb-item"><a href="#">Services</a></li>
+									    <li class="breadcrumb-item">Hospitalisation vétérinaire</li>
+									  </ol>
+				            	</div>
+								<div class="title">
+									<img src="/website_argos/static/src/img/hospitalisation.png" class="img img-fluid mb32 mt32"/>
+									<h1 class="Hospitalisation-vt mb16">Hospitalisation vétérinaire</h1>
+									<p class="Nos-cliniques-vtri">Nos cliniques vétérinaires Argos réalisent des hospitalisations suite à des chirurgies courantes ou imprévues pour votre chien, chat ou encore lapin.</p>
+									<p class="Nos-cliniques-vtri">Les cliniques vétérinaires Argos disposent d’un service d’hospitalisation pour soigner vos animaux de manière optimale. Après une chirurgie, en observation post-opératoire ou bien lors de maladie nécessitant une surveillance et des soins réguliers, nous gardons les chiens, chats et NAC dans un espace sain et adapté à chacun.</p>
+								</div>
+							</div>
+						</section>
+						<section class="Notre-histoire-section pt64 pb64">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-lg-6 col-md-6 mb16">
+										<h1 class="Notre-histoire">Hospitalisations médicales et chirurgicales</h1>
+										<p class="Argos-Vtrinaire-es">Les cliniques et cabinets vétérinaires du réseau Argos possèdent toutes<span class="text-style-2"> un espace dédié à l’hospitalisation</span> où vos animaux seront soignés dans les meilleures conditions. Cela est possible grâce à une équipe qualifiée et à l’écoute des besoins des animaux.</p>
+										<p class="Argos-Vtrinaire-es">Qu’elle soit <span class="text-style-2">médicale</span> ou<span class="text-style-2"> chirurgicale,</span> une hospitalisation vétérinaire peut être nécessaire pour soigner votre compagnon à quatre pattes : en observation post-opératoire après une chirurgie, lors de maladies requérant des soins non-réalisables à la maison (perfusion, injections intra-veineuses, oxygénothérapie…) ou pour des examens plus approfondis en vue d’établir un diagnostic (courbe de glycémie, radiographie avec produit de contraste…).</p>
+										<p class="Argos-Vtrinaire-es">Toute admission en hospitalisation vétérinaire se fait<span class="text-style-2"> après examen clinique et diagnostic</span> du vétérinaire et avec votre accord préalable.</p>
+									</div>
+									<div class="col-md-6 col-md-6 text-center mb16">
+										<div class="image text-right">
+											<img src="/website_argos/static/src/img/group.png" class="img img-fluid"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="Notre-histoire-section pt64 pb64">
+							<div class="container">
+								<div class="row align-items-center">
+									<div class="col-md-6 col-md-6 text-center mb16">
+										<div class="image text-left">
+											<img src="/website_argos/static/src/img/group-3.png" class="img img-fluid"/>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 mb16">
+										<h1 class="Notre-histoire">Lorem ipsum</h1>
+										<p class="Argos-Vtrinaire-es">Tous nos chenils sont<span class="text-style-2"> aérés, nettoyés et désinfectés</span> chaque jour pour garantir une hygiène irréprochable et un environnement sain pour les animaux et le personnel soignant.</p>
+										<p class="Argos-Vtrinaire-es">Par ailleurs, quelle que soit la durée de l’hospitalisation vétérinaire (quelques heures ou plusieurs jours), nous prenons soin de vos animaux et de leur confort. En fonction de leur taille nous sélectionnons une cage adaptée, accueillante, propre, confortable et spacieuse. Il est possible de surveiller les animaux la nuit grâce à un système de vidéosurveillance.</p>
+										<p class="Argos-Vtrinaire-es">Tout animal contagieux est mis à l’écart dans un chenil contagieux dédié afin d'éviter tout risque de contamination. Dans ce cadre, le personnel soignant respecte des procédures draconiennes et utilise à tout moment du matériel et des protections adaptées.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="home-clinic pt64 pb64">
+							<div class="container">
+								<section class="clinic-content bg-primary" style="background-image: url('/website_argos/static/src/img/home_clinic.svg');">
+									<div class="text">
+										<h3 class="text-white">Contacter ma clinique</h3>
+										<p>Deserunt assumenda libero aut voluptates eveniet voluptatum est. Quo magni quis autem aut distinctio sed sint officia. Reprehenderit voluptate qui saepe officia aut et corporis ipsa harum.</p>
+										<a href="/clinic-detail" class="btn btn-light search-btn">Rechercher</a>
+									</div>
+								</section>
+							</div>
+						</section>
+					</div>
+				</t>
+			</t>
+		</field>
+	</record>
+	<record id="Service_hospitalisation_homepage_menu" model="website.page">
+		<field name="website_published">True</field>
+		<field name="url">/Service-hospitalisation</field>
+		<field name="view_id" ref="Service_hospitalisation_homepage" />
+	</record>
+</odoo>

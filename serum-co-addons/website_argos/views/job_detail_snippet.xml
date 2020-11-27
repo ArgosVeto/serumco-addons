@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="job_detail_snippet" name="Job Detail">
+		<section class="job_detail_snippet pt32 pb96">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="main-content">
+							<h3 class="mb16">En deux mots</h3>
+							<p class="mb64">Dans le cadre de notre développement nous recrutons nos futurs collaborateurs pour intégrer nos cliniques et cabinets vétérinaires de proximité.<br/>
+							Nous recherchons actuellement notre prochain Docteur(e) Vétérinaire et proposons une offre d’emploi vétérinaire à Portet-sur-Garonne dans l’agglomération toulousaine.</p>
+							<div id="job-detail-carousel" class="job-detail-carousel carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+					          	<div class="carousel-inner" role="listbox">
+					            	<div class="carousel-item active" >
+					            		<div class="row align-items-center">
+						            		<div class="col-12">
+						            			<img src="/website_argos/static/src/img/job_detail.png" class="img img-fluid" />
+						            		</div>
+						            	</div>
+					            	</div>
+					            	<div class="carousel-item" >
+					            		<div class="row align-items-center">
+						            		<div class="col-12">
+						            			<img src="/website_argos/static/src/img/job_detail.png" class="img img-fluid" />
+						            		</div>
+						            	</div>
+						            </div>
+					          	</div>
+					          	<div class="slider-control">
+				              		<a class="left carousel-control-prev font-14" data-target="#job-detail-carousel" role="button" data-slide="prev">
+					                	<span class="fa fa-long-arrow-left"/>
+					               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+					              	</a>
+					              	<a class="right carousel-control-next font-14" data-target="#job-detail-carousel" role="button" data-slide="next">
+					                	<span class="fa fa-long-arrow-right"/>
+					                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+					              	</a>
+					            </div>
+					        </div>
+							<h3 class="mt24 mb16">Cabinet vétérinaire Argos du Haillan</h3>
+							<p class="mb16">
+								<img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8"/>
+								<span>284 Avenue Pasteur, 33185 Le Haillan</span>
+							</p>
+							<a class="btn btn-link" href="/clinic-detail">
+								<span class="mr8">Voir la fiche clinique</span>
+								<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
+							</a>
+							<h3 class="mt64 mb16">Le réseau Argos</h3>
+							<p class="mb32">Argos Vétérinaire est un réseau de cliniques et cabinets vétérinaires créé en janvier 2014 par le Docteur Vétérinaire Emeric Lemarignier. Au départ concentré à l’agglomération bordelaise, nous avons aujourd’hui vocation à étendre notre concept à d’autres grandes agglomérations françaises. Nous sommes déjà présents dans les villes de Nantes, Montpellier, Saint-Etienne, Grenoble et Bordeaux et très prochainement Toulouse. Ce maillage territorial offre la possibilité à nos partenaires d’être mobile et de changer de région s’ils le souhaitent.</p>
+							<p class="mb32">Les échanges et l’entre-aide entre les structures font de nous un réseau dynamique où la convivialité règne et dans lequel l’intégration de nouveaux collaborateurs est facilitée. Sur le plan professionnel, nos soignants bénéficient de nombreux programmes de formation, individuels ou collectifs, leur permettant d’évoluer (président d’agglomération, référent scientifique…etc).</p>
+							<p>Experts dans nos métiers, nous mettons tout en œuvre pour proposer des services et des soins de qualité à vos animaux, car nous sommes Le meilleur ami de l’animal.</p>
+							<h3 class="mt64 mb16">La région</h3>
+							<p class="mb32">Toulouse est réputée pour sa douceur de vivre. Son surnom de “ville rose” est dû à la couleur si particulière des bâtiments qui au fil des siècles ont été édifiés en utilisant principalement la brique romaine et la tuile donnant une couleur rose léger à orange soutenu.</p>
+							<p>La ville est située à un peu plus de 2 heures de route des Pyrénées. C'est aussi une ville qui se veut dynamique avec plus de 100 000 étudiants et offre une vie nocturne très active.</p>
+							<h3 class="mt64 mb16">L’équipe et la clinique</h3>
+							<p class="mb32">L’équipe vétérinaire de la clinique de Portet-sur-Garonne est composée de deux vétérinaires titulaires souhaitant évoluer à temps partiel et de deux Auxiliaires Vétérinaires.</p>
+							<p>De plus, la clinique est équipée de matériel performant, vous pourrez pratiquer 90% des actes possible en clinique : radiographie numérique, échographie, analyses en laboratoire...</p>
+							<h3 class="mt64 mb16">L’équipe et la clinique</h3>
+							<p class="mb32">L’équipe vétérinaire de la clinique de Portet-sur-Garonne est composée de deux vétérinaires titulaires souhaitant évoluer à temps partiel et de deux Auxiliaires Vétérinaires.</p>
+							<p>De plus, la clinique est équipée de matériel performant, vous pourrez pratiquer 90% des actes possible en clinique : radiographie numérique, échographie, analyses en laboratoire...</p>
+							<h3 class="mt64 mb16">Profil</h3>
+							<p class="mb32">Notre réseau recrute un(e) Docteur(e) Vétérinaire généraliste débutant ou expérimenté, autonome sur les chirurgies de convenance.</p>
+							<p>Si vous souhaitez trouver un équilibre entre vie personnelle et vie professionnelle, notre offre est faite pour vous.</p>
+							<p>N’hésitez plus et rejoignez l’aventure Argos Vétérinaire.</p>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="job-right-content1">
+							<div class="job-right-content">
+								<h3 class="mb16">Docteur(e) Vétérinaire H/F</h3>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/location.svg"/>
+									</p>
+									<p class="ml8">6 rue Principale, 31120 Portet-sur-Garonne</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/calender.svg"/>
+									</p>
+									<p class="ml8">À partir de Septembre 2020</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/note.svg"/>
+									</p>
+									<p class="ml8">CDI temps partiel, temps plein possible début 2021</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/euro.svg"/>
+									</p>
+									<p class="ml8">Rémunération basée sur le forfait heure de la convention collective</p>
+								</div>
+								<div class="d-flex mb16">
+									<p>
+										<img src="/website_argos/static/src/img/check.svg"/>
+									</p>
+									<div class="advantage ml8">
+										<h6>Avantages :</h6>
+										<ul>
+											<li>Vétérinaire senior accompagnant si profil débutant</li>
+											<li>Tickets restaurant</li>
+											<li>Rémunération variable selon le chiffre d'affaires de la clinique</li>
+											<li>Ordinateur portable personnel</li>
+										</ul>
+									</div>
+								</div>
+								<div id="applybtnn" class="text-center"></div>
+							</div>
+							<div class="job-right-share mt40 text-center">
+								<p class="mb32 text-center">Partager l’offre</p>
+								<div class="share-link">
+	                            	<div t-attf-class="s_share #{_classes}">
+								        <a href="https://www.facebook.com/sharer/sharer.php?u={url}" t-attf-class="s_share_facebook #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-facebook #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" t-attf-class="s_share_twitter #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-twitter #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={url}&amp;title={title}&amp;" t-attf-class="s_share_linkedin #{_link_classes}" target="_blank">
+								            <i t-attf-class="fa fa-1x fa-linkedin #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								        <a href="mailto:?body={url}&amp;subject={title}" t-attf-class="s_share_email #{_link_classes}">
+								            <i t-attf-class="fa fa-1x fa-envelope #{not _link_classes and 'rounded shadow-sm'}"/>
+								        </a>
+								    </div>
+	                            </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>
