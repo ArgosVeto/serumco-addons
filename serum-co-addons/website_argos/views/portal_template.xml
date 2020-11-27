@@ -374,7 +374,7 @@
                                         </div>
                                         <div  class="mes-cartes row" t-if="partner">
                                             <div class="col-md-2 col-2">
-                                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
+                                                <img src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mr-2"/>
                                             </div>
                                             <div class="col-md-8 col-8">
                                                  <p style="font-size: 14px;">
