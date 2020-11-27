@@ -13,7 +13,7 @@
         'argos_contact',
         'planning',
         'argos_account',
-        'argos_sale',
+        'argos_stock',
     ],
     'data': [
         # data

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-29 13:37+0000\n"
-"PO-Revision-Date: 2020-10-29 13:37+0000\n"
+"POT-Creation-Date: 2020-11-27 07:53+0000\n"
+"PO-Revision-Date: 2020-11-27 07:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -303,6 +303,12 @@ msgstr "Mouvement de stock"
 #: model_terms:ir.actions.act_window,help:argos_stock.action_arg_prescription
 msgid "This action allows you to view patient prescriptions"
 msgstr "Cette action vous permet de visualiser les ordonnances des patients"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/sale_order.py:0
+#, python-format
+msgid "This operating unit has no configured warehouse."
+msgstr "Aucun entrepôt configuré pour cette clinique !"
 
 #. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
