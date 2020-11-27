@@ -33,7 +33,7 @@
         'data/welcome_mail_template_data.xml',
         'data/review_mail_template_data.xml',
         # security
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'security/res_groups.xml',
         # views
         'views/assets.xml',
