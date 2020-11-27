@@ -10,6 +10,7 @@
     'website': 'https://arkeup.com',
     'description': '',
     'depends': [
+        'sale',
         'argos_product',
         'website_sale',
         'website_hr_recruitment',
@@ -32,7 +33,7 @@
         'data/welcome_mail_template_data.xml',
         'data/review_mail_template_data.xml',
         # security
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'security/res_groups.xml',
         # views
         'views/assets.xml',
@@ -43,6 +44,7 @@
         'views/menu_views.xml',
         'views/product_category_views.xml',
         'views/product_public_category_views.xml',
+        'views/product_filter_views.xml',
     ],
     'application': False,
     'installable': True,
