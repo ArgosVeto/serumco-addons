@@ -76,6 +76,14 @@ function around_me() {
 odoo.define('website_map.arounded', function (require) {
     var rpc = require('web.rpc')  
     $('.around').ready(function initMap() {
+        var clinic_grid = document.getElementsByClassName('clinic_grid');
+        for (i=0; i<clinic_grid.length;i++){
+          if (clinic_grid[i].classList.contains("col-lg-4")) {
+            
+            clinic_grid[i].classList.remove("col-lg-4");
+            clinic_grid[i].classList.add("col-lg-5");
+          }          
+        }
         myLatLng={ lat: 44.837789, lng: -0.57918 };
         var map = new google.maps.Map(document.getElementById("googleMap"), {
           zoom: 10,
@@ -127,9 +135,17 @@ odoo.define('website_map.arounded', function (require) {
 }
 function gMap() {
 odoo.define('website_map.googleMap', function (require) {
-    var rpc = require('web.rpc')
+    var rpc = require('web.rpc');
      $('.googleMap').ready(function initMap() {
         myLatLng={ lat: 44.837789, lng: -0.57918 };
+        var clinic_grid = document.getElementsByClassName('clinic_grid');
+        for (i=0; i<clinic_grid.length;i++){
+          if (clinic_grid[i].classList.contains("col-lg-4")) {
+            
+            clinic_grid[i].classList.remove("col-lg-4");
+            clinic_grid[i].classList.add("col-lg-5");
+          }          
+        }
         var map = new google.maps.Map(document.getElementById("googleMap"), {
           zoom: 10,
           center: myLatLng,
