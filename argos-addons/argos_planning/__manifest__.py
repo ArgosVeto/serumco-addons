@@ -30,6 +30,7 @@
         'views/planning_views.xml',
         'views/assignment_views.xml',
         'views/res_partner_views.xml',
+        'views/res_config_settings_views.xml',
     ],
     'application': False,
     'installable': True,
