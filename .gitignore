@@ -43,8 +43,13 @@ argos.conf
 **/enterprise
 **/odoo
 <<<<<<< HEAD
+<<<<<<< HEAD
 /zz_config_argos/
 /ou-addons/
 =======
 /zz_config_argos/
+>>>>>>> [IMP] gitignore
+=======
+/zz_config_argos/
+/ou-addons/
 >>>>>>> [IMP] gitignore
