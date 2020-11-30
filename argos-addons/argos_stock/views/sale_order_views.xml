@@ -28,6 +28,9 @@
                   attrs="{'invisible': [('id', '=', False)]}"
                   type="object"/>
         </xpath>
+        <field name="patient_id" position="before">
+          <field name="warehouse_id" invisible="1"/>
+        </field>
       </field>
     </record>
 

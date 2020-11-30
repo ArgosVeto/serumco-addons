@@ -189,6 +189,12 @@ class PlanningSlot(models.Model):
 
     def button_progress(self):
         self.ensure_one()
+        type_obj = self.env['stock.picking.type']
+        types = type_obj.search(
+            [('code', '=', 'outgoing'), ('warehouse_id.operating_unit_id', '=', self.operating_unit_id.id)]
+        )
+        if not types:
+            raise ValidationError(_('This operating unit has no configured warehouse.'))
         self.write({
             'pickup_time': fields.Datetime.now(),
             'state': 'in_progress'
