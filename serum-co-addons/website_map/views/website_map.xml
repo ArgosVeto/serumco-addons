@@ -87,8 +87,8 @@
 	</template>
 
 	 <template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
-	 	<!-- <xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
-            <div class="s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
+	 	<xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
+            <div id="clinic_grid" class="clinic_grid col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
                 <div class="card bg-white">
                     <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
                     <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
@@ -140,7 +140,7 @@
                     </div>  
             	</div>
         	</div>
-    	</xpath> -->
+    	</xpath>
 	 	<xpath expr="//div/div[@class='container']" position="before">
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
