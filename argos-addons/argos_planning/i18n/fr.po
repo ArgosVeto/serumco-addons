@@ -2458,6 +2458,15 @@ msgid "<span>week(s)</span>"
 msgstr "<span>semaine(s)</span>"
 
 #. module: argos_planning
+#: model_terms:ir.ui.view,arch_db:argos_planning.res_config_settings_view_form
+msgid ""
+"Activate the constraint that prevents the creation of an appointment without"
+" presence"
+msgstr ""
+"Activez la contrainte qui empêche la création d'un rendez-vous sans"
+" présence"
+
+#. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
 msgid "Active"
 msgstr "Actif"
@@ -2482,6 +2491,12 @@ msgstr "Toute la journée"
 #: model:mail.template,subject:argos_planning.planning_cancel_mail_template
 msgid "Appointment cancellation"
 msgstr "Annulation du RDV"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_res_company__appointment_constraint
+#: model:ir.model.fields,field_description:argos_planning.field_res_config_settings__appointment_constraint
+msgid "Appointment constraint"
+msgstr "Contrainte de rendez-vous"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
@@ -2541,6 +2556,16 @@ msgstr "Annulation du rendez-vous %s"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__operating_unit_id
 msgid "Clinic"
 msgstr "Clinique"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__consultation_type_id
