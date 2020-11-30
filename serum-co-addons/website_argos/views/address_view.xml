@@ -69,14 +69,14 @@
                                         </div>
                                     </div>
 
-                                    <div t-attf-class="form-group col-lg-6" id="div_state">
+                                    <!--div t-attf-class="form-group col-lg-6" id="div_state">
                                         <label class="col-form-label" for="state_id">State / Province</label>
                                         <div class="selection-div sel-add">
                                             <select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}">
                                                 <option value="">État / Province</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div-->
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                                     <input type="hidden" name="submitted" value="1" />
                                     <input type="hidden" name="partner_id" t-att-value="partner_id or predefine_data and 'partner_id' in predefine_data and predefine_data['partner_id']" />
@@ -170,17 +170,18 @@
                         </t>
                     </t>
                 </div>
+                <t t-if="not website_sale_order.paiement_ok">
+                    <p style="text-align: center; color: #de1a46">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
+                </t>
             </div>
-            <t t-if="not click_and_collect">
-                <p style="text-align: center; color:red">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
+        </t>
+        <t t-if="not website_sale_order.paiement_ok">
+            <t t-if="not clinic_fav">
+                <p style="text-align: center; color: #de1a46">Vous n'avez de clinique favorite, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
             </t>
         </t>
-        <t t-if="not clinic_fav">
-           <t t-if="not website_sale_order.all_clinic">
-            <p class="mess-clinic" style="color:red">Vous n'avez pas de clinique favorite, veuillez en sélectionner une via la recherche ci-dessous.</p>
-           </t>
-        </t>
-    </template>
+ 
+     </template>
 
 	<template id="load_clinic_add_tmp" name="Load Clinic Add">
         <t t-if="website_sale_order">
@@ -239,98 +240,107 @@
 
 	<template id="clinic_search" name="Clinic Searchbox">
         <div class="mb24">
-            <input type="radio" id="all_clinic"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic"><span class="ml8">Je souhaite être livré dans une autre clinique</span></input>
+            <input type="radio"  id="all_clinic"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic">
+                <span style="color: #63bae9" class="ml8">Je souhaite être livré dans une autre clinique</span></input>
         </div>
 
         <div class="row clinic_searching d-flex">
             <div class="col-md-6 o_clinic_searchbar_form">
                 <input type="text" id="clinic_name" class="search-query form-control oe_search_box " placeholder="Adresse/Code Postal/Ville…" t-att-value="search"/>
             </div>
-            <div class="col-md-6">
+            <!--div class="col-md-6">
                 <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
                 <a role="button" target="" href="#" class="btn btn-outline-primary  ml-3">
                     <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
                 </a>
-            </div>
+            </div-->
         </div>
         <div class="col-md-12" id="searched_clinic_detail">
         </div>
     </template>
 
+	<template id="bouton_paiement" name="Bouton paiement">
+             <div class="d-flex justify-content-between back-payment-btn pt48 mb32">
+                <a role="button" href="/shop/cart" class="continue-btn btn btn-secondary">
+                    <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
+                    <span>Retour</span>
+                </a> 
+                <t t-if="website_sale_order.paiement_ok">
+                   <a role="button" href="/shop/confirm_order"  name="btn-paiment" id="btn-paiment" class="btn btn-primary">
+                        <span>Passer au paiement</span>
+                        <span class="fa fa-long-arrow-right ml8" />                    
+                    </a>
+                </t>
+            </div>
+    </template>
+
 	<template id="checkout_inherit" inherit_id="website_sale.checkout">
-	    <xpath expr="//div[hasclass('col-12','col-xl','order-xl-1','oe_cart')]" position="replace">
-	    	<div class="col-12 col-xl order-xl-1 oe_cart">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
-                         <div class="fav-clinic pb48">
-                            <div class="mb24">
-                                <input type="radio" id="fav_cli"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None"   t-att-value="website_sale_order.fav_clinic"><span class="ml8">Je souhaite être livré dans ma clinique favorite</span></input>
-                                    <div class="mt48 load_fav_clinic_add_tmp">
-                                        <t t-call="website_argos.load_fav_clinic_add_tmp"/>
-                                    </div>
+    <xpath expr="//div[hasclass('col-12','col-xl','order-xl-1','oe_cart')]" position="replace">
+        <div class="col-12 col-xl order-xl-1 oe_cart">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
+                    <div class="fav-clinic pb48">
+                        <div class="mb24">
+                            <input type="radio"  id="fav_cli" name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None" t-att-value="website_sale_order.fav_clinic">
+                                <span style="color: #63bae9" class="ml8">Je souhaite être livré dans ma clinique favorite</span>
+                            </input>
+                            <div class="mt48 load_fav_clinic_add_tmp">
+                                <t t-call="website_argos.load_fav_clinic_add_tmp"/>
                             </div>
-			            </div> 
-		            <div class="mt16">
-			                <div class="mt48 pb48 find_match_cli">
-			                    <t t-call="website_argos.clinic_search"/>
-			                </div>
-			            </div>
+                        </div>
+                    </div>
+                    <div class="mt16">
+                        <div class="mt48 pb48 find_match_cli">
+                            <t t-call="website_argos.clinic_search"/>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row user-info mb48">
-                    <div class="col-lg-12">
-                        <h3 class="o_page_header user-address-head mt48 mb32">Adresse de livraison</h3>
-                         <div class="row">
-			                <div class="load_clinic_add_tmp">
-			                    <t t-call="website_argos.load_clinic_add_tmp"/>
-			                </div>
-		                </div>
-            		</div>
+            </div>
+            <div class="row user-info mb48">
+                <div class="col-lg-12">
+                    <h3 class="o_page_header user-address-head mt48 mb32">Adresse de livraison</h3>
+                    <div class="row">
+                        <div class="load_clinic_add_tmp">
+                            <t t-call="website_argos.load_clinic_add_tmp"/>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="row user-info mb48">
-                    <div class="col-lg-12">
-                        <h3 class="o_page_header user-address-head mt48 mb32">Adresse de facturation</h3>
-                         <div class="row">
-		                <t t-if="website_sale_order.partner_invoice_id">
-		                    <div class="col-md-8 user-address">
+            </div>
+            <div class="row user-info mb48">
+                <div class="col-lg-12">
+                    <h3 class="o_page_header user-address-head mt48 mb32">Adresse de facturation</h3>
+                    <div class="row">
+                        <t t-if="website_sale_order.partner_invoice_id">
+                            <div class="col-md-8 user-address">
                                 <h3>Nom de l'adresse</h3>
-		                        <div><strong><t t-esc="website_sale_order.partner_invoice_id.display_name"></t></strong></div>
-		                        <div t-esc='website_sale_order.partner_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
-		                    </div>
-		                    <div class="col-md-4">
-                                <!-- <form id="update_address" action="/add-address" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                <div>
+                                    <strong>
+                                        <t t-esc="website_sale_order.partner_invoice_id.display_name"/>
+                                    </strong>
+                                </div>
+                                <div t-esc="website_sale_order.partner_id" t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                            <div class="col-md-4">
+                                <!-- <form id="update_address" action="/add-address" method="post" enctype="multipart/form-data"><input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
                                     ?edit-mode=#{bill.id}
 
                                     <button type="submit" id="form_submit"
                                         class="btn btn-primary mb16 mt32 btn-block">
                                         Edit
-                                    </button>
-                                </form> -->
-		                        <a t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address"><span class='fa fa-edit mr-2'/>Modifier l'adresse</a>
-		                    </div>
-		                </t>
-            		</div>
+                                    </button></form> -->
+                                <a t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address">
+                                    <span class="fa fa-edit mr-2"/>Modifier l'adresse
+                                </a>
+                            </div>
+                        </t>
+                    </div>
                 </div>
             </div>
-
-            <div class="d-flex justify-content-between back-payment-btn pt48 mb32">
-                <a role="button" href="/shop/cart" class="continue-btn btn btn-secondary">
-                    <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
-                    <span>Retour</span>
-                </a>
-                <t t-if="website_sale_order.operating_unit_id">
-                    <a role="button" href="/shop/confirm_order" class="btn btn-primary btn-paiement">
-                        <span>Passer au paiement</span>
-                        <span class="fa fa-long-arrow-right ml8" />                    
-                    </a>
-                </t>
+             <div class="bouton_paiement">
+                  <t t-call="website_argos.bouton_paiement"/>
             </div>
         </div>
-	    </xpath>
+    </xpath>
 	</template>
 </odoo>

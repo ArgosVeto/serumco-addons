@@ -17,6 +17,7 @@ class SaleOrder(models.Model):
 
     all_clinic = fields.Boolean(string="All Clinic")
     fav_clinic = fields.Boolean(string="Fav Clinic")
+    paiement_ok = fields.Boolean(string="paiement")
 
     @api.model
     def create(self, vals):
