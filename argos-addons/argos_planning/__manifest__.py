@@ -23,9 +23,12 @@
         'data/cancel_mail_template_data.xml',
         'data/welcome_mail_template_data.xml',
         'data/review_mail_template_data.xml',
+        'data/sms_template_data.xml',
+        'data/ir_cron_data.xml',
         # security
         'security/ir.model.access.csv',
         'security/res_users_groups.xml',
+        'security/sms_security.xml',
         # views
         'views/planning_views.xml',
         'views/assignment_views.xml',
