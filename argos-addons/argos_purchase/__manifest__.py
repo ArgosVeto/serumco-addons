@@ -29,6 +29,7 @@
         #data
         'data/ir_sequence_data.xml',
         'data/purchase_order_edi_template.xml',
+        'data/purchase_approved_cron.xml',
         'data/server_ftp_data.xml',
         #views
         'views/res_partner_views.xml',
@@ -36,7 +37,7 @@
         'views/purchase_order_views.xml',
         'views/purchase_confirmation_views.xml',
         'views/stock_move_line_views.xml',
-        'views/stock_pooled_request_views.xml',
+
         'views/purchase_request_views.xml',
         'views/menu_views.xml',
 

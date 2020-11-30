@@ -80,6 +80,7 @@
                 <field name="state" invisible="1"/>
                 <field name="company_id" invisible="1"/>
                 <field name="pickup_time" invisible="1"/>
+                <field name="team_id" invisible="1"/>
                 <field name="patient_id" required="1" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
                    'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
                 <field name="species_id" string="Species"/>
@@ -469,7 +470,8 @@
       <field name="context">{'default_is_consultation': True,
                              'default_argos_state': 'in_progress',
                              'tree_view_ref': 'argos_sale.consultation_view_order_tree',
-                             'form_view_ref': 'argos_sale.consultation_view_order_form'}</field>
+                             'form_view_ref': 'argos_sale.consultation_view_order_form',
+                             'default_team_id': False}</field>
       <field name="domain">[('is_consultation', '=', True)]</field>
     </record>
 

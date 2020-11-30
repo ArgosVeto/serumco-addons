@@ -2461,6 +2461,13 @@ msgstr "<span>semaine(s)</span>"
 #: model:sms.template,name:argos_planning.planning_reminder_sms_template
 msgid "ARGOS - Appointment reminder"
 msgstr "ARGOS - Rappel de RDV"
+#: model_terms:ir.ui.view,arch_db:argos_planning.res_config_settings_view_form
+msgid ""
+"Activate the constraint that prevents the creation of an appointment without"
+" presence"
+msgstr ""
+"Activez la contrainte qui empêche la création d'un rendez-vous sans"
+" présence"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__active
@@ -2487,6 +2494,12 @@ msgstr "Toute la journée"
 #: model:mail.template,subject:argos_planning.planning_cancel_mail_template
 msgid "Appointment cancellation"
 msgstr "Annulation du RDV"
+
+#. module: argos_planning
+#: model:ir.model.fields,field_description:argos_planning.field_res_company__appointment_constraint
+#: model:ir.model.fields,field_description:argos_planning.field_res_config_settings__appointment_constraint
+msgid "Appointment constraint"
+msgstr "Contrainte de rendez-vous"
 
 #. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.planning_slot_view_form_inherit
@@ -2546,6 +2559,16 @@ msgstr "Annulation du rendez-vous %s"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_assignment__operating_unit_id
 msgid "Clinic"
 msgstr "Clinique"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: argos_planning
+#: model:ir.model,name:argos_planning.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__consultation_type_id
@@ -2850,6 +2873,12 @@ msgstr "Date de début"
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__state
 msgid "State"
 msgstr "Statut"
+
+#. module: argos_planning
+#: code:addons/argos_planning/models/planning_slot.py:0
+#, python-format
+msgid "This operating unit has no configured warehouse."
+msgstr "Aucun entrepôt configuré pour cette clinique !"
 
 #. module: argos_planning
 #: model:ir.model.fields,field_description:argos_planning.field_planning_slot__total_due

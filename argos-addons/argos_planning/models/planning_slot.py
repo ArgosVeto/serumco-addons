@@ -191,6 +191,12 @@ class PlanningSlot(models.Model):
 
     def button_progress(self):
         self.ensure_one()
+        type_obj = self.env['stock.picking.type']
+        types = type_obj.search(
+            [('code', '=', 'outgoing'), ('warehouse_id.operating_unit_id', '=', self.operating_unit_id.id)]
+        )
+        if not types:
+            raise ValidationError(_('This operating unit has no configured warehouse.'))
         self.write({
             'pickup_time': fields.Datetime.now(),
             'state': 'in_progress'
@@ -243,19 +249,22 @@ class PlanningSlot(models.Model):
         return res
 
     def check_veterinary_presence(self):
-        cur_operating_unit = self.env.user.default_operating_unit_id
-        role_obj = self.env['planning.role']
-        presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
-        absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
-        for rec in self.filtered(lambda
-                                         l: l.employee_id and l.role_id and l.role_id.id not in absence_role_ids and l.role_id not in presence_role_ids):
-            domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
-                      ('role_id', 'in', presence_role_ids), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
-                      ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
-                      ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
-                      ('end_datetime', '>=', rec.end_datetime)]
-            if not self.search(domain):
-                raise ValidationError(_('Unauthorized appointment assignment for an absent or unassigned veterinarian'))
+        if self.env.company.appointment_constraint:
+            cur_operating_unit = self.env.user.default_operating_unit_id
+            role_obj = self.env['planning.role']
+            presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
+            absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
+            for rec in self.filtered(lambda
+                                             l: l.employee_id and l.role_id and l.role_id.id not in absence_role_ids and l.role_id not in presence_role_ids):
+                domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
+                          ('role_id', 'in', presence_role_ids), '|', '|', '&',
+                          ('start_datetime', '>=', rec.start_datetime),
+                          ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
+                          ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
+                          ('end_datetime', '>=', rec.end_datetime)]
+                if not self.search(domain):
+                    raise ValidationError(
+                        _('Unauthorized appointment assignment for an absent or unassigned veterinarian'))
 
     def send_cancellation_mail(self):
         self.ensure_one()
