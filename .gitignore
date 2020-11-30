@@ -42,5 +42,9 @@ setup/win32/static/postgresql*.exe
 argos.conf
 **/enterprise
 **/odoo
+<<<<<<< HEAD
 /zz_config_argos/
 /ou-addons/
+=======
+/zz_config_argos/
+>>>>>>> [IMP] gitignore
