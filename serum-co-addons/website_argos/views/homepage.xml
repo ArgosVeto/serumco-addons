@@ -41,6 +41,22 @@
 							</div>
 						</section>
 						<div class="oe_structure"/>
+						<section class="oe_multi_category_slider pt64"
+							data-multi-cat-slider-type="" contentEditable="false"
+							data-disp="multi_product">
+							<div class="container">
+								<div class="row our-categories">
+									<div class="col-md-12">
+										<div class="title-block">
+											<h4 id="snippet-title" class="section-title style1">
+												<span>Multi Tab Product Slider</span>
+											</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="oe_structure"/>
 						<section class="home-brands">
 							<div class="container">
 								<div class="title">
