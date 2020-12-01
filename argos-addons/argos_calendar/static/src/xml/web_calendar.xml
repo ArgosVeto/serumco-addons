@@ -42,7 +42,7 @@
               <b>for:</b> <span class="o_event_patient" t-esc="record.patient_id[1]"/><br/>
             </t>
             <t t-if="record.consultation_type_id">
-              <b>reason:</b> <span class="o_event_type" t-esc="record.consultation_type_id[1]"/>
+              <span class="o_event_type" t-esc="record.consultation_type_id[1]"/>
             </t>
           </div>
         </t>
