@@ -1048,3 +1048,84 @@ msgid ""
 msgstr ""
 "a été examiné par moi\n"
 "                Il est en bonne santé et ne présente notamment aucun symptôme de rage."
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid ""
+"<small>\n"
+"                    <span class=\"thick\">\n"
+"                      Practicing animal medicine and surgery\n"
+"                      <br/>\n"
+"                      in accordance with the provisions of article 309 or articles 309-2 to 309-8 of the rural code\n"
+"                      <br/>\n"
+"                      and holder of the health mandate\n"
+"                    </span>\n"
+"                  </small>"
+msgstr ""
+"<small>\n"
+"                    <span class=\"thick\">\n"
+"                      Exerçant la médecine et la chirurgie des animaux\n"
+"                      <br/>\n"
+"                      conformément aux dispositions de l'article 309 ou des articles 309-2 à 309-8 du code rural\n"
+"                      <br/>\n"
+"                      et titulaire du mandat sanitaire\n"
+"                    </span>\n"
+"                  </small>"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid ""
+"<span class=\"thick\">\n"
+"                    In witness whereof, this certificate is issued to serve and enforce legal rights.</span>"
+msgstr ""
+"<span class=\"thick\">\n"
+"                    En foi de quoi, le présent certificat est délivré pour servir et valoir ce que de droit.</span>"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid ""
+"<span class=\"thick\">\n"
+"                    has been examined today and found to be free from any clinical sign of contagious disease or\n"
+"                    allowing to suspect a contagious disease (rabies in particular).</span>"
+msgstr ""
+"<span class=\"thick\">\n"
+"                    a été examiné ce jour et reconnu indemne de tout signe clinique de maladie contagieuse ou\n"
+"                    de signe permettant de suspecter une maladie contagieuse (rage en particulier).</span>"
+
+#. module: argos_sale
+#: model:ir.actions.report,name:argos_sale.report_transit_certificate_id
+msgid "Transit Certificate"
+msgstr "Certificat de transit"
+
+#. module: argos_sale
+#: model:ir.actions.report,name:argos_sale.report_surveillance_certificate
+msgid "Surveillance Certificate"
+msgstr "Certificat De Surveillance"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid ""
+"INTERNATIONAL SANITARY CERTIFICATE FOR THE\n"
+"                  TRANSIT OF PETS"
+msgstr ""
+"CERTIFICAT SANITAIRE INTERNATIONAL POUR\n"
+"                  LE TRANSIT DES ANIMAUX DE COMPAGNIE"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid "<span class=\"thick\">Made in </span>"
+msgstr "<span class=\"thick\">Fait à </span>"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
+msgid "<span class=\"thick\">, on </span>"
+msgstr "<span class=\"thick\">, le </span>"
+
+#. module: argos_sale
+#: model:ir.actions.report,print_report_name:argos_sale.report_transit_certificate_id
+msgid ""
+"'International Transit Certificate of - %s - %s' % (object.consultation_date "
+",object.patient_id.name or '')"
+msgstr ""
+"'International Transit Certificate of - %s - %s' % (object.consultation_date "
+",object.patient_id.name or '')"

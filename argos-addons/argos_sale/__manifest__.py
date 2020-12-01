@@ -38,6 +38,7 @@
         'views/product_template_views.xml',
         'views/assets.xml',
         'views/surveillance_certificate_report.xml',
+        'views/report_certificate_transit.xml',
         # wizard views
         'views/wizard/api_information_wizard.xml',
     ],
