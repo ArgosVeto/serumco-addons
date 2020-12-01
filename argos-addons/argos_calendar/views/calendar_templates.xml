@@ -9,6 +9,7 @@
       <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_renderer.js"/>
       <script type="text/javascript" src="/argos_calendar/static/src/js/calendar_controller.js"/>
       <script type="text/javascript" src="/argos_calendar/static/src/js/systray_activity_menu.js"/>
+      <script type="text/javascript" src="/argos_calendar/static/src/js/form_controller.js"/>
     </xpath>
   </template>
 </odoo>

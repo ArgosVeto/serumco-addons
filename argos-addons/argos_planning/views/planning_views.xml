@@ -11,6 +11,7 @@
           <filter name="active_rdv" string="Active appointment"
                   domain="[('state', 'not in', ['cancel','not_honored'])]"/>
         </xpath>
+        <xpath expr="//filter[@name='open_shifts']" position="replace"/>
       </field>
     </record>
 

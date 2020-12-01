@@ -211,7 +211,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     var options = arrFilters[filterIndex];
                     _.each(options.filters, function (f) {
                         f.display = true;
-                        if (f.avatar_model == 'planning.role' && !self.initial_filter &&  self.state.inactive_filters.includes(parseInt(f.value))) {
+                        if (f.avatar_model == 'planning.role' && !self.initial_filter && self.state.inactive_filters.includes(parseInt(f.value))) {
                             f.active = false;
                             self.initial_filter = true;
                         }
@@ -472,6 +472,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             } else {
                 this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-caret-right" style="color: #63BAE9"></button>'));
             }
+            self._renderStickyHeader();
         },
 
         _toogleCalendarSidebar: function () {
@@ -485,9 +486,9 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             this.$sidebar_container.find('.o_calendar_sidebar').toggle(this.toogle_sidebar);
 
             if (this.toogle_sidebar) {
-                this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-left" style="color: #63BAE9"></button>'));
-            } else {
                 this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-right" style="color: #63BAE9"></button>'));
+            } else {
+                this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-left" style="color: #63BAE9"></button>'));
             }
             this.$sidebar_container.find('.toogle_sidebar_button').on('click', function (ev) {
                 ev.stopPropagation();
@@ -547,6 +548,81 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                 }).then(function (events) {
                     self.$calendar.fullCalendar('addEventSource', events);
                 });
+            }
+        },
+
+        _renderStickyHeader: function () {
+            var self = this;
+            if (self.state.scale == 'week') {
+                self.$calendar.find('.clone-fc-head').remove();
+                self.$calendar.find('.clone-fc-day-activity-grid').remove();
+                self.$calendar.find('.clone-fc-day-task-grid').remove();
+                self.$calendar.find('.clone-fc-day-grid').remove();
+                var width = self.$calendar.find('.fc-week-number').outerWidth();
+                var head_width = self.$calendar.find('.fc-head').outerWidth();
+
+                var $headGrid = self.$calendar.find('.fc-head').clone().css('width', head_width).css('display', 'block');
+                var $activityGrid = self.$calendar.find('.fc-day-activity-grid > div:first-child').clone();
+                var $taskGrid = self.$calendar.find('.fc-day-task-grid > div:first-child:first-child').clone();
+                var $dayGrid = self.$calendar.find('.fc-day-grid > div:first-child').clone();
+
+                var $headGridClass = 'clone-fc-head';
+                var $activityGridClass = 'clone-fc-day-activity-grid';
+                var $taskGridClass = 'clone-fc-day-task-grid';
+                var $dayGridClass = 'clone-fc-day-grid';
+
+                var $headGridWrap = $('<div class="' + $headGridClass + '"></div>')
+                    .append($headGrid)
+                    .css('position', 'fixed')
+                    .css('overflow', 'hidden')
+                    .css('width', width)
+                    .css('background', 'white')
+                    .css('z-index', 1000);
+                var $activityGridWrap = $('<div class="' + $activityGridClass + '"></div>')
+                    .append($activityGrid)
+                    .css('position', 'fixed')
+                    .css('overflow', 'hidden')
+                    .css('width', width)
+                    .css('background', 'white')
+                    .css('z-index', 1000);
+                var $taskGridWrap = $('<div class="' + $taskGridClass + '"></div>')
+                    .append($taskGrid)
+                    .css('position', 'fixed')
+                    .css('overflow', 'hidden')
+                    .css('width', width)
+                    .css('background', 'white')
+                    .css('z-index', 1000);
+                var $dayGridWrap = $('<div class="' + $dayGridClass + '"></div>')
+                    .append($dayGrid)
+                    .css('position', 'fixed')
+                    .css('overflow', 'hidden')
+                    .css('width', width)
+                    .css('background', 'white')
+                    .css('z-index', 1000);
+
+                self.$calendar.find('.fc-head').after($headGridWrap);
+                self.$calendar.find('.fc-day-activity-grid').append($activityGridWrap);
+                self.$calendar.find('.fc-day-task-grid').append($taskGridWrap);
+                self.$calendar.find('.fc-day-grid').append($dayGridWrap);
+
+                this.$calendar.find('th.fc-axis.fc-week-number:last').unbind();
+                this.$calendar.find('th.fc-axis.fc-week-number:last').on('click', function (ev) {
+                    ev.stopPropagation();
+                    self.toggle_header = !self.toggle_header;
+                    self._toogleCalendarHeader();
+                    $(window).trigger('resize');
+                });
+
+                $headGridWrap.css('left', 0);
+                $activityGridWrap.css('left', 0);
+                $taskGridWrap.css('left', 0);
+                $dayGridWrap.css('left', 0);
+                if (this.$calendar.find('.fc-head').length > 0) {
+                    $headGridWrap.css('top', self.$calendar.find('.fc-head').offset().top);
+                    $activityGridWrap.css('top', self.$calendar.find('.fc-day-activity-grid').offset().top);
+                    $taskGridWrap.css('top', self.$calendar.find('.fc-day-task-grid').offset().top);
+                    $dayGridWrap.css('top', self.$calendar.find('.fc-day-grid').offset().top);
+                }
             }
         },
 
