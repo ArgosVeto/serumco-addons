@@ -612,9 +612,12 @@ class ProductTemplate(models.Model):
         product_attribute_summary = {}
         errors = []
         lines = []
-        product_attr_obj = self.env['product.attribute']
-        product_attr_value_obj = self.env['product.attribute.value']
+        # product_attr_obj = self.env['product.attribute']
+        # product_attr_value_obj = self.env['product.attribute.value']
+        product_attr_obj = self.env['product.filter']
+        product_attr_value_obj = self.env['product.filter.line']
         for row in reader:
+            print(row)
             if not row.get('code'):
                 logger.error(_('The code column is needed to continue processing this article. Line %s') % reader.line_num)
                 errors.append((row, _('The code column is needed to continue processing this article!')))
@@ -642,6 +645,7 @@ class ProductTemplate(models.Model):
             product_attribute_summary.setdefault((product, attribute), []).append((reader.line_num, code, filter, row.get('valeur')))
         index = 0
         for key, values in product_attribute_summary.items():
+            print(key, values)
             try:
                 product = key[0]
                 attribute = key[1]
@@ -649,14 +653,19 @@ class ProductTemplate(models.Model):
                 if index % 500 == 0:
                     progression = round(index * 100 / len(product_attribute_summary))
                     logger.info(_('Import in progress ... %s %%%%') % str(progression))
-                attribute_lines = product.attribute_line_ids.filtered(lambda attr: attr.attribute_id == attribute)
+                # attribute_lines = product.attribute_line_ids.filtered(lambda attr: attr.attribute_id == attribute)
+                attribute_lines = product.product_filter_ids.filtered(lambda attr: attr.filter_id == attribute)
                 attribute_values = product_attr_value_obj.manage_attribute_values(values, attribute, logger)
                 if attribute_lines:
-                    attribute_lines.write({'value_ids': [(4, idx) for idx in attribute_values.ids]})
+                    # attribute_lines.write({'value_ids': [(4, idx) for idx in attribute_values.ids]})
+                    attribute_lines.write({'product_filter_line_ids': [(4, idx) for idx in attribute_values.ids]})
                     # TODO: manage attribute value deletion
                 else:
-                    product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
-                                                                  'value_ids': [(6, 0, attribute_values.ids)]})]})
+                    # product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
+                    #                                               'value_ids': [(6, 0, attribute_values.ids)]})]})
+                    product.write({'product_filter_ids': [(0, 0, {'filter_id': attribute.id,
+                                                                  'filter_line_ids': [(6, 0, attribute_values.ids)]})]})
+                #TODO ralenti l'import au fur et mesure? creer une liste de 50000 elements ?
                 for item in values:
                     lines.append(item[0])
                 self._cr.commit()
