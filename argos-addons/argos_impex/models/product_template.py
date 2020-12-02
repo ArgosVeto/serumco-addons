@@ -146,16 +146,15 @@ class ProductTemplate(models.Model):
                     'gtin': row.get('gtin'),
                     'ean': row.get('ean'),
                     'cip': row.get('cip'),
-                    'sale_ok': True,
-                    'purchase_ok': True,
                     'type': 'product',
-                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)],
-                    'is_published': True}
+                    'route_ids': [(4, self.env.ref('stock.route_warehouse0_mto', raise_if_not_found=False).id)]}
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
                 if product:
+                    if not product.no_update_import:
+                        vals['is_published']: True
                     product.write(vals)
                     lines.append(reader.line_num)
-                    self._cr.commit()
+                    self._cr.commit
                 else:
                     errors.append((row, _('No product with code %s found!') % row.get('code')))
                 if reader.line_num % 150 == 0:
@@ -266,30 +265,30 @@ class ProductTemplate(models.Model):
         logger = logger or self._context['logger']
         errors = []
         lines = []
+        product_obj = self.env['product.product']
         for row in reader:
             try:
                 if not row.get('code'):
                     logger.error(_('The code is needed to continue processing this article. Line %s') % reader.line_num)
                     errors.append((row, _('The code column is missed!')))
                     continue
+                if not row.get('codeA'):
+                    logger.error(_('The codeA is needed to continue processing this article. Line %s') % reader.line_num)
+                    errors.append((row, _('The codeA column is missed!')))
+                    continue
                 product = self.search([('default_code', '=', row.get('code'))], limit=1)
-                try:
-                    if product:
-                        accessory = self.search([('default_code', '=', row.get('codeA')), ('default_code', '!=', False)], limit=1)
-                        if accessory:
-                            product.write({'accessory_product_ids': [(4, accessory.id)]})
-                            lines.append(reader.line_num)
-                        else:
-                            errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
+                if product:
+                    product_accessory = product_obj.search([('default_code', '=', row.get('codeA'))], limit=1)
+                    if product_accessory:
+                        product.write({'accessory_product_ids': [(4, product_accessory.id)]})
+                        lines.append(reader.line_num)
+                        self._cr.commit()
                     else:
-                        errors.append((row, _('No product with code %s found.') % row.get('code')))
-                    if reader.line_num % 150 == 0:
-                        logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
-                    self._cr.commit()
-                except Exception as e:
-                    logger.error(repr(e))
-                    errors.append((row, repr(e)))
-                    self._cr.rollback()
+                        errors.append((row, _('No associated product with code %s found.') % row.get('codeA')))
+                else:
+                    errors.append((row, _('No product with code %s found.') % row.get('code')))
+                if reader.line_num % 150 == 0:
+                    logger.info(_('Import in progress ... %s lines treated.') % reader.line_num)
             except Exception as e:
                 logger.error(repr(e))
                 errors.append((row, repr(e)))
@@ -792,12 +791,22 @@ class ProductTemplate(models.Model):
                     # 'none': row[26], # Zone libre 2 : missing
                     'description_sale': row[5],
                     # 'description': "",
-                    'sale_ok': True,
-                    'purchase_ok': True,
+                    # 'sale_ok': True,
+                    # 'purchase_ok': True,
                     'type': 'product',
                 }
                 product = self.search([('default_code', '=', default_code)], limit=1)
                 if product:
+                    if not product.no_update_import:
+                        # if template.id == 52:
+                        #     if row[11] == 'M':
+                        #         pass
+                        #     elif row[11] == 'S':
+                        #         pass
+                        #     elif row[11] == 'C':
+                        #         pass
+                        vals['sale_ok']: True
+                        vals['purchase_ok']: True
                     product.write(vals)
                 else:
                     vals.update({'default_code': default_code})

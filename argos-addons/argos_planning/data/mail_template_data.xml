@@ -33,7 +33,9 @@
       <field name="model_id" ref="planning.model_planning_slot"/>
       <field name="subject">Planning Validation</field>
       <field name="lang">${object.partner_id.lang}</field>
+      <field name="email_from">${object.operating_unit_id.name or ''}</field>
       <field name="email_to">${object.partner_id.email}</field>
+      <field name="reply_to">${object.operating_unit_id.reply_email | safe}</field>
       <field name="auto_delete" eval="True"/>
       <field name="body_html">
         <![CDATA[
@@ -298,7 +300,7 @@
 
                                                           <div class="p"
                                                                style="color:#777777;font-family: Helvetica, Arial, sans-serif; font-size:20px; font-weight:200; line-height:28px; text-align:center;">
-                                                              Bonjour <span style="color:#63bae9">${object.partner_id.title.name} ${object.partner_id.name}</span>,
+                                                              Bonjour <span style="color:#63bae9">${object.partner_id.title.name if object.partner_id.title else ''} ${object.partner_id.name}</span>,
                                                               nous avons le plaisir de vous confirmer votre rendez-vous avec le
                                                               <span style="color:#63bae9">${object.employee_id.name}</span> le
                                                               <span style="color:#63bae9"><b>${format_datetime(object.start_datetime, tz=ctx.get('employee').tz or 'UTC', dt_format='short')}</b></span>

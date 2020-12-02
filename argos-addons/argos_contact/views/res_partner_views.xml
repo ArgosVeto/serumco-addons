@@ -20,6 +20,9 @@
           <attribute name="domain">[('type', '=', 'contact')]</attribute>
           <attribute name="context">{'default_type': 'contact'}</attribute>
         </field>
+<!--        <field name="category_id" position="after">-->
+<!--          <field name="portal_user_id"/>-->
+<!--        </field>-->
       </field>
     </record>
 
@@ -104,7 +107,7 @@
               </page>
               <page name="medical_events" string="Medical Events"/>
               <page string="Weights">
-                <field name="weight_ids" nolabel="1">
+                <field name="weight_ids" nolabel="1" context="{'default_partner_id': active_id}">
                   <tree>
                     <field name="date"/>
                     <field name="values"/>
@@ -115,12 +118,12 @@
                 </field>
                 <button name="%(argos_contact.action_res_partner_weight_graph)d" type="action" string="View graph"/>
               </page>
-              <page string="Surgery"/>
+              <page name="surgery" string="Surgery"/>
               <page string="Vaccination"/>
               <page name="hospitalization" string="Hospitalization"/>
               <page name="analysis" string="Analysis"/>
               <page name="imagery" string="Imagery"/>
-              <page name="picking" string="Pickings"/>
+              <page name="prescription" string="Prescriptions"/>
               <page string="Insurance">
                 <group>
                   <group>
@@ -197,7 +200,7 @@
       <field name="context">{'tree_view_ref': 'argos_contact.res_partner_view_tree',
         'form_view_ref': 'argos_contact.res_partner_view_form',
         'kanban_view_ref': 'argos_contact.patient_kanban_form',
-        'default_contact_type': 'patient', }
+        'default_contact_type': 'patient', 'from_patient': True}
       </field>
       <field name="domain">[('contact_type', '=', 'patient')]</field>
     </record>

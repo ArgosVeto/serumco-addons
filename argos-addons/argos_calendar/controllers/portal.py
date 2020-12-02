@@ -20,8 +20,10 @@ class CustomerPortal(CustomerPortal):
             [('website_planning', '=', True), ('partner_id', '=', request.env.user.partner_id.id)])
         return values
 
-    @http.route(['/my/appointments', '/my/appointments/page/<int:page>'], type='http', auth="user", website=True)
+    @http.route(['/my/appointments', '/my/appointments/page/<int:page>'], type='http', auth="public", website=True)
     def portal_my_appointments(self, page=1, sortby=None, filterby=None, **kw):
+        if not request.session.uid or request.env.uid == 4:
+            return http.local_redirect('/web/login?redirect=/my/appointments')
         values = self._prepare_portal_layout_values()
         Planning = request.env['planning.slot'].sudo()
         domain = [('website_planning', '=', True), ('partner_id', '=', request.env.user.partner_id.id)]

@@ -16,7 +16,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     partner_patient_ids = fields.Many2many(related='partner_id.patient_ids', string='Patient List')
-    argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')])
+    argos_state = fields.Selection([('in_progress', 'In progress'), ('consultation_done', 'Done')], copy=False)
     partner_id = fields.Many2one(
         domain="[('contact_type', '=', 'contact'), '|', ('company_id', '=', False), ('company_id', '=', company_id)]")
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
@@ -48,7 +48,12 @@ class SaleOrder(models.Model):
     refer_count = fields.Integer('Refers count', compute='_count_refers')
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
     invoice_creation_date = fields.Date('Invoice creation date')
+    attachment_ids = fields.Many2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
 
+    def _compute_attachment_ids(self):
+        for rec in self:
+            rec.attachment_ids = self.env['ir.attachment'].search(
+                [('res_id', '=', rec.id), ('res_model', '=', rec._name)])
 
     def _response_status_check(self, code):
         if code == 400:
@@ -66,7 +71,6 @@ class SaleOrder(models.Model):
         return ret
 
 
-    #Oliger de reecrire la fonction de connexion (Lilian)
     def get_auth_token(self, log_res_id=None, log_model_name=None):
         """
         Function to get token api centravet, and log connexion.
@@ -83,13 +87,14 @@ class SaleOrder(models.Model):
         reason = self._response_status_check(response.status_code)
 
         self.env['soap.wsdl.log'].sudo().create({
-            'name': 'API stock centravet AUTH',
+            'description': 'API Centravet AUTH',
             'res_id': log_res_id,
             'model_id': self.env['ir.model'].sudo().search([('model', '=', log_model_name)], limit=1).id,
             'msg': "Ask API authorization token",
             'date': fields.Datetime.today(),
             'state': 'successful' if response.status_code == 200 else 'error',
             'reason': reason,
+            'user_id': self.env.user.id,
         })
 
         return response.json() if response.status_code == 200 else False
@@ -101,32 +106,47 @@ class SaleOrder(models.Model):
         token = self.get_auth_token(self, 'sale.order')
         headers = {'Content-Type': 'application/json', 'Authorization': 'bearer ' + token}
         endpoint = self.env['ir.config_parameter'].sudo().get_param('api.centravet.sale')
-        for rec in self:
-            #TODO use centravet code et shop + idCommande
-            centravet_code = rec.operating_unit_id.code #codeClinique
-            centravet_web_shop = rec.operating_unit_id.web_shop_id #codeBoutique
+        code_plateforme = self.env['ir.config_parameter'].sudo().get_param('centravet.subscriber_code')
 
+        for rec in self:
             url = '{endpoint}/{idCommande}/timeline'
             final_url = url.format(
                 endpoint=endpoint,
                 idCommande=rec.name,
             )
+            if rec.operating_unit_id.click_and_collect:
+                code_clinique = rec.operating_unit_id.web_shop_id
+            else:
+                code_clinique = rec.operating_unit_id.code
+
             payload = {
-                'codeClinique': centravet_code,
-                'codeBoutique': centravet_web_shop,
+                'codeClinique': code_clinique,
+                'codeBoutique': code_plateforme,
+                'dateKind': 'Universal',
             }
             response = requests.get(url=final_url, headers=headers, params=payload)
+            reason = self._response_status_check(response.status_code)
+            self.env['soap.wsdl.log'].sudo().create({
+                'description': 'API Centravet Orders',
+                'res_id': self.id,
+                'model_id': self.env['ir.model'].sudo().search([('model', '=', 'sale.order')], limit=1).id,
+                'msg': response.url,
+                'date': fields.Datetime.today(),
+                'state': 'successful' if response.status_code == 200 else 'error',
+                'reason': reason,
+                'user_id': self.env.user.id
+            })
+
             if response.status_code == 200:
                 return response.text
-            else:
-                return False
+            return False
 
     def convert_date_is8601(self, is8601_datetime):
         """
         Convert date str to datetime pythonic format
         """
         if is8601_datetime:
-            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=-2))
+            return (datetime.strptime(is8601_datetime[-1], "%Y-%m-%dT%H:%M:%SZ"))
         else:
             return False
 
@@ -265,10 +285,25 @@ class SaleOrder(models.Model):
         except Exception as e:
             _logger.error(repr(e))
 
+    def get_portal_partner(self, partner_id):
+        if isinstance(partner_id, int):
+            partner_id = self.env['res.partner'].browse(partner_id)
+        if partner_id.portal_user_id:
+            if partner_id.portal_user_id.partner_id:
+                return partner_id.portal_user_id.partner_id.ids
+            else:
+                return False
+        else:
+            return False
+
     @api.model
     def create(self, vals):
         vals['arrival_time'] = fields.Datetime.now()
         res = super(SaleOrder, self).create(vals)
+        # TODO: integration V2 manage multiple contact for one portal access
+        # portal_partner_ids = self.get_portal_partner(vals['partner_id'])
+        # if portal_partner_ids:
+        #     res.message_subscribe(partner_ids=portal_partner_ids)
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
         return res
@@ -300,3 +335,10 @@ class SaleOrder(models.Model):
         self.action_cancel()
         self.action_draft()
         return True
+
+    def button_end_consultation(self):
+        self.ensure_one
+        self.write({
+            'pickup_time': fields.Datetime.now(),
+            'argos_state': 'consultation_done'
+        })

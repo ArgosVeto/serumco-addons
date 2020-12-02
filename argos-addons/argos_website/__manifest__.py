@@ -21,6 +21,10 @@
         'website_sale_coupon',
         'jitsi_meet_integration',
         'website_rating',
+        'sale_operating_unit',
+        'sale',
+        'account',
+        'account_operating_unit',
     ],
     'data': [
         # data
@@ -31,7 +35,6 @@
         'data/res_config_parameter.xml',
         'data/ir_sequence_data.xml',
         'data/welcome_mail_template_data.xml',
-        'data/review_mail_template_data.xml',
         # security
         'security/ir.model.access.csv',
         'security/res_groups.xml',

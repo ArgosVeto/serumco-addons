@@ -19,12 +19,15 @@
       <field name="arch" type="xml">
         <form string="Consultation">
           <header>
+            <button name="button_end_consultation"
+                    string="End" type="object" class="btn-primary"
+                    attrs="{'invisible': [('argos_state', 'not in', ['in_progress'])]}"/>
             <button name="action_create_invoice" string="Create Invoice"
                     type="object" context="{'default_advance_payment_method': 'percentage'}"
-                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"
+                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'no'), '|', ('state', '!=', 'sale'), ('is_consultation', '=', True)]}"
                     class="btn-primary"/>
             <button name="action_create_invoice" string="Create Invoice" type="object"
-                    attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
+                    attrs="{'invisible': ['|', ('invoice_status', '!=', 'to invoice'), ('is_consultation', '=', True)]}"/>
             <button name="action_confirm" id="action_confirm"
                     string="Confirm" class="btn-primary" type="object"
                     attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
@@ -69,6 +72,7 @@
             </div>
             <group>
               <group>
+                <field name="is_consultation" invisible="1"/>
                 <field name="conv_key" invisible="1"/>
                 <field name="is_incineris" invisible="1"/>
                 <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
@@ -85,7 +89,8 @@
                 <field name="weight"/>
                 <field name="pathology_ids" widget="many2many_tags" string="Pathologies &amp; Intolerance"/>
                 <field name="consultation_type_id" string="Reason For Appointment"/>
-                <field name="referent_partner_id"/>
+                <field name="is_referral" invisible="1"/>
+                <field name="referent_partner_id" attrs="{'invisible': [('is_referral', '=', False)]}"/>
                 <field name="customer_observation"/>
                 <field name="canvas_id" context="{'default_is_canvas': True}"/>
                 <field name="observation"/>
@@ -434,12 +439,13 @@
         <tree string="Consultations">
           <field name="consultation_date"/>
           <field name="partner_id"/>
-          <field name="patient_id"/>
+          <field name="patient_id" invisible="context.get('from_patient', False)"/>
           <field name="employee_id"/>
           <field name="diagnostic_ids" widget="many2many_tags"/>
           <field name="hypothese_ids" widget="many2many_tags"/>
           <field name="company_id"/>
           <field name="operating_unit_id" string="Operating Unit"/>
+          <field name="attachment_ids" widget="many2many_binary" invisible="not context.get('from_patient', False)"/>
           <field name="state" invisible="1"/>
           <field name="argos_state" invisible="1"/>
         </tree>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models, _
+from odoo import api, fields, models, _, tools
 from odoo.exceptions import ValidationError
 
 
@@ -49,7 +49,7 @@ class OperatingUnit(models.Model):
     def _compute_reply_email(self):
         mail_domain = self.env['ir.config_parameter'].get_param('argos.mail.domain')
         for record in self:
-            record.reply_email = '%s%s' %(record.name, mail_domain)
+            record.reply_email = tools.formataddr((record.name, mail_domain))
 
     @api.depends('zip')
     def _compute_argos_code(self):
@@ -82,3 +82,7 @@ class OperatingUnit(models.Model):
         for rec in self:
             if not (0 <= rec.consult_room_number < 10):
                 raise ValidationError(_('Consult room number must be between 0 and 9.'))
+
+    def geo_localize(self):
+        self.ensure_one()
+        return self.partner_id.geo_localize()

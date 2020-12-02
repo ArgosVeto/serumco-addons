@@ -2,6 +2,20 @@
 <odoo>
   <data>
 
+    <record id="product_template_view_form_recurring_purchase" model="ir.ui.view">
+      <field name="name">purchase.subscription.product.template.form.inherit</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="purchase_subscription.product_template_view_form_recurring_purchase"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@name='options']" position="inside">
+          <div>
+            <field name="no_update_import"/>
+            <label for="no_update_import"/>
+          </div>
+        </xpath>
+      </field>
+    </record>
+
     <record id="product_template_form_view_inherit" model="ir.ui.view">
       <field name="name">product.template.form.view.inherit</field>
       <field name="model">product.template</field>
@@ -49,6 +63,9 @@
             <field name="documentation_ids"/>
           </page>
         </notebook>
+        <xpath expr="//label[@for='name']" position="attributes">
+          <attribute name="string">Internal Label</attribute>
+        </xpath>
         <xpath expr="//label[@for='name']" position="attributes">
           <attribute name="string">Internal Label</attribute>
         </xpath>

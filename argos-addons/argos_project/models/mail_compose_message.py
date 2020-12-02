@@ -17,16 +17,26 @@ class MailComposer(models.TransientModel):
             pdf = self.env.ref('argos_project.report_surgery_pdf').render_qweb_pdf(self.ids, data={'body': self.body})
             b64_pdf = base64.b64encode(pdf[0])
             name = _('surgery_report')
-            self.env['ir.attachment'].create({
-               'name': name + '.pdf',
-               'type': 'binary',
-               'datas': b64_pdf,
-               'datas_fname': name + '.pdf',
-               'store_fname': name,
-               'res_model': self.model,
-               'res_id': self.res_id,
-               'mimetype': 'application/pdf'
-            })
+            attachment_obj = self.env['ir.attachment']
+            attachment = {
+                'name': name + '.pdf',
+                'type': 'binary',
+                'datas': b64_pdf,
+                'datas_fname': name + '.pdf',
+                'store_fname': name,
+                'res_model': self.model,
+                'res_id': self.res_id,
+                'mimetype': 'application/pdf'
+            }
+            attachment_obj.create(attachment)
+            if self.model == 'project.task' and self.res_id:
+                task = self.env['project.task'].browse(self.res_id)
+                if task.sale_line_id:
+                    attachment.update({
+                        'res_model': 'sale.order.line',
+                        'res_id': task.sale_line_id.id,
+                    })
+                    attachment_obj.create(attachment)
         self.send_mail()
         return {'type': 'ir.actions.client', 'tag': 'reload', 'infos': 'mail_sent'}
 

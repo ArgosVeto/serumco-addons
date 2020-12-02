@@ -8,7 +8,7 @@
         <field name="description"/>
         <footer>
           <button name="action_confirm" string="Confirm" type="object" class="btn-primary"/>
-          <button name="action_deny" string="Deny" type="object" class="btn-secondary"/>
+          <button string="Cancel" special="cancel" class="btn-secondary"/>
         </footer>
       </form>
     </field>

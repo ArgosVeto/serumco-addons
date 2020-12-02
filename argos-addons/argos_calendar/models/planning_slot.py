@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import math
 from datetime import datetime, timedelta, time
 
 from odoo import models, fields, api, _
 from odoo.tools.float_utils import float_round
-from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 def float_to_time(hours):
@@ -19,36 +21,44 @@ def float_to_time(hours):
 class PlanningSlot(models.Model):
     _inherit = 'planning.slot'
 
-    calendar_event_ids = fields.One2many('calendar.event', 'planning_slot_id', string='Meetings')
+    def _default_role_id(self):
+        return self.env['planning.role'].search([('role_type', '=', 'rdv')], limit=1)
 
-    def unlink(self):
-        self.mapped('calendar_event_ids').write({'active': False})
-        return super(PlanningSlot, self).unlink()
+    calendar_event_ids = fields.One2many('calendar.event', 'planning_slot_id', string='Meetings')
+    available_slot_alert = fields.Boolean(string='Available slot alert', default=False)
+    role_id = fields.Many2one('planning.role', string="Role", default=_default_role_id)
+
+    @api.onchange('partner_id')
+    def _on_partner_change(self):
+        if self.partner_id and len(self.partner_id.patient_ids) == 1:
+            self.patient_id = self.partner_id.patient_ids[0].id
+        else:
+            self.patient_id = False
 
     def button_not_honored(self):
         self.ensure_one()
-        self.write({'state': 'not_honored'})
+        super(PlanningSlot, self).button_not_honored()
         self.calendar_event_ids.write({'active': False})
         return True
 
     def button_cancel(self):
         self.ensure_one()
-        self.write({'state': 'cancel'})
+        super(PlanningSlot, self).button_cancel()
+        self.send_avalaible_slot_mail()
         self.calendar_event_ids.write({'active': False})
         return True
 
     def button_validate(self):
         self.ensure_one()
-        self.write({'state': 'validated'})
+        super(PlanningSlot, self).button_validate()
         self.with_context(active_test=False).calendar_event_ids.write({'active': True})
-        self.send_confirmation_mail()
         return True
 
     @api.model
     def get_resources(self, start_date, end_date):
         employee_resources = {}
-        start_date = fields.Date.from_string(start_date)
-        end_date = fields.Date.from_string(end_date)
+        start_date = datetime.combine(fields.Date.from_string(start_date), time.min)
+        end_date = datetime.combine(fields.Date.from_string(end_date), time.max)
         cur_operating_unit = self.env.user.default_operating_unit_id
         if cur_operating_unit:
             domain = [('operating_unit_id', '=', cur_operating_unit.id), '|', '&', ('start_datetime', '>', start_date),
@@ -245,5 +255,30 @@ class PlanningSlot(models.Model):
         if self.env.user.default_operating_unit_id:
             action_domain = [('operating_unit_id', '=', self.env.user.default_operating_unit_id.id)]
         action['domain'] = action_domain
+        if self._context.get('planning_domain', False):
+            action['domain'].append(tuple(self._context['planning_domain']))
         action['id'] = self.env.ref('argos_calendar.agenda_calendar_action_server').read([])[0].get('id', False)
         return action
+
+    def send_avalaible_slot_mail(self):
+        email_template = self.env.ref('argos_calendar.available_slot_mail_template')
+        for rec in self.filtered(lambda l: l.operating_unit_id and l.calendar_event_ids):
+            plannings = self.env['planning.slot'].sudo().search(
+                [('available_slot_alert', '=', True), ('website_planning', '=', True),
+                 ('employee_id', '=', rec.employee_id.id),
+                 ('operating_unit_id', '=', rec.operating_unit_id.id),
+                 ('start_datetime', '>', rec.start_datetime), ('state', '=', 'validated')])
+            for planning in plannings:
+                employee = self.env['hr.employee.public'].browse(self.mapped('employee_id').id)
+                template_context = {
+                    'employee': employee,
+                    'appointment': rec
+                }
+                try:
+                    email_template.with_context(**template_context).send_mail(planning.id, force_send=True,
+                                                                              raise_exception=True)
+                except Exception as e:
+                    _logger.error(repr(e))
+
+    def action_close_dialog(self):
+        return {'type': 'ir.actions.client', 'tag': 'reload'}

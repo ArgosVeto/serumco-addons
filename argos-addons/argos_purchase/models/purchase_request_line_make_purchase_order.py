@@ -9,7 +9,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
 
     @api.model
     def get_default_picking_type(self):
-        return self.env['purchase.order']._get_picking_type(self.env.user.company_id.id)
+        return self.env['purchase.order']._get_picking_type(self.env.company.id)
 
     @api.model
     def _prepare_purchase_order(self, picking_type, group_id, company, origin):

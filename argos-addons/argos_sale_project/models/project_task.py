@@ -90,10 +90,13 @@ class ProjectTask(models.Model):
         self.ensure_one()
         tree = ET.fromstring(content)
         if tree.tag == 'lab-result':
-            result_id = int(tree.attrib['id'])
-            if result_id == self.id:
-                self.set_result(tree)
-                return True
+            for child in tree:
+                if child.tag == 'order-no':
+                    result_id = int(child.text)
+                    if result_id == self.id:
+                        self.set_result(tree)
+                        return True
+                    break
         return False
 
     def set_result(self, tree):

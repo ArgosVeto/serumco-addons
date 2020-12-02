@@ -3,10 +3,10 @@
   <data>
 
     <record id="server_ftp_argos_purchase_order_data" model="server.ftp">
-      <field name="url">ftp.centravet.net</field>
+      <field name="url">ftp1.centravet.net</field>
       <field name="login">upload_cen</field>
       <field name="password">U2001Ken#</field>
-      <field name="filename">/</field>
+      <field name="filename">/upload_cen/</field>
     </record>
 
   </data>

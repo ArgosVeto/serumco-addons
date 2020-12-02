@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-29 07:55+0000\n"
-"PO-Revision-Date: 2020-10-29 07:55+0000\n"
+"POT-Creation-Date: 2020-11-06 11:44+0000\n"
+"PO-Revision-Date: 2020-11-06 11:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,18 @@ msgid "Administration Route"
 msgstr "Voie d'administration"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__aliment_type
+#: model:ir.model.fields,field_description:argos_product.field_product_template__aliment_type
+msgid "Aliment Type"
+msgstr "Type d'alimentation"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__analytic_constitution
+#: model:ir.model.fields,field_description:argos_product.field_product_template__analytic_constitution
+msgid "Analytic Constitution"
+msgstr "Constituants analytiques"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__approval_id
 #: model:ir.model.fields,field_description:argos_product.field_product_template__approval_id
 msgid "Approval"
@@ -79,6 +91,12 @@ msgstr "Catégorie d'article Argos"
 #: model:ir.model.fields.selection,name:argos_product.selection__product_template__nature__chemical
 msgid "Chemical"
 msgstr "Chimique"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__composition
+#: model:ir.model.fields,field_description:argos_product.field_product_template__composition
+msgid "Composition"
+msgstr "Composition"
 
 #. module: argos_product
 #: model_terms:ir.ui.view,arch_db:argos_product.product_template_form_view_inherit
@@ -107,6 +125,12 @@ msgid "Customer Label"
 msgstr "Libellé client"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__daily_ratio_recommended
+#: model:ir.model.fields,field_description:argos_product.field_product_template__daily_ratio_recommended
+msgid "Daily Ratio Recommended"
+msgstr "Ration journalière recommandée"
+
+#. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__display_name
 #: model:ir.model.fields,field_description:argos_product.field_product_approval__display_name
 #: model:ir.model.fields,field_description:argos_product.field_product_documentation__display_name
@@ -132,6 +156,19 @@ msgid "Documentations"
 msgstr "Documentations"
 
 #. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__energetic_value
+#: model:ir.model.fields,field_description:argos_product.field_product_template__energetic_value
+msgid "Energetic Value"
+msgstr "Valeur énergétique"
+
+#. module: argos_product
+#: code:addons/argos_product/models/product_template.py:0
+#: model:ir.model.fields.selection,name:argos_product.selection__product_template__act_type__euthanasia
+#, python-format
+msgid "Euthanasia"
+msgstr "Euthanasie"
+
+#. module: argos_product
 #: model_terms:ir.ui.view,arch_db:argos_product.product_template_only_form_view_inherit
 msgid "Features"
 msgstr "Caractéristiques"
@@ -140,6 +177,13 @@ msgstr "Caractéristiques"
 #: model:ir.model.fields.selection,name:argos_product.selection__product_template__nature__homeo
 msgid "Homeopathic"
 msgstr "Homéopathique"
+
+#. module: argos_product
+#: code:addons/argos_product/models/product_template.py:0
+#: model:ir.model.fields.selection,name:argos_product.selection__product_template__act_type__hospitalization
+#, python-format
+msgid "Hospitalization"
+msgstr "Hospitalisation"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_active_substance__id
@@ -153,6 +197,13 @@ msgstr "ID"
 #: model:ir.model.fields.selection,name:argos_product.selection__product_template__nature__immuno
 msgid "Immunological"
 msgstr "Immunologique"
+
+#. module: argos_product
+#: code:addons/argos_product/models/product_template.py:0
+#: model:ir.model.fields.selection,name:argos_product.selection__product_template__act_type__incineration
+#, python-format
+msgid "Incineration"
+msgstr "Incinération"
 
 #. module: argos_product
 #: model:ir.model.fields,field_description:argos_product.field_product_product__indication
@@ -398,6 +449,13 @@ msgid "Supplier Pricelist"
 msgstr "Liste de prix du fournisseur"
 
 #. module: argos_product
+#: code:addons/argos_product/models/product_template.py:0
+#: model:ir.model.fields.selection,name:argos_product.selection__product_template__act_type__surgery
+#, python-format
+msgid "Surgery"
+msgstr "Chirurgie"
+
+#. module: argos_product
 #: model:product.approval,renewal:argos_product.product_approval_2
 msgid "To Renew X Times"
 msgstr "A renouveler X fois"
@@ -406,3 +464,21 @@ msgstr "A renouveler X fois"
 #: model:ir.model.fields,field_description:argos_product.field_product_category__tooltip_text
 msgid "Tooltip Text"
 msgstr "Texte Tooltip"
+
+#. module: argos_product
+#: code:addons/argos_product/models/product_template.py:0
+#, python-format
+msgid "Undefined"
+msgstr "Indéfini"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__utilization
+#: model:ir.model.fields,field_description:argos_product.field_product_template__utilization
+msgid "Utilization"
+msgstr "Utilisation"
+
+#. module: argos_product
+#: model:ir.model.fields,field_description:argos_product.field_product_product__waters_content
+#: model:ir.model.fields,field_description:argos_product.field_product_template__waters_content
+msgid "Waters Content"
+msgstr "Teneur en eau"

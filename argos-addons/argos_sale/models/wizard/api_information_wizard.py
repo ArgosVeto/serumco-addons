@@ -9,7 +9,7 @@ class ApiInformationWizard(models.TransientModel):
 
     description = fields.Text(readonly=True)
     date_sent = fields.Datetime(readonly=True)
-    date_integrated = fields.Datetime(readonly=True)
-    date_prepared = fields.Datetime(readonly=True)
-    date_delivered = fields.Datetime(readonly=True)
-    date_billed = fields.Datetime(readonly=True)
+    date_integrated = fields.Date(readonly=True)
+    date_prepared = fields.Date(readonly=True)
+    date_delivered = fields.Date(readonly=True)
+    date_billed = fields.Date(readonly=True)

@@ -18,6 +18,7 @@
         'purchase_order_approved',
         'purchase_discount',
         'purchase_subscription',
+        'purchase_requisition',
         'account_cutoff_accrual_picking',
         'delivery',
         'resource',
@@ -25,6 +26,7 @@
     'data': [
         #security
         'security/ir.model.access.csv',
+        'security/purchase_request_rules.xml',
         #data
         'data/ir_sequence_data.xml',
         'data/purchase_order_edi_template.xml',

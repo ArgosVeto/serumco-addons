@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 from odoo import models, fields, api
+
+_logger = logging.getLogger(__name__)
 
 
 class CalendarEvent(models.Model):
@@ -14,7 +18,7 @@ class CalendarEvent(models.Model):
     stop = fields.Datetime(related='planning_slot_id.end_datetime')
     start_datetime = fields.Datetime(related='planning_slot_id.start_datetime')
     stop_datetime = fields.Datetime(related='planning_slot_id.end_datetime')
-    end_datetime = fields.Datetime(related='planning_slot_id.end_datetime')
+    available_slot_alert = fields.Boolean(related='planning_slot_id.available_slot_alert')
 
     @api.model
     def create(self, vals):

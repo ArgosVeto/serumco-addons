@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="view_task_form2_custom" model="ir.ui.view">
-            <field name="name">project.task.form.custom</field>
-            <field name="model">project.task</field>
-            <field name="inherit_id" ref="project.view_task_form2"/>
-            <field eval="2" name="priority"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='action_assign_to_me']" position="before">
-                  <button name="action_create_report" string="Create Report" type="object" class="oe_highlight"/>
-                </xpath>
-            </field>
-        </record>
-    </data>
+  <data>
+    <record id="view_task_form2_custom" model="ir.ui.view">
+      <field name="name">project.task.form.custom</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field eval="2" name="priority"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_assign_to_me']" position="before">
+          <button name="action_create_report" string="Create Report" type="object" class="oe_highlight"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="project_task_view_activity_inherit" model="ir.ui.view">
+      <field name="name">project.task.view.activity.inherit</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.project_task_view_activity"/>
+      <field name="arch" type="xml">
+        <field name="name" position="before">
+          <field name="partner_id" display="full"/>
+          <field name="sale_patient_id" display="full"/>
+        </field>
+      </field>
+    </record>
+  </data>
 </odoo>

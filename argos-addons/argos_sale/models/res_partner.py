@@ -9,7 +9,9 @@ class ResPartner(models.Model):
 
     consultation_ids = fields.Many2many('sale.order', compute='_compute_consultation_ids', string='Consultations')
     act_ids = fields.Many2many('sale.order.line', compute='_compute_act_ids', string='Acts')
-    hospitalization_ids = fields.Many2many('sale.order.line', compute='_compute_hospitalization_ids', string='Hospitalizations', store=True)
+    hospitalization_ids = fields.Many2many('sale.order.line', compute='_compute_hospitalization_ids', string='Hospitalizations', store=False)
+    surgery_ids = fields.Many2many('sale.order.line', compute='_compute_surgery_ids',
+                                           string='Surgeries')
 
     def _compute_consultation_ids(self):
         for rec in self:
@@ -23,6 +25,14 @@ class ResPartner(models.Model):
                                                                   ('product_id.act_type', '=', 'hospitalization'),
                                                                   ('order_id.patient_id', '=', rec.id)])
             rec.hospitalization_ids = [(6, 0, hospitalization.ids)]
+
+    @api.depends('consultation_ids', 'act_ids')
+    def _compute_surgery_ids(self):
+        for rec in self:
+            surgery = self.env['sale.order.line'].search([('order_id.is_consultation', '=', True),
+                                                          ('product_id.act_type', '=', 'surgery'),
+                                                          ('order_id.patient_id', '=', rec.id)])
+            rec.surgery_ids = [(6, 0, surgery.ids)]
 
     def _compute_act_ids(self):
         for rec in self:
@@ -40,6 +50,17 @@ class ResPartner(models.Model):
             'default_employee_id': self.employee_id.id,
             'default_is_consultation': True,
         })
+        return action
+
+    def button_create_order(self):
+        self.ensure_one()
+        action = self.env.ref('sale.action_quotations_with_onboarding').read()[0]
+        action['views'] = [(self.env.ref('sale.view_order_form').id, 'form')]
+        if self.owner_ids:
+            action['context'] = ast.literal_eval(action['context'])
+            action['context'].update({
+                'default_partner_id': self.owner_ids[0].id,
+            })
         return action
 
     def action_open_orders(self):

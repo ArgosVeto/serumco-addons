@@ -23,12 +23,12 @@
         'arkeup_saop_wsdl_log',
         'smile_anonymization',
         'many2one_item_limit',
-        'search_more_shortcut'
+        'search_more_shortcut',
+        'base_gs1_barcode',
     ],
     'data': [
         # data
         'data/res_users_data.xml',
-        'data/mail_template_data.xml',
         'data/res_config_parameter_data.xml',
         # security
         'security/res_groups.xml',

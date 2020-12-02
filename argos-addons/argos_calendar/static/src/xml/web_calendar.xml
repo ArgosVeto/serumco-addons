@@ -1,38 +1,70 @@
 <template>
+  <t t-extend="mail.systray.ActivityMenu.Previews">
+    <t t-jquery="div.o_preview_title" t-operation="after">
+      <div t-if="activity and activity.type == 'next_planning'">
+        <t t-set="is_next_planning" t-value="true"/>
+        <t t-foreach="activity.plannings" t-as="planning">
+          <div>
+            <span t-att-class="!planning.allday and is_next_planning ? 'o_meeting_filter o_meeting_bold' : 'o_meeting_filter'"
+                  t-att-data-res_model="activity.model" t-att-data-res_id="planning.id"
+                  t-att-data-model_name="activity.name" t-att-title="planning.name">
+              <span>
+                <t t-esc="planning.name"/>
+              </span>
+            </span>
+            <span t-if="planning.start_datetime" class="float-right">
+              <t t-if="planning.allday">All Day</t>
+              <t t-else=''>
+                <t t-set="is_next_planning" t-value="false"/>
+                <t t-esc="moment(planning.start_datetime).local().format('hh:mm A')"/>
+              </t>
+            </span>
+          </div>
+        </t>
+      </div>
+    </t>
+  </t>
+
   <t t-name="agenda-box">
     <div t-att-style="typeof color === 'string' ? ('background-color:' + color) + ';' : ''"
          t-attf-class="#{!event.color_index ? 'text-white' : ''} #{record.is_highlighted and record.is_highlighted.value ? 'o_event_hightlight' : ''} #{typeof color === 'number' ? _.str.sprintf('o_calendar_color_%s', color) : ''}">
-      <div class="float-right" t-if="record.invoice_count > 0">
-        <span>
-          <img src="/web/binary/invoice_icon" class="rounded-circle img-fluid"
-               style="max-width: 20px"/>
-        </span>
+      <div t-att-style="typeof color === 'string' ? ('background-color:' + color) + ';' : ''"
+           t-attf-class="o_event_hour  #{!event.color_index ? 'text-white' : ''} #{typeof color === 'number' ? _.str.sprintf('o_calendar_hour_color_%s', color) : ''}">
+        <i class="o_event_cock fa fa-clock-o ml-1 mr-2"></i>
+        <span t-esc="moment(record.start_datetime).local().format('HH:mm') + ' - ' + moment(record.end_datetime).local().format('HH:mm')"/>
       </div>
-      <div class="float-right" t-elif="record.order_count > 0">
-        <span>
-          <img src="/web/binary/hospital_icon" class="rounded-circle img-fluid"
-               style="max-width: 20px"/>
-        </span>
+      <div>
+        <t t-if="record.role_id">
+          <div style="display: inline-block; font-size: 12px; padding: 2px;">
+            <span class="o_event_customer" t-esc="record.partner_id[1]"/><br/>
+            <span class="o_event_title" t-esc="record.role_id[1]"/><br/>
+            <t t-if="record.patient_id">
+              <b>for:</b> <span class="o_event_patient" t-esc="record.patient_id[1]"/><br/>
+            </t>
+            <t t-if="record.consultation_type_id">
+              <b>reason:</b> <span class="o_event_type" t-esc="record.consultation_type_id[1]"/>
+            </t>
+          </div>
+        </t>
+        <div class="event_icon">
+          <span t-if="record.invoice_count > 0">
+            <img src="/web/binary/invoice_icon" class="rounded-circle img-fluid"
+                 style="max-width: 20px"/>
+          </span>
+          <span t-elif="record.order_count > 0">
+            <img src="/web/binary/hospital_icon" class="rounded-circle img-fluid"
+                 style="max-width: 20px"/>
+          </span>
+          <span t-elif="record.state == 'in_progress'">
+            <img src="/web/binary/medical_icon" class="rounded-circle img-fluid"
+                 style="max-width: 20px"/>
+          </span>
+          <span t-elif="record.state == 'waiting'">
+            <img src="/web/binary/hour_icon" class="rounded-circle img-fluid"
+                 style="max-width: 20px"/>
+          </span>
+        </div>
       </div>
-      <div class="float-right" t-elif="record.state == 'in_progress'">
-        <span>
-          <img src="/web/binary/medical_icon" class="rounded-circle img-fluid"
-               style="max-width: 20px"/>
-        </span>
-      </div>
-      <div class="float-right" t-elif="record.state == 'waiting'">
-        <span>
-          <img src="/web/binary/hour_icon" class="rounded-circle img-fluid"
-               style="max-width: 20px"/>
-        </span>
-      </div>
-      <field name="name"/>
-      <t t-if="record.role_id">
-        <div class="o_event_title" t-esc="record.role_id[1]"/>
-      </t>
-      <t t-else="">
-        <div class="o_event_title" t-esc="record.display_name"/>
-      </t>
     </div>
   </t>
   <t t-name="AgendaView.buttons">
@@ -41,7 +73,8 @@
         <div class="dropdown">
           <button type="button" id="dropdownClockButton" data-placement="top" title="Modify time slot"
                   class="o_calendar_button_clock btn btn-secondary dropdown-toggle fa fa-lg fa-clock-o"
-                  data-toggle="dropdown" data-toggle-second="tooltip" aria-haspopup="true" aria-expanded="false">
+                  data-toggle="dropdown" data-toggle-second="tooltip" aria-haspopup="true" aria-expanded="false"
+                  style="color: #63BAE9">
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownClockButton">
             <t t-foreach="clockInterval" t-as="clock">
@@ -53,17 +86,18 @@
         </div>
       </div>
       <t t-if="!isMobile">
-        <button class="o_calendar_button_prev btn btn-primary" aria-label="Previous" title="Previous">
+        <button class="o_calendar_button_prev btn btn-primary btn-secondary-agenda" aria-label="Previous"
+                title="Previous">
           <span class="fa fa-arrow-left"/>
         </button>
-        <button class="o_calendar_button_today btn btn-primary">Today</button>
-        <button class="o_calendar_button_next btn btn-primary" aria-label="Next" title="Next">
+        <button class="o_calendar_button_today btn btn-primary btn-primary-agenda">Today</button>
+        <button class="o_calendar_button_next btn btn-primary btn-secondary-agenda" aria-label="Next" title="Next">
           <span class="fa fa-arrow-right"/>
         </button>
       </t>
       <div class="btn-group">
-        <button type="button" class="o_calendar_button_day btn btn-secondary">Day</button>
-        <button type="button" class="o_calendar_button_week btn btn-secondary">Week</button>
+        <button type="button" class="o_calendar_button_day btn btn-secondary btn-default-agenda">Day</button>
+        <button type="button" class="o_calendar_button_week btn btn-secondary btn-default-agenda">Week</button>
       </div>
     </div>
   </t>

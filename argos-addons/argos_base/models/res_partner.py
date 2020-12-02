@@ -50,14 +50,6 @@ class ResPartner(models.Model):
     #             if self.search_count(domain):
     #                 raise ValidationError(_('Partner must be unique'))
 
-    def send_confirmation_mail(self):
-        self.ensure_one()
-        try:
-            email_template = self.env.ref('argos_base.confirmation_mail_template')
-            email_template.send_mail(self.id, force_send=True, raise_exception=True)
-        except Exception as e:
-            _logger.error(repr(e))
-
     @api.model
     def _format_name_vals(self, vals):
         if vals.get('lastname') and not vals['lastname'].isupper():
@@ -70,10 +62,7 @@ class ResPartner(models.Model):
     def create(self, vals):
         if self._context.get('from_bo', False):
             vals = self._format_name_vals(vals)
-        record = super(ResPartner, self).create(vals)
-        if self._context.get('from_bo', False):
-            record.send_confirmation_mail()
-        return record
+        return super(ResPartner, self).create(vals)
 
     def write(self, vals):
         if self._context.get('from_bo', False):

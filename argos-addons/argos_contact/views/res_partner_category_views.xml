@@ -41,7 +41,7 @@
 
     <record id="base.action_partner_category_form" model="ir.actions.act_window">
       <field name="domain">[('type', '=', 'contact')]</field>
-      <field name="context">{'default_type': 'patient'}</field>
+      <field name="context">{'default_type': 'contact'}</field>
     </record>
 
   </data>

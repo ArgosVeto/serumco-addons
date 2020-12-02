@@ -17,6 +17,9 @@ class PlanningSlot(models.Model):
     _name = 'planning.slot'
     _inherit = ['planning.slot', 'mail.thread', 'mail.activity.mixin']
 
+    def _default_consultation_type_id(self):
+        return self.env['consultation.type'].search([('is_default', '=', True)], limit=1)
+
     mrdv_event_id = fields.Integer('Mrdv Id')
     mrdv_job_id = fields.Integer('Mrdv Job Id')
     source = fields.Selection([('ounit', 'Operating Unit'), ('phone', 'Phone'), ('web', 'Web')], 'Source',
@@ -24,7 +27,8 @@ class PlanningSlot(models.Model):
     patient_id = fields.Many2one('res.partner', 'Patient', domain="[('contact_type', '=', 'patient')]")
     partner_id = fields.Many2one('res.partner', 'Customer', domain="[('contact_type', '=', 'contact')]")
     operating_unit_id = fields.Many2one('operating.unit', 'Operating Unit')
-    consultation_type_id = fields.Many2one('consultation.type', 'Consultation Type', domain=[('is_canvas', '=', False)])
+    consultation_type_id = fields.Many2one('consultation.type', 'Consultation Type', domain=[('is_canvas', '=', False)],
+                                           default=_default_consultation_type_id)
     active = fields.Boolean('Active', default=True)
     state = fields.Selection(
         [('draft', 'Draft'), ('validated', 'Validated'), ('waiting', 'Waiting'), ('in_progress', 'In Progress'),
@@ -149,7 +153,11 @@ class PlanningSlot(models.Model):
     def button_validate(self):
         self.ensure_one()
         self.write({'state': 'validated'})
+        if self.partner_id and not self.partner_id.has_activity:
+            self.send_first_mail()
+            self.partner_id.write({'has_activity': True})
         self.send_confirmation_mail()
+        self.send_review_email()
         return True
 
     def button_not_honored(self):
@@ -230,9 +238,6 @@ class PlanningSlot(models.Model):
             res.send_notification_mail()
         if not res.website_planning:
             res.check_veterinary_presence()
-        if res.partner_id and not res.partner_id.has_activity:
-            res.send_first_mail()
-            res.partner_id.has_activity = True
         return res
 
     def check_veterinary_presence(self):
@@ -265,3 +270,12 @@ class PlanningSlot(models.Model):
             email_template.send_mail(self.id, force_send=True, raise_exception=True)
         except Exception as e:
             _logger.error(repr(e))
+
+    def send_review_email(self):
+        for rec in self:
+            try:
+                email_template = self.env.ref('argos_planning.review_mail_template')
+                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
+            except Exception as e:
+                _logger.error(repr(e))
+        return True

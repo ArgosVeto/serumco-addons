@@ -20,6 +20,6 @@ class PurchaseRequest(models.Model):
         )
         if not types:
             types = type_obj.search(
-                [("code", "=", "incoming"), ("warehouse_id.company_id", "=", self.env.user.company_id.id)]
+                [("code", "=", "incoming"), ("warehouse_id.company_id", "=", self.env.company.id)]
             )
         self.picking_type_id = types[:1]

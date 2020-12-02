@@ -26,4 +26,9 @@
     <field name="value">5Bg484me53XqHDcU</field>
   </record>
 
+  <record id="billing_methods_argos_account" model="ir.config_parameter">
+    <field name="key">billing.methods.code</field>
+    <field name="value">001</field>
+  </record>
+
 </odoo>

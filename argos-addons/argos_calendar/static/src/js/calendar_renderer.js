@@ -147,6 +147,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             this._super.apply(this, arguments);
             this.dispose_popover = true;
             this.toggle_header = true;
+            this.toogle_sidebar = true;
         },
 
         _unselectEvent: function () {
@@ -170,6 +171,10 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     self._renderTaskGrid();
                     self._renderStickyTimeline();
                     self._toogleCalendarHeader();
+                    if (!config.device.isMobile) {
+                        self._toogleCalendarSidebar();
+                    }
+                    self._updateCalendarStyle();
                     return res;
                 })
             } else {
@@ -194,30 +199,8 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             return this._super.apply(this, arguments);
         },
 
-        _renderFilters: function () {
-            var self = this;
-            return Promise.all([this._super.apply(this, arguments)]).then(function (res) {
-                if (self.state.context.agenda_calendar && !self.initial_filter) {
-                    self._rpc({
-                        model: 'planning.slot',
-                        method: 'get_inactive_filters',
-                        context: self.state.context,
-                    }).then(function (inactive_filters) {
-                        _.each(inactive_filters, function (f) {
-                            self.trigger_up('changeFilter', {
-                                'fieldName': 'role_id',
-                                'value': f,
-                                'active': false,
-                            });
-                            self.initial_filter = true;
-                        });
-                    });
-                }
-                return res;
-            });
-        },
-
         _renderFiltersOneByOne: function (filterIndex) {
+            var self = this;
             if (this.state.context.agenda_calendar) {
                 filterIndex = filterIndex || 0;
                 var arrFilters = _.sortBy(_.toArray(this.state.filters), function (f) {
@@ -228,6 +211,10 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                     var options = arrFilters[filterIndex];
                     _.each(options.filters, function (f) {
                         f.display = true;
+                        if (f.avatar_model == 'planning.role' && !self.initial_filter &&  self.state.inactive_filters.includes(parseInt(f.value))) {
+                            f.active = false;
+                            self.initial_filter = true;
+                        }
                     });
                     if (!_.find(options.filters, function (f) {
                         return f.display == null || f.display;
@@ -306,6 +293,12 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                 $.fullCalendar.locale(locale);
 
                 var fc_options = $.extend({}, this.state.fc_options, {
+                    dayRender: function (date, cell) {
+                        var today = $.fullCalendar.moment();
+                        if (date.get('date') == today.get('date')) {
+                            $(".fc-" + date.locale('en').format('ddd', 'en').toLowerCase()).addClass('fc-cur-day');
+                        }
+                    },
                     eventDrop: function (event) {
                         self.dispose_popover = false;
                         self.drag_start = false;
@@ -334,19 +327,6 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                         }
                         self.$calendar.fullCalendar('unselect');
                     },
-                    // eventOverlap: function (stillEvent, movingEvent) {
-                    //     if (movingEvent.allDay) {
-                    //         return false;
-                    //     } else if (stillEvent.rendering == "background" || stillEvent.allDay) {
-                    //         return true;
-                    //     }
-                    // },
-                    // eventAllow: function (dropLocation, draggedEvent) {
-                    //     if (draggedEvent.allDay) {
-                    //         return false;
-                    //     }
-                    //     return true;
-                    // },
                     resourceRender: function (resourceObj, $th) {
                         var parent = $th;
                         var wrapper = document.createElement('div');
@@ -366,6 +346,15 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                                     element.width((element_style.split(';')[0].split(' ')[4].replace('%', '') / zindex) + '%');
                                 } else {
                                     element.width(element_style.split(';')[0].split(' ')[2]);
+                                }
+                            }
+                            var element_width = element.find('.fc-content').outerWidth();
+                            var element_height = element.find('.fc-content').parent().outerHeight();
+                            if (element_width < 100) {
+                                element.find('.fc-content i.o_event_cock').addClass('d-none');
+                                element.find('.fc-content div.event_icon').removeClass('float-right');
+                                if (element_height < 70) {
+                                    element.find('.fc-content div.event_icon').addClass('d-none');
                                 }
                             }
                         }
@@ -446,7 +435,7 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
                             columnFormat: 'LL',
                         },
                         week: {
-                            columnFormat: 'ddd D',
+                            columnFormat: 'dddd D',
                         },
                         month: {
                             columnFormat: config.device.isMobile ? 'ddd' : 'dddd',
@@ -479,9 +468,41 @@ odoo.define('argos_calendar.CalendarRenderer', function (require) {
             this.$calendar.find('.fc-day-task-grid').toggle(this.toggle_header);
             this.$calendar.find('.fc-day-grid').toggle(this.toggle_header);
             if (this.toggle_header) {
-                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-chevron-down"></button>'));
+                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-caret-down" style="color: #63BAE9"></button>'));
             } else {
-                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-chevron-right"></button>'));
+                this.$calendar.find('th.fc-axis.fc-week-number:last').html($('<button class="btn btn-secondary fa fa-caret-right" style="color: #63BAE9"></button>'));
+            }
+        },
+
+        _toogleCalendarSidebar: function () {
+            var self = this;
+            if (this.$sidebar_container.find('.toogle_sidebar').length <= 0) {
+                var wrapper = document.createElement('div');
+                $(wrapper).addClass('toogle_sidebar');
+                this.$sidebar_container.prepend(wrapper);
+                this.$sidebar_container.toggleClass('d-md-block d-flex');
+            }
+            this.$sidebar_container.find('.o_calendar_sidebar').toggle(this.toogle_sidebar);
+
+            if (this.toogle_sidebar) {
+                this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-left" style="color: #63BAE9"></button>'));
+            } else {
+                this.$sidebar_container.find('.toogle_sidebar').html($('<button class="toogle_sidebar_button btn btn-secondary fa fa-chevron-right" style="color: #63BAE9"></button>'));
+            }
+            this.$sidebar_container.find('.toogle_sidebar_button').on('click', function (ev) {
+                ev.stopPropagation();
+                self.toogle_sidebar = !self.toogle_sidebar;
+                self._toogleCalendarSidebar();
+                $(window).trigger('resize');
+            });
+        },
+
+        _updateCalendarStyle: function () {
+            var first_resource_id = this.$calendar.find('th.fc-resource-cell:first').attr('data-resource-id');
+            var last_resource_id = this.$calendar.find('th.fc-resource-cell:last').attr('data-resource-id');
+            if (first_resource_id && last_resource_id) {
+                this.$calendar.find('td .fc-day[data-resource-id=' + first_resource_id + ']').addClass('fc-resource-cell-first');
+                this.$calendar.find('td .fc-day[data-resource-id=' + last_resource_id + ']').addClass('fc-resource-cell-last');
             }
         },
 
