@@ -193,7 +193,7 @@ class BizopleWebsiteSale(WebsiteSale):
                              for v in attrib_list if v]
             attributes_ids = {v[0] for v in attrib_values}
             attrib_set = {v[1] for v in attrib_values}
-
+            request.env.context = dict(request.env.context, with_filter_object=True)
             domain = self._get_search_domain(search, category, attrib_values)
             url = "/shop"
             if search:
@@ -677,18 +677,10 @@ class WebsiteSale(WebsiteSale):
         ProductFilter = request.env['product.filter']
         if products:
             # get all products without limit
-            filters = ProductFilter.search([('product_tmpl_ids', 'in', search_product.ids)])
-        else:
-            filters = ProductFilter.browse(attributes_ids)
-
-        ProductFitlersObj = request.env['product.filter']
-        print(ProductFitlersObj, products, attributes_ids)
-        if products:
-            # get all products without limit
-            filters = ProductFitlersObj.search(
+            filters = ProductFilter.search(
                 [('product_tmpl_ids', 'in', search_product.ids)])
         else:
-            filters = ProductFitlersObj.browse(attributes_ids)
+            filters = ProductFilter.browse(attributes_ids)
 
         print(filters)
         print(filters.product_filter_line_ids)
