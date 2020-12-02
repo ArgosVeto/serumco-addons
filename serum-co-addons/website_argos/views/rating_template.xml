@@ -27,10 +27,9 @@
     
     <template id="product_variants">
         <t t-set="attribute_exclusions" t-value="product._get_attribute_exclusions(parent_combination, parent_name)"/>
-        <t t-foreach="product.valid_product_template_attribute_line_ids" t-as="ptal">
-            <t t-if="ptal.attribute_id.display_type == 'radio'">
-                <ul t-att-data-attribute_id="ptal.attribute_id.id" t-attf-class="list-unstyled #{'d-none' if single_and_custom else ''}">
-                    <t t-foreach="ptal.product_template_value_ids._only_active()" t-as="ptav">
+        <t t-foreach="product.product_filter_ids.filtered(lambda ptal: ptal.filter_line_ids)" t-as="ptal">
+                <ul t-att-data-attribute_id="ptal.filter_id.id" t-attf-class="list-unstyled #{'d-none' if single_and_custom else ''}">
+                    <t t-foreach="ptal.filter_line_ids._only_active()" t-as="ptav">
                         <li class="form-group js_attribute_value"  t-att-style="inline_mode and 'display:inline'" style="margin: 0;">
                             <label class="col-form-label">
                                 <div>
@@ -48,7 +47,6 @@
                         </li>
                     </t>
                 </ul>
-            </t>
         </t>
     </template>
 

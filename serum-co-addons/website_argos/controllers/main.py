@@ -261,13 +261,13 @@ class BizopleWebsiteSale(WebsiteSale):
             products = Product.search(
                 domain, limit=ppg, offset=pager['offset'], order=self._get_search_order(post))
 
-            ProductAttribute = request.env['product.attribute']
+            ProductFilter = request.env['product.filter']
             if products:
                 # get all products without limit
-                attributes = ProductAttribute.search(
+                filters = ProductFilter.search(
                     [('product_tmpl_ids', 'in', search_product.ids)])
             else:
-                attributes = ProductAttribute.browse(attributes_ids)
+                filters = ProductFilter.browse(attributes_ids)
 
             layout_mode = request.session.get('website_sale_shop_layout_mode')
             if not layout_mode:
@@ -289,7 +289,7 @@ class BizopleWebsiteSale(WebsiteSale):
                 'attrib_values': attrib_values,
                 'attrib_set': attrib_set,
                 'pager': pager,
-                'pricelist': pricelist,
+                'filters': filters,
                 'add_qty': add_qty,
                 'products': products,
                 'search_count': product_count,  # common for all searchbox
@@ -567,6 +567,46 @@ class WebsiteSale(WebsiteSale):
         return request.redirect("/shop/cart")
 
 
+    def _get_search_domain(self, search, category, attrib_values, search_in_description=True):
+        res = super(WebsiteSale, self)._get_search_domain(search=search,
+                                                          category=category,
+                                                          attrib_values=attrib_values,
+                                                          search_in_description=search_in_description)
+        if request.env.context.get('with_filter_object'):
+            domains = [request.website.sale_product_domain()]
+            if search:
+                for srch in search.split(" "):
+                    subdomains = [
+                        [('name', 'ilike', srch)],
+                        [('product_variant_ids.default_code', 'ilike', srch)]
+                    ]
+                    if search_in_description:
+                        subdomains.append([('description', 'ilike', srch)])
+                        subdomains.append([('description_sale', 'ilike', srch)])
+                    domains.append(expression.OR(subdomains))
+
+            if category:
+                domains.append([('public_categ_ids', 'child_of', int(category))])
+
+            if attrib_values:
+                attrib = None
+                ids = []
+                for value in attrib_values:
+                    if not attrib:
+                        attrib = value[0]
+                        ids.append(value[1])
+                    elif value[0] == attrib:
+                        ids.append(value[1])
+                    else:
+                        domains.append([('product_filter_ids.filter_line_ids', 'in', ids)])
+                        attrib = value[0]
+                        ids = [value[1]]
+                if attrib:
+                    domains.append([('product_filter_ids.filter_line_ids', 'in', ids)])
+            return expression.AND(domains)
+        return res
+
+
     @http.route([
         '''/shop''',
         '''/shop/page/<int:page>''',
@@ -598,7 +638,7 @@ class WebsiteSale(WebsiteSale):
         attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
         attributes_ids = {v[0] for v in attrib_values}
         attrib_set = {v[1] for v in attrib_values}
-
+        request.env.context = dict(request.env.context, with_filter_object=True)
         domain = self._get_search_domain(search, category, attrib_values)
 
         keep = QueryURL('/shop', category=category and int(category), search=search, attrib=attrib_list, order=post.get('order'))
@@ -634,12 +674,12 @@ class WebsiteSale(WebsiteSale):
             domain.append(('tag_ids','in',[int(post['tag_id'])]))
         products = Product.search(domain, limit=ppg, offset=pager['offset'], order=self._get_search_order(post))
 
-        ProductAttribute = request.env['product.attribute']
+        ProductFilter = request.env['product.filter']
         if products:
             # get all products without limit
-            attributes = ProductAttribute.search([('product_tmpl_ids', 'in', search_product.ids)])
+            filters = ProductFilter.search([('product_tmpl_ids', 'in', search_product.ids)])
         else:
-            attributes = ProductAttribute.browse(attributes_ids)
+            filters = ProductFilter.browse(attributes_ids)
 
         ProductFitlersObj = request.env['product.filter']
         print(ProductFitlersObj, products, attributes_ids)
@@ -673,7 +713,7 @@ class WebsiteSale(WebsiteSale):
             'ppg': ppg,
             'ppr': ppr,
             'categories': categs,
-            'attributes': attributes,
+            'filters': filters,
             'keep': keep,
             'search_categories_ids': search_categories.ids,
             'layout_mode': layout_mode,
