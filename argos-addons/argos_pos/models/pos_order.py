@@ -33,10 +33,6 @@ class PosOrder(models.Model):
                     qty_invoiced_pos = sum(
                         pos_order.lines.filtered(lambda l: l.product_id.id == product_line[0].product_id.id).mapped(
                             'qty'))
-                    if qty_invoiced_pos < product_line[0].qty_delivered:
-                        raise UserError(_(
-                            "The product %s could not be invoiced less than delivered. Please fix the real quantity") %
-                                        product_line[0].name)
 
     @api.model
     def _process_order(self, order, draft, existing_order):
