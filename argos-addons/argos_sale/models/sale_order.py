@@ -299,6 +299,8 @@ class SaleOrder(models.Model):
     @api.model
     def create(self, vals):
         vals['arrival_time'] = fields.Datetime.now()
+        if vals.get('operating_unit_id', False):
+            vals.update(self.get_operating_unit_vals(vals))
         res = super(SaleOrder, self).create(vals)
         # TODO: integration V2 manage multiple contact for one portal access
         # portal_partner_ids = self.get_portal_partner(vals['partner_id'])
@@ -307,6 +309,17 @@ class SaleOrder(models.Model):
         if res.partner_id and res.partner_id.has_tutor_curator:
             res.send_notification_mail()
         return res
+
+    @api.model
+    def get_operating_unit_vals(self, vals):
+        update_vals = {}
+        operating_unit = self.env['operating.unit'].browse(vals['operating_unit_id'])
+        type_obj = self.env['stock.picking.type']
+        types = type_obj.search([('code', '=', 'outgoing'), ('warehouse_id.operating_unit_id', '=', operating_unit.id)])
+        update_vals['company_id'] = operating_unit.company_id.id
+        if types:
+            update_vals['warehouse_id'] = types[:1].warehouse_id.id
+        return update_vals
 
     @api.onchange('canvas_id')
     def onchange_canvas_id(self):
