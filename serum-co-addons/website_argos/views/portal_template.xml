@@ -482,7 +482,7 @@
         </xpath>
     </template>
 
-    <template id="address_inherited" inherit_id="portal.portal_layout">
+    <template id="address_inherited_2" inherit_id="portal.portal_layout">
         <xpath expr="//div[hasclass('o_portal','container','mt-3')]" position="before">
             <div class="row m-0 mx-md-3 my_content ">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
@@ -612,7 +612,7 @@
         </xpath>
     </template>
 
-    <template id="payment_method_inherited" inherit_id="payment.pay_methods">
+    <template id="payment_method_inherited_2" inherit_id="payment.pay_methods">
         <xpath expr="//div[hasclass('wrap')]" position="before">
             <div class="row m-0 mx-md-3 my_content">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
