@@ -540,16 +540,10 @@
                             <li class="breadcrumb-item"><a href="#">Mes infos personnelles</a></li>
                         </ol>
                     </div>
-                    <div class="col-lg-12 heading">
-                        <h1 class="mt16 mb32">
-                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                    <div class="col-lg-12 heading" style=" height: 200px;">
+                        <h1  style="text-align: center" class="mt16 mb32">
+                            Mon adresse
                         </h1>
-                        <p>
-                            Retrouvez sur cette page lorem ipsum dolor sit amet 
-                        </p>
-                        <p class="mb48">
-                            Nous Contacter
-                        </p>
                     </div>
                 </div>
             </div>
@@ -648,9 +642,9 @@
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                               <!--  <li class="nav-item m-0">
+                               <li class="nav-item m-0">
                                     <a class="nav-link active" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -664,20 +658,268 @@
                             <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
                         </ol>
                     </div>
-                    <div class="col-lg-12 heading">
-                        <h1 class="mt16 mb32">
-                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                    <div class="col-lg-12 heading" style="height: 200px;">
+                        <h1  style="text-align: center;" class="mt16 mb32">
+                            Mes cartes bancaires
                         </h1>
-                        <p>
-                            Retrouvez sur cette page lorem ipsum dolor sit amet 
-                        </p>
-                        <p class="mb48">
-                            Nous Contacter
-                        </p>
                     </div>
                 </div>
             </div>
         </xpath>
+    </template>
+
+    <template id="portal_my_details_inherited" inherit_id="portal.portal_my_details">
+    <xpath expr="//div[hasclass('o_portal_details')]" position="replace">
+        <div class="row" style="border: none">
+            <div class="col-lg-8 offset-lg-2 mt16 mb32">
+                <div class="row">
+                    <div t-attf-class="form-group col-md-4 div_name">
+                        <label class="col-form-label" for="name">Prénom *</label>
+                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname"/>
+                    </div>
+                    <div class="col-md-1"/>
+                    <div t-attf-class="form-group col-md-4 div_name">
+                        <label class="col-form-label" for="name">Nom *</label>
+                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname"/>
+                    </div>
+                    <div t-attf-class="form-group col-md-4 email">
+                        <label class="col-form-label" for="email">Adresse Email *</label>
+                        <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email"/>
+                    </div>
+                    <div class="col-md-1"/>
+                    <div t-attf-class="form-group col-md-4 phone">
+                        <label class="col-form-label" for="phone">N° de téléphone *</label>
+                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone"/>
+                    </div>
+                    <div t-attf-class="form-group col-md-12 street">
+                        <label class="col-form-label" for="street">Adresse *</label>
+                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
+                    </div>
+                    <div t-attf-class="form-group col-md-3 div_zip">
+                        <label class="col-form-label" for="zip">Code postal *</label>
+                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip"/>
+                    </div>
+                    <div t-attf-class="form-group col-md-5 div_city">
+                        <label class="col-form-label" for="city">Ville *</label>
+                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city"/>
+                    </div>
+                    <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
+                        <label class="col-form-label" for="country_id">Pays</label>
+                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                            <option value="">Pays...</option>
+                            <t t-foreach="countries or []" t-as="country">
+                                <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                    <t t-esc="country.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt16 mb32">
+                        <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
+                                        Enregistrer mes modifications
+                                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </xpath>
+    </template>
+
+    <template id="payment_tokens_list_inherited" inherit_id="payment.payment_tokens_list" name="Payment Tokens list">
+    <!--
+        Variables description:
+            - 'submit_txt' the text displayed inside the submit button
+            - 'submit_class' the css classes to style the submit button
+            - 'icon_class' font awesome class (e.g. 'fa-trash', 'fa-lock')
+            - 'form_action' the URI to the page that will handle the form values given for server2server
+            - 'pms' the tokens
+            - 'checked_pm_id' the payment token that should be checked (for radio buttons)
+            - 'mode' can take two values, either 'payment' or 'manage'. 'manage' displays the add a new card and delete buttons. 'payment'
+                display a form that is used to pay and send the information to the form action url.
+            - 'acquirers' the list of both server2server and form payment acquirers
+            - 'verify_validity' if we need to verify if the payment method is valid when adding a new one
+            - 'prepare_tx_url' the url of the route which will handle the creation of a transaction for a form base payment (handles if the transaction is form or form_save)
+            - 'show_manage_btn' if True, a button is added in the footer to manage payment methods
+        -->
+    <xpath expr="//form" position="replace">
+        <form t-if="pms or acquirers" method="post" class="o_payment_form mt-3 clearfix"
+                t-att-action="form_action if form_action else '#'"
+                t-att-data-success-url="success_url or ''"
+                t-att-data-error-url="error_url or ''"
+                t-att-data-access-token="access_token or ''"
+                t-att-data-partner-id="partner_id"
+                t-att-data-callback-method="callback_method or ''"
+                t-att-data-order-id="order_id or ''"
+                t-att-data-mode="mode">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" t-if="prepare_tx_url" name="prepare_tx_url" t-att-value="prepare_tx_url"/>
+            <input type="hidden" t-if="order_id" name="order_id" t-att-value="order_id"/>
+            <!-- s2s form submission -->
+            <input type="hidden" t-if="access_token" name="access_token" t-att-value="access_token"/>
+            <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
+            <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
+            <input type="hidden" t-if="callback_method" name="callback_method" t-att-value="callback_method"/>
+         <div class="row o_portal_details mt32 mb32">
+           <div class="card mt32" style="border: none">
+                <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
+                <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
+                <t t-set="MAX_BRAND_LINE" t-value="3"/>
+                <t t-foreach="acquirers" t-as="acq">
+                    <div class="card-body o_payment_acquirer_select" style="border: none">
+                        <label>
+                            <t t-if="acq.payment_flow == 'form'">
+                                <input type="radio" t-att-data-acquirer-id="acq.id"
+                                       t-att-data-form-payment="true"
+                                       t-att-data-provider="acq.provider"
+                                       t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                       name="pm_id" t-attf-value="form_{{acq.id}}"
+                                       t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
+                            </t>
+                            <t t-else="acq.payment_flow == 's2s'">
+                                <input type="radio" t-att-data-acquirer-id="acq.id"
+                                       t-att-data-s2s-payment="true"
+                                       t-att-data-provider="acq.provider"
+                                       name="pm_id" t-attf-value="new_{{acq.id}}"
+                                       t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                       t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
+                            </t>
+                            <span class="payment_option_name">
+                              <t t-esc="acq.display_as or acq.name"/>
+                              <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right" style="margin-left:5px">
+                                Test Mode
+                              </div>
+                            </span>
+                            <t t-if="acq_extra_fees and acq_extra_fees.get(acq)">
+                                <span class="badge badge-pill badge-secondary"> + <t t-esc="acq_extra_fees[acq]" t-options='{"widget": "monetary", "display_currency": acq_extra_fees["currency_id"]}'/> Fee </span>
+                            </t>
+                            <t t-elif="acq.fees_active">
+                                <small class="text-muted">(Some fees may apply)</small>
+                            </t>
+                        </label>
+                        <ul class="float-right list-inline payment_icon_list">
+                            <t t-set="i" t-value="0"/>
+                            <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
+                                <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
+                                    <span t-field="pm_icon.image_payment_form"
+                                          t-options='{"widget": "image", "alt-field": "name"}'/>
+                                </li>
+                                <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
+                                    <span class="float-right more_option text-info">
+                                        <a href="#" class="o_payment_form_pay_icon_more" data-toggle="tooltip" t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">and more</a>
+                                    </span>
+                                </li>
+                                <t t-set="i" t-value="i+1"/>
+                            </t>
+                        </ul>
+                        <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                    </div>
+                    <t t-if="acq.payment_flow == 'form'">
+                        <div t-attf-id="o_payment_form_acq_{{acq.id}}"
+                             t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
+                            <label t-if="acq.save_token == 'ask'">
+                                <input type="checkbox" name="o_payment_form_save_token" data-remove-me=""/>
+                                Save my payment data
+                            </label>
+                            <t t-if="acq.save_token == 'always'">
+                                <input type="checkbox" name="o_payment_form_save_token" checked="'checked'" class="o_hidden" data-remove-me=""/>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-else="acq.payment_flow == 's2s'">
+                        <div t-attf-id="o_payment_add_token_acq_{{acq.id}}"
+                             t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
+                            <div class="clearfix">
+                                <input type="hidden" t-if="(verify_validity==True or mode == 'manage') and acq.check_validity" name="verify_validity" t-att-value="acq.check_validity"/>
+                                <t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
+                                    <t t-set="id" t-value="acq.id"/>
+                                    <t t-set="partner_id" t-value="partner_id"/>
+                                    <t t-if="not return_url" t-set="return_url" t-value="''"/>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            <div class="float-right mt-2">
+                <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+                    <t t-if="submit_txt">
+                        <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
+                        <t t-esc="submit_txt"/>
+                        <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+                    </t>
+                    <t t-else="">
+                        <i class="fa fa-lock"/> Pay
+                    </t>
+                </button>
+                <t t-if="show_manage_btn">
+                    <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
+                </t>
+                <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="float-right btn btn-primary btn-lg mb8 mt8">
+                    Enregistrer la carte
+                </button>
+            </div>
+                <t t-foreach="pms" t-as="pm">
+                    <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                        <div class="mt32 mb32">
+                        <h3>Vos cartes bancaires enregistrées</h3>
+                        </div>
+                        <div class="card-body o_payment_acquirer_select">
+                            <label>
+                                <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                <span class="payment_option_name" t-esc="pm.name"/>
+                                <t t-if="pm.verified">
+                                    <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                </t>
+                            </label>
+                               <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right">
+                                    <i class="fa fa-trash"/>
+                                </button>
+                         </div>
+                    </t>
+                </t>
+            </div>
+            <div t-if='back_button_txt' class="float-left mt-2">
+                <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
+                    <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
+                    <t t-esc="back_button_txt"/>
+                </a>
+            </div>
+        </div>
+        </form>
+
+    </xpath>
+    </template>
+
+    <template id="pay_methods_inherit" inherit_id="payment.pay_methods" name="Payment Methods">
+    <xpath expr="//div[hasclass('wrap')]" position="replace">
+            <div class="wrap">
+                <div class="container">
+                  <!--div class="row">
+                        <div class="col-md-6">
+                            <ol class="breadcrumb mt8">
+                                <li class="breadcrumb-item"><a href="/my/home"><i class="fa fa-home" role="img" aria-label="Home" title="Home"/></a></li>
+                                <li class="breadcrumb-item">Payment Methods</li>
+                            </ol>
+                        </div>
+                    </div-->
+                     <div class="clearfix">
+                        <div class="row">
+                            <div class="col-md-12 offset-2">
+                                <div class="mt32 mb32">
+                                    <h3>Ajouter une carte bancaire</h3>
+                                </div>
+                                <t t-call="payment.payment_tokens_list">
+                                    <t t-set="acquirers" t-value="acquirers"/>
+                                    <t t-set="mode" t-value="'manage'"/>
+                                </t>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </xpath>
     </template>
     
     <template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries" inherit_id="portal.portal_my_home" priority="15">

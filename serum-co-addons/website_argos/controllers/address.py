@@ -33,7 +33,7 @@ class Address(http.Controller):
 				'mode':'new-address',		
 			})
 		if 'submitted' in post and post['submitted']:
-			required_fields = ['name','city','street','country_id','email']
+			required_fields = ['firstname', 'lastnane','zip','city','street','country_id','email']
 			values = {}
 			update_partner_id = False
 			rfields = []
@@ -51,8 +51,10 @@ class Address(http.Controller):
 				return request.redirect("/add-address?data=%s&error=%s" % (post, error_message))
 			partner_id = request.env.user.partner_id
 			partner_vals = {}
-			if 'name' in post and post['name']:
-				partner_vals.update({'name':post['name']})
+			if 'firstname' in post and post['firstname']:
+				partner_vals.update({'firstname':post['firstname']})
+			if 'lastname' in post and post['lastname']:
+				partner_vals.update({'lastname':post['lastname']})
 			if 'email' in post and post['email']:
 				partner_vals.update({'email':post['email']})
 			if 'phone' in post and post['phone']:
