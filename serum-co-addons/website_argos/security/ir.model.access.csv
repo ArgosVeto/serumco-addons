@@ -39,4 +39,8 @@ access_account_operating_portal,access_account_operating_portal,operating_unit.m
 access_group_multi_operating_unit,access_group_multi_operating_unit,operating_unit.model_operating_unit,operating_unit.group_multi_operating_unit,1,1,1,1
 
 access_account_operating_public,access_account_operating_public,model_operating_unit,base.group_public,1,1,1,1
+access_product_filter,access_product_filter admin,argos_website.model_product_filter,,1,0,0,0
+access_product_filter_line,access_product_filter_line admin,argos_website.model_product_filter_line,,1,0,0,0
+access_product_template_filter_line,access_product_template_filter_line admin,argos_website.model_product_template_filter_line,,1,0,0,0
+
 
