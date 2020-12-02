@@ -208,6 +208,7 @@
 				                    <input type="hidden" name="search" t-att-value="search" />
 				                    <ul class="nav nav-pills flex-row">
 				                    	<t t-foreach="filters" t-as="a">
+											<t t-if="a.is_filter_visible">
 											<li t-if="a.product_filter_line_ids and len(a.product_filter_line_ids) &gt; 1" class="nav-item">
 												<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>
 												<div class="dropdown-menu" role="menu">
@@ -223,6 +224,7 @@
 													</ul>
 												</div>
 											</li>
+											</t>
 										</t>
 				                    </ul>
 				                </form>
