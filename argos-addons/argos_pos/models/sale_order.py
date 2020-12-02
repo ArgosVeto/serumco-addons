@@ -14,8 +14,7 @@ class SaleOrder(models.Model):
         order_json_format = []
         # get all order (consultation type only) even it has already a delivery with it
         for order in self.sudo().search(
-                [('state', 'in', ['sale', 'draft']), ('is_consultation', '=', True),
-                 ('state', '=', 'sale'),
+                [('state', 'in', ['sale', 'done']), ('is_consultation', '=', True),
                  ('pos_sold', '=', False),
                  ('date_order', '>', from_days)]):
             order_json_format.append(
