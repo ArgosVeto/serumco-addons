@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0+e\n"
+"Project-Id-Version: Odoo Server 13.0+e-20201007\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-27 07:53+0000\n"
-"PO-Revision-Date: 2020-11-27 07:53+0000\n"
+"POT-Creation-Date: 2020-12-04 14:28+0000\n"
+"PO-Revision-Date: 2020-12-04 14:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -168,9 +168,20 @@ msgid "Administration Route"
 msgstr "Voie d'administration"
 
 #. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__batch_recall
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__batch_recall
+msgid "Batch recall by laboratory"
+msgstr "Rappel de lots par laboratoire"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Birthdate:"
 msgstr "Date de naissance:"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__chip
+msgid "Chip ID"
+msgstr "Identification de la puce"
 
 #. module: argos_stock
 #: model:ir.model,name:argos_stock.model_res_partner
@@ -197,6 +208,23 @@ msgid "Description on Delivery Orders"
 msgstr "Conseils d'utilisation"
 
 #. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_production_lot__life_date
+msgid "End of Life Date"
+msgstr "Date de Péremption"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption_1
+msgid "Expiration Date"
+msgstr "Date de péremption "
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__expiration_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__expiration_date
+msgid "Expiration date passed"
+msgstr "Date de péremption dépassée"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Gender:"
 msgstr "Sexe:"
@@ -217,6 +245,66 @@ msgid "Is prescription"
 msgstr " Est une ordonnance"
 
 #. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lot/N° série"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "No negative quantities allowed"
+msgstr "Les quantités négatives ne sont pas autorisées"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_date
+msgid "Non-compliant products - expiration date too short"
+msgstr "Produits non conformes - date de péremption trop courte"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_promotional
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_promotional
+msgid "Non-compliant products - promotional conditions"
+msgstr "Produits non conformes - conditions promotionnelles"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_conservation
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_conservation
+msgid "Non-compliant products - storage conditions (cold, etc.) not respected"
+msgstr ""
+"Produits non conformes - conditions de conservation (froid, ...) non "
+"respectées"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__no_order
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__no_order
+msgid "Not ordered products"
+msgstr "Produits non commandés"
+
+#. module: argos_stock
+#: model:ir.model.fields,help:argos_stock.field_stock_move_line__partner_id
+msgid ""
+"Optional address where goods are to be delivered, specifically used for "
+"allotment"
+msgstr ""
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__error
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__error
+msgid "Order error"
+msgstr "Erreur de commande"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__order_number
+msgid "Order n°"
+msgstr "N° d'ordre"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__passport
+msgid "Passport"
+msgstr "Passeport"
+
+#. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_operating_unit__picking_ids
 #: model:ir.model.fields,field_description:argos_stock.field_res_partner__picking_ids
 #: model:ir.model.fields,field_description:argos_stock.field_res_users__picking_ids
@@ -230,6 +318,7 @@ msgid "Prescription"
 msgstr "Ordonnance"
 
 #. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__prescription
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Prescription n°"
 msgstr "Ordonnance n°"
@@ -255,6 +344,24 @@ msgid "Product Routes"
 msgstr "Voies d'administration"
 
 #. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__damaged
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__damaged
+msgid "Products damaged upon receipt"
+msgstr "Produits endommagés à réception"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__product_deteriorated
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__product_deteriorated
+msgid "Products deteriorated in the clinic"
+msgstr "Produits détériorés en clinique"
+
+#. module: argos_stock
+#: model:ir.actions.act_window,name:argos_stock.registers_argos_move_line_action
+#: model:ir.ui.menu,name:argos_stock.stock_move_line_registers
+msgid "Registers"
+msgstr "Registres"
+
+#. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__remaining_qty
 msgid "Remaining Quantity"
 msgstr "Reste à livrer"
@@ -263,6 +370,21 @@ msgstr "Reste à livrer"
 #: model:ir.model.fields,field_description:argos_stock.field_sale_order_line__renewal
 msgid "Renewal"
 msgstr "Renouvellement"
+
+#. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Retour à la cueillette"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__return_reason
+msgid "Return Reason"
+msgstr "Motif de retour"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_return_picking__return_reason
+msgid "Return reason"
+msgstr "Motif de retour"
 
 #. module: argos_stock
 #: model:ir.model,name:argos_stock.model_sale_order_refer
@@ -285,6 +407,17 @@ msgid "Sales Order Line"
 msgstr "Ligne de bons de commande"
 
 #. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_scrap
+msgid "Scrap"
+msgstr "Rebut"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_picking__scrap_reason
+#: model:ir.model.fields,field_description:argos_stock.field_stock_scrap__scrap_reason
+msgid "Scrap reason"
+msgstr "Motif de rebut"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.prescription_consultation_view_form
 msgid "Send by Email"
 msgstr "Envoyer par email"
@@ -298,6 +431,45 @@ msgstr "Espèce:"
 #: model:ir.model,name:argos_stock.model_stock_move
 msgid "Stock Move"
 msgstr "Mouvement de stock"
+
+#. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__storage_condition
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__storage_condition
+msgid "Storage conditions not respected"
+msgstr "Conditions de conservation non respectées"
+
+#. module: argos_stock
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__tattoo
+msgid "Tattoo n°"
+msgstr "N° du tatouage"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "The date on the Lot/Serial has expired"
+msgstr "La date sur le lot / la série a expiré"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "The given GTIN code %s doesn't match with the product GTIN code %s"
+msgstr "Le code GTIN% s indiqué ne correspond pas au code GTIN du produit% s"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid ""
+"The quantity done for the product \"%s\" doesn't respect the rounding "
+"precision                                   defined on the unit of measure "
+"\"%s\". Please change the quantity done or the"
+"                                   rounding precision of your unit of "
+"measure."
+msgstr ""
+"La quantité renseignée pour l' article \"%s\" ne respecte pas les règles "
+"d'arrondissement définies dans l'unité de mesure \"%s\". Veuillez changer la"
+" quantité renseignée ou les règles d'arrondissement de votre unité de "
+"mesure."
 
 #. module: argos_stock
 #: model_terms:ir.actions.act_window,help:argos_stock.action_arg_prescription
@@ -326,14 +498,21 @@ msgid "Usage Tips"
 msgstr "Conseils d'utilisation"
 
 #. module: argos_stock
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__use_date
+#: model:ir.model.fields.selection,name:argos_stock.selection__stock_scrap__scrap_reason__use_date
+msgid "Use date after first use passed"
+msgstr "Date d'utilisation après premier usage dépassée"
+
+#. module: argos_stock
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Weight in kg:"
 msgstr "Poids en kg:"
 
 #. module: argos_stock
-#: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
-msgid "line(s)"
-msgstr "ligne(s)"
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "You need to supply a Lot/Serial number for product %s."
+msgstr "Vous devez fournir un numéro de Lot/de Série pour l'article %s."
 
 #. module: argos_stock
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__batch_recall

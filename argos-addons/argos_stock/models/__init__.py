@@ -9,3 +9,4 @@ from . import sale_order_refer
 from . import sale_order_line
 from . import stock_return_picking
 from . import stock_scrap
+from . import production_lot
