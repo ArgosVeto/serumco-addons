@@ -317,7 +317,7 @@
 		 		<a href="#" role="button" class="btn btn-link a-submit" aria-label="Shopping cart" title="Shopping cart">
                    <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>Ajouter
 					<span class="text-white ml-1 mr-1 text-bold"> - </span>
-					<t t-call="website_sale.product_price" />
+					<t t-if="product" t-call="website_sale.product_price" />
                 </a>
 			</t>
 		</xpath>
