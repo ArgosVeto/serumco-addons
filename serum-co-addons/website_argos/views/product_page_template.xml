@@ -9,19 +9,18 @@
                         <div class="top-links p-0 bg-transparent">
                             <div class="container">
                                 <ul class="nav navbar-nav flex-row">
-                                    <li class="nav-item mr32">
+                                    <!--li class="nav-item mr32">
                                         <a class="nav-link" href="/shop-home">Accueil</a>
-                                    </li>
-                                    <li class="nav-item mr32">
-                                        <!-- <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a> -->
+                                    </li-->
+                                    <!--li class="nav-item mr32">
+                                        <<a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
                                         <t t-foreach="product.public_categ_ids" t-as="categs">
                                             <a t-att-href="'/shop/category/%s' % slug(categs)" class="nav-link active">
                                                 <span class="categ-name">
                                                     <t t-esc="categs.name"/>
                                                 </span>
-                                            </a>
-                                        </t>
-                                    </li>
+                                        <t t-if="categs.child_id">
+                                    </li-->
                                     <!-- <li class="nav-item mr32">
                                         <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
                                     </li>
@@ -208,22 +207,70 @@
                                     </a>
                                 </li>
                             </t>
+                            <li class="nav-item">
+                                <a class="nav-link o_default_snippet_text" id="nav-home-tab2" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="true">
+                                    Composition
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link o_default_snippet_text" id="nav-home-tab3" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="true">
+                                    Spécifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home4" role="tab" aria-controls="nav-home4" aria-selected="true">
+                                    Mode d'emploi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home5" role="tab" aria-controls="nav-home5" aria-selected="true">
+                                    Besoin de conseil ?
+                                </a>
+                            </li>
                             
-                            <t t-foreach="product.tab_ids" t-as="tab">
+                            <!--t t-foreach="product.tab_ids" t-as="tab">
                                 <li class="nav-item">
                                     <a class="nav-link o_default_snippet_text" t-att-id="'nav_link_%s_%s' % (product.id, tab.id)" data-toggle="tab" t-att-href="'#nav_tabs_body_%s_%s' % (product.id, tab.id)"  role="tab" t-att-aria-controls="'nav_link_%s_%s' % (product.id, tab.id)" aria-selected="false">
                                         <t t-esc="tab.name"/>
                                     </a>
                                 </li>
-                            </t>
+                            </t-->
                         </ul>
                     </div>
                     <div class="card-body tab-content product-tab mt32">
                         <div class="tab-pane fade active show" id="nav-home1" role="tabpanel" aria-labelledby="nav-home-tab1">
                             <div itemprop="description" t-field="product.description_web" class="oe_structure mt16" id="product_full_description" />
                         </div>
+                        <div class="tab-pane fade" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2">
+                                <p>Composition :</p><t t-esc="product.composition"/>
+                                <p>Constituants Analytiques :</p><t t-esc="product.analytic_constitution"/>
+                                <p>Additifs :</p><t t-esc="product.additives"/>
+                                <p>Valeurs Energétique :</p><t t-esc="product.energetic_value"/>
+                                <p>Teneur en Eau :</p><t t-esc="product.waters_content"/>
+                        </div>
+                        <div class="tab-pane fade" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
+                                <p>Ration journalière recommandée :</p><t t-esc="product.daily_ratio_recommended"/>
+                                <p>Indications :</p><t t-esc="product.indications"/>
+                        </div>
+                        <div class="tab-pane fade" id="nav-home4" role="tabpanel" aria-labelledby="nav-home-tab4">
+                            <t t-foreach="product.documentation_ids" t-as="doc">
+                                <t t-if="doc.doc_type == 'MOE'">
+                                    <p><a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/></a></p>
+                                </t>
+                                <t t-if="doc.doc_type == 'TEC'">
+                                    <p><a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/></a></p>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="tab-pane fade" id="nav-home5" role="tabpanel" aria-labelledby="nav-home-tab5">
+                            <t t-foreach="product.documentation_ids" t-as="doc">
+                                 <t t-if="doc.doc_type == 'CNS'">
+                                    <p><a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/></a></p>
+                                 </t>
+                            </t>
+                        </div>
                         
-                        <t t-foreach="product.tab_ids" t-as="tab">
+                        <!--t t-foreach="product.tab_ids" t-as="tab">
                             <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="tab-pane fade" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)">
                                 <section class="mt16 mb16">
                                     <t t-if="tab.sequence == 1">
@@ -254,10 +301,10 @@
                                            </t>
                                         </t>
                                     </t>
-                                   <!--div t-field="tab.content" class="oe_structure" /-->
+                                   <div t-field="tab.content" class="oe_structure" />
                                 </section>
                             </div>
-                        </t>
+                        </t-->
                     </div>
                 </div>
             </div>
@@ -306,6 +353,10 @@
     <template id="product_attributes_body_bizople" inherit_id="website_sale_comparison.product_attributes_body" priority="20" >
         <xpath expr="//section[@id='product_full_spec']//div" position="replace" />
         <xpath expr="//section[@id='product_full_spec']//h3" position="replace" />
+    </template>
+
+    <template id="product_attributes_body_bizople" inherit_id="website_sale.products" >
+        <xpath expr="//div[@id='products_grid']//t" position="replace" />
     </template>
 
     <template id="product_description_bizople" inherit_id="website_sale.product">

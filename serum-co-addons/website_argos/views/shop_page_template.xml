@@ -39,14 +39,6 @@
 	                                    <li class="nav-item mr32">
 	                                        <a class="nav-link" href="/">Accueil</a>
 	                                    </li>
-	                                    <!-- <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-23">Chat</a>
-	                                    </li> -->
-	                                    <!-- <li t-if="category" class="nav-item active mr32">
-	                                    	<a class="nav-link text-primary">
-					                            <span><t t-esc="category.name"/></span>
-					                        </a>
-				                        </li> -->
 				                        <t t-foreach="categories" t-as="c">
 					                        <li class="nav-item mr32">
 									            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
@@ -54,12 +46,6 @@
 									            </a>
 									        </li>
 									    </t>
-	                                    <!-- <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-34">Chien</a>
-	                                    </li>
-	                                    <li class="nav-item m-0">
-	                                        <a class="nav-link" href="/shop?search=&amp;attrib=&amp;attrib=3-59">Nouveaux animaux de compagnie</a>
-	                                    </li> -->
 	                                </ul>
 	                            </div>
 	                        </div>
@@ -82,23 +68,27 @@
 		                <t t-if="category">
 			                <div class="categ-info">
 			                	<h1><t t-esc='category.name'/></h1>
-			                	<!-- <p class="lead"><t t-esc='category.description'/></p> -->
 			                </div>
-			                <!-- <div class="sub-categories mt32">
+			                <t t-if="category.website_description">
+								<span><t t-raw='category.website_description'/></span>
+							</t>
+		 	                <div class="sub-categories mt32">
 			                	<ul class="nav nav-pills flex-row">
 									<t t-foreach="category" t-as="c">
-								        <t t-if="c.child_id" >
-							                <t t-foreach="c.child_id" t-as="c">
-							                    <t t-if="not search or c.id in search_categories_ids">
-							                        <t t-call="website_sale.categories_recursive" />
-							                    </t>
-							                </t>
-						            	</t>
+										<t t_if="c.child_id.parent_id.id == c.id">
+											<t t-if="c.child_id" >
+														<t t-foreach="c.child_id" t-as="c">
+																<li class="nav-item mr32">
+																	<a t-att-href="'/shop/category/%s'%slug(c)" class="nav nav-pills flex-column nav-hierarchy" t-att-title="'Read' + c.name"><span t-esc="c.name"></span></a>
+																</li>
+														</t>
+											</t>
+										</t>
 				                    </t>
 			                	</ul>
-			                </div> -->
+			                </div> 
 			            </t>
-					</div>
+	                </div> 
 				</section>
 			<!-- <t t-else="">
 				<section class="shop_categ_info s_blog_banner pt-0">

@@ -484,15 +484,15 @@
 
     <template id="address_inherited_2" inherit_id="portal.portal_layout">
         <xpath expr="//div[hasclass('o_portal','container','mt-3')]" position="before">
-            <div class="row m-0 mx-md-3 my_content ">
+            <div class="row m-0 mx-md-3 my_content">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
-                    <div class="top-links p-0 common-portal">
+                    <div class="top-links p-0">
                         <div class="container">
                             <ul class="nav navbar-nav flex-row">
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/my-content">Vue d'ensemble</a>
                                 </li>
-                                <li class="nav-item ac-order mr32">
+                                <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/orders">Commandes</a>
                                 </li>
                                 <t t-if="next_appointment_id or pervious_appointment_id">
@@ -500,7 +500,7 @@
                                         <a class="nav-link" href="/my-appointment">Mes RDV</a>
                                     </li>
                                 </t>
-                                <li class="nav-item ac-address mr32">
+                                <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/account">Mes adresses</a>
                                 </li>
                                 <li class="nav-item mr32">
@@ -509,12 +509,12 @@
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
                                 </li>
-                                <li class="nav-item ac-info mr32">
+                                <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                                <!-- <li class="nav-item m-0">
-                                    <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li> -->
+                               <li class="nav-item m-0">
+                                    <a class="nav-link active" href="/my/payment_method">Mes cartes bancaires</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -522,27 +522,15 @@
             </div>
             <div class="container">
                 <div class="row my_content">
-                    <div class="col-lg-12 br-order-portal">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Commandes</a></li>
-                        </ol>
-                    </div>
-                    <div class="col-lg-12 br-address-portal">
+                    <div class="col-lg-12 br-info-portal">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="#">Mes adresses</a></li>
                         </ol>
                     </div>
-                    <div class="col-lg-12 br-info-portal">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mes infos personnelles</a></li>
-                        </ol>
-                    </div>
-                    <div class="col-lg-12 heading" style=" height: 200px;">
-                        <h1  style="text-align: center" class="mt16 mb32">
-                            Mon adresse
+                    <div class="col-lg-12 heading" style=" height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+                        <h1  style="text-align: center; margin-top: 80px;">
+                            Mes adresses
                         </h1>
                     </div>
                 </div>
@@ -658,9 +646,9 @@
                             <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
                         </ol>
                     </div>
-                    <div class="col-lg-12 heading" style="height: 200px;">
-                        <h1  style="text-align: center;" class="mt16 mb32">
-                            Mes cartes bancaires
+                    <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+                       <h1  style="text-align: center; margin-top: 80px;">
+                             Mes cartes bancaires
                         </h1>
                     </div>
                 </div>
@@ -670,7 +658,11 @@
 
     <template id="portal_my_details_inherited" inherit_id="portal.portal_my_details">
     <xpath expr="//div[hasclass('o_portal_details')]" position="replace">
-        <div class="row" style="border: none">
+                         <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Mon adresse</a></li>
+                        </ol>
+       <div class="row" style="border: none">
             <div class="col-lg-8 offset-lg-2 mt16 mb32">
                 <div class="row">
                     <div t-attf-class="form-group col-md-4 div_name">
@@ -857,11 +849,13 @@
                     Enregistrer la carte
                 </button>
             </div>
+             <t t-if="pms">
+                <div class="mt32 mb32">
+                    <h3>Vos cartes bancaires enregistrées</h3>
+                 </div>
+             </t>
                 <t t-foreach="pms" t-as="pm">
                     <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                        <div class="mt32 mb32">
-                        <h3>Vos cartes bancaires enregistrées</h3>
-                        </div>
                         <div class="card-body o_payment_acquirer_select">
                             <label>
                                 <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
