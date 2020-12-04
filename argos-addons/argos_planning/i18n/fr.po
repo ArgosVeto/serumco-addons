@@ -2461,6 +2461,8 @@ msgstr "<span>semaine(s)</span>"
 #: model:sms.template,name:argos_planning.planning_reminder_sms_template
 msgid "ARGOS - Appointment reminder"
 msgstr "ARGOS - Rappel de RDV"
+
+#. module: argos_planning
 #: model_terms:ir.ui.view,arch_db:argos_planning.res_config_settings_view_form
 msgid ""
 "Activate the constraint that prevents the creation of an appointment without"

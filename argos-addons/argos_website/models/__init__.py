@@ -8,3 +8,4 @@ from . import product_template
 from . import product_template_attribute_line
 from . import product_category
 from . import stock_picking
+from . import helpdesk_ticket
