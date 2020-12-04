@@ -105,16 +105,6 @@ class WebsiteSeoRedirection(models.Model):
             ("destination", "=", path),
             ("relocate_controller", "=", True),
         ])
-        seo_url = self.env['website.seo.redirection'].sudo().search([])
-        for rec in seo_url:
-            if not redirection.origin and str(rec.origin) + '/' in request.httprequest.path:
-                new_path = path.replace(rec.origin, rec.destination)
-                new_id = self.env['website.seo.redirection'].sudo().search([("destination", "=", new_path),
-            ("relocate_controller", "=", True)])
-                if not new_id:
-                    new_id.create({'origin': request.httprequest.path, 'destination': new_path,
-                    'relocate_controller': True, 'rewrite_vals': 'custom'})
-                pass
         if not redirection.origin:
             raise NoOriginError(_("No origin found for this redirection."))
         return redirection.origin
