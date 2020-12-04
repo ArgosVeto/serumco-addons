@@ -7,9 +7,4 @@
        
     </xpath>
 </template>
-<template id="website_seo_url_asset_frontend" inherit_id="website.assets_frontend">
-	<xpath expr="//script[last()]" position="after">
-		<script type="text/javascript" src="/website_url_redirect_axis/static/src/js/url_redirect.js"/>
-	</xpath>
-</template>
 </odoo>
