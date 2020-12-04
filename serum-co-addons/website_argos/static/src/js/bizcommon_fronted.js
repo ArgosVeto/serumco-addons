@@ -4,19 +4,19 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
     var ajax = require('web.ajax');
     var core = require('web.core');
     var _t = core._t;
-    
+
 	if($(".oe_website_sale").length === 0){
         $("div#wrap").addClass("oe_website_sale");
     }
-    
-	
+
+
     if ($('.product_description').length < 1) {
         $('#product_detail_tabs').find('li:first-child').find('.nav-link').addClass('active');
         var firstlink = $('#product_detail_tabs').find('li:first-child').find('.nav-link').attr('aria-controls');
         $('.product-tab .tab-pane').removeClass('active show');
         $('#'+ firstlink).addClass('active show');
     }
-    
+
     animation.registry.website_argos_product_slider = animation.Class.extend({
         selector: ".biz_dynamic_product_slider",
         disabledInEditableMode: false,
@@ -33,7 +33,7 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                                                 </div>')
                 });
             }
-            if (!this.editableMode) {
+
                 var slider_id = self.$target.attr('data-prod-slider-id');
                 $.get("/website_argos/product_get_dynamic_slider", {
                     'slider-id': self.$target.attr('data-prod-slider-id') || '',
@@ -81,16 +81,15 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                                     },
                                 },
                             });
-                            
+
                             setTimeout(function(){
-                                var divWidth = $('.product-item .p-item-image a').width(); 
+                                var divWidth = $('.product-item .p-item-image a').width();
                                 $('.product-item .p-item-image a').height(divWidth);
                             },400);
-                            
+
                         });
                     }
                 });
-            }
         }
     });
     animation.registry.s_bizople_theme_multi_product_tab_snippet = animation.Class.extend({
@@ -115,7 +114,6 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                 });
 
             }
-            if (!this.editableMode) {
                 var slider_filter = self.$target.attr('data-multi-cat-slider-type');
                 $.get("/tabpro/product_multi_get_dynamic_slider", {
                     'slider-type': self.$target.attr('data-multi-cat-slider-type') || '',
@@ -155,21 +153,21 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                                     1000: {
                                         items: 4,
                                     },
-                                
+
                                 },
                             });
                             setTimeout(function(){
-                                var divWidth = $('.product_tab_slider_owl .product-item .p-item-image a').width(); 
+                                var divWidth = $('.product_tab_slider_owl .product-item .p-item-image a').width();
                                 $('.product_tab_slider_owl .product-item .p-item-image a').height(divWidth);
                             },400);
                         });
 
                     }
                 });
-            }
+
         }
     });
-    
+
     animation.registry.s_bizople_theme_blog_slider_snippet = animation.Class.extend({
         selector: ".blog_slider_owl",
         disabledInEditableMode: false,
@@ -178,7 +176,7 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
             if (this.editableMode) {
                 var $blog_snip = $('#wrapwrap').find('#biz_blog_slider_snippet');
                 var blog_name = _t("Blog Slider")
-                
+
                 _.each($blog_snip, function (single){
                     $(single).empty().append('<div class="container">\
                                                     <div class="block-title">\
@@ -187,7 +185,6 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                                                 </div>')
                 });
             }
-            if (!this.editableMode) {
                 var slider_filter = self.$target.attr('data-blog-slider-type');
                 $.get("/website_argos/second_blog_get_dynamic_slider", {
                     'slider-type': self.$target.attr('data-blog-slider-type') || '',
@@ -234,10 +231,9 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                         });
                     }
                 });
-            }
         }
     });
-    
+
     animation.registry.cat_slider_3 = animation.Class.extend({
         selector: ".cat_slider_3",
         disabledInEditableMode: false,
@@ -254,7 +250,6 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                                                 </div>')
                 });
             }
-            if (!this.editableMode) {
                 var slider_id = self.$target.attr('data-cat-slider-id');
                 $.get("/website_argos/category_slider_3", {
                     'slider-id': self.$target.attr('data-cat-slider-id') || '',
@@ -293,8 +288,7 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
                         })
                     }
                 });
-            }
         }
     });
-    
+
 });

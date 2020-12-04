@@ -90,9 +90,9 @@
                     <h3 style="margin-top: 18px;">
                         <t t-call="website_argos.product_item_stars"/>
                     </h3>
-                    <h3 id="price">
+                    <h3 id="price" t-if="product">
                         <a t-attf-href="/shop/product/#{ slug(product) }">
-                            <span t-field="product.list_price" t-options='{"widget": "monetary","display_currency": product.currency_id,}' style="color:black"/>
+                            <span t-esc="product and product.list_price" t-options='{"widget": "monetary","display_currency": product.currency_id,}' style="color:black"/>
                         </a>
                     </h3>
                 </div>
@@ -141,9 +141,9 @@
                                 t-att-value="request.csrf_token()" style="color:#ffffff;"/>
                             <input name="product_id"
                                 t-att-value="product.product_variant_id.id" type="hidden" />
-                            <button class="btn btn-link a-submit d-inline-block" style="color:#ffffff;"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/> Ajouter
+                            <button class="btn btn-link a-submit d-inline-block" style="color:#ffffff;" t-if="product"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/> Ajouter
                                 <span class="ml-1 mr-1 text-bold"> - </span>
-                                <span t-field="product.list_price" t-options='{"widget": "monetary","display_currency": product.currency_id,}'/>
+                                <span t-esc="product.list_price" t-options='{"widget": "monetary","display_currency": product.currency_id,}'/>
                             </button>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                                 t-att-value="product.product_variant_id.id" type="hidden" />
                             <button class="btn btn-link a-submit d-inline-block"><img src="/website_argos/static/src/img/cart.png" class="img img-fluid"/><span> Ajouter</span>
                             <span class="text-primary ml-1 mr-1 text-bold"> - </span>
-                            <span><t t-call="website_sale.product_price" /></span>
+                            <span t-if="product"><t t-call="website_sale.product_price" /></span>
                         </button>
                         </div>
                     </form>
@@ -499,7 +499,7 @@
                                                         <t t-set="count" t-value="0"/>
                                                         <t t-as="product" t-foreach="all_product">
                                                             <t t-if="count == 0">
-                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;">
+                                                                <div style="width:550px; float:left; height: 940px; border-radius: 8px; background-color: #ffffff;" t-if="product">
                                                                     <t t-call="website_map.ecomm_five_tab_first_big_img_multi_slider_products"/>
                                                                 </div>
                                                             </t>

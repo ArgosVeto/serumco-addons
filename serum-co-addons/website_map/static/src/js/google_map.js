@@ -226,12 +226,10 @@ let markers = [];
 var add;
 var map;
 var citylng;
+
 odoo.define('website_map.arounded_detailed', function (require) {
   var rpc = require('web.rpc')
-  var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
-          zoom: 10,
-          center: new google.maps.LatLng(44.837789,-0.57918),
-        });
+
   getLocation(function (position) {
             rpc.query({
           model: 'operating.unit',
@@ -248,6 +246,13 @@ odoo.define('website_map.arounded_detailed', function (require) {
                     var myLatLng2 = { lat: latitude, lng: longitude };
                     citylng = myLatLng2
                 }
+                var map=false;
+//                if (document.getElementById("googleMap_clinic")){
+//                  var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
+//                      zoom: 10,
+//                      center: new google.maps.LatLng(44.837789,-0.57918),
+//                    });
+//                    }
                 const marker = new google.maps.Marker({
                         position: myLatLng2,
                         // label:cities,
@@ -263,8 +268,7 @@ odoo.define('website_map.arounded_detailed', function (require) {
 //onclick function end
 
     });
-var i_go = document.getElementById("i_go");
-  i_go.onclick = function () {
+$("#i_go").click(function() {
     getLocation(function (position) {
     var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
     const directionsService = new google.maps.DirectionsService();
@@ -287,7 +291,7 @@ var i_go = document.getElementById("i_go");
   );
 
 });
-  }
+  });
 });
 function setMapOnAll(map) {
   for (let i = 0; i < markers.length; i++) {
