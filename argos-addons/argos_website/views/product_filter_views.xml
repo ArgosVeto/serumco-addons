@@ -7,6 +7,7 @@
             <field name="model">product.filter</field>
             <field name="arch" type="xml">
                 <tree string="Filters">
+                    <field name="centravet_id"/>
                     <field name="name"/>
                     <field name="is_filter_visible"/>
                 </tree>
@@ -21,6 +22,7 @@
                         <sheet>
                             <group>
                         <field name="name"/>
+                        <field name="centravet_id"/>
                         <field name="is_filter_visible"/>
                         <field name="product_filter_line_ids">
                             <tree editable="up">
