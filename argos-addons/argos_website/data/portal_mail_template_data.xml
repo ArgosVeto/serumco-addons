@@ -11,6 +11,7 @@
     <record model="mail.template" id="portal.mail_template_data_portal_welcome">
       <field name="email_from">digital@argos-veterinaire.fr</field>
       <field name="reply_to">digital@argos-veterinaire.fr</field>
+      <field name="auto_delete" eval="False"/>
     </record>
 
     <function name="write" model="ir.model.data">
@@ -30,6 +31,7 @@
     <record model="mail.template" id="website_profile.validation_email">
       <field name="email_from">${object.default_operating_unit_id.name or ''}</field>
       <field name="reply_to">${object.default_operating_unit_id.reply_email | safe}</field>
+      <field name="auto_delete" eval="False"/>
     </record>
 
     <function name="write" model="ir.model.data">
@@ -49,6 +51,7 @@
     <record model="mail.template" id="auth_signup.reset_password_email">
       <field name="email_from">${object.default_operating_unit_id.name or ''}</field>
       <field name="reply_to">${object.default_operating_unit_id.reply_email | safe}</field>
+      <field name="auto_delete" eval="False"/>
     </record>
 
     <function name="write" model="ir.model.data">
