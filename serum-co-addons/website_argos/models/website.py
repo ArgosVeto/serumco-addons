@@ -41,9 +41,15 @@ class Website(models.Model):
         return clinic_ids
 
     @api.model
-    def operating_unit_services(self):
-        service_ids = request.env['operating.unit.service'].sudo().search([],limit=6)
+    def operating_unit_services_first(self):
+        service_ids = request.env['operating.unit.service'].sudo().search([], order="id", limit=6)
         return service_ids
+
+    @api.model
+    def operating_unit_services_n(self):
+        service_ids = request.env['operating.unit.service'].sudo().search([], order="id",offset=6)
+        list_service = [service_ids[x:x + 6] for x in range(0, len(service_ids), 6)]
+        return list_service
 
     @api.model
     def default_category(self,c):

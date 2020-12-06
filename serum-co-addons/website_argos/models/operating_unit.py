@@ -10,6 +10,7 @@ class OperatingUnitservic(models.Model):
     _inherit = 'operating.unit.service'
 
     service_image = fields.Binary("Service Banner")
+    url = fields.Char(string="Url")
 
 class OperatingUnit(models.Model):
     _inherit = 'operating.unit'

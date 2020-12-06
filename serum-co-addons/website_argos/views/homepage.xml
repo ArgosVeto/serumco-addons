@@ -232,7 +232,7 @@
 									</div>
 									<div class="col-md-7 order">
 										<div id="service-carousel" class="carousel bs-slider slide  control-round indicators-line" data-touch="false" data-wrap="false" data-ride="" data-pause="hover" data-interval="false">
-											<t t-set="services" t-value="website.operating_unit_services()"/>
+											<t t-set="services" t-value="website.operating_unit_services_first()"/>
 											<!-- <t t-if="services"> -->
 
 								          	<div class="carousel-inner" role="listbox">
@@ -241,11 +241,10 @@
 								            			<t t-foreach="services" t-as="s">
 									            			<div class="col-6 mb-3">
 										            			<div class="service-box h-100 m16">
-										            				<a class="btn btn-primary p-0 text-md-left"  t-attf-href="/service-detail/#{slug(s.sudo())}" role="button">
+										            				<a class="btn btn-primary p-0 text-md-left"  t-attf-href="#{s.url}" role="button">
 												            			<div class="d-md-flex align-items-center">
 
-											            					<img class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />
-														            		
+											            					<img t-if ="s.service_image" style="width:32px!important;height:32px!important" alt="A 32x32 image" t-att-src="website.image_url(s, 'service_image')" />
 														            		<p class="text-white"><t t-esc="s.name"/></p>
 														            	</div>
 														            </a>
@@ -254,17 +253,18 @@
 									            		</t>        		
 									            	</div>
 								            	</div>
-								            	<div class="carousel-item ">
+												<t t-foreach="website.operating_unit_services_n()" t-as="services">
+								            	<div class="carousel-item">
 								            		<div class="row">
 								            			<t t-foreach="services" t-as="s">
 									            			<div class="col-6 mb-3">
 										            			<div class="service-box h-100 m16">
 
 										            				
-												            		<a class="btn btn-primary p-0 text-md-left"  t-attf-href="/service-detail/#{slug(s.sudo())}" role="button">
+												            		<a class="btn btn-primary p-0 text-md-left"  t-attf-href="#{s.url}" role="button">
 												            			<div class="d-md-flex align-items-center">
 
-											            					<img class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />				
+											            					<img style="width:32px!important;height:32px!important" class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />
 												            				<p class="text-white"><t t-esc="s.name"/></p>
 												            			</div>
 											            			</a>
@@ -273,7 +273,9 @@
 									            		</t> 
 									            	</div>
 									            </div>
+												</t>
 								          	</div>
+
 								          	<div class="slider-control">
 							              		<a class="left carousel-control-prev font-14" data-target="#service-carousel" role="button" data-slide="prev">
 								                	<span class="fa fa-long-arrow-left"/>
