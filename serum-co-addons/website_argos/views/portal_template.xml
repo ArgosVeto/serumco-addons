@@ -32,54 +32,135 @@
     </template>
 
    <!--  reqw -->
-    <template id="portal_template" name="Portal Template">
-        <t t-call="website.layout">
-            <div id="wrap"  class="">
-                <div class="row m-0 mx-md-3 my_content">
-                    <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
-                        <div class="top-links p-0">
-                            <div class="container">
-                                <ul class="nav navbar-nav flex-row">
-                                    <li class="nav-item mr32">
+    <template id="vue_ensemble" name="Vue ensemble">
+            <div class="row m-0 mx-md-3 my_content">
+                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+                    <div class="top-links p-0">
+                        <div class="container">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'portal'">
                                         <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
-                                    </li>
-                                    <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my/orders">Commandes</a>
-                                    </li>
-                                    <t t-if="next_appointment_id or pervious_appointment_id">
-                                        <li class="nav-item mr32">
-                                            <a class="nav-link" href="/my-appointment">Mes RDV</a>
-                                        </li>
                                     </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                    </t>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'order'">
+                                        <a class="nav-link active" href="/my/orders">Mes commandes</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my/orders">Mes commandes</a>
+                                    </t>
+                                </li>
                                     <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my/account">Mes adresses</a>
+                                    <t t-if="pageName == 'appointment'">
+                                        <a class="nav-link active" href="/my-appointment">Rendez-vous</a>
+                                    </t>
+                                   <t t-else="">
+                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                    </t>
                                     </li>
-                                    <li class="nav-item mr32">
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'address'">
+                                        <a class="nav-link active" href="/my/account">Mon adresse</a>
+                                    </t>
+                                   <t t-else="">
+                                        <a class="nav-link" href="/my/account">Mon adresse</a>
+                                    </t>
+                                 </li>
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'clinic'">
+                                        <a class="nav-link active" href="/my-clinic">Ma clinique</a>
+                                    </t>
+                                    <t t-else="">
                                         <a class="nav-link" href="/my-clinic">Ma clinique</a>
-                                    </li>
-                                    <li class="nav-item mr32">
+                                    </t>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'wishlist'">
+                                        <a class="nav-link active" href="/shop/wishlist">Mes produits favoris</a>
+                                    </t>
+                                    <t t-else="">
                                         <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
-                                    </li>
-                                    <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my/home">Mes infos personnelles</a>
-                                    </li>
-                                    <!-- <li class="nav-item m-0">
-                                        <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                    </li> -->
-                                </ul>
-                            </div>
+                                    </t>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
+                                </li>
+                               <li class="nav-item mr-32">
+                                   <t t-if="pageName == 'payment'">
+                                        <a class="nav-link active" href="/my/payment_method">Mes moyens de paiements</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my/payment_method">Mes moyens de paiements</a>
+                                    </t>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+    </template>
+    <template id="portal_template" name="Portal Template">
+        <t t-set="pageName" t-value="'portal'"/>
+        <t t-call="website.layout">
+            <div id="wrap"  class="">
+            <t t-call="website_argos.vue_ensemble"/>
+            <!--div class="row m-0 mx-md-3 my_content">
+                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
+                    <div class="top-links p-0">
+                        <div class="container">
+                            <ul class="nav navbar-nav flex-row">
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'portal'">
+                                        <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                    </t>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link active" href="/my/orders">Mes commandes</a>
+                                </li>
+                                    <li class="nav-item mr32">
+                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                    </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/account">Mon adresse</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <t t-if="pageName == 'clinic'">
+                                        <a class="nav-link acive" href="/my-clinic">Ma clinique</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
+                                    </t>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+                                </li>
+                                <li class="nav-item mr32">
+                                    <a class="nav-link" href="/my/perrsonal_details" onclik="active">Mes données personnelles</a>
+                                </li>
+                               <li class="nav-item m-0">
+                                    <a class="nav-link" href="/my/payment_method" onclick="active">Mes moyens de paiements</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div-->
                 <div class="container">
                     <div class="row my_content mb48">
-                        <div class="col-lg-12">
+                        <!--div class="col-lg-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                                 <li class="breadcrumb-item"><a href="#">Mon Compte</a></li>
                                 <li class="breadcrumb-item"><a href="#">Confirmer le rendez-vous</a></li>
                             </ol>
-                        </div>
+                        </div-->
                         <div class="col-lg-12 heading">
                             <h1 class="mt16 mb32">
                                 Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
@@ -275,7 +356,7 @@
                                                                 </form>
                                                                 </div>
                                                             </t>
-                                                            <t t-else="">
+                                                            <!--t t-else="">
                                                                 <div class="carousel-item" >
                                                                     <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
                                                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
@@ -288,7 +369,7 @@
                                                                         </div>
                                                                         <div class="col-md-6 col-6">
                                                                             <p t-field="fav_pro.product_id.public_categ_ids"/>
-                                                                            <strong><t t-esc="fav_pro.product_id.name"/></strong>
+                                                                          <strong><t t-esc="fav_pro.product_id.name"/></strong>
                                                                         </div>
                                                                     </div>
                                                                     <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
@@ -298,7 +379,7 @@
                                                                 </button>
                                                                 </form>
                                                                 </div>
-                                                            </t>
+                                                            </t-->
                                                             <t t-set="count" t-value="count + 1"/>
                                                         </t>
                                                     </div>
@@ -369,7 +450,7 @@
                                     <div class="card p-3">
                                         <div class="row title-row">
                                             <div class="col-md-12 col-12 text-left">
-                                                <strong>Mes cartes bancaires</strong>
+                                                <strong>Mes moyens de paiements</strong>
                                             </div>
                                         </div>
                                         <div  class="mes-cartes row" t-if="partner">
@@ -398,7 +479,8 @@
     
 
     <template id="clinic_shortlisted_template" name="Clinic Shortlisted">
-        <t t-call="website.layout">
+         <t t-set="pageName" t-value="'clinic'"/>
+         <t t-call="website.layout">
             <div id="wrap"  class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -479,12 +561,14 @@
             <t t-if="not orders">
                 <p>Vous n'avez aucune commande</p>
             </t>
+            <t t-set="pageName" t-value="'order'"/>
+            <t t-call="website_argos.vue_ensemble"/>
         </xpath>
     </template>
 
-    <template id="address_inherited_2" inherit_id="portal.portal_layout">
+    <!--template id="address_inherited_2" inherit_id="portal.portal_layout">
         <xpath expr="//div[hasclass('o_portal','container','mt-3')]" position="before">
-            <div class="row m-0 mx-md-3 my_content">
+           <div class="row m-0 mx-md-3 my_content">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
                     <div class="top-links p-0">
                         <div class="container">
@@ -520,27 +604,14 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row my_content">
-                    <div class="col-lg-12 br-info-portal">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mes adresses</a></li>
-                        </ol>
-                    </div>
-                    <div class="col-lg-12 heading" style=" height: 200px; background-color: rgba(99, 186, 233, 0.04);">
-                        <h1  style="text-align: center; margin-top: 80px;">
-                            Mes adresses
-                        </h1>
-                    </div>
-                </div>
-            </div>
         </xpath>
-    </template>
+    </template-->
 
     <template id="wishlist_inherited" inherit_id="website_sale_wishlist.product_wishlist">
         <xpath expr="//div[@id='oe_structure_website_sale_wishlist_product_wishlist_1']" position="before">
-            <div class="row m-0 mx-md-3 my_content">
+            <t t-set="pageName" t-value="'wishlist'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+           <!--div class="row m-0 mx-md-3 my_content">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
                     <div class="top-links p-0">
                         <div class="container">
@@ -568,14 +639,14 @@
                                 <li class="nav-item mr32">
                                     <a class="nav-link" href="/my/home">Mes infos personnelles</a>
                                 </li>
-                               <!--  <li class="nav-item m-0">
+                                <li class="nav-item m-0">
                                     <a class="nav-link" href="/my/payment_method">Mes cartes bancaires</a>
-                                </li> -->
+                                </li> 
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
             <div class="container">
                 <div class="row my_content">
                     <div class="col-lg-12">
@@ -602,7 +673,9 @@
 
     <template id="payment_method_inherited_2" inherit_id="payment.pay_methods">
         <xpath expr="//div[hasclass('wrap')]" position="before">
-            <div class="row m-0 mx-md-3 my_content">
+            <t t-set="pageName" t-value="'payment'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+            <!--div class="row m-0 mx-md-3 my_content">
                 <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
                     <div class="top-links p-0">
                         <div class="container">
@@ -637,7 +710,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
             <div class="container">
                 <div class="row my_content">
                     <div class="col-lg-12">
@@ -657,63 +730,77 @@
     </template>
 
     <template id="portal_my_details_inherited" inherit_id="portal.portal_my_details">
-    <xpath expr="//div[hasclass('o_portal_details')]" position="replace">
-                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mon adresse</a></li>
-                        </ol>
-       <div class="row" style="border: none">
-            <div class="col-lg-8 offset-lg-2 mt16 mb32">
-                <div class="row">
-                    <div t-attf-class="form-group col-md-4 div_name">
-                        <label class="col-form-label" for="name">Prénom *</label>
-                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname"/>
-                    </div>
-                    <div class="col-md-1"/>
-                    <div t-attf-class="form-group col-md-4 div_name">
-                        <label class="col-form-label" for="name">Nom *</label>
-                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname"/>
-                    </div>
-                    <div t-attf-class="form-group col-md-4 email">
-                        <label class="col-form-label" for="email">Adresse Email *</label>
-                        <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email"/>
-                    </div>
-                    <div class="col-md-1"/>
-                    <div t-attf-class="form-group col-md-4 phone">
-                        <label class="col-form-label" for="phone">N° de téléphone *</label>
-                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone"/>
-                    </div>
-                    <div t-attf-class="form-group col-md-12 street">
-                        <label class="col-form-label" for="street">Adresse *</label>
-                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
-                    </div>
-                    <div t-attf-class="form-group col-md-3 div_zip">
-                        <label class="col-form-label" for="zip">Code postal *</label>
-                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip"/>
-                    </div>
-                    <div t-attf-class="form-group col-md-5 div_city">
-                        <label class="col-form-label" for="city">Ville *</label>
-                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city"/>
-                    </div>
-                    <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
-                        <label class="col-form-label" for="country_id">Pays</label>
-                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
-                            <option value="">Pays...</option>
-                            <t t-foreach="countries or []" t-as="country">
-                                <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
-                                    <t t-esc="country.name"/>
-                                </option>
-                            </t>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mt16 mb32">
-                        <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
-                                        Enregistrer mes modifications
-                                    </button>
+     <xpath expr="//t" position="replace">
+        <t t-call="website.layout">
+        <div id="wrap" class='o_portal_wrap'>
+        <t t-set="pageName" t-value="'address'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+            <div class="row o_portal_details" style="border: none">
+                <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                    <h1  style="text-align: center; margin-top: 80px;">
+                       Mon adresse
+                    </h1>
+                 </div>
+            </div>
+        <div class="container">
+             <form action="/my/account" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="row" style="border: none">
+                    <div class="col-lg-8 offset-lg-2 mt16 mb32">
+                        <div class="row">
+                            <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
+                                <label class="col-form-label" for="name">Prénom</label>
+                                <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname"/>
+                            </div>
+                            <div class="col-md-1"/>
+                            <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
+                                <label class="col-form-label" for="name">Nom</label>
+                                <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname"/>
+                            </div>
+                            <div t-attf-class="form-group col-md-4 email o_website_form_required_custom">
+                                <label class="col-form-label" for="email">Adresse Email</label>
+                                <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email"/>
+                            </div>
+                            <div class="col-md-1"/>
+                            <div t-attf-class="form-group col-md-4 phoneo_website_form_required_custom">
+                                <label class="col-form-label" for="phone">N° de téléphone *</label>
+                                <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone"/>
+                            </div>
+                            <div t-attf-class="form-group col-md-12 street o_website_form_required_custom">
+                                <label class="col-form-label" for="street">Adresse</label>
+                                <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
+                            </div>
+                            <div t-attf-class="form-group col-md-3 div_zip o_website_form_required_custom">
+                                <label class="col-form-label" for="zip">Code postal</label>
+                                <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip"/>
+                            </div>
+                            <div t-attf-class="form-group col-md-5 div_city o_website_form_required_custom">
+                                <label class="col-form-label" for="city">Ville</label>
+                                <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city"/>
+                            </div>
+                            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
+                                <label class="col-form-label" for="country_id">Pays</label>
+                                <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                    <option value="">Pays...</option>
+                                    <t t-foreach="countries or []" t-as="country">
+                                        <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                            <t t-esc="country.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mt16 mb32">
+                                <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
+                                                Enregistrer mes modifications
+                                            </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+        </div>
+      </t>
     </xpath>
     </template>
 
@@ -915,7 +1002,7 @@
             </div>
     </xpath>
     </template>
-    
+
     <template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries" inherit_id="portal.portal_my_home" priority="15">
     </template>
 
