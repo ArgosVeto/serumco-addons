@@ -13,6 +13,13 @@
                     </h1>
                 </div>
             </xpath>
+            <sheet position="inside">
+                 <group>
+                        <group>
+                            <field name="url"/>
+                        </group>
+                 </group>
+            </sheet>
          </field>
     </record>
 </odoo>
