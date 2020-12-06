@@ -60,6 +60,11 @@
 		                        <li class="breadcrumb-item">
 		                            <a href="/shop">Boutique</a>
 		                        </li>
+		                        <li t-if="category.parent_id" class="breadcrumb-item">
+									<a t-att-href="'/shop/category/' + slug(category.parent_id)">
+ 			                            <span><t t-esc="category.parent_id.name"/></span>
+						            </a>
+		                        </li>
 		                        <li t-if="category" class="breadcrumb-item active">
 		                            <span><t t-esc="category.name"/></span>
 		                        </li>
@@ -69,9 +74,13 @@
 			                <div class="categ-info">
 			                	<h1><t t-esc='category.name'/></h1>
 			                </div>
-			                <t t-if="category.website_description">
-								<span><t t-raw='category.website_description'/></span>
-							</t>
+								<t t-if="category.website_description">
+					                <div class="categ-info" style="height: 300px; overflow: hidden;" id="description">
+										<span><t t-raw='category.website_description'  /></span>
+					                </div>
+									<p><a href="#nogo" onclick="document.getElementById('description').removeAttribute('style');
+										this.style.display = 'none';">Lire la suite  <img src="/website_argos/static/src/img/right.png"/></a></p>
+								</t>
 		 	                <div class="sub-categories mt32">
 			                	<ul class="nav nav-pills flex-row">
 									<t t-foreach="category" t-as="c">
@@ -79,7 +88,7 @@
 											<t t-if="c.child_id" >
 														<t t-foreach="c.child_id" t-as="c">
 																<li class="nav-item mr32">
-																	<a t-att-href="'/shop/category/%s'%slug(c)" class="nav nav-pills flex-column nav-hierarchy" t-att-title="'Read' + c.name"><span t-esc="c.name"></span></a>
+																	<a t-att-href="'/shop/category/%s'%slug(c)" class="nav nav-pills flex-column nav-hierarchy btn-outline-primary" t-att-title="'Read' + c.name"><span t-esc="c.name"></span></a>
 																</li>
 														</t>
 											</t>
