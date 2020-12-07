@@ -84,13 +84,13 @@
 									<div class="dropdown-menu js_usermenu" role="menu">
 										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 											<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
-											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Mes RDV</a>
-											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
+											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
 											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
-											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
-											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a>>
+											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
+											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiements</a>>
 											<a id="o_logout" class="dropdown-item px-0"
 												t-attf-href="/web/session/logout?redirect=/"
 												role="menuitem">Déconnexion</a>
@@ -181,13 +181,13 @@
 						<div class="dropdown-menu js_usermenu py-4" role="menu">
 							<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 								<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Commandes</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
 											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
-											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mes adresses</a>
+											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
 											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
-											<a t-attf-href="/my/home" role="menuitem" class="dropdown-item my-acc px-0">Mes infos personnelles</a>
-											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes cartes bancaires</a>
+											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
+											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiement</a>
 											<a id="o_logout" class="dropdown-item px-0"
 												t-attf-href="/web/session/logout?redirect=/"
 												role="menuitem">Déconnexion</a>

@@ -42,7 +42,7 @@
 	            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
 	                <t t-esc="ss and ss.name or ' - '" />
 	            </a>
-	            <div class="dropdown-menu service-list-group-item" role="menu">
+	            <div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
 	            	<t t-if="service">
 		                <t t-foreach="service" t-as="s">
 		                    <a role="menuitem" t-attf-href="/clinic-detail?service-type=#{s.sudo().id}" class="dropdown-item">
@@ -212,11 +212,11 @@
 							</div>
                         </div>
 
-                        <div class="clear-search mt8 ml8 clinic-type-b">
+                        <!--div class="clear-search mt8 ml8 clinic-type-b">
 				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
 				        		<span>CLEAR</span>
 				        	</a>
-						</div>
+						</div-->
 
                     </div>
                     </div>

@@ -82,7 +82,7 @@
 		                </div-->
 						<div class="container">
 							<div class="row my-appointment">
-								<div class="col-lg-12">
+								<!--div class="col-lg-12">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
 											<a href="/">Accueil</a>
@@ -91,19 +91,13 @@
 											<a href="/clinic-detail">Rendez-vous</a>
 										</li>
 									</ol>
-								</div>
+								</div-->
 
-								<div class="col-lg-12 heading">
-		                            <h1 class="mt16 mb32">
-		                                Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
-		                            </h1>
-		                            <p>
-		                                Retrouvez sur cette page lorem ipsum dolor sit amet 
-		                            </p>
-		                            <p class="mb48">
-		                                Nous Contacter
-		                            </p>
-		                        </div>
+								<div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+									<h1  style="text-align: center; margin-top: 80px;">
+										Rendez-vous
+									</h1>
+			                    </div>
                                 <t t-call="website_argos.all_my_appointment">
 									<t t-set="next" t-value="True"/>
 									<t t-set="recordset" t-value="new_appointment_ids"/>
@@ -165,7 +159,7 @@
 		                </div-->
 						<div class="container">
 							<div class="row my-appointment">
-								<div class="col-lg-12">
+								<!--div class="col-lg-12">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
 											<a href="/">Accueil</a>
@@ -174,19 +168,13 @@
 											<a href="/clinic-detail">Rendez-vous</a>
 										</li>
 									</ol>
-								</div>
+								</div-->
 
-								<div class="col-lg-12 heading">
-		                            <h1 class="mt16 mb32">
-		                                Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
-		                            </h1>
-		                            <p>
-		                                Retrouvez sur cette page lorem ipsum dolor sit amet 
-		                            </p>
-		                            <p class="mb48">
-		                                Nous Contacter
-		                            </p>
-		                        </div>
+								<div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+									<h1  style="text-align: center; margin-top: 80px;">
+										Rendez-vous
+									</h1>
+			                    </div>
                                 <t t-call="website_argos.all_my_appointment">
 									<t t-set="next" t-value="True"/>
 									<t t-set="recordset" t-value="new_appointment_ids"/>

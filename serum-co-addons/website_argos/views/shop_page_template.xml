@@ -78,6 +78,7 @@
 					                <div class="categ-info" style="height: 300px; overflow: hidden;" id="description">
 										<span><t t-raw='category.website_description'  /></span>
 					                </div>
+									<br/>
 									<p><a href="#nogo" onclick="document.getElementById('description').removeAttribute('style');
 										this.style.display = 'none';">Lire la suite  <img src="/website_argos/static/src/img/right.png"/></a></p>
 								</t>
