@@ -48,6 +48,7 @@ class SaleOrder(models.Model):
     is_incineris = fields.Boolean('Is Incineris', compute='_compute_is_incineris')
     invoice_creation_date = fields.Date('Invoice creation date')
     attachment_ids = fields.Many2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
+    image = fields.Binary(related='patient_id.image')
 
     def _compute_attachment_ids(self):
         for rec in self:
@@ -297,7 +298,6 @@ class SaleOrder(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['arrival_time'] = fields.Datetime.now()
         res = super(SaleOrder, self).create(vals)
         # TODO: integration V2 manage multiple contact for one portal access
         # portal_partner_ids = self.get_portal_partner(vals['partner_id'])
@@ -364,3 +364,27 @@ class SaleOrder(models.Model):
             'pickup_time': fields.Datetime.now(),
             'argos_state': 'consultation_done'
         })
+
+    def button_make_to_consult(self):
+        self.ensure_one()
+        vals_overriden = {
+            'origin_order_id': self.id,
+            'is_consultation': True,
+            'argos_state': 'in_progress',
+        }
+        new_consult = self.copy(vals_overriden)
+        action = self.env.ref('argos_sale.action_consultations').read()[0]
+        action.update({
+            'views': [(self.env.ref('argos_sale.consultation_view_order_form').id, 'form')],
+            'res_id': new_consult.id,
+            'target': 'current',
+        })
+        return action
+
+    def _track_subtype(self, init_values):
+        self.ensure_one()
+        if 'state' in init_values and self.state == 'sale' and self.is_consultation:
+            return self.env.ref('argos_sale.consult_mt_order_confirmed')
+        elif 'state' in init_values and self.state == 'sent' and self.is_consultation:
+            return self.env.ref('argos_sale.consult_mt_order_sent')
+        return super(SaleOrder, self)._track_subtype(init_values)
