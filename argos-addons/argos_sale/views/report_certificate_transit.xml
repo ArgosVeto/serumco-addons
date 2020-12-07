@@ -19,9 +19,9 @@
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="doc">
         <t t-call="web.external_layout">
-          <div class="page"
-               t-attf-style="background-image:url('/argos_sale/static/src/img/border.png'); background-size:contain; background-repeat: no-repeat; padding:16px">
-            <div class="container" style="line-height:100%">
+          <div class="page">
+            <div class="container"
+                 style="line-height:100%;background-image:url('/argos_sale/static/src/img/border.png'); background-size:contain; background-repeat: no-repeat; padding: 10px 30px 30px 30px;">
               <style>
                 h4{
                 text-align: center;
@@ -50,22 +50,24 @@
                 font-size:x-small;
                 }
               </style>
-              <h4>INTERNATIONAL SANITARY CERTIFICATE FOR THE
-                TRANSIT OF PETS</h4>
-              <p class="code"> GESUNDHEITSZEUGNIS FÜR DEN TRANSIT VON MITFAHRENDEN HAUSTIEREN CERTIFICATO SANITARIO PER IL TRANSITO DI
+              <h4>INTERNATIONAL SANITARY CERTIFICATE FOR THE TRANSIT OF PETS</h4>
+              <p class="code">GESUNDHEITSZEUGNIS FÜR DEN TRANSIT VON MITFAHRENDEN HAUSTIEREN CERTIFICATO SANITARIO PER IL TRANSITO DI
                 ANIMALI DA COMPAGNIA CERTIFICADO SANITARIO PARA IL TRANSITO DE LOS ANIMALES DE COMPANIA HEALTH CERTIFICATE PERMIT
-                DOMESTIC ANIMAL TO TRAVEL </p>
+                DOMESTIC ANIMAL TO TRAVEL
+              </p>
               <div class="p-size">
-                <span class="thick">Le soussigné, Dr Vétérinaire Sanitaire : </span>
-                <t t-esc="doc.employee_id.name"/><br/>
+                <span class="thick">Le soussigné, Dr Vétérinaire Sanitaire :</span>
+                <t t-esc="doc.employee_id.name"/>
+                <br/>
                 <span class="translation">The undersigned Dr Veterinary surgeon</span>
                 <br/>
               </div>
               <p class="p-size">
-                <span class="thick">Adresse : </span>
+                <span class="thick">Adresse :</span>
                 <t t-esc="doc.operating_unit_id.street"/>
                 <t t-esc="doc.operating_unit_id.zip"/>
-                <t t-esc="doc.operating_unit_id.city"/><br/>
+                <t t-esc="doc.operating_unit_id.city"/>
+                <br/>
                 <span class="translation">Address</span>
               </p>
 
@@ -81,41 +83,50 @@
                 </small>
               </p>
               <p class="p-size">
-                <span class="thick">Certifie que </span>
+                <span class="thick">Certifie que</span>
                 <t t-esc="doc.species_id.name"/>
-                <span class="thick">le Chat dont le signalement suit</span><br/>
-                <span class="translation">Certifies that <![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;]]> as described below</span>
+                <span class="thick">le Chat dont le signalement suit</span>
+                <br/>
+                <span class="translation">Certifies that <![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;]]> as
+                  described below
+                </span>
               </p>
               <div>
                 <div class="row">
                   <div class="col-6">
                     <p class="p-size">
-                      <span class="thick">Nom: </span>
-                      <t t-esc="doc.patient_id.name"/><br/>
+                      <span class="thick">Nom:</span>
+                      <t t-esc="doc.patient_id.name"/>
+                      <br/>
                       <span class="translation">Name</span>
                       <br/>
-                      <span class="thick">Sexe: </span>
-                      <t t-esc="doc.gender_id.name"/><br/>
+                      <span class="thick">Sexe:</span>
+                      <t t-esc="doc.gender_id.name"/>
+                      <br/>
                       <span class="translation">Sex</span>
                       <br/>
-                      <span class="thick">Date de naissance: </span>
-                      <span t-field="doc.patient_id.birthdate_date" t-options="{'format': 'dd/MM/yyyy'}"/><br/>
+                      <span class="thick">Date de naissance:</span>
+                      <span t-field="doc.patient_id.birthdate_date" t-options="{'format': 'dd/MM/yyyy'}"/>
+                      <br/>
                       <span class="translation">Date of birth</span>
                       <br/>
-                      <span class="thick">Race: </span>
-                      <t t-esc="doc.gender_id.name"/><br/>
+                      <span class="thick">Race:</span>
+                      <t t-esc="doc.gender_id.name"/>
+                      <br/>
                       <span class="translation">Breed</span>
                       <br/>
-                      <span class="thick">Robe et signes particuliers: </span>
-                      <t t-esc="doc.patient_id.robe_id.name"/><br/>
+                      <span class="thick">Robe et signes particuliers:</span>
+                      <t t-esc="doc.patient_id.robe_id.name"/>
+                      <br/>
                       <span class="translation">Coat and distinguishing marks</span>
                       <br/>
                     </p>
                   </div>
                   <div class="col-6" align="left center">
                     <p class="p-size">
-                      <span class="thick">N° d'identification : </span>
-                      <t t-esc="doc.patient_id.chip_identification"/><br/>
+                      <span class="thick">N° d'identification :</span>
+                      <t t-esc="doc.patient_id.chip_identification"/>
+                      <br/>
                       <span class="translation">Identification Number</span>
                     </p>
                     <br/>
@@ -123,21 +134,24 @@
                 </div>
               </div>
               <p class="p-size">
-                <span class="thick">Appartenant à M.: </span>
-                <t t-esc="doc.partner_id.name"/><br/>
+                <span class="thick">Appartenant à M.:</span>
+                <t t-esc="doc.partner_id.name"/>
+                <br/>
                 <span class="translation">Belonging to Mr.</span>
                 <br/>
-                <span class="thick">Demeurant à : </span>
+                <span class="thick">Demeurant à :</span>
                 <t t-esc="doc.partner_id.street"/>
+                <t t-esc="doc.partner_id.street2"/>,
                 <t t-esc="doc.partner_id.zip"/>
                 <t t-esc="doc.partner_id.city"/>
-                <t t-esc="doc.partner_id.country_id.name"/><br/>
+                <t t-esc="doc.partner_id.country_id.name"/>
+                <br/>
                 <span class="translation">Address</span>
               </p>
               <p class="p-size">
-                <span class="thick">
-                  has been examined today and found to be free from any clinical sign of contagious disease or
-                  allowing to suspect a contagious disease (rabies in particular).</span>
+                <span class="thick">has been examined today and found to be free from any clinical sign of contagious disease or allowing to
+                  suspect a contagious disease (rabies in particular).
+                </span>
               </p>
               <p style="font-size:x-small;">
                 heute von mir untersucht wurde und keine klinischen Anzeichen einer ansteckenden Krankheit oder stwaige Anzeichen zeigt,
@@ -153,8 +167,7 @@
                 possible contagious disease (in particuliar, rabies).
               </p>
               <p class="p-size">
-                <span class="thick">
-                  In witness whereof, this certificate is issued to serve and enforce legal rights.</span>
+                <span class="thick">In witness whereof, this certificate is issued to serve and enforce legal rights.</span>
               </p>
               <!--                <p class="p-size">-->
               <!--                  In witness whereof, this certificate has been drawn up to serve and assert legal rights. Made in ____________________ on-->
@@ -178,9 +191,9 @@
               <div class="row">
                 <div class="col-6">
                   <p class="p-size">
-                    <span class="thick">Made in </span>
+                    <span class="thick">Made in</span>
                     <t t-esc="doc.operating_unit_id.name"/>
-                    <span class="thick">, on </span>
+                    <span class="thick">, on</span>
                     <span t-field="doc.consultation_date" t-options="{'format': 'dd/MM/yyyy'}"/>
                   </p>
                   <br/>
@@ -193,7 +206,8 @@
                 </div>
                 <div class="col-6">
                   <p style="float: right;" class="p-size">
-                    <span style="float: right;" class="thick">Cachet et signature du Vétérinaire</span><br/>
+                    <span style="float: right;" class="thick">Cachet et signature du Vétérinaire</span>
+                    <br/>
                     <span style="float: right;" class="translation">Stamp and signature of veterinary surgeon</span>
                   </p>
                   <br/>

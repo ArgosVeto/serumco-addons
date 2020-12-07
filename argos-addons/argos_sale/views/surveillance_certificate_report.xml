@@ -20,7 +20,7 @@
       <t t-call="web.html_container">
         <t t-foreach="docs" t-as="doc">
           <t t-call="web.external_layout">
-            <div class="page">
+            <div class="page" style="line-height:130%">
               <style>
                 table, th, td {
                 border: 0px;
@@ -28,7 +28,6 @@
                 font-size:15px;
                 }
                 table {
-                width:28%;
                 border-collapse: collapse;
                 }
                 td
@@ -54,7 +53,7 @@
                 font-size:15px;
                 }
               </style>
-              <h3 style="text-align: center; text-transform: uppercase;">veterinary surveillance certificate</h3>
+              <h3 style="text-align: center; text-transform: uppercase;color:#de1a46;">veterinary surveillance certificate</h3><br/>
               <p class="code">
                 Rural Code, article 211-25, ministerial decree of 23 September 1999 relating to the duration and methods of veterinary
                 surveillance of dogs and cats transferred to the manager of a shelter for their adoption and coming from a structure
@@ -62,7 +61,7 @@
               </p><br/>
               <p class="text">
                 I, the undersigned, Dr <t t-esc="doc.employee_id.name"/>, health veterinarian at <t
-                  t-esc="doc.employee_id.operating_unit_ids.name"/><br/>
+                  t-esc="doc.operating_unit_id.name"/><br/>
                 certify that the <t t-esc="doc.species_id.name"/>
               </p>
               <table style="border:none !important;">
@@ -94,7 +93,7 @@
                   <td>Id. electronic</td>
                   <td><t t-esc="doc.patient_id.chip_identification"/></td>
                 </tr>
-              </table><br/>
+              </table><br/><br/>
               <div>
                 <div class="row">
                   <div class="col-7">
@@ -110,12 +109,13 @@
                       </tr>
                       <tr>
                         <td>Address</td>
-                        <td><t t-esc="doc.partner_id.street"/></td>
+                        <td><t t-esc="doc.partner_id.street"/> <t t-esc="doc.partner_id.street2"/><br/><t
+                            t-esc="doc.partner_id.zip"/> <t
+                            t-esc="doc.partner_id.city"/></td>
                       </tr>
                       <tr>
                         <td>City</td>
-                        <td><t t-esc="doc.partner_id.zip"/> <t t-esc="doc.partner_id.city"/>
-                          <t t-esc="doc.partner_id.country_id.name"/></td>
+                        <td><t t-esc="doc.partner_id.country_id.name"/></td>
                       </tr>
                       <tr>
                         <td>Phone</td>
@@ -150,14 +150,15 @@
                   </div>
                 </div>
               </div><br/>
-              <p class="text">Adopted on ____________________ at the refuge of ____________________, where he had been staying since ____________________</p>
+              <p class="text">Adopted on ____________________ at the refuge of ____________________, where he had been staying since
+                ____________________</p>
               <p class="text" style="font-weight: 600; text-align: center;  margin-left: 60px; margin-right: 60px;">was reviewed by me
                 this day. He is in good health and has no symptoms of rabies in particular.</p>
               <p class="text">In witness whereof, this certificate has been drawn up to serve and assert legal rights. Made in
                 ____________________
                 on <span t-field="doc.consultation_date" t-options="{'format': 'dd/MM/yyyy'}"/></p>
-              <p class="text">Stamp and signature of veterinary surgeon</p><br/><br/><br/><br/>
-              <p class="text">Visa from the police commissioner or the town hall of</p><br/><br/><br/><br/>
+              <p class="text">Stamp and signature of veterinary surgeon</p><br/><br/><br/><br/><br/>
+              <p class="text">Visa from the police commissioner or the town hall of</p><br/><br/><br/><br/><br/>
               <p class="nota">Note: This certificate is personal and inalienable. The costs relating to its establishment are the
                 responsibility of the owner or keeper of the animal (article 1385 of the civil code). It must be stamped, if necessary,
                 with the stamp of the authority vested with police powers.</p>

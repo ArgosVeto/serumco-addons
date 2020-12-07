@@ -8,7 +8,6 @@ import json
 import requests
 from datetime import datetime, timedelta
 
-
 _logger = logging.getLogger(__name__)
 
 
@@ -69,7 +68,6 @@ class SaleOrder(models.Model):
         else:
             ret = 'not identified'
         return ret
-
 
     def get_auth_token(self, log_res_id=None, log_model_name=None):
         """
@@ -181,6 +179,7 @@ class SaleOrder(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'new',
         }
+
     @api.depends('order_line', 'order_line.product_id', 'order_line.product_id.act_type')
     def _compute_is_incineris(self):
         for rec in self:
@@ -299,8 +298,6 @@ class SaleOrder(models.Model):
     @api.model
     def create(self, vals):
         vals['arrival_time'] = fields.Datetime.now()
-        if vals.get('operating_unit_id', False):
-            vals.update(self.get_operating_unit_vals(vals))
         res = super(SaleOrder, self).create(vals)
         # TODO: integration V2 manage multiple contact for one portal access
         # portal_partner_ids = self.get_portal_partner(vals['partner_id'])
@@ -310,8 +307,13 @@ class SaleOrder(models.Model):
             res.send_notification_mail()
         return res
 
-    @api.model
-    def get_operating_unit_vals(self, vals):
+    def write(self, vals):
+        res = super(SaleOrder, self).write(vals)
+        if vals.get('operating_unit_id', False):
+            self.update_operating_unit_vals(vals)
+        return res
+
+    def update_operating_unit_vals(self, vals):
         update_vals = {}
         operating_unit = self.env['operating.unit'].browse(vals['operating_unit_id'])
         type_obj = self.env['stock.picking.type']
@@ -319,7 +321,14 @@ class SaleOrder(models.Model):
         update_vals['company_id'] = operating_unit.company_id.id
         if types:
             update_vals['warehouse_id'] = types[:1].warehouse_id.id
-        return update_vals
+        for rec in self:
+            if rec.team_id and rec.team_id.company_id.id != operating_unit.company_id.id:
+                update_vals['team_id'] = False
+            if rec.fiscal_position_id and rec.fiscal_position_id.company_id.id != operating_unit.company_id.id:
+                rec.write({'fiscal_position_id': False})
+            if rec.analytic_account_id and rec.analytic_account_id.company_id.id != operating_unit.company_id.id:
+                rec.write({'fiscal_position_id': False})
+        self.write(update_vals)
 
     @api.onchange('canvas_id')
     def onchange_canvas_id(self):
