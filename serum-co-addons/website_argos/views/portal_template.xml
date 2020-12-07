@@ -468,7 +468,21 @@
                                         <a role="button" href="/my/payment_method" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes cartes bancaires</a>
                                     </div>
                                 </div>
-
+                                 <div class="col-md-12 o-8">
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes données personnelles</strong>
+                                            </div>
+                                        </div>
+                                        <span class="mt32"><p>Nous respectons vos droits à la confidentialité et vous fournissons un accès aux données personnelles que vous avez pu fournir via notre site</p></span>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 o-8">
+                                    <div class="card p-3">
+                                        <a role="button" href="/my/personal_details" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes données personnelles</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
