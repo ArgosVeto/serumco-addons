@@ -39,7 +39,7 @@ class ResPartner(models.Model):
             action_domain = [('partner_id', '=', self.id)]
             context['default_partner_id'] = self.id
         context['default_employee_id'] = self.employee_id and self.employee_id.id or False
-        context['default_operating_unit_id'] = self.operating_unit_id and self.operating_unit_id.id or False
+        context['default_operating_unit_id'] = self.env.user.default_operating_unit_id and self.env.user.default_operating_unit_id.id or False
         return {
             'name': _('Planning'),
             'domain': action_domain,
