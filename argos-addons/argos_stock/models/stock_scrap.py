@@ -14,7 +14,7 @@ class StockScrap(models.Model):
         ('return_medicine', 'Customer return cannot be reintegrated to stock - medicine'),
         ('return_other', 'Customer return cannot be reintegrated to stock - other'),
         ('batch_recall', 'batch recall by laboratory - destruction on site')
-    ], 'Scrap reason', required=False)
+    ], 'Scrap reason', required=True)
 
     def action_validate(self):
         if self._context.get('default_picking_id', False):

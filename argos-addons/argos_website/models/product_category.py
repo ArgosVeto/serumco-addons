@@ -10,8 +10,8 @@ class ProductCategory(models.Model):
     name = fields.Char(related='public_category_id.name', readonly=False)
     sequence = fields.Integer(related='public_category_id.sequence', readonly=False)
     public_category_id = fields.Many2one('product.public.category', 'Public Category',
-                                         # required=False,
-                                         # ondelete='cascade'
+                                         required=False,
+                                         ondelete='cascade'
                                          )
 
 
