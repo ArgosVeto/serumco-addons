@@ -17,7 +17,6 @@
         'stock_operating_unit',
         'base_gs1_barcode',
     ],
-    'external_dependencies': {'python': ['biip']},
     'data': [
         # security
         'security/ir.model.access.csv',
