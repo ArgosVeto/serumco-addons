@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class ProductTemplate(models.Model):
+class StockInventory(models.Model):
     _inherit = 'stock.inventory'
 
     name = fields.Char(default=fields.Date.today().strftime("%d/%m/%Y"))
