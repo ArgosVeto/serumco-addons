@@ -245,7 +245,7 @@
 												            			<div class="d-md-flex align-items-center">
 
 											            					<img t-if ="s.service_image" style="width:32px!important;height:32px!important" alt="A 32x32 image" t-att-src="website.image_url(s, 'service_image')" />
-														            		<p class="text-white"><t t-esc="s.name"/></p>
+														            		<p style="margin-left:10px!important;" class="text-white"><t t-esc="s.name"/></p>
 														            	</div>
 														            </a>
 											            		</div>
@@ -259,18 +259,16 @@
 								            			<t t-foreach="services" t-as="s">
 									            			<div class="col-6 mb-3">
 										            			<div class="service-box h-100 m16">
-
-										            				
-												            		<a class="btn btn-primary p-0 text-md-left"  t-attf-href="#{s.url}" role="button">
+										            				<a class="btn btn-primary p-0 text-md-left"  t-attf-href="#{s.url}" role="button">
 												            			<div class="d-md-flex align-items-center">
 
-											            					<img style="width:32px!important;height:32px!important" class="img img-fluid" t-att-src="website.image_url(s, 'service_image')" />
-												            				<p class="text-white"><t t-esc="s.name"/></p>
-												            			</div>
-											            			</a>
+											            					<img style="width:32px!important;height:32px!important" alt="A 32x32 image" t-att-src="website.image_url(s, 'service_image')" />
+														            		<p style="margin-left:10px!important;" class="text-white"><t t-esc="s.name"/></p>
+														            	</div>
+														            </a>
 											            		</div>
 										            		</div>
-									            		</t> 
+									            		</t>
 									            	</div>
 									            </div>
 												</t>
