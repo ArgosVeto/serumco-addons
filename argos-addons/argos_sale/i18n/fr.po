@@ -1084,13 +1084,13 @@ msgstr ""
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
 msgid ""
-"<span class=\"thick\">\n"
-"                    has been examined today and found to be free from any clinical sign of contagious disease or\n"
-"                    allowing to suspect a contagious disease (rabies in particular).</span>"
+"<span class=\"thick\">has been examined today and found to be free from any clinical sign of contagious disease or allowing to\n"
+"                  suspect a contagious disease (rabies in particular).\n"
+"                </span>"
 msgstr ""
-"<span class=\"thick\">\n"
-"                    a été examiné ce jour et reconnu indemne de tout signe clinique de maladie contagieuse ou\n"
-"                    de signe permettant de suspecter une maladie contagieuse (rage en particulier).</span>"
+"<span class=\"thick\">a été examiné ce jour et reconnu indemne de tout signe clinique de maladie contagieuse ou de signe permettant de\n"
+"                  suspecter une maladie contagieuse (rage en particulier).\n"
+"                </span>"
 
 #. module: argos_sale
 #: model:ir.actions.report,name:argos_sale.report_transit_certificate_id
@@ -1104,12 +1104,9 @@ msgstr "Certificat De Surveillance"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
-msgid ""
-"INTERNATIONAL SANITARY CERTIFICATE FOR THE\n"
-"                  TRANSIT OF PETS"
-msgstr ""
-"CERTIFICAT SANITAIRE INTERNATIONAL POUR\n"
-"                  LE TRANSIT DES ANIMAUX DE COMPAGNIE"
+msgid "INTERNATIONAL SANITARY CERTIFICATE FOR THE TRANSIT OF PETS"
+msgstr "CERTIFICAT SANITAIRE INTERNATIONAL POUR LE TRANSIT DES ANIMAUX DE COMPAGNIE"
+
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
