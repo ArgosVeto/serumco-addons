@@ -11,7 +11,7 @@ class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
     _inherits = {"planning.slot": "planning_slot_id"}
 
-    planning_slot_id = fields.Many2one('planning.slot', string='Planning', required=False, ondelete='cascade')
+    planning_slot_id = fields.Many2one('planning.slot', string='Planning', required=True, ondelete='cascade')
     appointment_stop = fields.Datetime('Appointment Stop')
     name = fields.Text(related='planning_slot_id.name', readonly=False)
     start = fields.Datetime(related='planning_slot_id.start_datetime')

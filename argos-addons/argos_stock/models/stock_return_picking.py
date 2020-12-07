@@ -14,7 +14,7 @@ class StockReturnPicking(models.TransientModel):
         ('improper_promotional', 'Non-compliant products - promotional conditions'),
         ('error', 'Order error'),
         ('batch_recall', 'Batch recall by laboratory')
-    ], 'Return reason', required=False)
+    ], 'Return reason', required=True)
 
     def create_returns(self):
         self.ensure_one()
