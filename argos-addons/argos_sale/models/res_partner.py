@@ -49,6 +49,8 @@ class ResPartner(models.Model):
             'default_patient_id': self.id,
             'default_employee_id': self.employee_id.id,
             'default_is_consultation': True,
+            'default_slot_id': self._context.get('default_slot_id'),
+            'default_partner_id': self._context.get('default_partner_id'),
         })
         return action
 
