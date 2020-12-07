@@ -96,3 +96,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale_operating_unit.view_sales_order_filter
 msgid "Operating Unit"
 msgstr "Clinique"
+
+#. module: product_expiry
+#: model:ir.model.fields,field_description:product_expiry.field_stock_production_lot__life_date
+msgid "End of Life Date"
+msgstr "Date de Péremption"

@@ -208,11 +208,6 @@ msgid "Description on Delivery Orders"
 msgstr "Conseils d'utilisation"
 
 #. module: argos_stock
-#: model:ir.model.fields,field_description:argos_stock.field_stock_production_lot__life_date
-msgid "End of Life Date"
-msgstr "Date de Péremption"
-
-#. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption_1
 msgid "Expiration Date"
