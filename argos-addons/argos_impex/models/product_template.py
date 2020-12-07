@@ -658,7 +658,7 @@ class ProductTemplate(models.Model):
                 attribute_values = product_attr_value_obj.manage_attribute_values(values, attribute, logger)
                 if attribute_lines:
                     # attribute_lines.write({'value_ids': [(4, idx) for idx in attribute_values.ids]})
-                    attribute_lines.write({'product_filter_line_ids': [(4, idx) for idx in attribute_values.ids]})
+                    attribute_lines.write({'filter_line_ids': [(4, idx) for idx in attribute_values.ids]})
                     # TODO: manage attribute value deletion
                 else:
                     # product.write({'attribute_line_ids': [(0, 0, {'attribute_id': attribute.id,
