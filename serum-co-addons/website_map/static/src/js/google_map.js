@@ -268,30 +268,30 @@ odoo.define('website_map.arounded_detailed', function (require) {
 //onclick function end
 
     });
-$("#i_go").click(function() {
-    getLocation(function (position) {
-    var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-    directionsService.route(
-    {
-      origin: myLatLng,
-      destination: citylng,
-      travelMode: google.maps.TravelMode.DRIVING,
-    },
-    (response, status) => {
-      if (status === "OK") {
-        deleteMarkers();
-        directionsRenderer.setDirections(response);
-      } else {
-        window.alert("Sorry! unable to find route");
-      }
-    }
-  );
-
-});
-  });
+//$("#i_go").click(function() {
+//    getLocation(function (position) {
+//    var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
+//    const directionsService = new google.maps.DirectionsService();
+//    const directionsRenderer = new google.maps.DirectionsRenderer();
+//    directionsRenderer.setMap(map);
+//    directionsService.route(
+//    {
+//      origin: myLatLng,
+//      destination: citylng,
+//      travelMode: google.maps.TravelMode.DRIVING,
+//    },
+//    (response, status) => {
+//      if (status === "OK") {
+//        deleteMarkers();
+//        directionsRenderer.setDirections(response);
+//      } else {
+//        window.alert("Sorry! unable to find route");
+//      }
+//    }
+//  );
+//
+//});
+//  });
 });
 function setMapOnAll(map) {
   for (let i = 0; i < markers.length; i++) {
