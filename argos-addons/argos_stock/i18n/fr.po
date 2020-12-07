@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0+e\n"
+"Project-Id-Version: Odoo Server 13.0+e-20201007\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-04 15:08+0000\n"
-"PO-Revision-Date: 2020-12-04 15:08+0000\n"
+"POT-Creation-Date: 2020-12-04 14:28+0000\n"
+"PO-Revision-Date: 2020-12-04 14:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -235,6 +235,7 @@ msgstr "Conseils d'utilisation"
 
 #. module: argos_stock
 #: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption
+#: model:ir.model.fields,field_description:argos_stock.field_stock_move_line__peremption_1
 msgid "Expiration Date"
 msgstr "Date de péremption "
 
@@ -265,6 +266,17 @@ msgid "Is prescription"
 msgstr " Est une ordonnance"
 
 #. module: argos_stock
+#: model:ir.model,name:argos_stock.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lot/N° série"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "No negative quantities allowed"
+msgstr "Les quantités négatives ne sont pas autorisées"
+
+#. module: argos_stock
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__improper_date
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__improper_date
 msgid "Non-compliant products - expiration date too short"
@@ -289,6 +301,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_return_picking__return_reason__no_order
 msgid "Not ordered products"
 msgstr "Produits non commandés"
+
+#. module: argos_stock
+#: model:ir.model.fields,help:argos_stock.field_stock_move_line__partner_id
+msgid ""
+"Optional address where goods are to be delivered, specifically used for "
+"allotment"
+msgstr ""
 
 #. module: argos_stock
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__return_reason__error
@@ -446,6 +465,35 @@ msgid "Tattoo n°"
 msgstr "N° du tatouage"
 
 #. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "The date on the Lot/Serial has expired"
+msgstr "La date sur le lot / la série a expiré"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "The given GTIN code %s doesn't match with the product GTIN code %s"
+msgstr "Le code GTIN% s indiqué ne correspond pas au code GTIN du produit% s"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid ""
+"The quantity done for the product \"%s\" doesn't respect the rounding "
+"precision                                   defined on the unit of measure "
+"\"%s\". Please change the quantity done or the"
+"                                   rounding precision of your unit of "
+"measure."
+msgstr ""
+"La quantité renseignée pour l' article \"%s\" ne respecte pas les règles "
+"d'arrondissement définies dans l'unité de mesure \"%s\". Veuillez changer la"
+" quantité renseignée ou les règles d'arrondissement de votre unité de "
+"mesure."
+
+#. module: argos_stock
+
 #: model_terms:ir.actions.act_window,help:argos_stock.action_arg_prescription
 msgid "This action allows you to view patient prescriptions"
 msgstr "Cette action vous permet de visualiser les ordonnances des patients"
@@ -490,6 +538,12 @@ msgstr "Date d'utilisation après premier usage dépassée"
 #: model_terms:ir.ui.view,arch_db:argos_stock.report_template_prescription
 msgid "Weight in kg:"
 msgstr "Poids en kg:"
+
+#. module: argos_stock
+#: code:addons/argos_stock/models/stock_move_line.py:0
+#, python-format
+msgid "You need to supply a Lot/Serial number for product %s."
+msgstr "Vous devez fournir un numéro de Lot/de Série pour l'article %s."
 
 #. module: argos_stock
 #: model:ir.model.fields.selection,name:argos_stock.selection__stock_picking__scrap_reason__batch_recall

@@ -7,6 +7,8 @@
     <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
     <field name="arch" type="xml">
       <field name="qty_done" position="before">
+        <field name="peremption" invisible="1"/>
+        <field name="peremption_1" readonly="1" force_save="1" widget="date"/>
         <field name="free_unit" modifiers="{'column_invisible':[('picking_code', '!=', 'incoming')]}"/>
       </field>
     </field>
