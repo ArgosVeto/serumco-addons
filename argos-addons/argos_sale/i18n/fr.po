@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-19 07:14+0000\n"
-"PO-Revision-Date: 2020-11-19 07:14+0000\n"
+"POT-Creation-Date: 2020-12-07 07:05+0000\n"
+"PO-Revision-Date: 2020-12-07 07:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -99,6 +99,11 @@ msgstr "Actes"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
+msgid "Acts and Products"
+msgstr "Actes et Produits"
+
+#. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Add a note"
 msgstr "Ajouter une note"
 
@@ -187,7 +192,7 @@ msgstr "Annuler"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__canvas_id
 msgid "Canvas"
-msgstr "Canevas"
+msgstr "Trame de RDV"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_consultation_type__chapters
@@ -206,11 +211,6 @@ msgid "Clinical"
 msgstr "Clinique"
 
 #. module: argos_sale
-#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
-msgid "Command Lines"
-msgstr "Lignes de commande"
-
-#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__comment
 msgid "Comment"
 msgstr "Commentaire"
@@ -227,6 +227,24 @@ msgid "Confirm"
 msgstr "Confirmer"
 
 #. module: argos_sale
+#: model:mail.message.subtype,description:argos_sale.consult_mt_order_confirmed
+#: model:mail.message.subtype,name:argos_sale.consult_mt_order_confirmed
+msgid "Consult confirmed"
+msgstr "Consultation confirmée"
+
+#. module: argos_sale
+#: code:addons/argos_sale/models/mail_thread.py:0
+#, python-format
+msgid "Consult created"
+msgstr "Consultation créée"
+
+#. module: argos_sale
+#: model:mail.message.subtype,description:argos_sale.consult_mt_order_sent
+#: model:mail.message.subtype,name:argos_sale.consult_mt_order_sent
+msgid "Consult sent"
+msgstr "Consultation envoyé"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 #: model_terms:ir.ui.view,arch_db:argos_sale.res_patient_view_form_inherit
 msgid "Consultation"
@@ -236,7 +254,7 @@ msgstr "Consultation"
 #: model:ir.actions.act_window,name:argos_sale.action_open_consultation_canvas
 #: model:ir.ui.menu,name:argos_sale.menu_settings_consultation_canvas
 msgid "Consultation Canvas"
-msgstr "Canevas"
+msgstr "Trames"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__consultation_date
@@ -363,6 +381,11 @@ msgid "Delivered"
 msgstr "Livré"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__qty_delivered
+msgid "Delivered Quantity"
+msgstr "Qté livrée"
+
+#. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_api_information_wizard__description
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Description"
@@ -371,7 +394,13 @@ msgstr "Informations"
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__diagnostic_ids
 msgid "Diagnostic"
-msgstr "Diagnostiques"
+msgstr "Diagnostics"
+
+#. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_open_diagnostics
+#: model:ir.ui.menu,name:argos_sale.menu_settings_diagnostics
+msgid "Diagnostics"
+msgstr "Diagnostics"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -399,6 +428,11 @@ msgstr "DEMANDE D'EUTHANASIE"
 #: model_terms:ir.ui.view,arch_db:argos_sale.product_template_form_view_inherit
 msgid "Editable Pack"
 msgstr "Pack modifiable"
+
+#. module: argos_sale
+#: model:ir.model,name:argos_sale.model_mail_thread
+msgid "Email Thread"
+msgstr "Discussion par email"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__employee_id
@@ -446,6 +480,12 @@ msgid "Hypothese"
 msgstr "Hypothèses"
 
 #. module: argos_sale
+#: model:ir.actions.act_window,name:argos_sale.action_open_hypotheses
+#: model:ir.ui.menu,name:argos_sale.menu_settings_hypotheses
+msgid "Hypotheses"
+msgstr "Hypothèses"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.euthanasia_request_pdf
 msgid ""
 "I declare on my honor that this animal has not, to my knowledge, bitten or "
@@ -477,6 +517,11 @@ msgid "Id. electronic"
 msgstr "Id. electronique"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order__image
+msgid "Image"
+msgstr "Image"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Imagery"
 msgstr "Imagerie"
@@ -506,6 +551,11 @@ msgstr "Date de création de facture"
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Invoiced"
 msgstr "Facturé"
+
+#. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__qty_invoiced
+msgid "Invoiced Quantity"
+msgstr "Quantité facturée"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
@@ -584,6 +634,11 @@ msgid "Made in ................................................ the"
 msgstr "Fait, à ................................................ le"
 
 #. module: argos_sale
+#: model_terms:ir.ui.view,arch_db:argos_sale.sale_order_view_form_inherit
+msgid "Make Into Consult"
+msgstr "Transformer en consultation"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Modify consultation completed"
 msgstr "Modifier consultation terminée"
@@ -647,6 +702,7 @@ msgstr "Pathologies & Intolérances"
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order__patient_id
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__patient_id
 #: model:ir.model.fields,field_description:argos_sale.field_sale_report__patient_id
+#: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Patient"
 msgstr "Animal"
 
@@ -689,6 +745,11 @@ msgid "Promotions"
 msgstr "Promotions"
 
 #. module: argos_sale
+#: model:ir.model.fields,field_description:argos_sale.field_sale_order_line__product_uom_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Quantity:"
 msgstr "Quantité:"
@@ -703,7 +764,7 @@ msgstr "Race"
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.consultation_view_order_form
 msgid "Reason For Appointment"
-msgstr "Raison du rendez-vous"
+msgstr "Nature du RDV"
 
 #. module: argos_sale
 #: model:ir.model.fields,field_description:argos_sale.field_sale_order_refer__consultation_type_id
@@ -932,11 +993,6 @@ msgstr ""
 "object.name)"
 
 #. module: argos_sale
-#: model:ir.actions.report,name:argos_sale.report_surveillance_certificate
-msgid "Surveillance Certificate"
-msgstr "Certificat De Surveillance"
-
-#. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid ", health veterinarian at"
 msgstr ", vétérinaire sanitaire à"
@@ -1022,8 +1078,7 @@ msgstr ""
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
 msgid "Stamp and signature of veterinary surgeon"
-msgstr "Cachet et Signature du vétérinaire
-"
+msgstr "Cachet et Signature du vétérinaire"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.report_template_surveillance
@@ -1084,13 +1139,13 @@ msgstr ""
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
 msgid ""
-"<span class=\"thick\">\n"
-"                    has been examined today and found to be free from any clinical sign of contagious disease or\n"
-"                    allowing to suspect a contagious disease (rabies in particular).</span>"
+"<span class=\"thick\">has been examined today and found to be free from any clinical sign of contagious disease or allowing to\n"
+"                  suspect a contagious disease (rabies in particular).\n"
+"                </span>"
 msgstr ""
-"<span class=\"thick\">\n"
-"                    a été examiné ce jour et reconnu indemne de tout signe clinique de maladie contagieuse ou\n"
-"                    de signe permettant de suspecter une maladie contagieuse (rage en particulier).</span>"
+"<span class=\"thick\">a été examiné ce jour et reconnu indemne de tout signe clinique de maladie contagieuse ou de signe permettant de\n"
+"                  suspecter une maladie contagieuse (rage en particulier).\n"
+"                </span>"
 
 #. module: argos_sale
 #: model:ir.actions.report,name:argos_sale.report_transit_certificate_id
@@ -1104,12 +1159,9 @@ msgstr "Certificat De Surveillance"
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
-msgid ""
-"INTERNATIONAL SANITARY CERTIFICATE FOR THE\n"
-"                  TRANSIT OF PETS"
-msgstr ""
-"CERTIFICAT SANITAIRE INTERNATIONAL POUR\n"
-"                  LE TRANSIT DES ANIMAUX DE COMPAGNIE"
+msgid "INTERNATIONAL SANITARY CERTIFICATE FOR THE TRANSIT OF PETS"
+msgstr "CERTIFICAT SANITAIRE INTERNATIONAL POUR LE TRANSIT DES ANIMAUX DE COMPAGNIE"
+
 
 #. module: argos_sale
 #: model_terms:ir.ui.view,arch_db:argos_sale.transit_certificate_report
