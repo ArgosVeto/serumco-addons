@@ -577,6 +577,11 @@
             </t>
             <t t-set="pageName" t-value="'order'"/>
             <t t-call="website_argos.vue_ensemble"/>
+            <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+                <h1  style="text-align: center; margin-top: 80px;">
+                     Mes commandes
+                </h1>
+            </div>
         </xpath>
     </template>
 
@@ -663,22 +668,16 @@
             </div-->
             <div class="container">
                 <div class="row my_content">
-                    <div class="col-lg-12">
+                    <!--div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="#">Mes produits favoris</a></li>
                         </ol>
-                    </div>
-                    <div class="col-lg-12 heading">
-                        <h1 class="mt16 mb32">
-                            Bienvenue <span><t t-esc="request.env.user.partner_id.name"/></span>
+                    </div-->
+                    <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
+                       <h1  style="text-align: center; margin-top: 80px;">
+                             Mes produits favoris
                         </h1>
-                        <p>
-                            Retrouvez sur cette page lorem ipsum dolor sit amet 
-                        </p>
-                        <p class="mb48">
-                            Nous Contacter
-                        </p>
                     </div>
                 </div>
             </div>
@@ -727,12 +726,12 @@
             </div-->
             <div class="container">
                 <div class="row my_content">
-                    <div class="col-lg-12">
+                    <!--div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
                         </ol>
-                    </div>
+                    </div-->
                     <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
                        <h1  style="text-align: center; margin-top: 80px;">
                              Mes cartes bancaires
@@ -761,7 +760,7 @@
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                 <div class="row" style="border: none">
                     <div class="col-lg-8 offset-lg-2 mt16 mb32">
-                        <div class="row">
+                        <div class="row contact-argos">
                             <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
                                 <label class="col-form-label" for="name">Prénom</label>
                                 <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname"/>
@@ -852,8 +851,7 @@
             <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
             <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
             <input type="hidden" t-if="callback_method" name="callback_method" t-att-value="callback_method"/>
-         <div class="row o_portal_details mt32 mb32">
-           <div class="card mt32" style="border: none">
+            <div class="card mt32" style="border: none">
                 <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
                 <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
                 <t t-set="MAX_BRAND_LINE" t-value="3"/>
@@ -932,8 +930,47 @@
                         </div>
                     </t>
                 </t>
+                <div class="float-right mt-2">
+                    <t t-if="show_manage_btn">
+                        <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
+                    </t>
+                    <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="float-right btn btn-primary btn-lg mb8 mt8">
+                        Enregistrer la carte
+                    </button>
+                </div>
+                <t t-if="pms">
+                    <div class="mt32 mb32">
+                        <h3>Vos cartes bancaires enregistrées</h3>
+                    </div>
+                </t>
+                    <t t-foreach="pms" t-as="pm">
+                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                            <div class="card-body o_payment_acquirer_select">
+                                <label>
+                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                    <span class="payment_option_name" t-esc="pm.name"/>
+                                    <t t-if="pm.verified">
+                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                    </t>
+                                    <t t-else="">
+                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                    </t>
+                                </label>
+                                <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right">
+                                        <i class="fa fa-trash"/>
+                                    </button>
+                            </div>
+                        </t>
+                     </t>
+            </div>
+            <div t-if='back_button_txt' class="float-left mt-2">
+                <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
+                    <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
+                    <t t-esc="back_button_txt"/>
+                </a>
+            </div>
             <div class="float-right mt-2">
-                <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8'" disabled="true">
+                <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 float-right mt-2'" disabled="true">
                     <t t-if="submit_txt">
                         <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
                         <t t-esc="submit_txt"/>
@@ -943,45 +980,7 @@
                         <i class="fa fa-lock"/> Pay
                     </t>
                 </button>
-                <t t-if="show_manage_btn">
-                    <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
-                </t>
-                <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="float-right btn btn-primary btn-lg mb8 mt8">
-                    Enregistrer la carte
-                </button>
             </div>
-             <t t-if="pms">
-                <div class="mt32 mb32">
-                    <h3>Vos cartes bancaires enregistrées</h3>
-                 </div>
-             </t>
-                <t t-foreach="pms" t-as="pm">
-                    <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                        <div class="card-body o_payment_acquirer_select">
-                            <label>
-                                <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                <span class="payment_option_name" t-esc="pm.name"/>
-                                <t t-if="pm.verified">
-                                    <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
-                                </t>
-                                <t t-else="">
-                                    <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                </t>
-                            </label>
-                               <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right">
-                                    <i class="fa fa-trash"/>
-                                </button>
-                         </div>
-                    </t>
-                </t>
-            </div>
-            <div t-if='back_button_txt' class="float-left mt-2">
-                <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
-                    <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
-                    <t t-esc="back_button_txt"/>
-                </a>
-            </div>
-        </div>
         </form>
 
     </xpath>
@@ -1001,7 +1000,7 @@
                     </div-->
                      <div class="clearfix">
                         <div class="row">
-                            <div class="col-md-12 offset-2">
+                            <div class="col-md-8 offset-2">
                                 <div class="mt32 mb32">
                                     <h3>Ajouter une carte bancaire</h3>
                                 </div>
