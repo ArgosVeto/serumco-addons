@@ -40,7 +40,7 @@
 	            <t t-set="service" t-value="service_ids"/>
 	            <t t-set="ss" t-value="service_ids[0]"/>
 	            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
-	                <t t-esc="ss and ss.name or ' - '" />
+	                <span>Services</span>
 	            </a>
 	            <div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
 	            	<t t-if="service">
@@ -200,7 +200,7 @@
 						                        <span class="switcher_pricelist">Parking</span>
 						                    </a>
 						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
-						                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
+						                        <span class="switcher_pricelist">Accessibilité pour les personnes à mobilité réduite</span>
 						                    </a>
 							            </div>
 						        </div>

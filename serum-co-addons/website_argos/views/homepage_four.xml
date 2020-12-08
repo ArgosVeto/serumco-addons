@@ -39,7 +39,7 @@
 												action="/clinic-contact/confirm" method="post"
 												class="row s_website_form container-fluid mt32"
 												enctype="multipart/form-data"
-												data-success_page="/contactus-thank-you">
+												data-success_page="/clinic_contact_us_thanks">
 												<input type="hidden" name="csrf_token"
 													t-att-value="request.csrf_token()" />
 												<div
