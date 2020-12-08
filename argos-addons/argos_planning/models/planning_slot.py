@@ -159,7 +159,6 @@ class PlanningSlot(models.Model):
             self.send_first_mail()
             self.partner_id.write({'has_activity': True})
         self.send_confirmation_mail()
-        self.send_review_email()
         return True
 
     def button_not_honored(self):
@@ -307,4 +306,14 @@ class PlanningSlot(models.Model):
         if slots:
             slots._send_reminder_sms()
             slots.write({'is_reminder_sent': True})
+        return True
+
+    @api.model
+    def cron_send_review(self):
+        yesterday = fields.Date.today() - relativedelta(days=1)
+        appointment_role_ids = self.env['planning.role'].search([('role_type', '=', 'rdv')]).ids
+        slots = self.search([('state', 'not in', ['draft', 'cancel']), ('role_id', 'in', appointment_role_ids)]).filtered(
+            lambda p: p.start_datetime.date() == yesterday)
+        if slots:
+            slots.send_review_email()
         return True
