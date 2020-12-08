@@ -571,17 +571,54 @@
 
 
     <template id="order_inherited" inherit_id="sale.portal_my_orders">
-        <xpath expr="//t[@t-if='not orders']" position="replace">
-            <t t-if="not orders">
-                <p>Vous n'avez aucune commande</p>
-            </t>
+        <xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+        <t t-call="portal.frontend_layout">
             <t t-set="pageName" t-value="'order'"/>
             <t t-call="website_argos.vue_ensemble"/>
-            <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
-                <h1  style="text-align: center; margin-top: 80px;">
-                     Mes commandes
-                </h1>
+			<div class="row o_portal_details" style="border: none">
+				<div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+					<h1  style="text-align: center; margin-top: 80px;">Mes commandes</h1>
+				</div>
+			</div>
+
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container mt64 mb64">
+                        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                        <t t-call="portal.portal_searchbar">
+                            <t t-set="title">Sales Orders</t>
+                        </t>
+                        <t t-if="orders" t-call="portal.portal_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>
+                                        <span class='d-none d-md-inline'>Sales Order #</span>
+                                        <span class='d-block d-md-none'>Ref.</span>
+                                    </th>
+                                    <th class="text-right">Order Date</th>
+                                    <th class="text-center"/>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="orders" t-as="order">
+                                <tr>
+                                    <td><a t-att-href="order.get_portal_url()"><t t-esc="order.name"/></a></td>
+                                    <td class="text-right">
+                                        <span t-field="order.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                                        <span class='d-none d-md-inline' t-field="order.date_order" t-options="{'time_only': True}"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-if="order.state == 'done'"  class="badge badge-pill badge-success">
+                                            <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>Done
+                                        </span>
+                                    </td>
+                                    <td class="text-right"><span t-field="order.amount_total"/></td>
+                                </tr>
+                            </t>
+                        </t>
+                </div>
             </div>
+         </t>
         </xpath>
     </template>
 
@@ -666,21 +703,11 @@
                     </div>
                 </div>
             </div-->
-            <div class="container">
-                <div class="row my_content">
-                    <!--div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mes produits favoris</a></li>
-                        </ol>
-                    </div-->
-                    <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
-                       <h1  style="text-align: center; margin-top: 80px;">
-                             Mes produits favoris
-                        </h1>
-                    </div>
-                </div>
-            </div>
+			<div class="row o_portal_details" style="border: none">
+				<div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+					<h1  style="text-align: center; margin-top: 80px;">Mes produits favoris</h1>
+				</div>
+			</div>
         </xpath>
     </template>
 
@@ -724,20 +751,10 @@
                     </div>
                 </div>
             </div-->
-            <div class="container">
-                <div class="row my_content">
-                    <!--div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Mes cartes bancaires</a></li>
-                        </ol>
-                    </div-->
-                    <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04);">
-                       <h1  style="text-align: center; margin-top: 80px;">
-                             Mes cartes bancaires
-                        </h1>
-                    </div>
-                </div>
+             <div class="row o_portal_details" style="border: none">
+                <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                    <h1  style="text-align: center; margin-top: 80px;">Mes cartes bancaires</h1>
+                 </div>
             </div>
         </xpath>
     </template>
@@ -750,9 +767,7 @@
             <t t-call="website_argos.vue_ensemble"/>
             <div class="row o_portal_details" style="border: none">
                 <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                    <h1  style="text-align: center; margin-top: 80px;">
-                       Mon adresse
-                    </h1>
+                    <h1  style="text-align: center; margin-top: 80px;">Mon adresse</h1>
                  </div>
             </div>
         <div class="container">

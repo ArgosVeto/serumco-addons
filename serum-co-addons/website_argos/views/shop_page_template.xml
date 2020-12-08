@@ -75,7 +75,7 @@
 			                	<h1><t t-esc='category.name'/></h1>
 			                </div>
 								<t t-if="category.website_description">
-					                <div class="categ-info" style="height: 300px; overflow: hidden;" id="description">
+					                <div class="categ-info" style="height: 150px; overflow: hidden;" id="description">
 										<span><t t-raw='category.website_description'  /></span>
 					                </div>
 									<br/>
