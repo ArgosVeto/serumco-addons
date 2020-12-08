@@ -673,4 +673,12 @@ class ClinicContact(http.Controller):
             crm_vals.update(
                 {'operating_unit_id': int(post['clinic_contact_id'])})
         lead_id = request.env['crm.lead'].sudo().create(crm_vals)
-        return request.redirect("/contactus-thank-you")
+        partner_ids = False
+        partner = request.env.user.partner_id
+        if partner.clinic_shortlisted_ids:
+            partner_ids = partner.clinic_shortlisted_ids
+        clinic_ids = request.env['operating.unit'].sudo().search([])
+        # contact_ids = request.env['operating.unit'].sudo().search([('visible_in_contact','=',True)])
+        values = {'clinic_ids': clinic_ids, 'partner_ids': partner_ids}
+        return request.env['ir.ui.view'].render_template("website_argos.clinic_contact_us_thanks", values)
+#       return request.redirect("/clinic_contact_us_thanks")

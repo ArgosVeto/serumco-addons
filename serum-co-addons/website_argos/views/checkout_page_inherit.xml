@@ -383,22 +383,22 @@
                 <h3 class="text-primary mb32">Votre commande n° <t t-esc="order.name"/> est confirmée !</h3>
                 <h3 class="text-primary mb32"><t t-esc="order.partner_id.firstname"/> merci pour votre confiance</h3>
             </div>
-            <div class="argos_confirm">
-                <h6 class="text-primary mb32">Vous avez choisi de retirer votre commande dans notre établissement</h6>
-                <h6 class="text-primary mb32"><t  t-esc="order.operating_unit_id.name"/></h6>
-                <h6 class="text-primary mb32">Pour suivre sa prépraration, rendez-vous sur votre compte<a href="http://argos-veterinaire.com">
-                   <span style="text-decoration: underline;">argos-veterinaire.com</span>
+            <div>
+                <p  class="Argos-Vtrinaire-es mb32">Vous avez choisi de retirer votre commande dans notre établissement</p>
+                <p  class="Argos-Vtrinaire-es mb32"><t  t-esc="order.operating_unit_id.name"/></p>
+                <p  class="Argos-Vtrinaire-es mb32">Pour suivre sa prépraration, rendez-vous sur votre compte<a class="text-style-1" style="color: #de1a46;" href="http://argos-veterinaire.com">
+                   argos-veterinaire.com
                    </a> dans l’espace « Mes commandes »
-                </h6>
+                </p>
             </div>
-            <div class="argos_confirm">
-                <h6 class="text-primary mb32">Lorsque votre commande sera disponible dans votre établissement vétérinaire Argos, un e-mail et/ou un SMS avec toutes les informations pratiques pour la récupérer vous sera envoyé.</h6>
+            <div>
+                <p class="Argos-Vtrinaire-es mb32">Lorsque votre commande sera disponible dans votre établissement vétérinaire Argos, un e-mail et/ou un SMS avec toutes les informations pratiques pour la récupérer vous sera envoyé.</p>
             </div>
-            <div class="argos_confirm">
-                <h6 class="text-primary mb32">Pour toute question concernant le suivi de votre commande, vos garanties et droit de rétracation, vous pouvez nous contacter à l’adresse e-mail <a href="mailto:service-client@argos-veterinaire.com">
-                   <span style="text-decoration: underline;">service-client@argos-veterinaire.com</span>
+            <div>
+                <p  class="Argos-Vtrinaire-es mb32">Pour toute question concernant le suivi de votre commande, vos garanties et droit de rétracation, vous pouvez nous contacter à l’adresse e-mail <a class="text-style-1" style="color: #de1a46;" href="mailto:service-client@argos-veterinaire.com">
+                   service-client@argos-veterinaire.com
                    </a>
-                </h6>
+                </p>
             </div>
             <div class="col-md-12 mt-4">
                 <a class="btn btn-primary float-right" href="/">Retour à la page d'accueil</a>

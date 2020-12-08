@@ -40,7 +40,7 @@
 										action="/clinic-contact/confirm" method="post"
 										class="row s_website_form container-fluid mt32"
 										enctype="multipart/form-data"
-										data-success_page="/contactus-thank-you">
+										data-success_page="/clinic_contact_us_thanks">
 										<input type="hidden" name="csrf_token"
 											t-att-value="request.csrf_token()" />
 										<div
@@ -291,4 +291,170 @@
 			</div>
 		</t>
 	</template>
+
+ 	<template id="clinic_contact_us_thanks" name="Thanks (Contact us) Argos">
+                <t t-call="website.layout">
+                  <div id="wrap">
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_1"/>
+                    <div class="container pt-3">
+                        <h1>Merci!</h1>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="alert alert-success" role="status">
+                                    Votre message a été envoyé avec succès
+                                    <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                </div>
+                                <p>
+                                    Nous vous répondrons sous peu.
+                                </p>
+                            </div>
+								<div class="col-lg-4 cli-contact">
+									<t t-if="partner_ids">
+										<div class="s_title pt16 pb16">
+											<h1 class="La-clinique-la-plus">La clinique la plus proche</h1>
+										</div>
+										<section class="pt8 pb8">
+											<t t-foreach="partner_ids" t-as="partner">
+													<div class="s_col_no_bgcolor pt16 clinic-grid">
+														<div class="card bg-white">
+															<img class="card-img-top"
+																t-att-src="website.image_url(partner, 'clinic_banner')" />
+															<a role="button" class="btn btn-primary mt16 fav-btn"
+																t-attf-href="/add-clinic/#{partner.sudo().id}">
+																<img src="/website_argos/static/src/img/heart.svg"></img>
+															</a>
+															<div class="card-body">
+																<h3 class="card-title o_default_snippet_text">
+																	<a itemprop="display_name"
+																		t-attf-href="/clinic-detail/clinic-pratice/#{partner.id}"
+																		t-att-content="partner.display_name"
+																		t-field="partner.display_name" />
+																</h3>
+
+																<p class="Clinique-actuellemen">
+																	<i class="fa fa-circle"></i>
+																	<span>Clinique actuellement ouverte</span>
+																</p>
+
+																<div class="clinic-link d-flex">
+																	<div class="image-l">
+																		<img
+																			src="/website_argos/static/src/img/location.svg" />
+																	</div>
+
+																	<div class="link">
+
+																		<span class="Avenue-Pasteur">
+																			<span class="street" t-field="partner.favorite_clinic_id.street"/><span>, </span><span class="zip" t-field="partner.favorite_clinic_id.zip"/><span>, </span><span class="city" t-field="partner.favorite_clinic_id.city"/>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="">
+																	<a role="button" target=""
+																		t-attf-href="tel:{{partner.favorite_clinic_id.phone}}"
+																		class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
+																		<img src="/website_argos/static/src/img/phone.svg"
+																			class="img img-fluid mr-2" />
+																		<span class="">Appeler</span>
+																	</a>
+																	<a role="button" target="_blank" href="#"
+																		class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+																		<span class="">Prendre RDV</span>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+											</t>
+										</section>
+										<div class="b-in-hr">
+											<div class="s_hr text-left pt32" data-name="Separator">
+												<hr class="border-600 s_hr_1px s_hr_solid w-75 mx-auto" />
+											</div>
+										</div>
+									</t>
+
+									<t t-if="partner_ids">
+										<div class="s_title pt32 pb16">
+											<h1 class="La-clinique-la-plus">Ma clinique favorite</h1>
+										</div>
+										<section class="pt8 pb8">
+											<t t-foreach="partner_ids" t-as="partner">
+
+												<div class="s_col_no_bgcolor pt16 pb16 clinic-grid">
+													<div class="card bg-white">
+														<img class="card-img-top"
+															t-att-src="website.image_url(partner.favorite_clinic_id, 'clinic_banner')" />
+														<a role="button" class="btn btn-primary mt16 fav-btn"
+															t-attf-href="/add-clinic/#{partner.favorite_clinic_id.sudo().id}">
+															<img src="/website_argos/static/src/img/heart.svg"></img>
+														</a>
+														<div class="card-body">
+
+															<h3 class="card-title o_default_snippet_text">
+																<a itemprop="display_name"
+																	t-attf-href="/clinic-detail/clinic-pratice/#{partner.favorite_clinic_id.id}"
+																	t-att-content="partner.favorite_clinic_id.name"
+																	t-field="partner.favorite_clinic_id.name" />
+															</h3>
+
+															<p class="Clinique-actuellemen">
+																<i class="fa fa-circle"></i>
+																<span>Clinique actuellement ouverte</span>
+															</p>
+
+															<div class="clinic-link d-flex">
+																<div class="image-l">
+																	<img
+																		src="/website_argos/static/src/img/location.svg" />
+																</div>
+																<div class="link">
+
+																	<span class="Avenue-Pasteur">
+																		<span class="street" t-field="partner.favorite_clinic_id.street"/><span>, </span><span class="zip" t-field="partner.favorite_clinic_id.zip"/><span>, </span><span class="city" t-field="partner.favorite_clinic_id.city"/>
+																	</span>
+																</div>
+															</div>
+
+															<div class="">
+																<a role="button" target=""
+																	t-attf-href="tel:{{partner.favorite_clinic_id.phone}}"
+																	class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
+																	<img src="/website_argos/static/src/img/phone.svg"
+																		class="img img-fluid mr-2" />
+																	<span class="">Appeler</span>
+																</a>
+																<a role="button" target="_blank" href="#"
+																	class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+																	<span class="">Prendre RDV</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</t>
+										</section>
+									</t>
+
+									<section class="pt16 mb16 home-emergency">
+										<section class="emergency-box bg-secondary">
+											<div class="image">
+												<img
+													src="/website_argos/static/src/img/combined-shape.png"
+													class="img img-fluid" />
+											</div>
+											<h6 class="text-white">Une urgence vétérinaire ?</h6>
+											<p class="text-white">Ab autem quia est nesciunt et alias ut eveniet.
+												Aspernatur odio nam dolores velit debitis.</p>
+											<a class="btn btn-light btn-red">Appeler le 01.22.22.22.22</a>
+										</section>
+									</section>
+								</div>
+                        </div>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+                  </div>
+                </t>
+ 	</template>
 </odoo>
