@@ -13,7 +13,7 @@ class HelpdeskTicket(models.Model):
         for rec in self:
             try:
                 email_template = self.env.ref('helpdesk.rating_ticket_request_email_template')
-                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
+                email_template.send_mail(rec.id, raise_exception=True)
             except Exception as e:
                 _logger.error(repr(e))
         return True
