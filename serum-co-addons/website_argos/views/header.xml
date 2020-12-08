@@ -89,8 +89,8 @@
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
 											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiements</a>
 											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
-											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiements</a>>
 											<a id="o_logout" class="dropdown-item px-0"
 												t-attf-href="/web/session/logout?redirect=/"
 												role="menuitem">Déconnexion</a>
@@ -186,8 +186,8 @@
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
 											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
-											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
 											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiement</a>
+											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
 											<a id="o_logout" class="dropdown-item px-0"
 												t-attf-href="/web/session/logout?redirect=/"
 												role="menuitem">Déconnexion</a>

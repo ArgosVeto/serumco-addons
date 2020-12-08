@@ -86,9 +86,6 @@
                                         <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
                                     </t>
                                 </li>
-                                <li class="nav-item mr32">
-                                    <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
-                                </li>
                                <li class="nav-item mr-32">
                                    <t t-if="pageName == 'payment'">
                                         <a class="nav-link active" href="/my/payment_method">Mes moyens de paiements</a>
@@ -97,6 +94,14 @@
                                         <a class="nav-link" href="/my/payment_method">Mes moyens de paiements</a>
                                     </t>
                                 </li>
+                                <li class="nav-item mr32">
+                                   <t t-if="pageName == 'grpd'">
+                                        <a class="nav-link active" href="/my/personal_details">Mes données personnelles</a>
+                                    </t>
+                                    <t t-else="">
+                                        <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
+                                    </t>
+                               </li>
                             </ul>
                         </div>
                     </div>
@@ -568,6 +573,21 @@
             </div>
         </t>
     </template>
+ 
+    <template id="grpd__inherited" inherit_id="odoo_gdpr.config_odoo_grpd">
+        <xpath expr="//div[hasclass('wrap')]" position="before">
+          <div class="wrap">
+            <t t-set="pageName" t-value="'grpd'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+			<div class="row o_portal_details" style="border: none">
+				<div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+					<h1  style="text-align: center; margin-top: 80px;">Mes données personnelles</h1>
+				</div>
+			</div>
+   		</div>
+       </xpath>
+    </template>
+
 
 
     <template id="order_inherited" inherit_id="sale.portal_my_orders">
