@@ -592,10 +592,10 @@
                             <thead>
                                 <tr class="active">
                                     <th>
-                                        <span class='d-none d-md-inline'>Sales Order #</span>
+                                        <span class='d-none d-md-inline'>Bon de commande #</span>
                                         <span class='d-block d-md-none'>Ref.</span>
                                     </th>
-                                    <th class="text-right">Order Date</th>
+                                    <th class="text-right">Date</th>
                                     <th class="text-center"/>
                                     <th class="text-right">Total</th>
                                 </tr>
