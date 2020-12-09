@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'solved_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="helpdesk.solved_ticket_request_email_template">
+      <field name="email_from">service-client@argos-veterinaire.fr</field>
+      <field name="reply_to">service-client@argos-veterinaire.fr</field>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'solved_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'new_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="helpdesk.new_ticket_request_email_template">
+      <field name="email_from">service-client@argos-veterinaire.fr</field>
+      <field name="reply_to">service-client@argos-veterinaire.fr</field>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'new_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'rating_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="helpdesk.rating_ticket_request_email_template">
+      <field name="email_from">service-client@argos-veterinaire.fr</field>
+      <field name="reply_to">service-client@argos-veterinaire.fr</field>
+      <field name="auto_delete" eval="False"/>
+      <field name="scheduled_date" eval="(datetime.now() + relativedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'helpdesk'), ('name', '=', 'rating_ticket_request_email_template')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+  </data>
+</odoo>

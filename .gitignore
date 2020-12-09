@@ -42,3 +42,7 @@ setup/win32/static/postgresql*.exe
 argos.conf
 **/enterprise
 **/odoo
+
+/zz_config_argos/
+
+

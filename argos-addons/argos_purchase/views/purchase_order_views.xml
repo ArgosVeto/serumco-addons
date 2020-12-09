@@ -28,14 +28,6 @@
           <field name="emergency"
                  attrs="{'readonly': [('parent.state', '!=', 'draft')], 'column_invisible': [('parent.is_centravet_order', '=', False)]}"/>
         </xpath>
-        <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-          <button type="object" name="action_view_operating_pickings" class="oe_stat_button" icon="fa-truck"
-                  attrs="{'invisible':[('operating_unit_picking_ids','=',[])]}">
-            <field name="operating_unit_picking_count" widget="statinfo" string="Operating Unit Picking"
-                   help="Internal operation for operating unit"/>
-            <field name="operating_unit_picking_ids" invisible="1"/>
-          </button>
-        </xpath>
         <xpath expr="//div[@name='button_box']/button[@name='action_view_invoice'][last()]" position="before">
           <field name="cutoff_move_ids" invisible="1"/>
           <button name="action_view_cutoff" type="object"  class="oe_stat_button" icon="fa-align-justify"

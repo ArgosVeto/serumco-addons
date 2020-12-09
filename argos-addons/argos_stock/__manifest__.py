@@ -13,7 +13,9 @@
         'sale_stock',
         'argos_product',
         'argos_sale',
-        'product_expiry'
+        'product_expiry',
+        'stock_operating_unit',
+        'base_gs1_barcode',
     ],
     'data': [
         # security

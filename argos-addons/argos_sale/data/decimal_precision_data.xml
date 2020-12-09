@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="argos_decimal_product_uom" model="decimal.precision">
+      <field name="name">Argos Product Qty</field>
+      <field name="digits" eval="2"/>
+    </record>
+  </data>
+</odoo>
