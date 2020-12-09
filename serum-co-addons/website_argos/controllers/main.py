@@ -681,10 +681,6 @@ class WebsiteSale(WebsiteSale):
                 [('product_tmpl_ids', 'in', search_product.ids)])
         else:
             filters = ProductFilter.browse(attributes_ids)
-
-        print(filters)
-        print(filters.product_filter_line_ids)
-
         layout_mode = request.session.get('website_sale_shop_layout_mode')
         if not layout_mode:
             if request.website.viewref('website_sale.products_list_view').active:
