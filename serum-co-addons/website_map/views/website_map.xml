@@ -219,8 +219,6 @@
                 <input type="hidden" id='latitude' t-att-value='operating_unit.partner_id.partner_latitude'/>
                 <input type="hidden" id='longitude' t-att-value='operating_unit.partner_id.partner_longitude'/>
                 <input type="hidden" id='clinique' t-att-value='operating_unit.name'/>
-				<span>latitude<t t-esc='operating_unit.partner_id.partner_latitude'/></span>
-				<span>longitude<t t-esc='operating_unit.partner_id.partner_longitude'/></span>
 				<script>
 			
 				function ClinicMap() {
