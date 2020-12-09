@@ -24,7 +24,6 @@
         'views/res_bank_views.xml',
         'views/operating_unit_views.xml',
         'views/product_template_views.xml',
-        'views/report_invoice_inherit.xml',
     ],
     'application': False,
     'installable': True,

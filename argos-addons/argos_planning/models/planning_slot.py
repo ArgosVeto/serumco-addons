@@ -4,7 +4,6 @@ import ast
 import datetime
 import logging
 from datetime import datetime as dt, timedelta
-from dateutil.relativedelta import relativedelta
 from odoo.exceptions import ValidationError
 
 import pytz
@@ -48,7 +47,6 @@ class PlanningSlot(models.Model):
     role_type = fields.Selection(related='role_id.role_type')
     website_planning = fields.Boolean(string='Website planning', default=False, copy=False)
     unexpected_rdv = fields.Boolean(string='Unexpected appointment', default=False, copy=False)
-    is_reminder_sent = fields.Boolean('Reminder Sent', copy=False)
 
     @api.model
     def get_work_interval(self, start_date, employee=False):
@@ -159,6 +157,7 @@ class PlanningSlot(models.Model):
             self.send_first_mail()
             self.partner_id.write({'has_activity': True})
         self.send_confirmation_mail()
+        self.send_review_email()
         return True
 
     def button_not_honored(self):
@@ -190,12 +189,6 @@ class PlanningSlot(models.Model):
 
     def button_progress(self):
         self.ensure_one()
-        type_obj = self.env['stock.picking.type']
-        types = type_obj.search(
-            [('code', '=', 'outgoing'), ('warehouse_id.operating_unit_id', '=', self.operating_unit_id.id)]
-        )
-        if not types:
-            raise ValidationError(_('This operating unit has no configured warehouse.'))
         self.write({
             'pickup_time': fields.Datetime.now(),
             'state': 'in_progress'
@@ -248,22 +241,19 @@ class PlanningSlot(models.Model):
         return res
 
     def check_veterinary_presence(self):
-        if self.env.company.appointment_constraint:
-            cur_operating_unit = self.env.user.default_operating_unit_id
-            role_obj = self.env['planning.role']
-            presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
-            absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
-            for rec in self.filtered(lambda
-                                             l: l.employee_id and l.role_id and l.role_id.id not in absence_role_ids and l.role_id not in presence_role_ids):
-                domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
-                          ('role_id', 'in', presence_role_ids), '|', '|', '&',
-                          ('start_datetime', '>=', rec.start_datetime),
-                          ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
-                          ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
-                          ('end_datetime', '>=', rec.end_datetime)]
-                if not self.search(domain):
-                    raise ValidationError(
-                        _('Unauthorized appointment assignment for an absent or unassigned veterinarian'))
+        cur_operating_unit = self.env.user.default_operating_unit_id
+        role_obj = self.env['planning.role']
+        presence_role_ids = role_obj.search([('role_type', '=', 'presence')]).ids
+        absence_role_ids = role_obj.search([('role_type', '=', 'away')]).ids
+        for rec in self.filtered(lambda
+                                         l: l.employee_id and l.role_id and l.role_id.id not in absence_role_ids and l.role_id not in presence_role_ids):
+            domain = [('operating_unit_id', '=', cur_operating_unit.id), ('employee_id', '=', rec.employee_id.id),
+                      ('role_id', 'in', presence_role_ids), '|', '|', '&', ('start_datetime', '>=', rec.start_datetime),
+                      ('start_datetime', '<', rec.end_datetime), '&', ('end_datetime', '>', rec.start_datetime),
+                      ('end_datetime', '<', rec.end_datetime), '&', ('start_datetime', '<=', rec.start_datetime),
+                      ('end_datetime', '>=', rec.end_datetime)]
+            if not self.search(domain):
+                raise ValidationError(_('Unauthorized appointment assignment for an absent or unassigned veterinarian'))
 
     def send_cancellation_mail(self):
         self.ensure_one()
@@ -288,32 +278,4 @@ class PlanningSlot(models.Model):
                 email_template.send_mail(rec.id, force_send=True, raise_exception=True)
             except Exception as e:
                 _logger.error(repr(e))
-        return True
-
-    def _send_reminder_sms(self):
-        for rec in self:
-            rec._message_sms_with_template(
-                template_xmlid='argos_planning.planning_reminder_sms_template',
-                partner_ids=rec.partner_id.ids,
-            )
-
-    @api.model
-    def cron_send_reminder(self):
-        tomorrow = fields.Date.today() + relativedelta(days=1)
-        appointment_role_ids = self.env['planning.role'].search([('role_type', '=', 'rdv')]).ids
-        slots = self.search([('state', '=', 'validated'), ('role_id', 'in', appointment_role_ids)]).filtered(
-            lambda p: p.start_datetime.date() == tomorrow and not p.is_reminder_sent)
-        if slots:
-            slots._send_reminder_sms()
-            slots.write({'is_reminder_sent': True})
-        return True
-
-    @api.model
-    def cron_send_review(self):
-        yesterday = fields.Date.today() - relativedelta(days=1)
-        appointment_role_ids = self.env['planning.role'].search([('role_type', '=', 'rdv')]).ids
-        slots = self.search([('state', 'not in', ['draft', 'cancel']), ('role_id', 'in', appointment_role_ids)]).filtered(
-            lambda p: p.start_datetime.date() == yesterday)
-        if slots:
-            slots.send_review_email()
         return True

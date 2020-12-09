@@ -38,9 +38,7 @@
                         <t t-esc="line.get_unit().name" />
                         <br />
                         <t t-esc="line.get_quantity_delivered_str()" />
-                        already delivered &amp;nbsp; / &amp;nbsp;
-                        <t t-esc="line.get_quantity_invoiced_str()" />
-                        already paid
+                        already delivered
                     </li>
 
                 </t>

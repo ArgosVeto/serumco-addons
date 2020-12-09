@@ -7,7 +7,7 @@
       report_type="qweb-pdf"
       name="argos_stock.report_template_prescription"
       file="argos_stock.report_template_prescription"
-      attachment="'%s - %s - %s' % (object.partner_id.name or '', object.patient_id.name or '', object.consultation_date)"
-      print_report_name="'%s - %s - %s' % (object.partner_id.name or '', object.patient_id.name or '', object.consultation_date)"
+      attachment="'Prescription - %s - %s' % (object.partner_id.name or '', object.name)"
+      print_report_name="'Prescription - %s - %s' % (object.partner_id.name or '', object.name)"
   />
 </odoo>

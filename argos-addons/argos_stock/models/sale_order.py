@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _
-from odoo.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
@@ -68,13 +67,3 @@ class SaleOrder(models.Model):
             'target': 'new',
             'context': context,
         }
-
-    @api.onchange('operating_unit_id')
-    def _onchange_operating_unit(self):
-        type_obj = self.env['stock.picking.type']
-        types = type_obj.search(
-            [('code', '=', 'outgoing'), ('warehouse_id.operating_unit_id', '=', self.operating_unit_id.id)]
-        )
-        if not types:
-            raise ValidationError(_('This operating unit has no configured warehouse.'))
-        self.warehouse_id = types[:1].warehouse_id.id

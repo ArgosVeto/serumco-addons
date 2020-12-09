@@ -6,9 +6,6 @@
         <span t-attf-class="#{widget.isMobile ? 'fa fa-building-o' : 'oe_topbar_name'}">
           <t t-if="!widget.isMobile">
             <t t-raw="widget.current_company_name"/>
-            <t t-if="widget.operating_unit_name">
-              <t t-raw="' (' + widget.operating_unit_name + ')'"/>
-            </t>
           </t>
         </span>
       </a>

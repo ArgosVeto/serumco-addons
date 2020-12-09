@@ -3,13 +3,13 @@
   <data>
 
     <record id="server_ftp_request_scil" model="server.ftp">
-      <field name="url">104.41.207.6</field>
+      <field name="url">40.69.30.209</field>
       <field name="login">argos-ftp</field>
       <field name="password">79BtS8rq</field>
       <field name="filename">/Scil/CliniqueEspritdeslois/Requests</field>
     </record>
     <record id="server_ftp_result_scil" model="server.ftp">
-      <field name="url">104.41.207.6</field>
+      <field name="url">40.69.30.209</field>
       <field name="login">argos-ftp</field>
       <field name="password">79BtS8rq</field>
       <field name="filename">/Scil/CliniqueEspritdeslois/Results</field>

@@ -11,4 +11,5 @@ from . import purchase_request_line
 from . import purchase_request_line_make_purchase_order
 from . import stock_picking
 from . import account_cutoff
+from . import stock_pooled_request
 from . import stock_rule

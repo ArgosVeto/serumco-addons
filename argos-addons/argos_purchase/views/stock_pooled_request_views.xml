@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="stock_pooled_request_view_form" model="ir.ui.view">
+      <field name="name">stock.pooled.request.view.form</field>
+      <field name="model">stock.pooled.request</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="requesting_operating_unit_id"/>
+          </group>
+          <field name="line_ids">
+            <tree editable="bottom">
+              <field name="product_id" force_save="1"/>
+              <field name="source_operating_unit_id" force_save="1"/>
+              <field name="quantity_available" force_save="1"/>
+              <field name="requested_quantity"/>
+            </tree>
+          </field>
+          <footer>
+            <button name="create_picking" type="object" string="Create pooled picking" class="btn-primary"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>

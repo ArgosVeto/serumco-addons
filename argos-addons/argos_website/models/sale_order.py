@@ -19,7 +19,6 @@ class SaleOrder(models.Model):
         new_orders = self.filtered(lambda so: not so.partner_id.has_activity)
         new_orders.send_first_mail()
         new_orders.mapped('partner_id').write({'has_activity': True})
-        self.filtered(lambda so: so.website_id).send_website_confirmation_mail()
         return res
 
     def generate_centravet_orders(self):
@@ -102,19 +101,3 @@ class SaleOrder(models.Model):
             'datas': base64.b64encode(content.getvalue().encode('utf-8')),
             'name': filename
         })
-
-    def send_website_confirmation_mail(self):
-        for rec in self:
-            try:
-                email_template = self.env.ref('argos_website.website_sale_confirmation_mail_template')
-                email_template.send_mail(rec.id, force_send=True, raise_exception=True)
-            except Exception as e:
-                _logger.error(repr(e))
-        return True
-
-    def send_reception_sms(self):
-        for rec in self:
-            rec._message_sms_with_template(
-                template_xmlid='argos_website.reception_sms_template',
-                partner_ids=rec.partner_id.ids,
-            )

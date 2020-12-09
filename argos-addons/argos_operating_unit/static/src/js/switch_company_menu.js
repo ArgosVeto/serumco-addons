@@ -23,19 +23,9 @@ odoo.define('argos_operating_unit.SwitchCompanyMenu', function (require) {
                 .map(function (id) {
                     return parseInt(id);
                 });
-            this.current_company = this.allowed_company_ids[0];
             this.operating_unit_id = session.operating_unit_id;
             this.user_operating_unit_ids = session.user_operating_unit_ids;
             this.user_operating_units = session.user_operating_units;
-            this.operating_unit_name = false;
-            if (this.user_operating_units[this.current_company].length > 0) {
-                var op_unit = _.find(this.user_operating_units[this.current_company], function (operating_unit) {
-                    return operating_unit[0] === self.operating_unit_id;
-                });
-                if (op_unit && op_unit.length > 0) {
-                    this.operating_unit_name = op_unit[1];
-                }
-            }
             var def;
             if (!_.contains(this.user_operating_unit_ids[this.allowed_company_ids[0]], this.operating_unit_id)) {
                 if (this.user_operating_unit_ids[this.allowed_company_ids[0]].length > 0) {
@@ -46,14 +36,6 @@ odoo.define('argos_operating_unit.SwitchCompanyMenu', function (require) {
                         context: session.user_context,
                     }).then(function () {
                         self.operating_unit_id = self.user_operating_unit_ids[self.allowed_company_ids[0]][0];
-                        if (self.user_operating_units[self.current_company].length > 0) {
-                            var op_unit = _.find(self.user_operating_units[self.current_company], function (operating_unit) {
-                                return operating_unit[0] === self.operating_unit_id;
-                            });
-                            if (op_unit && op_unit.length > 0) {
-                                self.operating_unit_name = op_unit[1];
-                            }
-                        }
                     })
                 } else {
                     this.operating_unit_id = false;

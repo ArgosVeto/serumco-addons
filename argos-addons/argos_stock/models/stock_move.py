@@ -14,16 +14,3 @@ class StockMove(models.Model):
         if self.group_id.sale_id.is_consultation:
             picking_vals['is_arg_prescription'] = True
         return picking_vals
-
-    def _is_internal(self):
-        self.ensure_one()
-        res = super(StockMove, self)._is_internal()
-        operating_internal_move = False
-        if self.operating_unit_id != self.operating_unit_dest_id:
-            operating_internal_move = True
-        return res and operating_internal_move
-
-    def force_entry(self):
-        if self.operating_unit_id != self.operating_unit_dest_id:
-            return True
-        return False

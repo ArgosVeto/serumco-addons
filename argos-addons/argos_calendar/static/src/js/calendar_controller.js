@@ -96,14 +96,7 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                         self.updateView(scrollPosition, true);
                     },
                 }];
-                var dialog = new dialogs.FormViewDialog(this, options);
-                dialog.on('closed', self, function () {
-                    var $calendar = self.renderer.$calendar;
-                    var $fc_view = $calendar.find('.fc-view-container');
-                    var scrollPosition = $fc_view.scrollLeft();
-                    self.updateView(scrollPosition, true);
-                });
-                dialog.open();
+                new dialogs.FormViewDialog(this, options).open();
             } else {
                 return this._super.apply(this, arguments);
             }
@@ -198,13 +191,7 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                             var $fc_view = $calendar.find('.fc-view-container');
                             var scrollPosition = $fc_view.scrollLeft();
                             self.updateView(scrollPosition, true);
-                        }
-                    });
-                    this.previousOpen.on('closed', self, function () {
-                        var $calendar = self.renderer.$calendar;
-                        var $fc_view = $calendar.find('.fc-view-container');
-                        var scrollPosition = $fc_view.scrollLeft();
-                        self.updateView(scrollPosition, true);
+                        },
                     });
                     this.previousOpen.open();
                 } else {
@@ -282,13 +269,14 @@ odoo.define('argos_calendar.CalendarController', function (require) {
                     $fc_view.scrollLeft(position);
                 });
             } else {
+                $fc_view.scrollLeft(position);
                 self.renderer._updateEventResources();
                 self.renderer._renderActivityGrid();
                 self.renderer._renderTaskGrid();
                 self.renderer._renderStickyTimeline();
                 self.renderer._toogleCalendarHeader();
                 self.renderer._updateCalendarStyle();
-                $fc_view.scrollLeft(position);
+                self.renderer._renderStickyTimeline();
             }
         },
 

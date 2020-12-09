@@ -170,7 +170,7 @@ msgstr "Demande de prix envoyée"
 msgid ""
 "Shipping fees not reached."
 msgstr ""
-"Francos de port non atteints."
+"Frais de port non atteint."
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__state
@@ -273,7 +273,7 @@ msgid ""
 "            a certain quantity of materials services, so that they are\n"
 "            available at a certain point in time."
 msgstr ""
-"Une préparation d'achat est une instruction d'achat pour se procurer une "
+"Une autorisation d'achat est une instruction d'achat pour se procurer une "
 "certaine quantité de matériaux, de sorte qu'ils soient disponibles à un "
 "certain moment."
 
@@ -284,24 +284,24 @@ msgid ""
 "Check this box to generate Purchase Request instead of generating Requests "
 "For Quotation from procurement."
 msgstr ""
-"Cocher cette case pour générer une préparation d'achat au lieu d'une demande de "
+"Cocher cette case pour générer une autorisation d'achat au lieu d'une demande de "
 "prix à partir des approvisionnements."
 
 #. module: purchase_request
 #: model_terms:ir.actions.act_window,help:purchase_request.purchase_request_form_action
 msgid "Click to start a new purchase request process."
-msgstr "Cliquez pour démarrer une nouvelle préparation d'achat."
+msgstr "Cliquez pour démarrer une nouvelle autorisation d'achat."
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_stock_move__created_purchase_request_line_id
 msgid "Created Purchase Request Line"
-msgstr "Ligne de préparation d'achat crée"
+msgstr "Ligne d'autorisation d'achat crée"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_line__estimated_cost
 msgid "Estimated cost of Purchase Request Line, not propagated to PO."
 msgstr ""
-"Coût estimé de la ligne de préparation d'achat, n'est pas propagé au bon de "
+"Coût estimé de la ligne d'autorisation d'achat, n'est pas propagé au bon de "
 "commande achat."
 
 #. module: purchase_request
@@ -310,26 +310,26 @@ msgstr ""
 msgid ""
 "From last reception this quantity has been allocated to this purchase request"
 msgstr ""
-"Cette quantité a été allouée à cette préparation d'achat depuis la dernière "
+"Cette quantité a été allouée à cette autorisation d'achat depuis la dernière "
 "réception"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #, fuzzy
 msgid "Purchase Done"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_allocation__purchase_line_id
 #, fuzzy
 msgid "Purchase Line"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_order_line
 #, fuzzy
 msgid "Purchase Order Line"
-msgstr "Ligne de préparation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line__purchase_lines
@@ -339,7 +339,7 @@ msgstr "Ligne de préparation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_form
 #, fuzzy
 msgid "Purchase Order Lines"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.actions.report,name:purchase_request.action_report_purchase_requests
@@ -354,19 +354,19 @@ msgstr "Ligne de préparation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_tree
 msgid "Purchase Request"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: code:addons/purchase_request/models/purchase_order.py:0
 #, fuzzy, python-format
 msgid "Purchase Request %s has already been completed"
-msgstr "Préparation d'achat rejetée"
+msgstr "Autorisation d'achat rejetée"
 
 #. module: purchase_request
 #: code:addons/purchase_request/wizard/purchase_request_line_make_purchase_order.py:0
 #, python-format
 msgid "Purchase Request %s is not approved"
-msgstr "Préparation d'achat %s est non approuvée"
+msgstr "Autorisation d'achat %s est non approuvée"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_allocation
@@ -375,14 +375,14 @@ msgstr "Préparation d'achat %s est non approuvée"
 #: model:ir.model.fields,field_description:purchase_request.field_stock_move__purchase_request_allocation_ids
 #, fuzzy
 msgid "Purchase Request Allocation"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_move_form
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_picking_form
 #, fuzzy
 msgid "Purchase Request Allocations"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line
@@ -390,25 +390,25 @@ msgstr "Ligne de préparation d'achat"
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_make_purchase_order_item__line_id
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_form
 msgid "Purchase Request Line"
-msgstr "Ligne de préparation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line_make_purchase_order
 #, fuzzy
 msgid "Purchase Request Line Make Purchase Order"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model,name:purchase_request.model_purchase_request_line_make_purchase_order_item
 #, fuzzy
 msgid "Purchase Request Line Make Purchase Order Item"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request__line_count
 #, fuzzy
 msgid "Purchase Request Line count"
-msgstr "Ligne de préparation d'achat"
+msgstr "Ligne d'autorisation d'achat"
 
 #. module: purchase_request
 #: code:addons/purchase_request/models/purchase_order.py:0
@@ -421,42 +421,42 @@ msgstr "Ligne de préparation d'achat"
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_tree
 #, python-format
 msgid "Purchase Request Lines"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:res.groups,name:purchase_request.group_purchase_request_manager
 msgid "Purchase Request Manager"
-msgstr "Responsable de préparation d'achat"
+msgstr "Responsable d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:res.groups,name:purchase_request.group_purchase_request_user
 msgid "Purchase Request User"
-msgstr "Utilisateur de préparation d'achat"
+msgstr "Utilisateur d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_approved
 #: model:mail.message.subtype,name:purchase_request.mt_request_approved
 msgid "Purchase Request approved"
-msgstr "Préparation d'achat approuvée"
+msgstr "Autorisation d'achat approuvée"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_form
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_line_tree
 #, fuzzy
 msgid "Purchase Request lines"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_rejected
 #: model:mail.message.subtype,name:purchase_request.mt_request_rejected
 msgid "Purchase Request rejected"
-msgstr "Préparation d'achat rejetée"
+msgstr "Autorisation d'achat rejetée"
 
 #. module: purchase_request
 #: model:mail.message.subtype,description:purchase_request.mt_request_to_approve
 #: model:mail.message.subtype,name:purchase_request.mt_request_to_approve
 msgid "Purchase Request to be approved"
-msgstr "Préparation d'achat devant être approuvée"
+msgstr "Autorisation d'achat devant être approuvée"
 
 #. module: purchase_request
 #: model:ir.actions.act_window,name:purchase_request.action_purchase_request_line_product_tree
@@ -466,25 +466,25 @@ msgstr "Préparation d'achat devant être approuvée"
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_act
 #: model:ir.ui.menu,name:purchase_request.menu_purchase_request_pro_mgt
 msgid "Purchase Requests"
-msgstr "Préparations d'achat"
+msgstr "Autorisations d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line__purchase_state
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #, fuzzy
 msgid "Purchase Status"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.ui.menu,name:purchase_request.parent_menu_purchase_request
 msgid "Purchase requests"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request__purchase_count
 #, fuzzy
 msgid "Purchases count"
-msgstr "Préparation d'achat"
+msgstr "Autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_allocation__allocated_product_qty
@@ -513,19 +513,19 @@ msgstr "Demander l'autorisation"
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_order_line_search_sub
 #, fuzzy
 msgid "Search Purchase Order Line"
-msgstr "Recherche de préparation d'achat"
+msgstr "Recherche d'autorisation d'achat"
 
 #. module: purchase_request
 #: model_terms:ir.ui.view,arch_db:purchase_request.purchase_request_line_search
 #: model_terms:ir.ui.view,arch_db:purchase_request.view_purchase_request_search
 msgid "Search Purchase Request"
-msgstr "Recherche de préparation d'achat"
+msgstr "Recherche d'autorisation d'achat"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_allocation__purchase_line_id
 #, fuzzy
 msgid "Service Purchase Order Line"
-msgstr "Recherche de préparation d'achat"
+msgstr "Recherche d'autorisation d'achat"
 
 #. module: purchase_order_approved
 #: model_terms:ir.ui.view,arch_db:purchase_order_approved.purchase_order_form
@@ -567,7 +567,7 @@ msgstr "Transfert des cliniques"
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__operating_unit_request_line_ids
 msgid "Operating Unit Requested Lines"
-msgstr "Ligne de préparation d'achat du clinique"
+msgstr "Lignes d'autorisation d'achat du clinique"
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order__operating_unit_picking_ids
@@ -600,12 +600,12 @@ msgstr "Type de transfert"
 #: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
 #, python-format
 msgid "Purchase request has already been completed."
-msgstr "La préparation d'achat est déjà terminée."
+msgstr "L'autorisation d'achat est déjà terminée."
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order_line__request_line_ids
 msgid "Request Lines"
-msgstr "Ligne de préparation d'achat"
+msgstr "Lignes d'autorisation d'achat"
 
 #. module: argos_purchase
 #: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
@@ -617,7 +617,7 @@ msgstr "Il y a des autorisations d'achat déjà validées."
 #: code:addons/argos_purchase/models/purchase_request_line_make_purchase_order.py:0
 #, python-format
 msgid "Purchase related to some request has already been completed."
-msgstr "Des commandes de certaines préparation d'achat ont déjà été validées."
+msgstr "Des commandes de certaines autorisation d'achat ont déjà été validées."
 
 #. module: argos_purchase
 #: model:ir.model.fields,field_description:argos_purchase.field_purchase_order_line__emergency

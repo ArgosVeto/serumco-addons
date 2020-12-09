@@ -13,8 +13,6 @@
         'sale',
         'argos_product',
         'website_sale',
-        'argos_purchase',
-        'website_sale_stock',
         'website_hr_recruitment',
         'website_blog',
         'website_forum',
@@ -37,14 +35,9 @@
         'data/res_config_parameter.xml',
         'data/ir_sequence_data.xml',
         'data/welcome_mail_template_data.xml',
-        'data/confirmation_mail_template_data.xml',
-        'data/sms_template_data.xml',
-        'data/portal_mail_template_data.xml',
-        'data/helpdesk_mail_template_data.xml',
         # security
         'security/ir.model.access.csv',
         'security/res_groups.xml',
-        'security/sms_security.xml',
         # views
         'views/assets.xml',
         'views/product_template_view.xml',

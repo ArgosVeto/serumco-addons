@@ -16,9 +16,7 @@ class StockPicking(models.Model):
                 purchase = moves.mapped('purchase_line_id').mapped('order_id')
                 if purchase and len(purchase) == 1:
                     cutoff_account = self.env.company.default_accrued_expense_account_id
-                    cutoff_account = cutoff_account or self.env['account.account'].search([('code', '=', '408100'),
-                                                                                           ('company_id', '=', self.env.company.id)],
-                                                                                          limit=1)
+                    cutoff_account = cutoff_account or self.env['account.account'].search([('code', '=', '408100')], limit=1)
                     picking.create_purchase_cutoff(purchase, cutoff_account)
                     if not purchase.invoice_ids:
                         invoice = picking.create_purchase_invoice({'purchase_id': purchase.id, 'type': 'in_invoice', 'company_id':
@@ -40,7 +38,6 @@ class StockPicking(models.Model):
         account_cutoff_line_obj.create(cutoff_lines_values)
         cutoff.create_move()
         if cutoff.move_id:
-            cutoff.move_id.write({'operating_unit_id': purchase.operating_unit_id.id})
             cutoff.move_id.action_post()
         purchase.write({'cutoff_id': cutoff.id, 'cutoff_move_ids': [(4, cutoff.move_id.id)]})
         return True

@@ -18,9 +18,6 @@ class SaleOrderLine(models.Model):
     patient_id = fields.Many2one(related='order_id.patient_id')
     employee_id = fields.Many2one(related='order_id.employee_id')
     attachment_ids = fields.Many2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
-    product_uom_qty = fields.Float(digits='Argos Product Qty')
-    qty_invoiced = fields.Float(digits='Argos Product Qty')
-    qty_delivered = fields.Float(digits='Argos Product Qty')
 
     def _compute_attachment_ids(self):
         for rec in self:

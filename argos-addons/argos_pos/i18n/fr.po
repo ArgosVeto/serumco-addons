@@ -100,15 +100,8 @@ msgstr "Votre connexion internet est probablement coupée."
 #. openerp-web
 #: code:addons/argos_pos/static/src/xml/pos.xml:0
 #, python-format
-msgid "already delivered &nbsp; / &nbsp;"
-msgstr "déjà livré(s) &nbsp; / &nbsp;"
-
-#. module: argos_pos
-#. openerp-web
-#: code:addons/argos_pos/static/src/xml/pos.xml:0
-#, python-format
-msgid "already paid"
-msgstr "déjà payé(s)"
+msgid "already delivered"
+msgstr "déjà livré(s)"
 
 #. module: argos_pos
 #. openerp-web
@@ -123,9 +116,3 @@ msgstr "à"
 #, python-format
 msgid "discount"
 msgstr "remise"
-
-#. module: argos_pos
-#: code:addons/argos_pos/models/sale_order.py:0
-#, python-format
-msgid "Line already exist for : %s. Please, edit the quantity."
-msgstr "Une ligne existe déjà pour l'article: %s. Merci de modifier la quantité."

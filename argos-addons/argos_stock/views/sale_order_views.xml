@@ -28,9 +28,6 @@
                   attrs="{'invisible': [('id', '=', False)]}"
                   type="object"/>
         </xpath>
-        <field name="patient_id" position="before">
-          <field name="warehouse_id" invisible="1"/>
-        </field>
       </field>
     </record>
 
@@ -40,13 +37,13 @@
       <field name="inherit_id" ref="argos_sale.consultation_view_order_form"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
-          <field name="description_sale" invisible="1"/>
+          <field name="description_sale"/>
           <field name="description_pickingout"/>
           <field name="renewal"/>
         </xpath>
         <xpath expr="//field[@name='order_line']/form" position="inside">
           <group>
-            <field name="description_sale" invisible="1"/>
+            <field name="description_sale"/>
             <field name="description_pickingout"/>
             <field name="renewal"/>
           </group>

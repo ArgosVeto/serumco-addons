@@ -11,7 +11,6 @@
           <filter name="active_rdv" string="Active appointment"
                   domain="[('state', 'not in', ['cancel','not_honored'])]"/>
         </xpath>
-        <xpath expr="//filter[@name='open_shifts']" position="replace"/>
       </field>
     </record>
 
@@ -107,7 +106,7 @@
             <field name="partner_id" attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"/>
             <field name="patient_id" domain="[('id','in',patient_ids)]"
                    attrs="{'required': [('background_event','=',False),('role_type','=','rdv')]}"
-                   context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient', 'default_slot_id': active_id, 'default_partner_id': partner_id}"/>
+                   context="{'form_view_ref': 'argos_contact.res_partner_view_form','tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
             <field name="consultation_type_id" string="Appointment nature"/>
             <field name="more_info" string="More customer info"/>
           </group>
