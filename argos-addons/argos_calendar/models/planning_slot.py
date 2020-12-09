@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, time
 
 from odoo import models, fields, api, _
 from odoo.tools.float_utils import float_round
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -53,6 +54,9 @@ class PlanningSlot(models.Model):
         super(PlanningSlot, self).button_validate()
         self.with_context(active_test=False).calendar_event_ids.write({'active': True})
         return True
+
+    def button_validate_wizard(self):
+        return self.button_validate()
 
     @api.model
     def get_resources(self, start_date, end_date):
@@ -282,3 +286,17 @@ class PlanningSlot(models.Model):
 
     def action_close_dialog(self):
         return {'type': 'ir.actions.client', 'tag': 'reload'}
+
+    @api.constrains('start_datetime', 'end_datetime')
+    def _check_dates(self):
+        if not self.website_planning and self.role_id and self.role_id.role_type == 'rdv':
+            if self.start_datetime:
+                minute = self.start_datetime.minute
+                secound = self.start_datetime.second
+                if secound != 0 or (minute % 5) != 0:
+                    raise ValidationError(_('Please enter times in multiples of 5 minutes !'))
+            if self.end_datetime:
+                minute = self.end_datetime.minute
+                secound = self.end_datetime.second
+                if secound != 0 or (minute % 5) != 0:
+                    raise ValidationError(_('Please enter times in multiples of 5 minutes !'))

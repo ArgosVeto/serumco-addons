@@ -21,12 +21,29 @@ class PosOrder(models.Model):
                 quotation_obj.pos_sold = False
         return result
 
+    def check_qty_to_invoice(self, order):
+        pos_order = self.search([('id', '=', order.id)])
+        for line in pos_order.lines.filtered(
+                lambda l: l.product_id.type in ['product', 'consu'] and not float_is_zero(l.qty,
+                                                                                          precision_rounding=l.product_id.uom_id.rounding)):
+            if pos_order.sale_order_id:
+                product_line = pos_order.sale_order_id.order_line.filtered(lambda l: l.product_id.id == line.product_id.id)
+                # if the product from pos exist in consultation and do check
+                if product_line.ids:
+                    qty_invoiced_pos = sum(
+                        pos_order.lines.filtered(lambda l: l.product_id.id == product_line[0].product_id.id).mapped(
+                            'qty'))
+
     @api.model
     def _process_order(self, order, draft, existing_order):
         if "to_invoice" in order and "data" in order:
             order["data"]["to_invoice"] = order["to_invoice"]
         pos_order_id = super(PosOrder, self)._process_order(order, draft, existing_order)
         return pos_order_id
+
+    def _process_payment_lines(self, pos_order, order, pos_session, draft):
+        super(PosOrder, self)._process_payment_lines(pos_order, order, pos_session, draft)
+        self.check_qty_to_invoice(order)
 
     def create_picking(self):
         """Create a picking for each order and validate it."""
@@ -48,6 +65,7 @@ class PosOrder(models.Model):
             return_picking = Picking
             moves = Move
             location_id = picking_type.default_location_src_id.id
+            consultation_of_service = all([x.product_id.type == 'service' for x in order.sale_order_id.order_line])
             if order.partner_id:
                 destination_id = order.partner_id.property_stock_customer.id
             else:
@@ -72,19 +90,21 @@ class PosOrder(models.Model):
                     'location_id': location_id,
                     'location_dest_id': destination_id,
                 }
+
                 pos_qty = any([x.qty > 0 for x in order.lines if x.product_id.type in ['product', 'consu']])
 
-                # only for non consultation
-                if pos_qty and not order.sale_order_id.is_consultation:
+                # only for non consultation or consultation of service only
+                if (pos_qty and not order.sale_order_id.is_consultation) or (pos_qty and consultation_of_service):
                     order_picking = Picking.create(picking_vals.copy())
                     if self.env.user.partner_id.email:
                         order_picking.message_post(body=message)
                     else:
                         order_picking.sudo().message_post(body=message)
+
                 neg_qty = any([x.qty < 0 for x in order.lines if x.product_id.type in ['product', 'consu']])
 
-                # only for non consultation
-                if neg_qty and not order.sale_order_id.is_consultation:
+                # only for non consultation or consultation of service only
+                if (neg_qty and not order.sale_order_id.is_consultation) or (neg_qty and consultation_of_service):
                     return_vals = picking_vals.copy()
                     return_vals.update({
                         'location_id': destination_id,
@@ -102,7 +122,7 @@ class PosOrder(models.Model):
             for line in order.lines.filtered(
                     lambda l: l.product_id.type in ['product', 'consu'] and not float_is_zero(l.qty,
                                                                                               precision_rounding=l.product_id.uom_id.rounding)):
-                # only for consultatoin and negative quantity from pos will be ignored
+                # only for consultation and negative quantity from pos will be ignored
                 if order.sale_order_id.is_consultation and line.qty > 0:
                     product_line = order.sale_order_id.order_line.filtered(
                         lambda l: l.product_id.id == line.product_id.id)
@@ -111,11 +131,15 @@ class PosOrder(models.Model):
                             "These are more than one line of the same product in the consultation of %s") % order.sale_order_id.name)
 
                     # make sum to have the real quantity to deliver
+                    # if the product from pos exist in consultation
                     if product_line.ids:
-                        final_qty = sum(
+                        qty_invoiced_pos = sum(
                             order.lines.filtered(lambda l: l.product_id.id == product_line[0].product_id.id).mapped(
                                 'qty'))
-                        qty = final_qty
+                        if product_line[0].qty_invoiced == 0 and  product_line[0].qty_delivered > 0:
+                            qty = qty_invoiced_pos - product_line[0].qty_delivered
+                        else:
+                            qty = qty_invoiced_pos
                     else:
                         final_qty = sum(
                             order.lines.filtered(lambda l: l.product_id.id == line.product_id.id).mapped('qty'))
@@ -143,7 +167,10 @@ class PosOrder(models.Model):
                                 'location_id': location_id if line.qty >= 0 else destination_id,
                                 'location_dest_id': destination_id if line.qty >= 0 else return_pick_type != picking_type and return_pick_type.default_location_dest_id.id or location_id,
                             })
-                else:
+
+                # in case we have consultation with only service line and we stockable product on pos create delivery, create picking link it to pos
+
+                if consultation_of_service or not order.sale_order_id.is_consultation:
                     qty = abs(line.qty)
                     picking_id = order_picking.id if line.qty >= 0 else return_picking.id
 
@@ -161,7 +188,7 @@ class PosOrder(models.Model):
 
             # prefer associating the regular order picking, not the return
             # this for non consultation
-            if not order.sale_order_id.is_consultation:
+            if consultation_of_service or not order.sale_order_id.is_consultation:
                 order.write({'picking_id': order_picking.id or return_picking.id})
                 if return_picking:
                     order._force_picking_done(return_picking)
@@ -189,16 +216,19 @@ class PosOrder(models.Model):
         for order in self:
             order_line = order.sale_order_id.order_line
             # check if consultation must be set to pos sold
-            qty_ordered = sum(order_line.mapped('product_uom_qty'))
-            qty_delivered = sum(order_line.mapped('qty_delivered'))
-            service_qty_ordered = sum(order_line.filtered(lambda l: l.product_id.type == 'service').mapped('product_uom_qty'))
-            service_qty_delivered = sum(order_line.filtered(lambda l: l.product_id.type == 'service').mapped('qty_delivered'))
+            qty_ordered = sum(order_line.mapped('product_uom_qty')) or 0.0
+            qty_delivered = sum(order_line.mapped('qty_delivered')) or 0.0
+            service_qty_ordered = sum(order_line.filtered(lambda l: l.product_id.type == 'service').mapped('product_uom_qty')) or 0.0
+            service_qty_delivered = sum(order_line.filtered(lambda l: l.product_id.type == 'service').mapped('qty_delivered')) or 0.0
 
             # quantity delivered may be greater or equal than ordered
             if len(order.sale_order_id.picking_ids.filtered(lambda l: l.state == 'assigned')) == 0 \
                     and qty_delivered >= qty_ordered \
                     and service_qty_delivered >= service_qty_ordered:
                 order.sale_order_id.pos_sold = True
+
+            if order.sale_order_id.argos_state != 'consultation_done':
+                order.sale_order_id.button_end_consultation()
 
     def action_pos_order_invoice(self):
         result = super(PosOrder, self).action_pos_order_invoice()
@@ -214,6 +244,13 @@ class PosOrder(models.Model):
                                 lambda l: l.product_id.id == service_line.product_id.id).mapped(
                                 'quantity'))
                             service_line.qty_delivered = quantity_invoiced + service_line.qty_delivered
-            order.set_consultation_done()
+                order.set_consultation_done()
+
+                # update order_line and invoice for qty_invoiced on consultation
+                invoice_line_ids = order.account_move.invoice_line_ids
+                for consultation_line in order.sale_order_id.order_line:
+                    if consultation_line.product_id.id in invoice_line_ids.mapped('product_id').ids:
+                        for invoice_line in invoice_line_ids.filtered(lambda l: l.product_id.id == consultation_line.product_id.id):
+                             consultation_line.invoice_lines = [(4, invoice_line.id)]
 
         return result

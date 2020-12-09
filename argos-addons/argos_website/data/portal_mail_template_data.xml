@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'portal'), ('name', '=', 'mail_template_data_portal_welcome')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="portal.mail_template_data_portal_welcome">
+      <field name="email_from">digital@argos-veterinaire.fr</field>
+      <field name="reply_to">digital@argos-veterinaire.fr</field>
+      <field name="auto_delete" eval="False"/>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'portal'), ('name', '=', 'mail_template_data_portal_welcome')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'website_profile'), ('name', '=', 'validation_email')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="website_profile.validation_email">
+      <field name="email_from">${object.default_operating_unit_id.name or ''}</field>
+      <field name="reply_to">${object.default_operating_unit_id.reply_email | safe}</field>
+      <field name="auto_delete" eval="False"/>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'website_profile'), ('name', '=', 'validation_email')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'auth_signup'), ('name', '=', 'reset_password_email')]"/>
+      </function>
+      <value eval="{'noupdate': False}"/>
+    </function>
+
+    <record model="mail.template" id="auth_signup.reset_password_email">
+      <field name="email_from">${object.default_operating_unit_id.name or ''}</field>
+      <field name="reply_to">${object.default_operating_unit_id.reply_email | safe}</field>
+      <field name="auto_delete" eval="False"/>
+    </record>
+
+    <function name="write" model="ir.model.data">
+      <function name="search" model="ir.model.data">
+        <value eval="[('module', '=', 'auth_signup'), ('name', '=', 'reset_password_email')]"/>
+      </function>
+      <value eval="{'noupdate': True}"/>
+    </function>
+  </data>
+</odoo>

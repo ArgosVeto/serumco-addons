@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="reception_sms_template" model="sms.template">
+      <field name="name">ARGOS - Order reception</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="body">Your Argos Veterinary order ${object.name} is now available in your ${object.operating_unit_id.name}.
+You can come and pick it up now !
+      </field>
+    </record>
+  </data>
+</odoo>

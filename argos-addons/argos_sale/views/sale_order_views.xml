@@ -65,50 +65,90 @@
                 <field name="arrival_time" widget="timer" class="text-danger h2 pull-right mr-4 font-weight-bold"/>
               </button>
             </div>
+            <field name="image" widget="image" class="oe_avatar"/>
             <div class="oe_title">
-              <h1>
-                <field name="name"/>
-              </h1>
+              <h5>
+                <field name="name" attrs="{'invisible': [('id', '=', False)]}" nolabel="1"/>
+              </h5>
             </div>
             <group>
               <group>
                 <field name="is_consultation" invisible="1"/>
                 <field name="conv_key" invisible="1"/>
                 <field name="is_incineris" invisible="1"/>
-                <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
                 <field name="invoice_status" invisible="1"/>
                 <field name="state" invisible="1"/>
                 <field name="company_id" invisible="1"/>
                 <field name="pickup_time" invisible="1"/>
-                <field name="patient_id" required="1" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
-                   'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}"/>
-                <field name="species_id" string="Species"/>
-                <field name="race_id"/>
-                <field name="gender_id"/>
-                <field name="age"/>
-                <field name="weight"/>
-                <field name="pathology_ids" widget="many2many_tags" string="Pathologies &amp; Intolerance"/>
-                <field name="consultation_type_id" string="Reason For Appointment"/>
-                <field name="is_referral" invisible="1"/>
-                <field name="referent_partner_id" attrs="{'invisible': [('is_referral', '=', False)]}"/>
-                <field name="customer_observation"/>
-                <field name="canvas_id" context="{'default_is_canvas': True}"/>
-                <field name="observation"/>
+                <field name="team_id" invisible="1"/>
+                <label for="patient_id" string="Patient"/>
+                <div>
+                  <h2>
+                    <field name="patient_id" required="1" context="{'form_view_ref': 'argos_contact.res_partner_view_form',
+                        'tree_view_ref': 'argos_contact.res_partner_view_tree', 'default_contact_type': 'patient'}" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+                  </h2>
+                </div>
+                <div/>
+                <div>
+                  <h2>
+                    <field name="species_id" string="Species"/>
+                  </h2>
+                </div>
+                <div/>
+                <div>
+                  <h2>
+                    <field name="race_id"/>
+                  </h2>
+                </div>
+                <div/>
+                <div>
+                  <h2>
+                    <field name="gender_id"/>
+                  </h2>
+                </div>
+                <div/>
+                <div>
+                  <field name="age"/>
+                </div>
+                <div/>
+                <div class="o_row">
+                  <field name="weight"/>
+                  <span>kg</span>
+                </div>
+                <label for="pathology_ids" string="Pathologies &amp; Intolerance"/>
+                <div>
+                  <field name="pathology_ids" widget="many2many_tags"/>
+                </div>
               </group>
               <group>
-                <field name="consultation_date"/>
-                <field name="pricelist_id" groups="product.group_product_pricelist"
-                       options="{'no_open':True,'no_create': True}"/>
-                <field name="employee_id" string="Seen By" context="{'default_is_veterinary': True}"/>
+                <field name="consultation_date" attrs="{'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
                 <field name="partner_id"/>
                 <field name="partner_patient_ids" widget="many2many_tags"/>
+                <field name="employee_id" string="Seen By" context="{'default_is_veterinary': True}"/>
                 <field name="operating_unit_id" string="Clinical"/>
+                <field name="pricelist_id" groups="product.group_product_pricelist"
+                       options="{'no_open':True,'no_create': True}"/>
+                <field name="is_referral" invisible="1"/>
+                <field name="referent_partner_id" attrs="{'invisible': [('is_referral', '=', False)]}"/>
+                <field name="origin_order_id" attrs="{'invisible': [('origin_order_id', '=', False)]}"/>
+              </group>
+            </group>
+            <group>
+              <group>
+                <field name="consultation_type_id" string="Reason For Appointment"/>
+                <field name="customer_observation"/>
+                <field name="canvas_id" context="{'default_is_canvas': True}"/>
+              </group>
+              <group>
                 <field name="diagnostic_ids" widget="many2many_tags" context="{'default_type': 'diagnostic'}"/>
                 <field name="hypothese_ids" widget="many2many_tags" context="{'default_type': 'hypothese'}"/>
               </group>
             </group>
+            <group>
+              <field name="observation"/>
+            </group>
             <notebook>
-              <page name="command_lines" string="Command Lines">
+              <page name="command_lines" string="Acts and Products">
                 <field name="max_line_sequence" invisible="1"/>
                 <field name="order_line" widget="section_and_note_one2many" mode="tree,kanban"
                        attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" context="{'default_sequence': max_line_sequence}">
@@ -256,7 +296,7 @@
                             }"
                            domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
                            widget="product_configurator"/>
-                    <field name="name" widget="section_and_note_text" optional="show"/>
+                    <field name="name" widget="section_and_note_text" optional="hide"/>
                     <field
                           name="analytic_tag_ids"
                           optional="hide"
@@ -321,12 +361,12 @@
                           options="{'no_create': True}"
                           domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"
                           attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"
-                          optional="show"
+                          optional="hide"
                     />
                     <field name="is_antibiotic" invisible="1"/>
                     <field name="discount" string="Disc.%" optional="show" attrs="{'readonly': [('is_antibiotic', '=', True)]}"/>
                     <field name="price_subtotal" widget="monetary"
-                           groups="account.group_show_line_subtotals_tax_excluded"/>
+                           groups="account.group_show_line_subtotals_tax_excluded" invisible="1"/>
                     <field name="price_total" widget="monetary"
                            groups="account.group_show_line_subtotals_tax_included"/>
                     <field name="state" invisible="1"/>
@@ -469,7 +509,8 @@
       <field name="context">{'default_is_consultation': True,
                              'default_argos_state': 'in_progress',
                              'tree_view_ref': 'argos_sale.consultation_view_order_tree',
-                             'form_view_ref': 'argos_sale.consultation_view_order_form'}</field>
+                             'form_view_ref': 'argos_sale.consultation_view_order_form',
+                             'default_team_id': False}</field>
       <field name="domain">[('is_consultation', '=', True)]</field>
     </record>
 
@@ -550,6 +591,19 @@
                   name="compute_api_information"
                   type="object"/>
         </xpath>
+      </field>
+    </record>
+
+    <record id="sale_order_view_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.view.form.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form" />
+      <field name="arch" type="xml">
+        <button name="action_draft" position="after">
+          <field name="is_consultation" invisible="1"/>
+          <button name="button_make_to_consult" type="object" string="Make Into Consult"
+                  attrs="{'invisible': ['|', ('is_consultation', '=', True), ('state', 'not in', ['sale', 'done'])]}"/>
+        </button>
       </field>
     </record>
   </data>

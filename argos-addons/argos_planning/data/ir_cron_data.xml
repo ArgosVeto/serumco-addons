@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <record id="planning_reminder_cron_data" model="ir.cron">
+      <field name="name">Planning: Planning slot reminder</field>
+      <field name="model_id" ref="model_planning_slot"/>
+      <field name="state">code</field>
+      <field name="code">model.cron_send_reminder()</field>
+      <field name="interval_number">2</field>
+      <field name="interval_type">hours</field>
+      <field name="numbercall">-1</field>
+      <field name="doall" eval="True"/>
+    </record>
+
+    <record id="planning_review_cron_data" model="ir.cron">
+      <field name="name">Planning: Planning slot review</field>
+      <field name="model_id" ref="model_planning_slot"/>
+      <field name="state">code</field>
+      <field name="code">model.cron_send_review()</field>
+      <field name="interval_number">1</field>
+      <field name="interval_type">days</field>
+      <field name="numbercall">-1</field>
+      <field name="doall" eval="True"/>
+    </record>
+
+  </data>
+</odoo>

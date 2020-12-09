@@ -9,6 +9,7 @@ odoo.define('argos_pos.models', function (require) {
 
     var _super_order = exports.Order.prototype;
     var _super_orderline = exports.Orderline.prototype;
+	var _t = core._t;
 
     exports.Order = exports.Order.extend({
         initialize: function (attributes, options) {
@@ -39,6 +40,10 @@ odoo.define('argos_pos.models', function (require) {
 
             if (options.quantity_delivered !== undefined) {
                 line.set_quantity_delivered(options.quantity_delivered);
+            }
+
+            if (options.quantity_invoiced !== undefined) {
+                line.set_quantity_invoiced(options.quantity_invoiced);
             }
 
             if (options.price !== undefined) {
@@ -81,6 +86,7 @@ odoo.define('argos_pos.models', function (require) {
         initialize: function (attr, options) {
             _super_orderline.initialize.apply(this, arguments);
             this.set_quantity_delivered(0);
+            this.set_quantity_invoiced(0);
         },
         set_quantity_delivered: function (quantity_delivered) {
             // var decimals = this.pos.dp['Product Unit of Measure'];
@@ -88,13 +94,26 @@ odoo.define('argos_pos.models', function (require) {
             this.quantityDelivered = quant;
             this.quantityDeliveredStr = '' + quant;
         },
+		set_quantity_invoiced: function (quantity_invoiced) {
+            // var decimals = this.pos.dp['Product Unit of Measure'];
+            var quant = parseFloat(quantity_invoiced) || 0;
+            this.quantityInvoiced = quant;
+            this.quantityInvoicedStr = '' + quant;
+        },
         clone: function () {
             var orderline = _super_orderline.clone.apply(this, arguments);
             orderline.quantityDeliveredStr = this.quantityDeliveredStr;
+            orderline.quantityInvoicedStr = this.quantityInvoicedStr;
             return orderline;
         },
         get_quantity_delivered_str: function () {
             return this.quantityDeliveredStr;
+        },
+		get_quantity_invoiced_str: function () {
+            return this.quantityInvoicedStr;
+        },
+		get_quantity_invoiced: function () {
+            return this.quantityInvoiced;
         },
         get_quantity_delivered: function () {
             return this.quantityDelivered;
@@ -139,10 +158,11 @@ odoo.define('argos_pos.models', function (require) {
 			            }
 			            for(var i=0;i<quotation_data.length;i++){
 		            		var product = self.pos.db.get_product_by_id(quotation_data[i]['product_id'][0]);
-		            		if(product && quotation_data[i]['product_uom_qty'] - quotation_data[i]['qty_delivered'] > 0 ){
+		            		if(product && quotation_data[i]['product_uom_qty'] - quotation_data[i]['qty_invoiced'] > 0 ){
 		            			order.add_product(product, {
-                                    'quantity': quotation_data[i]['product_uom_qty'] - quotation_data[i]['qty_delivered'],
-                                    'quantity_delivered': quotation_data[i]['qty_delivered']
+                                    'quantity': quotation_data[i]['product_uom_qty'] - quotation_data[i]['qty_invoiced'],
+                                    'quantity_delivered': quotation_data[i]['qty_delivered'],
+									'quantity_invoiced': quotation_data[i]['qty_invoiced']
                                 });
 		            		}
 		            	}
@@ -167,8 +187,6 @@ odoo.define('argos_pos.models', function (require) {
 	        var self = this;
 	        this._super();
 	        this.renderElement();
-	        // this.details_visible = false;
-	        // this.old_client = this.pos.get_order().get_client();
 	        this.render_list(self.pos.quotations);
 	    },
 
