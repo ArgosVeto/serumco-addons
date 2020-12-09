@@ -56,35 +56,40 @@ class Website(models.Model):
         Category = request.env['product.public.category']
         dom = request.env['website'].get_current_website().website_domain()
         category_id = Category.search(dom,limit=1)
-        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.product_filter_id.id,c.id)
+        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.attribute_id.id,c.id)
+        return category_url
+
+    @api.model
+    def default_category_tmp(self,c):
+        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.attribute_id.id,c.product_attribute_value_id.id)
         return category_url
 
     @api.model
     def get_gamne_values(self):
-        gamne_values = request.env['product.filter'].sudo().search([('name','=','Gamme')],limit=5)
+        gamne_values = request.env['product.attribute'].sudo().search([('name','=','Gamme')],limit=5)
         att_value = False
         if gamne_values:
-            att_value = gamne_values[0].product_filter_line_ids
+            att_value = gamne_values[0].value_ids
         return att_value
 
     @api.model
     def get_product_gamne_values(self,product):
         att_value = False
         att_list = []
-        if product.product_filter_ids:
-            for line in product.product_filter_ids:
-                if line.filter_id.name == 'Gamme':
-                    att_list = line.filter_line_ids
+        if product.attribute_line_ids:
+            for line in product.attribute_line_ids:
+                if line.attribute_id.name == 'Gamme':
+                    att_list = line.value_ids                    
         return att_list
 
         
 
     @api.model
     def get_cash_values(self):
-        cash_values = request.env['product.filter'].sudo().search([('name','=','Espèces')])
+        cash_values = request.env['product.attribute'].sudo().search([('name','=','Espèces')])
         att_value = False
         if cash_values:
-            att_value = cash_values[0].product_filter_line_ids
+            att_value = cash_values[0].value_ids
         return att_value
 
     @api.model

@@ -5,6 +5,14 @@
 from odoo import models, fields, api
 from odoo import models, fields
 
+
+
+class ProductAttributeValue(models.Model):
+    _inherit = 'product.attribute.value'
+    
+    image = fields.Binary("Image")
+    
+    
 class ProductTemplateAttributeValue(models.Model):
     _inherit = "product.template.attribute.value"
 

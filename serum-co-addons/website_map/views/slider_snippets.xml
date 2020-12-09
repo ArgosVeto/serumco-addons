@@ -99,6 +99,19 @@
                 <div class="title-desc" style="width: 450px;height: 78px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap; line-height: 1.39;margin-top: 10px;">
                     <span t-field='product.description_web'/>
                 </div>
+                <t t-if="product.attribute_line_ids">
+                    <div class="row" style="width: 200%;height:3.5em;overflow:hidden;margin-top: 20px;">
+                        <t t-foreach="product.attribute_line_ids" t-as="attrib">
+                            <t t-if="attrib.is_attribute_visible">
+                                <t t-foreach="attrib.value_ids" t-as="value">
+                                    <div class="align-items-center" style="margin-left:20px;border-radius:24px;background-color:#63bae9;height:36px;padding: 24px 20px 20px 20px;margin-top:5px;display:flex;">
+                                        <span t-esc="value.name" style="color:white;font-weight:bold;"/>
+                                    </div>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </t>
                 <div class="o_wsale_product_btn" style="margin-top:20px;">
                     <form action="/shop/cart/update" method="post">
                        <div class="row" style="width:200%;">
