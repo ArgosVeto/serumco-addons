@@ -52,11 +52,12 @@
                         <div class="col-md-2 criteria">
                             <span style="padding:5px;">De Criteres</span>
                         </div>
-                        <div class="col-md-2 see_map">
+                        <div><span>toto</span></div>
+                        <!--div class="col-md-2 see_map">
                             <a role="button" class="btn btn-primary" href="#">
                                 <span style="padding:5px;">Voir La Carte</span>
                             </a>
-                        </div>
+                        </div-->
                     </div>
                     <t t-if="not partner_ids">
                         <h3>No record found.</h3>

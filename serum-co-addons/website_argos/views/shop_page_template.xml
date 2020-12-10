@@ -82,7 +82,7 @@
 									<p><a href="#nogo" onclick="document.getElementById('description').removeAttribute('style');
 										this.style.display = 'none';">Lire la suite  <img src="/website_argos/static/src/img/right.png"/></a></p>
 								</t>
-		 	                <div class="sub-categories mt32">
+ 		 	                <div class="sub-categories mt32">
 			                	<ul class="nav nav-pills flex-row">
 									<t t-foreach="category" t-as="c">
 										<t t_if="c.child_id.parent_id.id == c.id">
@@ -211,7 +211,7 @@
 											<t t-if="a.is_filter_visible">
 											<li t-if="a.product_filter_line_ids and len(a.product_filter_line_ids) &gt; 1" class="nav-item">
 												<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>
-												<div class="dropdown-menu" role="menu">
+												<div class="dropdown-menu" role="menu" style="height: 250px; overflow-y: scroll">
 													<ul class="nav nav-pills flex-column">
 														<t t-foreach="a.product_filter_line_ids" t-as="v">
 															<li class="nav-item">
@@ -393,7 +393,6 @@
 		<template id="cart_popover_inherit" inherit_id="sale.variants">
 		 <xpath expr="//t[@t-foreach='product.valid_product_template_attribute_line_ids']" position="replace"/>
 		</template>
-
 
 
 </odoo>

@@ -107,6 +107,8 @@ odoo.define('website_map.arounded', function (require) {
             // var names = val['name']
             geocoders.geocode({'address': cities}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
+                    alert(results[0].geometry.location.lat());
+                    alert(results[0].geometry.location.lng());
                     var latitude = results[0].geometry.location.lat();
                     var longitude = results[0].geometry.location.lng();
                     var myLatLng2 = { lat: latitude, lng: longitude };

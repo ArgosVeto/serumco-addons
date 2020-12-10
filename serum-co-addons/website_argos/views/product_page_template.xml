@@ -252,15 +252,15 @@
                             <div itemprop="description" t-field="product.description_web" class="oe_structure mt16" id="product_full_description" />
                         </div>
                         <div class="tab-pane fade" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2">
-                                <p>Composition :</p><t t-esc="product.composition"/>
-                                <p>Constituants Analytiques :</p><t t-esc="product.analytic_constitution"/>
-                                <p>Additifs :</p><t t-esc="product.additives"/>
-                                <p>Valeurs Energétique :</p><t t-esc="product.energetic_value"/>
-                                <p>Teneur en Eau :</p><t t-esc="product.waters_content"/>
+                                <p>Composition :</p><t t-raw="product.composition"/>
+                                <p>Constituants Analytiques :</p><t t-raw="product.analytic_constitution"/>
+                                <p>Additifs :</p><t t-raw="product.additives"/>
+                                <p>Valeurs Energétique :</p><t t-raw="product.energetic_value"/>
+                                <p>Teneur en Eau :</p><t t-raw="product.waters_content"/>
                         </div>
                         <div class="tab-pane fade" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
-                                <p>Ration journalière recommandée :</p><t t-esc="product.daily_ratio_recommended"/>
-                                <p>Indications :</p><t t-esc="product.indications"/>
+                                <p>Ration journalière recommandée :</p><t t-raw="product.daily_ratio_recommended"/>
+                                <p>Indications :</p><t t-raw="product.indications"/>
                         </div>
                         <div class="tab-pane fade" id="nav-home4" role="tabpanel" aria-labelledby="nav-home-tab4">
                             <t t-foreach="product.documentation_ids" t-as="doc">
