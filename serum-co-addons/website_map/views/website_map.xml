@@ -6,7 +6,7 @@
             <script type="text/javascript" src="/website_map/static/src/js/slider.js" />
         </xpath>
 	</template>
-	<template id="clinic_search_box_inherit" inherit_id="website_argos.clinic_search_box">
+	<!--template id="clinic_search_box_inherit" inherit_id="website_argos.clinic_search_box">
 		<xpath expr="//div/form/div[2]" position="replace">
 			<t t-if="request.session.uid">
 				<div class="">
@@ -23,9 +23,9 @@
 	            </div>
 	        </t>
 		</xpath>
-	</template>
+	</template-->
 
-	<template id="clinic_template_inherit" inherit_id="website_argos.clinic_template">
+	<!--template id="clinic_template_inherit" inherit_id="website_argos.clinic_template">
 		<xpath expr="//t/section[2]/div/div/div[5]" position="replace">
 			<t t-if="request.session.uid">
 				<div class="see_map googleMap">
@@ -70,7 +70,7 @@
 			};
             </script>
 		</xpath>
-		<!-- <xpath expr="//t/section[3]/div[@class='container']" position="before">
+		<xpath expr="//t/section[3]/div[@class='container']" position="before">
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
 			<div id="googleMap" class="" style="width: 30%; height: 400px; display: none; position: relative; overflow: hidden; float: right;"></div>
 
@@ -83,8 +83,8 @@
 			var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 			}
 			</script>
-		</xpath> -->
-	</template>
+		</xpath>>
+	</template-->
 
 	 <template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
 	 	<xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
@@ -166,7 +166,7 @@
 		</xpath>
 	 </template>
 
-	<template id="job_search_box_inherit" inherit_id="website_argos.job_search_box">
+	<!--template id="job_search_box_inherit" inherit_id="website_argos.job_search_box">
 		<xpath expr="//t/div/form/div[2]" position="replace">
 			<div class="">
                <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4" id="around">
@@ -194,7 +194,7 @@
 			};
             </script>
 		</xpath>
-	</template>
+	</template-->
 
 	<template id="index_inherit2_template" inherit_id="website_hr_recruitment.index">
 		<xpath expr="//div[@id='jobs_grid']/div[1]" position="after">

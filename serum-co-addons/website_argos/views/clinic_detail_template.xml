@@ -65,7 +65,7 @@
 									class="btn btn-primary ml-4">
 									<img src="/website_argos/static/src/img/phone-white.svg"
 										class="img img-fluid mr-2" />
-									<span class="">appeler</span>
+									<span class="">Appeler</span>
 								</a>
 								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
 								<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
@@ -602,7 +602,7 @@
 
 							</div>
 							<div class="clinic-link mt24">
-								<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary btn-block">Prendre renvez-vous</a>
+								<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary btn-block">Prendre rendez-vous</a>
 							</div>
 						</div>
 					</div>

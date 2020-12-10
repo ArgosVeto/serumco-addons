@@ -7,11 +7,11 @@
                 <div class="se-btn">
                     <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
                 </div>  
-                 <div class="">
+                 <!--div class="">
                    <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4">
                        <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
                    </a>
-                </div>               
+                </div-->               
             </form>            
         </div>
     </template>
@@ -205,12 +205,12 @@
 							            </div>
 						        </div>
                         </div>
-                        <div class="see_map d-none d-md-block">
+                        <!--div class="see_map d-none d-md-block">
                         	<div class="custom-control custom-switch">
 							  <input type="checkbox" class="custom-control-input" id="customSwitch1"/>
 							  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
 							</div>
-                        </div>
+                        </div-->
 
                         <!--div class="clear-search mt8 ml8 clinic-type-b">
 				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
