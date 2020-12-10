@@ -389,7 +389,7 @@
 		</xpath>
 	</template>
 
-<!--	hide attribute on product view-->
+<!--hide attribute on product view-->
 		<template id="sale_variants_inherit" inherit_id="sale.variants">
 		 <xpath expr="//t[@t-foreach='product.valid_product_template_attribute_line_ids']" position="replace"/>
 		</template>
