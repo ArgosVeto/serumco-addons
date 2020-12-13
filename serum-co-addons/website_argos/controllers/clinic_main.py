@@ -459,7 +459,7 @@ class ClinicDetail(http.Controller):
         return request.env['ir.ui.view'].render_template("website_argos.clinic_load", values)
 
     @http.route([
-        '''/clinic-detail''',
+        '''/nos-cliniques-veterinaires-2''',
     ], type='http', auth="public", website=True)
     def clinic_detail(self, **post):
         subdomains = []
@@ -532,7 +532,7 @@ class ClinicDetail(http.Controller):
         add_fav_clinic = request.env['website'].sudo(
         ).add_fav_clinic(operating_unit)
         values = {'clinic_id': operating_unit}
-        return request.redirect("/clinic-detail/clinic-pratice/%s" % slug(operating_unit))
+        return request.redirect("/nos-cliniques-veterinaires-2/clinique/%s" % slug(operating_unit))
 
     @http.route(['/add-fav-clinic/<model("operating.unit"):operating_unit>'], type='http', auth="user", website=True)
     def add_fav_clinic_favorite(self, operating_unit, **post):
@@ -558,9 +558,9 @@ class ClinicDetail(http.Controller):
         else:
             partner_id.clinic_shortlisted_ids = [
                 (0, 0, {'favorite_clinic_id': operating_unit.id})]
-        return request.redirect("/clinic-detail")
+        return request.redirect("/nos-cliniques-veterinaires-2")
 
-    @http.route(['/clinic-detail/clinic-pratice/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
+    @http.route(['/nos-cliniques-veterinaires-2/clinique/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
     def add_clinic_pratice(self, operating_unit, **post):
         service_ids = request.env['operating.unit.service'].sudo().search([])
         payment_method_ids = request.env['payment.acquirer'].sudo().search([])

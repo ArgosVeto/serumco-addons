@@ -128,7 +128,7 @@
 												
 											</div>
 											<div class="clinic-link mt24">
-												<a t-attf-href="/clinic-detail/clinic-pratice/#{slug(clinic_id.sudo())}"  class="btn btn-primary btn-block">Voir la fiche clinique</a>
+												<a t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(clinic_id.sudo())}"  class="btn btn-primary btn-block">Voir la fiche clinique</a>
 											</div>
 										</div>
 					                </div>

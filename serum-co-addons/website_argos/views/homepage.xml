@@ -3,7 +3,7 @@
 	
 	<template id="homepage_clinic_search_box" name="Homepage Clinic Searchbox">
         <div role="search">
-             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
+             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/nos-cliniques-veterinaires-2'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Département/code postal/ville..." t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-light oe_search_button search-btn" aria-label="Search" title="Search">Rechercher</button>
@@ -376,7 +376,7 @@
 									<div class="text">
 										<h3 class="text-white">Une équipe de vétérinaires<br/>à votre service</h3>
 										<p>Si votre animal présente une plaie, des vomissements, des crises convulsives, de la fièvre, des difficultés respiratoires, ou autre problème qui vous semble inquiétant, contactez-nous. Les cliniques et cabinets vétérinaires du réseau Argos restent disponibles 7j/7 pour traiter les urgences vétérinaires.</p>
-										<p class="m-0">Si votre animal ne présente pas ces symptômes, nous vous invitons à <a href="/clinic-detail" class="text-white"><b><u>prendre contact avec la clinique vétérinaire Argos la plus proche de chez vous</u></b></a> pendant les horaires d’ouverture. Prenez rendez-vous en toute simplicité et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal !</p>
+										<p class="m-0">Si votre animal ne présente pas ces symptômes, nous vous invitons à <a href="/nos-cliniques-veterinaires-2" class="text-white"><b><u>prendre contact avec la clinique vétérinaire Argos la plus proche de chez vous</u></b></a> pendant les horaires d’ouverture. Prenez rendez-vous en toute simplicité et rencontrez nos équipes vétérinaires dédiées au bien-être de votre animal !</p>
 									</div>
 								</section>
 							</div>

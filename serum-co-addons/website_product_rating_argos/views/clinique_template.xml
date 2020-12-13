@@ -3,7 +3,7 @@
     <template id="clinic_search_box" name="Clinic Searchbox">
         <div t-attf-class="input-group #{_classes}" role="search
             ">
-             <form t-attf-class="o_clinic_searchbar_form  {_classes}" t-att-action="action if action else '/clinic-detail'" method="get">
+             <form t-attf-class="o_clinic_searchbar_form  {_classes}" t-att-action="action if action else '/nos-cliniques-veterinaires-2'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Search..." t-att-value="search"/>
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search"><i class="fa fa-search"/></button>
@@ -15,7 +15,7 @@
 	<template id="clinic_template">
         <t t-call="website.layout">
             <div class="raw container">
-            	<form action="/clinic-detail" method="post" class="">
+            	<form action="/nos-cliniques-veterinaires-2" method="post" class="">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                     <div class="col-md-12 mt8">
                         <t t-call="website_product_rating_argos.clinic_search_box"/>
