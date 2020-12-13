@@ -273,7 +273,7 @@
                                                 <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
                                                 <span>Appeler</span>
                                             </a>
-                                             <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/clinic-detail/clinic-pratice/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
+                                             <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/nos-cliniques-veterinaires-2/clinique/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
                                                 <span>Voir la fiche</span>
                                             </a>
                                         </t>
@@ -510,7 +510,7 @@
                                         <img class="card-img-top" t-att-src="website.image_url(clinic.favorite_clinic_id, 'clinic_banner')"/>
                                         <div class="card-body">
                                             <h3 class="card-title o_default_snippet_text">
-                                                <a itemprop="display_name"  t-attf-href="/clinic-detail/clinic-pratice/#{clinic.favorite_clinic_id.id}" t-att-content="clinic.favorite_clinic_id.display_name" t-field="clinic.favorite_clinic_id.display_name"/>
+                                                <a itemprop="display_name"  t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{clinic.favorite_clinic_id.id}" t-att-content="clinic.favorite_clinic_id.display_name" t-field="clinic.favorite_clinic_id.display_name"/>
                                             </h3>
 
                                             <p class="Clinique-actuellemen">

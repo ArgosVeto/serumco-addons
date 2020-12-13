@@ -159,7 +159,7 @@
 															<div class="card-body">
 																<h3 class="card-title o_default_snippet_text">
 																	<a itemprop="display_name"
-																		t-attf-href="/clinic-detail/clinic-pratice/#{partner.id}"
+																		t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{partner.id}"
 																		t-att-content="partner.display_name"
 																		t-field="partner.display_name" />
 																</h3>
@@ -227,7 +227,7 @@
 
 															<h3 class="card-title o_default_snippet_text">
 																<a itemprop="display_name"
-																	t-attf-href="/clinic-detail/clinic-pratice/#{partner.favorite_clinic_id.id}"
+																	t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{partner.favorite_clinic_id.id}"
 																	t-att-content="partner.favorite_clinic_id.name"
 																	t-field="partner.favorite_clinic_id.name" />
 															</h3>
@@ -326,7 +326,7 @@
 															<div class="card-body">
 																<h3 class="card-title o_default_snippet_text">
 																	<a itemprop="display_name"
-																		t-attf-href="/clinic-detail/clinic-pratice/#{partner.id}"
+																		t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{partner.id}"
 																		t-att-content="partner.display_name"
 																		t-field="partner.display_name" />
 																</h3>
@@ -394,7 +394,7 @@
 
 															<h3 class="card-title o_default_snippet_text">
 																<a itemprop="display_name"
-																	t-attf-href="/clinic-detail/clinic-pratice/#{partner.favorite_clinic_id.id}"
+																	t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{partner.favorite_clinic_id.id}"
 																	t-att-content="partner.favorite_clinic_id.name"
 																	t-field="partner.favorite_clinic_id.name" />
 															</h3>

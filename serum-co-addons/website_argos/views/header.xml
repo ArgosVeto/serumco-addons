@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <template id="layout_argos" name="Main layout" inherit_id="portal.frontend_layout">
+	    <xpath expr="//head/meta[last()]" position="after">
+				<script>window.dataLayer = window.dataLayer || [];</script>
+				<!-- Google Tag Manager -->
+				<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+				var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
+				dl=l!='dataLayer'?';
+				l='+l:'';
+				j.async=true;
+				j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
+				(window,document,'script','dataLayer','GTM-MHDC7WL');</script>
+				<!-- End Google Tag Manager -->
+		</xpath>
+	    <xpath expr="//body/div" position="before">
+				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHDC7WL" height="0" width="0" style="display:none;visibility:hidden"
+				></iframe></noscript>
+		</xpath>
+	</template>
+
 	<template id="website_argos_header_search_inherit" inherit_id="website.website_search_box">
 		<xpath expr="//input" position="replace">
 			<input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
@@ -20,7 +39,7 @@
 							</div>
 							<div class="mobile-icons d-flex d-md-none ml-auto align-items-center justify-content-end">
 								<div class="search">
-									<a class="nav-link p-0 text-secondary" href="/clinic-detail">
+									<a class="nav-link p-0 text-secondary" href="/nos-cliniques-veterinaires-2">
 										<img src="/website_argos/static/src/img/location.svg"/>
 									</a>
 								</div>
@@ -62,7 +81,7 @@
 										<img src="/website_argos/static/src/img/location.svg"/>
 									</div>
 									<div class="link">
-										<a class="nav-link p-0 text-secondary" href="/clinic-detail">Trouver une clinique</a>
+										<a class="nav-link p-0 text-secondary" href="/nos-cliniques-veterinaires-2">Trouver une clinique</a>
 									</div>
 								</div>
 								<div class="appointment-btn ml32">
@@ -170,7 +189,7 @@
 							<img src="/website_argos/static/src/img/location.svg"/>
 						</div>
 						<div class="link">
-							<a class="nav-link p-0 text-secondary" href="/clinic-detail">Trouver une clinique</a>
+							<a class="nav-link p-0 text-secondary" href="/nos-cliniques-veterinaires-2">Trouver une clinique</a>
 						</div>
 					</div>
 					<div class="sidebar-user ml4">
@@ -221,7 +240,7 @@
 	                	</div>
 	                	<div class="open_today">
 	                        <div class="clinic-type-b">
-					        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
+					        	<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mr-2 badge badge-pill badge-light">
 					        		<span>OUVERT AUJOURD HUI</span>
 					        	</a>
 							</div>
@@ -233,17 +252,17 @@
 					               <span>De Criteres</span>
 					            </a>
 					            <div class="dropdown-menu show" role="menu">
-				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+				                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
 				                        <span class="switcher_pricelist">Parking</span>
 				                    </a>
-				                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+				                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
 				                        <span class="switcher_pricelist">Access for people with reduced mobility</span>
 				                    </a>
 					            </div>
 					        </div>
                         </div>
                         <div class="clear-search mt8 ml8 clinic-type-b">
-				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
+				        	<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
 				        		<span>CLEAR</span>
 				        	</a>
 						</div>

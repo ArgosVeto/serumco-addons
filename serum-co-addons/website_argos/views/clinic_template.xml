@@ -2,7 +2,7 @@
 <odoo>
     <template id="clinic_search_box" name="Clinic Searchbox">
         <div role="search">
-             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
+             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/nos-cliniques-veterinaires-2'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Département/code postal/ville..." t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
@@ -17,7 +17,7 @@
     </template>
 
     <template id="clinic_type_search_box" name="clinic Website Searchbox">
-        <form class="o_clinic_type_searchbar_form"  t-att-action="action if action else '/clinic-detail'" method="get">
+        <form class="o_clinic_type_searchbar_form"  t-att-action="action if action else '/nos-cliniques-veterinaires-2'" method="get">
             <div class="col-md-12 search_by_clinic_type">
                 <select id="clinic_type" name="clinic_type"  class="form-control o_website_form_input" >
                     <t t-foreach="type_ids" t-as="t">
@@ -45,7 +45,7 @@
 	            <div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
 	            	<t t-if="service">
 		                <t t-foreach="service" t-as="s">
-		                    <a role="menuitem" t-attf-href="/clinic-detail?service-type=#{s.sudo().id}" class="dropdown-item">
+		                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" class="dropdown-item">
 		                        <span 
 		                        	t-att-name="s.name"
 		                        	t-att-data-pl_id="s.id" 
@@ -64,10 +64,10 @@
         <t t-set="type_val" t-value="clinic_type_ids" />
         <t t-if="type_val">
         <div class="clinic-type-b">
-	       	<a t-attf-href="/clinic-detail?clinic-collect=1" class="mr-2 badge badge-pill badge-light">
+	       	<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1" class="mr-2 badge badge-pill badge-light">
 	       		<span>Click &amp; Collect</span>
 	       	</a>
-	       	<a t-attf-href="/clinic-detail?clinic-appoint=1" class="mr-2 badge badge-pill badge-light">
+	       	<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1" class="mr-2 badge badge-pill badge-light">
 	       		<span>Prise de RDV en ligne</span>
 	       	</a>
 		</div>
@@ -103,7 +103,7 @@
 	                                       
 					                        <div class="card-body">
 					                            <h3 class="card-title o_default_snippet_text">
-					                            	<a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/clinic-detail/clinic-pratice/#{slug(operating_unit.sudo())}"/>
+					                            	<a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(operating_unit.sudo())}"/>
 					                            </h3>
 	
 												<t t-set="not_working_time" t-value="operating_unit.clinic_working_status()"/>
@@ -183,7 +183,7 @@
 	                	</div>
                         <div class="open_today">
                           <div class="clinic-type-b">
-				        	<a t-attf-href="/clinic-detail?open_today=1" class="mr-2 badge badge-pill badge-light">
+				        	<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mr-2 badge badge-pill badge-light">
 				        		<span>OUVERT AUJOURD HUI</span>
 				        	</a>
 				        	<!-- OUVERT AUJOURD HUI -->
@@ -196,10 +196,10 @@
 							               <span>De Criteres</span>
 							            </a>
 							            <div class="dropdown-menu" role="menu">
-						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-parking=1" class="dropdown-item">
+						                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
 						                        <span class="switcher_pricelist">Parking</span>
 						                    </a>
-						                    <a role="menuitem" t-attf-href="/clinic-detail?clinic-mobility=1" class="dropdown-item">
+						                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
 						                        <span class="switcher_pricelist">Accessibilité pour les personnes à mobilité réduite</span>
 						                    </a>
 							            </div>
@@ -213,7 +213,7 @@
                         </div-->
 
                         <!--div class="clear-search mt8 ml8 clinic-type-b">
-				        	<a t-attf-href="/clinic-detail?clear_search=1" class=" badge badge-pill badge-light">
+				        	<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
 				        		<span>CLEAR</span>
 				        	</a>
 						</div-->

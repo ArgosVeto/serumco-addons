@@ -105,7 +105,7 @@
                    
                     <div class="card-body">
                         <h3 class="card-title o_default_snippet_text">
-                            <a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/clinic-detail/clinic-pratice/#{slug(operating_unit.sudo())}"/>
+                            <a itemprop="display_name"   t-att-content="operating_unit.name" t-field="operating_unit.name" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(operating_unit.sudo())}"/>
                         </h3>
 
                         <t t-set="not_working_time" t-value="operating_unit.clinic_working_status()"/>

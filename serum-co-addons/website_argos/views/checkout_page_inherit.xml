@@ -333,7 +333,7 @@
                         </div>
                     </div>
                     <div class="text-center mb32">
-                        <a role="button" class="btn btn-outline-primary" t-attf-href="/clinic-detail/clinic-pratice/#{slug(order.operating_unit_id)}">
+                        <a role="button" class="btn btn-outline-primary" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(order.operating_unit_id)}">
                             <span>Voir la fiche clinique</span>
                         </a>
                     </div>
@@ -428,7 +428,7 @@
                         </div>
                     </div>
                     <div class="text-center mb32">
-                        <a role="button" class="btn btn-outline-primary" t-attf-href="/clinic-detail/clinic-pratice/#{slug(order.operating_unit_id)}">
+                        <a role="button" class="btn btn-outline-primary" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(order.operating_unit_id)}">
                             <span>Voir la fiche clinique</span>
                         </a>
                     </div>

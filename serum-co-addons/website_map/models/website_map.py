@@ -28,7 +28,7 @@ class bizcommonSliderSettings(bizcommonSliderSettings):
 class ClinicDetail(ClinicDetail):
 
 	@http.route([
-            '''/clinic-detail''',
+            '''/nos-cliniques-veterinaires-2''',
         ],type='http', auth="public", website=True) 
 	def clinic_detail(self,**post):
 		subdomains = []
@@ -92,7 +92,7 @@ class ClinicDetail(ClinicDetail):
 		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids, 'clinic_type_ids':clinic_collect_ids, 'clinic_appoint_ids':clinic_appoint_ids}
 		return request.env['ir.ui.view'].render_template("website_argos.clinic_template",values)
 
-	@http.route(['/clinic-detail/clinic-pratice/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
+	@http.route(['/nos-cliniques-veterinaires-2/clinique/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
 	def add_clinic_pratice(self,operating_unit,**post):	
 		service_ids = request.env['operating.unit.service'].sudo().search([])
 		payment_method_ids = request.env['payment.acquirer'].sudo().search([])

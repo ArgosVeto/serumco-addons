@@ -452,18 +452,18 @@
   #sidebar{
     .d-md-sidebar-content{
       .sidebar-card{
-        display:none;
+        display:block;
       }
       .search{
         border: none;
         margin-top: 20px;
         margin-bottom: 0;
         .o_wsale_products_searchbar_form{
-          display:none;
+          display:block;
         }
       }
       .clinic-filter-sidebar{
-        display:block !important;
+        display:none !important;
         .Filtrer{
           font-size: 20px;
           font-weight: 900;

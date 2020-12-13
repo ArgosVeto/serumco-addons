@@ -42,7 +42,7 @@
 								<img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8"/>
 								<span>284 Avenue Pasteur, 33185 Le Haillan</span>
 							</p>
-							<a class="btn btn-link" href="/clinic-detail">
+							<a class="btn btn-link" href="/nos-cliniques-veterinaires-2">
 								<span class="mr8">Voir la fiche clinique</span>
 								<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
 							</a>

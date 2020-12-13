@@ -13,7 +13,7 @@
 		  						<div class="Pierre-Michel-Copy">Pierre Michel</div>
 		  						<div class="Clinique mt32">Clinique</div>
 		  						<div class="Clinique-vtrinaire mt8">Clinique vétérinaire Argos Saint-Aubin de Médoc</div>
-		  						<a class="btn btn-link mt16 En-savoir-plus" href="/clinic-detail">
+		  						<a class="btn btn-link mt16 En-savoir-plus" href="/nos-cliniques-veterinaires-2">
 									<span class="mr8">Voir la fiche clinique</span>
 									<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
 								</a>

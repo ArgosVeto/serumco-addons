@@ -215,7 +215,7 @@
 			  						<div class="Pierre-Michel-Copy" t-field="blog_post.employee_id.name"></div>
 			  						<div class="Clinique mt32">Clinique</div>
 			  						<div class="Clinique-vtrinaire mt8" t-field="emp.name"></div>
-			  						<a t-if="emp.name" class="btn btn-link mt16 En-savoir-plus pl-0" t-attf-href="/clinic-detail/clinic-pratice/#{slug(emp)}">
+			  						<a t-if="emp.name" class="btn btn-link mt16 En-savoir-plus pl-0" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(emp)}">
 										<span class="mr8">Voir la fiche clinique</span>
 										<img src="/website_argos/static/src/img/right.png" class="img img-fluid"/>
 									</a>

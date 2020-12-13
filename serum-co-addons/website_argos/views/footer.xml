@@ -2,7 +2,7 @@
 <odoo>
 	<template id="footer_clinic_search_box" name="Footer Clinic Searchbox">
         <div role="search">
-             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/clinic-detail'" method="get">
+             <form t-attf-class="o_clinic_searchbar_form input-group" t-att-action="action if action else '/nos-cliniques-veterinaires-2'" method="get">
                 <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Adresse/Code Postal/Ville…" t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-light ok-btn oe_search_button" aria-label="Search" title="Search">OK</button>
@@ -122,7 +122,7 @@
 												</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="/clinic-detail">
+												<a class="nav-link" href="/nos-cliniques-veterinaires-2">
 													Trouver une clinique
 												</a>
 											</li>
@@ -131,7 +131,7 @@
 											<t t-if="operating_unit">
 		                    					<t t-foreach="operating_unit" t-as="ou">
 		                    						<li class="nav-item">
-														<a class="nav-link" t-attf-href="/clinic-detail/clinic-pratice/#{slug(ou.sudo())}">
+														<a class="nav-link" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{slug(ou.sudo())}">
 															<t t-esc="ou.name"/>
 														</a>
 													</li>
