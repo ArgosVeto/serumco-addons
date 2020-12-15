@@ -98,11 +98,22 @@
 									<t t-foreach="category" t-as="c">
 										<t t_if="c.child_id.parent_id.id == c.id">
 											<t t-if="c.child_id" >
-														<t t-foreach="c.child_id" t-as="c">
-																<li class="nav-item mr32">
-																	<a t-att-href="'/shop/category/%s'%slug(c)" class="nav nav-pills flex-column nav-hierarchy btn-outline-primary" t-att-title="'Read' + c.name"><span t-esc="c.name"></span></a>
-																</li>
-														</t>
+												<t t-foreach="c.child_id" t-as="c">
+													<t t-if="c.url_key">
+														<li class="nav-item mr32">
+															<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+																<span t-field="c.name"/>
+															</a>
+														</li>
+													</t>
+												<t t-else="">
+													<li class="nav-item mr32">
+														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+															<span t-field="c.name"/>
+														</a>
+													</li>
+												</t>
+												</t>
 											</t>
 										</t>
 				                    </t>
