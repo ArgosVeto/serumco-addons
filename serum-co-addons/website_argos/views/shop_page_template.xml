@@ -40,12 +40,23 @@
 	                                        <a class="nav-link" href="/">Accueil</a>
 	                                    </li>
 				                        <t t-foreach="categories" t-as="c">
+										    <t t-if="c.name!='All'">
+										    <t t-if="c.url_key">
 					                        <li class="nav-item mr32">
-									            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+									            <a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
 									                <span t-field="c.name"/>
 									            </a>
 									        </li>
+											</t>
+											<t t-else="">
+												<li class="nav-item mr32">
+													<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+														<span t-field="c.name"/>
+													</a>
+												</li>
+											</t>
 									    </t>
+										</t>
 	                                </ul>
 	                            </div>
 	                        </div>
