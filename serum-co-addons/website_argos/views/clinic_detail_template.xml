@@ -155,8 +155,9 @@
 								class="img img-fluid mr-2" />
 							<span class="">Ajouter aux favoris</span>
 						</a> -->
-						<div class="col-lg-12 pt16 pb8 position-relative">
-							<img class="card-img-top" id="banner-img" style="height: 537px; width: 1132px; overflow: hidden"
+						<div class="col-lg-12 pt16 pb8 position-relative" style="height: 537px; overflow: hidden; border-radius: 25px;">
+							<!--img class="card-img-top" id="banner-img" style="height: 537px; width: 1132px; overflow: hidden"-->
+							<img class="card-img-top rounded" id="banner-img"
 								t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
 							<div class="red-round-big d-none d-md-block"></div>
 							<div class="red-round-small d-none d-md-block"></div>
