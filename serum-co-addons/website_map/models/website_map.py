@@ -17,7 +17,7 @@ class bizcommonSliderSettings(bizcommonSliderSettings):
             [('id', '=', int(post.get('slider_filter')))])
         slider_data.identify_device()
         values = {
-            's_id': slider_data.no_of_tabs + '-' + str(slider_data.id),
+            's_id': (slider_data.no_of_tabs + '-' + str(slider_data.id)) if slider_data else '',
             'counts': slider_data.no_of_tabs,
             'auto_slide': slider_data.auto_slide,
             'auto_play_time': slider_data.sliding_speed,
