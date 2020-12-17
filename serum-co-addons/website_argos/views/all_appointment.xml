@@ -18,7 +18,7 @@
 								</div>
 								<div class="col-lg-6 d-flex flex-column">
 									<div class="date-time">
-										<t t-set="week_day" t-value="rec.start_datetime.strftime('%A')"/>
+										<t t-set="week_day" t-value="rec.get_day_name(rec.start_datetime)"/>
 										<span t-esc="week_day and week_day.title()"/>
 										<span t-field="rec.start_datetime" t-options='{"format": "d MMMM yyyy"}'/>
 										<span>-</span>
