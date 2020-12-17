@@ -23,6 +23,9 @@
         'sale_operating_unit',
         'website_rating',
         'website_crm_partner_assign',
+        'website_url_redirect_axis',
+        'website_seo',
+        'website_webkul_addons'
     ],
     'data': [
         'data/data.xml',
