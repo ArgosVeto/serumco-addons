@@ -144,7 +144,6 @@
     	</xpath>
 	 	<xpath expr="//div/div[@class='container']" position="before">
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
 			<div id="googleMap" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
 			<div id="googleMap2" class="" style="width: 510px; height: 940px; display: none; position: relative; overflow: hidden; float: right;"></div>
 
@@ -164,6 +163,7 @@
 			var map = new google.maps.Map(document.getElementById("googleMap2"),mapProp2);
 			}
 			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=myMap"></script>
 		</xpath>
 	 </template>
 

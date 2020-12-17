@@ -25,6 +25,9 @@ class BlogPost(models.Model):
 class Website(models.Model):
     _inherit = "website"
 
+    google_tag_manager_key = fields.Char("Google Tag Manager Key", help="Container ID")
+
+
     @api.model
     def get_consultation_type(self):
         consultation_type_ids = request.env['consultation.type'].sudo().search([])

@@ -229,72 +229,72 @@ var add;
 var map;
 var citylng;
 
-odoo.define('website_map.arounded_detailed', function (require) {
-  var rpc = require('web.rpc')
-
-  getLocation(function (position) {
-            rpc.query({
-          model: 'operating.unit',
-          method: 'clinic_detail'
-        }).then(function (data){
-          $.each(data, function(key, val){
-            var geocoders = new google.maps.Geocoder();
-            var cities = val['city']
-            // var names = val['name']
-            geocoders.geocode({'address': cities}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                    var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-                    var myLatLng2 = { lat: latitude, lng: longitude };
-                    citylng = myLatLng2
-                }
-                var map=false;
-//                if (document.getElementById("googleMap_clinic")){
-//                  var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
-//                      zoom: 10,
-//                      center: new google.maps.LatLng(44.837789,-0.57918),
-//                    });
-//                    }
-                const marker = new google.maps.Marker({
-                        position: myLatLng2,
-                        // label:cities,
-                        map,
-                        center:myLatLng2,
-                        zoom:10,
-                    });
-                markers.push(marker);
-            });
-          })
-        })
-
-//onclick function end
-
-    });
-//$("#i_go").click(function() {
-//    getLocation(function (position) {
-//    var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
-//    const directionsService = new google.maps.DirectionsService();
-//    const directionsRenderer = new google.maps.DirectionsRenderer();
-//    directionsRenderer.setMap(map);
-//    directionsService.route(
-//    {
-//      origin: myLatLng,
-//      destination: citylng,
-//      travelMode: google.maps.TravelMode.DRIVING,
-//    },
-//    (response, status) => {
-//      if (status === "OK") {
-//        deleteMarkers();
-//        directionsRenderer.setDirections(response);
-//      } else {
-//        window.alert("Sorry! unable to find route");
-//      }
-//    }
-//  );
+//odoo.define('website_map.arounded_detailed', function (require) {
+//  var rpc = require('web.rpc')
 //
+//  getLocation(function (position) {
+//            rpc.query({
+//          model: 'operating.unit',
+//          method: 'clinic_detail'
+//        }).then(function (data){
+//          $.each(data, function(key, val){
+//            var geocoders = new google.maps.Geocoder();
+//            var cities = val['city']
+//            // var names = val['name']
+//            geocoders.geocode({'address': cities}, function(results, status) {
+//            if (status == google.maps.GeocoderStatus.OK) {
+//                    var latitude = results[0].geometry.location.lat();
+//                    var longitude = results[0].geometry.location.lng();
+//                    var myLatLng2 = { lat: latitude, lng: longitude };
+//                    citylng = myLatLng2
+//                }
+//                var map=false;
+////                if (document.getElementById("googleMap_clinic")){
+////                  var map = new google.maps.Map(document.getElementById("googleMap_clinic"), {
+////                      zoom: 10,
+////                      center: new google.maps.LatLng(44.837789,-0.57918),
+////                    });
+////                    }
+//                const marker = new google.maps.Marker({
+//                        position: myLatLng2,
+//                        // label:cities,
+//                        map,
+//                        center:myLatLng2,
+//                        zoom:10,
+//                    });
+//                markers.push(marker);
+//            });
+//          })
+//        })
+//
+////onclick function end
+//
+//    });
+////$("#i_go").click(function() {
+////    getLocation(function (position) {
+////    var myLatLng={lat:position.coords.latitude,lng:position.coords.longitude}
+////    const directionsService = new google.maps.DirectionsService();
+////    const directionsRenderer = new google.maps.DirectionsRenderer();
+////    directionsRenderer.setMap(map);
+////    directionsService.route(
+////    {
+////      origin: myLatLng,
+////      destination: citylng,
+////      travelMode: google.maps.TravelMode.DRIVING,
+////    },
+////    (response, status) => {
+////      if (status === "OK") {
+////        deleteMarkers();
+////        directionsRenderer.setDirections(response);
+////      } else {
+////        window.alert("Sorry! unable to find route");
+////      }
+////    }
+////  );
+////
+////});
+////  });
 //});
-//  });
-});
 function setMapOnAll(map) {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
