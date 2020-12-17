@@ -213,7 +213,7 @@
                                                                 <p class="status" style="text-transform:uppercase;">
                                                                     <t t-esc="line.order_id.state"/></p>
                                                                 <p class="status-date">
-                                                                    <span t-esc="line.order_id.date_order.strftime('%d %B %Y')"/> 
+                                                                    <span t-field="line.order_id.date_order" t-options='{"format": "d MMMM yyyy"}'/>
 
                                                                 </p>
                                                             </div>
