@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_task_line_reader,access_project_task_line reader,model_project_task_line,,1,0,0,0
-access_project_task_line_user,access_project_task_line user,model_project_task_line,base.group_user,1,1,1,0
-access_project_task_line_admin,access_project_task_line admin,model_project_task_line,base.group_erp_manager,1,1,1,1

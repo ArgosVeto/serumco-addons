@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-  <data>
-    <menuitem action="soap_wsdl_log_view_action" id="soap_wsdl_log_menuitem" parent="base.menu_custom" sequence="100"/>
-  </data>
-</odoo>

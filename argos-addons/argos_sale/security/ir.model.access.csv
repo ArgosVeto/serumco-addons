@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_consultation_type_reader,access_consultation_type reader,model_consultation_type,,1,0,0,0
-access_consultation_type_user,access_consultation_type user,model_consultation_type,base.group_user,1,1,1,0
-access_consultation_type_admin,access_consultation_type admin,model_consultation_type,base.group_erp_manager,1,1,1,1
-access_sale_order_refer_reader,access_sale_order_refer reader,model_sale_order_refer,,1,0,0,0
-access_sale_order_refer_user,access_sale_order_refer user,model_sale_order_refer,base.group_user,1,1,1,0
-access_sale_order_refer_admin,access_sale_order_refer admin,model_sale_order_refer,base.group_erp_manager,1,1,1,1

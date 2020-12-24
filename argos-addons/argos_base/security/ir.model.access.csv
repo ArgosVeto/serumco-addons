@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_users_mrdv_user,access_res_users mrdv user,base.model_res_users,mrdv_group_user,0,1,1,0
-access_res_partner_mrdv_user,access_res_partner mrdv user,base.model_res_partner,mrdv_group_user,0,1,1,0
-

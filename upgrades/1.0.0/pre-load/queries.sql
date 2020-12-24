@@ -1,1 +1,0 @@
-DELETE FROM res_partner_parameter WHERE "type" = 'tattoo';

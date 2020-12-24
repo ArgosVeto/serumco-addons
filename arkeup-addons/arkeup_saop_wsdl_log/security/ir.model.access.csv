@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_soap_wsdl_log_reader,access_soap_wsdl_log reader,model_soap_wsdl_log,,1,0,0,0
-access_soap_wsdl_log_admin,access_soap_wsdl_log admin,model_soap_wsdl_log,base.group_erp_manager,1,1,1,1

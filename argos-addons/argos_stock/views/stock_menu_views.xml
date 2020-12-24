@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-  <menuitem id="menu_arg_prescription" name="Delivery" parent="stock.menu_stock_warehouse_mgmt" sequence="-1"
-            action="action_arg_prescription"/>
-</odoo>

@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_call_log_manager,access call log manager,model_call_log,base.group_system,1,1,1,1
-access_call_log_user,access call log user,model_call_log,base.group_user,1,0,1,0
-
-access_keyyo_line_server_manager,access keyyo line server manager,model_keyyo_line_server,base.group_system,1,1,1,1
-access_keyyo_line_server_user,access keyyo line server user,model_keyyo_line_server,base.group_user,1,0,1,0
