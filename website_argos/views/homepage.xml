@@ -45,82 +45,83 @@
       <div class="oe_structure" data-name="Multi Tab Product Slider">
         <section id="website_argos_custom_product_slider" class="biz_dynamic_product_slider s_website_argos_product_slider" data-prod-slider-id="2" data-name="Products Slider"/>
       </div>
-<!--      <section class="oe_multi_category_slider pt0" data-multi-cat-slider-type="1" data-disp="multi_product" data-name="Multi Tab Product Slider" data-multi-cat-slider-id="multi-cat-myowl1">-->
-<!--        <div class="container">-->
-<!--          <div class="row our-categories">-->
-<!--            <div class="col-md-12">-->
-<!--              <div class="title-block">-->
-<!--                <h4 class="section-title style1">-->
-<!--                  <span>Nos prodits</span>-->
-<!--                </h4>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </section>-->
+      <section class="oe_multi_category_slider pt0" data-multi-cat-slider-type="1" data-disp="multi_product" data-name="Multi Tab Product Slider" data-multi-cat-slider-id="multi-cat-myowl1">
+        <div class="container">
+          <div class="row our-categories">
+            <div class="col-md-12">
+              <div class="title-block">
+                <h4 class="section-title style1">
+                  <span>Nos prodits</span>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="oe_structure"/>
-<!--      <section class="home-brands">-->
-<!--        <div class="container">-->
-<!--          <div class="title">-->
-<!--            <h1 class="text-primary">Nos marques</h1>-->
-<!--          </div>-->
-<!--          <div id="owl-demo" class="owl-carousel owl-theme">-->
-<!--            <t t-set="gamne_value" t-value="website.get_gamne_values()"/>-->
-<!--            <t t-if="gamne_value">-->
-<!--              <t t-foreach="gamne_value" t-as="gv">-->
-<!--                <div class="col">-->
-<!--                  <a class="" t-att-href="website.default_category(gv)" role="button">-->
-<!--                    <img class="img img-fluid" t-att-name="website.image_url(gv, 'image')" t-att-src="website.image_url(gv, 'image')"/>-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </t>-->
-<!--            </t>-->
-<!--          </div>-->
-<!--          &lt;!&ndash; <div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">-->
-<!--									<t t-set="gamne_value" t-value="website.get_gamne_values()"/>-->
-<!--									<t t-if="gamne_value">-->
-<!--						          	<div class="carousel-inner" role="listbox">-->
-<!--						            	<div class="carousel-item active" >-->
-<!--						            		<div class="row align-items-center">-->
-<!--						            			<t t-foreach="gamne_value" t-as="gv">-->
-<!--						            				<div class="col pr-5 pl-0">-->
-<!--							            				<a class=""-->
-<!--							            				t-att-href="website.default_category(gv)"-->
-<!--							            				role="button">-->
-<!--										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"-->
-<!--																t-att-src="website.image_url(gv, 'image')" />-->
-<!--										              	</a>-->
-<!--									              	</div>-->
-<!--								            	</t>-->
-<!--							            	</div>-->
-<!--						            	</div>-->
-<!--						            	<div class="carousel-item" >-->
-<!--						            		<div class="row align-items-center">-->
-<!--						            			<t t-foreach="gamne_value" t-as="gv">-->
-<!--						            				<div class="col pr-5 pl-0">-->
-<!--							            				<a class="" t-att-href="website.default_category(gv)" role="button">-->
-<!--										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"-->
-<!--																t-att-src="website.image_url(gv, 'image')" />-->
-<!--										              	</a>-->
-<!--										            </div>-->
-<!--							            		</t>-->
-<!--							            	</div>-->
-<!--							            </div>-->
-<!--						          	</div>-->
-<!--						          	<div class="slider-control">-->
-<!--					              		<a class="left carousel-control-prev font-14" data-target="#brand-carousel" role="button" data-slide="prev">-->
-<!--						                	<span class="fa fa-long-arrow-left"/>-->
-<!--						               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>-->
-<!--						              	</a>-->
-<!--						              	<a class="right carousel-control-next font-14" data-target="#brand-carousel" role="button" data-slide="next">-->
-<!--						                	<span class="fa fa-long-arrow-right"/>-->
-<!--						                	<b class="sr-only font-normal o_default_snippet_text">Next</b>-->
-<!--						              	</a>-->
-<!--						            </div>-->
-<!--						        </t>-->
-<!--						        </div> &ndash;&gt;-->
-<!--        </div>-->
-<!--      </section>-->
+      <section class="home-brands">
+        <div class="container">
+          <div class="title">
+            <h1 class="text-primary">Nos marques</h1>
+          </div>
+          <div id="owl-demo" class="owl-carousel owl-theme">
+            <t t-set="gamne_value" t-value="website.get_gamne_values()"/>
+            <t t-if="gamne_value">
+              <t t-foreach="gamne_value" t-as="gv">
+                <div class="col">
+                  <a class="" t-att-href="website.default_category(gv)" role="button">
+                    <img class="img img-fluid" t-att-name="website.image_url(gv, 'image')" t-att-src="website.image_url(gv, 'image')"/>
+                  </a>
+                  <span t-esc="gv.name" />
+                </div>
+              </t>
+            </t>
+          </div>
+          <div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+									<t t-set="gamne_value" t-value="website.get_gamne_values()"/>
+									<t t-if="gamne_value">
+						          	<div class="carousel-inner" role="listbox">
+						            	<div class="carousel-item active" >
+						            		<div class="row align-items-center">
+						            			<t t-foreach="gamne_value" t-as="gv">
+						            				<div class="col pr-5 pl-0">
+							            				<a class=""
+							            				t-att-href="website.default_category(gv)"
+							            				role="button">
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
+																t-att-src="website.image_url(gv, 'image')" />
+										              	</a>
+									              	</div>
+								            	</t>
+							            	</div>
+						            	</div>
+						            	<div class="carousel-item" >
+						            		<div class="row align-items-center">
+						            			<t t-foreach="gamne_value" t-as="gv">
+						            				<div class="col pr-5 pl-0">
+							            				<a class="" t-att-href="website.default_category(gv)" role="button">
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
+																t-att-src="website.image_url(gv, 'image')" />
+										              	</a>
+										            </div>
+							            		</t>
+							            	</div>
+							            </div>
+						          	</div>
+						          	<div class="slider-control">
+					              		<a class="left carousel-control-prev font-14" data-target="#brand-carousel" role="button" data-slide="prev">
+						                	<span class="fa fa-long-arrow-left"/>
+						               	 	<b class="sr-only font-normal o_default_snippet_text">Previous</b>
+						              	</a>
+						              	<a class="right carousel-control-next font-14" data-target="#brand-carousel" role="button" data-slide="next">
+						                	<span class="fa fa-long-arrow-right"/>
+						                	<b class="sr-only font-normal o_default_snippet_text">Next</b>
+						              	</a>
+						            </div>
+						        </t>
+						</div> 
+           </div>
+      </section>
       <div class="oe_structure"/>
       <section class="home-animals">
         <div class="container">
