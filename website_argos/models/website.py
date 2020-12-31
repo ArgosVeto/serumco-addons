@@ -59,7 +59,7 @@ class Website(models.Model):
         Category = request.env['product.public.category']
         dom = request.env['website'].get_current_website().website_domain()
         category_id = Category.search(dom,limit=1)
-        category_url = '/shop/?search=&attrib=&attrib=%s-%s' %(c.product_filter_id.id,c.id)
+        category_url = '/shop/?search=&attrib=%s-%s' %(c.product_filter_id.id,c.id)
         return category_url
 
     @api.model

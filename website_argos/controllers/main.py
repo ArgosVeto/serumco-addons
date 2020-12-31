@@ -81,51 +81,51 @@ class WebsiteCategoyBizople(http.Controller):
     def product_category_search_data(self, **post):
         return request.redirect('/category?&search=%s' % post['search'])
 
-    @http.route([
-        '/brand',
-        '/brand/page/<int:page>',
-        '/brand/<model("product.brand"):brand_id>',
-        '/brand/<model("product.brand"):brand_id>/page/<int:page>'
-    ], type='http', auth="public", website=True)
-    def product_brand_data(self, page=1, brand_id=None, search='', **post):
-        if search:
-            brands = [brand for brand in request.env['product.brand'].search([
-                ('name', 'ilike', search)]
-            )]
-        else:
-            if brand_id:
-                brands = [brand for brand in request.env['product.brand'].search([
-                    ('parent_id', '=', brand_id.id)]
-                )]
-            else:
-                brands = [brand for brand in request.env['product.brand'].search([
-                    ('parent_id', '=', False)]
-                )]
-        if not brands and brand_id:
-            url = "/shop?brand=%s" % slug(brand_id)
-            return request.redirect(url)
-        else:
-            pager = request.website.pager(
-                url=request.httprequest.path.partition('/page/')[0],
-                total=len(brands),
-                page=page,
-                step=self._per_page_brand,
-                url_args=post,
-            )
-            pager_begin = (page - 1) * self._per_page_brand
-            pager_end = page * self._per_page_brand
-            brands = brands[pager_begin:pager_end]
-            return request.render('website_argos.website_sale_brand_list_bizople', {
-                'brands': brands,
-                'pager': pager,
-                'search': search
-            })
+#    @http.route([
+#        '/brand',
+#        '/brand/page/<int:page>',
+#        '/brand/<model("product.brand"):brand_id>',
+#        '/brand/<model("product.brand"):brand_id>/page/<int:page>'
+#    ], type='http', auth="public", website=True)
+#    def product_brand_data(self, page=1, brand_id=None, search='', **post):
+#        if search:
+#            brands = [brand for brand in request.env['product.brand'].search([
+#                ('name', 'ilike', search)]
+#            )]
+#        else:
+#            if brand_id:
+#                brands = [brand for brand in request.env['product.brand'].search([
+#                    ('parent_id', '=', brand_id.id)]
+#                )]
+#            else:
+#                brands = [brand for brand in request.env['product.brand'].search([
+#                    ('parent_id', '=', False)]
+#                )]
+#        if not brands and brand_id:
+#            url = "/shop?brand=%s" % slug(brand_id)
+#            return request.redirect(url)
+#        else:
+#            pager = request.website.pager(
+#                url=request.httprequest.path.partition('/page/')[0],
+#                total=len(brands),
+#                page=page,
+#                step=self._per_page_brand,
+#                url_args=post,
+#            )
+#            pager_begin = (page - 1) * self._per_page_brand
+#            pager_end = page * self._per_page_brand
+#            brands = brands[pager_begin:pager_end]
+#            return request.render('website_argos.website_sale_brand_list_bizople', {
+#                'brands': brands,
+#                'pager': pager,
+#                'search': search
+#            })
 
-    @http.route([
-        '/brand-search',
-    ], type='http', auth="public", website=True)
-    def brand_search_data(self, **post):
-        return request.redirect('/brand?&search=%s' % post['search'])
+#    @http.route([
+#        '/brand-search',
+#    ], type='http', auth="public", website=True)
+#    def brand_search_data(self, **post):
+#        return request.redirect('/brand?&search=%s' % post['search'])
 
 
 class BizopleWebsiteSale(WebsiteSale):
