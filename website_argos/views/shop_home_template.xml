@@ -123,4 +123,30 @@
 		<field name="url">/shop-home</field>
 		<field name="view_id" ref="argos_shop_home" />
 	</record>
+
+	<template id="argos_shop_home_inherit" inherit_id="website_argos.argos_shop_home" name="Shop home">
+        <xpath expr="//div[hasclass('top-links')]" position="replace">
+            <div class="top-links p-0">
+              <div class="container">
+                <ul class="nav navbar-nav flex-row">
+                  <li class="nav-item mr32">
+                    <a class="nav-link" href="/Accueil-boutique-en-ligne">Accueil</a>
+                  </li>
+                  <li class="nav-item mr32">
+                    <a class="nav-link" href="/boutique-en-ligne/categorie/chat">Chat</a>
+                  </li>
+                  <li class="nav-item mr32">
+                    <a class="nav-link" href="/boutique-en-ligne/categorie/chien" data-original-title="" title="" aria-describedby="tooltip167758">Chien</a>
+                  </li>
+                  <li class="nav-item mr32">
+                    <a class="nav-link" href="/boutique-en-ligne/categorie/nac" data-original-title="" title="" aria-describedby="tooltip795778">NAC</a>
+                  </li>
+                  <li class="nav-item mr32">
+                    <a class="nav-link" href="/boutique-en-ligne/categorie/toutes-especes" data-original-title="" title="" aria-describedby="tooltip795778">Toutes espèces</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </xpath>
+    </template>
 </odoo>

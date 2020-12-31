@@ -260,11 +260,9 @@
         <xpath expr="//div[@id='localisation']/div[2]" position="replace">
 			<div class="mb32">
 		    	<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
-                <input type="hidden" id='latitude' t-att-value='operating_unit.partner_id.partner_latitude'/>
-                <input type="hidden" id='longitude' t-att-value='operating_unit.partner_id.partner_longitude'/>
-                <input type="hidden" id='clinique' t-att-value='operating_unit.name'/>
-				<span>latitude<t t-esc='operating_unit.partner_id.partner_latitude'/></span>
-				<span>longitude<t t-esc='operating_unit.partner_id.partner_longitude'/></span>
+                <input type="hidden" id='latitude' t-att-value='clinic.partner_id.partner_latitude'/>
+                <input type="hidden" id='longitude' t-att-value='clinic.partner_id.partner_longitude'/>
+                <input type="hidden" id='clinique' t-att-value='clinic.name'/>
 				<script>
 			
 				function ClinicMap() {
@@ -283,9 +281,9 @@
 						zoom:10,
 					});
 					var infoWindowOptions = {
-						content: '<p><strong><t t-esc="operating_unit.name"/></strong></p>'
-						    + '<p><t t-esc="operating_unit.street"/>, <t t-esc="operating_unit.city"/></p>'
-							+ '<a t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
+						content: '<p><strong><t t-esc="clinic.name"/></strong></p>'
+						    + '<p><t t-esc="clinic.street"/>, <t t-esc="clinic.city"/></p>'
+							+ '<a t-att-href="'https://www.google.com/maps/place/'+clinic.street+'+'+clinic.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
 					};
 
 					var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
