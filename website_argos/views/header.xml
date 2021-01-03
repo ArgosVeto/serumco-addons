@@ -2,16 +2,16 @@
 <odoo>
     <template id="layout_argos" name="Main layout" inherit_id="portal.frontend_layout">
 	    <xpath expr="//head/meta[last()]" position="after">
-				<script>window.dataLayer = window.dataLayer || [];</script>
-				<!-- Google Tag Manager -->
-				<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-				var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
-				dl=l!='dataLayer'?';
-				l='+l:'';
-				j.async=true;
-				j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
-				(window,document,'script','dataLayer','<t t-esc="website.google_tag_manager_key"/>');</script>
-				<!-- End Google Tag Manager -->
+			<script t-if="website and website.google_tag_manager_key and not editable">window.dataLayer = window.dataLayer || [];</script>
+            <!-- Google Tag Manager -->
+            <script t-if="website and website.google_tag_manager_key and not editable">
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','<t t-esc="website.google_tag_manager_key"/>');
+            </script>
+            <!-- End Google Tag Manager -->
 		</xpath>
 	    <xpath expr="//body/div" position="before">
 			  <noscript t-if="website and website.google_tag_manager_key and not editable">
