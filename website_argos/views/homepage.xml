@@ -70,7 +70,7 @@
               <t t-foreach="gamne_value" t-as="gv">
                 <div class="col">
                   <a class="" t-att-href="website.default_category(gv)" role="button">
-                    <img class="img img-fluid" t-att-name="website.image_url(gv, 'image')" t-att-src="website.image_url(gv, 'image')"/>
+                    <img class="img img-fluid" t-att-src="gv.attribute_image"/>
                   </a>
                   <span t-esc="gv.name" />
                 </div>
@@ -88,8 +88,8 @@
 							            				<a class=""
 							            				t-att-href="website.default_category(gv)"
 							            				role="button">
-										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
-																t-att-src="website.image_url(gv, 'image')" />
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'attribute_image')"
+																t-att-src="website.image_url(gv, 'attribute_image')" />
 										              	</a>
 									              	</div>
 								            	</t>
@@ -100,8 +100,8 @@
 						            			<t t-foreach="gamne_value" t-as="gv">
 						            				<div class="col pr-5 pl-0">
 							            				<a class="" t-att-href="website.default_category(gv)" role="button">
-										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'image')"
-																t-att-src="website.image_url(gv, 'image')" />
+										               	 	<img class="img img-fluid" t-att-name="website.image_url(gv, 'attribute_image')"
+																t-att-src="website.image_url(gv, 'attribute_image')" />
 										              	</a>
 										            </div>
 							            		</t>

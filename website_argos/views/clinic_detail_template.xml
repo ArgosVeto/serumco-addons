@@ -68,7 +68,7 @@
 									<span class="">Appeler</span>
 								</a>
 								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
-								<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+								<!--t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
 	                               <a role="button"  class="btn btn-primary ml-4"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
 	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
 	                            	</a>
@@ -78,26 +78,26 @@
 	                        	  	 t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
 	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
 	                            	</a> 
-	                            </t>
+	                            </t-->
 	                        </div>
 	                        <div class="clinic-link d-flex d-block d-md-none">
-								<div class="socialicons mr-4">
+								<div class="socialicons msg-btn mr-4">
 									<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
 									<t t-if="clinic_shortlisted">
 										<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-		                                   <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                   <a role="button"  class="msg-btn"  t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
 		                                    	<img src="/website_argos/static/src/img/heart.svg"></img>
 		                                	</a>
 		                                </t>
 		                                <t t-else="">
-			                        	  <a role="button"  class="btn btn-primary fav-btn"
+			                        	  <a role="button"  class="msg-btn"
 			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
 		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
 		                                	</a> 
 		                                </t>
 		                            </t>
 		                            <t t-else="">
-			                        	<a role="button"  class="btn btn-primary fav-btn"
+			                        	<a role="button"  class="msg-btn"
 			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
 		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
 		                               	</a> 
@@ -227,6 +227,19 @@
 
 								<div class="pt32">
 									<p class="Moyens-paiement">Moyens de paiement acceptés</p>
+										<t t-if="operating_unit.payment_method_ids">
+											<div class="col-md-12">
+												<div class="row">
+												<t t-foreach="operating_unit.payment_method_ids" t-as="pm">
+													<div class="col-md-2 Rectangle mr-4">
+														<span>
+															<t t-esc="pm.name" />
+														</span>
+													</div>
+												</t>
+												</div>
+											</div>
+										</t>
 								</div>
 							</div>
 
@@ -537,7 +550,7 @@
 							<div class="clinic-link d-flex mt16">
 
 
-								<div class="socialicons mr-4">
+								<!--div class="socialicons mr-4">
 									<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
 									<t t-if="clinic_shortlisted">
 										<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
@@ -554,6 +567,28 @@
 		                            </t>
 		                            <t t-else="">
 			                        	<a role="button"  class="btn btn-primary fav-btn"
+			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+		                               	</a> 
+		                            </t>
+                            	</div-->
+								<div class="socialicons mr-4">
+									<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
+									<t t-if="clinic_shortlisted">
+										<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+		                                   <a role="button"  class="msg-btn disabled"  t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    	<img src="/website_argos/static/src/img/heart.svg"></img>
+		                                	</a>
+		                                </t>
+		                                <t t-else="">
+			                        	  <a role="button"  class="msg-btn"
+			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
+		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
+		                                	</a> 
+		                                </t>
+		                            </t>
+		                            <t t-else="">
+			                        	<a role="button"  class="msg-btn"
 			                        	  	 t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
 		                                    <img src="/website_argos/static/src/img/heart.svg"></img>
 		                               	</a> 

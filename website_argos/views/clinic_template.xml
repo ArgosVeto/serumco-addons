@@ -212,11 +212,11 @@
 							</div>
                         </div-->
 
-                        <!--div class="clear-search mt8 ml8 clinic-type-b">
+                        <div class="clear-search mt8 ml8 clinic-type-b">
 				        	<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
-				        		<span>CLEAR</span>
+				        		<span>Réinitialiser</span>
 				        	</a>
-						</div-->
+						</div>
 
                     </div>
                     </div>
