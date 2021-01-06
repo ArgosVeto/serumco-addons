@@ -27,7 +27,7 @@ class ProductCategoryTemplate(models.Model):
     _inherit = 'product.public.category'
 
     description =fields.Char(string="Description")
-    web_visible = fields.Boolean(string="Visible sur le site")
+#    web_visible = fields.Boolean(string="Visible sur le site")
 
 class ProductTag(models.Model):
     _name = "product.tag"

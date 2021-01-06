@@ -41,14 +41,14 @@
 	                                    </li>
 				                        <t t-foreach="categories" t-as="c">
 										    <t t-if="c.name!='All'">
-										    <t t-if="c.web_visible">
+<!--										    <t t-if="c.web_visible"> -->
 												<t t-if="c.url_key">
 												<li class="nav-item mr32">
 													<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
 														<span t-field="c.name"/>
 													</a>
 												</li>
-												</t>
+												</t> 
 												<t t-else="">
 													<li class="nav-item mr32">
 														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
@@ -56,7 +56,7 @@
 														</a>
 													</li>
 												</t>
-											</t>
+<!--											</t> -->
 									    </t>
 										</t>
 	                                </ul>
@@ -426,7 +426,7 @@
             <data>
                 <xpath expr="//group[@name='account_property']" position="after">
                     <label for="web_visible" string="Visible sur le site "/>
-  					<field name="web_visible"/>
+<!--  					<field name="web_visible"/> -->
 					<group string="Description pour le site">
 					<field name="website_description"/>
 					</group>
