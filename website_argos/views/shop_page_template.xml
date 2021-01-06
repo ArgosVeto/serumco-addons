@@ -28,7 +28,7 @@
 		</xpath>
 	</template>
 
-	<template id="argos_top_product_pager_inherit" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
+	<template id="argos_top_product_pager_inherit_1" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="before">
 				<section class="shop_categ_info s_blog_banner">
 					<div class="row m-0 my_content">
@@ -37,23 +37,25 @@
 	                            <div class="container">
 	                                <ul class="nav navbar-nav flex-row">
 	                                    <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/">Accueil</a>
+						                    <a class="nav-link" href="/Accueil-boutique-en-ligne">Accueil</a>
 	                                    </li>
 				                        <t t-foreach="categories" t-as="c">
 										    <t t-if="c.name!='All'">
-										    <t t-if="c.url_key">
-					                        <li class="nav-item mr32">
-									            <a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
-									                <span t-field="c.name"/>
-									            </a>
-									        </li>
-											</t>
-											<t t-else="">
+										    <t t-if="c.web_visible">
+												<t t-if="c.url_key">
 												<li class="nav-item mr32">
-													<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+													<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
 														<span t-field="c.name"/>
 													</a>
 												</li>
+												</t>
+												<t t-else="">
+													<li class="nav-item mr32">
+														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+															<span t-field="c.name"/>
+														</a>
+													</li>
+												</t>
 											</t>
 									    </t>
 										</t>
@@ -423,6 +425,8 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//group[@name='account_property']" position="after">
+                    <label for="web_visible" string="Visible sur le site "/>
+  					<field name="web_visible"/>
 					<group string="Description pour le site">
 					<field name="website_description"/>
 					</group>

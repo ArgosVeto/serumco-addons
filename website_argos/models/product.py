@@ -5,6 +5,11 @@
 from odoo import models, fields, api
 from odoo import models, fields
 
+class ProductAttributeValue(models.Model):
+    _inherit = "product.attribute.value"
+    
+    attribute_image = fields.Binary("Image")
+
 class ProductTemplateAttributeValue(models.Model):
     _inherit = "product.template.attribute.value"
 
@@ -22,6 +27,7 @@ class ProductCategoryTemplate(models.Model):
     _inherit = 'product.public.category'
 
     description =fields.Char(string="Description")
+    web_visible = fields.Boolean(string="Visible sur le site")
 
 class ProductTag(models.Model):
     _name = "product.tag"

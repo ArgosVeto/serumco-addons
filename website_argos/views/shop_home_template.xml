@@ -126,7 +126,7 @@
 
 	<template id="argos_shop_home_inherit" inherit_id="website_argos.argos_shop_home" name="Shop home">
         <xpath expr="//div[hasclass('top-links')]" position="replace">
-            <div class="top-links p-0">
+           <div class="top-links p-0">
               <div class="container">
                 <ul class="nav navbar-nav flex-row">
                   <li class="nav-item mr32">
