@@ -104,14 +104,17 @@
 										</div>
 							        </t>
 								</div>
-								<div class="p-item-image">
+            <div class="card-body p-1 oe_product_image">
+ 								<div class="p-item-image"> 
 									<a t-att-href="'/shop/product/%s' % slug(product)">
 										<img class="front" t-att-alt="product.name"
 											t-att-title="product.name"
 											t-att-src="website.image_url(product, 'image_1920','314x385')" />
 									</a>
-								</div>
-								<div class="product-info">
+								</div> 
+            </div>
+            <div class="card-body p-0 text-center o_wsale_product_information">
+								<div class="product-info"> 
 									<t t-if="product.public_categ_ids">
 		                                <div class="argos_categ">
 		                                    <p>
@@ -125,17 +128,17 @@
 		                                    </p>
 		                                </div>
 		                            </t>
-									<div class="title-price">
+									<div class="title-price" style="min-height: 100px;">
 										<div class="product-title">
 											<a t-attf-href="/shop/product/#{ slug(product) }">
-												<span t-esc='product and product.name' />
+												<span t-esc='product and product.description_sale' />
 											</a>
 										</div>
 										<div class="slider-product-rating">
 											<t t-call="website_argos.product_item_stars"/>
 										</div>
 									</div>
-									<div class="o_wsale_product_btn">
+									<div class="o_wsale_product_btn" style='vertical-align: bottom;'>
 										<form action="/shop/cart/update" method="post">
 											<input type="hidden" name="csrf_token"
 												t-att-value="request.csrf_token()" />
@@ -152,7 +155,8 @@
 											</button>
 											</div>
 										</form>
-									</div>
+									</div> 
+            </div>
 								</div>
 							</div>
 						</div>

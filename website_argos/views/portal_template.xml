@@ -26,9 +26,9 @@
                 </div>
             </div>
         </div>
-         <t t-if="record and add_to_my_calendar">
+         <div class="mb10" t-if="record and add_to_my_calendar">
              <a role="button" t-att-href="'/planning/%s/ics' % record.id" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
-         </t>
+         </div>
     </template>
 
    <!--  reqw -->
@@ -72,10 +72,22 @@
                                  </li>
                                 <li class="nav-item mr32">
                                     <t t-if="pageName == 'clinic'">
-                                        <a class="nav-link active" href="/my-clinic">Ma clinique</a>
+							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+												<a class="nav-link active" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+											</t>
+											<t t-else="">	
+												<a class="nav-link active" t-attf-href="/my-clinic">Ma clinique</a>
+											</t>
                                     </t>
                                     <t t-else="">
-                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
+							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+												<a class="nav-link" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+											</t>
+											<t t-else="">	
+												<a class="nav-link" t-attf-href="/my-clinic">Ma clinique</a>
+											</t>
                                     </t>
                                 </li>
                                 <li class="nav-item mr32">
@@ -273,12 +285,13 @@
                                                 <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
                                                 <span>Appeler</span>
                                             </a>
-                                             <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/nos-cliniques-veterinaires-2/clinique/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
+                                             <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/ma-clinique-favorite/clinique/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
                                                 <span>Voir la fiche</span>
                                             </a>
                                         </t>
                                     </div>
                                 </div>
+                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-4 o-2">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -403,6 +416,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-4 o-7">
                                     <div class="card p-3">
                                         <div class="row title-row">

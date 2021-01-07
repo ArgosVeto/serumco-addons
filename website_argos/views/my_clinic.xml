@@ -501,7 +501,7 @@
 						</t>
 						
 						<t t-if ="not user_id.partner_id.clinic_shortlisted_ids">
-							<h2 class="text-center text-secondary">No Favourite Clinic Selected</h2>
+							<h2 class="text-center text-secondary">Vous n'avez pas de clinique favorite</h2>
 						</t>
 					</div>
 				</t>

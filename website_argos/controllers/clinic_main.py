@@ -640,6 +640,86 @@ class ClinicDetail(http.Controller):
                   'operating_unit': operating_unit_id, 'working_timing': working_timing, 'not_working_time': not_working_time}
         return request.env['ir.ui.view'].render_template("website_argos.clinic_pratice", values)
 
+    @http.route(['/ma-clinique-favorite/clinique/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)
+    def add_clinic_pratice_fav(self, operating_unit, **post):
+        service_ids = request.env['operating.unit.service'].sudo().search([])
+        payment_method_ids = request.env['payment.acquirer'].sudo().search([])
+        practical_service_ids = request.env['practical.service'].sudo().search([
+        ])
+        operating_unit_id = request.env['operating.unit'].sudo().browse(
+            int(operating_unit))
+        working_timing = {}
+        favorite = True
+        not_working_time = False
+        week_slot = {'0': 'Lun.', '1': 'Mar.', '2': 'Mer',
+                     '3': 'Jeu', '4': 'Ven.', '5': 'Sam.', '6': 'Dim.'}
+        if operating_unit_id.calendar_id:
+            resource_id = operating_unit_id.calendar_id
+            attendance_ids = operating_unit_id.calendar_id.attendance_ids
+            if attendance_ids:
+                for day_week in range(0, 6):
+                    now_time = datetime.now()
+                    date_today = date.today()
+                    date_today = date_today.weekday()
+                    if date_today == day_week:
+                        now_time = pytz.timezone('UTC').localize(now_time).astimezone(
+                            pytz.timezone(request.env.user.tz or 'UTC')).time()
+                        now_time = now_time.hour + now_time.minute/60.0 + now_time.second/3600
+                    start_time = 'fermé'
+                    end_time = 'fermé'
+                    day_timimg = attendance_ids.filtered(
+                        lambda x: x.dayofweek == str(day_week))
+                    if day_timimg:
+                        if len(day_timimg) == 2:
+                            t1 = day_timimg[0].hour_from
+                            t2 = day_timimg[0].hour_to
+                            t3 = day_timimg[1].hour_from
+                            t4 = day_timimg[1].hour_to
+                            if (date_today == day_week):
+                                if (now_time >= t1) and (now_time <= t2):
+                                    not_working_time = True
+                                if (now_time >= t3) and (now_time <= t4):
+                                    not_working_time = True
+                            start_time = resource_id.convert_to_time(
+                                t1 * 3600) + ' - ' + resource_id.convert_to_time(t2 * 3600)
+                            end_time = resource_id.convert_to_time(
+                                t3 * 3600) + ' - ' + resource_id.convert_to_time(t4 * 3600)
+
+                        elif len(day_timimg) == 1:
+                            t1 = day_timimg[0].hour_from
+                            t2 = day_timimg[0].hour_to
+                            if (date_today == day_week):
+                                if (now_time >= t1) and (now_time <= t2):
+                                    not_working_time = True
+                            hour_from_1 = str(day_timimg[0].hour_from)
+                            hour_from_1 = hour_from_1.split('.')
+                            hour_to_1 = str(day_timimg[0].hour_to)
+                            hour_to_1 = hour_to_1.split('.')
+                            start_time = resource_id.convert_to_time(
+                                t1 * 3600) + ' - ' + resource_id.convert_to_time(t2 * 3600)
+                        elif len(day_timimg) > 2:
+                            day_timimg = day_timimg[0:2]
+                            t1 = day_timimg[0].hour_from
+                            t2 = day_timimg[0].hour_to
+                            t3 = day_timimg[1].hour_from
+                            t4 = day_timimg[1].hour_to
+                            if (date_today == day_week):
+                                if ((now_time >= t1) and (now_time <= t2)) or ((now_time >= t3) and (now_time <= t4)):
+                                    not_working_time = True
+                            start_time = resource_id.convert_to_time(
+                                t1 * 3600) + ' - ' + resource_id.convert_to_time(t2 * 3600)
+                            end_time = resource_id.convert_to_time(
+                                t3 * 3600) + ' - ' + resource_id.convert_to_time(t4 * 3600)
+                        else:
+                            if (date_today == day_week):
+                                not_working_time = True
+                    time_range = {'start_time': start_time,
+                                  'end_time': end_time}
+                    working_timing.update(
+                        {week_slot[str(day_week)]: time_range})
+        values = {'service_ids': service_ids, 'payment_method_ids': payment_method_ids,
+                  'operating_unit': operating_unit_id, 'working_timing': working_timing, 'not_working_time': not_working_time,'favorite' : True}
+        return request.env['ir.ui.view'].render_template("website_argos.clinic_pratice", values)
 
 class ClinicContact(http.Controller):
     @http.route(['''/clinic-contact'''], type='http', auth="public", website=True)

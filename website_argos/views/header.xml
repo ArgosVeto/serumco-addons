@@ -106,7 +106,13 @@
 											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
 											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
-											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+												<a target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											</t>
+											<t t-else="">	
+												<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											</t>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
 											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiements</a>
 											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
@@ -203,7 +209,14 @@
 											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
 											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
-											<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+										        <t t-set="pageName" t-value="'clinic'"/>
+												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+												<a target="_blank" t-attf-href="/ma-cliniques-favorite/clinique/#{slug(clinic.sudo())}?pageName='clinic'" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											</t>
+											<t t-else="">	
+												<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+											</t>
 											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
 											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiement</a>
 											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
