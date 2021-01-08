@@ -487,6 +487,7 @@
                                         <a role="button" href="/my/payment_method" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes cartes bancaires</a>
                                     </div>
                                 </div>
+                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-12 o-8">
                                     <div class="card p-3">
                                         <div class="row title-row">

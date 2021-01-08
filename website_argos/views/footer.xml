@@ -11,7 +11,7 @@
         </div>
     </template>
 
-	<template id="website_argos_footer" inherit_id="website.layout" name="Argos Footer">
+	<template id="website_argos_footer_1" inherit_id="website.layout" name="Argos Footer">
 	       <xpath expr="//footer[hasclass('o_footer')]" position="replace">
 			<footer id="argos_footer" class="argos-footer o_footer">
 				<div class="footer-service">
@@ -147,11 +147,13 @@
 						                    <t t-set="categories" t-value="website.get_categories() if website else None"/>
 							                <t t-if="categories">
 							                    <t t-foreach="categories['categories']" t-as="categ">
-							                          <li class="dropdown dropdown-submenu nav-item">
-											            <a class="nav-link" t-att-href="'/shop/category/%s' % (categ.id)">
-											            	<span t-esc="categ.name"/>
-											            </a>
-											        </li>
+												    <t t-if="categ.web_visible">
+							                         	 <li class="dropdown dropdown-submenu nav-item">
+											            	<a class="nav-link" t-att-href="'/shop/category/%s' % (categ.id)">
+											            		<span t-esc="categ.name"/>
+											            	</a>
+											        	</li>
+													</t>
 							                    </t>
 							                </t>
 							            </ul>
