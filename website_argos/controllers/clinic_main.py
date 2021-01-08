@@ -285,16 +285,16 @@ class WebsiteSale(WebsiteSale):
     @http.route(['/shop/checkout'], type='http', auth="public", website=True)
     def checkout(self, **post):
         order = request.website.sale_get_order()
-
+        url = ('/add-address?edit-mode=%s') % order.partner_id.id
+        _logger.info(url)
         redirection = self.checkout_redirection(order)
         if redirection:
             return redirection
-
         if order.partner_id.id == request.website.user_id.sudo().partner_id.id:
-            return request.redirect('/add-address?new-address=1')
+            return request.redirect(url)
         for f in self._get_mandatory_billing_fields():
             if not order.partner_id[f]:
-                return request.redirect('/add-address?new-address=1')
+                return request.redirect(url)
 
         values = self.checkout_values(**post)
 

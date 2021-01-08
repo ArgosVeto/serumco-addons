@@ -20,6 +20,7 @@ from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
 
 
+
 class AuthSignupHomeSS(AuthSignupHome):
     def check_password(self, passwd):
         special_sym = ['!', '@', '#', '$', '%', '^', '&', '*']
@@ -69,6 +70,10 @@ class CustomerPortal(CustomerPortal):
                                 "email", "street", "zipcode", "city", "country_id"]
     OPTIONAL_BILLING_FIELDS = ["state_id", "vat", "company_name"]
 
+    @route(['/my', '/my/home'], type='http', auth="user", website=True)
+    def home(self, **kw):
+        return request.redirect('/my-content')
+
     @route(['/my/account'], type='http', auth='user', website=True)
     def account(self, redirect=None, **post):
         values = self._prepare_portal_layout_values()
@@ -97,7 +102,7 @@ class CustomerPortal(CustomerPortal):
                 partner.sudo().write(values)
                 if redirect:
                     return request.redirect(redirect)
-                return request.redirect('/my/home')
+                return request.redirect('/my-content')
 
         countries = request.env['res.country'].sudo().search([])
         states = request.env['res.country.state'].sudo().search([])
