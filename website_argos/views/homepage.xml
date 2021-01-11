@@ -90,7 +90,6 @@
                   <a class="" t-att-href="website.default_category(gv)" role="button">
                     <img class="img img-fluid" t-att-name="website.image_url(gv, 'filter_image')" t-att-src="website.image_url(gv, 'filter_image')"/>
                   </a>
-                  <span t-esc="gv.name"/>
                 </div>
               </t>
             </t>

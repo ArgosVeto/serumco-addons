@@ -6,7 +6,7 @@
 
         <div role="search">
              <form t-attf-class="o_cjob_searchbar_form input-group" t-att-action="action if action else '/jobs'" method="get">
-                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Name/Adresse/Code Postal/Ville…" t-att-value="search"/>
+                <input type="text" name="search" class="search-query form-control oe_search_box " placeholder="Code Postal/Ville…" t-att-value="search"/>
                 <div class="se-btn">
                     <button type="submit" class="btn btn-primary oe_search_button ml-4" aria-label="Search" title="Search">Rechercher</button>
                 </div>  
@@ -212,7 +212,7 @@
 		</xpath>
 
 		<xpath expr="//section[hasclass('o_job_bottom_bar')]//a[hasclass('btn')]" position="replace">
-			<a role="button" id="editor" t-attf-href="/application/#{job.id}" class="btn btn-primary btn-lg">Apply Now!</a>
+			<a role="button" id="editor" t-attf-href="/application/#{job.id}" class="btn btn-primary btn-lg">Postuler !</a>
 		</xpath>
 	</template>
 
@@ -237,7 +237,7 @@
 	        </div>
 		</xpath>
 		<xpath expr="//label[@for='partner_name']" position="replace">
-			<label class="col-form-label" for="partner_name">Prenom</label>
+			<label class="col-form-label" for="partner_name">Prénom</label>
 		</xpath>
 
 		
@@ -254,7 +254,7 @@
 		<xpath expr="//form/div[5]" position="after">
 			<div class="form-group row form-field o_website_form_required_custom">
 	            <div class="col-lg-3 col-md-4 text-right">
-	                <label class="col-form-label" for="actual_post">Poste actual</label>
+	                <label class="col-form-label" for="actual_post">Poste actuel</label>
 	            </div>
 	            <div class="col-lg-7 col-md-8">
 	                <input type="text" class="form-control o_website_form_input" name="actual_post" required=""/>
@@ -262,7 +262,7 @@
 	        </div>
 	        <div class="form-group row form-field o_website_form_required_custom">
 	            <div class="col-lg-3 col-md-4 text-right">
-	                <label class="col-form-label" for="number_of_exp">Nombre d'expérience</label>
+	                <label class="col-form-label" for="number_of_exp">Nombre d'années d'expérience</label>
 	            </div>
 	            <div class="col-lg-7 col-md-8">
 	                <input type="text" class="form-control o_website_form_input" name="number_of_exp" required=""/>

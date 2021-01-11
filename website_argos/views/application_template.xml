@@ -10,13 +10,17 @@
 			            		<ol class="breadcrumb mb32">
 								    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
 								    <li class="breadcrumb-item"><a href="/group-argos">Le groupe Argos</a></li>
-								    <li class="breadcrumb-item"><a href="#">Nous rejoindre</a></li>
-								    <li class="breadcrumb-item"><a href="#">Candidature Spontanée</a></li>
+								    <li class="breadcrumb-item"><a href="/jobs">Nous rejoindre</a></li>
 							  	</ol>
 			            	</div>
 			            	<div class="col-lg-12">
 			            		<h1 class="text-center">
-			            			Candidature spontanee
+								   <t t-if="job.name">
+		                            <span t-esc="job.name"/>
+									</t>
+									<t t-else="">
+				            			Candidature spontanée
+									</t>
 			            		</h1>
 			            	</div>
 			            </div>
@@ -40,7 +44,7 @@
 		        		<div class="row justify-content-center">
 		        			<div class="col-lg-8">
 		                		<h3 class="text-primary">Postuler</h3>
-		                		<h5 class="text-gamma">Infomation Générales</h5>
+		                		<h5 class="text-gamma">Informations Générales</h5>
 		                	</div>
 		                </div>
 		            </div>
@@ -59,7 +63,7 @@
 							            </div>
 
 							            <div class="col-md-6">
-							                <label class="col-form-label" for="first_name">Prenom</label>
+							                <label class="col-form-label" for="first_name">Prénom</label>
 							                <input type="text" class="form-control o_website_form_input" name="first_name" required=""/>
 							            </div>				            
 			                		</div>
@@ -71,7 +75,7 @@
 							            </div>
 
 							            <div class="col-md-6">
-							                <label class="col-form-label" for="partner_phone">N ° de téléphone</label>
+							                <label class="col-form-label" for="partner_phone">N° de téléphone</label>
 							                <input type="text" class="form-control o_website_form_input" name="partner_phone" required=""/>
 							            </div>				            
 			                		</div>
@@ -84,7 +88,7 @@
 							            </div>
 
 							            <div class="col-md-6">
-							                <label class="col-form-label" for="number_of_exp">Nombre d'expérience</label>
+							                <label class="col-form-label" for="number_of_exp">Nombre d'années d'expérience</label>
 							                <input type="text" class="form-control o_website_form_input" name="number_of_exp" required=""/>
 							            </div>				            
 			                		</div>
@@ -133,8 +137,36 @@
 				                        </div>
 			                		</div>
 
+			                		<div class="form-group row form-field o_website_form_required_custom">
+				                        <div class="col-md-12">
+				                        	<p class="pt48 mt32 mb32 votre-profil"><strong>Votre lettre de motivation</strong></p>
+											<label class="col-form-label" for="Resume">Importez votre lettre</label>
+
+											<input id="resume_file2" required="true" name="resume_file2" class="form-control o_website_form_input custom-input" accept="image/*,application/pdf" type="file" style="height: auto;"/>
+
+											<input id="div_file2" type="hidden" name="div_file2"/>
+				                            <p class="mt16 mb-0">Nous acceptons les fichiers PDF, DOC, DOCX, JPG et PNG</p>
+				                        </div>
+			                		</div>
+
+			                		<!--div class="form-group row form-field o_website_form_required_custom">
+				                        <div class="col-md-12">
+				                        	<p class="pt48 mt32 mb32 votre-profil"><strong>Lettre de motivation</strong></p>
+											<label class="col-form-label" for="Resume">Importez votre lettre</label>
+
+											<input id="resume_file2" required="true" name="resume_file2" class="form-control o_website_form_input custom-input" accept="image/*,application/pdf" type="file" style="height: auto;"/>
+
+											<input id="div_file2" type="hidden" name="div_file2"/>
+				                            <p class="mt16 mb-0">Nous acceptons les fichiers PDF, DOC, DOCX, JPG et PNG</p>
+				                        </div>
+			                		</div-->
+
 			                		<div class="form-group row form-field o_website_form_required_custom mt16">
-				                        <div class="col-md-6" t-if="not job.job_type_id">
+									    <t t-if="job.name">
+										   <input type="hidden" id="job_id" name="job_id" t-att-value="job.id"/>
+										</t>
+										<t t-else="">
+				                        <div class="col-md-6">
 				                        	<label class="col-form-label" for="job_type">Type de metier</label>
 				                        	<div class="selection-div sel-pays">
 					                        	<select  id="job_id" name="job_id" t-attf-class="form-control">
@@ -160,9 +192,11 @@
 							                    </select>
 							                </div>
 				                        </div>
+										</t>
 			                		</div>
 
-			                		<div class="form-group row form-field o_website_form_required_custom">
+
+			                		<!--div class="form-group row form-field o_website_form_required_custom">
 				                        <div class="col-md-12 mt16">
 				                			<label class="pt48 mt32 mb16 col-form-label lettre-de-motivation" for="description">Lettre de motivation</label>
 					                        <div class="mt16">
@@ -170,7 +204,7 @@
 				                			</div>
 				                			<textarea required="true" class="form-control candidate-description  o_website_form_input" name="description"></textarea>
 				                		</div>
-			                		</div>
+			                		</div-->
 
 			                		<div class="form-group row form-field o_website_form_required_custom">
 			                			<div class="col-md-12 mt16">

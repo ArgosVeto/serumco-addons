@@ -137,13 +137,13 @@ class AuthSignupHome(Home):
 class PortalContent(http.Controller):
     @http.route(['/job/resume-attachment'], type='json', auth="none")
     def customer_resume_attachment(self, **post):
-        file_datas = str(post['file_upload1']).split(',')
+        file_datas = str(post['file_upload']).split(',')
         ir_attachment = request.env['ir.attachment'].sudo().create(
             {
                 'name': post['file_name'],
                 'datas': file_datas[1],
                 'type': 'binary',
-                'datas_fname':  post['file_upload1'],
+                'datas_fname':  post['file_upload'],
                 'mimetype': str(post['mimetype']),
             })
         return ir_attachment.id
