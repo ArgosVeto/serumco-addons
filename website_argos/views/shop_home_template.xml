@@ -130,7 +130,7 @@
               <div class="container">
                 <ul class="nav navbar-nav flex-row">
                   <li class="nav-item mr32">
-                    <a class="nav-link" href="/Accueil-boutique-en-ligne">Accueil</a>
+                    <a class="nav-link" href="/accueil-boutique-en-ligne">Accueil</a>
                   </li>
                   <li class="nav-item mr32">
                     <a class="nav-link" href="/boutique-en-ligne/categorie/chat">Chat</a>

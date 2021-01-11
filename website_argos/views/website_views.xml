@@ -9,4 +9,14 @@
             </xpath>
         </field>
     </record>
+    <record id="argos_product_filter_form_view" model="ir.ui.view">
+        <field name="model">product.filter</field>
+        <field name="inherit_id" ref="argos_website.product_filter_form_view"/>
+        <field name="name">argos_product_filter_form_view</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field" position="after">
+                    <field name="filter_image"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

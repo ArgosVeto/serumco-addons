@@ -10,10 +10,10 @@ class ProductAttributeValue(models.Model):
     
     attribute_image = fields.Binary("Image")
 
-class ProductTemplateAttributeValue(models.Model):
-    _inherit = "product.template.attribute.value"
+class ProductFilterLine(models.Model):
+    _inherit = "product.filter.line"
 
-    image = fields.Binary("Image")
+    filter_image = fields.Binary("Image")
 
 
 
