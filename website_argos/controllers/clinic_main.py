@@ -291,6 +291,8 @@ class WebsiteSale(WebsiteSale):
     @http.route(['/shop/checkout'], type='http', auth="public", website=True)
     def checkout(self, **post):
         order = request.website.sale_get_order()
+        if not order.partner_id.active:
+            return request.redirect('/web/signup')
         url = ('/add-address?edit-mode=%s') % order.partner_id.id
         _logger.info(url)
         redirection = self.checkout_redirection(order)
