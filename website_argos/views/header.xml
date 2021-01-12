@@ -171,10 +171,10 @@
 	    	<div class="sidebar-content">
 				<div class="search">
 					<t t-call="website_sale.s_products_searchbar_input" />
-					<div class="close-mbl-sidebar text-center">
+					<!--div class="close-mbl-sidebar text-center">
 						<span class="text-white" id="close_mbl_sidebar">
 							<img src="/website_argos/static/src/img/close.png"/></span>
-					</div>
+					</div-->
 				</div>
 				<div class="card bg-white sidebar-card">
                 	<ul class="nav navbar-nav align-items-md-center" id="top_menu">
@@ -212,7 +212,7 @@
 							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
 										        <t t-set="pageName" t-value="'clinic'"/>
 												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-												<a target="_blank" t-attf-href="/ma-cliniques-favorite/clinique/#{slug(clinic.sudo())}?pageName='clinic'" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+												<a t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}?pageName='clinic'" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
 											</t>
 											<t t-else="">	
 												<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
@@ -226,10 +226,10 @@
 							</div>
 							<div groups="base.group_public" class="">
 								<a class="dropdown-item px-0" t-attf-href="/web/login">
-									<span>Sign in</span>
+									<span>Se connecter</span>
 								</a>
 								<a class="dropdown-item px-0" t-attf-href="/web/signup">
-									<span>Register</span>
+									<span>S'enregistrer</span>
 								</a>
 							</div>
 						</div>

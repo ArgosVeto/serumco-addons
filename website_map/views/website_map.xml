@@ -132,10 +132,10 @@
                         </div>
                 </div>
                 <div class="card-footer">
-                         <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-none d-xl-inline-block mr-2">
+                         <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-xl-inline-block mr-2">
                             <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>
                         </a>
-                         <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+                         <a role="button" target="_blank" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}"  class="btn btn-primary mb16 mt16 d-xl-inline-block">
                             <span class="">Prendre RDV</span>
                         </a>
                     </div>  
