@@ -94,7 +94,7 @@
               </t>
             </t>
           </div>
-          <div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
+          <!--div id="brand-carousel" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="7000">
             <t t-set="gamne_value" t-value="website.get_gamne_values()"/>
             <t t-if="gamne_value">
               <div class="carousel-inner" role="listbox">
@@ -132,7 +132,7 @@
                 </a>
               </div>
             </t>
-          </div>
+          </div-->
         </div>
       </section>
        <div class="oe_structure"/>
