@@ -289,7 +289,7 @@
 										<div t-field="operating_unit.clinic_description"
 											class="oe_no_empty clinic_description_length" id="description">
 					                    </div>
-										<p><a href="#nogo" class="text-primary desc-more-btn d-block d-md-none" onclick="document.getElementById('description').removeAttribute('class');
+										<p><a href="#nogo" class="text-primary desc-more-btn d-md-none" onclick="document.getElementById('description').removeAttribute('class');
 											this.style.display = 'none';">Lire la suite  <img src="/website_argos/static/src/img/right.png"/></a></p>
 									</t>
 								</div>
@@ -409,7 +409,7 @@
 														<ul>
 															<li class="">Consultation</li>
 															<li class="dotted-line"></li>
-															<li class="">75 €</li>
+															<li class="">60 €</li>
 														</ul>
 														<ul>
 															<li class="">Vaccin Typhus/Coryza</li>
