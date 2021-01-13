@@ -236,10 +236,10 @@
                                                 <a class="btn btn-primary btn-lg d-none d-md-block d-sm-block" href="/my/orders">Gérer mes commandes</a>
                                             </t>
                                         </div>
-                                    </div>
-                                </div>
+                                   </div>
                                  <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
-
+                                </div>
+ 
                                 <div class="col-md-4 o-3">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -255,8 +255,8 @@
                                             <t t-set="add_to_my_calendar" t-value="True"/>
                                         </t>
                                     </div>
-                                </div>
                                  <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
+                                </div>
                                 <div class="col-md-4 o-5">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -292,8 +292,9 @@
                                             </a>
                                         </t>
                                     </div>
+                                 <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
                                 </div>
-                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
+                                 <div class="col-md-12 d-none" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-4 o-2">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -318,8 +319,8 @@
                                         </div>
                                         <a role="button" href="/my/account" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Modifier mon adresse</a>
                                     </div>
+                                 <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
                                 </div>
-                                <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
                                 <div class="col-md-4 o-4">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -336,8 +337,8 @@
                                         </t>
                                         <a role="button" href="/prendre-rendez-vous" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Prendre un rendez-vous</a>
                                     </div>
-                                </div>
                                  <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
+                                </div>
                                 <div class="col-md-4 o-6">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -419,8 +420,9 @@
                                             </t>
                                         </div>
                                     </div>
+                                 <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
                                 </div>
-                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
+                                 <div class="col-md-12 d-none" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-4 o-7">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -468,8 +470,8 @@
                                         </div>
                                         <button href="#"  id="update_my_preference" class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">Mettre à jour</button>
                                     </div>
-                                </div>
                                  <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
+                                </div>
                                  <div class="col-md-4 o-8">
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -491,8 +493,9 @@
                                         </div>
                                         <a role="button" href="/my/payment_method" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes cartes bancaires</a>
                                     </div>
+                                 <div class="col-md-12 d-md-none" style="height: 20px;background-color: white;"/>
                                 </div>
-                                 <div class="col-md-12" style="height: 20px;background-color: white;"/>
+                                 <div class="col-md-12 d-none" style="height: 20px;background-color: white;"/>
                                  <div class="col-md-12 o-8">
                                     <div class="card p-3">
                                         <div class="row title-row">
