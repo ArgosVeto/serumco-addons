@@ -279,7 +279,15 @@
 		position: unset;
 	}
 	@media (max-width: 767.98px) {
-		.container{
+			.mega_menu_one_snippet{
+				.right-img{
+					display: none;
+					}
+				.image-text{
+					display: none;
+					}
+				}
+			.container{
 			.row{
 				.argos-logo{
 					a.navbar-brand{

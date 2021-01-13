@@ -108,6 +108,8 @@ class Application(http.Controller):
             partner_name += " " + kwargs['last_name']
         if 'email_from' in kwargs and kwargs['email_from']:
             applicant_vals.update({'email_from': kwargs['email_from']})
+        if 'partner_phone' in kwargs and kwargs['partner_phone']:
+            applicant_vals.update({'partner_phone': kwargs['partner_phone']})
         if 'actual_post' in kwargs and kwargs['actual_post']:
             applicant_vals.update({'actual_post': kwargs['actual_post']})
         if 'code_postal' in kwargs and kwargs['code_postal']:

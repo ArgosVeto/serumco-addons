@@ -6,38 +6,35 @@
             <section class="shop_categ_info s_blog_banner pt-0 pb-0">
                 <div class="row m-0 my_content">
                     <div class="col-lg-12 mb-0 p-0">
-                        <div class="top-links p-0 bg-transparent">
+	                        <div class="top-links p-0">
 	                            <div class="container">
 	                                <ul class="nav navbar-nav flex-row">
 	                                    <li class="nav-item mr32">
-	                                        <a class="nav-link" href="/">Accueil</a>
+						                    <a class="nav-link" href="/accueil-boutique-en-ligne">Accueil</a>
 	                                    </li>
 				                        <t t-foreach="categories" t-as="c">
-					                        <li class="nav-item mr32">
-									            <a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if category and c.id == category.id else ''}">
-									                <span t-field="c.name"/>
-									            </a>
-									        </li>
+										    <t t-if="c.name!='All'">
+										    <t t-if="c.web_visible">
+												<t t-if="c.url_key">
+												<li class="nav-item mr32">
+													<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+														<span t-field="c.name"/>
+													</a>
+												</li>
+												</t> 
+												<t t-else="">
+													<li class="nav-item mr32">
+														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+															<span t-field="c.name"/>
+														</a>
+													</li>
+												</t>
+											</t> 
 									    </t>
+										</t>
 	                                </ul>
 	                            </div>
-.                            <!--div class="container">
-                                <ul class="nav navbar-nav flex-row">
-                                    <li class="nav-item mr32">
-                                        <a class="nav-link" href="/shop-home">Accueil</a>
-                                    </li>
-                                    <li class="nav-item mr32">
-                                        <t t-foreach="product.public_categ_ids" t-as="categs">
-                                            <a t-att-href="'/shop/category/%s' % slug(categs)" class="nav-link active">
-                                                <span class="categ-name">
-                                                    <t t-esc="categs.name"/>
-                                                </span>
-                                            </a>
-                                        </t>
-                                    </li>
-                                </ul>
-                            </div-->
-                        </div>
+	                        </div>
                     </div>
                 </div>
             </section>
