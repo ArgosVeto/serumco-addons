@@ -422,17 +422,16 @@
 		}
 		.btn-link:before {
 		    content: '\f068';
-		    font-family: 'FontAwesome';
+		    font-family: 'fontawesome';
 		    display: inline-block;
 		    margin: 0 .5em 0 .75em;
 		    float: right;
 		    color: #63bae9;
-		    font-weight: 400;
-		    font-size: 18px;
+		    font-size: 16px;
 		}
 		.btn-link.collapsed:before {
 		    content: '\f067';
-		    font-family: 'FontAwesome';
+		    font-family: 'fontawesome';
 		    float: right;
 		    color: #63bae9;
 		}
