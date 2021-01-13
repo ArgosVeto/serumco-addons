@@ -207,13 +207,11 @@
                 <div class="container">
                     <div class="main-tab">
                         <ul class="nav nav-tabs tabs" role="tablist" id="product_detail_tabs">
-                            <t t-if="product.website_description or request.env.user._is_admin()">
-                                <li class="nav-item" priority="1">
-                                    <a class="nav-link active show" id="nav-home-tab1" data-toggle="tab" href="#nav-home1" role="tab" aria-controls="nav-home1" aria-selected="true">
-                                        Description
-                                    </a>
+                            <li class="nav-item" priority="1">
+                                <a class="nav-link active show" id="nav-home-tab1" data-toggle="tab" href="#nav-home1" role="tab" aria-controls="nav-home1" aria-selected="true">
+                                    Description
+                                </a>
                                 </li>
-                            </t>
                             <li class="nav-item">
                                 <a class="nav-link o_default_snippet_text" id="nav-home-tab2" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="true">
                                     Composition
@@ -315,45 +313,88 @@
                     </div>
                 </div>
             </div>
-            <!--div class="col-lg-12 col-md-12 pt48 pb48 product_tabs d-block d-md-none">
+            <div class="col-lg-12 col-md-12 pt48 pb48 product_tabs d-block d-md-none">
                 <div class="container">
                     <div id="accordion">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                              <t t-if="product.website_description or request.env.user._is_admin()">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                   Description
                                 </button>
-                              </t>
                             </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                               <div class="card-body">
                                 <div itemprop="description" t-field="product.description_web" class="oe_structure mt16" id="product_full_description" />
                               </div>
                             </div>
                         </div>
-                        <t t-foreach="product.tab_ids" t-as="tab">
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <button class="btn btn-link collapsed o_default_snippet_text" data-toggle="collapse" t-att-data-target="'#nav_tabs_body_%s_%s' % (product.id, tab.id)" aria-expanded="false" at-att-aria-controls="'nav_link_%s_%s' % (product.id, tab.id)">
-                                        <t t-esc="tab.name"/>
-                                    </button>
-                                </div>
-                         
-                                <div class="card-body">
-                                    <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="collapse" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)" data-parent="#accordion">
-                                        <section class="mt16 mb16">
-                                              <p>Teneur en eau</p>
-                                            <div t-field="tab.content" class="oe_structure" />
-                                        </section>
-                                    </div>
-                                </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                     Composition
+                               </button>
                             </div>
-                        </t>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                              <div class="card-body">
+                                <p>Composition :</p><t t-raw="product.composition"/>
+                                <p>Constituants Analytiques :</p><t t-raw="product.analytic_constitution"/>
+                                <p>Additifs :</p><t t-raw="product.additives"/>
+                                <p>Valeurs Energétique :</p><t t-raw="product.energetic_value"/>
+                                <p>Teneur en Eau :</p><t t-raw="product.waters_content"/>
+                              </div>
+                            </div>
+                        </div>    
+                        <div class="card">
+                            <div class="card-header" id="headingTree">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTree" aria-expanded="True" aria-controls="collapseTree">
+                                    Spécifications
+                               </button>
+                            </div>
+                            <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordion">
+                              <div class="card-body">
+                                <p>Ration journalière recommandée :</p><t t-raw="product.daily_ratio_recommended"/>
+                                <p>Indications :</p><t t-raw="product.indications"/>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    Mode d'emploi
+                               </button>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                              <div class="card-body">
+                                <t t-foreach="product.documentation_ids" t-as="doc">
+                                    <t t-if="doc.doc_type == 'MOE'">
+                                        <p><a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/></a></p>
+                                    </t>
+                                    <t t-if="doc.doc_type == 'TEC'">
+                                        <p><a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/></a></p>
+                                    </t>
+                                </t>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    Besoin de conseil ?
+                               </button>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                              <div class="card-body">
+                                <t t-foreach="product.documentation_ids" t-as="doc">
+                                        <t t-if="doc.doc_type == 'CNS'">
+                                            <p><a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/></a></p>
+                                        </t>
+                                    </t>
+                               </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div-->
+            </div>
         </xpath>
     </template>
 
