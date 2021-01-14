@@ -176,7 +176,7 @@
 							<div class="red-round-small d-none d-md-block"></div>
 						</div>
 						<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
-							<img class="card-img-top rounded" id="banner-img"
+							<img class="card-img-top rounded" id="banner2-img"
 								t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
 						</div>
 					</div>
@@ -195,6 +195,7 @@
 												<script>
 													 function changeImage(e) {
 													        document.getElementById('banner-img').src = e;
+													        document.getElementById('banner2-img').src = e;
 													    }
 												</script>
 												<img class="img img-fluid rounded" t-att-name="website.image_url(c_i, 'image_1920')" onclick="changeImage(this.name);"
