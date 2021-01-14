@@ -240,7 +240,7 @@
                                    </div>
                                 </div>
  
-                                <div class="col-md-4 o-3">
+                                <div class="col-md-4 o-2">
                                     <div class="col-md-12" style="height: 10px;background-color: white;"/>
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -257,7 +257,7 @@
                                         </t>
                                     </div>
                                 </div>
-                                <div class="col-md-4 o-5">
+                                <div class="col-md-4 o-3">
                                     <div class="col-md-12" style="height: 10px;background-color: white;"/>
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -294,7 +294,7 @@
                                         </t>
                                     </div>
                                 </div>
-                                 <div class="col-md-4 o-2">
+                                 <div class="col-md-4 o-4">
                                     <div class="col-md-12" style="height: 10px;background-color: white;"/>
                                     <div class="card p-3">
                                         <div class="row title-row">
@@ -320,7 +320,7 @@
                                         <a role="button" href="/my/account" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Modifier mon adresse</a>
                                     </div>
                                 </div>
-                                <div class="col-md-4 o-4">
+                                <div class="col-md-4 o-5">
                                     <div class="col-md-12" style="height: 10px;background-color: white;"/>
                                     <div class="card p-3">
                                         <div class="row title-row">

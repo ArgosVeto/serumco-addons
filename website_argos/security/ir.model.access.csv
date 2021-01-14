@@ -43,4 +43,6 @@ access_product_filter,access_product_filter admin,argos_website.model_product_fi
 access_product_filter_line,access_product_filter_line admin,argos_website.model_product_filter_line,,1,0,0,0
 access_product_template_filter_line,access_product_template_filter_line admin,argos_website.model_product_template_filter_line,,1,0,0,0
 
+access_clinic_image_all,access_clinic_image all,model_clinic_image,,1,0,0,0
+access_hr_employee_public_all,access_hr_employee_public all,model_hr_employee_public,,1,0,0,0
 
