@@ -315,7 +315,7 @@
 														</div>
 														<div class="text-right img-doc">
 															<img class="img img-fluid" style="border-radius: 100% 0% 0% 0%; height : 250px; width: auto"
-																t-att-name="website.image_url(contact, 'image_1920')" t-att-src="website.image_url(contact, 'image_1920')"/>
+																t-att-name="website.image_url(contact, 'image_1024')" t-att-src="website.image_url(contact, 'image_1024')"/>
 														</div>
 													</div>
 												</div>
@@ -344,7 +344,7 @@
 																		</div>
 																		<div class="text-right img-doc">
 																			<img class="img img-fluid" style="border-radius: 100% 0% 0% 0%; height : 250px; width: auto"
-																				t-att-name="website.image_url(contact, 'image_1920')" t-att-src="website.image_url(contact, 'image_1920')"/>
+																				t-att-name="website.image_url(contact, 'image_1024')" t-att-src="website.image_url(contact, 'image_1024')"/>
 																		</div>
 																	</div>
 																</div>
@@ -366,7 +366,7 @@
 																		</div>
 																		<div class="text-right">
 																			<img class="img img-fluid" style="border-radius: 100% 0% 0% 0%; height : 250px; width: auto"
-																				t-att-name="website.image_url(contact, 'image_1920')" t-att-src="website.image_url(contact, 'image_1920')"/>
+																				t-att-name="website.image_url(contact, 'image_1024')" t-att-src="website.image_url(contact, 'image_1024')"/>
 																		</div>
 																	</div>
 																</div>
