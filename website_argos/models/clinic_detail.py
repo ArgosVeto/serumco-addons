@@ -42,7 +42,7 @@ class ClinicImage(models.Model):
 
     name = fields.Char("Name")
     image_1920 = fields.Image(required=True,string="Clinic Image")
-    clinic_image_id = fields.Many2one('res.partner',string="Clinic")
+    operating_unit_id = fields.Many2one('operating.unit',string="Clinic")
 
 class Contactquestions(models.Model):
     _name = 'contact.questions'
