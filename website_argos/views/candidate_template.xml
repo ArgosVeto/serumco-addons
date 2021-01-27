@@ -204,6 +204,9 @@
 	                        			<p t-esc="job_tag.name"/>
 	                        		</t>
 	                        	</div>
+	                			<div class="mt16 d-flex align-items-center flex-wrap justify-content-center">
+									<a role="button" id="editor" t-attf-href="/application/#{job.id}" class="btn btn-primary btn-lg">Postuler !</a>
+	                        	</div>
 	                		</div>
 	                	</div>
 	                </div>

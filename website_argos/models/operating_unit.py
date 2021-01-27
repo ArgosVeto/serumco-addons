@@ -20,7 +20,7 @@ class OperatingUnit(models.Model):
     clinic_banner = fields.Binary("Clinic Banner")
     clinic_description = fields.Html(string="Clinic Description",default=lambda self:self.get_clinic_description())
     visible_in_contact = fields.Boolean(string="Visible In Contact")
-    clinic_image_ids = fields.One2many('clinic.image', 'clinic_image_id', string="Extra image", copy=True)
+    clinic_image_ids = fields.One2many('clinic.image', 'operating_unit_id', string="Extra image", copy=True)
     practical_service_ids = fields.Many2many("practical.service",string="Practical Service")
     # payment_method_ids = fields.Many2many("payment.acquirer",string="Payment Methods")
     last_name = fields.Char(string="Last Name")
