@@ -18,6 +18,10 @@ import base64
 from datetime import datetime
 from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
+try:
+    import phonenumbers
+except ImportError:
+    _logger.debug('Cannot `import phonenumbers`.')
 
 
 
@@ -99,6 +103,20 @@ class CustomerPortal(CustomerPortal):
                     except:
                         values[field] = False
                 values.update({'zip': values.pop('zipcode', '')})
+
+                if 'country_id' in post and post['country_id']:
+                        country = ''.join(x for x in post['country_id'] if x.isdigit())
+                        update_country_id = request.env['res.country'].sudo().browse(
+                            int(country))
+                        country_code = update_country_id.code.upper()
+
+                if 'phone' in post and post['phone']:
+                        res_parse = phonenumbers.parse(
+                            post['phone'], country_code)
+                        phone = phonenumbers.format_number(
+                            res_parse, phonenumbers.PhoneNumberFormat.E164)
+                        values.update({'phone': phone})
+ 
                 partner.sudo().write(values)
                 if redirect:
                     return request.redirect(redirect)
