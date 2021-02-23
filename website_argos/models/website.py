@@ -40,7 +40,7 @@ class Website(models.Model):
     
     @api.model
     def get_clinic(self):
-        clinic_ids = request.env['operating.unit'].sudo().search([])
+        clinic_ids = request.env['operating.unit'].sudo().search([('online_appointment_booking','=',True)])
         return clinic_ids
 
     @api.model
