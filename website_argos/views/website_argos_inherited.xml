@@ -37,6 +37,7 @@
 					<t t-snippet="website_argos.blog_page_snippet_content5" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content6" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 					<t t-snippet="website_argos.blog_page_snippet_content7" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
+					<t t-snippet="website_argos.blog_chat_chien_rongeur" t-thumbnail="/website_argos/static/src/img/home_actu_02.jpg" />
 				</div>
 			</div>
 		</xpath>

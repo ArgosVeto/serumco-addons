@@ -17,6 +17,10 @@
 		name="Product Slider"
 		parent="website_argos_customization_menu"
 		sequence="10" />
+	<menuitem action="website_argos.brand_slider_action" id="brand_slider_menu"
+		name="Brand Slider"
+		parent="website_argos_customization_menu"
+		sequence="15" />
 	<menuitem action="website_argos.cat_slider_action" id="cat_slider_menu"
 		name="Category Slider"
 		parent="website_argos_customization_menu"

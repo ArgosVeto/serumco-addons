@@ -64,10 +64,10 @@ class Website(models.Model):
 
     @api.model
     def get_gamne_values(self):
-        gamne_values = request.env['product.filter'].sudo().search([('name','=','Gamme')],limit=5)
+        gamne_values = request.env['biz.brand.slider'].sudo().search([])
         att_value = False
-        if gamne_values:
-            att_value = gamne_values[0].product_filter_line_ids
+        for gamme_value in gamne_values:
+            att_value = gamme_value.brand_ids
         return att_value
 
     @api.model

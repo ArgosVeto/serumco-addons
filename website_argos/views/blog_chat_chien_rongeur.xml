@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="blog_chat_chien_rongeur" name="Blog chat chien rongeur">
+		<section class="o_wblog_post_top blog-page-snippet home-animals">
+                <div class="container">
+                    <div class="animals-content">
+                        <div class="blue-round-small"/>
+                        <div class="red-round-big"/>
+                        <div class="row">
+                            <div class="col-md-6 px16">
+                                <div class="image-box mb32">
+                                    <div class="image">
+                                        <a href="/boutique-en-ligne/categorie/chat/">
+                                            <img src="/website_argos/static/src/img/home_chat.jpg" class="img img-fluid" data-original-title="" title="" aria-describedby="tooltip495059"/>
+                                        </a>
+                                    </div>
+                                    <div class="text">
+                                        <p class="animal-name text-white">CHAT</p>
+                                        <h6 class="text-white w-283">Retrouvez les produits favoris de votre chat</h6>
+                                    </div>
+                                    <div class="bottom-icon">
+                                        <img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid"/>
+                                    </div>
+                                </div>
+                                <div class="image-box">
+                                    <div class="image">
+                                        <a href="/boutique-en-ligne/categorie/nac/">
+                                            <img src="/website_argos/static/src/img/home_rongeurs.jpg" class="img img-fluid" data-original-title="" title="" aria-describedby="tooltip900241"/>
+                                        </a>
+                                    </div>
+                                    <div class="text">
+                                        <p class="animal-name text-white">Rongeurs</p>
+                                        <h6 class="text-white">Découvrez notre sélection pour assurer le bien-être de votre rongeur</h6>
+                                    </div>
+                                    <div class="bottom-icon">
+                                        <img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 px16">
+                                <div class="image-box ">
+                                    <div class="image d-none d-md-block">
+                                        <a href="/boutique-en-ligne/categorie/chien/">
+                                            <img src="/website_argos/static/src/img/home_chien.jpg" class="img img-fluid" data-original-title="" title="" aria-describedby="tooltip619622"/>
+                                        </a>
+                                    </div>
+                                    <div class="image d-block d-md-none">
+                                        <img src="/website_argos/static/src/img/home-dog.png" class="img img-fluid"/>
+                                    </div>
+                                    <div class="text">
+                                        <p class="animal-name text-black">Chien</p>
+                                        <h6 class="text-black">Retrouvez les produits du quotidien pour votre chien</h6>
+                                    </div>
+                                    <div class="bottom-icon">
+                                        <img src="/website_argos/static/src/img/home_animal_icon_black.svg" class="img img-fluid"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+	</template>
+</odoo>

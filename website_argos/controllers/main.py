@@ -351,7 +351,6 @@ class bizcommonSliderSettings(http.Controller):
             return request.render("website_argos.bizcommon_blog_slider_view", values)
 
 
-
     @http.route(['/website_argos/blog_image_effect_config'], type='json', auth='public', website=True)
     def bizcommon_product_image_dynamic_slider(self, **post):
         slider_data = request.env['biz.blog.slider'].search(

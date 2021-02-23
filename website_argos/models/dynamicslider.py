@@ -201,6 +201,28 @@ class BizProductSlider(models.Model):
                                     default='4', required=True)
 
 
+class BizBrandSlider(models.Model):
+    _name = 'biz.brand.slider'
+    _description = 'Brand Slider For Website'
+
+    def _get_domain(self):
+        filter_id = self.env['product.filter'].search([('name', '=', 'Gamme')]).id
+        return [('product_filter_id','=', filter_id)]
+
+    name = fields.Char(string="Slider name", default='Best Brand', required=True,
+                       translate=True)
+    auto_slide = fields.Boolean(string='Auto Slide', default=True)
+    sliding_speed = fields.Integer(string="Sliding speed", default='3000')
+    active = fields.Boolean(string="Publish on Website", default=True)
+    brand_ids = fields.Many2many('product.filter.line',
+                                'website_argos_product_filter_line_slider_rel',
+                                'slider_id', 'brand_id',
+                                domain=lambda self: self._get_domain(),
+                                string="Brands")
+    no_of_objects = fields.Selection([('2', '2'), ('3', '3'), ('4', '4'),
+                                     ('5', '5'), ('6', '6')], string="Number of Brand in one slide",
+                                    default='4', required=True)
+
 class BizMultiTabProductSlider(models.Model):
     _name = 'multi.tab.product.slider'
     _description = "Multi Tab Product Slider"

@@ -81,6 +81,7 @@
         'views/blog_page_snippet_content5.xml',
         'views/blog_page_snippet_content6.xml',
         'views/blog_page_snippet_content7.xml',
+        'views/blog_chat_chien_rongeur.xml',
 
 
         # 'views/partner_view.xml',

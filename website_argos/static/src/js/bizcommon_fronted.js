@@ -238,6 +238,7 @@ odoo.define('website_argos.bizcommon_frontend_js', function(require) {
         }
     });
     
+ 
     animation.registry.cat_slider_3 = animation.Class.extend({
         selector: ".cat_slider_3",
         disabledInEditableMode: false,

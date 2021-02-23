@@ -127,6 +127,49 @@
 		</field>
 	</record>
 
+	<record id="brand_slider_form_view" model="ir.ui.view">
+		<field name="name">brand.slider.form.view</field>
+		<field name="model">biz.brand.slider</field>
+		<field name="arch" type="xml">
+			<form string="Brand Slider">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="active" invisible='1'/>
+						<field name="no_of_objects" />
+						<field name="auto_slide" />
+						<field attrs="{'invisible': [('auto_slide', '=', False)]}"
+							name="sliding_speed" />
+						<field name="brand_ids" widget="many2many_tags" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="brand_slider_list_view" model="ir.ui.view">
+		<field name="name">brand.list.view</field>
+		<field name="model">biz.brand.slider</field>
+		<field name="arch" type="xml">
+			<tree string="Brands Slider">
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="brand_slider_action" model="ir.actions.act_window">
+		<field name="name">Brands Slider</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">biz.brand.slider</field>
+		<field name="view_mode">tree,form</field>
+		<field eval="False" name="view_id" />
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a new Brand Slider
+			</p>
+		</field>
+	</record>
+
 	<record id="multi_slider_form_view" model="ir.ui.view">
 		<field name="name">multi.slider.form.view</field>
 		<field name="model">multi.tab.product.slider</field>

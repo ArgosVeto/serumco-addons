@@ -21,8 +21,12 @@
 	</template>
 
 	<template id="website_argos_header_search_inherit" inherit_id="website.website_search_box">
+        <xpath expr="//div[@role='search']" position="attributes">
+            <attribute name="style">{}</attribute>
+        </xpath>
 		<xpath expr="//input" position="replace">
-			<input type="text" name="search" class="search-query form-control oe_search_box" style="width: 400px;" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
+			<input type="text" name="search" class="search-query form-control oe_search_box d-lg-none" style="width: 300px;" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
+			<input type="text" name="search" class="search-query form-control oe_search_box d-none d-lg-block" style="width: 400px;" placeholder="Rechercher un produit, une marque…" t-att-value="search"/>
 		</xpath>
 	</template>
 

@@ -9,6 +9,8 @@ access_biz_product_slider_base_user,access_biz_product_slider_base_user,model_bi
 access_multi_tab_product_slider,access_multi_tab_product_slider,model_multi_tab_product_slider,base.group_user,1,0,0,0
 access_biz_blog_slider,access_biz_blog_slider,model_biz_blog_slider,,1,0,0,0
 access_product_tag,product.tag,model_product_tag,,1,1,1,1
+access_biz_brand_slider,access_biz_brand_slider,model_biz_brand_slider,,1,0,0,0
+access_biz_brand_slider_base_user,access_biz_brand_slider_base_user,model_biz_brand_slider,base.group_user,1,1,1,1
 
 access_product_per_page_count_bizople,access_product_per_page_count_bizople,model_product_per_page_count_bizople,base.group_user,1,1,1,1
 access_product_per_page_count_bizople_portal,access_product_per_page_count_bizople_portal,model_product_per_page_count_bizople,,1,0,0,0
