@@ -78,6 +78,19 @@
                              	</t>
                              	<div class="slider-icons">
 									<div class="wislist_biz d-inline-block">
+										<t t-if="product.public_categ_ids">
+											<div class="argos_tags">
+												<p>
+													<t t-foreach="product.public_categ_ids" t-as="categs">
+														<div class="tag-name">
+															<a t-att-href="'/shop/category/%s' % slug(categs)">
+																	<t t-esc="categs.name"/>
+															</a>
+														</div>
+													</t>
+												</p>
+											</div>
+										</t>
 										<t
 											t-if="product.env.ref('website_sale_wishlist.add_to_wishlist').active and product.product_variant_ids">
 											<t t-set="in_wish"
@@ -90,19 +103,6 @@
 										</button>
 										</t>
 									</div>
-									<t t-if="product.tag_ids">
-										<div class="argos_tags">
-											<p>
-												<t t-foreach="product.tag_ids" t-as="tags">
-								            		<div class="tag-name">
-								            			<a t-att-href="'/shop?tag_id=%s' % tags.id" class="btn btn-outline-secondary rounded-circle btn-sm">
-						                                    <t t-esc="tags.name"/>
-						                                </a>
-								            		</div>
-								            	</t>
-								            </p>
-										</div>
-							        </t>
 								</div>
             					<div class="card-body p-1 oe_product_image">
 									<div class="p-item-image"> 
@@ -115,19 +115,6 @@
             					</div>
 					            <div class="card-body p-0 text-center o_wsale_product_information">
 									<div class="product-info"> 
-										<t t-if="product.public_categ_ids">
-											<div class="argos_categ">
-												<p>
-													<t t-foreach="product.public_categ_ids" t-as="categs">
-														<a t-att-href="'/shop/category/%s' % slug(categs)">
-															<span class="categ-name">
-																<t t-esc="categs.name"/>
-															</span>
-														</a>
-													</t>
-												</p>
-											</div>
-										</t>
 										<div class="title-price" style="min-height: 100px;">
 											<div class="product-title">
 												<a t-attf-href="/shop/product/#{ slug(product) }">
