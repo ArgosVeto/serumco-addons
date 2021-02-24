@@ -30,7 +30,7 @@
 		</xpath>
 	</template>
 
-	<template id="website_argos_header_2" inherit_id="portal.frontend_layout" name="Header">
+	<template id="website_argos_header" inherit_id="portal.frontend_layout" name="Header">
 		<xpath expr="//header" position="replace">
 			<header id="argos_header" t-attf-class="argos-header">
 				<div class="container">
@@ -59,7 +59,7 @@
 								</div>
 								<div class="sidebar ml24">
 									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
-										<img src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
+										<img src="/website_argos/static/src/img/sidebar.svg"/>
 									</button>
 								</div>
 							</div>
