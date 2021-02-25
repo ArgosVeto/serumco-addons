@@ -189,7 +189,7 @@
                 		</li>
 						<t t-foreach="website.menu_id.child_id" t-as="submenu">
 							<t t-call="website.submenu">
-								<t t-set="item_class" t-value="'nav-item'" />
+								<t  t-set="item_class" t-value="'nav-item'" />
 								<t t-set="link_class" t-value="'nav-link'" />
 							</t>
 						</t>
@@ -207,7 +207,7 @@
 							<img src="/website_argos/static/src/img/user.svg" class="mr-2"/>
 							<span class="text-primary">Mon compte</span>
 						</a>
-						<div class="dropdown-menu js_usermenu py-4" role="menu">
+						<div class="dropdown-menu js_usermenu py-4 d-flex" role="menu">
 							<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 								<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
 											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>

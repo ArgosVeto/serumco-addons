@@ -49,8 +49,8 @@
 		name="Products Slider">
 		<div class="container">
 			<div class="block-title">
-				<h2 style="font-size: 40px;" class="filter" t-if="not slider_header">Products Slider</h2>
-				<h2 style="font-size: 40px;" class="filter" t-if="slider_header">
+				<h2 class="filter" t-if="not slider_header">Products Slider</h2>
+				<h2  class="filter" t-if="slider_header">
 					<t t-esc="slider_header.name" />
 				</h2>
 			</div>

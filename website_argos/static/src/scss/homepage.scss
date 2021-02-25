@@ -177,7 +177,7 @@
 			margin: 0;
 		}
 		.title{
-			h1{
+			h3{
 				font-family: Comfortaa-Bold;
 			  	font-size: 40px;
 			  	font-weight: normal;
@@ -245,7 +245,7 @@
 	@media (max-width: 767.98px) {
 		padding-top:0;
 		.container{
-			.title h1 {
+			.title h3 {
 				font-size: 30px !important;
 			}
 			.owl-nav{
@@ -311,7 +311,7 @@
 					  	margin-bottom: 8px;
 					  	text-transform: uppercase;
 					}
-					h6{
+					h3{
 						width: 372px;
 						font-family: Comfortaa-Bold;
 					  	font-size: 28px;
@@ -321,7 +321,7 @@
 					  	line-height: 1.21;
 					  	letter-spacing: -0.6px;
 					}
-					h6.w-283{
+					h3.w-283{
 						width: 283px;
 					}
 					position: absolute;
@@ -362,7 +362,7 @@
 						}
 					}
 					.text{
-						h6{
+						h3{
 							width: 283px;
 						  	font-size: 20px;
 						}
@@ -389,7 +389,7 @@
 	}
 	.clinic-content{
 		.text{
-			h3{
+			h2{
 				font-family: Comfortaa-Bold;
 			  	font-size: 36px;
 			  	font-weight: normal;
@@ -470,7 +470,7 @@
 	@media (max-width: 767.98px) {
 		.clinic-content{
 			.text{
-				h3{
+				h2{
 				  	font-size: 25px;
 				  	margin-bottom: 8px;
 				}
@@ -545,7 +545,7 @@
 		z-index:1;
 	}
 	.text{
-		h3{
+		h2{
 			font-family: Comfortaa-Bold;
 		  	font-size: 36px;
 		  	font-weight: normal;
@@ -608,7 +608,7 @@
 			}
 		}
 		.text{
-			h3{
+			h2{
 			  	font-size: 28px;
 			  	margin-bottom: 13px;
 			}
@@ -653,9 +653,12 @@
 		}
 	}
 	.text{
+		h2{
+		  	font-size: 36px;
+		}
 		h3{
 			font-family: Comfortaa-Bold;
-		  	font-size: 36px;
+		  	font-size: 14px;
 		 	font-weight: normal;
 		  	font-stretch: normal;
 		  	font-style: normal;
@@ -685,6 +688,16 @@
 				margin-right: 16px;
 			}
 			p{
+				font-family: Comfortaa-Bold;
+			  	font-size: 16px;
+			  	font-weight: normal;
+			  	font-stretch: normal;
+			  	font-style: normal;
+			  	line-height: normal;
+			  	letter-spacing: -0.24px;
+			  	margin: 0;
+			}
+			h3{
 				font-family: Comfortaa-Bold;
 			  	font-size: 16px;
 			  	font-weight: normal;
@@ -733,10 +746,15 @@
 		.order{
 			order: -1;
 		    margin-bottom: 30px;
+			padding: 30px 0 30px 0;
 		}
 		.text{
-			h3{
-			  	font-size: 28px;
+ 	      h2{
+				font-size: 28px;
+				margin-bottom: 13px;
+		  }
+		  h3{
+			  	font-size: 12px;
 			  	margin-bottom: 13px;
 			}
 		}
@@ -774,7 +792,7 @@
 			min-height: 98px;
 			margin-bottom: 27px;
 		}
-		h6{
+		h2{
 			font-family: Comfortaa-Bold;
 		  	font-size: 28px;
 		  	font-weight: normal;
@@ -826,7 +844,7 @@
 		}
 	}
 	.text{
-		h3{
+		h2{
 			font-family: Comfortaa-Bold;
 		  	font-size: 36px;
 		  	font-weight: normal;
@@ -879,7 +897,7 @@
 			order: -1;
 		}
 		.text{
-			h3{
+			h2{
 			  	font-size: 25px;
 			  	margin-bottom: 13px;
 			}
@@ -916,7 +934,7 @@
 		}
 	}
 	.text{
-		h3{
+		h2{
 			font-family: Comfortaa-Bold;
 		  	font-size: 36px;
 		  	font-weight: normal;
@@ -966,7 +984,7 @@
 	}
 	@media (max-width: 767.98px) {
 		.text{
-			h3{
+			h2{
 			  	font-size: 28px;
 			  	margin-bottom: 13px;
 			}
@@ -1005,7 +1023,7 @@
 	}
 	.services-content{
 		.text{
-			h3{
+			h2{
 				font-family: Comfortaa-Bold;
 			  	font-size: 36px;
 			  	font-weight: normal;
@@ -1042,7 +1060,7 @@
 	@media (max-width: 767.98px) {
 		.services-content{
 			.text{
-				h3{
+				h2{
 				  	font-size: 28px;
 				  	margin-bottom: 15px;
 				  	line-height:40px;
