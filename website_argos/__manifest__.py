@@ -83,6 +83,7 @@
         'views/blog_page_snippet_content7.xml',
         'views/blog_chat_chien_rongeur.xml',
 
+        'views/image.xml',
 
         # 'views/partner_view.xml',
         'views/clinic_template.xml',

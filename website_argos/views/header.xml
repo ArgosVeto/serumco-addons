@@ -54,12 +54,12 @@
 								</div>
 								<div class="cart ml24">
 									<a class="nav-link p-0 text-secondary" href="/shop/cart">
-										<img src="/website_argos/static/src/img/cart.svg"/>
+										<img style="width: 20px; height: 20px" src="/website_argos/static/src/img/cart.svg"/>
 									</a>
 								</div>
 								<div class="sidebar ml24">
 									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
-										<img src="/website_argos/static/src/img/sidebar.svg"/>
+										<img style="width: 20px; height: 20px" src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
 									</button>
 								</div>
 							</div>

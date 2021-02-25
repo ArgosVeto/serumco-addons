@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="burger-argos" model="theme.ir.attachment">
+            <field name="key">website_argos.burger-argos</field>
+            <field name="name">website_argos.burger-argos</field>
+            <field name="url">/website_argos/static/src/img/Burger-menu-Argos.svg</field>
+        </record>
+    </data>
+</odoo>
