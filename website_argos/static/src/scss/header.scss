@@ -177,8 +177,8 @@
 				    justify-content: center;
 			        position: relative;
 				}
-			    width: 48px;
-			    height: 36px;
+			    width: 20px;
+			    height: 20px;
 			    border-radius: 8px;
 			    text-align: center;
 			    display: block;
@@ -195,7 +195,7 @@
 				a.dropdown-toggle::after{
 					display: none;
 				}
-				.dropdown-menu{
+					.dropdown-menu{
 					a {
 						justify-content: left;
 						font-size: 15px;

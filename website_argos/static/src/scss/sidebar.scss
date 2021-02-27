@@ -25,12 +25,9 @@
   padding:20px;
   position: fixed;
   top: 0;
-  right: -350px;
-  width: 357px;
+  right: -90%;
+  width: 90%;
   z-index: 1050;
-  @media (width: 320px) {
-    width: 250px;
-  }
 }
 
 .sidebar-wrapper{
@@ -387,6 +384,7 @@
         }
 
         .dropdown-menu.o_mega_menu{
+          width:90%;
           position: static !important;
           will-change: unset !important;
           transform: unset !important;

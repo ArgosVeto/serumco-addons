@@ -54,12 +54,12 @@
 								</div>
 								<div class="cart ml24">
 									<a class="nav-link p-0 text-secondary" href="/shop/cart">
-										<img style="width: 20px; height: 20px" src="/website_argos/static/src/img/cart.svg"/>
+										<img src="/website_argos/static/src/img/cart.svg"/>
 									</a>
 								</div>
 								<div class="sidebar ml24">
 									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
-										<img style="width: 20px; height: 20px" src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
+										<img  src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
 									</button>
 								</div>
 							</div>
@@ -101,8 +101,8 @@
 								</div>
 								<div class="user ml4">
 									<a href="#" class="icon-btn dropdown-toggle acc-dropdown" data-toggle="dropdown">
-										<img src="/website_argos/static/src/img/user.svg"/>
-										<img src="/website_argos/static/src/img/red-user.svg" class="red"/>
+										<img  src="/website_argos/static/src/img/user.svg"/>
+										<img  src="/website_argos/static/src/img/red-user.svg" class="red"/>
 									</a>
 									<div class="dropdown-menu js_usermenu" role="menu">
 										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
@@ -136,8 +136,8 @@
 								</div>
 								<div class="cart  ml4" id="top_menu">
 									<a href="/shop/cart" class="cart-link p-0 m-0 o_wsale_my_cart">
-										<img src="/website_argos/static/src/img/cart.svg"/>
-										<img src="/website_argos/static/src/img/red-cart.svg" class="red"/>
+										<img  src="/website_argos/static/src/img/cart.svg"/>
+										<img  src="/website_argos/static/src/img/red-cart.svg" class="red"/>
 									</a>
 								</div>
 
