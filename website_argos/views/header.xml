@@ -59,7 +59,7 @@
 								</div>
 								<div class="sidebar ml24">
 									<button type="button" id="show-sidebar" class="btn btn-sm d-block d-md-none">
-										<img  src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
+										<img style="width: 20px; height: 20px" src="/website_argos/static/src/img/Burger-menu-Argos.svg"/>
 									</button>
 								</div>
 							</div>
@@ -107,7 +107,7 @@
 									<div class="dropdown-menu js_usermenu" role="menu">
 										<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 											<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
+											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandess</a>
 											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
 											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
 							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
