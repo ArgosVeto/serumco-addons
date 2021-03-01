@@ -3,7 +3,11 @@
 	<template id="blog_chat_chien_rongeur" name="Blog chat chien rongeur">
 		<section class="o_wblog_post_top blog-page-snippet home-animals">
                 <div class="container">
-                    <div class="animals-content">
+                     <div class="title d-md-flex">
+                        <h1 class="text-primary">Argos, votre clinique vétérinaire</h1>
+                        <img src="/website_argos/static/src/img/banner-arrow.svg" class="d-none d-md-block"/>
+                    </div>
+                   <div class="animals-content">
                         <div class="blue-round-small"/>
                         <div class="red-round-big"/>
                         <div class="row">
@@ -16,7 +20,7 @@
                                     </div>
                                     <div class="text">
                                         <p class="animal-name text-white">CHAT</p>
-                                        <h6 class="text-white w-283">Retrouvez les produits favoris de votre chat</h6>
+                                        <h3  class="text-white w-283">Retrouvez les produits favoris de votre chat</h3>
                                     </div>
                                     <div class="bottom-icon">
                                         <img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid"/>
@@ -30,7 +34,7 @@
                                     </div>
                                     <div class="text">
                                         <p class="animal-name text-white">Rongeurs</p>
-                                        <h6 class="text-white">Découvrez notre sélection pour assurer le bien-être de votre rongeur</h6>
+                                        <h3  class="text-white">Découvrez notre sélection pour assurer le bien-être de votre rongeur</h3>
                                     </div>
                                     <div class="bottom-icon">
                                         <img src="/website_argos/static/src/img/home_animal_icon_white.svg" class="img img-fluid"/>
@@ -49,7 +53,7 @@
                                     </div>
                                     <div class="text">
                                         <p class="animal-name text-black">Chien</p>
-                                        <h6 class="text-black">Retrouvez les produits du quotidien pour votre chien</h6>
+                                        <h3  class="text-black">Retrouvez les produits du quotidien pour votre chien</h3>
                                     </div>
                                     <div class="bottom-icon">
                                         <img src="/website_argos/static/src/img/home_animal_icon_black.svg" class="img img-fluid"/>
