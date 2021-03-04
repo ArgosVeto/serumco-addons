@@ -138,7 +138,23 @@
 														t-att-value="product.product_variant_id.id" type="hidden" />
 													<button class="btn btn-link a-submit d-inline-block"><img src="/website_argos/static/src/img/cart.png" class="img img-fluid"/>Ajouter
 													<span class="text-primary ml-1 mr-1 text-bold"> - </span>
-													<t t-call="website_sale.product_price" t-if="product"/>
+													<div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price mt16">
+														<p class="oe_price_h4 css_editable_mode_hidden">
+															<span t-attf-class="text-danger oe_default_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;"
+																t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+															/>
+															<b class="oe_price" style="white-space: nowrap;" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+															<span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+															<span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+														</p>
+														<p class="css_non_editable_mode_hidden decimal_precision" t-att-data-precision="str(website.currency_id.decimal_places)">
+															<span t-field="product.list_price"
+																t-options='{
+																"widget": "monetary",
+																"display_currency": product.currency_id,
+															}'/>
+														</p>
+													</div>
 												</button>
 												</div>
 											</form>
