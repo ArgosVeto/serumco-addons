@@ -47,7 +47,7 @@
           font-weight: 900 !important;
           font-stretch: normal;
           font-style: normal;
-          line-height: 1.67 !important;
+          line-height: 1.67 !important; 
           letter-spacing: 2px !important;
           text-transform:uppercase;
           font-family: AvenirLTStd-Heavy;
@@ -115,15 +115,15 @@
         -webkit-transform: translateY(-50%);
         content: "\f105";
         font-family: FontAwesome;
-        width: 40px;
+        width: 30px;
         text-align: center;
-        height: 51px;
-        line-height: 51px;
+        height: 30px;
+        line-height: 30px;
         border: 0;
         color:theme-color('primary');
         font-size: 20px !important;
         font-weight: 900;
-      }
+      } 
     }
      .dropdown-menu{
         background-color: transparent;
@@ -137,7 +137,7 @@
     }
   }
   .sidebar-user.show {
-     a.dropdown-toggle::after{
+    a.dropdown-toggle::after{
       content: "\f107" !important;
     }
   }
@@ -358,15 +358,15 @@
             -webkit-transform: translateY(-50%);
             content: "\f105";
             font-family: FontAwesome;
-            width: 40px;
+            width: 30px;
             text-align: center;
-            height: 51px;
-            line-height: 51px;
+            height: 30px;
+            line-height: 30px;
             border: 0;
             color:theme-color('primary');
             font-size: 20px;
           }
-        }
+        }  
         a.active{
           color: theme-color('primary') !important;
         }
@@ -492,10 +492,10 @@
             vertical-align: 0.1em;
             content: '\f078';
             font-family: FontAwesome;
-            border-top: 0em solid;
-            border-right: 0em solid transparent;
-            border-bottom: 0;
-            border-left: 0em solid transparent;
+            border-top: 1em solid;
+            border-right: 0em solid;
+            border-bottom: 1em;
+            border-left: 0em solid;
             float:right;
         }
         .dropdown.show{
@@ -524,7 +524,7 @@
           min-width: 260px !important;
           a{
             padding:10px !important;
-            maegin:0;
+            margin:0;
           }
         }
       }
