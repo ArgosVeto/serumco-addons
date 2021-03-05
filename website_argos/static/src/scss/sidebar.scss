@@ -123,9 +123,13 @@
         color:theme-color('primary');
         font-size: 20px !important;
         font-weight: 900;
-      } 
+      }
     }
-     .dropdown-menu{
+    a.active{
+      background-color: transparent;
+      color: #000000 !important;
+    }
+    .dropdown-menu{
         background-color: transparent;
         color: #000000 !important;
         position: static !important;
@@ -342,7 +346,7 @@
       }
       li.nav-item{
         a{
-          color: #000000 !important;
+          color:theme-color('primary');
           position: relative;
           
         }
@@ -368,7 +372,8 @@
           }
         }  
         a.active{
-          color: theme-color('primary') !important;
+          background-color: transparent;
+          color: #000000 !important;
         }
 
         .dropdown-menu{
