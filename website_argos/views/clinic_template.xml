@@ -88,17 +88,25 @@
 	                        	<t t-foreach="operating_unit_ids" t-as="operating_unit">
 	                        		<div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
 					                    <div class="card bg-white">
-					                        <img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
-	                                        <t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-	                                           <a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-	                                            	<img src="/website_argos/static/src/img/heart.svg"></img>
-	                                        	</a>
+											<t  t-ignore="true" t-if="not user_id._is_public()">
+												<img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
+												<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
+												<a role="button"  class="btn-primary fav-btn disabled"  t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+														<img src="/website_argos/static/src/img/heart.svg"></img>
+													</a>
+												</t>
+												<t t-else="">
+												<a role="button"  class="btn btn-primary fav-btn"
+													t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
+													<img src="/website_argos/static/src/img/heart.svg"></img>
+													</a> 
+												</t>
 	                                        </t>
-	                                        <t t-else="">
-				                        	  <a role="button"  class="btn btn-primary fav-btn"
-				                        	  	 t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-	                                            <img src="/website_argos/static/src/img/heart.svg"></img>
-	                                        	</a> 
+											<t t-else="">
+												<a role="button"  class="btn btn-primary fav-btn"
+													t-attf-href="/web/login">
+													<img src="/website_argos/static/src/img/heart.svg"></img>
+												</a> 
 	                                        </t>
 	                                       
 					                        <div class="card-body">

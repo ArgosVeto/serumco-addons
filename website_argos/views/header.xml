@@ -203,7 +203,7 @@
 						</div>
 					</div>
 					<div class="sidebar-user ml4">
-						<a href="#" class="icon-btn dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
+						<a href="#" class="dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
 							<img src="/website_argos/static/src/img/user.svg" class="mr-2"/>
 							<span class="text-primary">Mon compte</span>
 						</a>

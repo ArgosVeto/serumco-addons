@@ -200,7 +200,7 @@
 }
 
 ::selection {
-    background-color: rgba(theme-color('primary'), 0.3);
+  background-color: rgba(theme-color('primary'), 0.3);
 }
 
 /*::::::::::::::::::::::::::::::::::::::::: bizople_theme_common css :::::::::::::::::::::::::::::*/
@@ -303,7 +303,7 @@
             }
             a.nav-link.active{
               color: #fff;
-              background-color: theme-color('primary');
+              background-color: transparent;
             }
             position: relative;
             flex: 1 0 50%;
@@ -497,11 +497,10 @@
             vertical-align: 0.1em;
             content: '\f078';
             font-family: FontAwesome;
-            border-top: 1em solid;
-            border-right: 0em solid;
-            border-bottom: 1em;
-            border-left: 0em solid;
-            float:right;
+            border-top: 0em solid;
+            border-right: 0em solid transparent;
+            border-bottom: 0;
+            border-left: 0em solid transparent;
         }
         .dropdown.show{
           .dropdown-toggle::after {

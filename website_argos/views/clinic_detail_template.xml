@@ -72,14 +72,28 @@
 						</div>
 						<div class="col-lg-5 pt16 pb8 clinic-btn-icon">
 							<div class="clinic-buttons">
+								<a id="appeler" class="btn btn-primary ml-4" 
+								    href="#nogo" onclick="document.getElementById('telephone').removeAttribute('style');
+		                              this.style.display = 'none';">
+									<img src="/website_argos/static/src/img/phone-white.svg"
+										class="img img-fluid mr-2" />
+									<span class="">Appeler</span>
+								</a>
+								<a id="telephone" class="btn btn-primary ml-4" style="display: none;"
+								    href="#nogo" onclick="document.getElementById('appeler').removeAttribute('style');
+		                              this.style.display = 'none';">
+									<img src="/website_argos/static/src/img/phone-white.svg"
+										class="img img-fluid mr-2" />
+									<span class="" t-field="operating_unit.phone"/>
+								</a>
 								<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}"
-									class="btn btn-primary ml-4">
+									class="btn btn-primary d-inline-block d-md-none ml-4">
 									<img src="/website_argos/static/src/img/phone-white.svg"
 										class="img img-fluid mr-2" />
 									<span class="">Appeler</span>
 								</a>
 								<div class="clinic-link d-md-none d-block">
-									<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary btn-block">Prendre rendez-vous</a>
+									<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV</a>
 								</div>
 								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
 								<!--t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">

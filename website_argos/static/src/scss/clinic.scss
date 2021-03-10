@@ -950,3 +950,33 @@
 		display:flex !important;
 	}
 }
+#appeler {
+	.numero {
+		display: none;
+	}
+	.telephone {
+		display: inline;
+	}
+}
+
+#appeler:hover {
+	.numero {
+		display: inline;
+	}
+	.telephone {
+		display: none;
+	}
+}
+.numero {
+	font-size: 14px;
+}
+
+
+@media (max-width: 767.98px) {
+	#appeler {
+		display: none;
+	}
+	#telephone {
+		display: none;
+	}
+}
