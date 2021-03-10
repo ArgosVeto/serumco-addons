@@ -6,9 +6,9 @@
     'category': 'Website',
     'version': '13.0.0.0',
     'summary': '''Website Argos''',
-    'description': """Website Argos""",
+    'description': """Website  Argos""",
     'depends': [
-        # 'theme_argos',
+        # 'theme_argos ',
         'argos_hr',
         'website_blog',
         'website_sale',
