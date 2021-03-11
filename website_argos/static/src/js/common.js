@@ -201,8 +201,30 @@ $(document).ready(function(){
 
 
 $(function() {
+  $(".telephone").on("click", function(e) {
+    $(".telephone").removeClass("d-inline");
+    $(".telephone").addClass("d-none");
+    $(".numero").removeClass("d-none");
+    $(".numero").addClass("d-inline");
+    e.stopPropagation()
+  });
+  $(".numero").on("click", function(e) {
+    $(".telephone").removeClass("d-none");
+    $(".telephone").addClass("d-inline");
+    $(".numero").removeClass("d-inline");
+    $(".numero").addClass("d-none");
+    e.stopPropagation()
+  });
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
+    $(".sidebar-wrapper").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
+    e.stopPropagation()
+  });
+  $("#show-sidebar-clinic").on("click", function(e) {
+    $(".sidebar-wrapper").removeClass("d-none");
+    $(".sidebar-wrapper").addClass("d-block");
+    $(".sidebar-wrapper").addClass("d-md-none");
     $(".sidebar-wrapper").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
@@ -213,6 +235,9 @@ $(function() {
     e.stopPropagation()
   });
   $("#close_mbl_sidebar").on("click", function(e) {
+    $(".sidebar-wrapper").addClass("d-none");
+    $(".sidebar-wrapper").removeClass("d-block");
+    $(".sidebar-wrapper").removeClass("d-md-none");
     $(".sidebar-wrapper").removeClass("toggled");
     $("#wrapwrap").removeClass("mobile_overlay");
     e.stopPropagation()

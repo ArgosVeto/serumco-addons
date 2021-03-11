@@ -153,8 +153,8 @@
                 <div class="card-footer">
 						<a id="appeler" class="btn btn-outline-primary mr-2">
                            <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2 telephone"/>
-						   <span class="telephone">Appeler</span>
-                           <span class="numero" t-field="operating_unit.phone"/>
+						   <span class="telephone d-inline">Appeler</span>
+                           <span class="numero d-none" t-field="operating_unit.phone"/>
  						</a>
                          <a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-md-none d-inline-block mr-2">
                             <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/><span class="">Appeler</span>

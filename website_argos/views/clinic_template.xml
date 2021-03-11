@@ -154,113 +154,187 @@
     </template>
 
 	<template id="clinic_template" name="Trouver une clinique">
-        <t t-call="website.layout">
-    		<section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block" data-oe-id="1373" data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view" data-oe-field="arch">
-		        <div class="container">
-		            <div class="row">
-		            	<div class="col-lg-12">
-		            		<ol class="breadcrumb">
-							    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-							    <li class="breadcrumb-item"> Trouver une clinique</li>
-							  </ol>
-		            	</div>
-		                <div class="col-lg-12 pt16 pb8">
-		                	<h1>Trouver une clinique</h1>
-		                </div>
-		                
-		                <div class="col-lg-12 pt16 pb8">
-		                	<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-		                    <div class="">
-		                        <t t-call="website_argos.clinic_search_box"/>
-		                    </div>
-		                </div>
-		                
-		            </div>
-		        </div>
-	    	</section>
-	    	
-	    	<section class="s_text_block pt32 pb16 s_blog_banner service-tt d-none d-md-block">
-	    		<div class="container">
-	    			<div class="row">
-
-	            		<div class="search_by_service mr-2">
-                       		<t t-call="website_argos.service_type_search_tmp"/>
-	                	</div>
-                        <div class="search_by_type">
-                        	<t t-call="website_argos.clinic_type_search_tmp"/>
-	                	</div>
-                        <div class="open_today">
-                          <div class="clinic-type-b">
-				        	<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mr-2 badge badge-pill badge-light">
-				        		<span>OUVERT AUJOURD HUI</span>
-				        	</a>
-				        	<!-- OUVERT AUJOURD HUI -->
-						</div>
-                        </div>
-                        <div class="criteria search_by_service">
-                        	<t t-set="service" t-value="service_ids" />
-						        <div t-attf-class="dropdown">
-							            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
-							               <span>De Criteres</span>
-							            </a>
-							            <div class="dropdown-menu" role="menu">
-						                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
-						                        <span class="switcher_pricelist">Parking</span>
-						                    </a>
-						                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
-						                        <span class="switcher_pricelist">Accessibilité pour les personnes à mobilité réduite</span>
-						                    </a>
-							            </div>
-						        </div>
-                        </div>
-                        <!--div class="see_map d-none d-md-block">
-                        	<div class="custom-control custom-switch">
-							  <input type="checkbox" class="custom-control-input" id="customSwitch1"/>
-							  <label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
-							</div>
-                        </div-->
-
-                        <div class="clear-search mt8 ml8 clinic-type-b">
-				        	<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
-				        		<span>Réinitialiser</span>
-				        	</a>
-						</div>
-
+    <t t-call="website.layout">
+        <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block" data-oe-id="1373" data-oe-xpath="/data/xpath/section" data-oe-model="ir.ui.view" data-oe-field="arch">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item"> Trouver une clinique</li>
+                        </ol>
                     </div>
+                    <div class="col-lg-12 pt16 pb8">
+                        <h1>Trouver une clinique</h1>
                     </div>
-                    </section>
-                    <t t-call="website_argos.clinic_grid"></t>
-		        	<div class="clearfix"></div>	
-		        	<div class="oe_structure">
-		            <section class="s_text_block mt16 oe_structure">
-		            	<div class="container">
-		            		<div class="row d-none d-md-block">
-				            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae arcu non sem placerat blandit et at sapien. Praesent tempor et est porta efficitur. Aliquam ac felis non turpis sollicitudin efficitur vel ut leo. Nunc sit amet felis aliquet, aliquam lacus at, aliquet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non maximus ligula, ac consequat ligula. Mauris sit amet lectus eleifend nunc facilisis pellentesque. Integer gravida sapien ut sagittis commodo.</p>
-								<p>Phasellus eget ex massa. Nunc massa lectus, bibendum sit amet molestie eu, dignissim sit amet ipsum. Nullam aliquet accumsan neque eu lacinia. Cras et vulputate est, et gravida risus. Sed vestibulum magna vitae nulla volutpat suscipit. Mauris imperdiet, metus sit amet vestibulum aliquet, nisl quam condimentum lorem, eget tincidunt velit ante ut dolor. Aliquam et egestas libero, at ullamcorper risus. Mauris vitae tincidunt sapien. Sed at odio non lectus hendrerit egestas. Sed et dui magna. Nunc accumsan vulputate ipsum, sit amet cursus massa porta id.</p>
-								
-								<p>Duis tellus ligula, viverra vitae purus non, pellentesque dapibus augue. Pellentesque risus justo, aliquet nec bibendum a, elementum eget purus. Fusce viverra sed nunc vitae volutpat. Praesent id metus feugiat, varius neque a, pulvinar tortor. Nam commodo tincidunt augue, in semper ante mattis a. Ut eget nisi risus. Etiam eget hendrerit nisi. Phasellus vitae interdum justo. Nulla quis bibendum velit. Donec dapibus enim ultrices, consectetur justo vitae, ornare justo. Vestibulum eget efficitur leo. Mauris et tempor diam, ut vestibulum lectus. Phasellus commodo tortor et tortor lobortis, eget ultrices odio consequat. Integer non dolor ac massa pharetra hendrerit nec in libero. Curabitur dolor leo, sollicitudin sit amet ante ut, convallis molestie sapien.</p>
-								
-								<p>Curabitur blandit vulputate enim molestie sollicitudin. Phasellus cursus mauris sit amet libero pellentesque tristique. Sed finibus nisi nec consequat mattis. Etiam finibus, odio vitae semper maximus, magna metus mollis tortor, non porta sem libero ut est. In elit elit, iaculis sed libero ac, dignissim fringilla diam. Aliquam pellentesque hendrerit dictum. Nulla facilisi. Proin lectus tellus, posuere vitae dignissim nec, faucibus sed elit. Cras vitae mollis tortor. Vestibulum nec risus sit amet libero venenatis volutpat eu id.</p>
-			            	</div>
-		            	</div>
-		            </section>
-		            </div>
-	            <div class="d-block d-md-none mobile-breadcrumb mb16">
-	            	<div class="container">
-		            	<div class="row">
-			            	<div class="col-lg-12">
-			            		<div class="Vous-tes-ici">Vous êtes ici</div>
-			            		<ol class="breadcrumb">
-								    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-								    <li class="breadcrumb-item"> Trouver une clinique</li>
-								  </ol>
-			            	</div>
-			            </div>
-			        </div>
-	            </div>
-        </t>
+                    <div class="col-lg-12 pt16 pb8">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="">
+                            <t t-call="website_argos.clinic_search_box"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="s_text_block pt32 pb16 s_blog_banner service-tt d-none d-md-block">
+            <div class="container">
+                <div class="row">
+                    <div class="search_by_service mr-2">
+                        <t t-call="website_argos.service_type_search_tmp"/>
+                    </div>
+                    <div class="search_by_type">
+                        <t t-call="website_argos.clinic_type_search_tmp"/>
+                    </div>
+                    <div class="open_today">
+                        <div class="clinic-type-b">
+                            <a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mr-2 badge badge-pill badge-light">
+                                <span>OUVERT AUJOURD HUI</span>
+                            </a>
+                            <!-- OUVERT AUJOURD HUI -->
+                        </div>
+                    </div>
+                    <div class="criteria search_by_service">
+                        <t t-set="service" t-value="service_ids"/>
+                        <div t-attf-class="dropdown">
+                            <a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
+                                <span>De Criteres</span>
+                            </a>
+                            <div class="dropdown-menu" role="menu">
+                                <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
+                                    <span class="switcher_pricelist">Parking</span>
+                                </a>
+                                <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
+                                    <span class="switcher_pricelist">Accessibilité pour les personnes à mobilité réduite</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--div class="see_map d-none d-md-block"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input" id="customSwitch1"/><label class="custom-control-label" for="customSwitch1">Voir La Carte</label></div></div-->
+                    <div class="clear-search mt8 ml8 clinic-type-b">
+                        <a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
+                            <span>Réinitialiser</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <t t-call="website_argos.clinic_grid"/>
+        <div class="clearfix"/>
+        <div class="oe_structure">
+            <section class="s_text_block mt16 oe_structure">
+                <div class="container">
+                    <div class="row d-none d-md-block">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae arcu non sem placerat blandit et at sapien. Praesent tempor et est porta efficitur. Aliquam ac felis non turpis sollicitudin efficitur vel ut leo. Nunc sit amet felis aliquet, aliquam lacus at, aliquet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non maximus ligula, ac consequat ligula. Mauris sit amet lectus eleifend nunc facilisis pellentesque. Integer gravida sapien ut sagittis commodo.</p>
+                        <p>Phasellus eget ex massa. Nunc massa lectus, bibendum sit amet molestie eu, dignissim sit amet ipsum. Nullam aliquet accumsan neque eu lacinia. Cras et vulputate est, et gravida risus. Sed vestibulum magna vitae nulla volutpat suscipit. Mauris imperdiet, metus sit amet vestibulum aliquet, nisl quam condimentum lorem, eget tincidunt velit ante ut dolor. Aliquam et egestas libero, at ullamcorper risus. Mauris vitae tincidunt sapien. Sed at odio non lectus hendrerit egestas. Sed et dui magna. Nunc accumsan vulputate ipsum, sit amet cursus massa porta id.</p>
+                        <p>Duis tellus ligula, viverra vitae purus non, pellentesque dapibus augue. Pellentesque risus justo, aliquet nec bibendum a, elementum eget purus. Fusce viverra sed nunc vitae volutpat. Praesent id metus feugiat, varius neque a, pulvinar tortor. Nam commodo tincidunt augue, in semper ante mattis a. Ut eget nisi risus. Etiam eget hendrerit nisi. Phasellus vitae interdum justo. Nulla quis bibendum velit. Donec dapibus enim ultrices, consectetur justo vitae, ornare justo. Vestibulum eget efficitur leo. Mauris et tempor diam, ut vestibulum lectus. Phasellus commodo tortor et tortor lobortis, eget ultrices odio consequat. Integer non dolor ac massa pharetra hendrerit nec in libero. Curabitur dolor leo, sollicitudin sit amet ante ut, convallis molestie sapien.</p>
+                        <p>Curabitur blandit vulputate enim molestie sollicitudin. Phasellus cursus mauris sit amet libero pellentesque tristique. Sed finibus nisi nec consequat mattis. Etiam finibus, odio vitae semper maximus, magna metus mollis tortor, non porta sem libero ut est. In elit elit, iaculis sed libero ac, dignissim fringilla diam. Aliquam pellentesque hendrerit dictum. Nulla facilisi. Proin lectus tellus, posuere vitae dignissim nec, faucibus sed elit. Cras vitae mollis tortor. Vestibulum nec risus sit amet libero venenatis volutpat eu id.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="d-block d-md-none mobile-breadcrumb mb16">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="Vous-tes-ici">Vous êtes ici</div>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item"> Trouver une clinique</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <t t-call="website_argos.clinique_filter_sidebar"/>
+	</t>
+    <footer class="footer d-md-none">
+        <a role="button" target="" href="#" class="btn btn-outline-primary  mb16 mt16 ml-3">
+            <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
+            <span class="">Autour de moi</span>
+         </a>
+         <button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16 ml-3" style="border-radius: 50px;">
+            <span class="">Filtrer</span>
+		 </button>
+    </footer>
 	</template>
-	
+
+	<template id="clinique_filter_sidebar" name="Clinique Side Bar">
+    	<nav id="sidebar" class="sidebar-wrapper bg-white d-none">
+	    	<div class="sidebar-content">
+ 						<div class="sidebar-cart ml4" id="top_menu">
+							<a t-attf-href="/nos-cliniques-veterinaires-2" class="badge badge-pill badge-light fa fa-times">
+							</a>
+						</div>
+					<div class="card bg-white sidebar-card">
+						<t t-set="service" t-value="service_ids" />
+						<div class="sidebar-service ml4" id="top_menu">
+						<div t-attf-class="dropdown">
+							<t t-if="service_ids">
+								<t t-set="service" t-value="service_ids"/>
+								<t t-set="ss" t-value="service_ids[0]"/>
+								<a role="button" href="#" class="dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
+									<span>Services</span>
+								</a>
+								<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
+									<t t-if="service">
+										<t t-foreach="service" t-as="s">
+											<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" class="dropdown-item px-2">
+												<span 
+													t-att-name="s.name"
+													t-att-data-pl_id="s.id" 
+													t-esc="s.name" />
+											</a>
+										</t>
+									</t>
+								</div>
+							</t>
+						</div>
+						</div>
+						<div class="sidebar-cart ml4" id="top_menu">
+							<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1">
+								<span>Click &amp; Collect</span>
+							</a>
+						</div>
+						<div class="sidebar-cart ml4" id="top_menu">
+							<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1">
+								<span>Prise de RDV en ligne</span>
+							</a>
+						</div>
+						<div class="sidebar-cart ml4" id="top_menu">
+							<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1">
+								<span>OUVERT AUJOURD HUI</span>
+							</a>
+						</div>
+                        	<t t-set="service" t-value="service_ids" />
+							<div class="sidebar-service ml4">
+					        <div t-attf-class="dropdown">
+					            <a role="button" href="#" class="dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
+					               <span>+ De Criteres</span>
+					            </a>
+					            <div class="dropdown-menu" role="menu">
+				                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item px-2">
+				                        <span>Parking</span>
+				                    </a>
+				                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item px-2">
+	                                    <span>Accessibilité pour les personnes à mobilité réduite</span>
+				                    </a>
+					            </div>
+					        </div>
+					        </div>
+						<div class="sidebar-cart ml4" id="top_menu">
+							<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class="badge badge-pill badge-light">
+								<span>Réinitialiser</span>
+							</a>
+						</div>
+					</div>
+	    	</div>
+	    </nav>
+    </template>
+
 	
 	
 

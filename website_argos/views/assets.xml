@@ -26,6 +26,8 @@
 			<link rel="stylesheet" type="text/scss"
 				href="/website_argos/static/src/scss/sidebar.scss"/>
 			<link rel="stylesheet" type="text/scss"
+				href="/website_argos/static/src/scss/sidebar_clinic.scss"/>
+			<link rel="stylesheet" type="text/scss"
 				href="/website_argos/static/src/scss/footer.scss"/>
 			<link rel="stylesheet" type="text/scss"
 				href="/website_argos/static/src/scss/megamenu.scss"/>
