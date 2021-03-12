@@ -252,6 +252,7 @@
         <t t-call="website_argos.clinique_filter_sidebar"/>
 	</t>
     <footer class="footer d-md-none">
+		<div class="col-xl-12 text">
         <a role="button" target="" href="#" class="btn btn-outline-primary  mb16 mt16 ml-3">
             <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
             <span class="">Autour de moi</span>
@@ -259,16 +260,17 @@
          <button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16 ml-3" style="border-radius: 50px;">
             <span class="">Filtrer</span>
 		 </button>
+		 </div>
     </footer>
 	</template>
 
 	<template id="clinique_filter_sidebar" name="Clinique Side Bar">
-    	<nav id="sidebar" class="sidebar-wrapper bg-white d-none">
+    	<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-clinic bg-white d-block d-md-none">
 	    	<div class="sidebar-content">
- 						<div class="sidebar-cart ml4" id="top_menu">
-							<a t-attf-href="/nos-cliniques-veterinaires-2" class="badge badge-pill badge-light fa fa-times">
-							</a>
-						</div>
+ 					<div class="sidebar-cart ml4" id="top_menu">
+						<a id="close_sidebar_clinic" class="badge badge-pill badge-light fa fa-times">
+						</a>
+					</div>
 					<div class="card bg-white sidebar-card">
 						<t t-set="service" t-value="service_ids" />
 						<div class="sidebar-service ml4" id="top_menu">
@@ -276,7 +278,7 @@
 							<t t-if="service_ids">
 								<t t-set="service" t-value="service_ids"/>
 								<t t-set="ss" t-value="service_ids[0]"/>
-								<a role="button" href="#" class="dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
+								<a role="button" href="#" class="btn dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
 									<span>Services</span>
 								</a>
 								<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">

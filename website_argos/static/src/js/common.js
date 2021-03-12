@@ -217,16 +217,23 @@ $(function() {
   });
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
-    $(".sidebar-wrapper").addClass("toggled");
+    $(".sidebar-wrapper-header").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
     e.stopPropagation()
   });
   $("#show-sidebar-clinic").on("click", function(e) {
-    $(".sidebar-wrapper").removeClass("d-none");
-    $(".sidebar-wrapper").addClass("d-block");
-    $(".sidebar-wrapper").addClass("d-md-none");
-    $(".sidebar-wrapper").addClass("toggled");
+    $(".sidebar-wrapper-clinic").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
+    e.stopPropagation()
+  });
+  $("#close_sidebar_clinic").on("click", function(e) {
+    $(".sidebar-wrapper-clinic").removeClass("toggled");
+    $("#wrapwrap").removeClass("mobile_overlay");
+    e.stopPropagation()
+  });
+  $("#close_sidebar_header").on("click", function(e) {
+    $(".sidebar-wrapper-header").removeClass("toggled");
+    $("#wrapwrap").removeClass("mobile_overlay");
     e.stopPropagation()
   });
   $(".bottom-show-sidebar").on("click", function(e) {

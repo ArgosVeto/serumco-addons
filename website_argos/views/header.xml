@@ -171,14 +171,14 @@
 	</template>
 
 	<template id="bizople_mbl_side_bar" name="Bizople Side Bar">
-    	<nav id="sidebar" class="sidebar-wrapper bg-white d-block d-md-none">
+    	<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-header bg-white d-block d-md-none">
 	    	<div class="sidebar-content">
+				<div class="sidebar-cart ml4" id="top_menu">
+					<a id="close_sidebar_header" class="badge badge-pill badge-light fa fa-times">
+						</a>
+				</div>
 				<div class="search">
 					<t t-call="website_sale.s_products_searchbar_input" />
-					<!--div class="close-mbl-sidebar text-center">
-						<span class="text-white" id="close_mbl_sidebar">
-							<img src="/website_argos/static/src/img/close.png"/></span>
-					</div-->
 				</div>
 				<div class="card bg-white sidebar-card">
                 	<ul class="nav navbar-nav align-items-md-center" id="top_menu">
@@ -203,30 +203,28 @@
 						</div>
 					</div>
 					<div class="sidebar-user ml4">
-						<a href="#" class="dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
+						<a href="#" class="icon-btn dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
 							<img src="/website_argos/static/src/img/user.svg" class="mr-2"/>
 							<span class="text-primary">Mon compte</span>
 						</a>
-						<div class="dropdown-menu js_usermenu py-4 d-flex" role="menu">
+						<div  class="dropdown-menu js_usermenu py-4" role="menu">
 							<div class="main-content" t-ignore="true" t-if="not user_id._is_public()">
 								<a t-attf-href="/my-content" role="menuitem" class="dropdown-item my-acc px-0">Vue d'ensemble</a>
-											<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
-											<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
-											<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
-							                <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-										        <t t-set="pageName" t-value="'clinic'"/>
-												<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-												<a t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}?pageName='clinic'" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
-											</t>
-											<t t-else="">	
-												<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
-											</t>
-											<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
-											<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiement</a>
-											<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
-											<a id="o_logout" class="dropdown-item px-0"
-												t-attf-href="/web/session/logout?redirect=/"
-												role="menuitem">Déconnexion</a>
+								<a t-attf-href="/my/orders" role="menuitem" class="dropdown-item my-acc px-0">Mes commandes</a>
+								<a t-attf-href="/my-appointment" role="menuitem" class="dropdown-item my-acc px-0">Rendez-vous</a>
+								<a t-attf-href="/my/account" role="menuitem" class="dropdown-item my-acc px-0">Mon adresse</a>
+								<t t-if="user_id.partner_id.clinic_shortlisted_ids">
+									<t t-set="pageName" t-value="'clinic'"/>
+									<t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+									<a t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}?pageName='clinic'" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+								</t>
+								<t t-else="">
+									<a t-attf-href="/my-clinic" role="menuitem" class="dropdown-item my-acc px-0">Ma clinique</a>
+								</t>
+								<a t-attf-href="/shop/wishlist" role="menuitem" class="dropdown-item my-acc px-0">Mes produits favoris</a>
+								<a t-attf-href="/my/payment_method" role="menuitem" class="dropdown-item my-acc px-0">Mes moyens de paiement</a>
+								<a t-attf-href="/my/personal_details" role="menuitem" class="dropdown-item my-acc px-0">Mes données personnelles</a>
+								<a id="o_logout" class="dropdown-item px-0" t-attf-href="/web/session/logout?redirect=/" role="menuitem">Déconnexion</a>
 							</div>
 							<div groups="base.group_public" class="">
 								<a class="dropdown-item px-0" t-attf-href="/web/login">
@@ -288,5 +286,4 @@
 	    	</div>
 	    </nav>
     </template>
-
 </odoo>
