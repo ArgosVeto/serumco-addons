@@ -314,7 +314,7 @@
                         	<t t-set="service" t-value="service_ids" />
 							<div class="sidebar-service ml4">
 					        <div t-attf-class="dropdown">
-					            <a role="button" href="#" class="dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
+					            <a role="button" href="#" class="btn dropdown-toggle acc-dropdown d-flex" data-toggle="dropdown">
 					               <span>+ De Criteres</span>
 					            </a>
 					            <div class="dropdown-menu" role="menu">

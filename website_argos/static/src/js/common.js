@@ -201,20 +201,6 @@ $(document).ready(function(){
 
 
 $(function() {
-  $(".telephone").on("click", function(e) {
-    $(".telephone").removeClass("d-inline");
-    $(".telephone").addClass("d-none");
-    $(".numero").removeClass("d-none");
-    $(".numero").addClass("d-inline");
-    e.stopPropagation()
-  });
-  $(".numero").on("click", function(e) {
-    $(".telephone").removeClass("d-none");
-    $(".telephone").addClass("d-inline");
-    $(".numero").removeClass("d-inline");
-    $(".numero").addClass("d-none");
-    e.stopPropagation()
-  });
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper-header").addClass("toggled");
