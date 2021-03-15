@@ -252,12 +252,12 @@
         <t t-call="website_argos.clinique_filter_sidebar"/>
 	</t>
     <footer class="footer d-md-none">
-		<div class="col-xl-12 text">
-        <a role="button" target="" href="#" class="btn btn-outline-primary  mb16 mt16 ml-3">
+		<div class="col-xl-12" style="text-align: center;">
+        <!--a role="button" target="" href="#" class="btn btn-outline-primary  mb16 mt16 ml-3">
             <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
             <span class="">Autour de moi</span>
-         </a>
-         <button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16 ml-3" style="border-radius: 50px;">
+         </a-->
+         <button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16" style="border-radius: 50px;">
             <span class="">Filtrer</span>
 		 </button>
 		 </div>
