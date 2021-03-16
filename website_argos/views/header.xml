@@ -189,7 +189,7 @@
                 		</li>
 						<t t-foreach="website.menu_id.child_id" t-as="submenu">
 							<t t-call="website.submenu">
-								<t  t-set="item_class" t-value="'nav-item'" />
+								<t  t-set="item_class" t-value="'nav-item btn-sidebar'" />
 								<t t-set="link_class" t-value="'nav-link'" />
 							</t>
 						</t>
@@ -203,7 +203,7 @@
 						</div>
 					</div>
 					<div class="sidebar-user ml4">
-						<a href="#" class="icon-btn dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
+						<a href="#" class="btn-sidebar dropdown-toggle acc-dropdown d-flex align-items-center" data-toggle="dropdown">
 							<img src="/website_argos/static/src/img/user.svg" class="mr-2"/>
 							<span class="text-primary">Mon compte</span>
 						</a>

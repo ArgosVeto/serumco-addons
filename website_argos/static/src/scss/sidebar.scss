@@ -534,4 +534,8 @@
       }
     }
   }
+  .btn-sidebar:focus, .btn-sidebar.focus {
+    outline: 0;
+    box-shadow: none;
+  }
 }

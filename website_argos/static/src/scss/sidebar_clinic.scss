@@ -216,6 +216,10 @@
         font-family: FontAwesome;
       }
     }
+    .btn:focus, .btn.focus {
+      outline: 0;
+      box-shadow: none;
+  }
 }
 .sidebar-service.show {
     a.dropdown-toggle::after{

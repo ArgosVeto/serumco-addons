@@ -322,7 +322,8 @@
 				                        <span>Parking</span>
 				                    </a>
 				                    <a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item px-2">
-	                                    <span>Accessibilité pour les personnes à mobilité réduite</span>
+	                                    <span>Accessibilité pour les personnes<br/>
+										 à mobilité réduite</span>
 				                    </a>
 					            </div>
 					        </div>
