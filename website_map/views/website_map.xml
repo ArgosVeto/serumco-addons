@@ -132,11 +132,11 @@
 
                        <t t-if="not_working_time">
                             <i class="fa fa-circle" style="color:#1ade8d;"></i>
-                            <span>Clinique actuellement ouverte</span>
+                            <span>Etablissement actuellement ouverte</span>
                         </t>
                         <t t-else="">
                             <i class="fa fa-circle" style="color:red;"></i>
-                            <span>Clinique actuellement fermée</span>
+                            <span>Etablissement actuellement fermée</span>
                         </t>
                         
                         <div class="clinic-link d-flex">
