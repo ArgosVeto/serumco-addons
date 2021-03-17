@@ -89,11 +89,11 @@
 
 												<t t-if="not_working_time">
 													<i class="fa fa-circle" style="color:#1ade8d;;"></i>
-													<span>Etablissement actuellement ouverte</span>
+													<span>Etablissement actuellement ouvert</span>
 												</t>
 												<t t-else="">
 													<i class="fa fa-circle" style="color:red;"></i>
-													<span>Etablissement actuellement ouverte</span>
+													<span>Etablissement actuellement fermé</span>
 												</t>									
 											</p>
 										</div>

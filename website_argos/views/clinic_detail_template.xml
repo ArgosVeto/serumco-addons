@@ -46,7 +46,7 @@
 
 									<t t-if="not_working_time">
 										<i class="fa fa-circle" style="color:#1ade8d;;"></i>
-										<span>Etablissement actuellement ouverte</span>
+										<span>Etablissement actuellement ouvert</span>
 										<div class="clinic-link d-flex mt16 mb16 d-block d-md-none">
 											<div class="mr-2">
 												<img src="/website_argos/static/src/img/location.svg" />
@@ -65,7 +65,7 @@
 
 									<t t-else="">
 										<i class="fa fa-circle" style="color:red;"></i>
-										<span>Etablissement actuellement fermée</span>
+										<span>Etablissement actuellement fermé</span>
 									</t>									
 								</p>
 							</div>
