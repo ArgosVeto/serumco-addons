@@ -264,69 +264,86 @@
 			<div class="sidebar-content">
 				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
 				<div class="card bg-white sidebar-card">
-					<div class="search_by_type">
-						<t t-set="type_val" t-value="clinic_type_ids" />
-						<t t-if="type_val">
-							<div class="clinic-type-b">
-								<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1" class="mt16 badge badge-pill badge-light">
-									<span>Prise de RDV en ligne</span>
-								</a>
-								<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1" class="mt16 badge badge-pill badge-light">
-									<span>Click &amp; Collect</span>
-								</a>
-							</div>
-						</t>
+					<div class="sidebar-user ml4">
+						<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1" class="btn-sidebar">
+							<span>Prise de RDV en ligne</span>
+						</a>
 					</div>
-					<div class="open_today">
-						<div class="clinic-type-b">
-							<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mt16 badge badge-pill badge-light">
-								<span>OUVERT AUJOURD HUI</span>
+					<div class="sidebar-user ml4">
+						<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="btn-sidebar">
+							<span>OUVERT AUJOURD HUI</span>
+						</a>
+					</div>
+					<div class="sidebar-user ml4">
+						<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1" class="btn-sidebar">
+							<span>Click &amp; Collect</span>
+						</a>
+					</div>
+					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
+						<li class="nav-item dropdown  position-static">
+							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Services</span>
 							</a>
-						</div>
-					</div>
-					<t t-set="service" t-value="service_ids" />
-					<div class="search_by_service mt8">
-						<div t-attf-class="dropdown">
-							<t t-if="service_ids">
-								<t t-set="service" t-value="service_ids"/>
-								<t t-set="ss" t-value="service_ids[0]"/>
-								<a role="button" href="#" class="dropdown-toggle btn btn-sidebar ge btn-link" data-toggle="dropdown">
-									<span>Services</span>
-								</a>
-								<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
-									<t t-if="service">
-										<t t-foreach="service" t-as="s">
-											<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" class="dropdown-item">
-												<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
-											</a>
-										</t>
-									</t>
-								</div>
-							</t>
-						</div>
-					</div>
-					<div class="criteria search_by_service mt8">
-						<t t-set="service" t-value="service_ids"/>
-						<div t-attf-class="dropdown">
-							<a role="button" href="#" class="dropdown-toggle btn btn-sidebar ge btn-link" data-toggle="dropdown">
-								<span>De Criteres</span>
-							</a>
-							<div class="dropdown-menu" role="menu">
-								<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
-									<span class="switcher_pricelist">Parking</span>
-								</a>
-								<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
-									<span class="switcher_pricelist">Accessibilité pour les personnes<br/>
-										 à mobilité réduite</span>
-								</a>
+							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
+								<section class="mega_menu_one_snippet" data-name="Services Menu">
+									<div class="container p-0">
+										<div class="row">
+											<div class="col-md-3">
+												<t t-set="service" t-value="service_ids"/>
+												<t t-set="ss" t-value="service_ids[0]"/>
+												<div class="heading-contents">
+													<t t-if="service">
+														<t t-foreach="service" t-as="s">
+															<p class="m-0">
+																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" data-original-title="" title="" aria-describedby="tooltip688207">
+																	<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
+																</a>
+															</p>
+														</t>
+													</t>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
 							</div>
-						</div>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
+						<li class="nav-item dropdown  position-static">
+							<a data-toggle="dropdown" href="#" class="nav-link dropdown-toggle o_mega_menu_toggle">
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">+ de critères</span>
+							</a>
+							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
+								<section class="mega_menu_one_snippet" data-name="Services Menu">
+									<div class="container p-0">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="heading-contents">
+													<p class="m-0">
+														<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" data-original-title="" title="" aria-describedby="tooltip688207">
+															<span class="switcher_pricelist">Parking</span>
+														</a>
+													</p>
+													<p class="m-0">
+														<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" data-original-title="" title="" aria-describedby="tooltip688207">
+															<span class="switcher_pricelist">Accessibilité pour les personnes<br/>
+ à mobilité réduite</span>
+														</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</li>
+					</ul>
+					<div class="clear-search mt8 clinic-type-b">
+						<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class="m-0 badge badge-pill badge-light">
+							<span>Réinitialiser</span>
+						</a>
 					</div>
-				</div>
-				<div class="clear-search mt8 ml8 clinic-type-b">
-					<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class="badge badge-pill badge-light">
-						<span>Réinitialiser</span>
-					</a>
 				</div>
 			</div>
 		</nav>
