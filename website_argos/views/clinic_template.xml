@@ -311,7 +311,7 @@
 					</ul>
 					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
 						<li class="nav-item dropdown  position-static">
-							<a data-toggle="dropdown" href="#" class="nav-link dropdown-toggle o_mega_menu_toggle">
+							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
 								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">+ de critères</span>
 							</a>
 							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
