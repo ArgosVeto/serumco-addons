@@ -205,21 +205,43 @@ $(function() {
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper-header").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
+    $("#close_sidebar_header").removeClass("d-none");
+    $("#close_sidebar_header").addClass("d-block");
     e.stopPropagation()
   });
   $("#show-sidebar-clinic").on("click", function(e) {
     $(".sidebar-wrapper-clinic").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
+    $("#close_sidebar_clinic").removeClass("d-none");
+    $("#close_sidebar_clinic").addClass("d-block");
     e.stopPropagation()
   });
   $("#close_sidebar_clinic").on("click", function(e) {
     $(".sidebar-wrapper-clinic").removeClass("toggled");
     $("#wrapwrap").removeClass("mobile_overlay");
+    $("#close_sidebar_clinic").removeClass("d-block");
+    $("#close_sidebar_clinic").addClass("d-none");
     e.stopPropagation()
   });
   $("#close_sidebar_header").on("click", function(e) {
     $(".sidebar-wrapper-header").removeClass("toggled");
     $("#wrapwrap").removeClass("mobile_overlay");
+    $("#close_sidebar_header").removeClass("d-block");
+    $("#close_sidebar_header").addClass("d-none");
+    e.stopPropagation()
+  });
+  $("#show-sidebar-product").on("click", function(e) {
+    $(".sidebar-wrapper-product").addClass("toggled");
+    $("#wrapwrap").addClass("mobile_overlay");
+    $("#close_sidebar_product").removeClass("d-none");
+    $("#close_sidebar_product").addClass("d-block");
+    e.stopPropagation()
+  });
+  $("#close_sidebar_product").on("click", function(e) {
+    $(".sidebar-wrapper-product").removeClass("toggled");
+    $("#wrapwrap").removeClass("mobile_overlay");
+    $("#close_sidebar_product").removeClass("d-block");
+    $("#close_sidebar_product").addClass("d-none");
     e.stopPropagation()
   });
   $(".bottom-show-sidebar").on("click", function(e) {

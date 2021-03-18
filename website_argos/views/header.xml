@@ -172,11 +172,8 @@
 
 	<template id="bizople_mbl_side_bar" name="Bizople Side Bar">
     	<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-header bg-white d-block d-md-none">
+		<a id="close_sidebar_header" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a>
 	    	<div class="sidebar-content">
-				<div class="sidebar-cart ml4" id="top_menu">
-					<a id="close_sidebar_header" class="badge badge-pill badge-light fa fa-times">
-						</a>
-				</div>
 				<div class="search">
 					<t t-call="website_sale.s_products_searchbar_input" />
 				</div>
@@ -189,7 +186,7 @@
                 		</li>
 						<t t-foreach="website.menu_id.child_id" t-as="submenu">
 							<t t-call="website.submenu">
-								<t  t-set="item_class" t-value="'nav-item btn-sidebar'" />
+								<t  t-set="item_class" t-value="'nav-item'" />
 								<t t-set="link_class" t-value="'nav-link'" />
 							</t>
 						</t>

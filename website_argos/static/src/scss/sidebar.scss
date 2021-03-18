@@ -534,7 +534,12 @@
       }
     }
   }
-  .btn-sidebar:focus, .btn-sidebar.focus {
+.btn-sidebar {
+  text-transform: uppercase; 
+  color:theme-color('primary');
+}
+
+.btn-sidebar:focus, .btn-sidebar.focus {
     outline: 0;
     box-shadow: none;
   }

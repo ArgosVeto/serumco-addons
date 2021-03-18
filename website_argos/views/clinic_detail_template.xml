@@ -86,12 +86,14 @@
 										class="img img-fluid mr-2" />
 									<span class="" t-field="operating_unit.phone"/>
 								</a>
-								<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}"
-									class="btn btn-primary d-inline-block d-md-none ml-4">
-									<img src="/website_argos/static/src/img/phone-white.svg"
-										class="img img-fluid mr-2" />
-									<span class="">Appeler</span>
-								</a>
+								<div class="clinic-link d-md-none d-block">
+									<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}"
+										class="btn btn-primary d-xl-inline-block ml-4">
+										<img src="/website_argos/static/src/img/phone-white.svg"
+											class="img img-fluid mr-2" />
+										<span class="">Appeler</span>
+									</a>
+								</div>
 								<div class="clinic-link d-md-none d-block">
 									<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV</a>
 								</div>
