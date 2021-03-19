@@ -107,6 +107,7 @@
         'views/job_detail_snippet.xml',
         'views/job_fiche.xml',
         'views/website_views.xml',
+        'views/top_button.xml',
     ],
     'qweb': [
         'static/src/xml/portal_chatter.xml',
