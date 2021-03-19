@@ -266,7 +266,7 @@
 				<div class="card bg-white sidebar-card">
 					<div class="sidebar-user ml4">
 						<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1" class="btn-sidebar">
-							<span>Prise de RDV en ligne</span>
+							<span>PRISE DE RDV EN LIGNE</span>
 						</a>
 					</div>
 					<div class="sidebar-user ml4">
@@ -276,13 +276,13 @@
 					</div>
 					<div class="sidebar-user ml4">
 						<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1" class="btn-sidebar">
-							<span>Click &amp; Collect</span>
+							<span>CLICK &amp; COLLECT</span>
 						</a>
 					</div>
 					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
 						<li class="nav-item dropdown  position-static">
 							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
-								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Services</span>
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">SERVICES</span>
 							</a>
 							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
 								<section class="mega_menu_one_snippet" data-name="Services Menu">
@@ -312,7 +312,7 @@
 					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
 						<li class="nav-item dropdown  position-static">
 							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
-								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">+ de critères</span>
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">+ DE CRITèRES</span>
 							</a>
 							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
 								<section class="mega_menu_one_snippet" data-name="Services Menu">

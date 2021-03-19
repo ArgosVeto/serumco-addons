@@ -1068,3 +1068,53 @@
 		  }
    } */
 }
+.modal-dialog-clinic {
+	max-width: 500px;
+	font-family: AvenirLTStd-Roman;
+	font-size: 18px;
+	font-weight: 900;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	.modal-header {
+		border: none;
+		height: 30px;
+	}
+	.modal-title {
+		margin: auto;
+	}
+	.modal-body {
+		margin: auto;
+		border-bottom: 1px solid #dee2e6;
+		min-height: 100px;
+	}
+	.modal-footer {
+		border: none;
+		margin: auto;
+	}
+	.close {
+		float: right;
+	}
+	.modal-footer-btn {
+		border: none;
+		margin: auto;
+
+	}
+	.btn-modal{
+		font-size: 18px;
+		width: 250px;
+		height: 40px;
+		background-color: theme-color('primary') !important;
+		border-color: theme-color('primary') !important;
+		border-radius: none;
+		color: white !important;
+	  }
+	.btn {
+		display: inline-flex;
+		justify-content: center; /* center the content horizontally */
+		align-items: center; /* center the content vertically */
+		--padding-x: 1.2em;
+		border-color: transparent; /* hide button border */
+	}
+}
