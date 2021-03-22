@@ -2,7 +2,7 @@
 <odoo>
     <template id="auguria_top_button" inherit_id="web.frontend_layout">
         <xpath expr="//div[@id='wrapwrap']" position="inside">
-            <img src="/website_argos/static/src/img/top.png" onclick="topFunction()" id="myBtn" title="Haut de page" style="display: none;  position: fixed;  bottom: 20px;  right: 50px;  z-index: 99; cursor: pointer;"/>
+            <img src="/website_argos/static/src/img/top.png" onclick="topFunction()" id="myBtn" title="Haut de page" style="display: none;  position: fixed;  bottom: 100px;  right: 10px;  z-index: 99; cursor: pointer;"/>
         <script>
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};

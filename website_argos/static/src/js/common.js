@@ -244,6 +244,22 @@ $(function() {
     $("#close_sidebar_product").addClass("d-none");
     e.stopPropagation()
   });
+  $("#lirelasuite").on("click", function(e) {
+    $("#description").removeClass("description_categ");
+    $("#liremoins").removeClass("d-none");
+    $("#liremoins").addClass("d-block");
+    $("#lirelasuite").removeClass("d-block");
+    $("#lirelasuite").addClass("d-none");
+    e.stopPropagation()
+  });
+  $("#liremoins").on("click", function(e) {
+    $("#description").addClass("description_categ");
+    $("#liremoins").removeClass("d-block");
+    $("#liremoins").addClass("d-none");
+    $("#lirelasuite").removeClass("d-none");
+    $("#lirelasuite").addClass("d-block");
+    e.stopPropagation()
+  });
   $(".bottom-show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");

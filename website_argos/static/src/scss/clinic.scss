@@ -968,6 +968,7 @@
 	 position:-webkit-sticky;
 	 position:sticky;
 	 bottom:0;
+	 z-index: 99;
 	}
 
 @media (max-width: 767.98px) {
@@ -981,7 +982,7 @@
 		position:fixed;
 		bottom:1%;
 		right:1%;
-		z-index:9999;
+		z-index:99;
 	  }
 
   	.search_by_type {

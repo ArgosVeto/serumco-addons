@@ -124,9 +124,67 @@
 		    background-color: #f6f6f6;
 		    border: 0;
 	        padding: 24px 0;
-	        @media (min-width: 768px) {
-	        	min-width: 356px;
-	        }
+	        @media (max-width: 768px) {
+	        	width: 90%;
+				.dropdown-menu{
+					ul{
+						li{
+							label{
+								input{
+									display: none;
+								}
+								border-radius: 8px;
+								background-color: #ffffff;
+								font-family: AvenirLTStd-Roman;
+								font-size: 15px;
+								font-weight: normal;
+								font-stretch: normal;
+								font-style: normal;
+								line-height: normal;
+								letter-spacing: normal;
+								color: #201f4c;
+								padding: 15px 12px;
+							}
+							label.active{
+								background-color: #e6f4fb;
+								&::after{
+									content: "\f00c";
+									font-family: "FontAwesome" !important;
+									display: inline-block;
+									color: theme-color('primary');
+									float: right;
+									font-size: 20px;
+								}
+							}
+							margin: 0 16px 8px;
+						}
+						label{
+							margin: 0 !important;
+						}
+						margin: 0;
+					}
+					.css_attribute_color {
+						margin-left: 10px;
+						margin-bottom: 0;
+					}
+					select.form-control{
+						width: 90%;
+						margin: auto;
+					}
+					li.dropdown > ul.dropdown-menu > li {
+						a{
+						  padding: 10px 30px;
+						}
+						border-top: 1px solid rgba(129,129,129,.2);
+					}
+				
+					border-top: solid 1px rgba(139, 139, 139, 0.16);
+					width: 100% !important;
+					&:last-child{
+					  border-bottom: 1px solid rgba(129,129,129,.2);
+					}
+				}
+			}
 		}
 	}
 	.category-filter{
@@ -749,5 +807,21 @@
 	.js_cart_lines.alert.alert-info{
 		background-color: theme-color('primary');
 		color: white;
+	}
+.btn-sortby {
+		font-size: 18px;
+		width: 250px;
+		height: 40px;
+		background-color: theme-color('primary') !important;
+		border-color: theme-color('primary') !important;
+		border-radius: none;
+		color: white !important;
+	  }
+.btn {
+		display: inline-flex;
+		justify-content: center; /* center the content horizontally */
+		align-items: center; /* center the content vertically */
+		--padding-x: 1.2em;
+		border-color: transparent; /* hide button border */
 	}
 }

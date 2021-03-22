@@ -7,48 +7,95 @@
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="inside">
 			<div class="bottom-content d-block d-md-none pt48">
 				<p>Eaque ratione sapiente et quo quaerat voluptas non amet. Quam ex hic hic. Ut sequi et. Nihil ut nesciunt. Omnis molestias ratione nihil voluptatibus. Voluptatem ut dolor. Omnis nihil enim dolores. Laboriosam neque commodi eum id alias officiis dolorem qui. Quibusdam eos nulla corporis vel debitis iste…</p>
-				<p><a href="#">Lire la suite</a></p>
+				<p>
+					<a href="#">Lire la suite</a>
+				</p>
 				<div class="line mt32 mb16"/>
 				<div class="">
 					<h3>Vous êtes ici</h3>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">
-		                    <a href="/">Accueil</a>
-		                </li>
-		                <li class="breadcrumb-item">
-		                    <a href="/shop">Boutique</a>
-		                </li>
-		                <li t-if="category" class="breadcrumb-item active">
-	                        <span><t t-esc="category.name"/></span>
-	                    </li>
-		            </ol>
+							<a href="/">Accueil</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="/shop">Boutique</a>
+						</li>
+						<li t-if="category" class="breadcrumb-item active">
+							<span>
+								<t t-esc="category.name"/>
+							</span>
+						</li>
+					</ol>
 				</div>
 			</div>
 
 		</xpath>
+		<xpath expr="//t[@t-call='website.layout']" position="inside">
+			<t t-call="website_argos.product_filter_sidebar"/>
+			<footer class="footer main-footer d-md-none">
+				<div class="d-flex align-items-center justify-content-center pt16 pb16">
+					<t t-if="request.website.viewref('website_sale.sort').active">
+						<t t-set="list_price_desc_label">prix décroissant</t>
+						<t t-set="list_price_asc_label">prix croissant</t>
+						<t t-set="name_asc_label">Nom: A à Z</t>
+						<t t-set="name_desc_label">Nom: Z à A</t>
+						<t t-set="website_sale_sortable" t-value="[
+										(list_price_desc_label, 'list_price desc'),
+										(list_price_asc_label, 'list_price asc'),
+										(name_asc_label, 'name asc'),
+										(name_desc_label, 'name desc')
+									]"/>
+						<t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+						<div class="dropdown dropdown_sorty_by" style="width: 45%;">
+							<a role="button" href="#" class="dropdown-toggle btn mb16 mt16" data-toggle="dropdown" style="font-size: 16px;font-weight: 900;border: solid 2px rgba(99, 186, 233, 0.4);width: 100%;justify-content: center;align-items: center;">
+								<span>
+									<t t-if='len(website_sale_sortable_current)'>
+										<t t-raw='website_sale_sortable_current[0][0]'/>
+									</t>
+									<t t-else='1'>
+													Trier par
+									</t>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" role="menu">
+								<t t-foreach="website_sale_sortable" t-as="sortby">
+									<a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
+										<span t-raw="sortby[0]"/>
+									</a>
+								</t>
+							</div>
+						</div>
+					</t>
+					<button role="button" id="show-sidebar-product" class="btn btn-primary ml8" style="width: 45%; border-radius: 50px;">
+						<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
+						<span class="">Filtrer</span>
+					</button>
+				</div>
+			</footer>
+		</xpath>
 	</template>
 
-	<template id="argos_top_product_pager_inherit_1" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
+	<template id="argos_top_product_pager_inherit" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
 		<xpath expr="//div[hasclass('oe_website_sale')]" position="before">
-				<section class="shop_categ_info s_blog_banner">
-					<div class="row m-0 my_content">
-	                    <div class="col-lg-12 mb-0 mb-md-4 p-0">
-	                        <div class="top-links p-0">
-	                            <div class="container">
-	                                <ul class="nav navbar-nav flex-row">
-	                                    <li class="nav-item mr32">
-						                    <a class="nav-link" href="/accueil-boutique-en-ligne">Accueil</a>
-	                                    </li>
-				                        <t t-foreach="categories" t-as="c">
-										    <t t-if="c.name!='All'">
-										    <t t-if="c.web_visible">
+			<section class="shop_categ_info s_blog_banner">
+				<div class="row m-0 my_content">
+					<div class="col-lg-12 mb-0 mb-md-4 p-0">
+						<div class="top-links p-0">
+							<div class="container">
+								<ul class="nav navbar-nav flex-row">
+									<li class="nav-item mr32">
+										<a class="nav-link" href="/accueil-boutique-en-ligne">Accueil</a>
+									</li>
+									<t t-foreach="categories" t-as="c">
+										<t t-if="c.name!='All'">
+											<t t-if="c.web_visible">
 												<t t-if="c.url_key">
-												<li class="nav-item mr32">
-													<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
-														<span t-field="c.name"/>
-													</a>
-												</li>
-												</t> 
+													<li class="nav-item mr32">
+														<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+															<span t-field="c.name"/>
+														</a>
+													</li>
+												</t>
 												<t t-else="">
 													<li class="nav-item mr32">
 														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
@@ -56,58 +103,72 @@
 														</a>
 													</li>
 												</t>
-											</t> 
-									    </t>
+											</t>
 										</t>
-	                                </ul>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-					<div class="container">
-						<div class="top-breadcrumbs mt8">
-		                    <ol class="breadcrumb mb32">
-		                    	<li class="breadcrumb-item">
-				                    <a href="/">Accueil</a>
-				                </li>
-		                        <li class="breadcrumb-item">
-		                            <a href="/shop">Boutique</a>
-		                        </li>
-		                        <li t-if="category.parent_id" class="breadcrumb-item">
-									<a t-att-href="'/shop/category/' + slug(category.parent_id)">
- 			                            <span><t t-esc="category.parent_id.name"/></span>
-						            </a>
-		                        </li>
-		                        <li t-if="category" class="breadcrumb-item active">
-		                            <span><t t-esc="category.name"/></span>
-		                        </li>
-		                    </ol>
-		                </div>
-		                <t t-if="category">
-			                <div class="categ-info">
-			                	<h1><t t-esc='category.name'/></h1>
-			                </div>
-								<t t-if="category.website_description">
-					                <div class="categ-info" style="height: 150px; overflow: hidden;" id="description">
-										<span><t t-raw='category.website_description'  /></span>
-					                </div>
-									<br/>
-									<p><a href="#nogo" onclick="document.getElementById('description').removeAttribute('style');
-										this.style.display = 'none';">Lire la suite  <img src="/website_argos/static/src/img/right.png"/></a></p>
-								</t>
- 		 	                <div class="sub-categories mt32">
-			                	<ul class="nav nav-pills flex-row">
-									<t t-foreach="category" t-as="c">
-										<t t_if="c.child_id.parent_id.id == c.id">
-											<t t-if="c.child_id" >
-												<t t-foreach="c.child_id" t-as="c">
-													<t t-if="c.url_key">
-														<li class="nav-item mr32 mt8 mb8">
-															<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
-																<span t-field="c.name"/>
-															</a>
-														</li>
-													</t>
+									</t>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="top-breadcrumbs mt8">
+						<ol class="breadcrumb mb32">
+							<li class="breadcrumb-item">
+								<a href="/">Accueil</a>
+							</li>
+							<li class="breadcrumb-item">
+								<a href="/shop">Boutique</a>
+							</li>
+							<li t-if="category.parent_id" class="breadcrumb-item">
+								<a t-att-href="'/shop/category/' + slug(category.parent_id)">
+									<span>
+										<t t-esc="category.parent_id.name"/>
+									</span>
+								</a>
+							</li>
+							<li t-if="category" class="breadcrumb-item active">
+								<span>
+									<t t-esc="category.name"/>
+								</span>
+							</li>
+						</ol>
+					</div>
+					<t t-if="category">
+						<div class="categ-info">
+							<h1>
+								<t t-esc='category.name'/>
+							</h1>
+						</div>
+						<t t-if="category.website_description">
+							<div class="categ-info description_categ" id="description">
+								<span>
+									<t t-raw='category.website_description'  />
+								</span>
+							</div>
+							<br/>
+							<p>
+								<a class="d-block" href="#nogo" id="lirelasuite">Lire la suite  <img src="/website_argos/static/src/img/right.png"/>
+								</a>
+							</p>
+							<p>
+								<a class="d-none" href="#nogo" id="liremoins">Lire moins  <img src="/website_argos/static/src/img/right.png"/>
+								</a>
+							</p>
+						</t>
+						<div class="sub-categories mt32">
+							<ul class="nav nav-pills flex-row">
+								<t t-foreach="category" t-as="c">
+									<t t_if="c.child_id.parent_id.id == c.id">
+										<t t-if="c.child_id">
+											<t t-foreach="c.child_id" t-as="c">
+												<t t-if="c.url_key">
+													<li class="nav-item mr32 mt8 mb8">
+														<a t-att-href="c.url_key" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
+															<span t-field="c.name"/>
+														</a>
+													</li>
+												</t>
 												<t t-else="">
 													<li class="nav-item mr32 mt8 mb8">
 														<a t-att-href="keep('/shop/category/' + slug(c), category=0)" t-attf-class="nav-link #{'active' if c.id == category.id else ''}">
@@ -115,15 +176,15 @@
 														</a>
 													</li>
 												</t>
-												</t>
 											</t>
 										</t>
-				                    </t>
-			                	</ul>
-			                </div> 
-			            </t>
-	                </div> 
-				</section>
+									</t>
+								</t>
+							</ul>
+						</div>
+					</t>
+				</div>
+			</section>
 			<!-- <t t-else="">
 				<section class="shop_categ_info s_blog_banner pt-0">
 					<div class="row m-0 my_content">
@@ -168,7 +229,7 @@
 									            </a>
 									            
 									        </li>
-									        <t t-if="c.child_id" >
+									        <t t-if="c.child_id">
 								                <t t-foreach="c.child_id" t-as="c">
 								                    <t t-if="not search or c.id in search_categories_ids">
 								                        <t t-call="website_sale.categories_recursive" />
@@ -179,79 +240,83 @@
 									</ul>
 								</div>
 							</div> -->
-<!--							<div class="attribute_filter">-->
-<!--								<form class="js_attributes" method="get">-->
-<!--				                    <input t-if="category" type="hidden" name="category" t-att-value="category.id" />-->
-<!--				                    <input type="hidden" name="search" t-att-value="search" />-->
-<!--				                    <ul class="nav nav-pills flex-row">-->
-<!--										<span t-esc="len(filters)"/>-->
-<!--				                    	<t t-foreach="filters" t-as="a">-->
-<!--				                    		<t t-if="a.is_filter_visible">-->
-<!--				                    		<li t-if="a.filters_line_ids and len(a.filters_line_ids) &gt; 1" class="nav-item">-->
-<!--			                    				<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>-->
-<!--				                                <div class="dropdown-menu" role="menu">-->
-<!--&lt;!&ndash;				                                	<t t-if="a.display_type == 'select'">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                    <select class="form-control" name="attrib">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                        <option value="" />&ndash;&gt;-->
-<!--&lt;!&ndash;					                                        <t t-foreach="a.filters_line_ids" t-as="v">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                            <option t-att-value="'%s-%s' % (a.id,v.id)" t-esc="v.name" t-att-selected="v.id in attrib_set" />&ndash;&gt;-->
-<!--&lt;!&ndash;					                                        </t>&ndash;&gt;-->
-<!--&lt;!&ndash;					                                    </select>&ndash;&gt;-->
-<!--&lt;!&ndash;					                                </t>&ndash;&gt;-->
-<!--					                                <t>-->
-<!--					                                    <ul class="nav nav-pills flex-column">-->
-<!--															HILALI <span t-esc="a.filters_line_ids.mapped('id')"/>-->
-<!--					                                        <t t-foreach="a.filters_line_ids" t-as="v">-->
-<!--					                                            <li class="nav-item">-->
-<!--					                                                <label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if v.id in attrib_set else ''}">-->
-<!--					                                                    <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" />-->
-<!--&lt;!&ndash;					                                                    <span style="font-weight: normal" t-field="v.name" />&ndash;&gt;-->
-<!--					                                                </label>-->
-<!--					                                            </li>-->
-<!--					                                        </t>-->
-<!--					                                    </ul>-->
-<!--					                                </t>-->
-<!--&lt;!&ndash;					                                <t t-if="a.display_type == 'color'">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                    <t t-foreach="a.value_ids" t-as="v">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                        <label t-attf-style="background-color:#{v.html_color or v.name}" t-attf-class="css_attribute_color #{'active' if v.id in attrib_set else ''}">&ndash;&gt;-->
-<!--&lt;!&ndash;					                                            <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" t-att-title="v.name" />&ndash;&gt;-->
-<!--&lt;!&ndash;					                                        </label>&ndash;&gt;-->
-<!--&lt;!&ndash;					                                    </t>&ndash;&gt;-->
-<!--&lt;!&ndash;					                                </t>&ndash;&gt;-->
-<!--				                                </div>-->
-<!--				                    		</li>-->
-<!--				                    		</t>-->
-<!--				                    	</t>-->
-<!--				                    </ul>-->
-<!--				                </form>-->
-<!--							</div>-->
+							<!--							<div class="attribute_filter">-->
+							<!--								<form class="js_attributes" method="get">-->
+							<!--				                    <input t-if="category" type="hidden" name="category" t-att-value="category.id" />-->
+							<!--				                    <input type="hidden" name="search" t-att-value="search" />-->
+							<!--				                    <ul class="nav nav-pills flex-row">-->
+							<!--										<span t-esc="len(filters)"/>-->
+							<!--				                    	<t t-foreach="filters" t-as="a">-->
+							<!--				                    		<t t-if="a.is_filter_visible">-->
+							<!--				                    		<li t-if="a.filters_line_ids and len(a.filters_line_ids) &gt; 1" class="nav-item">-->
+							<!--			                    				<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>-->
+							<!--				                                <div class="dropdown-menu" role="menu">-->
+							<!--&lt;!&ndash;				                                	<t t-if="a.display_type == 'select'">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                    <select class="form-control" name="attrib">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                        <option value="" />&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                        <t t-foreach="a.filters_line_ids" t-as="v">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                            <option t-att-value="'%s-%s' % (a.id,v.id)" t-esc="v.name" t-att-selected="v.id in attrib_set" />&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                        </t>&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                    </select>&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                </t>&ndash;&gt;-->
+							<!--					                                <t>-->
+							<!--					                                    <ul class="nav nav-pills flex-column">-->
+							<!--															HILALI <span t-esc="a.filters_line_ids.mapped('id')"/>-->
+							<!--					                                        <t t-foreach="a.filters_line_ids" t-as="v">-->
+							<!--					                                            <li class="nav-item">-->
+							<!--					                                                <label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if v.id in attrib_set else ''}">-->
+							<!--					                                                    <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" />-->
+							<!--&lt;!&ndash;					                                                    <span style="font-weight: normal" t-field="v.name" />&ndash;&gt;-->
+							<!--					                                                </label>-->
+							<!--					                                            </li>-->
+							<!--					                                        </t>-->
+							<!--					                                    </ul>-->
+							<!--					                                </t>-->
+							<!--&lt;!&ndash;					                                <t t-if="a.display_type == 'color'">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                    <t t-foreach="a.value_ids" t-as="v">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                        <label t-attf-style="background-color:#{v.html_color or v.name}" t-attf-class="css_attribute_color #{'active' if v.id in attrib_set else ''}">&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                            <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" t-att-title="v.name" />&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                        </label>&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                    </t>&ndash;&gt;-->
+							<!--&lt;!&ndash;					                                </t>&ndash;&gt;-->
+							<!--				                                </div>-->
+							<!--				                    		</li>-->
+							<!--				                    		</t>-->
+							<!--				                    	</t>-->
+							<!--				                    </ul>-->
+							<!--				                </form>-->
+							<!--							</div>-->
 
 							<div class="attribute_filter">
 								<form class="js_attributes" method="get">
-				                    <input t-if="category" type="hidden" name="category" t-att-value="category.id" />
-				                    <input type="hidden" name="search" t-att-value="search" />
-				                    <ul class="nav nav-pills flex-row">
-				                    	<t t-foreach="filters" t-as="a">
+									<input t-if="category" type="hidden" name="category" t-att-value="category.id" />
+									<input type="hidden" name="search" t-att-value="search" />
+									<ul class="nav nav-pills flex-row">
+										<t t-foreach="filters" t-as="a">
 											<t t-if="a.is_filter_visible">
-											<li t-if="a.product_filter_line_ids and len(a.product_filter_line_ids) &gt; 1" class="nav-item">
-												<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown"><span><t t-esc="a.name"/></span></a>
-												<div class="dropdown-menu" role="menu" style="height: 250px; overflow-y: scroll">
-													<ul class="nav nav-pills flex-column">
-														<t t-foreach="a.product_filter_line_ids" t-as="v">
-															<li class="nav-item">
-																<label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if v.id in attrib_set else ''}">
-																	<input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" />
-																	<span style="font-weight: normal" t-field="v.name" />
-																</label>
-															</li>
-														</t>
-													</ul>
-												</div>
-											</li>
+												<li t-if="a.product_filter_line_ids and len(a.product_filter_line_ids) &gt; 1" class="nav-item">
+													<a href="#" class="attribute-btn dropdown-toggle" data-toggle="dropdown">
+														<span>
+															<t t-esc="a.name"/>
+														</span>
+													</a>
+													<div class="dropdown-menu" role="menu" style="height: 250px; overflow-y: scroll">
+														<ul class="nav nav-pills flex-column">
+															<t t-foreach="a.product_filter_line_ids" t-as="v">
+																<li class="nav-item">
+																	<label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if v.id in attrib_set else ''}">
+																		<input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" />
+																		<span style="font-weight: normal" t-field="v.name" />
+																	</label>
+																</li>
+															</t>
+														</ul>
+													</div>
+												</li>
 											</t>
 										</t>
-				                    </ul>
-				                </form>
+									</ul>
+								</form>
 							</div>
 
 						</div>
@@ -265,36 +330,36 @@
 						<t t-if="request.website.viewref('website_sale.sort').active">
 							<div class="product_sort_by_btn">
 								<t t-set="list_price_desc_label">prix décroissant</t>
-					            <t t-set="list_price_asc_label">prix croissant</t>
-					            <t t-set="name_asc_label">Nom: A à Z</t>
-					            <t t-set="name_desc_label">Nom: Z à A</t>
-					            <t t-set="website_sale_sortable" t-value="[
+								<t t-set="list_price_asc_label">prix croissant</t>
+								<t t-set="name_asc_label">Nom: A à Z</t>
+								<t t-set="name_desc_label">Nom: Z à A</t>
+								<t t-set="website_sale_sortable" t-value="[
 					                (list_price_desc_label, 'list_price desc'),
 					                (list_price_asc_label, 'list_price asc'),
 					                (name_asc_label, 'name asc'),
 					                (name_desc_label, 'name desc')
 					            ]"/>
-					            <t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
-					            <div class="dropdown dropdown_sorty_by">
-					                <a role="button" href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown">
-					                    <span class="d-none d-lg-inline">
-					                        <t t-if='len(website_sale_sortable_current)'>
+								<t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+								<div class="dropdown dropdown_sorty_by">
+									<a role="button" href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown">
+										<span class="d-none d-lg-inline">
+											<t t-if='len(website_sale_sortable_current)'>
 					                            Trier par : <t t-raw='website_sale_sortable_current[0][0]'/>
-					                        </t>
-					                        <t t-else='1'>
+											</t>
+											<t t-else='1'>
 					                            Trier par
-					                        </t>
-					                    </span>
-					                    <i class="fa fa-sort-amount-asc d-lg-none"/>
-					                </a>
-					                <div class="dropdown-menu dropdown-menu-right" role="menu">
-					                    <t t-foreach="website_sale_sortable" t-as="sortby">
-					                        <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
-					                            <span t-raw="sortby[0]"/>
-					                        </a>
-					                    </t>
-					                </div>
-					            </div>
+											</t>
+										</span>
+										<i class="fa fa-sort-amount-asc d-lg-none"/>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right" role="menu">
+										<t t-foreach="website_sale_sortable" t-as="sortby">
+											<a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
+												<span t-raw="sortby[0]"/>
+											</a>
+										</t>
+									</div>
+								</div>
 							</div>
 						</t>
 					</div>
@@ -310,15 +375,15 @@
 					<div class="argos_tags">
 						<p>
 							<t t-foreach="product.public_categ_ids" t-as="categs">
-			            		<div class="tag-name">
-			            			<a t-att-href="keep('/shop/category/%s' % slug(categs), category=0)">
-		            					<t t-esc="categs.name"/>
-		            				</a>
-			            		</div>
-			            	</t>
-			            </p>
+								<div class="tag-name">
+									<a t-att-href="keep('/shop/category/%s' % slug(categs), category=0)">
+										<t t-esc="categs.name"/>
+									</a>
+								</div>
+							</t>
+						</p>
 					</div>
-		        </t>
+				</t>
 				<div class="argos-product-icons d-none d-md-block">
 				</div>
 			</div>
@@ -329,30 +394,29 @@
 		<xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="before">
 			<t t-set="gamne_value" t-value="website.get_product_gamne_values(product)"/>
 			<t t-if="gamne_value">
-                <div class="argos_categ">
-                    <p>
-                    	<t t-foreach="gamne_value" t-as="gv">
-                    		<a 
-            				t-att-href="website.default_category(gv)"
-            				role="button">
-			               	 	<span class="categ-name">
-			               	 		<t t-esc="gv.name"/>
-			               	 	</span>
-			              	</a>	
-                    	</t>
-                    </p>
-                </div>
-            </t>
+				<div class="argos_categ">
+					<p>
+						<t t-foreach="gamne_value" t-as="gv">
+							<a t-att-href="website.default_category(gv)" role="button">
+								<span class="categ-name">
+									<t t-esc="gv.name"/>
+								</span>
+							</a>
+						</t>
+					</p>
+				</div>
+			</t>
 		</xpath>
 	</template>
 	<template id="addtocart_btn_inherit" inherit_id="website_sale.products_add_to_cart">
 		<xpath expr="//t[@t-if='product_variant_id']" position="replace">
 			<t t-if="product_variant_id">
-		 		<a href="#" role="button" class="btn btn-link a-submit" aria-label="Shopping cart" title="Shopping cart">
-                   <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>Ajouter
+				<a href="#" role="button" class="btn btn-link a-submit" aria-label="Shopping cart" title="Shopping cart">
+					<img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>
+Ajouter
 					<span class="text-white ml-1 mr-1 text-bold"> - </span>
 					<t t-if="product" t-call="website_sale.product_price" />
-                </a>
+				</a>
 			</t>
 		</xpath>
 	</template>
@@ -360,19 +424,19 @@
 		<xpath expr="//div[hasclass('argos-product-icons')]" position="inside">
 			<t t-if="request.website.viewref('website_sale_wishlist.add_to_wishlist').active">
 				<t t-set="in_wish" t-value="product._is_in_wishlist()"/>
-	            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
-	            <t>
-		            <button t-if="product_variant_id" type="button" role="button" class="btn btn-link o_add_wishlist" t-att-disabled='in_wish and product.qty_available > 0 or None' title="Add to Wishlist" t-att-data-product-template-id="product.id" t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
-		            	<img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
-		            </button>
-	            </t>
-	             <!-- <t t-if="product.sudo().qty_available == 0">
+				<t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+				<t>
+					<button t-if="product_variant_id" type="button" role="button" class="btn btn-link o_add_wishlist" t-att-disabled='in_wish and product.qty_available > 0 or None' title="Add to Wishlist" t-att-data-product-template-id="product.id" t-att-data-product-product-id="product_variant_id" data-action="o_wishlist">
+						<img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
+					</button>
+				</t>
+				<!-- <t t-if="product.sudo().qty_available == 0">
 	            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
 				  <img src="/website_argos/static/src/img/heart.png" class="img img-fluid" alt="Add To Wishlist"/>
 				</button>
 				</t> -->
-			<!-- Modal -->
-			<!-- <t t-if="product.sudo().qty_available == 0">
+				<!-- Modal -->
+				<!-- <t t-if="product.sudo().qty_available == 0">
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -392,47 +456,149 @@
 			  </div>
 			</div>
 			</t> -->
-	        </t>
+			</t>
 		</xpath>
 	</template>
 
 	<template id="cart_popover_inherit" inherit_id="website_sale.cart_popover">
-		 <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
-			  <t t-foreach="line.get_description_following_lines()" t-as="name_line">
-				  <t t-call="website_sale.cart_line_product_link">
-					<strong><t t-esc="name_line"/></strong>
-				  </t>
-			 </t>
-			 <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
+		<xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
+			<t t-foreach="line.get_description_following_lines()" t-as="name_line">
+				<t t-call="website_sale.cart_line_product_link">
+					<strong>
+						<t t-esc="name_line"/>
+					</strong>
+				</t>
+			</t>
+			<strong class="text-muted d-none d-md-block small">
+				<t t-esc="line.name_short_without_code()"/>
+			</strong>
 		</xpath>
 
 		<xpath expr="//a[hasclass('btn','btn-primary')]" position="replace">
 			<a role="button" class="btn btn-primary" href="/shop/cart">
                Voir mon panier
-             </a>
+			</a>
 		</xpath>
 	</template>
 
-<!--hide attribute on product view-->
-		<template id="sale_variants_inherit" inherit_id="sale.variants">
-		 <xpath expr="//t[@t-foreach='product.valid_product_template_attribute_line_ids']" position="replace"/>
-		</template>
+	<!--hide attribute on product view-->
+	<template id="sale_variants_inherit" inherit_id="sale.variants">
+		<xpath expr="//t[@t-foreach='product.valid_product_template_attribute_line_ids']" position="replace"/>
+	</template>
 
-    <record id="product_category_form_view_inherit" model="ir.ui.view">
-        <field name="name">Add website description</field>
-        <field name="model">product.category</field>
-        <field name="inherit_id" ref="product.product_category_form_view" />
-        <field name="arch" type="xml">
-            <data>
-                <xpath expr="//group[@name='account_property']" position="after">
-                    <label for="web_visible" string="Visible sur le site "/>
-  					<field name="web_visible"/> 
+	<record id="product_category_form_view_inherit" model="ir.ui.view">
+		<field name="name">Add website description</field>
+		<field name="model">product.category</field>
+		<field name="inherit_id" ref="product.product_category_form_view" />
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//group[@name='account_property']" position="after">
+					<label for="web_visible" string="Visible sur le site "/>
+					<field name="web_visible"/>
 					<group string="Description pour le site">
-					<field name="website_description"/>
+						<field name="website_description"/>
 					</group>
 				</xpath>
-           </data>
-        </field>
-    </record>
+			</data>
+		</field>
+	</record>
+	<template id="product_filter_sidebar" name="Product Side Bar">
+		<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-product bg-white d-block d-md-none">
+			<a id="close_sidebar_product" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a>
+			<div class="sidebar-content">
+				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
+				<div class="card bg-white sidebar-card">
+					<!--ul class="nav navbar-nav align-items-md-center" id="top_menu">
+						<li class="nav-item dropdown  position-static">
+							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">SERVICES</span>
+							</a>
+							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
+								<section class="mega_menu_one_snippet" data-name="Services Menu">
+									<div class="container p-0">
+										<div class="row">
+											<div class="col-md-3">
+												<t t-set="service" t-value="service_ids"/>
+												<t t-set="ss" t-value="service_ids[0]"/>
+												<div class="heading-contents">
+													<t t-if="service">
+														<t t-foreach="service" t-as="s">
+															<p class="m-0">
+																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" data-original-title="" title="" aria-describedby="tooltip688207">
+																	<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
+																</a>
+															</p>
+														</t>
+													</t>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</li>
+					</ul-->
+					<div class="shop_page_filter oe_website_sale">
+						<div class="product_filters">
+
+							<div class="attribute_filter">
+								<form class="js_attributes" method="get">
+									<input t-if="category" type="hidden" name="category" t-att-value="category.id" />
+									<input type="hidden" name="search" t-att-value="search" />
+									<ul class="nav navbar-nav align-items-md-center" id="top_menu">
+										<t t-foreach="filters" t-as="a">
+											<t t-if="a.is_filter_visible">
+												<li t-if="a.product_filter_line_ids and len(a.product_filter_line_ids) &gt; 1" class="nav-item dropdown  position-static">
+													<a href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle" data-toggle="dropdown">
+														<span>
+															<t t-esc="a.name"/>
+														</span>
+													</a>
+													<div class="dropdown-menu" role="menu">
+														<ul class="nav nav-pills flex-column">
+															<t t-foreach="a.product_filter_line_ids" t-as="v">
+																<li class="nav-item">
+																	<label style="margin: 0 5px;" t-attf-class="nav-link#{' active' if v.id in attrib_set else ''}">
+																		<input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" />
+																		<span style="font-weight: normal" t-field="v.name" />
+																	</label>
+																</li>
+															</t>
+														</ul>
+													</div>
+												</li>
+											</t>
+										</t>
+									</ul>
+								</form>
+							</div>
+
+						</div>
+					</div>
+					<div class="clear-search mt8 clinic-type-b">
+						<t t-if="attrib_set">
+							<a t-attf-href="/shop" class="m-0 badge badge-pill badge-light">
+								<span>Réinitialiser</span>
+							</a>
+						</t>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</template>
+
+	<template id="products_inherit" inherit_id="website_sale.products">
+		<xpath expr="//t[@t-if='not search']" position="replace">
+			<t t-if="not search">
+				<h3 class="mt8">Aucun article ne correspond à votre recherche</h3>
+				<t t-if="category">
+					<a class="btn btn-primary" t-att-href="category.url_key">
+						<span>Nouvelle recherche</span>
+					</a>
+				</t>
+			</t>
+		</xpath>
+	</template>
+
 
 </odoo>

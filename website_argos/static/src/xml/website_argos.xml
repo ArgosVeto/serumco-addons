@@ -28,7 +28,7 @@
     </t>
     <t t-name="website_argos.bizcommon_dynamic_category_slider">
         <div aria-hidden="true" aria-labelledby="myModalLabel" t-attf-class="modal#{technical ? ' o_technical_modal' : ''}#{fullscreen ? ' o_modal_full': ''}" contenteditable="False" role="dialog" style="z-index:1050">
-            <div class="modal-dialog">
+            <div class="modal-dialog modial-dialog centered">
                 <div class="modal-content" id="s_media_block_modal">
                     <div class="modal-header">
                         <h4 class="modal-title">Category Slider Configuration</h4>
