@@ -809,3 +809,40 @@
 		}
 	}
 }
+@media(max-width:767.98px){
+	.dropdown_sorty_by {
+		.btn-sortby {
+			color: #63bae9;
+			font-size: 16px;
+			font-weight: 900;
+			border: solid 2px rgba(99, 186, 233, 0.4);
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+			text-align: left;
+		}
+		a.dropdown-toggle{
+			position: relative;
+			&:after{
+			transition: 0.2s;
+			-webkit-transition: 0.2s;
+			position: absolute;
+			float: right;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			font-family: FontAwesome;
+			content: '\f107';
+			width: 16px;
+			text-align: center;
+			height: 16px;
+			line-height: 16px;
+			border: 0;
+			color:theme-color('primary');
+			font-size: 16px !important;
+			font-weight: 900;
+			}
+		}
+	}
+}

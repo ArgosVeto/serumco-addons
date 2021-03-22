@@ -47,7 +47,7 @@
 									]"/>
 						<t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
 						<div class="dropdown dropdown_sorty_by" style="width: 45%;">
-							<a role="button" href="#" class="dropdown-toggle btn mb16 mt16" data-toggle="dropdown" style="font-size: 16px;font-weight: 900;border: solid 2px rgba(99, 186, 233, 0.4);width: 100%;justify-content: center;align-items: center;">
+							<a role="button" href="#" class="dropdown-toggle btn btn-sortby mb16 mt16" data-toggle="dropdown">
 								<span>
 									<t t-if='len(website_sale_sortable_current)'>
 										<t t-raw='website_sale_sortable_current[0][0]'/>
