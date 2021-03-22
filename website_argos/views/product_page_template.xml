@@ -50,6 +50,7 @@
                     <li class="breadcrumb-item">
                         <a href="/shop">Boutique</a>
                     </li>
+                    <!--t t-call="website_argos.breadcrumb"/-->
                     <t t-if="product.public_categ_ids">
                         <li class="breadcrumb-item">
                             <t t-foreach="product.public_categ_ids" t-as="categs">
@@ -63,7 +64,7 @@
                     </t>
                     <!--li>
                     <span t-field="product.name" />
-                </li-->
+                    </li-->
                 </ol>
             </div>
         </xpath>
@@ -537,7 +538,7 @@ Ajouter
                                 <button class="btn btn-primary a-submit d-inline-block">
                                     <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>
 Ajouter
-                                                                            <!--span class="ml-1 mr-1 text-bold"> - </span>
+                                                                                                                                                        <!--span class="ml-1 mr-1 text-bold"> - </span>
                                         <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price mt16">
                                             <p class="oe_price_h4 css_editable_mode_hidden">
                                                 <span t-attf-class="text-danger oe_default_price {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />

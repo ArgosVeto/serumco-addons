@@ -120,13 +120,23 @@
 							<li class="breadcrumb-item">
 								<a href="/shop">Boutique</a>
 							</li>
-							<li t-if="category.parent_id" class="breadcrumb-item">
+				            <t t-call="website_argos.breadcrumb_recursive" />
+							<!--t t-foreach="category.category_ids" t-as="category">
+								<li class="breadcrumb-item">
+									<a t-att-href="'/shop/category/' + slug(category.id)">
+										<span>
+											<t t-esc="category.name"/>
+										</span>
+									</a>
+								</li>
+							</t-->
+							<!--li t-if="category.parent_id" class="breadcrumb-item">
 								<a t-att-href="'/shop/category/' + slug(category.parent_id)">
 									<span>
 										<t t-esc="category.parent_id.name"/>
 									</span>
 								</a>
-							</li>
+							</li-->
 							<li t-if="category" class="breadcrumb-item active">
 								<span>
 									<t t-esc="category.name"/>
@@ -600,5 +610,33 @@ Ajouter
 		</xpath>
 	</template>
 
+    <template id="breadcrumb_recursive">
+        <t t-if="category.parent_id">
+            <t t-set="category" t-value="category.parent_id" />
+            <t t-call="website_argos.breadcrumb_recursive" />
+            <li class="breadcrumb-item">
+                <a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
+            </li>
+        </t>
+        <t t-if="not category.parent_id" />
+    </template>
+
+    <template id="breadcrumb">
+        <ol class="breadcrumb">
+            <t t-if="len(product.public_categ_ids) > 0">
+                <t t-set="category" t-value="product.public_categ_ids[0]" />
+                <li class="breadcrumb-item">
+                    <a t-att-href="keep('/shop',category=0)">Products</a>
+                </li>
+                <t t-call="website_argos.breadcrumb_recursive" />
+                <li class="breadcrumb-item">
+                    <a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
+                </li>
+            </t>
+            <li class="breadcrumb-item active">
+                <span t-esc="product.name" />
+            </li>
+        </ol>
+    </template>
 
 </odoo>
