@@ -528,7 +528,7 @@ Ajouter
                         <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
                         <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
                     </div>
-                    <div class="product_price" style="vertical-align: bottom;">
+                    <div class="product_price" style="vertical-align: bottom; wi">
                         <form action="/shop/cart/update" method="post">
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                             <input name="product_id" t-att-value="alt_product.product_variant_id.id" type="hidden" />
