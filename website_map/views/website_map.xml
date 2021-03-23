@@ -169,20 +169,23 @@
 					<div class="card-footer">
 						<a id="appeler" class="btn btn-outline-primary" href="#nogo" onclick="myFunction(this)">
 							<img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2 telephone"/>
-							<span class="tel d-inline">Appeler</span>
-							<input type="hidden" id="tele" t-att-value="operating_unit.phone"/>
+							<span class="telephone d-inline">Appeler</span>
+                            <span class="numero d-none" t-field="operating_unit.phone"/>
+  							<!--input class="numero" type="hidden" id="tele" t-att-value="operating_unit.phone"/-->
 						</a>
 						<script>
 function myFunction(e) {
-   e.innerHTML = document.getElementById("tele").value;
-   e.style.fontSize = "12px"
-	}
+	var numero = e.getElementsByClassName("numero"); 
+	var telephone = e.getElementsByClassName("telephone"); 
+	var img = e.getElementsByClassName("img"); 
+    $(numero).removeClass("d-none");
+    $(numero).addClass("d-inline");
+    $(telephone).removeClass("d-inline");
+    $(telephone).addClass("d-none");
+    $(img).addClass("d-none");
+    e.style.fontSize = "12px"
+}
 						</script>
-						<!--a id="appeler" class="btn btn-outline-primary mr-2">
-                           <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2 telephone"/>
-						   <span class="telephone d-inline">Appeler</span>
-                           <span class="numero d-none" t-field="operating_unit.phone"/>
- 						</a-->
 						<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-md-none d-inline-block">
 							<img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/>
 							<span class="">Appeler</span>
