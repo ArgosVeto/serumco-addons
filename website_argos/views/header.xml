@@ -172,7 +172,7 @@
 
 	<template id="bizople_mbl_side_bar" name="Bizople Side Bar">
     	<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-header bg-white d-block d-md-none">
-		<a id="close_sidebar_header" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a>
+		<!--a id="close_sidebar_header" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a-->
 	    	<div class="sidebar-content">
 				<div class="search">
 					<t t-call="website_sale.s_products_searchbar_input" />
