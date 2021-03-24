@@ -5,7 +5,7 @@
     'name': 'Website Argos',
     'category': 'Website',
     'version': '13.0.0.0',
-    'summary': '''Website Argos''',
+    'summary': '''Website  Argos''',
     'description': """Website  Argos""",
     'depends': [
         # 'theme_argos ',
