@@ -1,6 +1,6 @@
 
 {
-    'name': 'Website Maps',
+    'name': 'Website  Maps',
     'category': 'Website',
     'version': '13.0.0.0',
     'summary': '''Website Maps''',
