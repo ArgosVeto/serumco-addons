@@ -622,7 +622,6 @@ Ajouter
     </template>
 
     <template id="breadcrumb">
-        <ol class="breadcrumb">
             <t t-if="len(product.public_categ_ids) > 0">
                 <t t-set="category" t-value="product.public_categ_ids[0]" />
                 <li class="breadcrumb-item">
@@ -636,7 +635,6 @@ Ajouter
             <li class="breadcrumb-item active">
                 <span t-esc="product.name" />
             </li>
-        </ol>
     </template>
 
 </odoo>
