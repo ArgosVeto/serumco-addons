@@ -271,10 +271,10 @@ function myFunction(e) {
 		</xpath-->
 		<xpath expr="//t/section[2]/div/div/div/div[3]/div[2]" position="replace">
 			<div class="mb32">
-				<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
-				<input type="hidden" id='latitude' t-att-value='operating_unit.partner_id.partner_latitude'/>
-				<input type="hidden" id='longitude' t-att-value='operating_unit.partner_id.partner_longitude'/>
-				<input type="hidden" id='clinique' t-att-value='operating_unit.name'/>
+		    	<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
+                <input type="hidden" id='latitude' t-att-value='operating_unit.partner_id.partner_latitude'/>
+                <input type="hidden" id='longitude' t-att-value='operating_unit.partner_id.partner_longitude'/>
+                <input type="hidden" id='clinique' t-att-value='operating_unit.name'/>
 				<script>
 			
 				function ClinicMap() {
@@ -293,16 +293,9 @@ function myFunction(e) {
 						zoom:10,
 					});
 					var infoWindowOptions = {
-						content: '<p>
-					<strong>
-						<t t-esc="operating_unit.name"/>
-					</strong>
-				</p>'
-						    + '				<p>
-					<t t-esc="operating_unit.street"/>
-,					<t t-esc="operating_unit.city"/>
-				</p>'
-							+ '				<a t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
+						content: '<p><strong><t t-esc="operating_unit.name"/></strong></p>'
+						    + '<p><t t-esc="operating_unit.street"/>, <t t-esc="operating_unit.city"/></p>'
+							+ '<a t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
 					};
 
 					var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
@@ -312,20 +305,20 @@ function myFunction(e) {
 					});
 				}
 			
-			</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=ClinicMap"></script>
-		</div>
-	</xpath>
-</template>
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=ClinicMap"></script>
+			</div>
+		</xpath>
+	</template>
 
-<template id="my_clinic_inherit" inherit_id="website_argos.my_clinic">
-	<xpath expr="//div[@id='localisation']/div[2]" position="replace">
-		<div class="mb32">
-			<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
-			<input type="hidden" id='latitude' t-att-value='clinic.partner_id.partner_latitude'/>
-			<input type="hidden" id='longitude' t-att-value='clinic.partner_id.partner_longitude'/>
-			<input type="hidden" id='clinique' t-att-value='clinic.name'/>
-			<script>
+	<template id="my_clinic_inherit" inherit_id="website_argos.my_clinic">
+        <xpath expr="//div[@id='localisation']/div[2]" position="replace">
+			<div class="mb32">
+		    	<div id="googleMap_clinic" style="width: 100%; height: 400px;display:block; position: relative; overflow: hidden;"></div>
+                <input type="hidden" id='latitude' t-att-value='clinic.partner_id.partner_latitude'/>
+                <input type="hidden" id='longitude' t-att-value='clinic.partner_id.partner_longitude'/>
+                <input type="hidden" id='clinique' t-att-value='clinic.name'/>
+				<script>
 			
 				function ClinicMap() {
 					var latitude = parseFloat(document.getElementById('latitude').value);
@@ -343,16 +336,9 @@ function myFunction(e) {
 						zoom:10,
 					});
 					var infoWindowOptions = {
-						content: '<p>
-				<strong>
-					<t t-esc="clinic.name"/>
-				</strong>
-			</p>'
-						    + '			<p>
-				<t t-esc="clinic.street"/>
-,				<t t-esc="clinic.city"/>
-			</p>'
-							+ '			<a t-att-href="'https://www.google.com/maps/place/'+clinic.street+'+'+clinic.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
+						content: '<p><strong><t t-esc="clinic.name"/></strong></p>'
+						    + '<p><t t-esc="clinic.street"/>, <t t-esc="clinic.city"/></p>'
+							+ '<a t-att-href="'https://www.google.com/maps/place/'+clinic.street+'+'+clinic.city" target="_blank" class="ml-auto top-text">Voir sur Google Maps</a>'
 					};
 
 					var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
@@ -362,9 +348,10 @@ function myFunction(e) {
 					});
 				}
 			
-		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=ClinicMap"></script>
-	</div>
-</xpath>
-</template>
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwRW9SMsA05OdeixE6Ef1SSe853DnPom4&amp;libraries=geometry&amp;callback=ClinicMap"></script>
+			</div>
+		</xpath>
+	</template>
+
 </odoo>
