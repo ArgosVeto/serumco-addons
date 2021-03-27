@@ -238,6 +238,12 @@
 			    position: relative;
 			}
 		}
+		.oe_search_box {
+			width: 400px;
+			@media (max-width: 767.98px) {
+				width: 80%; 
+			}
+		}
 	}
 	#top_menu{
 		.nav-link{
