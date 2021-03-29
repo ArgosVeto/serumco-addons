@@ -29,6 +29,9 @@
                 </a>
             </div>
         </t>
+        <t t-else="">
+            <br/>
+        </t>
     </template>
 
     <template id="product_variants">
