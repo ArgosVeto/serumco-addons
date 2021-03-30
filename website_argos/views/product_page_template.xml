@@ -45,18 +45,18 @@
 
     <template id="argos_product_detail_inherited" inherit_id="website_sale.product" name="Product Details">
         <xpath expr="//div[hasclass('row')]/div[hasclass('col-md-4')]" position="replace">
-            <div class="col-md-12">
-                <div class="top-breadcrumbs mt24">
-                    <ol class="breadcrumb mb32">
-                        <li class="breadcrumb-item">
-                            <a href="/shop">Boutique</a>
-                        </li>
-                        <t t-if="product.public_categ_ids">
-                            <t t-call="website_argos.breadcrumb"/>
-                        </t>
-                    </ol>
+                <div class="col-md-12">
+                    <div class="top-breadcrumbs mt8">
+                        <ol class="breadcrumb mb32">
+                            <li class="breadcrumb-item">
+                                <a href="/shop">Boutique</a>
+                            </li>
+                            <t t-if="product.public_categ_ids">
+                                <t t-call="website_argos.breadcrumb"/>
+                            </t>
+                        </ol>
+                    </div>
                 </div>
-            </div>
         </xpath>
 
         <xpath expr="//div[hasclass('col-xl-8')]" position="attributes">
@@ -110,7 +110,7 @@
                     <div class="js_product js_main_product">
                         <div id="product_option_block" class="d-none"/>
                         <t t-if="product" t-call="website_sale.product_price" />
-                        <!--p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." /-->
+                        <p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." />
                         <div class="line mt16 mb16"/>
                         <div class="ml-auto d-block d-md-none">
                             <a type="button" role="button" class="btn btn-default o_add_wishlist te_theme_button" t-att-disabled='in_wish or None' title="Add to Wishlist" t-att-data-product-product-id="product.product_variant_ids[0].id if product.product_variant_ids else '0'" data-action="o_wishlist">
@@ -438,58 +438,29 @@ Ajouter
         </xpath>
     </template>
 
-    <template id="rating_widget_stars_static_inherited" inherit_id="website_rating.rating_widget_stars_static">
-        <xpath expr="//div[hasclass('o_website_rating_static')]" position="replace">
-            <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
-                <t t-if="rating_avg > 0">
-                    <t t-foreach="range(0, val_integer)" t-as="num">
-                        <i class="fa fa-star" role="img"></i>
-                    </t>
-                    <t t-if="val_decimal">
-                        <i class="fa fa-star-half-o" role="img"></i>
-                    </t>
-                    <t t-foreach="range(0, empty_star)" t-as="num">
-                        <i class="fa fa-star text-black-25" role="img"></i>
-                    </t>
-                    (                    <t t-esc="rating_count"/>
-)
-                </t>
-                <t t-else="">
-                    <br/>
-                </t>
-            </div>
-        </xpath>
-    </template>
-
-
     <template id="alt_product_item_stars" name="Rating: static star widget">
         <t t-set="rating_avg" t-value="round(alt_product.rating_avg * 100) / 100 / 2"/>
         <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
         <t t-set="val_integer" t-value="int(rating_avg)"/>
         <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
         <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
-            <t t-if="rating_avg > 0">
-                <t t-foreach="range(0, val_integer)" t-as="num">
-                    <i class="fa fa-star" role="img"></i>
-                </t>
-                <t t-if="val_decimal">
-                    <i class="fa fa-star-half-o" role="img"></i>
-                </t>
-                <t t-foreach="range(0, empty_star)" t-as="num">
-                    <i class="fa fa-star-o text-secondary" role="img"></i>
-                </t>
-                <span style="margin-left:2px;" class="text1">
-                    <t t-esc="rating_avg"/>
-                    <span> / 5</span>
-                </span>
-                <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
-                    <t t-esc="alt_product.rating_count"/>
-                    <span style="margin-left:5px;font-size:15px;">avis</span>
-                </span>
+            <t t-foreach="range(0, val_integer)" t-as="num">
+                <i class="fa fa-star" role="img"></i>
             </t>
-            <t t-else="">
-                <br/>
+            <t t-if="val_decimal">
+                <i class="fa fa-star-half-o" role="img"></i>
             </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star-o text-secondary" role="img"></i>
+            </t>
+            <span style="margin-left:2px;" class="text1">
+                <t t-esc="rating_avg"/>
+                <span> / 5</span>
+            </span>
+            <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
+                <t t-esc="alt_product.rating_count"/>
+                <span style="margin-left:5px;font-size:15px;">avis</span>
+            </span>
         </div>
     </template>
 
