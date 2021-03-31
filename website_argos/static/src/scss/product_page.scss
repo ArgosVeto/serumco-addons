@@ -1,7 +1,7 @@
 #product_detail {
     /*padding: 32px 15px 0 !important;*/
 
-    .form-inline.justify-content-end{
+	.form-inline.justify-content-end{
     	display:none !important;
     }
     .breadcrumb{
@@ -327,9 +327,6 @@
 			}
 		}
 	}
-	@media (max-width: 767.98px) {
-		
-	}
 }
 .product_tabs{
 	#product_detail_tabs{
@@ -426,7 +423,7 @@
 		    display: inline-block;
 		    margin: 0 .5em 0 .75em;
 		    float: right;
-		    color: #63bae9;
+		    color: theme-color('primary');
 		    font-size: 16px;
 			font-weight: 300;
 		}
@@ -434,8 +431,11 @@
 		    content: '\f067';
 		    font-family: 'FontAwesome';
 		    float: right;
-		    color: #63bae9;
+		    color: theme-color('primary');
 			font-weight: 300;
+		}
+		.btn-link {
+		    color: theme-color('primary');
 		}
 	}
 }
@@ -583,8 +583,8 @@
 		}
 	}
 }
-.alternative_product{
-	.h3{
+.alternative_product {
+	.titre-art {
 		font-family: Comfortaa-Bold !important;
 	  	font-size: 28px;
 	  	font-weight: normal;
@@ -693,6 +693,19 @@
 		}
 	}
 	@media (max-width: 767.98px) {
+		.alternative_product{
+			.span{
+				font-family: Comfortaa-Bold !important;
+				font-size: 28px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.21;
+				letter-spacing: normal;
+				color: theme-color('primary') !important;
+				text-align: left !important;
+			}
+		}	
 		.alternative_product1 {
 			max-width: 100% !important;
 		}
@@ -808,8 +821,41 @@
 		    text-transform: uppercase;
 		}
 	}
+	span {
+		font-family: Comfortaa-Bold !important;
+		font-size: 28px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.21;
+		letter-spacing: normal;
+		color: theme-color('primary') !important;
+		text-align: left !important;
+}	
+	a:not([href]):not([tabindex]) {
+			color: white; 
+			text-decoration: none;
+	}	
+	a.btn {
+		float: right;
+	    margin-right: 0px;
+	}
 }
 @media(max-width:767.98px){
+	.o_shop_discussion_rating {
+		#avis{
+			width: 50%;	
+		}
+		#rating-product{
+			width: 50%;	
+		   }
+	    #rating-product-bis{
+			width: 50%;	
+		   }
+		span {
+			font-size: 28px;
+		}	
+	  }
 	.dropdown_sorty_by {
 		.btn-sortby {
 			color: #63bae9;

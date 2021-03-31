@@ -45,18 +45,18 @@
 
     <template id="argos_product_detail_inherited" inherit_id="website_sale.product" name="Product Details">
         <xpath expr="//div[hasclass('row')]/div[hasclass('col-md-4')]" position="replace">
-                <div class="col-md-12">
-                    <div class="top-breadcrumbs mt8">
-                        <ol class="breadcrumb mb32">
-                            <li class="breadcrumb-item">
-                                <a href="/shop">Boutique</a>
-                            </li>
-                            <t t-if="product.public_categ_ids">
-                                <t t-call="website_argos.breadcrumb"/>
-                            </t>
-                        </ol>
-                    </div>
+            <div class="col-md-12">
+                <div class="top-breadcrumbs mt24">
+                    <ol class="breadcrumb mb32">
+                        <li class="breadcrumb-item">
+                            <a href="/shop">Boutique</a>
+                        </li>
+                        <t t-if="product.public_categ_ids">
+                            <t t-call="website_argos.breadcrumb"/>
+                        </t>
+                    </ol>
                 </div>
+            </div>
         </xpath>
 
         <xpath expr="//div[hasclass('col-xl-8')]" position="attributes">
@@ -110,7 +110,7 @@
                     <div class="js_product js_main_product">
                         <div id="product_option_block" class="d-none"/>
                         <t t-if="product" t-call="website_sale.product_price" />
-                        <p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." />
+                        <!--p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." /-->
                         <div class="line mt16 mb16"/>
                         <div class="ml-auto d-block d-md-none">
                             <a type="button" role="button" class="btn btn-default o_add_wishlist te_theme_button" t-att-disabled='in_wish or None' title="Add to Wishlist" t-att-data-product-product-id="product.product_variant_ids[0].id if product.product_variant_ids else '0'" data-action="o_wishlist">
@@ -205,26 +205,32 @@ Ajouter
                                     Description
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link o_default_snippet_text" id="nav-home-tab2" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="true">
+                            <t t-if="product.composition or product.analytic_constitution or product.additives or product.energetic_value or product.waters_content">
+                                <li class="nav-item">
+                                    <a class="nav-link o_default_snippet_text" id="nav-home-tab2" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="true">
                                     Composition
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link o_default_snippet_text" id="nav-home-tab3" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="true">
+                                    </a>
+                                </li>
+                            </t>
+                            <t t-if="product.daily_ratio_recommended or product.indications">
+                                <li class="nav-item">
+                                    <a class="nav-link o_default_snippet_text" id="nav-home-tab3" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="true">
                                     Spécifications
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home4" role="tab" aria-controls="nav-home4" aria-selected="true">
+                                    </a>
+                                </li>
+                            </t>
+                            <t t-if="product.documentation_ids">
+                                <li class="nav-item">
+                                    <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home4" role="tab" aria-controls="nav-home4" aria-selected="true">
                                     Mode d'emploi
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home5" role="tab" aria-controls="nav-home5" aria-selected="true">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home5" role="tab" aria-controls="nav-home5" aria-selected="true">
                                     Besoin de conseil ?
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            </t>
 
                             <!--t t-foreach="product.tab_ids" t-as="tab">
                                 <li class="nav-item">
@@ -240,22 +246,36 @@ Ajouter
                             <div itemprop="description" t-field="product.description_web" class="oe_structure mt16" id="product_full_description" />
                         </div>
                         <div class="tab-pane fade" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2">
-                            <p>Composition :</p>
-                            <t t-raw="product.composition"/>
-                            <p>Constituants Analytiques :</p>
-                            <t t-raw="product.analytic_constitution"/>
-                            <p>Additifs :</p>
-                            <t t-raw="product.additives"/>
-                            <p>Valeurs Energétique :</p>
-                            <t t-raw="product.energetic_value"/>
-                            <p>Teneur en Eau :</p>
-                            <t t-raw="product.waters_content"/>
+                            <t t-if="product.composition">
+                                <p>Composition :</p>
+                                <t t-raw="product.composition"/>
+                            </t>
+                            <t t-if="product.analytic_constitution">
+                                <p>Constituants Analytiques :</p>
+                                <t t-raw="product.analytic_constitution"/>
+                            </t>
+                            <t t-if="product.additives">
+                                <p>Additifs :</p>
+                                <t t-raw="product.additives"/>
+                            </t>
+                            <t t-if="product.energetic_value">
+                                <p>Valeurs Energétique :</p>
+                                <t t-raw="product.energetic_value"/>
+                            </t>
+                            <t t-if="product.waters_content">
+                                <p>Teneur en Eau :</p>
+                                <t t-raw="product.waters_content"/>
+                            </t>
                         </div>
                         <div class="tab-pane fade" id="nav-home3" role="tabpanel" aria-labelledby="nav-home-tab3">
-                            <p>Ration journalière recommandée :</p>
-                            <t t-raw="product.daily_ratio_recommended"/>
-                            <p>Indications :</p>
-                            <t t-raw="product.indications"/>
+                            <t t-if="product.daily_ratio_recommended">
+                                <p>Ration journalière recommandée :</p>
+                                <t t-raw="product.daily_ratio_recommended"/>
+                            </t>
+                            <t t-if="product.indications">
+                                <p>Indications :</p>
+                                <t t-raw="product.indications"/>
+                            </t>
                         </div>
                         <div class="tab-pane fade" id="nav-home4" role="tabpanel" aria-labelledby="nav-home-tab4">
                             <t t-foreach="product.documentation_ids" t-as="doc">
@@ -337,86 +357,92 @@ Ajouter
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <t t-if="product.composition or product.analytic_constitution or product.additives or product.energetic_value or product.waters_content">
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                      Composition
-                                </button>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>Composition :</p>
-                                    <t t-raw="product.composition"/>
-                                    <p>Constituants Analytiques :</p>
-                                    <t t-raw="product.analytic_constitution"/>
-                                    <p>Additifs :</p>
-                                    <t t-raw="product.additives"/>
-                                    <p>Valeurs Energétique :</p>
-                                    <t t-raw="product.energetic_value"/>
-                                    <p>Teneur en Eau :</p>
-                                    <t t-raw="product.waters_content"/>
+                                    </button>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Composition :</p>
+                                        <t t-raw="product.composition"/>
+                                        <p>Constituants Analytiques :</p>
+                                        <t t-raw="product.analytic_constitution"/>
+                                        <p>Additifs :</p>
+                                        <t t-raw="product.additives"/>
+                                        <p>Valeurs Energétique :</p>
+                                        <t t-raw="product.energetic_value"/>
+                                        <p>Teneur en Eau :</p>
+                                        <t t-raw="product.waters_content"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTree">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTree" aria-expanded="True" aria-controls="collapseTree">
+                        </t>
+                        <t t-if="product.daily_ratio_recommended or product.indications">
+                            <div class="card">
+                                <div class="card-header" id="headingTree">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTree" aria-expanded="True" aria-controls="collapseTree">
                                     Spécifications
-                                </button>
-                            </div>
-                            <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>Ration journalière recommandée :</p>
-                                    <t t-raw="product.daily_ratio_recommended"/>
-                                    <p>Indications :</p>
-                                    <t t-raw="product.indications"/>
+                                    </button>
+                                </div>
+                                <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Ration journalière recommandée :</p>
+                                        <t t-raw="product.daily_ratio_recommended"/>
+                                        <p>Indications :</p>
+                                        <t t-raw="product.indications"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFour">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        </t>
+                        <t t-if="product.documentation_ids">
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                                     Mode d'emploi
-                                </button>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                <div class="card-body">
-                                    <t t-foreach="product.documentation_ids" t-as="doc">
-                                        <t t-if="doc.doc_type == 'MOE'">
-                                            <p>
-                                                <a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/>
-                                                </a>
-                                            </p>
+                                    </button>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <t t-foreach="product.documentation_ids" t-as="doc">
+                                            <t t-if="doc.doc_type == 'MOE'">
+                                                <p>
+                                                    <a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/>
+                                                    </a>
+                                                </p>
+                                            </t>
+                                            <t t-if="doc.doc_type == 'TEC'">
+                                                <p>
+                                                    <a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/>
+                                                    </a>
+                                                </p>
+                                            </t>
                                         </t>
-                                        <t t-if="doc.doc_type == 'TEC'">
-                                            <p>
-                                                <a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/>
-                                                </a>
-                                            </p>
-                                        </t>
-                                    </t>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFive">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                     Besoin de conseil ?
-                                </button>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                                <div class="card-body">
-                                    <t t-foreach="product.documentation_ids" t-as="doc">
-                                        <t t-if="doc.doc_type == 'CNS'">
-                                            <p>
-                                                <a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/>
-                                                </a>
-                                            </p>
+                                    </button>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <t t-foreach="product.documentation_ids" t-as="doc">
+                                            <t t-if="doc.doc_type == 'CNS'">
+                                                <p>
+                                                    <a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/>
+                                                    </a>
+                                                </p>
+                                            </t>
                                         </t>
-                                    </t>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </t>
                     </div>
                 </div>
             </div>
@@ -438,29 +464,58 @@ Ajouter
         </xpath>
     </template>
 
+    <template id="rating_widget_stars_static_inherited" inherit_id="website_rating.rating_widget_stars_static">
+        <xpath expr="//div[hasclass('o_website_rating_static')]" position="replace">
+            <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+                <t t-if="rating_avg > 0">
+                    <t t-foreach="range(0, val_integer)" t-as="num">
+                        <i class="fa fa-star" role="img"></i>
+                    </t>
+                    <t t-if="val_decimal">
+                        <i class="fa fa-star-half-o" role="img"></i>
+                    </t>
+                    <t t-foreach="range(0, empty_star)" t-as="num">
+                        <i class="fa fa-star text-black-25" role="img"></i>
+                    </t>
+                    (                    <t t-esc="rating_count"/>
+)
+                </t>
+                <t t-else="">
+                    <br/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
     <template id="alt_product_item_stars" name="Rating: static star widget">
         <t t-set="rating_avg" t-value="round(alt_product.rating_avg * 100) / 100 / 2"/>
         <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
         <t t-set="val_integer" t-value="int(rating_avg)"/>
         <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
         <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
-            <t t-foreach="range(0, val_integer)" t-as="num">
-                <i class="fa fa-star" role="img"></i>
+            <t t-if="rating_avg > 0">
+                <t t-foreach="range(0, val_integer)" t-as="num">
+                    <i class="fa fa-star" role="img"></i>
+                </t>
+                <t t-if="val_decimal">
+                    <i class="fa fa-star-half-o" role="img"></i>
+                </t>
+                <t t-foreach="range(0, empty_star)" t-as="num">
+                    <i class="fa fa-star-o text-secondary" role="img"></i>
+                </t>
+                <span style="margin-left:2px;" class="text1">
+                    <t t-esc="rating_avg"/>
+                    <span> / 5</span>
+                </span>
+                <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
+                    <t t-esc="alt_product.rating_count"/>
+                    <span style="margin-left:5px;font-size:15px;">avis</span>
+                </span>
             </t>
-            <t t-if="val_decimal">
-                <i class="fa fa-star-half-o" role="img"></i>
+            <t t-else="">
+                <br/>
             </t>
-            <t t-foreach="range(0, empty_star)" t-as="num">
-                <i class="fa fa-star-o text-secondary" role="img"></i>
-            </t>
-            <span style="margin-left:2px;" class="text1">
-                <t t-esc="rating_avg"/>
-                <span> / 5</span>
-            </span>
-            <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
-                <t t-esc="alt_product.rating_count"/>
-                <span style="margin-left:5px;font-size:15px;">avis</span>
-            </span>
         </div>
     </template>
 
@@ -469,7 +524,7 @@ Ajouter
             <attribute name="class" separator=" " add="alternative_product" />
         </xpath>
         <xpath expr="//span[hasclass('h3')]" position="replace">
-            <h3>Articles associés</h3>
+            <span class="titre-art">Articles associés</span>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-2')]" position="replace">
             <div class="col-lg-4 col-md-4 pt16 pb112 alternative_product1 col-6">
@@ -553,15 +608,62 @@ Ajouter
     </template>
 
     <template id="product_rating_inherited" inherit_id="website_sale.product_comment">
-        <xpath expr="//div[hasclass('col-lg-8')]" position="attributes">
-            <attribute name="class">col-lg-12 col-md-12</attribute>
+        <xpath expr="//div[hasclass('col-lg-8')]" position="before">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32" id='avis'>
+                <span>Avis</span>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32" id='rating-product'>
+                <a class='btn btn-primary'>Rédiger un avis</a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32 d-none" id='rating-product-bis'>
+                <a class='btn btn-primary'>Rédiger un avis</a>
+            </div>
         </xpath>
-        <xpath expr="//t[@t-call='portal.message_thread']" position="inside">
-            <t t-foreach="rating" t-as="rat">
-                <h5 class="mb-1">
-                    <t t-esc="rat.publisher_name"/>
-                </h5>
-            </t>
+        <xpath expr="//div[hasclass('col-lg-8')]" position="replace">
+           <!--div class="container">
+                <div class="d-flex align-items-center justify-content-center pt16 pb16">
+                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
+                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
+                    <t t-set="website_avis_sortable" t-value="[
+										(avis_date_desc_label, 'list_price desc'),
+										(avis_date_asc_label, 'list_price asc'),
+									]"/>
+                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
+                    <div class="dropdown dropdown_sorty_by" style="width: 45%;">
+                        <a role="button" href="#" class="dropdown-toggle btn btn-sortby mb16 mt16" data-toggle="dropdown">
+                            <span>
+                                <t t-if='len(website_avis_sortable_current)'>
+                                    <t t-raw='website_avis_sortable_current[0][0]'/>
+                                </t>
+                                <t t-else='1'>
+													Trier par
+                                </t>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <t t-foreach="website_avis_sortable" t-as="sortby">
+                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
+                                    <span t-raw="sortby[0]"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div-->
+            <div class="col-lg-12 col-md-12" id="displaycomposer">
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="product"/>
+                    <t t-set="disable_composer" t-value="1"/>
+                    <t t-set="display_rating" t-value="True"/>
+                </t>
+            </div>
+            <div class="col-lg-12 col-md-12 d-none" id="hidecomposer">
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="product"/>
+                    <t t-set="disable_composer" t-value="0"/>
+                    <t t-set="display_rating" t-value="True"/>
+                </t>
+            </div>
         </xpath>
     </template>
 
@@ -592,6 +694,6 @@ Ajouter
                     </li>
                 </ol>
             </div>
-        </xpath>
+         </xpath>
     </template>
 </odoo>

@@ -244,7 +244,7 @@ $(function() {
     $("#close_sidebar_product").addClass("d-none");
     e.stopPropagation()
   });
-  $("#lirelasuite").on("click", function(e) {
+   $("#lirelasuite").on("click", function(e) {
     $("#description").removeClass("description_categ");
     $("#liremoins").removeClass("d-none");
     $("#liremoins").addClass("d-block");
@@ -258,6 +258,20 @@ $(function() {
     $("#liremoins").addClass("d-none");
     $("#lirelasuite").removeClass("d-none");
     $("#lirelasuite").addClass("d-block");
+    e.stopPropagation()
+  });
+  $("#rating-product").on("click", function(e) {
+    $("#displaycomposer").addClass("d-none");
+    $("#hidecomposer").removeClass("d-none");
+    $("#rating-product").addClass("d-none");
+    $("#rating-product-bis").removeClass("d-none");
+    e.stopPropagation()
+  });
+  $("#rating-product-bis").on("click", function(e) {
+    $("#displaycomposer").removeClass("d-none");
+    $("#hidecomposer").addClass("d-none");
+    $("#rating-product").removeClass("d-none");
+    $("#rating-product-bis").addClass("d-none");
     e.stopPropagation()
   });
   $(".bottom-show-sidebar").on("click", function(e) {
