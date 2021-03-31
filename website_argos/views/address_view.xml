@@ -43,6 +43,10 @@
                                         <label class="col-form-label" for="street">Adresse *</label>
                                         <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']"/>
                                     </div>
+                                    <div t-attf-class="form-group col-md-12 street2">
+                                        <label class="col-form-label" for="street2">Complément d'adresse</label>
+                                        <input type="text" name="street2" t-attf-class="form-control o_website_form_input #{'street2' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street2' in predefine_data and predefine_data['street2'] or partner_id and 'street2' in partner_id and partner_id['street2']"/>
+                                    </div>
                                     <div t-attf-class="form-group col-md-2 div_zip">
                                         <label class="col-form-label" for="zip">Code postal *</label>
                                         <input type="text" name="zip" t-attf-class="form-control" t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']"/>

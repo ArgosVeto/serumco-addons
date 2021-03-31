@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<template id="product_cart_inherit" inherit_id="website_sale.cart_lines" name="Product Cart Inherit">
-	 	<xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="before">
-		 	<t t-foreach="line.product_id.product_tmpl_id.public_categ_ids" t-as="categ">
-		        <p class="category-name"><t t-esc="categ.name"/></p>
-		    </t>
-	    </xpath>
+    <template id="product_cart_inherit" inherit_id="website_sale.cart_lines" name="Product Cart Inherit">
+        <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="before">
+            <t t-foreach="line.product_id.product_tmpl_id.public_categ_ids" t-as="categ">
+                <p class="category-name">
+                    <t t-esc="categ.name"/>
+                </p>
+            </t>
+        </xpath>
 
-	    <xpath expr="//thead//tr" position="replace">
-	    	<th class="td-img">Articles</th>
+        <xpath expr="//thead//tr" position="replace">
+            <th class="td-img">Articles</th>
             <th></th>
             <th class="text-center td-qty">Quantité</th>
             <th class="text-center td-price">Prix</th>
             <th class="text-center td-action"></th>
-	    </xpath>
+        </xpath>
 
-         <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
-             <t t-foreach="line.get_description_following_lines()" t-as="name_line">
-                      <t t-call="website_sale.cart_line_product_link">
-                        <strong><t t-esc="name_line"/></strong>
-                      </t>
-                 </t>
-	    </xpath>
-          <xpath expr="//t[@t-call='website_sale.cart_line_description_following_lines']" position="replace">
-            <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
-	    </xpath>
-	</template>
+        <xpath expr="//t[@t-call='website_sale.cart_line_product_link']" position="replace">
+            <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+                <t t-call="website_sale.cart_line_product_link">
+                    <strong>
+                        <t t-esc="name_line"/>
+                    </strong>
+                </t>
+            </t>
+        </xpath>
+        <xpath expr="//t[@t-call='website_sale.cart_line_description_following_lines']" position="replace">
+            <strong class="text-muted d-none d-md-block small">
+                <t t-esc="line.name_short_without_code()"/>
+            </strong>
+        </xpath>
+    </template>
 
-    
+
     <template id="clinic_load" name="Clinic load">
         <t t-if="clinic_ids">
             <div class="main-clinic row">
@@ -35,7 +41,11 @@
                     <div class="col-md-12">
                         <div class="clinic-content row">
                             <div class="col-md-4 m16">
-                                <div class="top-title"><strong><t t-esc="cli.display_name"></t></strong></div>
+                                <div class="top-title">
+                                    <strong>
+                                        <t t-esc="cli.display_name"></t>
+                                    </strong>
+                                </div>
                                 <div class="Avenue-Pasteur d-flex align-items-start">
                                     <t t-if="cli.street">
                                         <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8 mt4" />
@@ -45,23 +55,23 @@
                                             <span class="street" t-field="cli.street" />
                                         </t>
                                         <t t-if="cli.street2">
-                                            <span>, </span>                            
-                                             <span class="street2" t-field="cli.street2" />
+                                            <span>, </span>
+                                            <span class="street2" t-field="cli.street2" />
                                         </t>
                                         <t t-if="cli.zip">
-                                            <span>, </span>                            
+                                            <span>, </span>
                                             <span class="zip" t-field="cli.zip" />
                                         </t>
                                         <t t-if="cli.city">
-                                            <span>, </span>                            
+                                            <span>, </span>
                                             <span class="city" t-field="cli.city" />
                                         </t>
                                         <t t-if="cli.state_id">
-                                            <span>, </span>                            
+                                            <span>, </span>
                                             <span class="state" t-field="cli.state_id.name" />
                                         </t>
                                         <t t-if="cli.country_id">
-                                            <span>, </span>                            
+                                            <span>, </span>
                                             <span class="country" t-field="cli.country_id.name" />
                                         </t>
                                     </p>
@@ -70,7 +80,9 @@
                             <div class="col-md-6 m16">
                                 <t t-if="cli.calendar_id">
                                     <div class="calendar-content">
-                                        <strong><span>Horaires d’ouverture</span></strong>
+                                        <strong>
+                                            <span>Horaires d’ouverture</span>
+                                        </strong>
                                     </div>
                                     <t t-set="get_short_employee_slot" t-value="cli.calendar_id.get_short_employee_slot(cli.calendar_id)"/>
                                     <t t-if="get_short_employee_slot">
@@ -96,8 +108,10 @@
                                     </t>
                                 </t>
                             </div>
-                            <div class="col-md-2"> 
-                                <a  t-att-href="'/update-delivery/%s' % slug(cli)"   class="btn btn-primary float-right p-0" role="button" title="Edit this address" aria-label="Edit this address"><i class='fa fa-edit mr4'/>Choisir</a>
+                            <div class="col-md-2">
+                                <a t-att-href="'/update-delivery/%s' % slug(cli)" class="btn btn-primary float-right p-0" role="button" title="Edit this address" aria-label="Edit this address">
+                                    <i class='fa fa-edit mr4'/>
+Choisir</a>
                             </div>
                         </div>
                     </div>
@@ -105,16 +119,16 @@
             </div>
         </t>
     </template>
-    
-	<template id="product_cart_btn" inherit_id="website_sale.cart" name="Product Cart btn">
-		<xpath expr="//div[hasclass('oe_cart')]" position="replace">
-			<div class="col-12">
-				<h1 class="text-primary cart-page-heading">Votre panier</h1>
-			</div>
-    	 	<div class="col-12 col-xl-8 oe_cart">
+
+    <template id="product_cart_btn" inherit_id="website_sale.cart" name="Product Cart btn">
+        <xpath expr="//div[hasclass('oe_cart')]" position="replace">
+            <div class="col-12">
+                <h1 class="text-primary cart-page-heading">Votre panier</h1>
+            </div>
+            <div class="col-12 col-xl-8 oe_cart">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info" role="alert"> <!-- abandoned cart choices -->
+                        <div t-if="abandoned_proceed or access_token" class="mt8 mb8 alert alert-info" role="alert">                            <!-- abandoned cart choices -->
                             <t t-if="abandoned_proceed">
                                 <p>Your previous cart has already been completed.</p>
                                 <p t-if="website_sale_order">Please proceed your current cart.</p>
@@ -122,9 +136,13 @@
                             <t t-if="access_token">
                                 <p>This is your current cart.</p>
                                 <p>
-                                    <strong><a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=squash">Click here</a></strong> if you want to restore your previous cart. Your current cart will be replaced with your previous cart.</p>
+                                    <strong>
+                                        <a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=squash">Click here</a>
+                                    </strong> if you want to restore your previous cart. Your current cart will be replaced with your previous cart.</p>
                                 <p>
-                                    <strong><a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=merge">Click here</a></strong> if you want to merge your previous cart into current cart.
+                                    <strong>
+                                        <a t-attf-href="/shop/cart/?access_token=#{access_token}&amp;revive=merge">Click here</a>
+                                    </strong> if you want to merge your previous cart into current cart.
                                 </p>
                             </t>
                         </div>
@@ -146,7 +164,7 @@
                     </div>
                 </div>
             </div>
-	    </xpath>
+        </xpath>
         <xpath expr="//div[@id='o_cart_summary']//div[hasclass('d-xl-none')]" position="replace">
             <div class="d-xl-none mt8 mbl-checkout-btn">
                 <a role="button" href="/shop" class="continue-btn btn btn-secondary d-inline-block px-0">
@@ -159,7 +177,7 @@
                 </a>
             </div>
         </xpath>
-	</template>
+    </template>
 
     <template id="product_cart_coupon" inherit_id="website_sale.coupon_form" name="Product Cart Coupon">
         <xpath expr="//div[hasclass('input-group')]" position="replace">
@@ -184,46 +202,46 @@
         <xpath expr="//div[hasclass('progress-wizard')]" position="replace">
             <div class="progress-wizard">
                 <a class="no-decoration" t-att-href="step&gt;=10 and '/shop/cart' or '#'">
-                  <div id="wizard-step10" t-att-class="'progress-wizard-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
-                    <div class="progress-wizard-bar d-none d-md-block"/>
-                    <span class="progress-wizard-dot d-none d-md-inline-block"></span>
-                    <div class="progress-wizard-num">
-                        <span class="number">1</span>
-                        <span class="fa fa-check d-none"></span>
+                    <div id="wizard-step10" t-att-class="'progress-wizard-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block"></span>
+                        <div class="progress-wizard-num">
+                            <span class="number">1</span>
+                            <span class="fa fa-check d-none"></span>
+                        </div>
+                        <div class="progress-wizard-steplabel">
+                            <p class="heading">Panier</p>
+                            <p>Vérifier la commande</p>
+                        </div>
                     </div>
-                    <div class="progress-wizard-steplabel">
-                        <p class="heading">Panier</p>
-                        <p>Vérifier la commande</p>
-                    </div>
-                  </div>
                 </a>
                 <a class="no-decoration" t-att-href="step&gt;=20 and '/shop/checkout' or '#'">
-                  <div id="wizard-step20" t-att-class="'progress-wizard-step %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
-                    <div class="progress-wizard-bar d-none d-md-block"/>
-                    <span class="progress-wizard-dot d-none d-md-inline-block"></span>
-                    <div class="progress-wizard-num">
-                        <span class="number">2</span>
-                        <span class="fa fa-check d-none"></span>
+                    <div id="wizard-step20" t-att-class="'progress-wizard-step %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block"></span>
+                        <div class="progress-wizard-num">
+                            <span class="number">2</span>
+                            <span class="fa fa-check d-none"></span>
+                        </div>
+                        <div class="progress-wizard-steplabel">
+                            <p class="heading">Livraison</p>
+                            <p>Vos coordonnées</p>
+                        </div>
                     </div>
-                    <div class="progress-wizard-steplabel">
-                        <p class="heading">Livraison</p>
-                        <p>Vos coordonnées</p>
-                    </div>
-                  </div>
                 </a>
                 <a class="no-decoration" t-att-href="step&gt;=40 and '/shop/payment' or '#'">
-                  <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
-                    <div class="progress-wizard-bar d-none d-md-block"/>
-                    <span class="progress-wizard-dot d-none d-md-inline-block"></span>
-                    <div class="progress-wizard-num">
-                        <span class="number">3</span>
-                        <span class="fa fa-check d-none"></span>
+                    <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                        <div class="progress-wizard-bar d-none d-md-block"/>
+                        <span class="progress-wizard-dot d-none d-md-inline-block"></span>
+                        <div class="progress-wizard-num">
+                            <span class="number">3</span>
+                            <span class="fa fa-check d-none"></span>
+                        </div>
+                        <div class="progress-wizard-steplabel">
+                            <p class="heading">Paiement</p>
+                            <p>Confirmer la commande</p>
+                        </div>
                     </div>
-                    <div class="progress-wizard-steplabel">
-                        <p class="heading">Paiement</p>
-                        <p>Confirmer la commande</p>
-                    </div>
-                  </div>
                 </a>
             </div>
         </xpath>
@@ -234,7 +252,8 @@
             <div class="card border-0">
                 <div class="card-body p-xl-0">
                     <div class="toggle_summary d-xl-none">
-                        <b>Your order: </b> <span t-field="website_sale_order.amount_total" t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
+                        <b>Your order: </b>
+                        <span t-field="website_sale_order.amount_total" t-options='{"widget": "monetary", "display_currency": website_sale_order.pricelist_id.currency_id}'/>
                         <span class='fa fa-chevron-down fa-border float-right' role="img" aria-label="Details" title="Details"></span>
                     </div>
                     <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="alert alert-info">
@@ -258,16 +277,20 @@
                                     <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
                                         <div>
                                             <t t-foreach="line.get_description_following_lines()" t-as="name_line">
-                                                  <t t-call="website_sale.cart_line_product_link">
-                                                    <strong><t t-esc="name_line"/></strong>
-                                                  </t>
-                                             </t>
-                                             <strong class="text-muted d-none d-md-block small"><t t-esc="line.name_short_without_code()"/></strong>
+                                                <t t-call="website_sale.cart_line_product_link">
+                                                    <strong>
+                                                        <t t-esc="name_line"/>
+                                                    </strong>
+                                                </t>
+                                            </t>
+                                            <strong class="text-muted d-none d-md-block small">
+                                                <t t-esc="line.name_short_without_code()"/>
+                                            </strong>
                                         </div>
                                         <div class="quantity">
                                             <p>
                                                 <span>Qté : </span>
-                                                <span t-esc="line.product_uom_qty"/>
+                                                <span t-esc="int(line.product_uom_qty)"/>
                                             </p>
                                         </div>
                                     </td>
@@ -297,10 +320,13 @@
         <xpath expr="//t[@t-set='back_button_class']" position="replace">
             <t t-set="back_button_class" t-value="'btn btn-secondary continue-btn'"/>
         </xpath>
-         <xpath expr="//t[@t-set='submit_txt']" position="replace">
+        <xpath expr="//t[@t-set='back_button_link']" position="replace">
+            <t t-set="back_button_link" t-value="'/shop/checkout'"/>
+        </xpath>
+        <xpath expr="//t[@t-set='submit_txt']" position="replace">
             <t t-set="submit_txt">Valider la commande</t>
         </xpath>
-         <xpath expr="//t[@t-set='back_button_class']" position="replace">
+        <xpath expr="//t[@t-set='back_button_class']" position="replace">
             <t t-set="back_button_class" t-value="'btn btn-secondary continue-btn'"/>
         </xpath>
         <xpath expr="//div[@id='payment_method']//h3" position="replace">
@@ -309,8 +335,8 @@
         <xpath expr="//div[hasclass('order-xl-1')]" position="attributes">
             <attribute name="class">col-12 col-xl-8 order-xl-1</attribute>
         </xpath>
-        <xpath  expr="//div[hasclass('order-xl-2')]/t[1]" position="after">
-        	<t t-if="order.operating_unit_id">
+        <xpath expr="//div[hasclass('order-xl-2')]/t[1]" position="after">
+            <t t-if="order.operating_unit_id">
                 <div class=" mt32 click-collect">
                     <div class="mb32">
                         <div class="title">
@@ -321,13 +347,21 @@
                                 <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(order.operating_unit_id, 'clinic_banner')"/>
                             </div>
                             <div class="col-md-6 col-6">
-                                <h2 class="company"><t t-esc="order.operating_unit_id.name"/></h2>
+                                <h2 class="company">
+                                    <t t-esc="order.operating_unit_id.name"/>
+                                </h2>
                                 <p>
-                                    <span class="street"><t t-esc="order.operating_unit_id.street"/></span>
+                                    <span class="street">
+                                        <t t-esc="order.operating_unit_id.street"/>
+                                    </span>
                                     <span>,</span>
-                                    <span class="zip"><t t-esc="order.operating_unit_id.zip"/></span>
+                                    <span class="zip">
+                                        <t t-esc="order.operating_unit_id.zip"/>
+                                    </span>
                                     <span>, </span>
-                                    <span class="city"><t t-esc="order.operating_unit_id.city"/></span>
+                                    <span class="city">
+                                        <t t-esc="order.operating_unit_id.city"/>
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -340,11 +374,11 @@
                 </div>
             </t>
         </xpath>
-        
-         <xpath expr="//div[hasclass('order-xl-2')]" position="attributes">
+
+        <xpath expr="//div[hasclass('order-xl-2')]" position="attributes">
             <attribute name="class">col-12 col-xl-4 order-xl-2</attribute>
         </xpath>
-        
+
     </template>
 
 
@@ -369,7 +403,7 @@
 
     <template id="product_cart_confirmation" inherit_id="website_sale.confirmation" name="Product Cart confirmation">
         <xpath expr="//h1" position="replace">
-             <div class="col-12">
+            <div class="col-12">
                 <t t-call="website_sale.wizard_checkout">
                     <t t-set="step" t-value="41" />
                 </t>
@@ -380,24 +414,29 @@
         </xpath>
         <xpath expr="//div[hasclass('oe_cart')]" position="replace">
             <div class="argos_confirm">
-                <h3 class="text-primary mb32">Votre commande n° <t t-esc="order.name"/> est confirmée !</h3>
-                <h3 class="text-primary mb32"><t t-esc="order.partner_id.firstname"/> merci pour votre confiance</h3>
+                <h3 class="text-primary mb32">Votre commande n° <t t-esc="order.name"/>
+ est confirmée !</h3>
+                <h3 class="text-primary mb32">
+                    <t t-esc="order.partner_id.firstname"/>
+ merci pour votre confiance</h3>
             </div>
             <div>
-                <p  class="Argos-Vtrinaire-es mb32">Vous avez choisi de retirer votre commande dans notre établissement</p>
-                <p  class="Argos-Vtrinaire-es mb32"><t  t-esc="order.operating_unit_id.name"/></p>
-                <p  class="Argos-Vtrinaire-es mb32">Pour suivre sa prépraration, rendez-vous sur votre compte<a class="text-style-1" style="color: #de1a46;" href="http://argos-veterinaire.com">
+                <p class="Argos-Vtrinaire-es mb32">Vous avez choisi de retirer votre commande dans notre établissement</p>
+                <p class="Argos-Vtrinaire-es mb32">
+                    <t t-esc="order.operating_unit_id.name"/>
+                </p>
+                <p class="Argos-Vtrinaire-es mb32">Pour suivre sa prépraration, rendez-vous sur votre compte<a class="text-style-1" style="color: #de1a46;" href="http://argos-veterinaire.com">
                    argos-veterinaire.com
-                   </a> dans l’espace « Mes commandes »
+                    </a> dans l’espace « Mes commandes »
                 </p>
             </div>
             <div>
                 <p class="Argos-Vtrinaire-es mb32">Lorsque votre commande sera disponible dans votre établissement vétérinaire Argos, un e-mail et/ou un SMS avec toutes les informations pratiques pour la récupérer vous sera envoyé.</p>
             </div>
             <div>
-                <p  class="Argos-Vtrinaire-es mb32">Pour toute question concernant le suivi de votre commande, vos garanties et droit de rétractation, vous pouvez nous contacter à l’adresse e-mail <a class="text-style-1" style="color: #de1a46;" href="mailto:service-client@argos-veterinaire.com">
+                <p class="Argos-Vtrinaire-es mb32">Pour toute question concernant le suivi de votre commande, vos garanties et droit de rétractation, vous pouvez nous contacter à l’adresse e-mail <a class="text-style-1" style="color: #de1a46;" href="mailto:service-client@argos-veterinaire.com">
                    service-client@argos-veterinaire.com
-                   </a>
+                    </a>
                 </p>
             </div>
             <div class="col-md-12 mt-4">
@@ -416,13 +455,21 @@
                                 <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(order.operating_unit_id, 'clinic_banner')"/>
                             </div>
                             <div class="col-md-6 col-6">
-                                <h2 class="company"><t t-esc="order.operating_unit_id.name"/></h2>
+                                <h2 class="company">
+                                    <t t-esc="order.operating_unit_id.name"/>
+                                </h2>
                                 <p>
-                                    <span class="street"><t t-esc="order.operating_unit_id.street"/></span>
+                                    <span class="street">
+                                        <t t-esc="order.operating_unit_id.street"/>
+                                    </span>
                                     <span>,</span>
-                                    <span class="zip"><t t-esc="order.operating_unit_id.zip"/></span>
+                                    <span class="zip">
+                                        <t t-esc="order.operating_unit_id.zip"/>
+                                    </span>
                                     <span>, </span>
-                                    <span class="city"><t t-esc="order.operating_unit_id.city"/></span>
+                                    <span class="city">
+                                        <t t-esc="order.operating_unit_id.city"/>
+                                    </span>
                                 </p>
                             </div>
                         </div>
