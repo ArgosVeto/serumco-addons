@@ -624,9 +624,6 @@ Ajouter
     <template id="breadcrumb">
             <t t-if="len(product.public_categ_ids) > 0">
                 <t t-set="category" t-value="product.public_categ_ids[0]" />
-                <li class="breadcrumb-item">
-                    <a t-att-href="keep('/shop',category=0)">Products</a>
-                </li>
                 <t t-call="website_argos.breadcrumb_recursive" />
                 <li class="breadcrumb-item">
                     <a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />

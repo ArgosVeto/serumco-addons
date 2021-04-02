@@ -310,6 +310,7 @@
                                                 <p>
                                                     <strong class="display-block" t-field="partner.name"/>
                                                     <t t-if="partner.street"><span class="display-block" t-field="partner.street"/></t>
+                                                    <t t-if="partner.street2"><span class="display-block" t-field="partner.street2"/></t>
                                                     <t t-if="partner.zip or partner.city"><span class="display-block" t-esc='"%s, %s" %(partner.zip, partner.city)'/> </t>
                                                     <t t-if="partner.country_id"><span class="display-block" t-field="partner.country_id.name"/></t>
                                                     <t t-if="partner.phone"><span class="display-block" t-field="partner.phone"/></t>
@@ -838,6 +839,10 @@
                             <div t-attf-class="form-group col-md-12 street o_website_form_required_custom">
                                 <label class="col-form-label" for="street">Adresse</label>
                                 <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
+                            </div>
+                            <div t-attf-class="form-group col-md-12 street2">
+                                <label class="col-form-label" for="street">Complément d'adresse</label>
+                                <input type="text" name="street2" t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}" t-att-value="street2 or partner.street2"/>
                             </div>
                             <div t-attf-class="form-group col-md-3 div_zip o_website_form_required_custom">
                                 <label class="col-form-label" for="zip">Code postal</label>
