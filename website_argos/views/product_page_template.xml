@@ -219,12 +219,27 @@ Ajouter
                                     </a>
                                 </li>
                             </t>
-                            <t t-if="product.documentation_ids">
+                            <t t-set="moetec" t-value="False"/>
+                            <t t-set="cns" t-value="False"/>
+                            <t t-foreach="product.documentation_ids" t-as="doc">
+                                <t t-if="doc.doc_type == 'MOE'">
+                                    <t t-set="moetec" t-value="True"/>
+                                </t>
+                                <t t-if="doc.doc_type == 'TEC'">
+                                    <t t-set="moetec" t-value="True"/>
+                                </t>
+                                <t t-if="doc.doc_type == 'CNS'">
+                                    <t t-set="cns" t-value="True"/>
+                                </t>
+                            </t>
+                            <t t-if="moetec">
                                 <li class="nav-item">
                                     <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home4" role="tab" aria-controls="nav-home4" aria-selected="true">
                                     Mode d'emploi
                                     </a>
                                 </li>
+                            </t>
+                            <t t-if="cns">
                                 <li class="nav-item">
                                     <a class="nav-link o_default_snippet_text" id="nav-home-tab4" data-toggle="tab" href="#nav-home5" role="tab" aria-controls="nav-home5" aria-selected="true">
                                     Besoin de conseil ?
@@ -397,7 +412,20 @@ Ajouter
                                 </div>
                             </div>
                         </t>
-                        <t t-if="product.documentation_ids">
+                        <t t-set="moetec" t-value="False"/>
+                        <t t-set="cns" t-value="False"/>
+                        <t t-foreach="product.documentation_ids" t-as="doc">
+                            <t t-if="doc.doc_type == 'MOE'">
+                                <t t-set="moetec" t-value="True"/>
+                            </t>
+                            <t t-if="doc.doc_type == 'TEC'">
+                                <t t-set="moetec" t-value="True"/>
+                            </t>
+                            <t t-if="doc.doc_type == 'CNS'">
+                                <t t-set="cns" t-value="True"/>
+                            </t>
+                        </t>
+                        <t t-if="moetec">
                             <div class="card">
                                 <div class="card-header" id="headingFour">
                                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
@@ -423,6 +451,8 @@ Ajouter
                                     </div>
                                 </div>
                             </div>
+                        </t>
+                        <t t-if="cns">
                             <div class="card">
                                 <div class="card-header" id="headingFive">
                                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
@@ -620,7 +650,7 @@ Ajouter
             </div>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-8')]" position="replace">
-           <!--div class="container">
+            <!--div class="container">
                 <div class="d-flex align-items-center justify-content-center pt16 pb16">
                     <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
                     <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
@@ -694,6 +724,6 @@ Ajouter
                     </li>
                 </ol>
             </div>
-         </xpath>
+        </xpath>
     </template>
 </odoo>
