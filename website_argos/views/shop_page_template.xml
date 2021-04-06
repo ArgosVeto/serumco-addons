@@ -21,9 +21,7 @@
 							<a href="/shop">Boutique</a>
 						</li>
 						<li t-if="category" class="breadcrumb-item active">
-							<span>
-								<t t-esc="category.name"/>
-							</span>
+							<t t-call="website_argos.breadcrumb_recursive"/>
 						</li>
 					</ol>
 				</div>
@@ -120,7 +118,7 @@
 							<li class="breadcrumb-item">
 								<a href="/shop">Boutique</a>
 							</li>
-				            <t t-call="website_argos.breadcrumb_recursive" />
+							<t t-call="website_argos.breadcrumb_recursive" />
 							<!--t t-foreach="category.category_ids" t-as="category">
 								<li class="breadcrumb-item">
 									<a t-att-href="'/shop/category/' + slug(category.id)">
@@ -514,7 +512,7 @@ Ajouter
 	</record>
 	<template id="product_filter_sidebar" name="Product Side Bar">
 		<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-product bg-white d-block d-md-none">
-			<!--a id="close_sidebar_product"  class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a-->
+			<!--a id="close_sidebar_product" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a-->
 			<div class="sidebar-content">
 				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
 				<div class="card bg-white sidebar-card">
@@ -610,28 +608,28 @@ Ajouter
 		</xpath>
 	</template>
 
-    <template id="breadcrumb_recursive">
-        <t t-if="category.parent_id">
-            <t t-set="category" t-value="category.parent_id" />
-            <t t-call="website_argos.breadcrumb_recursive" />
-            <li class="breadcrumb-item">
-                <a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
-            </li>
-        </t>
-        <t t-if="not category.parent_id" />
-    </template>
+	<template id="breadcrumb_recursive">
+		<t t-if="category.parent_id">
+			<t t-set="category" t-value="category.parent_id" />
+			<t t-call="website_argos.breadcrumb_recursive" />
+			<li class="breadcrumb-item">
+				<a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
+			</li>
+		</t>
+		<t t-if="not category.parent_id" />
+	</template>
 
-    <template id="breadcrumb">
-            <t t-if="len(product.public_categ_ids) > 0">
-                <t t-set="category" t-value="product.public_categ_ids[0]" />
-                <t t-call="website_argos.breadcrumb_recursive" />
-                <li class="breadcrumb-item">
-                    <a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
-                </li>
-            </t>
-            <li class="breadcrumb-item active">
-                <span style="font-size: 12px" t-esc="product.name" />
-            </li>
-    </template>
+	<template id="breadcrumb">
+		<t t-if="len(product.public_categ_ids) > 0">
+			<t t-set="category" t-value="product.public_categ_ids[0]" />
+			<t t-call="website_argos.breadcrumb_recursive" />
+			<li class="breadcrumb-item">
+				<a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
+			</li>
+		</t>
+		<li class="breadcrumb-item active">
+			<span style="font-size: 12px" t-esc="product.name"/>
+		</li>
+	</template>
 
 </odoo>

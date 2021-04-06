@@ -13,6 +13,7 @@ import urllib
 from odoo.addons.portal.controllers.web import Home
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
+from odoo.addons.auth_signup.models.res_users import SignupError
 import json
 import base64
 from datetime import datetime
