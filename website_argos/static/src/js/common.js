@@ -201,6 +201,7 @@ $(document).ready(function(){
 
 
 $(function() {
+
   /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper-header").addClass("toggled");
@@ -285,6 +286,10 @@ $(function() {
     $(".sidebar-wrapper").removeClass("d-md-none");
     $(".sidebar-wrapper").removeClass("toggled");
     $("#wrapwrap").removeClass("mobile_overlay");
+    e.stopPropagation()
+  });
+  $("#afficherh").on("click", function(e) {
+    $("#masquerh").removeClass("d-none");
     e.stopPropagation()
   });
   $(document).on("click", function(e) {

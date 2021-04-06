@@ -35,7 +35,8 @@ odoo.define('website_argos.cart_address', function(require) {
             });
        }  */
 
-        if (document.getElementById('fav_cli') &&  document.getElementById('fav_cli').checked){
+     
+    if (document.getElementById('fav_cli') &&  document.getElementById('fav_cli').checked){
             ajax.rpc('/update-fav-delivery-address').then(function(data){
                 $(".clinic_searching").hide();
                 $(".load_fav_clinic_add_tmp").hide();
@@ -52,7 +53,7 @@ odoo.define('website_argos.cart_address', function(require) {
                     }
                     });
                 }
-            $(".load_fav_clinic_add_tmp").show();
+                $(".load_fav_clinic_add_tmp").show();
             });
        } 
  
@@ -61,13 +62,15 @@ odoo.define('website_argos.cart_address', function(require) {
         var all_clinic = document.getElementById("all_clinic");
          if(all_clinic.checked){                
             $(".clinic_searching").show();
-        }
+            $(".searched_clinic_detail").show();
+           }
         }
         function get_fav_cli(){
             var fav_cli = document.getElementById("fav_cli");
             if(fav_cli.checked){
                 $(".load_fav_clinic_add_tmp").hide();
                 $(".clinic_searching").hide();
+                $(".searched_clinic_detail").hide();
                 ajax.rpc('/update-delivery-address').then(function(data){
                     if (data) {
                         $(".load_clinic_add_tmp").html(data)

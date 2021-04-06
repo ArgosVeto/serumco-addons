@@ -321,3 +321,5 @@ class PortalContent(http.Controller):
             partner.sudo().write(vals)
 
         return werkzeug.utils.redirect('/my-content')
+
+

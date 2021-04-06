@@ -2,81 +2,83 @@
 <odoo>
 
     <template id="add_address">
-    <t t-set="no_footer">1</t>
-    <t t-call="website.layout">
-        <div id="wrap">
-            <div class="container oe_portal_address py-2">
-                <div class="row">
-                    <div class="col-12">
-                        <t t-call="website_sale.wizard_checkout">
-                            <t t-set="step" t-value="20"/></t>
-                    </div>
-                    <div class="row o_portal_details">
-                        <div class="col-lg-8 offset-lg-2 mt16 mb32">
-                            <form action="/add-address" method="post" class="checkout_autoformat">
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div t-if="error_message" class="alert alert-danger" role="alert">
-                                            <t t-esc="error_message"/>
-                                            <br/>
+        <t t-set="no_footer">1</t>
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container oe_portal_address py-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="20"/>
+                            </t>
+                        </div>
+                        <div class="row o_portal_details">
+                            <div class="col-lg-8 offset-lg-2 mt16 mb32">
+                                <form action="/add-address" method="post" class="checkout_autoformat">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div t-if="error_message" class="alert alert-danger" role="alert">
+                                                <t t-esc="error_message"/>
+                                                <br/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-4 div_name">
-                                        <label class="col-form-label" for="name">Prénom *</label>
-                                        <input type="text" name="firstname" t-attf-class="form-control o_website_form_input #{'firstname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'firstname' in predefine_data and predefine_data['firstname'] or partner_id and 'firstname' in partner_id and partner_id['firstname']"/>
-                                    </div>
-                                    <div class="col-md-1"/>
-                                    <div t-attf-class="form-group col-md-4 div_name">
-                                        <label class="col-form-label" for="name">Nom *</label>
-                                        <input type="text" name="lastname" t-attf-class="form-control o_website_form_input #{'lastname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'lastname' in predefine_data and predefine_data['lastname'] or partner_id and 'lastname' in partner_id and partner_id['lastname']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-4 email">
-                                        <label class="col-form-label" for="email">Adresse Email *</label>
-                                        <input type="text" name="email" t-attf-class="form-control" t-att-value="predefine_data and 'email' in predefine_data and predefine_data['email'] or partner_id and 'email' in partner_id and partner_id['email']"/>
-                                    </div>
-                                    <div class="col-md-1"/>
-                                    <div t-attf-class="form-group col-md-4 phone">
-                                        <label class="col-form-label" for="phone">N° de téléphone *</label>
-                                        <input type="text" name="phone" t-attf-class="form-control o_website_form_input #{'phone' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'phone' in predefine_data and predefine_data['phone'] or partner_id and 'phone' in partner_id and partner_id['phone']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-12 street">
-                                        <label class="col-form-label" for="street">Adresse *</label>
-                                        <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-12 street2">
-                                        <label class="col-form-label" for="street2">Complément d'adresse</label>
-                                        <input type="text" name="street2" t-attf-class="form-control o_website_form_input #{'street2' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street2' in predefine_data and predefine_data['street2'] or partner_id and 'street2' in partner_id and partner_id['street2']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-2 div_zip">
-                                        <label class="col-form-label" for="zip">Code postal *</label>
-                                        <input type="text" name="zip" t-attf-class="form-control" t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-6 div_city">
-                                        <label class="col-form-label" for="city">Ville *</label>
-                                        <input type="text" name="city" t-attf-class="form-control o_website_form_input #{'city' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'city' in predefine_data and predefine_data['city'] or partner_id and 'city' in partner_id and partner_id['city']"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-4 div_country">
-                                        <label class="col-form-label" for="country_id">Pays *</label>
-                                        <div class="selection-div sel-add">
-                                            <select id="country_id" name="country_id" t-attf-class="form-control">
-                                                <option value="">Pays...</option>
-                                                <t t-foreach="countries" t-as="c">
-                                                    <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">
-                                                        <t t-esc="c.name"/>
-                                                    </option>
-                                                </t>
-                                            </select>
+                                        <div t-attf-class="form-group col-md-4 div_name">
+                                            <label class="col-form-label" for="name">Prénom *</label>
+                                            <input type="text" name="firstname" t-attf-class="form-control o_website_form_input #{'firstname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'firstname' in predefine_data and predefine_data['firstname'] or partner_id and 'firstname' in partner_id and partner_id['firstname']"/>
                                         </div>
+                                        <div class="col-md-1"/>
+                                        <div t-attf-class="form-group col-md-4 div_name">
+                                            <label class="col-form-label" for="name">Nom *</label>
+                                            <input type="text" name="lastname" t-attf-class="form-control o_website_form_input #{'lastname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'lastname' in predefine_data and predefine_data['lastname'] or partner_id and 'lastname' in partner_id and partner_id['lastname']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-4 email">
+                                            <label class="col-form-label" for="email">Adresse Email *</label>
+                                            <input type="text" name="email" t-attf-class="form-control" t-att-value="predefine_data and 'email' in predefine_data and predefine_data['email'] or partner_id and 'email' in partner_id and partner_id['email']"/>
+                                        </div>
+                                        <div class="col-md-1"/>
+                                        <div t-attf-class="form-group col-md-4 phone">
+                                            <label class="col-form-label" for="phone">N° de téléphone *</label>
+                                            <input type="text" name="phone" t-attf-class="form-control o_website_form_input #{'phone' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'phone' in predefine_data and predefine_data['phone'] or partner_id and 'phone' in partner_id and partner_id['phone']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-12 street">
+                                            <label class="col-form-label" for="street">Adresse *</label>
+                                            <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-12 street2">
+                                            <label class="col-form-label" for="street2">Complément d'adresse</label>
+                                            <input type="text" name="street2" t-attf-class="form-control o_website_form_input #{'street2' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street2' in predefine_data and predefine_data['street2'] or partner_id and 'street2' in partner_id and partner_id['street2']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-2 div_zip">
+                                            <label class="col-form-label" for="zip">Code postal *</label>
+                                            <input type="text" name="zip" t-attf-class="form-control" t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-6 div_city">
+                                            <label class="col-form-label" for="city">Ville *</label>
+                                            <input type="text" name="city" t-attf-class="form-control o_website_form_input #{'city' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'city' in predefine_data and predefine_data['city'] or partner_id and 'city' in partner_id and partner_id['city']"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-4 div_country">
+                                            <label class="col-form-label" for="country_id">Pays *</label>
+                                            <div class="selection-div sel-add">
+                                                <select id="country_id" name="country_id" t-attf-class="form-control">
+                                                    <option value="">Pays...</option>
+                                                    <t t-foreach="countries" t-as="c">
+                                                        <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">
+                                                            <t t-esc="c.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--div t-attf-class="form-group col-lg-6" id="div_state"><label class="col-form-label" for="state_id">State / Province</label><div class="selection-div sel-add"><select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}"><option value="">État / Province</option></select></div></div-->
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <input type="hidden" name="submitted" value="1"/>
+                                        <input type="hidden" name="partner_id" t-att-value="partner_id or predefine_data and 'partner_id' in predefine_data and predefine_data['partner_id']"/>
+                                        <input type="hidden" name="mode" t-att-value="mode or predefine_data and 'mode' in predefine_data and predefine_data['mode']"/>
                                     </div>
-                                    <!--div t-attf-class="form-group col-lg-6" id="div_state"><label class="col-form-label" for="state_id">State / Province</label><div class="selection-div sel-add"><select name="state_id" id="state_id" t-attf-class="form-control #{'state_id' in required_fields and 'is-invalid' or ''}"><option value="">État / Province</option></select></div></div-->
-                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                                    <input type="hidden" name="submitted" value="1"/>
-                                    <input type="hidden" name="partner_id" t-att-value="partner_id or predefine_data and 'partner_id' in predefine_data and predefine_data['partner_id']"/>
-                                    <input type="hidden" name="mode" t-att-value="mode or predefine_data and 'mode' in predefine_data and predefine_data['mode']"/>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <a role="button" href="/shop/checkout" class="continue-btn btn btn-secondary mb32 float-left">
-                                        <span class="fa fa-chevron-left"/> RETOUR
+                                    <div class="d-flex justify-content-between">
+                                        <a role="button" href="/shop/checkout" class="continue-btn btn btn-secondary mb32 float-left">
+                                            <span class="fa fa-chevron-left"/>
+ RETOUR
                                 
                                 
                                 
@@ -85,18 +87,18 @@
                                 
                                 
                                 
-                                    </a>
-                                    <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
+                                        </a>
+                                        <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
                                         Enregistrer mes modifications
-                                    </button>
-                                </div>
-                            </form>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </t>
+        </t>
     </template>
 
 
@@ -104,48 +106,57 @@
         <xpath expr="//div[@id='shipping_and_billing']" position="replace">
             <div class="card-body" id="delivery_and_billing">
                 <div class="col-md-12">
-                    <t t-if="website_sale_order.operating_unit_id">                        
+                    <t t-if="website_sale_order.operating_unit_id">
                         <div class="link">
                             <span class="">
-                                <span><b>Livraison : </b></span>
-                                <span class="street" t-field="website_sale_order.operating_unit_id.street"/><span>, </span><span class="zip" t-field="website_sale_order.operating_unit_id.zip"/><span>, </span><span class="city" t-field="website_sale_order.operating_unit_id.city"/>
+                                <span>
+                                    <b>Livraison : </b>
+                                </span>
+                                <span class="street" t-field="website_sale_order.operating_unit_id.street"/>
+                                <span>, </span>
+                                <span class="zip" t-field="website_sale_order.operating_unit_id.zip"/>
+                                <span>, </span>
+                                <span class="city" t-field="website_sale_order.operating_unit_id.city"/>
                             </span>
                         </div>
                     </t>
                 </div>
                 <div class="col-md-12">
                     <t t-if="website_sale_order.partner_invoice_id">
-                        <b>Adresse de facturation: </b><span t-esc='website_sale_order.partner_invoice_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')"  class="address-inline"/>
+                        <b>Adresse de facturation: </b>
+                        <span t-esc='website_sale_order.partner_invoice_id' t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
                     </t>
                 </div>
             </div>
-        </xpath>        
+        </xpath>
     </template>
 
-	<template id="load_fav_clinic_add_tmp" name="Load Clinic Add">
+    <template id="load_fav_clinic_add_tmp" name="Load Clinic Add">
         <t t-if="clinic_fav">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 d-none d-md-block">
                     <div class="link">
-                            <div class="content">
-                                <h3 class="fav-clinic-name" t-field="clinic_fav.name"/>
-        	                    <div class="Avenue-Pasteur d-flex align-items-start">
-                                    <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8" />
-                                    <p class="m-0">
-            	                        <span class="street" t-field="clinic_fav.street" />
-            	                        <span>, </span>
-            	                        <span class="zip" t-field="clinic_fav.zip" />
-            	                        <span>, </span>
-            	                        <span class="city" t-field="clinic_fav.city" />
-                                    </p>
-        	                    </div>
-                            </div> 
+                        <div class="content">
+                            <h3 class="fav-clinic-name" t-field="clinic_fav.name"/>
+                            <div class="Avenue-Pasteur d-flex align-items-start">
+                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8" />
+                                <p class="m-0">
+                                    <span class="street" t-field="clinic_fav.street" />
+                                    <span>, </span>
+                                    <span class="zip" t-field="clinic_fav.zip" />
+                                    <span>, </span>
+                                    <span class="city" t-field="clinic_fav.city" />
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 d-none d-md-block">
                     <t t-if="clinic_fav.calendar_id">
                         <div class="content time-slot-head mt8 mb8">
-                            <strong><span>Horaires d’ouverture</span></strong>
+                            <strong>
+                                <span>Horaires d’ouverture</span>
+                            </strong>
                         </div>
                         <t t-set="get_short_employee_slot" t-value="clinic_fav.calendar_id.get_short_employee_slot(clinic_fav.calendar_id)"/>
                         <t t-if="get_short_employee_slot">
@@ -171,45 +182,131 @@
                         </t>
                     </t>
                 </div>
-                <t t-if="not website_sale_order.paiement_ok">
-                    <p style="text-align: center; color: #de1a46">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
-                </t>
             </div>
+            <div class="d-md-none col-md-12">
+                <div class="clinic-content row">
+                    <div class="col-md-4">
+                        <div class="top-title">
+                            <strong>
+                                <t t-esc="clinic_fav.display_name"></t>
+                            </strong>
+                        </div>
+                        <div class="Avenue-Pasteur d-flex align-items-start">
+                            <t t-if="website_sale_order.operating_unit_id.street">
+                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8 mt4" />
+                            </t>
+                            <p>
+                                <t t-if="clinic_fav.street">
+                                    <span class="street" t-field="clinic_fav.street" />
+                                </t>
+                                <t t-if="clinic_fav.street2">
+                                    <span>, </span>
+                                    <span class="street2" t-field="clinic_fav.street2" />
+                                </t>
+                                <t t-if="clinic_fav.zip">
+                                    <span>, </span>
+                                    <span class="zip" t-field="clinic_fav.zip" />
+                                </t>
+                                <t t-if="clinic_fav.city">
+                                    <span>, </span>
+                                    <span class="city" t-field="clinic_fav.city" />
+                                </t>
+                                <t t-if="clinic_fav.state_id">
+                                    <span>, </span>
+                                    <span class="state" t-field="clinic_fav.state_id.name" />
+                                </t>
+                                <t t-if="clinic_fav.country_id">
+                                    <span>, </span>
+                                    <span class="country" t-field="clinic_fav.country_id.name" />
+                                </t>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-md-none col-md-6 m16">
+                        <nav class="bg-white d-block d-md-none">
+                            <ul class="nav navbar-nav align-items-md-center">
+                                <li class="nav-item dropdown position-static">
+                                    <a onclick="changeinner1(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link dropdown-toggle">Afficher les horaires d'ouverture</a>
+                                    <script>
+function changeinner1(e) {
+   if (e.innerHTML == "Afficher les horaires d'ouverture") { e.innerHTML="Masquer les horaires d'ouverture";
+     }
+    else { e.innerHTML="Afficher les horaires d'ouverture";
+  }
+}
+                                    </script>
+                                    <div class="dropdown-menu o_mega_menu position-static">
+                                        <t t-if="clinic_fav.calendar_id">
+                                            <t t-set="get_short_employee_slot" t-value="clinic_fav.calendar_id.get_short_employee_slot(clinic_fav.calendar_id)"/>
+                                            <t t-if="get_short_employee_slot">
+                                                <t t-foreach="get_short_employee_slot" t-as="wt">
+                                                    <div class="row mb32">
+                                                        <div class="col-xs-4" style="width: 80px;">
+                                                            <span class="Lun-Mar-Mer-Jeu-Copy">
+                                                                <t t-esc="wt" />
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-4" style="width: 110px; text-align: center;">
+                                                            <span class="h00---12h30-9h00---copy ml16">
+                                                                <t t-esc="get_short_employee_slot[wt]['start_time']" />
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-4" style="width: 110px; text-align: center;">
+                                                            <span class="h00---12h30-9h00---copy ml16">
+                                                                <t t-esc="get_short_employee_slot[wt]['end_time']" />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <t t-if="not website_sale_order.paiement_ok">
+                <p style="text-align: center; color: #de1a46">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
+            </t>
         </t>
         <t t-if="not website_sale_order.paiement_ok">
             <t t-if="not clinic_fav">
                 <p style="text-align: center; color: #de1a46">Vous n'avez de clinique favorite, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
             </t>
         </t>
- 
-     </template>
 
-	<template id="load_clinic_add_tmp" name="Load Clinic Add">
+    </template>
+
+    <template id="load_clinic_add_tmp" name="Load Clinic Add">
         <t t-if="website_sale_order">
             <div class="row">
-                <div class="col-md-6">
+                <div class="d-none d-md-block col-md-6">
                     <div class="link">
-                    	<t t-if="website_sale_order.operating_unit_id">
+                        <t t-if="website_sale_order.operating_unit_id">
                             <div class="content">
                                 <h3 class="clinic-name" t-field="website_sale_order.operating_unit_id.name"/>
-        	                    <div class="Avenue-Pasteur d-flex align-items-start">
+                                <div class="Avenue-Pasteur d-flex align-items-start">
                                     <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8" />
                                     <p class="m-0">
-            	                        <span class="street" t-field="website_sale_order.operating_unit_id.street" />
-            	                        <span>, </span>
-            	                        <span class="zip" t-field="website_sale_order.operating_unit_id.zip" />
-            	                        <span>, </span>
-            	                        <span class="city" t-field="website_sale_order.operating_unit_id.city" />
+                                        <span class="street" t-field="website_sale_order.operating_unit_id.street" />
+                                        <span>, </span>
+                                        <span class="zip" t-field="website_sale_order.operating_unit_id.zip" />
+                                        <span>, </span>
+                                        <span class="city" t-field="website_sale_order.operating_unit_id.city" />
                                     </p>
-        	                    </div>
-                            </div> 
-    	                </t>
+                                </div>
+                            </div>
+                        </t>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="d-none d-md-block  col-md-6">
                     <t t-if="website_sale_order.operating_unit_id.calendar_id">
-                        <div class="content time-slot-head mt8 mb8">
-                            <strong><span>Horaires d’ouverture</span></strong>
+                        <div class="calendar-content">
+                            <strong>
+                                <span>Horaires d’ouverture</span>
+                            </strong>
                         </div>
                         <t t-set="get_short_employee_slot" t-value="website_sale_order.operating_unit_id.calendar_id.get_short_employee_slot(website_sale_order.operating_unit_id.calendar_id)"/>
                         <t t-if="get_short_employee_slot">
@@ -236,13 +333,98 @@
                     </t>
                 </div>
             </div>
+            <div class="d-md-none col-md-12">
+                <div class="clinic-content row">
+                    <div class="col-md-4">
+                        <div class="top-title">
+                            <strong>
+                                <t t-esc="website_sale_order.operating_unit_id.display_name"></t>
+                            </strong>
+                        </div>
+                        <div class="Avenue-Pasteur d-flex align-items-start">
+                            <t t-if="website_sale_order.operating_unit_id.street">
+                                <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8 mt4" />
+                            </t>
+                            <p>
+                                <t t-if="website_sale_order.operating_unit_id.street">
+                                    <span class="street" t-field="website_sale_order.operating_unit_id.street" />
+                                </t>
+                                <t t-if="website_sale_order.operating_unit_id.street2">
+                                    <span>, </span>
+                                    <span class="street2" t-field="website_sale_order.operating_unit_id.street2" />
+                                </t>
+                                <t t-if="website_sale_order.operating_unit_id.zip">
+                                    <span>, </span>
+                                    <span class="zip" t-field="website_sale_order.operating_unit_id.zip" />
+                                </t>
+                                <t t-if="website_sale_order.operating_unit_id.city">
+                                    <span>, </span>
+                                    <span class="city" t-field="website_sale_order.operating_unit_id.city" />
+                                </t>
+                                <t t-if="website_sale_order.operating_unit_id.state_id">
+                                    <span>, </span>
+                                    <span class="state" t-field="website_sale_order.operating_unit_id.state_id.name" />
+                                </t>
+                                <t t-if="website_sale_order.operating_unit_id.country_id">
+                                    <span>, </span>
+                                    <span class="country" t-field="website_sale_order.operating_unit_id.country_id.name" />
+                                </t>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-md-none col-md-6 m16">
+                        <nav class="bg-white d-block d-md-none">
+                            <ul class="nav navbar-nav align-items-md-center">
+                                <li class="nav-item dropdown position-static">
+                                    <a onclick="changeinner2(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link dropdown-toggle">Afficher les horaires d'ouverture</a>
+                                    <script>
+function changeinner2(e) {
+   if (e.innerHTML == "Afficher les horaires d'ouverture") { e.innerHTML="Masquer les horaires d'ouverture";
+     }
+    else { e.innerHTML="Afficher les horaires d'ouverture";
+  }
+}
+                                    </script>
+                                    <div class="dropdown-menu o_mega_menu position-static">
+                                        <t t-if="website_sale_order.operating_unit_id.calendar_id">
+                                            <t t-set="get_short_employee_slot" t-value="website_sale_order.operating_unit_id.calendar_id.get_short_employee_slot(website_sale_order.operating_unit_id.calendar_id)"/>
+                                            <t t-if="get_short_employee_slot">
+                                                <t t-foreach="get_short_employee_slot" t-as="wt">
+                                                    <div class="row mb32">
+                                                        <div class="col-xs-4" style="width: 80px;">
+                                                            <span class="Lun-Mar-Mer-Jeu-Copy">
+                                                                <t t-esc="wt" />
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-4" style="width: 110px; text-align: center;">
+                                                            <span class="h00---12h30-9h00---copy ml16">
+                                                                <t t-esc="get_short_employee_slot[wt]['start_time']" />
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-4" style="width: 110px; text-align: center;">
+                                                            <span class="h00---12h30-9h00---copy ml16">
+                                                                <t t-esc="get_short_employee_slot[wt]['end_time']" />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </t>
     </template>
 
-	<template id="clinic_search" name="Clinic Searchbox">
+    <template id="clinic_search" name="Clinic Searchbox">
         <div class="mb24">
-            <input type="radio"  id="all_clinic"  name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic">
-                <span style="color: #63bae9" class="ml8">Je souhaite être livré dans une autre clinique</span></input>
+            <input type="radio" id="all_clinic" name="fav_clinic" t-att-checked="'checked' if website_sale_order.all_clinic  else None" t-att-value="website_sale_order.all_clinic">
+                <span style="color: #63bae9" class="ml8">Je souhaite être livré dans une autre clinique</span>
+            </input>
         </div>
 
         <div class="row clinic_searching d-flex">
@@ -260,88 +442,251 @@
         </div>
     </template>
 
-	<template id="bouton_paiement" name="Bouton paiement">
-             <div class="d-flex justify-content-between back-payment-btn pt48 mb32">
+    <template id="bouton_paiement" name="Bouton paiement">
+        <div class="d-none d-md-block">
+            <div class="d-flex justify-content-between back-payment-btn pt48 mb32">
                 <a role="button" href="/shop/cart" class="continue-btn btn btn-secondary">
                     <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
                     <span>Retour</span>
-                </a> 
+                </a>
                 <t t-if="website_sale_order.paiement_ok">
-                   <a role="button" href="/shop/confirm_order"  name="btn-paiment" id="btn-paiment" class="btn btn-primary">
+                    <a role="button" href="/shop/confirm_order" name="btn-paiment" id="btn-paiment" class="btn btn-primary">
                         <span>Passer au paiement</span>
-                        <span class="fa fa-long-arrow-right ml8" />                    
+                        <span class="fa fa-long-arrow-right ml8" />
                     </a>
                 </t>
             </div>
-    </template>
-
-	<template id="checkout_inherit" inherit_id="website_sale.checkout">
-    <xpath expr="//div[hasclass('col-12','col-xl','order-xl-1','oe_cart')]" position="replace">
-        <div class="col-12 col-xl order-xl-1 oe_cart">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
-                    <div class="fav-clinic pb48">
-                        <div class="mb24">
-                            <input type="radio"  id="fav_cli" name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None" t-att-value="website_sale_order.fav_clinic">
-                                <span style="color: #63bae9" class="ml8">Je souhaite être livré dans ma clinique favorite</span>
-                            </input>
-                            <div class="mt48 load_fav_clinic_add_tmp">
-                                <t t-call="website_argos.load_fav_clinic_add_tmp"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt16">
-                        <div class="mt48 pb48 find_match_cli">
-                            <t t-call="website_argos.clinic_search"/>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="d-md-none back-payment-btn align-items-center mbl-checkout-btn pt48 mb32">
+            <div class="col-lg-12">
+                <t t-if="website_sale_order.paiement_ok">
+                    <a style="width: 100%;" role="button" href="/shop/confirm_order" name="btn-paiment" id="btn-paiment" class="btn btn-primary">
+                        <span>Passer au paiement</span>
+                        <span class="fa fa-long-arrow-right ml8" />
+                    </a>
+                </t>
             </div>
-            <div class="row user-info mb48">
-                <div class="col-lg-12">
-                    <h3 class="o_page_header user-address-head mt48 mb32">Adresse de livraison</h3>
-                    <div class="row">
-                        <div class="load_clinic_add_tmp">
-                            <t t-call="website_argos.load_clinic_add_tmp"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row user-info mb48">
-                <div class="col-lg-12">
-                    <h3 class="o_page_header user-address-head mt48 mb32">Adresse de facturation</h3>
-                    <div class="row">
-                        <t t-if="website_sale_order.partner_invoice_id">
-                            <div class="col-md-8 user-address">
-                                <h3>Nom de l'adresse</h3>
-                                <div>
-                                    <strong>
-                                        <t t-esc="website_sale_order.partner_invoice_id.display_name"/>
-                                    </strong>
-                                </div>
-                                <div t-esc="website_sale_order.partner_id" t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
-                            <div class="col-md-4">
-                                <!-- <form id="update_address" action="/add-address" method="post" enctype="multipart/form-data"><input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-
-                                    ?edit-mode=#{bill.id}
-
-                                    <button type="submit" id="form_submit"
-                                        class="btn btn-primary mb16 mt32 btn-block">
-                                        Edit
-                                    </button></form> -->
-                                <a t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address">
-                                    <span class="fa fa-edit mr-2"/>Modifier l'adresse
-                                </a>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-            </div>
-             <div class="bouton_paiement">
-                  <t t-call="website_argos.bouton_paiement"/>
+            <div class="col-lg-12 align-items-center">
+                <a style="width: 100%;" role="button" href="/shop/cart" class="continue-btn btn btn-secondary">
+                    <img src="/website_argos/static/src/img/cart-right.svg" class="img img-fluid mr8" />
+                    <span>Retour</span>
+                </a>
             </div>
         </div>
-    </xpath>
-	</template>
+    </template>
+
+    <template id="checkout_inherit" inherit_id="website_sale.checkout">
+        <xpath expr="//div[hasclass('col-12','col-xl','order-xl-1','oe_cart')]" position="replace">
+            <div class="col-12 col-xl order-xl-1 oe_cart">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
+                        <t t-call="website_argos.panier_mobile"/>
+                        <!--div class="d-md-none">
+                            <div class="card">
+                                <div class="card-body card-panier">
+                                    <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
+                                        <a href="#nogo" class="btn-mobile btn-panier" id="panier-mobile">
+                                            <span class="">MON PANIER</span>
+                                        </a>
+                                    </div>
+                                    <script>
+function changetoggle(e) {
+	var btn = e.getElementsByClassName("btn-mobile"); 
+    if ($(btn).hasClass("btn-panier")) {
+        $(btn).removeClass('btn-panier'); 
+        $(btn).addClass('btn-panier-bis'); 
+  }
+    else {
+        $(btn).removeClass('btn-panier-bis'); 
+        $(btn).addClass('btn-panier'); 
+  }
+}
+                                    </script>
+                                    <div class="toggle_summary_div d-none d-xl-block">
+                                        <table class="table table-striped table-sm" id="cart_products" t-if="website_sale_order and website_sale_order.website_order_line">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-top-0 td-img">Articles</th>
+                                                    <th class="border-top-0"></th>
+                                                    <th class="border-top-0 text-right pr-0 td-price">Prix</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="website_sale_order.website_order_line" t-as="line">
+                                                    <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                                    <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
+                                                        <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
+                                                    </td>
+                                                    <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                                        <div>
+                                                            <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+                                                                <t t-call="website_sale.cart_line_product_link">
+                                                                    <strong>
+                                                                        <t t-esc="name_line"/>
+                                                                    </strong>
+                                                                </t>
+                                                            </t>
+                                                            <strong class="text-muted d-none d-md-block small">
+                                                                <t t-esc="line.name_short_without_code()"/>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="quantity">
+                                                            <p>
+                                                                <span>Qté : </span>
+                                                                <span t-esc="line.product_uom_qty"/>
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center td-price">
+                                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
+                                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <t t-call="website_sale.total"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div-->
+                        <div class="fav-clinic pb48">
+                            <div class="mb24">
+                                <input type="radio" id="fav_cli" name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None" t-att-value="website_sale_order.fav_clinic">
+                                    <span style="color: #63bae9" class="ml8">Je souhaite être livré dans ma clinique favorite</span>
+                                </input>
+                                <div class="mt48 load_fav_clinic_add_tmp">
+                                    <t t-call="website_argos.load_fav_clinic_add_tmp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt16">
+                            <div class="mt48 pb48 find_match_cli">
+                                <t t-call="website_argos.clinic_search"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row user-info mb48">
+                    <div class="col-lg-12">
+                        <h3 class="o_page_header user-address-head mt48 mb32">Adresse de livraison</h3>
+                        <div class="row">
+                            <div class="load_clinic_add_tmp">
+                                <t t-call="website_argos.load_clinic_add_tmp"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row user-info mb48">
+                    <div class="col-lg-12 col-xs-12">
+                        <h3 class="o_page_header user-address-head mt48 mb32">Adresse de facturation</h3>
+                        <div class="row">
+                            <t t-if="website_sale_order.partner_invoice_id">
+                                <div class="col-md-8 user-address">
+                                    <h3>Nom de l'adresse</h3>
+                                    <div>
+                                        <strong>
+                                            <t t-esc="website_sale_order.partner_invoice_id.display_name"/>
+                                        </strong>
+                                    </div>
+                                    <div t-esc="website_sale_order.partner_id" t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
+                                </div>
+                                <div class="d-none d-md-block col-md-4">
+                                    <!-- <form id="update_address" action="/add-address" method="post" enctype="multipart/form-data"><input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" /> ?edit-mode=#{bill.id}
+
+                                    <button type="submit" id="form_submit" class="btn btn-primary mb16 mt32 btn-block">
+                                        Edit
+                                    </button></form> -->
+                                    <a t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address">
+                                        <span class="fa fa-edit mr-2"/>
+Modifier l'adresse
+                                    </a>
+                                </div>
+                                <div style="width: 100%;" class="d-md-none col-lg-12 align-items-center">
+                                    <a style="width: 100%;" t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary edit-link" role="button" title="Edit this address" aria-label="Edit this address">
+                                        <span class="fa fa-edit mr-2"/>
+Modifier l'adresse
+                                    </a>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="bouton_paiement">
+                    <t t-call="website_argos.bouton_paiement"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="panier_mobile">
+        <div class="d-md-none">
+            <div class="card">
+                <div class="card-body card-panier">
+                    <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
+                        <a href="#nogo" class="btn-mobile btn-panier" id="panier-mobile">
+                            <span class="">MON PANIER</span>
+                        </a>
+                    </div>
+                    <script>
+function changetoggle(e) {
+	var btn = e.getElementsByClassName("btn-mobile"); 
+    if ($(btn).hasClass("btn-panier")) {
+        $(btn).removeClass('btn-panier'); 
+        $(btn).addClass('btn-panier-bis'); 
+  }
+    else {
+        $(btn).removeClass('btn-panier-bis'); 
+        $(btn).addClass('btn-panier'); 
+  }
+}
+                    </script>
+                    <div class="toggle_summary_div d-none d-xl-block">
+                        <table class="table table-striped table-sm" id="cart_products" t-if="website_sale_order and website_sale_order.website_order_line">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0 td-img">Articles</th>
+                                    <th class="border-top-0"></th>
+                                    <th class="border-top-0 text-right pr-0 td-price">Prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="website_sale_order.website_order_line" t-as="line">
+                                    <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                    <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
+                                        <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
+                                    </td>
+                                    <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                        <div>
+                                            <t t-foreach="line.get_description_following_lines()" t-as="name_line">
+                                                <t t-call="website_sale.cart_line_product_link">
+                                                    <strong>
+                                                        <t t-esc="name_line"/>
+                                                    </strong>
+                                                </t>
+                                            </t>
+                                            <strong class="text-muted d-none d-md-block small">
+                                                <t t-esc="line.name_short_without_code()"/>
+                                            </strong>
+                                        </div>
+                                        <div class="quantity">
+                                            <p>
+                                                <span>Qté : </span>
+                                                <span t-esc="line.product_uom_qty"/>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td class="text-center td-price">
+                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
+                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-call="website_sale.total"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 </odoo>
