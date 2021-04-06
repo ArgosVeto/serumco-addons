@@ -630,7 +630,7 @@ Ajouter
                 </li>
             </t>
             <li class="breadcrumb-item active">
-                <span t-esc="product.name" />
+                <span style="font-size: 12px" t-esc="product.name" />
             </li>
     </template>
 

@@ -499,16 +499,18 @@ Ajouter
             <div class="" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
                 <t t-if="rating_avg > 0">
                     <t t-foreach="range(0, val_integer)" t-as="num">
-                        <i class="fa fa-star" role="img"></i>
+                        <i style="color: #de1a46;" class="fa fa-star" role="img"></i>
                     </t>
                     <t t-if="val_decimal">
-                        <i class="fa fa-star-half-o" role="img"></i>
+                        <i style="color:#de1a46;" class="fa fa-star-half-o" role="img"></i>
                     </t>
                     <t t-foreach="range(0, empty_star)" t-as="num">
-                        <i class="fa fa-star text-black-25" role="img"></i>
+                        <i style="color: #de1a46;" class="fa fa-star-o text-secondary" role="img"></i>
                     </t>
-                    (                    <t t-esc="rating_count"/>
-)
+                    <span style="margin-left:2px;" class="text1">
+                        <t t-esc="rating_avg"/>
+                        <span> / 5</span>
+                    </span>
                 </t>
                 <t t-else="">
                     <br/>
@@ -639,16 +641,14 @@ Ajouter
 
     <template id="product_rating_inherited" inherit_id="website_sale.product_comment">
         <xpath expr="//div[hasclass('col-lg-8')]" position="before">
-            <div class="row">
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32" id='avis'>
-                    <span>Avis</span>
-                </div>
-                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32" id='rating-product'>
-                    <a class='btn btn-primary'>Rédiger un avis</a>
-                </div>
-                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32 d-none" id='rating-product-bis'>
-                    <a class='btn btn-primary'>Rédiger un avis</a>
-                </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32" id='avis'>
+                <span>Avis</span>
+            </div>
+            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32" id='rating-product'>
+                <a class='btn btn-primary'>Rédiger un avis</a>
+            </div>
+            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32 d-none" id='rating-product-bis'>
+                <a class='btn btn-primary'>Rédiger un avis</a>
             </div>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-8')]" position="replace">
@@ -716,10 +716,12 @@ Ajouter
     </template>
 
     <template id="bottom_breadcrumbs" inherit_id="website_sale.product_comment" priority="25">
+        <!--xpath expr="//div[@t-field='product.website_description']" position="after"-->
         <xpath expr="//section[hasclass('container')]" position="after">
             <div class="container d-block d-md-none">
                 <h3 class="text-primary">Vous êtes ici</h3>
-                <ol class="breadcrumb mb32 d-flex">
+                <t t-call="website_argos.breadcrumb"/>
+                <!--ol class="breadcrumb mb32 d-flex">
                     <li class="breadcrumb-item">
                         <a href="/shop-home">Accueil</a>
                     </li>
@@ -740,7 +742,7 @@ Ajouter
                     <li class="breadcrumb-item active">
                         <span t-field="product.name" />
                     </li>
-                </ol>
+                </ol-->
             </div>
         </xpath>
     </template>
