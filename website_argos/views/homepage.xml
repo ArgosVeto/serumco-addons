@@ -218,7 +218,7 @@
                 <p class="">Que ce soit pour une première consultation, un suivi vaccinal pour votre chiot ou l’identification de votre animal de compagnie, en quelques clics, vous pouvez prendre, directement et simplement, rendez-vous avec votre vétérinaire.</p>
                 <form class="o_clinic_type_homepage_form o_clinic_type_searchbar_form d-flex" action="/appointment-two" method="get">
                   <t t-set="get_clinic_ids" t-value="website.get_clinic()"/>
-                  <select id="clinic_id" name="clinic_id" t-attf-class="form-control">
+                  <select style="-webkit-appearance: none;" id="clinic_id" name="clinic_id" t-attf-class="form-control">
                     <!--option value="">Choisir ma clinique…</option-->
                     <t t-foreach="get_clinic_ids" t-as="c">
                       <option t-att-value="c.id">

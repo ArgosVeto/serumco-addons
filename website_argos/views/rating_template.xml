@@ -18,7 +18,7 @@
                 </t>
                 <span style="margin-left:2px;" class="text1">
                     <t t-esc="rating_avg"/>
-                    <span> / 5</span>
+                    <span class="text1"> / 5</span>
                 </span>
 
                 <a href="#discussion">

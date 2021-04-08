@@ -328,6 +328,14 @@
 		}
 	}
 }
+.main-footer{
+	background-color: white;
+	position:-webkit-sticky;
+	position:sticky;
+	bottom:0;
+	z-index: 99;
+   }
+
 .product_tabs{
 	#product_detail_tabs{
 		-webkit-box-pack: center;

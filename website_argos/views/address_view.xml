@@ -222,7 +222,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="d-md-none col-md-6 m16">
+                     <div class="d-md-none col-md-6 m16" id="horaires-fav">
                         <nav class="bg-white d-block d-md-none">
                             <ul class="nav navbar-nav align-items-md-center">
                                 <li class="nav-item dropdown position-static">
@@ -265,7 +265,7 @@ function changeinner1(e) {
                             </ul>
                         </nav>
                     </div>
-                </div>
+               </div>
             </div>
             <t t-if="not website_sale_order.paiement_ok">
                 <p style="text-align: center; color: #de1a46">Cette clinique ne permet pas la livraison en Click and Collect, veuillez en sélectionner une autre via la recherche ci-dessous.</p>
@@ -372,7 +372,7 @@ function changeinner1(e) {
                             </p>
                         </div>
                     </div>
-                    <div class="d-md-none col-md-6 m16">
+                    <div class="d-md-none col-md-6 m16" id="horaires-liv">
                         <nav class="bg-white d-block d-md-none">
                             <ul class="nav navbar-nav align-items-md-center">
                                 <li class="nav-item dropdown position-static">
@@ -415,7 +415,7 @@ function changeinner2(e) {
                             </ul>
                         </nav>
                     </div>
-                </div>
+               </div>
             </div>
         </t>
     </template>
@@ -473,6 +473,26 @@ function changeinner2(e) {
                 </a>
             </div>
         </div>
+        <section id="breadcrumb-footter" class="d-block d-md-none mobile-breadcrumb mt32 mb16">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="Vous-tes-ici">Vous êtes ici</div>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Acceuil</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/shop/cart">Mon panier</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <span>Livraison</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
     </template>
 
     <template id="checkout_inherit" inherit_id="website_sale.checkout">
@@ -482,74 +502,6 @@ function changeinner2(e) {
                     <div class="col-lg-12">
                         <h3 class="o_page_header clinic-add-head"> Livraison : Click &amp; Collect</h3>
                         <t t-call="website_argos.panier_mobile"/>
-                        <!--div class="d-md-none">
-                            <div class="card">
-                                <div class="card-body card-panier">
-                                    <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
-                                        <a href="#nogo" class="btn-mobile btn-panier" id="panier-mobile">
-                                            <span class="">MON PANIER</span>
-                                        </a>
-                                    </div>
-                                    <script>
-function changetoggle(e) {
-	var btn = e.getElementsByClassName("btn-mobile"); 
-    if ($(btn).hasClass("btn-panier")) {
-        $(btn).removeClass('btn-panier'); 
-        $(btn).addClass('btn-panier-bis'); 
-  }
-    else {
-        $(btn).removeClass('btn-panier-bis'); 
-        $(btn).addClass('btn-panier'); 
-  }
-}
-                                    </script>
-                                    <div class="toggle_summary_div d-none d-xl-block">
-                                        <table class="table table-striped table-sm" id="cart_products" t-if="website_sale_order and website_sale_order.website_order_line">
-                                            <thead>
-                                                <tr>
-                                                    <th class="border-top-0 td-img">Articles</th>
-                                                    <th class="border-top-0"></th>
-                                                    <th class="border-top-0 text-right pr-0 td-price">Prix</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr t-foreach="website_sale_order.website_order_line" t-as="line">
-                                                    <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
-                                                    <td class='td-img text-center' t-if="line.product_id.product_tmpl_id">
-                                                        <span t-field="line.product_id.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
-                                                    </td>
-                                                    <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
-                                                        <div>
-                                                            <t t-foreach="line.get_description_following_lines()" t-as="name_line">
-                                                                <t t-call="website_sale.cart_line_product_link">
-                                                                    <strong>
-                                                                        <t t-esc="name_line"/>
-                                                                    </strong>
-                                                                </t>
-                                                            </t>
-                                                            <strong class="text-muted d-none d-md-block small">
-                                                                <t t-esc="line.name_short_without_code()"/>
-                                                            </strong>
-                                                        </div>
-                                                        <div class="quantity">
-                                                            <p>
-                                                                <span>Qté : </span>
-                                                                <span t-esc="line.product_uom_qty"/>
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center td-price">
-                                                        <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
-                                                        <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <t t-call="website_sale.total"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div-->
                         <div class="fav-clinic pb48">
                             <div class="mb24">
                                 <input type="radio" id="fav_cli" name="fav_clinic" t-att-checked="'checked' if website_sale_order.fav_clinic  else None" t-att-value="website_sale_order.fav_clinic">
@@ -624,7 +576,7 @@ Modifier l'adresse
             <div class="card">
                 <div class="card-body card-panier">
                     <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
-                        <a href="#nogo" class="btn-mobile btn-panier" id="panier-mobile">
+                        <a href="#nogo" class="btn-mobile btn-panier">
                             <span class="">MON PANIER</span>
                         </a>
                     </div>

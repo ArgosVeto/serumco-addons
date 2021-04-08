@@ -18,8 +18,8 @@
         </xpath>
 
         <xpath expr="//td[hasclass('td-product_name')]//div" position="before">
-            <div class="text-center td-price-cart d-md-none">
-                <div class="text-center" name="price">
+            <div class="td-price-cart d-md-none">
+                <div class="" name="price">
                     <t t-set="combination" t-value="line.product_id.product_template_attribute_value_ids + line.product_no_variant_attribute_value_ids"/>
                     <t t-set="combination_info" t-value="line.product_id.product_tmpl_id._get_combination_info(combination)"/>
 
@@ -153,11 +153,11 @@
                                     <i class='fa fa-edit mr4'/>
 Choisir</a>
                             </div>
-                            <div class="d-md-none col-md-6 m16">
+                           <div class="d-md-none col-md-6 m16" id="horaires">
                                 <nav class="bg-white d-block d-md-none">
                                     <ul class="nav navbar-nav align-items-md-center">
                                         <li class="nav-item dropdown position-static">
-                                            <a onclick="changeinner(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link dropdown-toggle">Afficher les horaires d'ouverture</a>
+                                            <a onclick="changeinner(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link nav-link-horaires dropdown-toggle">Afficher les horaires d'ouverture</a>
 						<script>
 function changeinner(e) {
    if (e.innerHTML == "Afficher les horaires d'ouverture") {
@@ -197,11 +197,11 @@ function changeinner(e) {
                                         </li>
                                     </ul>
                                 </nav>
-                                <div class="d-md-none mt32 align-items-center">
-                                <a t-att-href="'/update-delivery/%s' % slug(cli)" class="btn btn-primary p-0" role="button" title="Edit this address" aria-label="Edit this address">
-                                    <i class='fa fa-edit mr4'/>
+                                 <div class="d-md-none mt32 align-items-center">
+                                    <a t-att-href="'/update-delivery/%s' % slug(cli)" class="btn btn-primary p-0" role="button" title="Edit this address" aria-label="Edit this address">
+                                        <i class='fa fa-edit mr4'/>
 Choisir</a>
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -278,6 +278,23 @@ Choisir</a>
                     </a>
                 </div>
             </div>
+            <section id="breadcrumb-footter" class="d-block d-md-none mobile-breadcrumb mt32 mb16">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="Vous-tes-ici">Vous êtes ici</div>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Acceuil</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <span>Mon panier</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </xpath>
     </template>
 
@@ -357,7 +374,7 @@ Choisir</a>
         <xpath expr="//div[hasclass('card')]" position="replace">
             <div class="card border-0">
                 <div class="card-body p-xl-0">
-                   <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
+                    <div class="toggle_summary d-xl-none" onclick="changetoggle(this)">
                         <a href="#nogo" class="btn-mobile btn-panier" id="panier-mobile">MON PANIER</a>
                     </div>
                     <script>
@@ -373,7 +390,7 @@ function changetoggle(e) {
   }
 }
                     </script>
-                     <div class="toggle_summary_div d-none d-xl-block">
+                    <div class="toggle_summary_div d-none d-xl-block">
                         <table class="table table-striped table-sm" id="cart_products" t-if="website_sale_order and website_sale_order.website_order_line">
                             <thead>
                                 <tr>
@@ -448,6 +465,31 @@ function changetoggle(e) {
         </xpath>
         <xpath expr="//div[hasclass('order-xl-1')]" position="attributes">
             <attribute name="class">col-12 col-xl-8 order-xl-1</attribute>
+        </xpath>
+        <xpath expr="//div[@id='payment_method']" position="after">
+            <section id="breadcrumb-footter" class="d-block d-md-none mobile-breadcrumb mt32 mb16">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="Vous-tes-ici">Vous êtes ici</div>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Acceuil</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="/shop/cart">Mon panier</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="/shop/checkout">Livraison</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <span>Paiement</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </xpath>
         <xpath expr="//div[hasclass('order-xl-2')]/t[1]" position="after">
             <t t-if="order.operating_unit_id">

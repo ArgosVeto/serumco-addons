@@ -189,6 +189,38 @@ Ajouter
                 <p t-else="" class="alert alert-warning">This product has no valid combination.</p>
             </div>
         </xpath>
+        <!--xpath expr="//t[@t-call='website.layout']" position="inside">
+            <footer class="footer main-footer d-md-none">
+                <div class="cart-quantity d-flex align-items-center">
+                    <t t-if="request.website.viewref('website_sale.product_quantity').active">
+                        <div class="css_quantity input-group d-flex align-items-center" contenteditable="false">
+                            <div class="control-qty-cart ">
+                                <div class="control-qty d-flex">
+                                    <div class="input-group-prepend">
+                                        <a t-attf-href="#" class="btn qty_remove js_add_cart_json" aria-label="Remove one" title="Remove one">
+                                            <i class="fa fa-minus"></i>
+                                        </a>
+                                    </div>
+                                    <input type="text" class="form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+                                    <div class="input-group-append">
+                                        <a t-attf-href="#" class="btn qty_add float_left js_add_cart_json" aria-label="Add one" title="Add one">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <a t-if="product" role="button" id="add_to_cart" class="btn btn-default btn-lg js_check_product a-submit  d-flex" href="#">
+                        <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>
+Ajouter
+                        <span class="text-white ml-1 mr-1 text-bold"> - </span>
+                        <t t-call="website_sale.product_price" />
+                    </a>
+                </div>
+            </footer>
+        </xpath-->
     </template>
 
     <template id="products_tab_bizople" inherit_id="website_sale.product" name="Product Tab Bizople" priority="25">
@@ -319,41 +351,6 @@ Ajouter
                             </t>
                         </div>
 
-                        <!--t t-foreach="product.tab_ids" t-as="tab">
-                            <div t-att-id="'nav_tabs_body_%s_%s' % (product.id, tab.id)" class="tab-pane fade" role="tabpanel" t-att-aria-labelledby="'nav_link_%s_%s' % (product.id, tab.id)">
-                                <section class="mt16 mb16">
-                                    <t t-if="tab.sequence == 1">
-                                        <p>Composition :</p><t t-esc="product.composition"/>
-                                        <p>Constituants Analytiques :</p><t t-esc="product.analytic_constitution"/>
-                                        <p>Additifs :</p><t t-esc="product.additives"/>
-                                        <p>Valeurs Energétique :</p><t t-esc="product.energetic_value"/>
-                                        <p>Teneur en Eau :</p><t t-esc="product.waters_content"/>
-                                    </t>
-                                    <t t-if="tab.sequence == 2">
-                                        <p>Ration journalière recommandée :</p><t t-esc="product.daily_ratio_recommended"/>
-                                        <p>Indications :</p><t t-esc="product.indications"/>
-                                    </t>
-                                    <t t-if="tab.sequence == 3">
-                                        <t t-foreach="product.documentation_ids" t-as="doc">
-                                           <t t-if="doc.doc_type == 'MOE'">
-                                                <p><a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/></a></p>
-                                           </t>
-                                           <t t-if="doc.doc_type == 'TEC'">
-                                                <p><a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/></a></p>
-                                           </t>
-                                        </t>
-                                    </t>
-                                    <t t-if="tab.sequence == 4">
-                                        <t t-foreach="product.documentation_ids" t-as="doc">
-                                           <t t-if="doc.doc_type == 'CNS'">
-                                                <p><a t-att-href="doc.doc_url">Fiche conseil  <i class='fa fa-download' role="img"/></a></p>
-                                           </t>
-                                        </t>
-                                    </t>
-                                   <div t-field="tab.content" class="oe_structure" />
-                                </section>
-                            </div>
-                        </t-->
                     </div>
                 </div>
             </div>
@@ -641,14 +638,41 @@ Ajouter
 
     <template id="product_rating_inherited" inherit_id="website_sale.product_comment">
         <xpath expr="//div[hasclass('col-lg-8')]" position="before">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 mt32" id='avis'>
-                <span>Avis</span>
+            <div class="container">
+                <div class="col-lg-6 col-md-6  mt32 slider-product-rating">
+                    <span class="float-left mt16">Avis</span>
+                    <a id='rating-product' class='float-right btn btn-primary'>Rédiger un avis</a>
+                    <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32" id='rating-product'>
-                <a class='btn btn-primary'>Rédiger un avis</a>
-            </div>
-            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 mt32 d-none" id='rating-product-bis'>
-                <a class='btn btn-primary'>Rédiger un avis</a>
+            <div class="container">
+                <div class="col-lg-6 col-md-6  mt32 slider-product-rating">
+                    <t t-set="rating_avg" t-value="round(product.rating_avg * 100) / 100 / 2"/>
+                    <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+                    <t t-set="val_integer" t-value="int(rating_avg)"/>
+                    <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+                    <t t-if="rating_avg > 0">
+                        <div t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+                            <t t-foreach="range(0, val_integer)" t-as="num">
+                                <i class="fa fa-star" role="img"></i>
+                            </t>
+                            <t t-if="val_decimal">
+                                <i class="fa fa-star-half-o" role="img"></i>
+                            </t>
+                            <t t-foreach="range(0, empty_star)" t-as="num">
+                                <i class="fa fa-star-o text-secondary" role="img"></i>
+                            </t>
+                            <span style="margin-left:2px;" class="text1">
+                                <t t-esc="rating_avg"/>
+                                <span class="text1"> / 5</span>
+                            </span>
+                            <span style="font-size:15px;" class="text1 float-right">
+                                <t t-esc="product.rating_count"/>
+                                <span style="margin-left:5px;font-size:15px;">avis</span>
+                            </span>
+                        </div>
+                    </t>
+                </div>
             </div>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-8')]" position="replace">
@@ -718,7 +742,7 @@ Ajouter
     <template id="bottom_breadcrumbs" inherit_id="website_sale.product_comment" priority="25">
         <!--xpath expr="//div[@t-field='product.website_description']" position="after"-->
         <xpath expr="//section[hasclass('container')]" position="after">
-            <div class="d-block d-md-none mobile-breadcrumb mb16">
+            <section id="breadcrumb-footter" class="d-block d-md-none mobile-breadcrumb mb16">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -734,7 +758,7 @@ Ajouter
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </xpath>
     </template>
 
