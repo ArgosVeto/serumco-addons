@@ -223,7 +223,7 @@
                         </div>
                     </div>
                      <div class="d-md-none col-md-6 m16" id="horaires-fav">
-                        <nav class="bg-white d-block d-md-none">
+                        <nav class="d-block d-md-none">
                             <ul class="nav navbar-nav align-items-md-center">
                                 <li class="nav-item dropdown position-static">
                                     <a onclick="changeinner1(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link dropdown-toggle">Afficher les horaires d'ouverture</a>
@@ -373,7 +373,7 @@ function changeinner1(e) {
                         </div>
                     </div>
                     <div class="d-md-none col-md-6 m16" id="horaires-liv">
-                        <nav class="bg-white d-block d-md-none">
+                        <nav class="d-block d-md-none">
                             <ul class="nav navbar-nav align-items-md-center">
                                 <li class="nav-item dropdown position-static">
                                     <a onclick="changeinner2(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link dropdown-toggle">Afficher les horaires d'ouverture</a>

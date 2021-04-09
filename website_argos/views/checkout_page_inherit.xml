@@ -73,7 +73,7 @@
 
     <template id="clinic_load" name="Clinic load">
         <t t-if="clinic_ids">
-            <div class="main-cinic row">
+            <div class="main-cinic row d-none d-md-block ">
                 <t t-foreach="clinic_ids" t-as="cli">
                     <div class="col-md-12">
                         <div class="clinic-content row">
@@ -117,7 +117,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="d-none d-md-block col-md-6">
+                            <div class="col-md-6">
                                 <t t-if="cli.calendar_id">
                                     <div class="calendar-content">
                                         <strong>
@@ -153,21 +153,67 @@
                                     <i class='fa fa-edit mr4'/>
 Choisir</a>
                             </div>
-                           <div class="d-md-none col-md-6 m16" id="horaires">
-                                <nav class="bg-white d-block d-md-none">
-                                    <ul class="nav navbar-nav align-items-md-center">
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <div class="main-cinic row d-md-none m16">
+                <t t-foreach="clinic_ids" t-as="cli">
+                    <div class="col-md-12">
+                        <div class="clinic-content row">
+                            <div class="col-md-4">
+                                <div class="top-title">
+                                    <a type="radio" role="button" id="address_cli" name="address_clinic" t-att-href="'/update-delivery/%s' % slug(cli)">
+                                        <i style="margin-left: -20px;" class="fa fa-circle-thin o_record_selector"/>
+                                    </a>
+                                    <strong>
+                                        <t t-esc="cli.display_name"></t>
+                                    </strong>
+                                </div>
+                                <div class="Avenue-Pasteur d-flex align-items-start">
+                                    <t t-if="cli.street">
+                                        <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr8 mt4" />
+                                    </t>
+                                    <p>
+                                        <t t-if="cli.street">
+                                            <span class="street" t-field="cli.street" />
+                                        </t>
+                                        <t t-if="cli.street2">
+                                            <span>, </span>
+                                            <span class="street2" t-field="cli.street2" />
+                                        </t>
+                                        <t t-if="cli.zip">
+                                            <span>, </span>
+                                            <span class="zip" t-field="cli.zip" />
+                                        </t>
+                                        <t t-if="cli.city">
+                                            <span>, </span>
+                                            <span class="city" t-field="cli.city" />
+                                        </t>
+                                        <t t-if="cli.state_id">
+                                            <span>, </span>
+                                            <span class="state" t-field="cli.state_id.name" />
+                                        </t>
+                                        <t t-if="cli.country_id">
+                                            <span>, </span>
+                                            <span class="country" t-field="cli.country_id.name" />
+                                        </t>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-md-none col-md-12">
+                                <nav class="d-block d-md-none" id="horaires">
+                                    <ul class="nav navbar-nav align-items-left">
                                         <li class="nav-item dropdown position-static">
                                             <a onclick="changeinner(this)" data-toggle="dropdown" href="#" class="btn-checkout nav-link nav-link-horaires dropdown-toggle">Afficher les horaires d'ouverture</a>
-						<script>
+                                            <script>
 function changeinner(e) {
-   if (e.innerHTML == "Afficher les horaires d'ouverture") {
-     e.innerHTML="Masquer les horaires d'ouverture";
+   if (e.innerHTML == "Afficher les horaires d'ouverture") { e.innerHTML="Masquer les horaires d'ouverture";
      }
-    else {
-     e.innerHTML="Afficher les horaires d'ouverture";
+    else { e.innerHTML="Afficher les horaires d'ouverture";
   }
 }
-						</script>
+                                            </script>
                                             <div class="dropdown-menu o_mega_menu position-static">
                                                 <t t-if="cli.calendar_id">
                                                     <t t-set="get_short_employee_slot" t-value="cli.calendar_id.get_short_employee_slot(cli.calendar_id)"/>
@@ -197,11 +243,6 @@ function changeinner(e) {
                                         </li>
                                     </ul>
                                 </nav>
-                                 <div class="d-md-none mt32 align-items-center">
-                                    <a t-att-href="'/update-delivery/%s' % slug(cli)" class="btn btn-primary p-0" role="button" title="Edit this address" aria-label="Edit this address">
-                                        <i class='fa fa-edit mr4'/>
-Choisir</a>
-                                </div>
                             </div>
                         </div>
                     </div>

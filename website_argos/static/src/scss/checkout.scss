@@ -1037,7 +1037,7 @@
 #horaires {
 	-webkit-box-orient: vertical; 
     -webkit-box-direction: normal; 
-    -	a:hover {
+    	a:hover {
 		color: theme-color('primary');
 	}
 }
@@ -1053,5 +1053,10 @@
     -webkit-box-direction: normal; 
 	a:hover {
 		color: theme-color('primary');
+	}
+}
+#cart_total{
+	.text-xl-right {
+		text-align: right !important;
 	}
 }
