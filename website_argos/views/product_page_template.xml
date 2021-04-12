@@ -195,7 +195,7 @@ Ajouter
             <t t-set="combination_info" t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
             <t t-set="product_variant" t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
             <t t-set="additional_title" t-value="product.name" />
-            <footer class="footer main-footer">
+            <footer class="footer main-footer d-md-none">
                 <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
                     <section t-attf-class="container py-2 oe_website_sale #{'discount' if combination_info['has_discounted_price'] else ''}" id="product_detail" t-att-data-view-track="view_track and '1' or '0'">
                         <div class="row">
