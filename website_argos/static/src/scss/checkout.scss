@@ -1037,13 +1037,15 @@
 #horaires {
 	-webkit-box-orient: vertical; 
     -webkit-box-direction: normal; 
-    	a:hover {
+	-webkit-appearance: none;
+	    	a:hover {
 		color: theme-color('primary');
 	}
 }
 #horaires-fav {
 	-webkit-box-orient: vertical; 
     -webkit-box-direction: normal; 
+	-webkit-appearance: none;
 	a:hover {
 		color: theme-color('primary');
 	}

@@ -627,8 +627,8 @@ Ajouter
 				<a t-att-href="keep('/shop/category/' + slug(category), category=0)" t-field="category.name" />
 			</li>
 		</t>
-		<li class="breadcrumb-item active">
-			<span style="font-size: 12px" t-esc="product.name"/>
+		<li class="breadcrumb-item">
+			<span style="font-size: 12px;" t-esc="product.name"/>
 		</li>
 	</template>
 

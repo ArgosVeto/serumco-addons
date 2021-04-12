@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="position-relative">
                                 	 <t t-raw="message.body"/>
-                                	 <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                      <!--img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img-->
                                 </div>
                                 <div class="o_portal_chatter_message_title">
                                     <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="position-relative">
                                                      <t t-raw="message.body"/>
-                                                     <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                                     <!--img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img-->
                                                 </div>
                                                 <div class="o_portal_chatter_message_title">
                                                     <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="position-relative">
                                                      <t t-raw="message.body"/>
-                                                     <img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img>
+                                                     <!--img class="img img-fluid quote-image" src="/website_argos/static/src/img/quote.svg"></img-->
                                                 </div>
                                                 <div class="o_portal_chatter_message_title">
                                                     <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
