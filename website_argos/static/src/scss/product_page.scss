@@ -411,6 +411,7 @@
 			padding:0 !important;
 		}
 		button{
+			border:none !important;
 			font-family: AvenirLTStd-Heavy;
 			  font-size: 16px;
 			  font-weight: 900;
@@ -418,7 +419,7 @@
 			  font-style: normal;
 			  line-height: normal;
 			  letter-spacing: normal;
-/*			  color: theme-color('primary'); */
+			  color: theme-color('primary'); 
 			  padding:0;
 			  width: 100%;
     		  text-align: left;

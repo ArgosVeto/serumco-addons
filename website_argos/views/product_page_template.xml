@@ -408,7 +408,7 @@ Ajouter
                     <div id="accordion">
                         <div class="card">
                             <div class="card-header" id="headingOne">
-                                <button class="btn btn-accordion collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn-accordion collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                   Description
                                 </button>
                             </div>
@@ -421,7 +421,7 @@ Ajouter
                         <t t-if="product.composition or product.analytic_constitution or product.additives or product.energetic_value or product.waters_content">
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
-                                    <button class="btn btn-accordion collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <button class="btn-accordion collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                      Composition
                                     </button>
                                 </div>
@@ -444,7 +444,7 @@ Ajouter
                         <t t-if="product.daily_ratio_recommended or product.indications">
                             <div class="card">
                                 <div class="card-header" id="headingTree">
-                                    <button class="btn btn-accordion collapsed" data-toggle="collapse" data-target="#collapseTree" aria-expanded="True" aria-controls="collapseTree">
+                                    <button class="btn-accordion collapsed" data-toggle="collapse" data-target="#collapseTree" aria-expanded="True" aria-controls="collapseTree">
                                     Spécifications
                                     </button>
                                 </div>
@@ -474,7 +474,7 @@ Ajouter
                         <t t-if="moetec">
                             <div class="card">
                                 <div class="card-header" id="headingFour">
-                                    <button class="btn btn-accordion collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    <button class="btn-accordion collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                                     Mode d'emploi
                                     </button>
                                 </div>
@@ -501,7 +501,7 @@ Ajouter
                         <t t-if="cns">
                             <div class="card">
                                 <div class="card-header" id="headingFive">
-                                    <button class="btn btn-accordion collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    <button class="btn-accordion collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                     Besoin de conseil ?
                                     </button>
                                 </div>
