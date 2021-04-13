@@ -235,7 +235,7 @@ function changeinner1(e) {
   }
 }
                                     </script>
-                                    <div class="dropdown-menu o_mega_menu position-static">
+                                    <div style="background-color: transparent;" class="dropdown-menu o_mega_menu position-static">
                                         <t t-if="clinic_fav.calendar_id">
                                             <t t-set="get_short_employee_slot" t-value="clinic_fav.calendar_id.get_short_employee_slot(clinic_fav.calendar_id)"/>
                                             <t t-if="get_short_employee_slot">
@@ -385,7 +385,7 @@ function changeinner2(e) {
   }
 }
                                     </script>
-                                    <div class="dropdown-menu o_mega_menu position-static">
+                                    <div style="background-color: transparent;" class="dropdown-menu o_mega_menu position-static">
                                         <t t-if="website_sale_order.operating_unit_id.calendar_id">
                                             <t t-set="get_short_employee_slot" t-value="website_sale_order.operating_unit_id.calendar_id.get_short_employee_slot(website_sale_order.operating_unit_id.calendar_id)"/>
                                             <t t-if="get_short_employee_slot">
@@ -554,8 +554,8 @@ function changeinner2(e) {
 Modifier l'adresse
                                     </a>
                                 </div>
-                                <div style="width: 100%;" class="d-md-none col-lg-12 align-items-center">
-                                    <a style="width: 100%;" t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" class="btn btn-outline-primary edit-link" role="button" title="Edit this address" aria-label="Edit this address">
+                                <div class="d-md-none col-lg-12 align-items-center">
+                                    <a  t-attf-href="/add-address?edit-mode=#{website_sale_order.partner_invoice_id.id}" style="border: solid;" class="btn btn-outline-primary float-right edit-link" role="button" title="Edit this address" aria-label="Edit this address">
                                         <span class="fa fa-edit mr-2"/>
 Modifier l'adresse
                                     </a>

@@ -214,7 +214,7 @@ function changeinner(e) {
   }
 }
                                             </script>
-                                                <div class="dropdown-menu o_mega_menu position-static">
+                                                <div style="background-color: transparent;" class="dropdown-menu o_mega_menu position-static">
                                                     <t t-if="cli.calendar_id">
                                                         <t t-set="get_short_employee_slot" t-value="cli.calendar_id.get_short_employee_slot(cli.calendar_id)"/>
                                                         <t t-if="get_short_employee_slot">
@@ -258,7 +258,10 @@ function changeinner(e) {
             </div>
         </xpath>
         <xpath expr="//div[hasclass('oe_cart')]" position="replace">
-            <div class="col-12">
+            <div class="col-12 d-none d-md-block">
+                <h1 class="text-primary cart-page-heading">Votre panier</h1>
+            </div>
+            <div class="col-12 d-md-none mt32">
                 <h1 class="text-primary cart-page-heading">Votre panier</h1>
             </div>
             <div class="col-12 col-xl-8 oe_cart">
