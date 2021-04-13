@@ -562,7 +562,7 @@ Ajouter
 															<t t-esc="a.name"/>
 														</span>
 													</a>
-													<div class="dropdown-menu" role="menu" style="background-color: transparent;">
+													<div class="dropdown-menu" role="menu" style="background-color: transparent;box-shadow: none;">
 														<ul class="nav nav-pills flex-column">
 															<t t-foreach="a.product_filter_line_ids" t-as="v">
 																<li class="nav-item">

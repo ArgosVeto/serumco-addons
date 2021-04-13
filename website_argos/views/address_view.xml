@@ -235,7 +235,7 @@ function changeinner1(e) {
   }
 }
                                     </script>
-                                    <div style="background-color: transparent;" class="dropdown-menu o_mega_menu position-static">
+                                    <div style="background-color: transparent; box-shadow: none;" class="dropdown-menu o_mega_menu position-static">
                                         <t t-if="clinic_fav.calendar_id">
                                             <t t-set="get_short_employee_slot" t-value="clinic_fav.calendar_id.get_short_employee_slot(clinic_fav.calendar_id)"/>
                                             <t t-if="get_short_employee_slot">
@@ -385,7 +385,7 @@ function changeinner2(e) {
   }
 }
                                     </script>
-                                    <div style="background-color: transparent;" class="dropdown-menu o_mega_menu position-static">
+                                    <div style="background-color: transparent; box-shadow: none;" class="dropdown-menu o_mega_menu position-static">
                                         <t t-if="website_sale_order.operating_unit_id.calendar_id">
                                             <t t-set="get_short_employee_slot" t-value="website_sale_order.operating_unit_id.calendar_id.get_short_employee_slot(website_sale_order.operating_unit_id.calendar_id)"/>
                                             <t t-if="get_short_employee_slot">
