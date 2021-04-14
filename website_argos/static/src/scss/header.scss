@@ -273,6 +273,16 @@
 			box-shadow: none;
 		  }
 	}
+	#submenu{
+		.nav-link:focus, .nav-link.focus {
+			outline: 0;
+			box-shadow: none;
+		  }
+		  .nav-item:focus, .nav-item.focus {
+			outline: 0;
+			box-shadow: none;
+		  }
+	}
 	/* mega menu alignment */
 	.header-menus{
 		#bizople-header{

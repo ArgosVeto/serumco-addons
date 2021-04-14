@@ -110,7 +110,7 @@
                     <div class="js_product js_main_product">
                         <div id="product_option_block" class="d-none"/>
                         <t t-if="product" t-call="website_sale.product_price" />
-                        <p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." />
+                        <!--p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." /-->
                         <div class="line mt16 mb16"/>
                         <div class="ml-auto d-block d-md-none">
                             <a type="button" role="button" class="btn btn-default o_add_wishlist te_theme_button" t-att-disabled='in_wish or None' title="Add to Wishlist" t-att-data-product-product-id="product.product_variant_ids[0].id if product.product_variant_ids else '0'" data-action="o_wishlist">
