@@ -66,7 +66,7 @@
 
 	
 	
-	<template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
+	<!--template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
             <div class="container">
                 <div class="mt12 mb12 row">
                     <div class="form-group field-lastname col-md-6 o_website_form_required_custom">
@@ -112,7 +112,7 @@
                     <div class="check">
                         <input type="checkbox" name="confirm_first" required="true">
 			 				<span class="ml-2 confirm_first">J’ai lu et j’accepte les <a href="/gtc">conditions d’utilisation</a> et <a href="/privacy-policy">la politique de confidentialité</a></span>
-                            <!--span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span-->
+                            <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
                         </input>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </template>
+        </template-->
 	
 	
 	
