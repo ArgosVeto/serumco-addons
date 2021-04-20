@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-	<template id="auth_signup_inherit_fields_banner" inherit_id="auth_signup.signup" name="Sign up">
+    <template id="auth_signup_inherit_fields_banner" inherit_id="auth_signup.signup" name="Sign up">
         <xpath expr="//form[@class='oe_signup_form']" position="before">
             <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block">
-		        <div class="container">
-		            <div class="row">
-		            	<div class="col-lg-12">
-		            		<ol class="breadcrumb">
-							    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-							    <li class="breadcrumb-item"> Inscription</li>
-							  </ol>
-		            	</div>
-		                <div class="col-lg-12 pt16 pb32 text-center">
-		                	<h1>Inscription</h1>
-		                </div>
-		            </div>
-		        </div>
-    		</section>
-            
-        </xpath>
-        </template>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Accueil</a>
+                                </li>
+                                <li class="breadcrumb-item"> Inscription</li>
+                            </ol>
+                        </div>
+                        <div class="col-lg-12 pt16 pb32 text-center">
+                            <h1>Inscription</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <template id="auth_login_inherit_fields_banner" inherit_id="auth_signup.login" name="Log In">
+        </xpath>
+    </template>
+
+    <template id="auth_login_inherit_fields_banner" inherit_id="auth_signup.login" name="Log In">
         <xpath expr="//form[@class='oe_login_form']" position="before">
             <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="/">Accueil</a>
+                                </li>
                                 <li class="breadcrumb-item"> Connexion</li>
-                              </ol>
+                            </ol>
                         </div>
                         <div class="col-lg-12 pt16 pb32 text-center">
                             <h1>Connexion</h1>
@@ -39,20 +43,22 @@
                     </div>
                 </div>
             </section>
-            
-        </xpath>
-        </template>
 
-         <template id="auth_reset_inherit_fields_banner" inherit_id="auth_signup.reset_password" name="Reset password">
+        </xpath>
+    </template>
+
+    <template id="auth_reset_inherit_fields_banner" inherit_id="auth_signup.reset_password" name="Reset password">
         <xpath expr="//form[@class='oe_reset_password_form']" position="before">
             <section class="s_text_block pt32 pb16 s_blog_banner" data-name="Text block">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="/">Accueil</a>
+                                </li>
                                 <li class="breadcrumb-item"> Mot De Passe Oublie </li>
-                              </ol>
+                            </ol>
                         </div>
                         <div class="col-lg-12 pt16 pb32 text-center">
                             <h1>Mot De Passe Oublie</h1>
@@ -60,58 +66,55 @@
                     </div>
                 </div>
             </section>
-            
+
         </xpath>
-        </template>
+    </template>
 
-	
-	
-	<!--template id="auth_signup.fields" name="Auth Signup/ResetPassword form fields">
-            <div class="container">
-                <div class="mt12 mb12 row">
-                    <div class="form-group field-lastname col-md-6 o_website_form_required_custom">
-                        <label for="lastname" class="col-form-label">Nom</label>
-                        <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder=""/>
-                    </div>
-        			
-        			<div class="form-group field-firstname col-md-6 o_website_form_required_custom">
+
+    <template id="signup_fields" name="Auth Signup/ResetPassword form fields">
+        <div class="container">
+            <div class="mt12 mb12 row">
+                <div class="form-group field-lastname col-md-6 o_website_form_required_custom">
+                    <label for="lastname" class="col-form-label">Nom</label>
+                    <input type="text" name="lastname" t-att-value="lastname" id="lastname" class="form-control form-control-sm" placeholder=""/>
+                </div>
+
+                <t t-if="not only_passwords">
+                    <div class="form-group field-firstname col-md-6 o_website_form_required_custom">
                         <label for="firstname" class="col-form-label">Prénom</label>
-                        <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John Doe"
-                            required="required" t-att-readonly="'readonly' if only_passwords else None"
-                            t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                        <input type="text" name="firstname" t-att-value="firstname" id="firstname" class="form-control form-control-sm" placeholder="e.g. John Doe" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
                     </div>
-        			
-                    <div class="form-group field-name col-md-6 o_website_form_required_custom d-none">
-                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe"
-                            required="required" t-att-readonly="'readonly' if only_passwords else None"
-                            t-att-autofocus="'autofocus' if login and not only_passwords else None" />
-                    </div>
-                </div>
+                </t>
 
-                <div class="form-group field-login o_website_form_required_custom">
-                    <label for="login" class="col-form-label">Adresse email</label>
-                    <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus"
-                        autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+                <div class="form-group field-name col-md-6 o_website_form_required_custom d-none">
+                    <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder="e.g. John Doe" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
                 </div>
-    			
-                <div class="form-group field-password pt-2 o_website_form_required_custom">
-                    <label for="password" class="col-form-label">Mot de passe</label>
-                    <input type="password" name="password" id="password" class="form-control form-control-sm"
-                        required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
-                	<p class="caractres-minimu">
+            </div>
+
+            <div class="form-group field-login o_website_form_required_custom">
+                <label for="login" class="col-form-label">Adresse email</label>
+                <input type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus" autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+            </div>
+
+            <div class="form-group field-password pt-2 o_website_form_required_custom">
+                <label for="password" class="col-form-label">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-control form-control-sm" required="required" t-att-autofocus="'autofocus' if only_passwords else None"/>
+                <p class="caractres-minimu">
                 		10 caractères minimum, 1 majuscule, 1 minuscule, 1 caractère spécial, 1 chiffre
-                	</p>
-                </div>
+                </p>
+            </div>
 
-                <div class="form-group field-confirm_password o_website_form_required_custom">
-                    <label for="confirm_password" class="col-form-label">Confirmer le mot de passe</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
-                </div>
+            <div class="form-group field-confirm_password o_website_form_required_custom">
+                <label for="confirm_password" class="col-form-label">Confirmer le mot de passe</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
+            </div>
 
+            <t t-if="not only_passwords">
                 <div class="col-md-12 d-flex align-ites-center checkbox mt16 mb16">
                     <div class="check">
                         <input type="checkbox" name="confirm_first" required="true">
-			 				<span class="ml-2 confirm_first">J’ai lu et j’accepte les <a href="/gtc">conditions d’utilisation</a> et <a href="/privacy-policy">la politique de confidentialité</a></span>
+                            <span class="ml-2 confirm_first">J’ai lu et j’accepte les <a href="/gtc">conditions d’utilisation</a> et <a href="/privacy-policy">la politique de confidentialité</a>
+                            </span>
                             <span class="ml-2 confirm_first">J'ai lu et j'accepte les CGU et la politique de confidentialité</span>
                         </input>
                     </div>
@@ -124,11 +127,28 @@
                         </input>
                     </div>
                 </div>
-            </div>
-        </template-->
-	
-	
-	
+            </t>
+        </div>
+
+    </template>
+
+    <template id="reset_password" inherit_id="auth_signup.reset_password" name="Reset password">
+        <xpath expr="//t[@t-call='auth_signup.fields']" position="replace">
+            <t t-call="website_argos.signup_fields">
+                <t t-set="only_passwords" t-value="1"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="signup_signup" inherit_id="auth_signup.signup" name="Reset password">
+        <xpath expr="//t[@t-call='auth_signup.fields']" position="replace">
+            <t t-call="website_argos.signup_fields">
+                <t t-set="only_passwords" t-value="bool(token and not invalid_token)"/>
+            </t>
+        </xpath>
+    </template>
+
+
     <template id="auth_signup_signup_fields" inherit_id="auth_signup.signup" name="Sign up">
         <xpath expr="//div[@class='text-center oe_login_buttons pt-3']" position="replace">
             <div class="text-center oe_login_buttons pt-3 container">
@@ -139,29 +159,37 @@
         </xpath>
     </template>
 
-    <template id="auth_signup_fields_extend" inherit_id="auth_signup.fields" name="Signup Fields Extend">
+    <template id="auth_signup_fields_extend" inherit_id="website_argos.signup_fields" name="Signup Fields Extend">
         <xpath expr="//div[hasclass('field-login')]" position="after">
-            <div class="form-group field-phone o_website_form_required_custom">
-                <label for="phone" class="col-form-label">Téléphone</label>
-                <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
-	                t-att-autofocus="'autofocus' if login and not only_passwords else None" />
-             </div>
-             <div class="form-group field-country o_website_form_required_custom">
-                 <label for="country_id" class="col-form-label">Pays</label>
-                 <select name="country_id" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None"
-                  t-att-autofocus="'autofocus' if login and not only_passwords else None">
-                     <option value=""></option>
-                     <t t-foreach="countries or []" t-as="country">
-                         <option t-att-value="country.id">
-                             <t t-esc="country.name" />
-                         </option>
-                      </t>
-                 </select>
-             </div>
+            <t t-if="not only_passwords">
+                <div class="form-group field-phone o_website_form_required_custom">
+                    <label for="phone" class="col-form-label">Téléphone</label>
+                    <input type="text" name="phone" t-att-value="phone" id="phone" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None" />
+                </div>
+                <div class="form-group field-country o_website_form_required_custom">
+                    <label for="country_id" class="col-form-label">Pays</label>
+                    <select name="country_id" class="form-control" required="required" t-att-readonly="'readonly' if only_passwords else None" t-att-autofocus="'autofocus' if login and not only_passwords else None">
+                        <option value=""></option>
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id">
+                                <t t-esc="country.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </t>
         </xpath>
     </template>
-   <!--  auth_signup.signup -->
+    <!--  auth_signup.signup -->
+
+    <template id="auth_signup_login_inherited" inherit_id="auth_signup.login" name="Sign up - Reset Password">
+        <xpath expr="//div[hasclass('justify-content-between')]" position="replace">
+            <div class="justify-content-between mt-2 d-flex small">
+                <a t-attf-href="/web/signup?{{ keep_query() }}">Vous n'avez pas de compte?</a>
+                <a t-attf-href="/web/reset_password?{{ keep_query() }}">Réinitialiser le mot de passe</a>
+            </div>
+        </xpath>
+    </template>
 
 
-    
 </odoo>
