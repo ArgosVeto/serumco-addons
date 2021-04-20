@@ -81,6 +81,20 @@ class AuthSignupHomeSS(AuthSignupHome):
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
 
+    def do_signup_password(self, qcontext):
+        """ Shared helper that creates a res.partner out of a token """
+        values = { key: qcontext.get(key) for key in ('login', 'name', 'password') }
+        if not values:
+            raise UserError(_("The form was not properly filled in."))
+        if values.get('password') != qcontext.get('confirm_password'):
+            raise UserError(_("Passwords do not match; please retype them."))
+        supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
+        lang = request.context.get('lang', '').split('_')[0]
+        if lang in supported_lang_codes:
+            values['lang'] = lang
+        self._signup_with_values(qcontext.get('token'), values)
+        request.env.cr.commit()
+
     @http.route('/web/signup', type='http', auth='public', website=True,
                 sitemap=False)
     def web_auth_signup(self, *args, **kw):
@@ -121,6 +135,38 @@ class AuthSignupHomeSS(AuthSignupHome):
                     qcontext['error'] = _("Could not create a new account.")
 
         response = request.render('auth_signup.signup', qcontext)
+        response.headers['X-Frame-Options'] = 'DENY'
+        return response
+
+    @http.route('/web/reset_password', type='http', auth='public', website=True, sitemap=False)
+    def web_auth_reset_password(self, *args, **kw):
+        qcontext = self.get_auth_signup_qcontext()
+
+        if not qcontext.get('token') and not qcontext.get('reset_password_enabled'):
+            raise werkzeug.exceptions.NotFound()
+
+        if 'error' not in qcontext and request.httprequest.method == 'POST':
+            try:
+                if qcontext.get('token'):
+                    self.do_signup_password(qcontext)
+                    return self.web_login(*args, **kw)
+                else:
+                    login = qcontext.get('login')
+                    assert login, _("No login provided.")
+                    _logger.info(
+                        "Password reset attempt for <%s> by user <%s> from %s",
+                        login, request.env.user.login, request.httprequest.remote_addr)
+                    request.env['res.users'].sudo().reset_password(login)
+                    qcontext['message'] = _("An email has been sent with credentials to reset your password")
+            except UserError as e:
+                qcontext['error'] = e.name or e.value
+            except SignupError:
+                qcontext['error'] = _("Could not reset your password")
+                _logger.exception('error when resetting password')
+            except Exception as e:
+                qcontext['error'] = str(e)
+
+        response = request.render('auth_signup.reset_password', qcontext)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
 
