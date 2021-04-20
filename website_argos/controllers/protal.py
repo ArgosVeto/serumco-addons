@@ -65,17 +65,18 @@ class AuthSignupHomeSS(AuthSignupHome):
         if lang in supported_lang_codes:
             values['lang'] = lang
         phone = qcontext.get('phone')
-        country_id = qcontext.get('country_id')
-        country = ''.join(x for x in country_id if x.isdigit())
-        update_country_id = request.env['res.country'].sudo().browse(
-                    int(country))
-        country_code = update_country_id.code.upper()
+        if values.get('country_id'):
+            country_id = qcontext.get('country_id')
+            country = ''.join(x for x in country_id if x.isdigit())
+            update_country_id = request.env['res.country'].sudo().browse(
+                        int(country))
+            country_code = update_country_id.code.upper()
+            values.update({'country_id': int(country_id)})
 
-        res_parse = phonenumbers.parse(phone, country_code)
-        phone = phonenumbers.format_number(res_parse, phonenumbers.PhoneNumberFormat.E164)
-
-        values.update({'phone': phone})
-        values.update({'country_id': int(country_id)})
+        if values.get('phone'):
+            res_parse = phonenumbers.parse(phone, country_code)
+            phone = phonenumbers.format_number(res_parse, phonenumbers.PhoneNumberFormat.E164)
+            values.update({'phone': phone})
 
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
