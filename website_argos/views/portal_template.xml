@@ -939,7 +939,7 @@ Done
             <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
             <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
             <input type="hidden" t-if="callback_method" name="callback_method" t-att-value="callback_method"/>
-            <div class="card mt32" style="border: none">
+            <div class="card mt32" style="border: none" id="mes_paiements">
                 <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
                 <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
                 <t t-set="MAX_BRAND_LINE" t-value="3"/>
@@ -966,7 +966,7 @@ Done
                                 <small class="text-muted">(Some fees may apply)</small>
                             </t>
                         </label>
-                        <ul class="float-right list-inline payment_icon_list">
+                        <!--ul class="float-right list-inline payment_icon_list">
                             <t t-set="i" t-value="0"/>
                             <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
                                 <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
@@ -979,7 +979,7 @@ Done
                                 </li>
                                 <t t-set="i" t-value="i+1"/>
                             </t>
-                        </ul>
+                        </ul-->
                         <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
                     </div>
                     <t t-if="acq.payment_flow == 'form'">
@@ -1022,18 +1022,22 @@ Done
                 <t t-foreach="pms" t-as="pm">
                     <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
                         <div class="card-body o_payment_acquirer_select">
+                            <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
                             <label>
                                 <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                <span class="payment_option_name" t-esc="pm.name"/>
-                                <t t-if="pm.verified">
+                                <span class="payment_option_name" t-esc="pm.name[0:4]"/>
+                                <span class="payment_option_name" t-esc="pm.name[4:8]"/>
+                                <span class="payment_option_name" t-esc="pm.name[8:12]"/>
+                                <span class="payment_option_name" t-esc="pm.name[12:16]"/>
+                                <!--t t-if="pm.verified">
                                     <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
                                 </t>
                                 <t t-else="">
                                     <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                </t>
+                                </t-->
                             </label>
-                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right">
-                                <i class="fa fa-trash"/>
+                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right mt0">
+                                <i class="fa fa-trash fa-2x"/>
                             </button>
                         </div>
                     </t>
@@ -1098,16 +1102,27 @@ Done
                             </ol>
                         </div>
                     </div-->
-                <div class="clearfix">
-                    <div class="row">
-                        <div class="col-md-8 offset-2">
-                            <div class="mt32 mb32">
-                                <h3>Ajouter une carte bancaire</h3>
+                <div class="clearfix" id="mes_paiements">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2 d-none d-md-block"/>
+                            <div class="col-md-8 col-xs-12">
+                                <div class="mt32 mb32">
+                                    <h3>Ajouter une carte bancaire
+                                        <img src="/website_argos/static/src/img/vsa.png" class="float-right img img-fluid"/>
+                                        <img src="/website_argos/static/src/img/mastercard.png" class="float-right img img-fluid"/>
+                                    </h3>
+                                </div>
                             </div>
-                            <t t-call="payment.payment_tokens_list">
-                                <t t-set="acquirers" t-value="acquirers"/>
-                                <t t-set="mode" t-value="'manage'"/>
-                            </t>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 d-none d-md-block"/>
+                            <div class="col-md-8">
+                                <t t-call="payment.payment_tokens_list">
+                                    <t t-set="acquirers" t-value="acquirers"/>
+                                    <t t-set="mode" t-value="'manage'"/>
+                                </t>
+                            </div>
                         </div>
                     </div>
                 </div>
