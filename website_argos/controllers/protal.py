@@ -5,6 +5,7 @@
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.http import request
 import werkzeug
+import logging
 from odoo import fields, http, _
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, date_utils
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
@@ -24,6 +25,7 @@ try:
 except ImportError:
     _logger.debug('Cannot `import phonenumbers`.')
 
+_logger = logging.getLogger(__name__)
 
 class AuthSignupHomeSS(AuthSignupHome):
     def check_password(self, passwd):
