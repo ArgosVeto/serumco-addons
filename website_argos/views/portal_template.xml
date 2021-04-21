@@ -1107,11 +1107,19 @@ Done
                         <div class="row">
                             <div class="col-md-2 d-none d-md-block"/>
                             <div class="col-md-8 col-xs-12">
-                                <div class="mt32 mb32">
+                                <div class="mt32 mb32 d-none d-md-block">
                                     <h3>Ajouter une carte bancaire
                                         <img src="/website_argos/static/src/img/vsa.png" class="float-right img img-fluid"/>
                                         <img src="/website_argos/static/src/img/mastercard.png" class="float-right img img-fluid"/>
                                     </h3>
+                                </div>
+                                <div class="mt32 d-md-none">
+                                    <h3>Ajouter une carte bancaire</h3>
+                                </div>
+                                <div class="mt8 mb32 d-md-none">
+                                    <img src="/website_argos/static/src/img/vsa.png" class="mt8 img img-fluid"/>
+                                    <img src="/website_argos/static/src/img/mastercard.png" class="mt8 img img-fluid"/>
+
                                 </div>
                             </div>
                         </div>
