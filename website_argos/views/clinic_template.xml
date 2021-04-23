@@ -249,7 +249,7 @@
 			<t t-call="website_argos.clinique_filter_sidebar"/>
 			<footer class="footer main-footer d-md-none">
 				<div class="container" style="text-align: center;">
-					<button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16" style="border-radius: 50px;">
+					<button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16" style="border-radius: 50px; width: 50%;">
 						<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
 						<span class="">Filtrer</span>
 					</button>
