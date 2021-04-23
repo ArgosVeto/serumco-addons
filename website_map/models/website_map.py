@@ -87,9 +87,16 @@ class ClinicDetail(ClinicDetail):
 		            if day_timimg:
 		                unit_list.append(unit.id)
 		    operating_unit_ids = operating_unit_ids.filtered(lambda x:x.id in unit_list)
+
+		agglomeration_ids = []
+		cliniques = request.env['operating.unit'].sudo().search([])
+		for clinic in cliniques:
+		    if clinic.city not in agglomeration_ids:
+		        agglomeration_ids.append(clinic.city)
+			
 		type_ids = request.env['operating.unit.type'].sudo().search([])
 		service_ids = request.env['operating.unit.service'].sudo().search([])
-		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids, 'clinic_type_ids':clinic_collect_ids, 'clinic_appoint_ids':clinic_appoint_ids}
+		values = {'operating_unit_ids':operating_unit_ids,'service_ids':service_ids,'type_ids':type_ids, 'clinic_type_ids':clinic_collect_ids, 'clinic_appoint_ids':clinic_appoint_ids, 'agglomeration_ids':agglomeration_ids}
 		return request.env['ir.ui.view'].render_template("website_argos.clinic_template",values)
 
 	@http.route(['/nos-cliniques-veterinaires-2/clinique/<model("operating.unit"):operating_unit>'], type='http', auth="public", website=True)

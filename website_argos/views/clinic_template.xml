@@ -54,6 +54,25 @@
 
 	</template>
 
+	<template id="agglomeration_search_tmp" name="Clinic aglomeration Search">
+		<div t-attf-class="dropdown">
+			<t t-if="agglomeration_ids">
+				<t t-set="agglomeration" t-value="agglomeration_ids"/>
+				<a role="button" href="#" class="dropdown-toggle btn ge btn-link" data-toggle="dropdown">
+					<span>Agglomération</span>
+				</a>
+				<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
+					<t t-if="agglomeration">
+						<t t-foreach="agglomeration" t-as="s">
+							<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?search=#{s}" class="dropdown-item">
+								<span t-esc="s" />
+							</a>
+						</t>
+					</t>
+				</div>
+			</t>
+		</div>
+	</template>
 
 	<template id="clinic_type_search_tmp" name="Clinic Type Search">
 		<t t-set="type_val" t-value="clinic_type_ids" />
@@ -179,6 +198,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="search_by_service mr-2">
+							<t t-call="website_argos.agglomeration_search_tmp"/>
+						</div>
+						<div class="search_by_service mr-2">
 							<t t-call="website_argos.service_type_search_tmp"/>
 						</div>
 						<div class="search_by_type">
@@ -279,6 +301,36 @@
 							<span>CLICK &amp; COLLECT</span>
 						</a>
 					</div>
+					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
+						<li class="nav-item dropdown  position-static">
+							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
+								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">AGGLOMERATION</span>
+							</a>
+							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
+								<section class="mega_menu_one_snippet" data-name="Services Menu">
+									<div class="container p-0">
+										<div class="row">
+											<div class="col-md-3">
+												<t t-set="agglomeration" t-value="agglomeration_ids"/>
+												<t t-set="ss" t-value="service_ids[0]"/>
+												<div class="heading-contents">
+													<t t-if="agglomeration">
+														<t t-foreach="agglomeration" t-as="s">
+															<p class="m-0">
+																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?search=#{s}" data-original-title="" title="" aria-describedby="tooltip688207">
+																	<span t-esc="s" />
+																</a>
+															</p>
+														</t>
+													</t>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</li>
+					</ul>
 					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
 						<li class="nav-item dropdown  position-static">
 							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
