@@ -138,6 +138,17 @@ class AuthSignupHomeSS(AuthSignupHome):
 
         response = request.render('auth_signup.signup', qcontext)
         response.headers['X-Frame-Options'] = 'DENY'
+        values = {}
+        access_token = qcontext.get('token')
+        if access_token:
+            abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)
+            values.update({
+                'website_sale_order': abandoned_order,
+                'date': fields.Date.today(),
+                'suggested_products': [],
+                'unavailable_products': [],
+            })
+            response = request.render("website_sale.cart", values)
         return response
 
     @http.route('/web/reset_password', type='http', auth='public', website=True, sitemap=False)
@@ -331,8 +342,9 @@ class PortalContent(http.Controller):
         order_ids = request.env['sale.order'].sudo().search(
             [('partner_id', '=', partner.id)], order="date_order desc", limit=2, )
 
-        product_wishlist_ids = request.env['product.wishlist'].sudo().search(
-            [('partner_id', '=', partner.id)])
+        product_wishlist_ids = []
+        product_wishlist_ids = request.env['product.wishlist'].with_context(display_default_code=False).current()
+        
         values.update({'next_appointment_id': next_appointment_id,
                        'pervious_appointment_id': pervious_appointment_id,
                        'fav_clinic': fav_clinic,

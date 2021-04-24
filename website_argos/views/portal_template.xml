@@ -126,50 +126,6 @@
         <t t-call="website.layout">
             <div id="wrap" class="">
                 <t t-call="website_argos.vue_ensemble"/>
-                <!--div class="row m-0 mx-md-3 my_content">
-                <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
-                    <div class="top-links p-0">
-                        <div class="container">
-                            <ul class="nav navbar-nav flex-row">
-                                <li class="nav-item mr32">
-                                    <t t-if="pageName == 'portal'">
-                                        <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
-                                    </t>
-                                    <t t-else="">
-                                        <a class="nav-link" href="/my-content">Vue d'ensemble</a>
-                                    </t>
-                                </li>
-                                <li class="nav-item mr32">
-                                    <a class="nav-link active" href="/my/orders">Mes commandes</a>
-                                </li>
-                                    <li class="nav-item mr32">
-                                        <a class="nav-link" href="/my-appointment">Rendez-vous</a>
-                                    </li>
-                                <li class="nav-item mr32">
-                                    <a class="nav-link" href="/my/account">Mon adresse</a>
-                                </li>
-                                <li class="nav-item mr32">
-                                    <t t-if="pageName == 'clinic'">
-                                        <a class="nav-link acive" href="/my-clinic">Ma clinique</a>
-                                    </t>
-                                    <t t-else="">
-                                        <a class="nav-link" href="/my-clinic">Ma clinique</a>
-                                    </t>
-                                </li>
-                                <li class="nav-item mr32">
-                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
-                                </li>
-                                <li class="nav-item mr32">
-                                    <a class="nav-link" href="/my/perrsonal_details" onclik="active">Mes données personnelles</a>
-                                </li>
-                               <li class="nav-item m-0">
-                                    <a class="nav-link" href="/my/payment_method" onclick="active">Mes moyens de paiements</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div-->
                 <div class="container">
                     <div class="row my_content mb48">
                         <!--div class="col-lg-12">
@@ -388,7 +344,9 @@
                                                                             <span t-field="fav_pro.product_id.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
                                                                         </div>
                                                                         <div class="col-md-6 col-6">
-                                                                            <p t-field="fav_pro.product_id.public_categ_ids"/>
+                                                                            <t t-if="fav_pro.product_id.public_categ_ids">
+                                                                                <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
+                                                                            </t>
                                                                             <strong>
                                                                                 <t t-esc="fav_pro.product_id.name"/>
                                                                             </strong>
@@ -402,9 +360,9 @@
                                                                 </form>
                                                             </div>
                                                         </t>
-                                                        <!--t t-else="">
-                                                                <div class="carousel-item">
-                                                                    <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
+                                                        <t t-else="">
+                                                            <div class="carousel-item">
+                                                                <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
                                                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
                                                                     <div class="row mt24 mes-product">
@@ -412,17 +370,22 @@
                                                                             <span t-field="fav_pro.product_id.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
                                                                         </div>
                                                                         <div class="col-md-6 col-6">
-                                                                            <p t-field="fav_pro.product_id.public_categ_ids"/>
-                                                                          <strong><t t-esc="fav_pro.product_id.name"/></strong>
+                                                                            <t t-if="fav_pro.product_id.public_categ_ids">
+                                                                                <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
+                                                                            </t>
+                                                                            <strong>
+                                                                                <t t-esc="fav_pro.product_id.name"/>
+                                                                            </strong>
                                                                         </div>
                                                                     </div>
                                                                     <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
-                                                                    <button type="submit" id="form_submit" class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add"><img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
+                                                                    <button type="submit" id="form_submit" class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add">
+                                                                        <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
                                                                     Ajouter
-                                                                </button>
+                                                                    </button>
                                                                 </form>
-                                                                </div>
-                                                            </t-->
+                                                            </div>
+                                                        </t>
                                                         <t t-set="count" t-value="count + 1"/>
                                                     </t>
                                                 </div>
@@ -490,6 +453,83 @@
                                     <button href="#" id="update_my_preference" class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">Mettre à jour</button>
                                 </div>
                             </div>
+                            <!--div class="col-md-4 o-7">
+                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                <div class="container">
+                                    <div class="checkboxes">
+                                        <input id="a" type="checkbox" tabindex="1"/>
+                                        <label for="a">Spectacles</label>
+                                        <input id="b" type="checkbox" tabindex="2"/>
+                                        <label for="b">Testicles</label>
+                                        <input id="c" type="checkbox" tabindex="3"/>
+                                        <label for="c">Wallet</label>
+                                        <input id="d" type="checkbox" tabindex="4"/>
+                                        <label for="d">Watch</label>
+                                    </div>
+                                </div>
+                                <div class="card p-3">
+                                    <div class="row title-row">
+                                        <div class="col-md-12 col-12 text-left">
+                                            <strong>Mes préférences de contact</strong>
+                                        </div>
+                                    </div>
+                                    <div class="mes-preferences" t-if="partner">
+                                        <input id="last_send_letter" type="hidden" t-att-value="partner.send_letter"/>
+                                        <input id="last_send_email" type="hidden" t-att-value="partner.send_email"/>
+                                        <input id="last_send_sms" type="hidden" t-att-value="partner.send_sms"/>
+                                        <input id="last_to_call" type="hidden" t-att-value="partner.to_call"/>
+                                        <div class="checkboxes">
+                                            <div class="col-md-2 col-2">
+                                                <input type="checkbox" name="send_letter" t-att-checked="partner.send_letter"/>
+                                            </div>
+                                            <label for="send_letter">Courrier</label>
+                                            <input id="a" type="checkbox" tabindex="1"/>
+                                            <label for="a">Spectacles</label>
+                                            <input id="b" type="checkbox" tabindex="2"/>
+                                            <label for="b">Testicles</label>
+                                            <input id="c" type="checkbox" tabindex="3"/>
+                                            <label for="c">Wallet</label>
+                                            <input id="d" type="checkbox" tabindex="4"/>
+                                            <label for="d">Watch</label>
+                                        </div>
+                                        <div class="row checkboxes">
+                                            <div class="col-md-2 col-2">
+                                                <input id="a" type="checkbox" tabindex="1"/>
+                                                <input type="checkbox" name="send_letter" t-att-checked="partner.send_letter"/>
+                                            </div>
+                                            <div class="col-md-8 col-8  checkboxes">
+                                                <label for="send_letter">Courrier</label>
+                                                <label for="a">Spectacles</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2 col-2">
+                                                <input type="checkbox" name="send_email" t-att-checked="partner.send_email"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <label for="send_mail"> E-mail</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2 col-2">
+                                                <input type="checkbox" name="send_sms" t-att-checked="partner.send_sms"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <label for="send_sms"> SMS</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2 col-2">
+                                                <input type="checkbox" name="to_call" t-att-checked="partner.to_call"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <label for="to_call">Téléphone</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button href="#" id="update_my_preference" class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">Mettre à jour</button>
+                                </div>
+                            </div-->
                             <div class="col-md-4 o-8">
                                 <div class="col-md-12" style="height: 10px;background-color: white;"/>
                                 <div class="card p-3">
