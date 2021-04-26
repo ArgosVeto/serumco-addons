@@ -3,8 +3,9 @@
 # See LICENSE file for full copyright and licensing details
 
 from odoo import api, fields, models
-from datetime import datetime,date
+from datetime import datetime, date
 import pytz
+
 
 class OperatingUnitservic(models.Model):
     _inherit = 'operating.unit.service'
@@ -12,36 +13,48 @@ class OperatingUnitservic(models.Model):
     service_image = fields.Binary("Service Banner")
     url = fields.Char(string="Url")
 
+
 class OperatingUnit(models.Model):
     _inherit = 'operating.unit'
 
-    contact_questions_id = fields.Many2one('contact.questions',string="Contact Question")
-    service_ids = fields.Many2many("operating.unit.service",string="Services")
+    contact_questions_id = fields.Many2one(
+        'contact.questions', string="Contact Question")
+    service_ids = fields.Many2many("operating.unit.service", string="Services")
     clinic_banner = fields.Binary("Clinic Banner")
-    clinic_description = fields.Html(string="Clinic Description",default=lambda self:self.get_clinic_description())
+    clinic_description = fields.Html(
+        string="Clinic Description", default=lambda self: self.get_clinic_description())
     visible_in_contact = fields.Boolean(string="Visible In Contact")
-    clinic_image_ids = fields.One2many('clinic.image', 'operating_unit_id', string="Extra image", copy=True)
-    practical_service_ids = fields.Many2many("practical.service",string="Practical Service")
+    clinic_image_ids = fields.One2many(
+        'clinic.image', 'operating_unit_id', string="Extra image", copy=True)
+    practical_service_ids = fields.Many2many(
+        "practical.service", string="Practical Service")
     # payment_method_ids = fields.Many2many("payment.acquirer",string="Payment Methods")
     last_name = fields.Char(string="Last Name")
     mrdv_id = fields.Char(string="Remote")
     facebook = fields.Char(string="Facebook")
-    google_map_link = fields.Char (string="Google Map Link")
+    google_map_link = fields.Char(string="Google Map Link")
     show_in_footer = fields.Boolean(string="Show In Footer")
 
-    def  clinic_working_status(self):
+    def clinic_working_status(self):
         not_working_time = False
+        week_slot = {'0': 'Lun.', '1': 'Mar.', '2': 'Mer',
+            '3': 'Jeu', '4': 'Ven.', '5': 'Sam.', '6': 'Dim.'}
         if self.calendar_id:
+            resource_id = self.calendar_id
             attendance_ids = self.calendar_id.attendance_ids
             if attendance_ids:
-                for day_week in range(0,6):
+                for day_week in range(0, 6):
                     now_time = datetime.now()
                     date_today = date.today()
                     date_today = date_today.weekday()
                     if date_today == day_week:
-                        now_time =  pytz.timezone('UTC').localize(now_time).astimezone(pytz.timezone(self.env.user.tz  or 'UTC')).time()
+                        now_time = pytz.timezone('UTC').localize(now_time).astimezone(
+                            pytz.timezone(self.calendar_id.tz or 'UTC')).time()
                         now_time = now_time.hour + now_time.minute/60.0 + now_time.second/3600
-                    day_timimg = attendance_ids.filtered(lambda x:x.dayofweek == str(day_week))
+                    start_time = 'fermé'
+                    end_time = 'fermé'
+                    day_timimg = attendance_ids.filtered(
+                        lambda x: x.dayofweek == str(day_week))
                     if day_timimg:
                         if len(day_timimg) == 2:
                             t1 = day_timimg[0].hour_from
@@ -53,23 +66,34 @@ class OperatingUnit(models.Model):
                                     not_working_time = True
                                 if (now_time >= t3) and (now_time <= t4):
                                     not_working_time = True
-                            elif len(day_timimg) == 1:
-                                t1 = day_timimg[0].hour_from
-                                t2 = day_timimg[0].hour_to
-                                if (date_today == day_week):
-                                    if (now_time >= t1) and (now_time <= t2):
-                                        not_working_time = True
-                            elif len(day_timimg) > 2:
-                                t1 = day_timimg[0].hour_from
-                                t2 = day_timimg[0].hour_to
-                                t3 = day_timimg[1].hour_from
-                                t4 = day_timimg[1].hour_to
-                                if (date_today == day_week):                            
-                                    if ((now_time >= t1) and (now_time <= t2)) or ((now_time >= t3) and (now_time <= t4)):
-                                        not_working_time = True
-                            else:
-                                if (date_today == day_week):
+                            start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+                            end_time = resource_id.convert_to_time(t3 * 3600) +' - ' + resource_id.convert_to_time(t4 * 3600)
+
+                        elif len(day_timimg) == 1:
+                            t1 = day_timimg[0].hour_from
+                            t2 = day_timimg[0].hour_to
+                            if (date_today == day_week):
+                                if (now_time >= t1) and (now_time <= t2):
                                     not_working_time = True
+                            hour_from_1 = str(day_timimg[0].hour_from)
+                            hour_from_1 = hour_from_1.split('.')
+                            hour_to_1 = str(day_timimg[0].hour_to)
+                            hour_to_1 = hour_to_1.split('.')							
+                            start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+                        elif len(day_timimg) > 2:
+                            day_timimg = day_timimg[0:2]
+                            t1 = day_timimg[0].hour_from
+                            t2 = day_timimg[0].hour_to
+                            t3 = day_timimg[1].hour_from
+                            t4 = day_timimg[1].hour_to
+                            if (date_today == day_week):							
+                                if ((now_time >= t1) and (now_time <= t2)) or ((now_time >= t3) and (now_time <= t4)):
+                                    not_working_time = True
+                            start_time = resource_id.convert_to_time(t1 * 3600) +' - ' + resource_id.convert_to_time(t2 * 3600)
+                            end_time = resource_id.convert_to_time(t3 * 3600) +' - ' + resource_id.convert_to_time(t4 * 3600)
+                        else:
+                            if (date_today == day_week):
+                                not_working_time = True
         return not_working_time
 
 

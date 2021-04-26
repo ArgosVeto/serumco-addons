@@ -122,7 +122,7 @@ class ClinicDetail(ClinicDetail):
 					date_today = date.today()
 					date_today = date_today.weekday()
 					if date_today == day_week:
-						now_time =  pytz.timezone('UTC').localize(now_time).astimezone(pytz.timezone(request.env.user.tz  or 'UTC')).time()
+						now_time =  pytz.timezone('UTC').localize(now_time).astimezone(pytz.timezone(operating_unit_id.calendar_id.tz  or 'UTC')).time()
 						now_time = now_time.hour + now_time.minute/60.0 + now_time.second/3600
 					start_time = 'fermé' 
 					end_time = 'fermé'
