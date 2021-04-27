@@ -4,9 +4,12 @@ from odoo.addons.website_argos.controllers.clinic_main import ClinicDetail
 from odoo.addons.website_argos.controllers.main import bizcommonSliderSettings
 from datetime import datetime,date
 from odoo.osv import expression
+import logging
 import httpagentparser
 from device_detector import DeviceDetector
 import pytz
+
+_logger = logging.getLogger(__name__)
 
 
 class bizcommonSliderSettings(bizcommonSliderSettings):
@@ -53,8 +56,14 @@ class ClinicDetail(ClinicDetail):
 		    subdomains.append([('access_reduced_mobility','=',True)])
 
 		if 'service-type' in post and post['service-type']:
-		    service_ids = request.env['operating.unit.service'].sudo().search([('id','=',post['service-type'])])
-		    subdomains.append([('service_ids', 'in', service_ids.ids)])
+			service_ids = request.env['operating.unit.service'].sudo().search([('id','=',post['service-type'])])
+			subdomains.append([('service_ids', 'in', service_ids.ids)])
+
+		if 'agglomeration' in post and post['agglomeration']:
+			companies = request.env['res.company'].sudo().search([])
+			for company in companies:
+				if company.partner_id.city == post['agglomeration']:
+					subdomains.append([('company_id', '=', company.id)])
 
 		if 'search' in post and post['search']:
 		    subdomains.append([('name','ilike',post['search'])])
@@ -91,8 +100,9 @@ class ClinicDetail(ClinicDetail):
 		agglomeration_ids = []
 		cliniques = request.env['operating.unit'].sudo().search([])
 		for clinic in cliniques:
-		    if clinic.city not in agglomeration_ids:
-		        agglomeration_ids.append(clinic.city)
+#			societe = request.env['res.company'].sudo().search(['id', '=', clinic.company_id.id])
+			if clinic.company_id.city not in agglomeration_ids:
+				agglomeration_ids.append(clinic.company_id.city)
 			
 		type_ids = request.env['operating.unit.type'].sudo().search([])
 		service_ids = request.env['operating.unit.service'].sudo().search([])
