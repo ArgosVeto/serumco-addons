@@ -38,84 +38,110 @@
             <div class="col-lg-12 mb-0 mb-md-5 p-0 p-md-3">
                 <div class="top-links p-0">
                     <div class="container">
-                        <ul class="nav navbar-nav flex-row">
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'portal'">
-                                    <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my-content">Vue d'ensemble</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'order'">
-                                    <a class="nav-link active" href="/my/orders">Mes commandes</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my/orders">Mes commandes</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'appointment'">
-                                    <a class="nav-link active" href="/my-appointment">Rendez-vous</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my-appointment">Rendez-vous</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'address'">
-                                    <a class="nav-link active" href="/my/account">Mon adresse</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my/account">Mon adresse</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'clinic'">
-                                    <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-                                        <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-                                        <a class="nav-link active" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
-                                    </t>
-                                    <t t-else="">
-                                        <a class="nav-link active" t-attf-href="/my-clinic">Ma clinique</a>
-                                    </t>
-                                </t>
-                                <t t-else="">
-                                    <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-                                        <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-                                        <a class="nav-link" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
-                                    </t>
-                                    <t t-else="">
-                                        <a class="nav-link" t-attf-href="/my-clinic">Ma clinique</a>
-                                    </t>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'wishlist'">
-                                    <a class="nav-link active" href="/shop/wishlist">Mes produits favoris</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr-32">
-                                <t t-if="pageName == 'payment'">
-                                    <a class="nav-link active" href="/my/payment_method">Mes moyens de paiements</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my/payment_method">Mes moyens de paiements</a>
-                                </t>
-                            </li>
-                            <li class="nav-item mr32">
-                                <t t-if="pageName == 'grpd'">
-                                    <a class="nav-link active" href="/my/personal_details">Mes données personnelles</a>
-                                </t>
-                                <t t-else="">
-                                    <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
-                                </t>
-                            </li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-md-1 col-xl-1 col-slide">
+                                <button class="float-left slide" onclick="scrolldroite();" type="button">
+                                    <img src="/website_argos/static/src/img/left.svg"/>
+                                </button>
+                                <script>
+function scrolldroite() {
+    var container = document.getElementById('container-slide');
+    container.scrollLeft -= 300;
+}
+                                </script>
+                            </div>
+                            <div class="col-md-10 col-xl-10 col-navbar">
+                                <ul class="nav navbar-nav flex-row" id="container-slide">
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'portal'">
+                                            <a class="nav-link active" href="/my-content">Vue d'ensemble</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my-content">Vue d'ensemble</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'order'">
+                                            <a class="nav-link active" href="/my/orders">Mes commandes</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my/orders">Mes commandes</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'appointment'">
+                                            <a class="nav-link active" href="/my-appointment">Rendez-vous</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my-appointment">Rendez-vous</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'address'">
+                                            <a class="nav-link active" href="/my/account">Mon adresse</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my/account">Mon adresse</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'clinic'">
+                                            <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+                                                <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+                                                <a class="nav-link active" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+                                            </t>
+                                            <t t-else="">
+                                                <a class="nav-link active" t-attf-href="/my-clinic">Ma clinique</a>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="user_id.partner_id.clinic_shortlisted_ids">
+                                                <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+                                                <a class="nav-link" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+                                            </t>
+                                            <t t-else="">
+                                                <a class="nav-link" t-attf-href="/my-clinic">Ma clinique</a>
+                                            </t>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'wishlist'">
+                                            <a class="nav-link active" href="/shop/wishlist">Mes produits favoris</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/shop/wishlist">Mes produits favoris</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item mr32">
+                                        <t t-if="pageName == 'payment'">
+                                            <a class="nav-link active" href="/my/payment_method">Mes moyens de paiements</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my/payment_method">Mes moyens de paiements</a>
+                                        </t>
+                                    </li>
+                                    <li class="nav-item">
+                                        <t t-if="pageName == 'grpd'">
+                                            <a class="nav-link active" href="/my/personal_details">Mes données personnelles</a>
+                                        </t>
+                                        <t t-else="">
+                                            <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
+                                        </t>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1 col-xl-1 col-slide">
+                                <button class="float-rigth slide" onclick="scrollgauche();" type="button">
+                                    <img src="/website_argos/static/src/img/right.svg"/>
+                                </button>
+                                <script>
+function scrollgauche() {
+    var container = document.getElementById('container-slide');
+    container.scrollLeft += 300;
+}
+                                </script>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -412,13 +438,25 @@
                                             <strong>Mes préférences de contact</strong>
                                         </div>
                                     </div>
+                                    <!--div class="container">
+                                        <div class="checkboxes">
+                                            <input type="checkbox" tabindex="1" name="send_letter" t-att-checked="partner.send_letter"/>
+                                            <label for="send_letter">Courrier</label>
+                                            <input id="b" type="checkbox" tabindex="2"/>
+                                            <label class="green-background" for="b">Testicles</label>
+                                            <input id="c" type="checkbox" tabindex="3"/>
+                                            <label class="green-background" for="c">Wallet</label>
+                                            <input id="d" type="checkbox" tabindex="4"/>
+                                            <label class="green-background" for="d">Watch</label>
+                                        </div>
+                                    </div-->
                                     <div class="mes-prefernces" t-if="partner">
                                         <input id="last_send_letter" type="hidden" t-att-value="partner.send_letter"/>
                                         <input id="last_send_email" type="hidden" t-att-value="partner.send_email"/>
                                         <input id="last_send_sms" type="hidden" t-att-value="partner.send_sms"/>
                                         <input id="last_to_call" type="hidden" t-att-value="partner.to_call"/>
                                         <div class="row">
-                                            <div class="col-md-2 col-2">
+                                            <div class="col-md-2 col-2 custom-checkbox">
                                                 <input type="checkbox" name="send_letter" t-att-checked="partner.send_letter"/>
                                             </div>
                                             <div class="col-md-8 col-8">
@@ -1059,29 +1097,33 @@ Done
                         <h3>Vos cartes bancaires enregistrées</h3>
                     </div>
                 </t>
-                <t t-foreach="pms" t-as="pm">
-                    <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                        <div class="card-body o_payment_acquirer_select">
-                            <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
-                            <label>
-                                <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                <span class="payment_option_name" t-esc="pm.name[0:4]"/>
-                                <span class="payment_option_name" t-esc="pm.name[4:8]"/>
-                                <span class="payment_option_name" t-esc="pm.name[8:12]"/>
-                                <span class="payment_option_name" t-esc="pm.name[12:16]"/>
-                                <!--t t-if="pm.verified">
-                                    <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                <div class="o_payment_form">
+                    <t t-foreach="pms" t-as="pm">
+                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                            <div class="card-body o_payment_acquirer_select">
+                                <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
+                                <label>
+                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                    <span class="payment_option_name" t-esc="pm.name[0:4]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[4:8]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[8:12]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[12:16]"/>
+                                    <t t-if="pm.verified">
+                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                    </t>
+                                    <t t-else="">
+                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                    </t>
+                                </label>
+                                <t t-if="pm.id">
+                                    <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right mt0">
+                                        <i class="fa fa-trash fa-2x"/>
+                                    </button>
                                 </t>
-                                <t t-else="">
-                                    <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                </t-->
-                            </label>
-                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right mt0">
-                                <i class="fa fa-trash fa-2x"/>
-                            </button>
-                        </div>
+                            </div>
+                        </t>
                     </t>
-                </t>
+                </div>
             </div>
             <div class="d-none d-md-block">
                 <div t-if='back_button_txt' class="float-left mt-2">
@@ -1176,6 +1218,11 @@ Done
                 </div>
             </div>
         </div>
+    </xpath>
+</template>
+
+<template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
+    <xpath expr="//div[hasclass('card-footer')]" position="replace">
     </xpath>
 </template>
 

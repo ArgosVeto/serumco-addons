@@ -138,17 +138,6 @@ class AuthSignupHomeSS(AuthSignupHome):
 
         response = request.render('auth_signup.signup', qcontext)
         response.headers['X-Frame-Options'] = 'DENY'
-        values = {}
-        access_token = qcontext.get('token')
-        if access_token:
-            abandoned_order = request.env['sale.order'].sudo().search([('access_token', '=', access_token)], limit=1)
-            values.update({
-                'website_sale_order': abandoned_order,
-                'date': fields.Date.today(),
-                'suggested_products': [],
-                'unavailable_products': [],
-            })
-            response = request.render("website_sale.cart", values)
         return response
 
     @http.route('/web/reset_password', type='http', auth='public', website=True, sitemap=False)
