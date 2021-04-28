@@ -181,6 +181,9 @@ class CustomerPortal(CustomerPortal):
 
     @route(['/my', '/my/home'], type='http', auth="user", website=True)
     def home(self, **kw):
+        order = request.website.sale_get_order()
+        if order:
+            return request.redirect('shop/cart')
         return request.redirect('/my-content')
 
     @route(['/my/account'], type='http', auth='user', website=True)
