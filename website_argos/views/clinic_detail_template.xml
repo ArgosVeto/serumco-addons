@@ -191,33 +191,42 @@
 							<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2" />
 							<span class="">Ajouter aux favoris</span>
 						</a> -->
-				<!--div class="col-lg-12 pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
+				<!--div class="container">
+					<div class="banner-content">
+						<div class="red-round-smal-clinic"/>
+						<div class="pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
+							<div class="red-round-big-clinic"/>
+							<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
+						</div>
+						<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
+							<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
+						</div>
+					</div>
+				</div-->
+				<div style="width: 137px;height: 137px;background-color: theme-color('secondary');border-radius: 50%;position: absolute;top: 27px;left: -52px;"/>
+				<div class="red-round-small"/>
+				<div class="col-lg-12 pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden;">
 					<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-					<div class="red-round-big d-none d-md-block"></div>
-					<div class="red-round-small d-none d-md-block"></div>
-				</div-->
-				<!--div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
+				</div>
+				<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
 					<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div-->
+				</div>
 			</div>
 		</div>
-		<section class="home-banner">
+		<!--section class="home-banner">
 			<div class="container">
 				<div class="banner-content">
 					<div class="red-round-big"/>
 					<div class="red-round-small"/>
-				<div class="image-text d-none d-md-block" style="height: 537px; overflow: hidden;">
-					<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div>
-				<!--div class="col-lg-12 pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
-					<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div-->
-				<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
-					<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div>
+					<div class="image-text position-relative d-none d-md-block" style="height: 537px; overflow: hidden;">
+						<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
+					</div>
+					<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
+						<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
+					</div>
 				</div>
 			</div>
-		</section>
+		</section-->
 	</section>
 	<section class="">
 		<div class="container">
