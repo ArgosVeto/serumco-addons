@@ -64,8 +64,8 @@
 				<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
 					<t t-if="agglomeration">
 						<t t-foreach="agglomeration" t-as="s">
-							<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?agglomeration=#{s}" class="dropdown-item">
-								<span t-esc="s" />
+							<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?agglomeration=#{s.id}" class="dropdown-item">
+								<span t-esc="s.name" />
 							</a>
 						</t>
 					</t>

@@ -60,10 +60,7 @@ class ClinicDetail(ClinicDetail):
 			subdomains.append([('service_ids', 'in', service_ids.ids)])
 
 		if 'agglomeration' in post and post['agglomeration']:
-			companies = request.env['res.company'].sudo().search([])
-			for company in companies:
-				if company.partner_id.city == post['agglomeration']:
-					subdomains.append([('company_id', '=', company.id)])
+			subdomains.append([('company_id', '=', int(post['agglomeration']))])
 
 		if 'search' in post and post['search']:
 		    subdomains.append([('name','ilike',post['search'])])
@@ -101,8 +98,8 @@ class ClinicDetail(ClinicDetail):
 		cliniques = request.env['operating.unit'].sudo().search([])
 		for clinic in cliniques:
 #			societe = request.env['res.company'].sudo().search(['id', '=', clinic.company_id.id])
-			if clinic.company_id.city not in agglomeration_ids:
-				agglomeration_ids.append(clinic.company_id.city)
+			if clinic.company_id not in agglomeration_ids:
+				agglomeration_ids.append(clinic.company_id)
 			
 		type_ids = request.env['operating.unit.type'].sudo().search([])
 		service_ids = request.env['operating.unit.service'].sudo().search([])
