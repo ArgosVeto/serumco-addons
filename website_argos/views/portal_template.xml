@@ -1115,11 +1115,9 @@ Done
                                         <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
                                     </t>
                                 </label>
-                                <t t-if="pm.id">
-                                    <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn float-right mt0">
-                                        <i class="fa fa-trash fa-2x"/>
-                                    </button>
-                                </t>
+                                <button style="background-color: transparent; border: none;" t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </div>
                         </t>
                     </t>
