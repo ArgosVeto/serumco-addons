@@ -1097,31 +1097,32 @@ Done
                         <h3>Vos cartes bancaires enregistrées</h3>
                     </div>
                 </t>
-                <div class="o_payment_form">
-                    <t t-foreach="pms" t-as="pm">
-                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                            <div class="card-body o_payment_acquirer_select">
-                                <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
-                                <label>
-                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                    <span class="payment_option_name" t-esc="pm.name[0:4]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[4:8]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[8:12]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[12:16]"/>
-                                    <t t-if="pm.verified">
-                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
-                                    </t>
-                                    <t t-else="">
-                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                    </t>
-                                </label>
-                                <button style="background-color: transparent; border: none;" t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+                <t t-foreach="pms" t-as="pm">
+                    <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                        <div class="card-body o_payment_acquirer_select">
+                            <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
+                            <label>
+                                <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                <span class="payment_option_name" t-esc="pm.name[0:4]"/>
+                                <span class="payment_option_name" t-esc="pm.name[4:8]"/>
+                                <span class="payment_option_name" t-esc="pm.name[8:12]"/>
+                                <span class="payment_option_name" t-esc="pm.name[12:16]"/>
+                                <t t-if="pm.verified">
+                                    <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                </t>
+                            </label>
+                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <!--button style="background-color: transparent; border: none;" t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
                                     <i class="fa fa-trash"></i>
-                                </button>
-                            </div>
-                        </t>
+                                </button-->
+                        </div>
                     </t>
-                </div>
+                </t>
             </div>
             <div class="d-none d-md-block">
                 <div t-if='back_button_txt' class="float-left mt-2">

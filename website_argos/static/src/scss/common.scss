@@ -208,11 +208,15 @@ section.s_text_block.pt32.s_common_banner_without_bg.banner-content{
 
 
 #mes_paiements {
-	.o_payment_acquirer_select {
+/*	.o_payment_acquirer_select {
 		.fa-trash::before {
 			content: url("/website_argos/static/src/img/ico-20-px-trash.svg");
 			}	
-	}
+		.btn {
+			background-color: white !important;
+			border: none;
+		}
+	}*/
 	@media (max-width: 767px) {
 		width: 100%;
 		h3 {
