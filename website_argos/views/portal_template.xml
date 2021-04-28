@@ -1097,29 +1097,26 @@ Done
                         <h3>Vos cartes bancaires enregistrées</h3>
                     </div>
                 </t>
-                <t t-foreach="pms" t-as="pm">
+                <t t-foreach="pms" t-as="pmd">
                     <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
                         <div class="card-body o_payment_acquirer_select">
                             <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
                             <label>
                                 <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                <span class="payment_option_name" t-esc="pm.name[0:4]"/>
-                                <span class="payment_option_name" t-esc="pm.name[4:8]"/>
-                                <span class="payment_option_name" t-esc="pm.name[8:12]"/>
-                                <span class="payment_option_name" t-esc="pm.name[12:16]"/>
-                                <t t-if="pm.verified">
+                                <span class="payment_option_name" t-esc="pmd.name[0:4]"/>
+                                <span class="payment_option_name" t-esc="pmd.name[4:8]"/>
+                                <span class="payment_option_name" t-esc="pmd.name[8:12]"/>
+                                <span class="payment_option_name" t-esc="pmd.name[12:16]"/>
+                                <t t-if="pmd.verified">
                                     <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
                                 </t>
                                 <t t-else="">
                                     <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
                                 </t>
                             </label>
-                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
+                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pmd.id" class="btn btn-primary btn-sm btn-dpm float-right">
                                 <i class="fa fa-trash"></i>
                             </button>
-                            <!--button style="background-color: transparent; border: none;" t-if="mode == 'manage'" name="delete_pm" t-att-value="pm.id" class="btn btn-primary btn-sm float-right">
-                                    <i class="fa fa-trash"></i>
-                                </button-->
                         </div>
                     </t>
                 </t>
@@ -1222,7 +1219,8 @@ Done
 
 <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
     <xpath expr="//div[hasclass('card-footer')]" position="replace">
-    </xpath>
+        <div class="card-footer bg-white small text-center text-muted d-none"/>
+ </xpath>
 </template>
 
 <template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries" inherit_id="portal.portal_my_home" priority="15">
