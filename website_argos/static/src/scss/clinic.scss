@@ -328,6 +328,7 @@
     @media (max-width: 767.98px) {
     	margin-left: 0;
     }
+	z-index: 1;
 }
 
 .clinic-detail-sticky{
@@ -347,6 +348,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     padding: 25px;
+	z-index: 9999;
     
     h3 {
 		  font-size: 28px;
@@ -582,27 +584,6 @@
 		}
 	}
 	
-	@media (max-width: 767.98px) {
-		.clinic_description_length{
-			margin-bottom: 20px;
-			height:150px;
-			overflow:hidden;
-		}
-		.desc-more-btn{
-			font-family: AvenirLTStd-Heavy;
-			  font-size: 16px;
-			  font-weight: 900;
-			  font-stretch: normal;
-			  font-style: normal;
-			  line-height: 1.63;
-			  letter-spacing: normal;
-			  color: theme-color('primary');
-		}
-		.clinic_description_length.show{
-			height:auto !important;
-			overflow:unset !important;
-		}
-	}
 }
 
 .partners-grid {
@@ -1118,3 +1099,60 @@
 		border-color: transparent; /* hide button border */
 	}
 }
+.clinic-banner{
+	width: 100%;
+	.card-img-top {
+		width: 100%;
+		border-top-left-radius: calc(0.5rem - 1px);
+		border-top-right-radius: calc(0.5rem - 1px);
+		position: relative;
+		z-index: 1;
+	}
+		.container{
+		@media (min-width: 1400px) {
+			padding: 0 0;
+		}
+	}
+	.banner-content{
+		.red-round-big{
+			width: 137px;
+  			height: 137px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    top: 27px;
+    		left: -52px;
+		}
+		.red-round-small{
+			width: 60px;
+  			height: 60px;
+  			background-color: theme-color('secondary');
+  			border-radius: 50%;
+  			position: absolute;
+		    bottom: 56px;
+    		right: -30px;
+		}
+			position: relative;
+		}
+		position: relative;
+		z-index:1;
+	@media (max-width: 767.98px) {
+		.banner-content{
+			.red-round-big{
+				width: 60px;
+	  			height: 60px;
+	  			left: -5px;
+			}
+			.red-round-small{
+				width: 31px;
+	  			height: 31px;
+				bottom: unset;
+    			right: -1px;
+    			top: 70%;
+			}
+		padding-top: 0;
+		padding-bottom: 0;
+		}
+	}
+}
+
