@@ -317,8 +317,8 @@
 													<t t-if="agglomeration">
 														<t t-foreach="agglomeration" t-as="s">
 															<p class="m-0">
-																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?search=#{s}" data-original-title="" title="" aria-describedby="tooltip688207">
-																	<span t-esc="s" />
+																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?agglomeration=#{s.id}" data-original-title="" title="" aria-describedby="tooltip688207">
+																	<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
 																</a>
 															</p>
 														</t>
