@@ -25,7 +25,7 @@
 									</li>
 									<li class="breadcrumb-item">
 										<a href="#">
-											<t t-esc="operating_unit.name" />
+											<t t-esc="operating_unit.name"/>
 										</a>
 									</li>
 								</ol>
@@ -35,67 +35,60 @@
 							<h1>
 								<t t-esc="operating_unit.name"/>
 							</h1>
-							<div class="mt32 mb16">
+							<div class="mt32">
 								<p class="Clinique-actuellemen" data-oe-model="ir.ui.view" data-oe-id="1415" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/section[2]/div[1]/div[1]/t[2]/t[2]/div[1]/div[1]/div[1]/p[1]">
 
 									<t t-if="not_working_time">
-										<i class="fa fa-circle" style="color:#1ade8d;;"></i>
+										<i class="fa fa-circle" style="color:#1ade8d;;"/>
 										<span>Etablissement actuellement ouvert</span>
 										<div class="clinic-link d-flex mt16 mb16 d-block d-md-none">
 											<div class="mr-2">
-												<img src="/website_argos/static/src/img/location.svg" />
+												<img src="/website_argos/static/src/img/location.svg"/>
 											</div>
 											<div class="link">
 												<span class="Avenue-Pasteur">
-													<span class="street" t-field="operating_unit.street" />
+													<span class="street" t-field="operating_unit.street"/>
 													<span>, </span>
-													<span class="zip" t-field="operating_unit.zip" />
+													<span class="zip" t-field="operating_unit.zip"/>
 													<span>, </span>
-													<span class="city" t-field="operating_unit.city" />
+													<span class="city" t-field="operating_unit.city"/>
 												</span>
 											</div>
 										</div>
 									</t>
 
 									<t t-else="">
-										<i class="fa fa-circle" style="color:red;"></i>
+										<i class="fa fa-circle" style="color:red;"/>
 										<span>Etablissement actuellement fermé</span>
 									</t>
 								</p>
+								<div class="clinic-link d-flex d-md-none">
+									<div class="mr-2">
+										<img src="/website_argos/static/src/img/location.svg" />
+									</div>
+									<div class="link">
+										<span class="Avenue-Pasteur">
+											<span class="street" t-field="operating_unit.street" />
+											<span>, </span>
+											<span class="zip" t-field="operating_unit.zip" />
+											<span>, </span>
+											<span class="city" t-field="operating_unit.city" />
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="col-lg-5 pt16 pb8 clinic-btn-icon">
 							<div class="clinic-buttons">
-								<a id="appeler" class="btn btn-primary ml-4" href="#nogo" onclick="document.getElementById('telephone').removeAttribute('style');
-		                              this.style.display = 'none';">
-									<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2" />
+								<a id="appeler" class="btn btn-primary ml-4" href="#nogo" onclick="document.getElementById('telephone').removeAttribute('style');                                 this.style.display = 'none';">
+									<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2"/>
 									<span class="">Appeler</span>
 								</a>
-								<a id="telephone" class="btn btn-primary ml-4" style="display: none;" href="#nogo" onclick="document.getElementById('appeler').removeAttribute('style');
-		                              this.style.display = 'none';">
-									<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2" />
+								<a id="telephone" class="btn btn-primary ml-4" style="display: none;" href="#nogo" onclick="document.getElementById('appeler').removeAttribute('style');                                 this.style.display = 'none';">
+									<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2"/>
 									<span class="" t-field="operating_unit.phone"/>
 								</a>
-								<div class="clinic-link d-md-none d-block">
-									<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-primary d-xl-inline-block ml-4">
-										<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2" />
-										<span class="">Appeler</span>
-									</a>
-								</div>
-								<div class="clinic-link d-md-none d-block">
-									<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV</a>
-								</div>
 								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
-								<!--t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
-	                               <a role="button" class="btn btn-primary ml-4" t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
-	                            	</a>
-	                            </t>
-	                            <t t-else="">
-	                        		<a role="button" class="btn btn-outline-primary ml-3" t-attf-href="/add-clinic/#{operating_unit.sudo().id}">
-	                                	<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2"><span class="">Ajouter aux favoris</span></img>
-	                            	</a> 
-	                            </t-->
 							</div>
 							<div class="clinic-link d-flex d-block d-md-none">
 								<div class="socialicons msg-btn mr-4">
@@ -104,24 +97,24 @@
 										<t t-if="clinic_shortlisted">
 											<t t-if="any(operating_unit.id == cs for cs in clinic_shortlisted)">
 												<a role="button" class="msg-btn" t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
-													<img src="/website_argos/static/src/img/heart.svg"></img>
+													<img src="/website_argos/static/src/img/heart.svg"/>
 												</a>
 											</t>
 											<t t-else="">
 												<a role="button" class="msg-btn" t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
-													<img src="/website_argos/static/src/img/heart.svg"></img>
+													<img src="/website_argos/static/src/img/heart.svg"/>
 												</a>
 											</t>
 										</t>
 										<t t-else="">
 											<a role="button" class="msg-btn" t-attf-href="/add-fav-clinic-detail/#{operating_unit.sudo().id}">
-												<img src="/website_argos/static/src/img/heart.svg"></img>
+												<img src="/website_argos/static/src/img/heart.svg"/>
 											</a>
 										</t>
 									</t>
 									<t t-else="">
 										<a role="button" class="btn btn-primary fav-btn" data-toggle="modal" data-target="#exampleModal">
-											<img src="/website_argos/static/src/img/heart.svg"></img>
+											<img src="/website_argos/static/src/img/heart.svg"/>
 										</a>
 									</t>
 									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -144,86 +137,63 @@
 
 						<div class="socialicons msg-btn mr-4">
 							<a t-att-href="'mailto:%s' % (operating_unit.email)" target="_blank">
-								<img src="/website_argos/static/src/img/message.svg" />
+								<img src="/website_argos/static/src/img/message.svg"/>
 							</a>
 						</div>
 						<div class="socialicons fcbk-btn mr-4">
 							<a t-att-href="operating_unit.facebook" target="_blank">
-								<img src="/website_argos/static/src/img/facebook.svg" />
+								<img src="/website_argos/static/src/img/facebook.svg"/>
 							</a>
 						</div>
 
 					</div>
-				</div>
-				<div class="side-block-c d-block d-md-none">
-					<div class="clinic-link mt24">
-						<t t-if="working_timing">
-							<div class="content time-slot-head mt16 mb16">
-								<a href="#demo" class="heading d-block" data-toggle="collapse" aria-expanded="false">Horaires d’ouverture</a>
-							</div>
-							<div id="demo" class="collapse">
-								<div class="row">
-									<t t-set="dayofweek" t-value="list(working_timing.keys())" />
-									<t t-foreach="working_timing" t-as="wt">
-										<div class="col-4 col-lg-2">
-											<span class="Lun-Mar-Mer-Jeu-Copy">
-												<t t-esc="wt" />
-											</span>
-										</div>
-										<div class="col-4 col-lg-5 text-center">
-											<span class="h00---12h30-9h00---copy">
-												<t t-esc="working_timing[wt]['start_time']" />
-											</span>
-										</div>
-										<div class="col-4 col-lg-5 text-center">
-											<span class="h00---12h30-9h00---copy">
-												<t t-esc="working_timing[wt]['end_time']" />
-											</span>
-										</div>
-									</t>
+					<div class="side-block-c d-block d-md-none">
+						<div class="clinic-link mt24">
+							<t t-if="working_timing">
+								<div class="content time-slot-head mt16 mb16">
+									<a href="#demo" class="heading d-block" data-toggle="collapse" aria-expanded="false">Horaires d’ouverture</a>
 								</div>
+								<div id="demo" class="collapse">
+									<div class="row">
+										<t t-set="dayofweek" t-value="list(working_timing.keys())"/>
+										<t t-foreach="working_timing" t-as="wt">
+											<div class="col-4 col-lg-2">
+												<span class="Lun-Mar-Mer-Jeu-Copy">
+													<t t-esc="wt"/>
+												</span>
+											</div>
+											<div class="col-4 col-lg-5 text-center">
+												<span class="h00---12h30-9h00---copy">
+													<t t-esc="working_timing[wt]['start_time']"/>
+												</span>
+											</div>
+											<div class="col-4 col-lg-5 text-center">
+												<span class="h00---12h30-9h00---copy">
+													<t t-esc="working_timing[wt]['end_time']"/>
+												</span>
+											</div>
+										</t>
+									</div>
+								</div>
+							</t>
+						</div>
+					</div>
+				</div>
+				<div class="clinic-banner">
+					<div class="container">
+						<div class="banner-content">
+							<div class="red-round-big"/>
+							<div class="red-round-small"/>
+							<div class="col-lg-12 pt16 pb8 d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
+								<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
 							</div>
-						</t>
-					</div>
-				</div>
-			</div>
-			<div class="clinic-banner">
-				<div class="container">
-					<div class="banner-content">
-						<div class="red-round-big"/>
-						<div class="red-round-small"/>
-						<div class="col-lg-12 pt16 pb8 d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
-							<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-						</div>
-						<div class="col-lg-12 pt16 pb8 d-md-none d-md-none">
-							<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
+							<div class="col-lg-12 pt16 pb8 d-md-none d-md-none">
+								<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- 
-						<a role="button" target="" href="#" class="btn btn-outline-primary ml-4">
-							<img src="/website_argos/static/src/img/heart.svg" class="img img-fluid mr-2" />
-							<span class="">Ajouter aux favoris</span>
-						</a> -->
-			<!--div class="container">
-					<div class="banner-content">
-						<div class="pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden; border-radius: 25px;">
-							<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
-						</div>
-						<div class="red-round-big-clinic"/>
-						<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
-							<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
-						</div>
-					</div>
-				</div-->
-			<!--div class="red-round-small"/>
-				<div class="col-lg-12 pt16 pb8 position-relative d-none d-md-block" style="height: 537px; overflow: hidden;">
-					<img class="card-img-top rounded" id="banner-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div>
-				<div class="col-lg-12 pt16 pb8 position-relative d-md-none d-md-none">
-					<img class="card-img-top rounded" id="banner2-img" t-att-src="website.image_url(operating_unit, 'clinic_banner')" />
-				</div-->
 		</div>
 	</section>
 	<section class="">
@@ -733,5 +703,18 @@
 		</div>
 	</section>
 </t>
+<footer class="footer main-footer d-md-none">
+	<div class="container" style="text-align: center;">
+		<div class="d-flex align-items-center justify-content-center pt16 pb16">
+			<a style="border-radius: 50px;" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV en ligne</a>
+			<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn ml16" style="width: 45px; height: 45px; background-color: white; border: 1px solid">
+				<img class="img img-fluid mt8" src="/website_argos/static/src/img/phone.svg" />
+			</a>
+			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn ml8"  style="width: 45px; height: 45px; background-color: white; border: 1px solid">
+				<img class="img img-fluid mt8" src="/website_argos/static/src/img/location.svg" />
+			</a>
+		</div>
+	</div>
+</footer>
 </template>
 </odoo>
