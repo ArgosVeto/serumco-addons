@@ -62,7 +62,7 @@
 										<span>Etablissement actuellement fermé</span>
 									</t>
 								</p>
-								<div class="clinic-link d-flex d-md-none">
+								<!--div class="clinic-link d-flex d-md-none">
 									<div class="mr-2">
 										<img src="/website_argos/static/src/img/location.svg" />
 									</div>
@@ -75,7 +75,7 @@
 											<span class="city" t-field="operating_unit.city" />
 										</span>
 									</div>
-								</div>
+								</div-->
 							</div>
 						</div>
 						<div class="col-lg-5 pt16 pb8 clinic-btn-icon">
@@ -88,6 +88,15 @@
 									<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2"/>
 									<span class="" t-field="operating_unit.phone"/>
 								</a>
+								<div class="clinic-link d-md-none d-block">
+									<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-primary d-xl-inline-block ml-4">
+										<img src="/website_argos/static/src/img/phone-white.svg" class="img img-fluid mr-2" />
+										<span class="">Appeler</span>
+									</a>
+								</div>
+								<div class="clinic-link d-md-none d-block">
+									<a t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV</a>
+								</div>
 								<t t-set="clinic_shortlisted" t-value="request.env.user.shortlisted_clinic_partner()"/>
 							</div>
 							<div class="clinic-link d-flex d-block d-md-none">
@@ -703,18 +712,18 @@
 		</div>
 	</section>
 </t>
-<footer class="footer main-footer d-md-none">
+<!--footer class="footer main-footer d-md-none">
 	<div class="container" style="text-align: center;">
 		<div class="d-flex align-items-center justify-content-center pt16 pb16">
 			<a style="border-radius: 50px;" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV en ligne</a>
 			<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn ml16" style="width: 45px; height: 45px; background-color: white; border: 1px solid">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/phone.svg" />
 			</a>
-			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn ml8"  style="width: 45px; height: 45px; background-color: white; border: 1px solid">
+			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn ml8" style="width: 45px; height: 45px; background-color: white; border: 1px solid">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/location.svg" />
 			</a>
 		</div>
 	</div>
-</footer>
+</footer-->
 </template>
 </odoo>
