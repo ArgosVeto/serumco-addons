@@ -1012,7 +1012,6 @@ Done
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
             <input type="hidden" t-if="prepare_tx_url" name="prepare_tx_url" t-att-value="prepare_tx_url"/>
             <input type="hidden" t-if="order_id" name="order_id" t-att-value="order_id"/>
-            <!-- s2s form submission -->
             <input type="hidden" t-if="access_token" name="access_token" t-att-value="access_token"/>
             <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
             <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
@@ -1044,20 +1043,6 @@ Done
                                 <small class="text-muted">(Some fees may apply)</small>
                             </t>
                         </label>
-                        <!--ul class="float-right list-inline payment_icon_list">
-                            <t t-set="i" t-value="0"/>
-                            <t t-foreach="acq.payment_icon_ids" t-as="pm_icon">
-                                <li t-attf-class="list-inline-item#{'' if (i &lt; MAX_BRAND_LINE) else ' d-none'}">
-                                    <span t-field="pm_icon.image_payment_form" t-options='{"widget": "image", "alt-field": "name"}'/>
-                                </li>
-                                <li t-if="i==MAX_BRAND_LINE" style="display:block;" class="list-inline-item">
-                                    <span class="float-right more_option text-info">
-                                        <a href="#" class="o_payment_form_pay_icon_more" data-toggle="tooltip" t-att-title="', '.join([opt.name for opt in acq.payment_icon_ids[MAX_BRAND_LINE:]])">and more</a>
-                                    </span>
-                                </li>
-                                <t t-set="i" t-value="i+1"/>
-                            </t>
-                        </ul-->
                         <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
                     </div>
                     <t t-if="acq.payment_flow == 'form'">
@@ -1096,28 +1081,37 @@ Done
                     <div class="mt32 mb32">
                         <h3>Vos cartes bancaires enregistrées</h3>
                     </div>
-                </t>
-                <t t-foreach="pms" t-as="pmd">
-                    <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                        <div class="card-body o_payment_acquirer_select">
-                            <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
-                            <label>
-                                <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                <span class="payment_option_name" t-esc="pmd.name[0:4]"/>
-                                <span class="payment_option_name" t-esc="pmd.name[4:8]"/>
-                                <span class="payment_option_name" t-esc="pmd.name[8:12]"/>
-                                <span class="payment_option_name" t-esc="pmd.name[12:16]"/>
-                                <t t-if="pmd.verified">
-                                    <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
-                                </t>
-                                <t t-else="">
-                                    <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                </t>
-                            </label>
-                            <button t-if="mode == 'manage'" name="delete_pm" t-att-value="pmd.id" class="btn btn-primary btn-sm btn-dpm float-right">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
+                    <t t-foreach="pms" t-as="pm">
+                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                            <div class="card-body o_payment_acquirer_select">
+                                <label>
+                                    <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
+                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
+                                    <span class="payment_option_name" t-esc="pm.name[0:4]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[4:8]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[8:12]"/>
+                                    <span class="payment_option_name" t-esc="pm.name[12:16]"/>
+                                    <t t-if="pm.verified">
+                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
+                                    </t>
+                                    <t t-else="">
+                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
+                                    </t>
+                                </label>
+                                <button t-if="mode == 'manage'" name="delete_pm" t-att-value="int(pm.id)" class="btn btn-primary btn-sm float-right d-none" id="deletepm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <button class="btn btn-dpm float-right" onclick="clickdelete();">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <script>
+function clickdelete() {
+    var delete_pm = document.getElementById('deletepm');
+    delete_pm.click();
+}
+                                </script>
+                            </div>
+                        </t>
                     </t>
                 </t>
             </div>
@@ -1220,7 +1214,7 @@ Done
 <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
     <xpath expr="//div[hasclass('card-footer')]" position="replace">
         <div class="card-footer bg-white small text-center text-muted d-none"/>
- </xpath>
+    </xpath>
 </template>
 
 <template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries" inherit_id="portal.portal_my_home" priority="15">
