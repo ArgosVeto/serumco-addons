@@ -269,20 +269,22 @@
 				</div>
 			</div>
 			<t t-call="website_argos.clinique_filter_sidebar"/>
-			<footer class="footer main-footer d-md-none">
-				<div class="container" style="text-align: center;">
-					<button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16" style="border-radius: 50px; width: 50%;">
-						<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
-						<span class="">Filtrer</span>
-					</button>
-				</div>
-			</footer>
 		</t>
+		<footer class="footer main-footer d-md-none">
+			<div class="container" style="text-align: center;">
+				<button role="button" id="show-sidebar-clinic" class="btn btn-primary mb16 mt16" style="border-radius: 50px; width: 50%;">
+					<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
+					<span class="">Filtrer</span>
+				</button>
+			</div>
+		</footer>
 	</template>
 
 	<template id="clinique_filter_sidebar" name="Clinique Side Bar">
 		<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-clinic bg-white d-block d-md-none">
-			<!--a id="close_sidebar_clinic" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a-->
+			<a id="close_sidebar_clinic" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">
+				<img src="/website_argos/static/src/img/ico-20-px-close.svg" class="ico-20px-Close"/>
+			</a>
 			<div class="sidebar-content">
 				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
 				<div class="card bg-white sidebar-card">
@@ -400,81 +402,5 @@
 			</div>
 		</nav>
 	</template>
-
-	<!--template id="clinique_filter_sidebar" name="Clinique Side Bar">
-		<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-clinic bg-white d-block d-md-none">
-			<a id="close_sidebar_clinic" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a>
-			<div class="sidebar-content">
-				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
-				<div class="card bg-white sidebar-card">
-					<div class="search_by_type">
-						<t t-set="type_val" t-value="clinic_type_ids" />
-						<t t-if="type_val">
-							<div class="clinic-type-b">
-								<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-appoint=1" class="mt16 badge badge-pill badge-light">
-									<span>Prise de RDV en ligne</span>
-								</a>
-								<a t-attf-href="/nos-cliniques-veterinaires-2?clinic-collect=1" class="mt16 badge badge-pill badge-light">
-									<span>Click &amp; Collect</span>
-								</a>
-							</div>
-						</t>
-					</div>
-					<div class="open_today">
-						<div class="clinic-type-b">
-							<a t-attf-href="/nos-cliniques-veterinaires-2?open_today=1" class="mt16 badge badge-pill badge-light">
-								<span>OUVERT AUJOURD HUI</span>
-							</a>
-						</div>
-					</div>
-					<t t-set="service" t-value="service_ids" />
-					<div class="search_by_service mt8">
-						<div t-attf-class="dropdown">
-							<t t-if="service_ids">
-								<t t-set="service" t-value="service_ids"/>
-								<t t-set="ss" t-value="service_ids[0]"/>
-								<a role="button" href="#" class="dropdown-toggle btn btn-sidebar ge btn-link" data-toggle="dropdown">
-									<span>Services</span>
-								</a>
-								<div class="dropdown-menu service-list-group-item" role="menu" style="height: 250px; overflow-y: scroll">
-									<t t-if="service">
-										<t t-foreach="service" t-as="s">
-											<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" class="dropdown-item">
-												<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
-											</a>
-										</t>
-									</t>
-								</div>
-							</t>
-						</div>
-					</div>
-					<div class="criteria search_by_service mt8">
-						<t t-set="service" t-value="service_ids"/>
-						<div t-attf-class="dropdown">
-							<a role="button" href="#" class="dropdown-toggle btn btn-sidebar ge btn-link" data-toggle="dropdown">
-								<span>De Criteres</span>
-							</a>
-							<div class="dropdown-menu" role="menu">
-								<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-parking=1" class="dropdown-item">
-									<span class="switcher_pricelist">Parking</span>
-								</a>
-								<a role="menuitem" t-attf-href="/nos-cliniques-veterinaires-2?clinic-mobility=1" class="dropdown-item">
-									<span class="switcher_pricelist">Accessibilité pour les personnes<br/>
-										 à mobilité réduite</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="clear-search mt8 ml8 clinic-type-b">
-					<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class="badge badge-pill badge-light">
-						<span>Réinitialiser</span>
-					</a>
-				</div>
-			</div>
-		</nav>
-	</template-->
-
-
 
 </odoo>

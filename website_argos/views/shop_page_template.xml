@@ -30,6 +30,9 @@
 		</xpath>
 		<xpath expr="//t[@t-call='website.layout']" position="inside">
 			<t t-call="website_argos.product_filter_sidebar"/>
+		</xpath>
+
+		<xpath expr="//t[@t-call='website.layout']" position="after">
 			<footer class="footer main-footer d-md-none">
 				<div class="d-flex align-items-center justify-content-center pt16 pb16">
 					<t t-if="request.website.viewref('website_sale.sort').active">
@@ -512,40 +515,12 @@ Ajouter
 	</record>
 	<template id="product_filter_sidebar" name="Product Side Bar">
 		<nav id="sidebar" class="sidebar-wrapper sidebar-wrapper-product bg-white d-block d-md-none">
-			<!--a id="close_sidebar_product" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">X</a-->
+			<a id="close_sidebar_product" class="text-white d-none" style="position: absolute; margin-left: -45px;font-size: 20px;font-weight: 900;">
+				<img src="/website_argos/static/src/img/ico-20-px-close.svg" class="ico-20px-Close"/>
+			</a>
 			<div class="sidebar-content">
 				<span style="color: #63bae9; font-size: 24px;">Filtrer les résultats</span>
 				<div class="card bg-white sidebar-card">
-					<!--ul class="nav navbar-nav align-items-md-center" id="top_menu">
-						<li class="nav-item dropdown  position-static">
-							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
-								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">SERVICES</span>
-							</a>
-							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
-								<section class="mega_menu_one_snippet" data-name="Services Menu">
-									<div class="container p-0">
-										<div class="row">
-											<div class="col-md-3">
-												<t t-set="service" t-value="service_ids"/>
-												<t t-set="ss" t-value="service_ids[0]"/>
-												<div class="heading-contents">
-													<t t-if="service">
-														<t t-foreach="service" t-as="s">
-															<p class="m-0">
-																<a class="menu_item text-gamma" t-attf-href="/nos-cliniques-veterinaires-2?service-type=#{s.sudo().id}" data-original-title="" title="" aria-describedby="tooltip688207">
-																	<span t-att-name="s.name" t-att-data-pl_id="s.id" t-esc="s.name" />
-																</a>
-															</p>
-														</t>
-													</t>
-												</div>
-											</div>
-										</div>
-									</div>
-								</section>
-							</div>
-						</li>
-					</ul-->
 					<div class="shop_page_filter oe_website_sale bg-white">
 						<div class="product_filters">
 

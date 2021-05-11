@@ -190,7 +190,7 @@ Ajouter
             </div>
         </xpath>
 
-        <xpath expr="//t[@t-call='website.layout']" position="inside">
+        <xpath expr="//t[@t-call='website.layout']" position="after">
             <t t-set="combination" t-value="product._get_first_possible_combination()"/>
             <t t-set="combination_info" t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
             <t t-set="product_variant" t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
@@ -482,11 +482,11 @@ Ajouter
                                     <div class="card-body">
                                         <t t-foreach="product.documentation_ids" t-as="doc">
                                             <t t-if="doc.doc_type == 'MOE'">
-                                             <p>
-                                                <a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/>
-                                                </a>
-                                            </p>
-                                           </t>
+                                                <p>
+                                                    <a t-att-href="doc.doc_url">Mode d'emploi  <i class='fa fa-download' role="img"/>
+                                                    </a>
+                                                </p>
+                                            </t>
                                             <t t-if="doc.doc_type == 'TEC'">
                                                 <p>
                                                     <a t-att-href="doc.doc_url">Fiche technique  <i class='fa fa-download' role="img"/>
@@ -723,8 +723,40 @@ Ajouter
             </div>
             <div class="container">
                 <div class="col-lg-12 col-md-12  mt32 slider-product-rating">
-                    <a id='rating-product' class='float-right btn btn-primary'>Rédiger un avis</a>
-                    <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
+                    <t t-ignore="true" t-if="not user_id._is_public()">
+                        <a id='rating-product' class='float-right btn btn-primary'>Rédiger un avis</a>
+                        <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
+                    </t>
+                    <t t-else="">
+                        <a role="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="after">
+            <div class="modal" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-clinic" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">x</button>
+                        </div>
+                        <div class="modal-header">
+                            <span class="modal-title text-secondary">Rédiger un avis</span>
+                        </div>
+                        <div class="modal-body mt32 mb32">
+                            <span>Pour rédiger un avis sur ce produit</span>
+                            <div class="text-center">
+                                <span>vous devez <a href="/web/login">vous connecter</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <span>Vous n'avez pas encore de compte ?</span>
+                        </div>
+                        <div class="modal-footer modal-footer-btn">
+                            <a class="btn btn-modal" href="/web/signup">Inscrivez-vous</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </xpath>
@@ -788,8 +820,10 @@ Ajouter
                 </div>
             </t>
         </div-->
-        <div id="discussion" class="d-print-none o_portal_chatter o_not_editable p-0" t-att-data-display_rating="display_rating or False" t-att-data-token="token" t-att-data-res_model="object._name" t-att-data-pid="pid" t-att-data-hash="hash" t-att-data-res_id="object.id" t-att-data-pager_step="message_per_page or 10" t-att-data-allow_composer="'0' if disable_composer else '1'">
-        </div>
+        <t t-if="(disable_composer == 0) or (rating_avg > 0)">
+            <div id="discussion" class="d-print-none o_portal_chatter o_not_editable p-0" t-att-data-display_rating="display_rating or False" t-att-data-token="token" t-att-data-res_model="object._name" t-att-data-pid="pid" t-att-data-hash="hash" t-att-data-res_id="object.id" t-att-data-pager_step="message_per_page or 10" t-att-data-allow_composer="'0' if disable_composer else '1'">
+            </div>
+        </t>
     </template>
 
     <template id="bottom_breadcrumbs" inherit_id="website_sale.product_comment" priority="25">
