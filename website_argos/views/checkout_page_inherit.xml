@@ -329,7 +329,7 @@ function changeinner(e) {
                             <div class="Vous-tes-ici">Vous êtes ici</div>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/">Acceuil</a>
+                                    <a href="/">Accueil</a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <span>Mon panier</span>
@@ -518,7 +518,7 @@ function changetoggle(e) {
                             <div class="Vous-tes-ici">Vous êtes ici</div>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/">Acceuil</a>
+                                    <a href="/">Accueil</a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="/shop/cart">Mon panier</a>
@@ -625,7 +625,7 @@ function changetoggle(e) {
                 <p class="Argos-Vtrinaire-es mb32">
                     <t t-esc="order.operating_unit_id.name"/>
                 </p>
-                <p class="Argos-Vtrinaire-es mb32">Pour suivre sa prépraration, rendez-vous sur votre compte<a class="text-style-1" style="color: #de1a46;" href="http://argos-veterinaire.com">
+                <p class="Argos-Vtrinaire-es mb32">Pour suivre sa préparation, rendez-vous sur votre compte<a class="text-style-1" style="color: #de1a46;" href="http://argos-veterinaire.com">
                    argos-veterinaire.com
                     </a> dans l’espace « Mes commandes »
                 </p>

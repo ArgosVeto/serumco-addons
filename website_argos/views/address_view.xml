@@ -480,7 +480,7 @@ function changeinner2(e) {
                         <div class="Vous-tes-ici">Vous êtes ici</div>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/">Acceuil</a>
+                                <a href="/">Accueil</a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="/shop/cart">Mon panier</a>
