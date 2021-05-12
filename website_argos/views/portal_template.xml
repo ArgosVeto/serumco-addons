@@ -447,7 +447,7 @@ function scrollgauche() {
                                             <div class="col-md-10 col-10">
                                                 <input type="checkbox" name="send_letter" id="send_letter" t-att-checked="partner.send_letter"/>
                                                 <label for="send_letter"></label>
-                                                <label for="send_letter" id="label_send_letter">Courrier</label>
+                                                <label for="send_letter" t-att-class="'opacity-50' if partner.send_letter else ''" id="label_send_letter">Courrier</label>
                                             </div>
                                         </div>
                                  <script>
@@ -456,21 +456,21 @@ function scrollgauche() {
                                             <div class="col-md-10 col-10">
                                                 <input type="checkbox" name="send_email" id="send_email" t-att-checked="partner.send_email"/>
                                                 <label for="send_email"></label>
-                                                <label for="send_email" id="label_send_email">E-mail</label>
+                                                <label for="send_email" t-att-class="'opacity-50' if partner.send_email else ''" id="label_send_email">E-mail</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-10 col-10">
                                                 <input type="checkbox" name="send_sms" id="send_sms" t-att-checked="partner.send_sms"/>
                                                 <label for="send_sms"></label>
-                                                <label for="send_sms" id="label_send_sms">SMS</label>
+                                                <label for="send_sms" t-att-class="'opacity-50' if partner.send_sms else ''" id="label_send_sms">SMS</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-10 col-10">
                                                 <input type="checkbox" name="to_call" id="to_call" t-att-checked="partner.to_call"/>
                                                 <label for="to_call"></label>
-                                                <label for="to_call" id="label_to_call">Téléphone</label>
+                                                <label for="to_call" t-att-class="'opacity-50' if partner.to_call else ''" id="label_to_call">Téléphone</label>
                                             </div>
                                         </div>
                                     </div>

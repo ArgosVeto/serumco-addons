@@ -89,25 +89,7 @@ $(document).ready(function(){
                 });
         });
 
-  if ($("input[name='send_letter']")[0].checked){
-    $("#label_send_letter").removeClass("opacity-1");
-    $("#label_send_letter").addClass("opacity-50");
-  }
-
-  if ($("input[name='send_email']")[0].checked){
-    $("#label_send_email").removeClass("opacity-1");
-    $("#label_send_email").addClass("opacity-50");
-  } 
-
-  if ($("input[name='send_sms']")[0].checked){
-    $("#label_send_sms").removeClass("opacity-1");
-    $("#label_send_sms").addClass("opacity-50");
-  } 
   
-  if ($("input[name='to_call']")[0].checked){
-    $("#label_to_call").removeClass("opacity-1");
-    $("#label_to_call").addClass("opacity-50");
-  } 
 
   if ($("nav").hasClass("o_portal_navbar")) {
     $('.ac-order').addClass('active-order'); 
@@ -253,7 +235,7 @@ $(document).ready(function(){
 
 $(function() {
 
-  /* menu sidebar js */
+ /* menu sidebar js */
   $("#show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper-header").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");
