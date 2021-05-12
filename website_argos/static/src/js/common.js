@@ -26,20 +26,52 @@ $(document).ready(function(){
 
          $('input[name="send_letter"]').on("change", function () {
            change_my_preference()
-        });
+           if ($("input[name='send_letter']")[0].checked){
+            $("#label_send_letter").removeClass("opacity-1");
+            $("#label_send_letter").addClass("opacity-50");
+             } 
+           else {
+            $("#label_send_letter").removeClass("opacity-50");
+            $("#label_send_letter").addClass("opacity-1");
+              }
+          });
 
          $('input[name="send_email"]').on("change", function () {
           change_my_preference()
+          if ($("input[name='send_email']")[0].checked){
+            $("#label_send_email").removeClass("opacity-1");
+            $("#label_send_email").addClass("opacity-50");
+             } 
+           else {
+            $("#label_send_email").removeClass("opacity-50");
+            $("#label_send_email").addClass("opacity-1");
+              }
         });
 
         $('input[name="send_sms"]').on("change", function () {
           change_my_preference()
+          if ($("input[name='send_sms']")[0].checked){
+            $("#label_send_sms").removeClass("opacity-1");
+            $("#label_send_sms").addClass("opacity-50");
+             } 
+           else {
+            $("#label_send_sms").removeClass("opacity-50");
+            $("#label_send_sms").addClass("opacity-1");
+              }
         });
 
 
          $('input[name="to_call"]').on("change", function () {
          change_my_preference()
-        });
+         if ($("input[name='to_call']")[0].checked){
+          $("#label_to_call").removeClass("opacity-1");
+          $("#label_to_call").addClass("opacity-50");
+           } 
+         else {
+          $("#label_to_call").removeClass("opacity-50");
+          $("#label_to_call").addClass("opacity-1");
+            }
+      });
 
 
 
@@ -57,6 +89,25 @@ $(document).ready(function(){
                 });
         });
 
+  if ($("input[name='send_letter']")[0].checked){
+    $("#label_send_letter").removeClass("opacity-1");
+    $("#label_send_letter").addClass("opacity-50");
+  }
+
+  if ($("input[name='send_email']")[0].checked){
+    $("#label_send_email").removeClass("opacity-1");
+    $("#label_send_email").addClass("opacity-50");
+  } 
+
+  if ($("input[name='send_sms']")[0].checked){
+    $("#label_send_sms").removeClass("opacity-1");
+    $("#label_send_sms").addClass("opacity-50");
+  } 
+  
+  if ($("input[name='to_call']")[0].checked){
+    $("#label_to_call").removeClass("opacity-1");
+    $("#label_to_call").addClass("opacity-50");
+  } 
 
   if ($("nav").hasClass("o_portal_navbar")) {
     $('.ac-order').addClass('active-order'); 
