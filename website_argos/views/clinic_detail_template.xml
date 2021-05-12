@@ -678,10 +678,10 @@
 	<div class="container" style="text-align: center;">
 		<div class="d-flex align-items-center justify-content-center">
 			<a style="border-radius: 50px;" t-attf-href="/appointment-two?clinic_id=#{operating_unit.sudo().id}" class="btn btn-primary mb16 mt16 d-xl-inline-block">Prendre RDV en ligne</a>
-			<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn ml16" style="width: 45px; height: 45px; background-color: white; border: 1px solid">
+			<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-phone ml16">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/phone.svg" />
 			</a>
-			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn ml8" style="width: 45px; height: 45px; background-color: white; border: 1px solid">
+			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn btn-loc ml8">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/location.svg" />
 			</a>
 		</div>
