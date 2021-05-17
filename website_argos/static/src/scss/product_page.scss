@@ -330,13 +330,14 @@
 }
 .main-footer{
 	background-color: white;
-	position:-webkit-sticky;
-	position:sticky;
+/*	position:-webkit-sticky; */
+	width: 100%;
+	position:fixed;
 	bottom:0;
 	z-index: 99;
    }
 
-.product_tabs{
+   .product_tabs{
 	#product_detail_tabs{
 		-webkit-box-pack: center;
 	    border-bottom: solid 1px rgba(139, 139, 139, 0.16);

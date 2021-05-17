@@ -946,8 +946,9 @@
 
 .main-footer{
      background-color: white;
-	 position:-webkit-sticky;
-	 position:sticky;
+/*	 position:-webkit-sticky; */
+     width: 100%;
+	 position:fixed;
 	 bottom:0;
 	 z-index: 99;
 	}
