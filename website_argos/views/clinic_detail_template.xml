@@ -276,7 +276,7 @@
 					<div class="service-innerp">
 						<div class="d-flex align-items-center">
 							<h3 class="Nos-services">Localisation</h3>
-							<a t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="ml-auto top-text">
+							<a t-att-href="operating_unit.google_map_link" target="_blank" class="ml-auto top-text">
 								<span class="mr-2">J'y vais</span>
 								<span>
 									<img src="/website_argos/static/src/img/right.png"/>
@@ -681,7 +681,7 @@
 			<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-phone ml16">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/phone.svg" />
 			</a>
-			<a role="button" t-att-href="'https://www.google.com/maps/place/'+operating_unit.street+'+'+operating_unit.city" target="_blank" class="btn btn-loc ml8">
+			<a role="button" t-att-href="operating_unit.google_map_link" target="_blank" class="btn btn-loc ml8">
 				<img class="img img-fluid mt8" src="/website_argos/static/src/img/location.svg" />
 			</a>
 		</div>

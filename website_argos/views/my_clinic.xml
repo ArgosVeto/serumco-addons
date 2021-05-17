@@ -210,7 +210,7 @@
 										<div class="service-innerp" id="localisation">
 											<div class="d-flex align-items-center">
 												<h3 class="Nos-services">Localisation</h3>
-												<a  t-att-href="'https://www.google.com/maps/place/'+clinic.street+'+'+clinic.city" target="_blank" class="ml-auto top-text">
+												<a  t-att-href="operating_unit.google_map_link" target="_blank" class="ml-auto top-text">
 													<span class="mr-2">J'y vais</span>
 													<span><img src="/website_argos/static/src/img/right.png"/></span>
 												</a>

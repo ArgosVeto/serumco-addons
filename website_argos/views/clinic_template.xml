@@ -230,7 +230,12 @@
 								</div>
 							</div>
 						</div>
-						<!--div class="see_map d-none d-md-block"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input" id="customSwitch1"/><label class="custom-control-label" for="customSwitch1">Voir La Carte</label></div></div-->
+						<!--div class="see_map d-none d-md-block">
+							<div class="custom-control">
+								<input type="checkbox" class="custom-control-input" id="customSwitch1"/>
+								<label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
+							</div>
+						</div-->
 						<div class="clear-search mt8 ml8 clinic-type-b">
 							<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
 								<span>Réinitialiser</span>
