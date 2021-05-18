@@ -847,7 +847,10 @@
 		letter-spacing: normal;
 		color: theme-color('primary') !important;
 		text-align: left !important;
-}	
+	}	
+	.trier {
+		font-size: 16px;
+	}
 	a:not([href]):not([tabindex]) {
 			color: white; 
 			text-decoration: none;
@@ -868,10 +871,10 @@
 	    #rating-product-bis{
 			width: 50%;	
 		   }
-		span {
-			font-size: 28px;
-		}	
-	  }
+		.trier {
+			font-size: 12px;
+		}
+	}
 	.dropdown_sorty_by {
 		.btn-sortby {
 			color: #63bae9;
@@ -882,6 +885,7 @@
 			justify-content: center;
 			align-items: center;
 			text-align: left;
+			margin-top: 4px;
 		}
 		a.dropdown-toggle{
 			position: relative;
@@ -955,5 +959,18 @@
 	.shop_page_filter .attribute_filter .dropdown-menu ul li {
 		padding: 8px 0 8px 0!important;
 		margin: 0 !important;
+	}
+}
+
+.o_shop_discussion_rating #rating-carousel {
+		display: none;
+}
+
+#discussion-product {
+	.o_portal_chatter_message {
+		display: none;
+	}
+	#rating-carousel {
+		display: none;
 	}
 }

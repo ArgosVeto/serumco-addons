@@ -34,7 +34,7 @@
 
 		<xpath expr="//t[@t-call='website.layout']" position="after">
 			<footer class="footer main-footer d-md-none">
-				<div class="d-flex align-items-center justify-content-center pt16 pb16">
+				<div class="d-flex align-items-center justify-content-center">
 					<t t-if="request.website.viewref('website_sale.sort').active">
 						<t t-set="list_price_desc_label">prix décroissant</t>
 						<t t-set="list_price_asc_label">prix croissant</t>

@@ -708,3 +708,22 @@ class WebsiteSale(WebsiteSale):
         if category:
             values['main_object'] = category
         return request.render("website_sale.products", values)
+
+class ProductRate(WebsiteSale):
+
+    @http.route(['/shop/product/<model("product.template"):product>'], type='http', auth="public", website=True)
+    def product(self, product, category='', search='', order=None, **kwargs):
+        product_rating_ids = []
+        res = super(ProductRate, self).product(product, category, search)
+        if not order:
+            order = 'desc'
+        if order == 'asc':
+            product_rating_ids = request.env['mail.message'].search([('res_id', '=', product.id),('message_type', '=', 'comment')], 
+                                                                          order='id asc')
+        if order == 'desc':
+            product_rating_ids = request.env['mail.message'].search([('res_id', '=', product.id),('message_type', '=', 'comment')], 
+                                                                          order='id desc')
+        res.qcontext['rating_ids'] = product_rating_ids
+
+        return res
+

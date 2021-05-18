@@ -722,13 +722,74 @@ Ajouter
                 </div>
             </div>
             <div class="container">
-                <div class="col-lg-12 col-md-12  mt32 slider-product-rating">
+                <div class="col-lg-12 col-md-12  mt32  d-none d-md-block slider-product-rating">
+                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
+                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
+                    <t t-set="website_avis_sortable" t-value="[
+										(avis_date_desc_label, 'desc'),
+										(avis_date_asc_label, 'asc'),
+									]"/>
+                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
+                    <div class="dropdown_sorty_by">
+                        <a role="button" href="#" class="float-left dropdown-toggle btn btn-sortby" data-toggle="dropdown">
+                            <span class="trier">
+                                <t t-if='len(website_avis_sortable_current)'>
+                                    <t t-raw='website_avis_sortable_current[0][0]'/>
+                                </t>
+                                <t t-else='1'>
+													Trier par
+                                </t>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <t t-foreach="website_avis_sortable" t-as="sortby">
+                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=sortby[1]) + '#discussion'" class="dropdown-item">
+                                    <span class="trier" t-raw="sortby[0]"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
                     <t t-ignore="true" t-if="not user_id._is_public()">
-                        <a id='rating-product' class='float-right btn btn-primary'>Rédiger un avis</a>
+                        <a id='rating-product' class='float-right btn btn-primary ml8'>Rédiger un avis</a>
                         <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
                     </t>
                     <t t-else="">
-                        <a role="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
+                        <a role="button" class="float-right btn btn-primary ml8" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
+                    </t>
+                </div>
+                <div class="col-lg-12 col-md-12  mt32 d-md-none slider-product-rating">
+                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
+                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
+                    <t t-set="website_avis_sortable" t-value="[
+										(avis_date_desc_label, 'desc'),
+										(avis_date_asc_label, 'asc'),
+									]"/>
+                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
+                    <div class="dropdown_sorty_by">
+                        <a role="button" href="#" class="float-left dropdown-toggle btn btn-sortby" style="width: 48%;" data-toggle="dropdown">
+                            <span class="trier">
+                                <t t-if='len(website_avis_sortable_current)'>
+                                    <t t-raw='website_avis_sortable_current[0][0]'/>
+                                </t>
+                                <t t-else='1'>
+													Trier par
+                                </t>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <t t-foreach="website_avis_sortable" t-as="sortby">
+                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=sortby[1]) + '#discussion'" class="dropdown-item">
+                                    <span class="trier" t-raw="sortby[0]"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                    <t t-ignore="true" t-if="not user_id._is_public()">
+                        <a id='rating-product' class='float-right btn btn-primary' style='width: 50%;'>Rédiger un avis</a>
+                        <a id='rating-product-bis' class='float-right d-none btn btn-primary' style='width: 50%;'>Rédiger un avis</a>
+                    </t>
+                    <t t-else="">
+                        <a role="button" class="float-right btn btn-primary' style='width: 50%;" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
                     </t>
                 </div>
             </div>
@@ -761,36 +822,6 @@ Ajouter
             </div>
         </xpath>
         <xpath expr="//div[hasclass('col-lg-8')]" position="replace">
-            <!--div class="container">
-                <div class="d-flex align-items-center justify-content-center pt16 pb16">
-                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
-                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
-                    <t t-set="website_avis_sortable" t-value="[
-										(avis_date_desc_label, 'create_date desc'),
-										(avis_date_asc_label, 'create_date asc'),
-									]"/>
-                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
-                    <div class="dropdown dropdown_sorty_by" style="width: 45%;">
-                        <a role="button" href="#" class="dropdown-toggle btn btn-sortby mb16 mt16" data-toggle="dropdown">
-                            <span>
-                                <t t-if='len(website_avis_sortable_current)'>
-                                    <t t-raw='website_avis_sortable_current[0][0]'/>
-                                </t>
-                                <t t-else='1'>
-													Trier par
-                                </t>
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                            <t t-foreach="website_avis_sortable" t-as="sortby">
-                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
-                                    <span t-raw="sortby[0]"/>
-                                </a>
-                            </t>
-                        </div>
-                    </div>
-                </div>
-            </div-->
             <div class="col-lg-12 col-md-12" id="displaycomposer">
                 <t t-call="website_argos.message_thread">
                     <t t-set="object" t-value="product"/>
@@ -809,25 +840,142 @@ Ajouter
     </template>
 
     <template id="message_thread">
-        <!--div class="row">
-            <t t-foreach="rating_ids" t-as="rating_id">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div style="height: 100px;overflow: auto;">
-                            <t t-esc="rating_id.feedback"/>
-                        </div>
-                    </div>
-                </div>
-            </t>
-        </div-->
         <t t-if="(disable_composer == 0) or (rating_avg > 0)">
-            <div id="discussion" class="d-print-none o_portal_chatter o_not_editable p-0" t-att-data-display_rating="display_rating or False" t-att-data-token="token" t-att-data-res_model="object._name" t-att-data-pid="pid" t-att-data-hash="hash" t-att-data-res_id="object.id" t-att-data-pager_step="message_per_page or 10" t-att-data-allow_composer="'0' if disable_composer else '1'">
+            <div id="discussion-product">
+                <div id="discussion" class="d-print-none o_portal_chatter o_not_editable p-0" t-att-data-display_rating="display_rating or False" t-att-data-token="token" t-att-data-res_model="object._name" t-att-data-pid="pid" t-att-data-hash="hash" t-att-data-res_id="object.id" t-att-data-pager_step="0" t-att-data-allow_composer="'0' if disable_composer else '1'">
+                </div>
             </div>
         </t>
+        <div class="d-none d-md-block">
+            <div class="o_portal_chatter_messages">
+                <t t-foreach="rating_ids" t-as="message">
+                    <div class="row">
+                        <div class="media o_portal_chatter_message">
+                            <div class="media-body">
+                                <div class="product-rating-star">
+                                    <t t-if="message.rating_value">
+                                        <t t-call="website_argos.rating_stars_static">
+                                            <t t-set="val" t-value="message.rating_value"/>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="col-lg-12 col-md-12 mt16">
+                                    <t t-raw="message.body"/>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="o_portal_chatter_message_title">
+                                        <h5 class='mb-1'>
+                                            <t t-esc="message.author_id.name"/>
+                                        </h5>
+                                        <p class="o_portal_chatter_puslished_date">LE : 
+                                            <t t-esc="message.date.strftime('%m/%d/%Y')"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <div class="d-block d-md-none">
+            <t t-if="rating_ids">
+                <div id="rating-carousel-product" class="mes-product carousel bs-slider slide  control-round indicators-line mt24 w-100" data-ride="carousel" data-pause="hover" data-interval="7000">
+                    <div class="carousel-inner" role="listbox">
+                        <t t-set="count" t-value="0"/>
+                        <t t-foreach="rating_ids" t-as="message">
+                            <t t-if="count == 0">
+                                <div class="carousel-item active w-100">
+                                    <div class="media-body">
+                                        <div class="product-rating-star">
+                                            <t t-if="message.rating_value">
+                                                <t t-call="website_argos.rating_stars_static">
+                                                    <t t-set="val" t-value="message.rating_value"/>
+                                                </t>
+                                            </t>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 mt16">
+                                            <t t-raw="message.body"/>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 mt16">
+                                            <div class="o_portal_chatter_message_title">
+                                                <h5 class='mb-1'>
+                                                    <t t-esc="message.author_id.name"/>
+                                                </h5>
+                                                <p class="o_portal_chatter_puslished_date">LE : 
+                                                    <t t-esc="message.date.strftime('%m/%d/%Y')"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="carousel-item w-100">
+                                    <div class="media-body">
+                                        <div class="product-rating-star">
+                                            <t t-if="message.rating_value">
+                                                <t t-call="website_argos.rating_stars_static">
+                                                    <t t-set="val" t-value="message.rating_value"/>
+                                                </t>
+                                            </t>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 mt16">
+                                            <t t-raw="message.body"/>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 mt16">
+                                            <div class="o_portal_chatter_message_title">
+                                                <h5 class='mb-1'>
+                                                    <t t-esc="message.author_id.name"/>
+                                                </h5>
+                                                <p class="o_portal_chatter_puslished_date">LE : 
+                                                    <t t-esc="message.date.strftime('%m/%d/%Y')"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-set="count" t-value="count + 1"/>
+                        </t>
+                    </div>
+                </div>
+                <a class="float-left font-14" data-target="#rating-carousel-product" role="button" data-slide="prev">
+                    <img src="/website_argos/static/src/img/left.svg"/>
+                    <b class="sr-only font-normal o_default_snippet_text">Previous</b>
+                </a>
+                <a class="float-right font-14" data-target="#rating-carousel-product" role="button" data-slide="next">
+                    <img src="/website_argos/static/src/img/right.svg"/>
+                    <b class="sr-only font-normal o_default_snippet_text">Next</b>
+                </a>
+            </t>
+        </div>
     </template>
 
+    <template id="rating_stars_static">
+        <div class="col-lg-12 col-md-12">
+            <t t-set="rating_avg" t-value="round(val * 100) / 100 / 2"/>
+            <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+            <t t-set="val_integer" t-value="int(rating_avg)"/>
+            <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+            <t t-if="val > 0">
+                <div t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+                    <t t-foreach="range(0, val_integer)" t-as="num">
+                        <i class="fa fa-star text-secondary" style="color: theme-color('secondary') !important;" role="img"></i>
+                    </t>
+                    <t t-if="val_decimal">
+                        <i class="fa fa-star-half-o text-secondary" style="color: theme-color('secondary') !important;" role="img"></i>
+                    </t>
+                    <t t-foreach="range(0, empty_star)" t-as="num">
+                        <i class="fa fa-star-o text-secondary" role="img"></i>
+                    </t>
+                </div>
+            </t>
+        </div>
+    </template>
+
+
     <template id="bottom_breadcrumbs" inherit_id="website_sale.product_comment" priority="25">
-        <!--xpath expr="//div[@t-field='product.website_description']" position="after"-->
         <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="after">
             <section id="breadcrumb-footter" class="d-block d-md-none mobile-breadcrumb mb16">
                 <div class="container">
