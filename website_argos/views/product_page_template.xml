@@ -690,6 +690,15 @@ Ajouter
             <div class="container">
                 <div class="col-lg-12 col-md-12 mt32 slider-product-rating">
                     <span class="float-left mt16">Avis</span>
+                    <div class="float-right mt16 d-md-none slider-product-rating">
+                        <t t-ignore="true" t-if="not user_id._is_public()">
+                            <a id='rating-product' class='float-right btn btn-primary'>Rédiger un avis</a>
+                            <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
+                        </t>
+                        <t t-else="">
+                            <a role="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
+                        </t>
+                    </div>
                 </div>
             </div>
             <div class="container">
@@ -719,6 +728,34 @@ Ajouter
                             </span>
                         </div>
                     </t>
+                </div>
+                <div class="col-lg-12 col-md-12  mt32 d-md-none slider-product-rating">
+                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
+                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
+                    <t t-set="website_avis_sortable" t-value="[
+										(avis_date_desc_label, 'desc'),
+										(avis_date_asc_label, 'asc'),
+									]"/>
+                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
+                    <div class="dropdown_sorty_by">
+                        <a role="button" href="#" class="float-left dropdown-toggle btn btn-sortby" data-toggle="dropdown">
+                            <span class="trier">
+                                <t t-if='len(website_avis_sortable_current)'>
+                                    <t t-raw='website_avis_sortable_current[0][0]'/>
+                                </t>
+                                <t t-else='1'>
+													Trier par
+                                </t>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" style="width: 80%" role="menu">
+                            <t t-foreach="website_avis_sortable" t-as="sortby">
+                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=sortby[1]) + '#discussion'" class="dropdown-item">
+                                    <span class="trier" t-raw="sortby[0]"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="container">
@@ -755,41 +792,6 @@ Ajouter
                     </t>
                     <t t-else="">
                         <a role="button" class="float-right btn btn-primary ml8" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
-                    </t>
-                </div>
-                <div class="col-lg-12 col-md-12  mt32 d-md-none slider-product-rating">
-                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
-                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
-                    <t t-set="website_avis_sortable" t-value="[
-										(avis_date_desc_label, 'desc'),
-										(avis_date_asc_label, 'asc'),
-									]"/>
-                    <t t-set="website_avis_sortable_current" t-value="[sort for sort in website_avis_sortable if sort[1]==request.params.get('order', '')]"/>
-                    <div class="dropdown_sorty_by">
-                        <a role="button" href="#" class="float-left dropdown-toggle btn btn-sortby" style="width: 48%;" data-toggle="dropdown">
-                            <span class="trier">
-                                <t t-if='len(website_avis_sortable_current)'>
-                                    <t t-raw='website_avis_sortable_current[0][0]'/>
-                                </t>
-                                <t t-else='1'>
-													Trier par
-                                </t>
-                            </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                            <t t-foreach="website_avis_sortable" t-as="sortby">
-                                <a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=sortby[1]) + '#discussion'" class="dropdown-item">
-                                    <span class="trier" t-raw="sortby[0]"/>
-                                </a>
-                            </t>
-                        </div>
-                    </div>
-                    <t t-ignore="true" t-if="not user_id._is_public()">
-                        <a id='rating-product' class='float-right btn btn-primary' style='width: 50%;'>Rédiger un avis</a>
-                        <a id='rating-product-bis' class='float-right d-none btn btn-primary' style='width: 50%;'>Rédiger un avis</a>
-                    </t>
-                    <t t-else="">
-                        <a role="button" class="float-right btn btn-primary' style='width: 50%;" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
                     </t>
                 </div>
             </div>
