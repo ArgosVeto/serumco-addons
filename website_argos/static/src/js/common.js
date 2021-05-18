@@ -308,6 +308,20 @@ $(function() {
     $("#rating-product-bis").addClass("d-none");
     e.stopPropagation()
   });
+  $("#rat-product").on("click", function(e) {
+    $("#displaycomposer").addClass("d-none");
+    $("#hidecomposer").removeClass("d-none");
+    $("#rat-product").addClass("d-none");
+    $("#rat-product-bis").removeClass("d-none");
+    e.stopPropagation()
+  });
+  $("#rat-product-bis").on("click", function(e) {
+    $("#displaycomposer").removeClass("d-none");
+    $("#hidecomposer").addClass("d-none");
+    $("#rat-product").removeClass("d-none");
+    $("#rat-product-bis").addClass("d-none");
+    e.stopPropagation()
+  });
   $(".bottom-show-sidebar").on("click", function(e) {
     $(".sidebar-wrapper").addClass("toggled");
     $("#wrapwrap").addClass("mobile_overlay");

@@ -729,6 +729,8 @@ Ajouter
                         </div>
                     </t>
                 </div>
+            </div>
+            <div class="container">
                 <div class="col-lg-12 col-md-12  mt32 d-md-none slider-product-rating">
                     <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
                     <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
@@ -787,8 +789,8 @@ Ajouter
                         </div>
                     </div>
                     <t t-ignore="true" t-if="not user_id._is_public()">
-                        <a id='rating-product' class='float-right btn btn-primary ml8'>Rédiger un avis</a>
-                        <a id='rating-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
+                        <a id='rat-product' class='float-right btn btn-primary ml8'>Rédiger un avis</a>
+                        <a id='rat-product-bis' class='float-right d-none btn btn-primary'>Rédiger un avis</a>
                     </t>
                     <t t-else="">
                         <a role="button" class="float-right btn btn-primary ml8" data-toggle="modal" data-target="#ProductModal">Rédiger un avis</a>
