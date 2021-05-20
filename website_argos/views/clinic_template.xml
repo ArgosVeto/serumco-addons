@@ -179,11 +179,11 @@
 								<li class="breadcrumb-item">
 									<a href="/">Accueil</a>
 								</li>
-								<li class="breadcrumb-item"> Trouver une clinique</li>
+								<li class="breadcrumb-item"> Trouver ma clinique</li>
 							</ol>
 						</div>
 						<div class="col-lg-12 pt16 pb8">
-							<h1>Trouver une clinique</h1>
+							<h1>Trouver ma clinique</h1>
 						</div>
 						<div class="col-lg-12 pt16 pb8">
 							<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -247,13 +247,19 @@
 			<t t-call="website_argos.clinic_grid"/>
 			<div class="clearfix"/>
 			<div class="oe_structure">
-				<section class="s_text_block mt16 oe_structure">
+				<section class="s_text_block mt16 oe_structure" data-name="Text block">
 					<div class="container">
 						<div class="row d-none d-md-block">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae arcu non sem placerat blandit et at sapien. Praesent tempor et est porta efficitur. Aliquam ac felis non turpis sollicitudin efficitur vel ut leo. Nunc sit amet felis aliquet, aliquam lacus at, aliquet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non maximus ligula, ac consequat ligula. Mauris sit amet lectus eleifend nunc facilisis pellentesque. Integer gravida sapien ut sagittis commodo.</p>
-							<p>Phasellus eget ex massa. Nunc massa lectus, bibendum sit amet molestie eu, dignissim sit amet ipsum. Nullam aliquet accumsan neque eu lacinia. Cras et vulputate est, et gravida risus. Sed vestibulum magna vitae nulla volutpat suscipit. Mauris imperdiet, metus sit amet vestibulum aliquet, nisl quam condimentum lorem, eget tincidunt velit ante ut dolor. Aliquam et egestas libero, at ullamcorper risus. Mauris vitae tincidunt sapien. Sed at odio non lectus hendrerit egestas. Sed et dui magna. Nunc accumsan vulputate ipsum, sit amet cursus massa porta id.</p>
-							<p>Duis tellus ligula, viverra vitae purus non, pellentesque dapibus augue. Pellentesque risus justo, aliquet nec bibendum a, elementum eget purus. Fusce viverra sed nunc vitae volutpat. Praesent id metus feugiat, varius neque a, pulvinar tortor. Nam commodo tincidunt augue, in semper ante mattis a. Ut eget nisi risus. Etiam eget hendrerit nisi. Phasellus vitae interdum justo. Nulla quis bibendum velit. Donec dapibus enim ultrices, consectetur justo vitae, ornare justo. Vestibulum eget efficitur leo. Mauris et tempor diam, ut vestibulum lectus. Phasellus commodo tortor et tortor lobortis, eget ultrices odio consequat. Integer non dolor ac massa pharetra hendrerit nec in libero. Curabitur dolor leo, sollicitudin sit amet ante ut, convallis molestie sapien.</p>
-							<p>Curabitur blandit vulputate enim molestie sollicitudin. Phasellus cursus mauris sit amet libero pellentesque tristique. Sed finibus nisi nec consequat mattis. Etiam finibus, odio vitae semper maximus, magna metus mollis tortor, non porta sem libero ut est. In elit elit, iaculis sed libero ac, dignissim fringilla diam. Aliquam pellentesque hendrerit dictum. Nulla facilisi. Proin lectus tellus, posuere vitae dignissim nec, faucibus sed elit. Cras vitae mollis tortor. Vestibulum nec risus sit amet libero venenatis volutpat eu id.</p>
+							<h2>
+								<font class="text-alpha" style="">Nos cabinets et cliniques vétérinaires Argos</font>
+							</h2>
+							<p>Le réseau de cabinets et cliniques vétérinaires Argos est implanté dans plusieurs grandes agglomérations françaises, d’abord à Bordeaux, puis à Grenoble, Paris, Lyon, Montpellier, Nantes, Saint-Etienne, Metz et bientôt dans d’autres villes. </p>
+							<p>Nous avons à cœur de vous offrir des établissements avec des offres de soins de qualité en étant toujours plus proche de vous et de vos animaux.</p>
+							<h2>
+								<font class="text-alpha" style="">Argos, c'est l'histoire d'une passion partagée</font>
+							</h2>
+							<p>Chez Argos, nous savons que les animaux de compagnie sont des membres à part entière d’une famille, ils partagent vos moments de joie mais vous soutiennent aussi dans vos moments de peine. À ce titre nous avons pour mission de les préserver ainsi que de protéger leur santé pour qu’ils puissent mener une vie paisible à vos côtés le plus longtemps possible.</p>
+							<p>Le réseau de cabinets et cliniques vétérinaires Argos est là pour procurer à vos animaux des soins à la hauteur de l’amour qu’ils vous portent. Dans ce but, nous réunissons des professionnels chevronnés et animés par une même passion. Toujours à l’écoute et présents pour vous, ils mettent leur savoir-faire au service de la santé de vos compagnons.</p>
 						</div>
 					</div>
 				</section>
