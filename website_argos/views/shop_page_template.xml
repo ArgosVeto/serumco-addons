@@ -32,48 +32,6 @@
 			<t t-call="website_argos.product_filter_sidebar"/>
 		</xpath>
 
-		<xpath expr="//t[@t-call='website.layout']" position="after">
-			<footer class="footer main-footer d-md-none">
-				<div class="d-flex align-items-center justify-content-center">
-					<t t-if="request.website.viewref('website_sale.sort').active">
-						<t t-set="list_price_desc_label">prix décroissant</t>
-						<t t-set="list_price_asc_label">prix croissant</t>
-						<t t-set="name_asc_label">Nom: A à Z</t>
-						<t t-set="name_desc_label">Nom: Z à A</t>
-						<t t-set="website_sale_sortable" t-value="[
-										(list_price_desc_label, 'list_price desc'),
-										(list_price_asc_label, 'list_price asc'),
-										(name_asc_label, 'name asc'),
-										(name_desc_label, 'name desc')
-									]"/>
-						<t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
-						<div class="dropdown dropdown_sorty_by" style="width: 45%;">
-							<a role="button" href="#" class="dropdown-toggle btn btn-sortby mb16 mt16" data-toggle="dropdown">
-								<span>
-									<t t-if='len(website_sale_sortable_current)'>
-										<t t-raw='website_sale_sortable_current[0][0]'/>
-									</t>
-									<t t-else='1'>
-													Trier par
-									</t>
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right" role="menu">
-								<t t-foreach="website_sale_sortable" t-as="sortby">
-									<a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
-										<span t-raw="sortby[0]"/>
-									</a>
-								</t>
-							</div>
-						</div>
-					</t>
-					<button role="button" id="show-sidebar-product" class="btn btn-primary ml8" style="width: 45%; border-radius: 50px;">
-						<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
-						<span class="">Filtrer</span>
-					</button>
-				</div>
-			</footer>
-		</xpath>
 	</template>
 
 	<template id="argos_top_product_pager_inherit" inherit_id="website_sale.products" name="Shop Page Filter" priority="20">
@@ -605,6 +563,51 @@ Ajouter
 		<li class="breadcrumb-item">
 			<span style="font-size: 12px;" t-esc="product.name"/>
 		</li>
+	</template>
+
+	<template id="footer_products" inherit_id="website_sale.products" priority="999">
+		<xpath expr="//t[@t-call='website.layout']" position="after">
+			<footer class="footer main-footer d-md-none">
+				<div class="d-flex align-items-center justify-content-center">
+					<t t-if="request.website.viewref('website_sale.sort').active">
+						<t t-set="list_price_desc_label">prix décroissant</t>
+						<t t-set="list_price_asc_label">prix croissant</t>
+						<t t-set="name_asc_label">Nom: A à Z</t>
+						<t t-set="name_desc_label">Nom: Z à A</t>
+						<t t-set="website_sale_sortable" t-value="[
+										(list_price_desc_label, 'list_price desc'),
+										(list_price_asc_label, 'list_price asc'),
+										(name_asc_label, 'name asc'),
+										(name_desc_label, 'name desc')
+									]"/>
+						<t t-set="website_sale_sortable_current" t-value="[sort for sort in website_sale_sortable if sort[1]==request.params.get('order', '')]"/>
+						<div class="dropdown dropdown_sorty_by" style="width: 45%;">
+							<a role="button" href="#" class="dropdown-toggle btn btn-sortby mb16 mt16" data-toggle="dropdown">
+								<span>
+									<t t-if='len(website_sale_sortable_current)'>
+										<t t-raw='website_sale_sortable_current[0][0]'/>
+									</t>
+									<t t-else='1'>
+													Trier par
+									</t>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" role="menu">
+								<t t-foreach="website_sale_sortable" t-as="sortby">
+									<a role="menuitem" rel="noindex,nofollow" t-att-href="keep('/shop', order=sortby[1])" class="dropdown-item">
+										<span t-raw="sortby[0]"/>
+									</a>
+								</t>
+							</div>
+						</div>
+					</t>
+					<button role="button" id="show-sidebar-product" class="btn btn-primary ml8" style="width: 45%; border-radius: 50px;">
+						<img class="ico-20px-Filters" src="/website_argos/static/src/img/filtrer.svg"></img>
+						<span class="">Filtrer</span>
+					</button>
+				</div>
+			</footer>
+		</xpath>
 	</template>
 
 </odoo>

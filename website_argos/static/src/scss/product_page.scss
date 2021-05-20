@@ -68,7 +68,7 @@
 	    position: sticky !important;
 	    top: 100px;
 	}
-	#product_details{
+	#product_details {
 		padding-top:20px;
 		#product_attributes_simple{
 			display: none;
@@ -328,15 +328,17 @@
 		}
 	}
 }
-.main-footer{
+.main-footer-product {
 	background-color: white;
-/*	position:-webkit-sticky; */
+	position:-webkit-sticky; 
 	width: 100%;
-	position:fixed;
+	position: sticky;
 	bottom:0;
 	z-index: 99;
    }
-
+   #product_detail #product_details {
+    padding-top: 0px;
+	}
    .product_tabs{
 	#product_detail_tabs{
 		-webkit-box-pack: center;
