@@ -973,17 +973,17 @@ Ajouter
             </t>
         </div>
         <div class="container d-none d-md-block">
-            <t t-if="product.rating_count > 3">
+            <t t-if="product.rating_count > 5">
                 <t t-if='len(website_avis_sortable_current)'>
                     <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=(website_avis_sortable_current[0][1]), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
                 Charger plus d'avis
-                        <t t-set="count" t-value="count + 3"/>
+                        <t t-set="count" t-value="count + 5"/>
                     </a>
                 </t>
                 <t t-else="">
                     <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
                 Charger plus d'avis
-                        <t t-set="count" t-value="count + 3"/>
+                        <t t-set="count" t-value="count + 5"/>
                     </a>
                 </t>
             </t>
