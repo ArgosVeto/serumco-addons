@@ -17,7 +17,7 @@
                     <i class="fa fa-star-o text-secondary" role="img"></i>
                 </t>
                 <span style="margin-left:2px;" class="text1">
-                    <t t-esc="rating_avg"/>
+                    <t t-esc="round(rating_avg,1)"/>
                     <span class="text1"> / 5</span>
                 </span>
 

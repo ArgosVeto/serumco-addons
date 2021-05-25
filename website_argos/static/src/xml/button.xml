@@ -14,7 +14,7 @@
                             <span t-esc="product.display_name"/>
                         </a>
                     </h6>
-                    <div t-if="product.rating" t-raw="product.rating"/>
+                    <div t-if="product.rating" t-raw="round(product.rating,1)"/>
                     <div class="font-weight-bold text-primary my-1" t-raw="product.price"/>
                     <button type="button" role="button" class="js_add_cart btn" title="Add to Cart">
                         <i class="ri ri-shopping-cart-line rib"/>

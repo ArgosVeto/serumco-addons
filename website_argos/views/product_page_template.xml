@@ -658,7 +658,7 @@ var quantitiy=0;
                     <i class="fa fa-star-o text-secondary" role="img"></i>
                 </t>
                 <span style="margin-left:2px;" class="text1">
-                    <t t-esc="rating_avg"/>
+                    <t t-esc="round(rating_avg,1)"/>
                     <span> / 5</span>
                 </span>
                 <span style="margin-left:5px;font-size:15px;" class="text2">Voir les 
@@ -794,7 +794,7 @@ Ajouter
                                 <i class="fa fa-star-o text-secondary" role="img"></i>
                             </t>
                             <span style="margin-left:2px;" class="text1">
-                                <t t-esc="rating_avg"/>
+                                <t t-esc="round(rating_avg,1)"/>
                                 <span class="text1"> / 5</span>
                             </span>
                             <span style="font-size:15px; margin-left:30px;" class="text1">
@@ -973,17 +973,17 @@ Ajouter
             </t>
         </div>
         <div class="container d-none d-md-block">
-            <t t-if="product.rating_count > 5">
+            <t t-if="product.rating_count > 3">
                 <t t-if='len(website_avis_sortable_current)'>
                     <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=(website_avis_sortable_current[0][1]), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
                 Charger plus d'avis
-                        <t t-set="count" t-value="count + 5"/>
+                        <t t-set="count" t-value="count + 3"/>
                     </a>
                 </t>
                 <t t-else="">
                     <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
                 Charger plus d'avis
-                        <t t-set="count" t-value="count + 5"/>
+                        <t t-set="count" t-value="count + 3"/>
                     </a>
                 </t>
             </t>

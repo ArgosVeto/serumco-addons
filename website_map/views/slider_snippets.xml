@@ -3,7 +3,7 @@
     <template id="star_inherit" inherit_id="website_argos.product_item_stars">
         <xpath expr="//div/span[@class='text1']" position="replace">
             <span class="text1" style="margin-left:2px;">
-                <t t-esc="rating_avg"/><span> / 5</span>
+                <t t-esc="round(rating_avg,1)"/><span> / 5</span>
             </span>            
         </xpath>
     </template>

@@ -714,7 +714,7 @@ class ProductRate(WebsiteSale):
     @http.route(['/shop/product/<model("product.template"):product>'], type='http', auth="public", website=True)
     def product(self, product, category='', search='', order=None, limit=None, **kwargs):
         if not limit:
-            limit = 5;
+            limit = 3;
         product_rating_ids = []
         res = super(ProductRate, self).product(product, category, search)
         if not order:
