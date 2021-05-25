@@ -168,10 +168,10 @@ function scrollgauche() {
                             </span>
                         </h1>
                         <p>
-                                Retrouvez sur cette page lorem ipsum dolor sit amet 
+                                Depuis la vue d’ensemble vous pouvez consulter vos commandes en cours, vos rendez-vous vétérinaires à venir, les coordonnées de votre structure Argos Vétérinaire favorite, vos produits préférés, enregistrer vos moyens de paiement favoris ou encore gérer toutes vos informations personnelles.
                         </p>
                         <p class="mb48">
-                                Nous Contacter
+                                
                         </p>
                     </div>
                     <div class="col-md-12 main-content">

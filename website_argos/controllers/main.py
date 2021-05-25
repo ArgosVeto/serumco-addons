@@ -712,18 +712,19 @@ class WebsiteSale(WebsiteSale):
 class ProductRate(WebsiteSale):
 
     @http.route(['/shop/product/<model("product.template"):product>'], type='http', auth="public", website=True)
-    def product(self, product, category='', search='', order=None, **kwargs):
+    def product(self, product, category='', search='', order=None, limit=None, **kwargs):
+        if not limit:
+            limit = 3;
         product_rating_ids = []
         res = super(ProductRate, self).product(product, category, search)
         if not order:
             order = 'desc'
         if order == 'asc':
-            product_rating_ids = request.env['mail.message'].search([('res_id', '=', product.id),('message_type', '=', 'comment')], 
-                                                                          order='id asc')
+            product_rating_ids = request.env['mail.message'].search([('res_id', '=', product.id),('message_type', '=', 'comment'),], 
+                                                                          order='id asc', limit=int(limit))
         if order == 'desc':
             product_rating_ids = request.env['mail.message'].search([('res_id', '=', product.id),('message_type', '=', 'comment')], 
-                                                                          order='id desc')
+                                                                          order='id desc', limit=int(limit))
         res.qcontext['rating_ids'] = product_rating_ids
 
         return res
-

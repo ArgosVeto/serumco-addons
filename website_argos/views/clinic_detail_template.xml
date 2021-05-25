@@ -396,7 +396,7 @@
 						</t>
 					</div>
 
-					<div class="service-innerp">
+					<!--div class="service-innerp">
 						<h3 class="Nos-services pb16">Nos tarifs</h3>
 						<div class="nos-tarifs">
 							<div id="accordion" class="accordion">
@@ -532,12 +532,12 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div-->
 
 					<div class="oe_structure d-none d-md-block">
 						<t t-call="website_blog.s_latest_posts_big_picture"/>
 					</div>
-					<div class="service-innerp pb56">
+					<!--div class="service-innerp pb56">
 						<div class="clinic-rating">
 							<t t-if="operating_unit.rating_ids">
 								<h2>Les avis de nos clients</h2>
@@ -547,7 +547,7 @@
 								<t t-set="display_rating" t-value="True"/>
 							</t>
 						</div>
-					</div>
+					</div-->
 				</div>
 				<div class="col-lg-4 clinic-detail-sticky side-block-c side-block d-none d-md-block">
 					<div class="">

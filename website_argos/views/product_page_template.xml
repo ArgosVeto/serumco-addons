@@ -837,8 +837,6 @@ Ajouter
             </div>
             <div class="container">
                 <div class="col-lg-12 col-md-12  mt32  d-none d-md-block slider-product-rating">
-                    <t t-set="avis_date_desc_label">Le plus récent d'abord</t>
-                    <t t-set="avis_date_asc_label">Le plus ancien d'abord</t>
                     <t t-set="website_avis_sortable" t-value="[
 										(avis_date_desc_label, 'desc'),
 										(avis_date_asc_label, 'asc'),
@@ -927,7 +925,9 @@ Ajouter
         </t>
         <!--div class="d-none d-md-block"-->
         <div class="o_portal_chatter_messages">
+            <t t-set="count" t-value="0"/>
             <t t-foreach="rating_ids" t-as="message">
+                <t t-set="count" t-value="count + 1"/>
                 <div class="row">
                     <div class="media o_portal_chatter_message">
                         <div class="media-body">
@@ -954,6 +954,38 @@ Ajouter
                         </div>
                     </div>
                 </div>
+            </t>
+        </div>
+        <div class="container d-md-none">
+            <t t-if="product.rating_count > 3">
+                <t t-if='len(website_avis_sortable_current)'>
+                    <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=(website_avis_sortable_current[0][1]), limit=(count)) + '#discussion'" class="btn btn-avis">
+                Charger plus d'avis
+                        <t t-set="count" t-value="count + 3"/>
+                    </a>
+                </t>
+                <t t-else="">
+                    <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), limit=(count)) + '#discussion'" class="btn btn-avis">
+                  Charger plus d'avis
+                        <t t-set="count" t-value="count + 3"/>
+                    </a>
+                </t>
+            </t>
+        </div>
+        <div class="container d-none d-md-block">
+            <t t-if="product.rating_count > 3">
+                <t t-if='len(website_avis_sortable_current)'>
+                    <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), order=(website_avis_sortable_current[0][1]), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
+                Charger plus d'avis
+                        <t t-set="count" t-value="count + 3"/>
+                    </a>
+                </t>
+                <t t-else="">
+                    <a role="button" rel="noindex,nofollow" t-att-href="keep('/shop/product/' + slug(product), limit=(count)) + '#discussion'" class="float-left btn btn-primary">
+                Charger plus d'avis
+                        <t t-set="count" t-value="count + 3"/>
+                    </a>
+                </t>
             </t>
         </div>
         <!--/div-->
