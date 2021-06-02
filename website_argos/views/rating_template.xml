@@ -54,14 +54,6 @@
         </t>
     </template>
 
-    <template id="products_item_rating_value" inherit_id="website_sale.products_item" name="Website Product Rating">
-        <!-- <xpath expr="//div[@class='product_price']" position="after">
-            <input type="hidden" name="product_tmpl_id" t-att-value="product.id"/>
-            <t t-set="combination" t-value="product._get_first_possible_combination()"/>
-            <t t-if="combination" t-call="website_argos.product_variants">
-            </t>
-        </xpath> -->
-    </template>
 
     <template inherit_id='website_sale.products_item' id="products_rating_value" name="Product Rating">
         <xpath expr="//h6[hasclass('o_wsale_products_item_title')]" position="after">

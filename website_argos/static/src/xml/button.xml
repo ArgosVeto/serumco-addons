@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-extend="website_sale.productsRecentlyViewed">
+            <t t-set="rating" t-value="round(product.rating,1)"/>
         <t t-jquery="div.o_carousel_product_card" t-operation="replace">
             <div class="o_carousel_product_card card h-100 position-relative">
                 <input type="hidden" name="product-id" t-att-data-product-id="product.id"/>
@@ -14,11 +15,16 @@
                             <span t-esc="product.display_name"/>
                         </a>
                     </h6>
-                    <div t-if="product.rating" t-raw="round(product.rating,1)"/>
-                    <div class="font-weight-bold text-primary my-1" t-raw="product.price"/>
+                    <div t-if="product.rating" t-esc="rating"/>
+                    <button type="button" role="button" class="js_add_cart btn" title="Add to Cart">
+                        <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr4"/>
+Ajouter<span class="text-white ml-1 mr-1 text-bold"> - </span>
+                        <div class="font-weight-bold" t-raw="product.price"/>
+                    </button>
+                    <!--div class="font-weight-bold text-primary my-1" t-raw="product.price"/>
                     <button type="button" role="button" class="js_add_cart btn" title="Add to Cart">
                         <i class="ri ri-shopping-cart-line rib"/>
-                    </button>
+                    </button-->
                 </div>
             </div>
         </t>

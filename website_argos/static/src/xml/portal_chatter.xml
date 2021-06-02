@@ -107,7 +107,7 @@
         </t>
     </t>
 
-    <t t-extend="website_sale.productsRecentlyViewed">
+     <t t-extend="website_sale.productsRecentlyViewed">
         <t t-jquery="div.o_carousel_product_card" t-operation="replace">
             <div class="o_carousel_product_card card h-100 position-relative">
                 <input type="hidden" name="product-id" t-att-data-product-id="product.id"/>
