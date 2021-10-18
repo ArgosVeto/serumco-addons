@@ -176,7 +176,7 @@ class AuthSignupHomeSS(AuthSignupHome):
 class CustomerPortal(CustomerPortal):
 
     MANDATORY_BILLING_FIELDS = ["firstname", "lastname", "phone",
-                                "email", "street", "zipcode", "city", "country_id"]
+                                "email", "street", "zipcode", "city", "country_id", "street2"]
     OPTIONAL_BILLING_FIELDS = ["state_id", "vat", "company_name"]
 
     @route(['/my', '/my/home'], type='http', auth="user", website=True)

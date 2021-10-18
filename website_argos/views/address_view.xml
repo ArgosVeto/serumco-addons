@@ -24,25 +24,25 @@
                                         </div>
                                         <div t-attf-class="form-group col-md-4 div_name">
                                             <label class="col-form-label" for="name">Prénom *</label>
-                                            <input type="text" name="firstname" t-attf-class="form-control o_website_form_input #{'firstname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'firstname' in predefine_data and predefine_data['firstname'] or partner_id and 'firstname' in partner_id and partner_id['firstname']"/>
+                                            <input type="text" name="firstname" t-attf-class="form-control o_website_form_input #{'firstname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'firstname' in predefine_data and predefine_data['firstname'] or partner_id and 'firstname' in partner_id and partner_id['firstname']" required="True"/>
                                         </div>
                                         <div class="col-md-1"/>
                                         <div t-attf-class="form-group col-md-4 div_name">
                                             <label class="col-form-label" for="name">Nom *</label>
-                                            <input type="text" name="lastname" t-attf-class="form-control o_website_form_input #{'lastname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'lastname' in predefine_data and predefine_data['lastname'] or partner_id and 'lastname' in partner_id and partner_id['lastname']"/>
+                                            <input type="text" name="lastname" t-attf-class="form-control o_website_form_input #{'lastname' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'lastname' in predefine_data and predefine_data['lastname'] or partner_id and 'lastname' in partner_id and partner_id['lastname']" required="True"/>
                                         </div>
                                         <div t-attf-class="form-group col-md-4 email">
                                             <label class="col-form-label" for="email">Adresse Email *</label>
-                                            <input type="text" name="email" t-attf-class="form-control" t-att-value="predefine_data and 'email' in predefine_data and predefine_data['email'] or partner_id and 'email' in partner_id and partner_id['email']"/>
+                                            <input type="text" name="email" t-attf-class="form-control" t-att-value="predefine_data and 'email' in predefine_data and predefine_data['email'] or partner_id and 'email' in partner_id and partner_id['email']" required="True"/>
                                         </div>
                                         <div class="col-md-1"/>
                                         <div t-attf-class="form-group col-md-4 phone">
                                             <label class="col-form-label" for="phone">N° de téléphone *</label>
-                                            <input type="text" name="phone" t-attf-class="form-control o_website_form_input #{'phone' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'phone' in predefine_data and predefine_data['phone'] or partner_id and 'phone' in partner_id and partner_id['phone']"/>
+                                            <input type="text" name="phone" t-attf-class="form-control o_website_form_input #{'phone' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'phone' in predefine_data and predefine_data['phone'] or partner_id and 'phone' in partner_id and partner_id['phone']" required="True"/>
                                         </div>
                                         <div t-attf-class="form-group col-md-12 street">
                                             <label class="col-form-label" for="street">Adresse *</label>
-                                            <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']"/>
+                                            <input type="text" name="street" t-attf-class="form-control o_website_form_input #{'street' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'street' in predefine_data and predefine_data['street'] or partner_id and 'street' in partner_id and partner_id['street']" required="True"/>
                                         </div>
                                         <div t-attf-class="form-group col-md-12 street2">
                                             <label class="col-form-label" for="street2">Complément d'adresse</label>
@@ -50,16 +50,16 @@
                                         </div>
                                         <div t-attf-class="form-group col-md-2 div_zip">
                                             <label class="col-form-label" for="zip">Code postal *</label>
-                                            <input type="text" name="zip" t-attf-class="form-control" t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']"/>
+                                            <input type="text" name="zip" t-attf-class="form-control" t-att-value="predefine_data and 'zip' in predefine_data and predefine_data['zip'] or partner_id and 'zip' in partner_id and partner_id['zip']" required="True"/>
                                         </div>
                                         <div t-attf-class="form-group col-md-6 div_city">
                                             <label class="col-form-label" for="city">Ville *</label>
-                                            <input type="text" name="city" t-attf-class="form-control o_website_form_input #{'city' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'city' in predefine_data and predefine_data['city'] or partner_id and 'city' in partner_id and partner_id['city']"/>
+                                            <input type="text" name="city" t-attf-class="form-control o_website_form_input #{'city' in required_fields and 'is-invalid' or ''}" t-att-value="predefine_data and 'city' in predefine_data and predefine_data['city'] or partner_id and 'city' in partner_id and partner_id['city']" required="True"/>
                                         </div>
                                         <div t-attf-class="form-group col-md-4 div_country">
                                             <label class="col-form-label" for="country_id">Pays *</label>
                                             <div class="selection-div sel-add">
-                                                <select id="country_id" name="country_id" t-attf-class="form-control">
+                                                <select id="country_id" name="country_id" t-attf-class="form-control" required="True">
                                                     <option value="">Pays...</option>
                                                     <t t-foreach="countries" t-as="c">
                                                         <option t-att-value="c.id" t-att-selected="predefine_data and 'country_id' in predefine_data and predefine_data['country_id'] and int(predefine_data['country_id']) == c.id or partner_id and 'country_id' in partner_id and int(partner_id['country_id']) == c.id">

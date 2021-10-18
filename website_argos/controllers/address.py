@@ -21,7 +21,6 @@ class Address(http.Controller):
         values = {}
         partner_id = False
         error_message = ""
-        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         if 'data' in post and post['data']:
             predefine_data = json.loads(post['data'].replace("'", '"'))
         if 'error' in post and post['error']:
@@ -45,6 +44,7 @@ class Address(http.Controller):
             values = {}
             update_partner_id = False
             rfields = []
+            country_code = None
 
             if 'country_id' in post and post['country_id']:
                 country = ''.join(x for x in post['country_id'] if x.isdigit())
@@ -52,7 +52,7 @@ class Address(http.Controller):
                     int(country))
                 country_code = update_country_id.code.upper()
 
-            if 'phone' in post and post['phone']:
+            if 'phone' in post and post['phone'] and country_code:
                 res_parse = phonenumbers.parse(
                     post['phone'], country_code)
                 phone = phonenumbers.format_number(
