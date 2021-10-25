@@ -197,6 +197,8 @@ class CustomerPortal(CustomerPortal):
         error = False
         if post and request.httprequest.method == 'POST':
             error, error_message = self.details_form_validate(post)
+            if 'street2' in error.keys():
+                error.pop('street2')
             values.update(
                 {'error': error, 'error_message': error_message})
             values.update(post)
