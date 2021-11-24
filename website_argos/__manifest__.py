@@ -111,6 +111,7 @@
     ],
     'qweb': [
         'static/src/xml/portal_chatter.xml',
+        'static/src/xml/portal_account_disclaimer.xml',
     ],
     'demo': [
     

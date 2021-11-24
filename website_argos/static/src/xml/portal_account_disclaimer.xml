@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+  <t t-name="website_argos.portal_account_disclaimer">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-3 mt16 mb32" style="font-family: inherit;color: #63bae9;padding-left: 54px;" >
+        <div style="height: 60px;width: 70%;background-color: rgba(99, 186, 233, 0.04);">
+          <img style="display: inline-block;border-radius: 100%;box-shadow: 0px 0px 1px 6px #63bae9;padding: 0.5em 0.6em;margin:12px"
+             src="/website_argos/static/src/img/check.png"></img>
+          <span style="padding-left: 15px;">Votre adresse de facturation a bien été modifiée</span>
+        </div>
+
+      </div>
+    </div>
+
+  </t>
+
+</templates>

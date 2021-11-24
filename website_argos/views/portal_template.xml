@@ -721,6 +721,7 @@ Done
                         <h1 style="text-align: center; margin-top: 80px;">Mon adresse</h1>
                     </div>
                 </div>
+                <div id="portal_disclaimer_container"/>
                 <div class="container">
                     <form action="/my/account" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -729,25 +730,25 @@ Done
                                 <div class="row contact-argos">
                                     <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
                                         <label class="col-form-label" for="name">Prénom</label>
-                                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname"/>
+                                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname" required="true"/>
                                     </div>
                                     <div class="col-md-1"/>
                                     <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
                                         <label class="col-form-label" for="name">Nom</label>
-                                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname"/>
+                                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname" required="true"/>
                                     </div>
                                     <div t-attf-class="form-group col-md-4 email o_website_form_required_custom">
                                         <label class="col-form-label" for="email">Adresse Email</label>
-                                        <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email"/>
+                                        <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" required="true"/>
                                     </div>
                                     <div class="col-md-1"/>
                                     <div t-attf-class="form-group col-md-4 phoneo_website_form_required_custom">
                                         <label class="col-form-label" for="phone">N° de téléphone *</label>
-                                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone"/>
+                                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone" required="True"/>
                                     </div>
                                     <div t-attf-class="form-group col-md-12 street o_website_form_required_custom">
                                         <label class="col-form-label" for="street">Adresse</label>
-                                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street"/>
+                                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street" required="True"/>
                                     </div>
                                     <div t-attf-class="form-group col-md-12 street2">
                                         <label class="col-form-label" for="street">Complément d'adresse</label>
@@ -755,15 +756,15 @@ Done
                                     </div>
                                     <div t-attf-class="form-group col-md-3 div_zip o_website_form_required_custom">
                                         <label class="col-form-label" for="zip">Code postal</label>
-                                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip"/>
+                                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip" required="True"/>
                                     </div>
                                     <div t-attf-class="form-group col-md-5 div_city o_website_form_required_custom">
                                         <label class="col-form-label" for="city">Ville</label>
-                                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city"/>
+                                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city" required="True"/>
                                     </div>
                                     <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
                                         <label class="col-form-label" for="country_id">Pays</label>
-                                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}" required="True">
                                             <option value="">Pays...</option>
                                             <t t-foreach="countries or []" t-as="country">
                                                 <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
@@ -773,7 +774,7 @@ Done
                                         </select>
                                     </div>
                                     <div class="col-md-12 mt16 mb32">
-                                        <button type="submit" id="form_submit" class="btn btn-primary float-right mb32 o_job_post_submit">
+                                        <button type="button" class="btn btn-primary float-right mb32 o_job_post_submit my_account_submit">
                                                 Enregistrer mes modifications
                                         </button>
                                     </div>
