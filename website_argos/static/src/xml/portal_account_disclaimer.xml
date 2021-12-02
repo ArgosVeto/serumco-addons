@@ -3,10 +3,14 @@
 
   <t t-name="website_argos.portal_account_disclaimer">
     <div class="row">
-      <div class="col-lg-8 offset-lg-3 mt16 mb32" style="font-family: inherit;color: #63bae9;padding-left: 54px;" >
-        <div style="text-align: center;width: 50%;background-color: rgba(99, 186, 233, 0.04);">
-          <img style="display: inline-block;border-radius: 100%;margin-top: 12px;margin-bottom: 12px;" src="/website_argos/static/src/img/checked.svg"></img>
-          <span style="padding-left: 15px;">Votre adresse de facturation a bien été modifiée</span>
+      <div class="col-lg-12 mt16 mb32" style="font-family: inherit;color: #63bae9;" >
+        <div style="width: 100%;">
+          <div style="width: 100%;background-color: rgba(99, 186, 233, 0.04);">
+            <center>
+              <img style="display: inline-block;border-radius: 100%;margin-top: 12px;margin-bottom: 12px;" src="/website_argos/static/src/img/checked.svg"></img>
+              <span style="padding-left: 15px;">Votre adresse de facturation a bien été modifiée</span>
+            </center>
+          </div>
         </div>
 
       </div>
