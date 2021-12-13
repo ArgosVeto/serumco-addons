@@ -186,7 +186,7 @@ function myFunction(e) {
     e.style.fontSize = "12px"
 }
 						</script>
-						<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-md-none d-inline-block">
+						<a role="button" target="" t-attf-href="tel:{{operating_unit.phone}}" class="btn btn-outline-primary d-md-none d-inline-block mb16">
 							<img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/>
 							<span class="">Appeler</span>
 						</a>
