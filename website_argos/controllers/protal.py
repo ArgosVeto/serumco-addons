@@ -318,35 +318,6 @@ class PortalContent(http.Controller):
             ('Content-Disposition', content_disposition('%s.ics' % planning.name))
         ])
 
-    @http.route(['''/my-content'''], type='http', auth="user", website=True)
-    def portal_content(self, **post):
-        values = {}
-        # erwq
-        next_appointment_id = False
-        pervious_appointment_id = False
-
-        now = fields.datetime.now()
-        partner = request.env.user.partner_id
-
-        next_appointment_id = request.env['planning.slot'].sudo().search([('partner_id', '=', partner.id), ('mrdv_event_id', '!=', 0), (
-            'start_datetime', '>=', now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))], order="start_datetime", limit=1)
-        pervious_appointment_id = request.env['planning.slot'].sudo().search([('partner_id', '=', partner.id), ('mrdv_event_id', '!=', 0), (
-            'start_datetime', '<=', now.strftime(DEFAULT_SERVER_DATETIME_FORMAT))], order="start_datetime desc", limit=1)
-        fav_clinic = partner.clinic_shortlisted_ids or False
-        order_ids = request.env['sale.order'].sudo().search(
-            [('partner_id', '=', partner.id)], order="date_order desc", limit=2, )
-
-        product_wishlist_ids = []
-        product_wishlist_ids = request.env['product.wishlist'].with_context(display_default_code=False).current()
-        
-        values.update({'next_appointment_id': next_appointment_id,
-                       'pervious_appointment_id': pervious_appointment_id,
-                       'fav_clinic': fav_clinic,
-                       'order_ids': order_ids,
-                       'partner': partner,
-                       'product_wishlist_ids': product_wishlist_ids})
-        return request.env['ir.ui.view'].render_template("website_argos.portal_template", values)
-
     @http.route(['/my/clinic-shortlisted'], type='http', auth="user", website=True)
     def portal_clinic_shortlisted(self):
         partner = request.env.user.partner_id
