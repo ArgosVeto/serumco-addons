@@ -14,6 +14,15 @@ publicWidget.registry.portalDetails.include({
         return def
     },
 
+    _adaptAddressForm: function () {
+        if(this.$stateOptions){
+            this._super()
+        }
+        else{
+            return
+        }
+    },
+
     _submitDisclaimer: function(){
         var self=this;
         var submit_button = $('.my_account_submit');
