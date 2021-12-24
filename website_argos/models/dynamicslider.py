@@ -162,8 +162,7 @@ class ProductPricelistItem(models.Model):
         if 'pricelist_id' in vals and vals['pricelist_id']:
             res.get_update_category(vals['pricelist_id'])
         return res
-    
-    @api.model
+
     def write(self, vals):
         res = super(ProductPricelistItem, self).write(vals)
         if 'pricelist_id' in vals:
