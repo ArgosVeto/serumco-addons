@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <template id="payment_sale_note_inherit" inherit_id="website_sale.payment_sale_note"
+              name="Accept Terms and Conditions" active="True">
+        <xpath expr="//div[hasclass('oe_accept_cgv_button')]" position="replace">
+        </xpath>
+    </template>
+
     <template id="my_appointment_template" name="my appointment">
         <div class="mb10" t-if="record">
             <div class="row mt24 mon-prochain">
@@ -16,19 +22,23 @@
             </div>
             <div class="row mt24 mon-prochain">
                 <div class="col-md-4 col-4">
-                    <img class="img img-fluid" t-att-src="website.image_url(record.operating_unit_id, 'clinic_banner')" />
+                    <img class="img img-fluid"
+                         t-att-src="website.image_url(record.operating_unit_id, 'clinic_banner')"/>
                 </div>
                 <div class="col-md-8 col-8 main-info">
                     <strong t-esc="record.operating_unit_id.name"/>
                     <div class="mb24" t-if="record.employee_id">
-                        <span>Dr. <t t-esc="record.employee_id.name"/>
+                        <span>Dr.
+                            <t t-esc="record.employee_id.name"/>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="mb10" t-if="record and add_to_my_calendar">
-            <a role="button" t-att-href="'/planning/%s/ics' % record.id" class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier</a>
+            <a role="button" t-att-href="'/planning/%s/ics' % record.id"
+               class="btn btn-primary btn-lg mt-auto d-block d-sm-inline-block link-btn">Ajouter a mon calendrier
+            </a>
         </div>
     </template>
 
@@ -44,10 +54,10 @@
                                     <img src="/website_argos/static/src/img/left.svg"/>
                                 </button>
                                 <script>
-function scrolldroite() {
-    var container = document.getElementById('container-slide');
-    container.scrollLeft -= 300;
-}
+                                    function scrolldroite() {
+                                    var container = document.getElementById('container-slide');
+                                    container.scrollLeft -= 300;
+                                    }
                                 </script>
                             </div>
                             <div class="col-md-10 col-xl-10 col-navbar">
@@ -87,8 +97,12 @@ function scrolldroite() {
                                     <li class="nav-item mr32">
                                         <t t-if="pageName == 'clinic'">
                                             <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-                                                <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-                                                <a class="nav-link active" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+                                                <t t-set="clinic"
+                                                   t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+                                                <a class="nav-link active" target="_blank"
+                                                   t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">
+                                                    Ma clinique
+                                                </a>
                                             </t>
                                             <t t-else="">
                                                 <a class="nav-link active" t-attf-href="/my-clinic">Ma clinique</a>
@@ -96,8 +110,12 @@ function scrolldroite() {
                                         </t>
                                         <t t-else="">
                                             <t t-if="user_id.partner_id.clinic_shortlisted_ids">
-                                                <t t-set="clinic" t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
-                                                <a class="nav-link" target="_blank" t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">Ma clinique</a>
+                                                <t t-set="clinic"
+                                                   t-value="user_id.partner_id.clinic_shortlisted_ids[0].sudo().favorite_clinic_id"/>
+                                                <a class="nav-link" target="_blank"
+                                                   t-attf-href="/ma-clinique-favorite/clinique/#{slug(clinic.sudo())}">
+                                                    Ma clinique
+                                                </a>
                                             </t>
                                             <t t-else="">
                                                 <a class="nav-link" t-attf-href="/my-clinic">Ma clinique</a>
@@ -114,7 +132,9 @@ function scrolldroite() {
                                     </li>
                                     <li class="nav-item mr32">
                                         <t t-if="pageName == 'payment'">
-                                            <a class="nav-link active" href="/my/payment_method">Mes moyens de paiements</a>
+                                            <a class="nav-link active" href="/my/payment_method">Mes moyens de
+                                                paiements
+                                            </a>
                                         </t>
                                         <t t-else="">
                                             <a class="nav-link" href="/my/payment_method">Mes moyens de paiements</a>
@@ -122,7 +142,9 @@ function scrolldroite() {
                                     </li>
                                     <li class="nav-item">
                                         <t t-if="pageName == 'grpd'">
-                                            <a class="nav-link active" href="/my/personal_details">Mes données personnelles</a>
+                                            <a class="nav-link active" href="/my/personal_details">Mes données
+                                                personnelles
+                                            </a>
                                         </t>
                                         <t t-else="">
                                             <a class="nav-link" href="/my/personal_details">Mes données personnelles</a>
@@ -135,10 +157,10 @@ function scrolldroite() {
                                     <img src="/website_argos/static/src/img/right.svg"/>
                                 </button>
                                 <script>
-function scrollgauche() {
-    var container = document.getElementById('container-slide');
-    container.scrollLeft += 300;
-}
+                                    function scrollgauche() {
+                                    var container = document.getElementById('container-slide');
+                                    container.scrollLeft += 300;
+                                    }
                                 </script>
                             </div>
                         </div>
@@ -163,858 +185,1026 @@ function scrollgauche() {
                         </div-->
                         <div class="col-lg-12 heading">
                             <h1 class="mt16 mb32">
-                                Bienvenue <span>
-                                <t t-esc="request.env.user.partner_id.name"/>
-                            </span>
-                        </h1>
-                        <p>
-                                Depuis la vue d’ensemble vous pouvez consulter vos commandes en cours, vos rendez-vous vétérinaires à venir, les coordonnées de votre structure Argos Vétérinaire favorite, vos produits préférés, enregistrer vos moyens de paiement favoris ou encore gérer toutes vos informations personnelles.
-                        </p>
-                        <p class="mb48">
-                                
-                        </p>
-                    </div>
-                    <div class="col-md-12 main-content">
-                        <div class="row">
-                            <div class="col-md-4 o-1">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-6 col-6 text-left">
-                                            <strong>MES COMMANDES</strong>
-                                        </div>
-                                        <div class="col-md-6 col-6 text-right">
-                                            <a href="/my/orders">Voir tout</a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <t t-if="order_ids">
-                                            <t t-set="order_number" t-value="len(order_ids)"/>
-                                            <t t-set="order_counter" t-value="0"/>
-                                            <t t-foreach="order_ids" t-as="order">
-                                                <t t-if="order.order_line">
-                                                    <t t-set="order_counter" t-value="order_counter+1"/>
-                                                    <t t-foreach="order.order_line[0]" t-as="line">
-                                                        <t t-if="order_counter > 1">
-                                                            <t t-set="domainClass" t-value="'row mx-0 px-12'"/>
-                                                        </t>
-                                                        <t t-else="">
-                                                            <t t-set="domainClass" t-value="'row mx-0 px-12 bottom-border'"/>
-                                                        </t>
-                                                        <div t-att-class="domainClass">
-                                                            <div class="col-md-6 col-6 pl-0">
-                                                                <span t-field="line.product_id.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="product-img d-flex h-100 justify-content-center align-items-center"/>
-                                                            </div>
-                                                            <div class="col-md-6 col-6 pr-0">
-                                                                <p class="status" style="text-transform:uppercase;">
-                                                                    <t t-esc="line.order_id.state"/>
-                                                                </p>
-                                                                <p class="status-date">
-                                                                    <span t-field="line.order_id.date_order" t-options='{"format": "d MMMM yyyy"}'/>
+                                Bienvenue
+                                <span>
+                                    <t t-esc="request.env.user.partner_id.name"/>
+                                </span>
+                            </h1>
+                            <p>
+                                Depuis la vue d’ensemble vous pouvez consulter vos commandes en cours, vos rendez-vous
+                                vétérinaires à venir, les coordonnées de votre structure Argos Vétérinaire favorite, vos
+                                produits préférés, enregistrer vos moyens de paiement favoris ou encore gérer toutes vos
+                                informations personnelles.
+                            </p>
+                            <p class="mb48">
 
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </t>
-                                                </t>
-                                            </t>
-                                            <a class="btn btn-primary btn-lg d-none d-md-block d-sm-block" href="/my/orders">Gérer mes commandes</a>
-                                        </t>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 o-2">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-8 col-8 text-left">
-                                            <strong>MON PROCHAIN RDV</strong>
-                                        </div>
-                                        <div class="col-md-4 col-4 text-right">
-                                            <a href="/my-appointment">Voir tout</a>
-                                        </div>
-                                    </div>
-                                    <t t-call="website_argos.my_appointment_template">
-                                        <t t-set="record" t-value="next_appointment_id"/>
-                                        <t t-set="add_to_my_calendar" t-value="True"/>
-                                    </t>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-4">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-6 col-6 text-left">
-                                            <strong>MA CLINIQUE</strong>
-                                        </div>
-                                    </div>
-
-                                    <t t-if="request.env.user.partner_id.clinic_shortlisted_ids">
-                                        <div class="mb40">
-                                            <div class="row mt24 ma-clinique">
-                                                <div class="col-md-6 col-6">
-                                                    <img class="img img-fluid" id="banner-img" t-att-src="website.image_url(request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id, 'clinic_banner')"/>
-                                                </div>
-                                                <div class="col-md-6 col-6">
-                                                    <strong>
-                                                        <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.name"/>
-                                                    </strong>
-                                                    <p>
-                                                        <span class="street">
-                                                            <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.street"/>
-                                                        </span>
-                                                        <span>, </span>
-                                                        <span class="zip">
-                                                            <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.zip"/>
-                                                        </span>
-                                                        <span>, </span>
-                                                        <span class="city">
-                                                            <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.city"/>
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a role="button" id="buy_now" class="btn btn-primary btn-lg d-block d-sm-none" t-attf-href="tel:{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.phone}}">
-                                            <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
-                                            <span>Appeler</span>
-                                        </a>
-                                        <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block" t-attf-href="/ma-clinique-favorite/clinique/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
-                                            <span>Voir la fiche</span>
-                                        </a>
-                                    </t>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-5">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-12 col-12 text-left">
-                                            <strong>Mon adresse</strong>
-                                        </div>
-                                    </div>
-                                    <div class="nom-address row" t-if="partner">
-                                        <div class="col-md-2 col-2">
-                                            <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/>
-                                        </div>
-                                        <div class="col-md-8 col-8">
-                                            <p>
-                                                <strong class="display-block" t-field="partner.name"/>
-                                                <t t-if="partner.street">
-                                                    <span class="display-block" t-field="partner.street"/>
-                                                </t>
-                                                <t t-if="partner.street2">
-                                                    <span class="display-block" t-field="partner.street2"/>
-                                                </t>
-                                                <t t-if="partner.zip or partner.city">
-                                                    <span class="display-block" t-esc='"%s, %s" %(partner.zip, partner.city)'/>
-                                                </t>
-                                                <t t-if="partner.country_id">
-                                                    <span class="display-block" t-field="partner.country_id.name"/>
-                                                </t>
-                                                <t t-if="partner.phone">
-                                                    <span class="display-block" t-field="partner.phone"/>
-                                                </t>
-                                                <t t-if="partner.email">
-                                                    <strong class="display-block email" t-field="partner.email"/>
-                                                </t>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <a role="button" href="/my/account" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Modifier mon adresse</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-3">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-8 col-8 text-left">
-                                            <strong>MON PRECEDENT RDV</strong>
-                                        </div>
-                                        <div class="col-md-4 col-4 text-right">
-                                            <a href="/my-appointment">Voir tout</a>
-                                        </div>
-                                    </div>
-                                    <t t-call="website_argos.my_appointment_template">
-                                        <t t-set="record" t-value="pervious_appointment_id"/>
-                                        <t t-set="add_to_my_calendar" t-value="False"/>
-                                    </t>
-                                    <a role="button" href="/prendre-rendez-vous" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Prendre un rendez-vous</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-6">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-8 col-8 text-left">
-                                            <strong>MES PRODUITS FAVORIS</strong>
-                                        </div>
-                                        <div class="col-md-4 col-4 text-right">
-                                            <a href="/shop/wishlist">Voir tout</a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <t t-if="product_wishlist_ids">
-                                            <div id="fav-product-carousel" class="mes-product carousel bs-slider slide  control-round indicators-line mt24" data-ride="carousel" data-pause="hover" data-interval="7000">
-                                                <div class="carousel-inner" role="listbox">
-                                                    <t t-set="count" t-value="0"/>
-                                                    <t t-foreach="product_wishlist_ids" t-as="fav_pro">
-                                                        <t t-if="count == 0">
-                                                            <div class="carousel-item active">
-                                                                <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
-                                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-
-                                                                    <div class="row mt24 mes-product">
-                                                                        <div class="col-md-6 col-6">
-                                                                            <span t-field="fav_pro.product_id.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-6">
-                                                                            <t t-if="fav_pro.product_id.public_categ_ids">
-                                                                                <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
-                                                                            </t>
-                                                                            <strong>
-                                                                                <t t-esc="fav_pro.product_id.name"/>
-                                                                            </strong>
-                                                                        </div>
-                                                                    </div>
-                                                                    <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
-                                                                    <button type="submit" id="form_submit" class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add">
-                                                                        <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
-                                                                    Ajouter
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </t>
-                                                        <t t-else="">
-                                                            <div class="carousel-item">
-                                                                <form id="update_address" action="/add-product-cart" method="post" enctype="multipart">
-                                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-
-                                                                    <div class="row mt24 mes-product">
-                                                                        <div class="col-md-6 col-6">
-                                                                            <span t-field="fav_pro.product_id.image_1920" t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}" class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
-                                                                        </div>
-                                                                        <div class="col-md-6 col-6">
-                                                                            <t t-if="fav_pro.product_id.public_categ_ids">
-                                                                                <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
-                                                                            </t>
-                                                                            <strong>
-                                                                                <t t-esc="fav_pro.product_id.name"/>
-                                                                            </strong>
-                                                                        </div>
-                                                                    </div>
-                                                                    <input name="product_id" t-att-value="fav_pro.product_id.id" type="hidden"/>
-                                                                    <button type="submit" id="form_submit" class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add">
-                                                                        <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid mr8"/>
-                                                                    Ajouter
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </t>
-                                                        <t t-set="count" t-value="count + 1"/>
-                                                    </t>
-                                                </div>
-                                                <div class="slider-control">
-                                                    <a class="left carousel-control-prev font-14" data-target="#fav-product-carousel" role="button" data-slide="prev">
-                                                        <img src="/website_argos/static/src/img/left.svg"/>
-                                                        <b class="sr-only font-normal o_default_snippet_text">Previous</b>
-                                                    </a>
-                                                    <a class="right carousel-control-next font-14" data-target="#fav-product-carousel" role="button" data-slide="next">
-                                                        <img src="/website_argos/static/src/img/right.svg"/>
-                                                        <b class="sr-only font-normal o_default_snippet_text">Next</b>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </t>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-7">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-12 col-12 text-left">
-                                            <strong>Mes préférences de contact</strong>
-                                        </div>
-                                    </div>
-                                    <div class="mes-prefernces" t-if="partner">
-                                        <input id="last_send_letter" type="hidden" t-att-value="partner.send_letter"/>
-                                        <input id="last_send_email" type="hidden" t-att-value="partner.send_email"/>
-                                        <input id="last_send_sms" type="hidden" t-att-value="partner.send_sms"/>
-                                        <input id="last_to_call" type="hidden" t-att-value="partner.to_call"/>
-                                        <div class="row">
-                                            <div class="col-md-10 col-10">
-                                                <input type="checkbox" name="send_letter" id="send_letter" t-att-checked="partner.send_letter"/>
-                                                <label for="send_letter"></label>
-                                                <label for="send_letter" t-att-class="'opacity-50' if partner.send_letter else ''" id="label_send_letter">Courrier</label>
-                                            </div>
-                                        </div>
-                                 <script>
-                                </script>
-                                       <div class="row">
-                                            <div class="col-md-10 col-10">
-                                                <input type="checkbox" name="send_email" id="send_email" t-att-checked="partner.send_email"/>
-                                                <label for="send_email"></label>
-                                                <label for="send_email" t-att-class="'opacity-50' if partner.send_email else ''" id="label_send_email">E-mail</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-10 col-10">
-                                                <input type="checkbox" name="send_sms" id="send_sms" t-att-checked="partner.send_sms"/>
-                                                <label for="send_sms"></label>
-                                                <label for="send_sms" t-att-class="'opacity-50' if partner.send_sms else ''" id="label_send_sms">SMS</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-10 col-10">
-                                                <input type="checkbox" name="to_call" id="to_call" t-att-checked="partner.to_call"/>
-                                                <label for="to_call"></label>
-                                                <label for="to_call" t-att-class="'opacity-50' if partner.to_call else ''" id="label_to_call">Téléphone</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button href="#" id="update_my_preference" class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">Mettre à jour</button>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-8">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-12 col-12 text-left">
-                                            <strong>Mes moyens de paiements</strong>
-                                        </div>
-                                    </div>
-                                    <div class="mes-cartes row" t-if="partner">
-                                        <div class="col-md-2 col-2">
-                                            <img src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mr-2"/>
-                                        </div>
-                                        <div class="col-md-8 col-8">
-                                            <p style="font-size: 14px;">
-                                                <t t-foreach="partner.payment_token_ids" t-as="py">
-                                                    <span t-esc="py.name" class="display-block"/>
-                                                </t>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <a role="button" href="/my/payment_method" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes cartes bancaires</a>
-                                </div>
-                            </div>
-                            <div class="col-md-12 o-8">
-                                <div class="col-md-12" style="height: 10px;background-color: white;"/>
-                                <div class="card p-3">
-                                    <div class="row title-row">
-                                        <div class="col-md-12 col-12 text-left">
-                                            <strong>Mes données personnelles</strong>
-                                        </div>
-                                    </div>
-                                    <span class="mt32">
-                                        <p>Nous respectons vos droits à la confidentialité et vous fournissons un accès aux données personnelles que vous avez pu fournir via notre site</p>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-md-4 o-9">
-                                <div class="card p-3">
-                                    <a role="button" href="/my/personal_details" class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes données personnelles</a>
-                                </div>
-                            </div>
+                            </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </t>
-</template>
-
-
-<template id="clinic_shortlisted_template" name="Clinic Shortlisted">
-    <t t-set="pageName" t-value="'clinic'"/>
-    <t t-call="website.layout">
-        <div id="wrap" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <t t-foreach="clinic_shortlisted_ids" t-as="clinic">
-                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
-                                <div class="card bg-white">
-                                    <img class="card-img-top" t-att-src="website.image_url(clinic.favorite_clinic_id, 'clinic_banner')"/>
-                                    <div class="card-body">
-                                        <h3 class="card-title o_default_snippet_text">
-                                            <a itemprop="display_name" t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{clinic.favorite_clinic_id.id}" t-att-content="clinic.favorite_clinic_id.display_name" t-field="clinic.favorite_clinic_id.display_name"/>
-                                        </h3>
-
-                                        <p class="Clinique-actuellemen">
-                                            <i class="fa fa-circle"></i>
-                                            <span>Etablissement actuellement ouvert</span>
-                                        </p>
-
-                                        <div class="clinic-link d-flex">
-                                            <div class="image-l">
-                                                <img src="/website_argos/static/src/img/location.svg"/>
+                        <div class="col-md-12 main-content">
+                            <div class="row">
+                                <div class="col-md-4 o-1">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-6 col-6 text-left">
+                                                <strong>MES COMMANDES</strong>
                                             </div>
-                                            <div class="link">
-                                                <span class="Avenue-Pasteur">
-                                                    <span class="street" t-field="clinic.favorite_clinic_id.street"/>
-                                                    <span>, </span>
-                                                    <span class="zip" t-field="clinic.favorite_clinic_id.zip"/>
-                                                    <span>, </span>
-                                                    <span class="city" t-field="clinic.favorite_clinic_id.city"/>
-                                                </span>
+                                            <div class="col-md-6 col-6 text-right">
+                                                <a href="/my/orders">Voir tout</a>
                                             </div>
                                         </div>
+                                        <div>
+                                            <t t-if="order_ids">
+                                                <t t-set="order_number" t-value="len(order_ids)"/>
+                                                <t t-set="order_counter" t-value="0"/>
+                                                <t t-foreach="order_ids" t-as="order">
+                                                    <t t-if="order.order_line">
+                                                        <t t-set="order_counter" t-value="order_counter+1"/>
+                                                        <t t-foreach="order.order_line[0]" t-as="line">
+                                                            <t t-if="order_counter > 1">
+                                                                <t t-set="domainClass" t-value="'row mx-0 px-12'"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <t t-set="domainClass"
+                                                                   t-value="'row mx-0 px-12 bottom-border'"/>
+                                                            </t>
+                                                            <div t-att-class="domainClass">
+                                                                <div class="col-md-6 col-6 pl-0">
+                                                                    <span t-field="line.product_id.image_1920"
+                                                                          t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                          class="product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                                </div>
+                                                                <div class="col-md-6 col-6 pr-0">
+                                                                    <p class="status" style="text-transform:uppercase;">
+                                                                        <t t-esc="line.order_id.state"/>
+                                                                    </p>
+                                                                    <p class="status-date">
+                                                                        <span t-field="line.order_id.date_order"
+                                                                              t-options='{"format": "d MMMM yyyy"}'/>
 
-                                        <div class="">
-                                            <a role="button" target="" t-attf-href="tel:{{clinic.favorite_clinic_id.phone}}" class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
-                                                <img src="/website_argos/static/src/img/phone.svg" class="img img-fluid mr-2"/>
-                                                <span class="">Appeler</span>
-                                            </a>
-                                            <a role="button" target="_blank" href="#" class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
-                                                <span class="">Prendre RDV</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </t>
-</template>
-
-
-<template id="wishlist_product_template" name="wishlist product">
-    <t t-call="website.layout">
-        <div id="wrap" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <t t-foreach="product_wishlist_ids" t-as="product">
-                            <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
-                                <div class="card bg-white">
-                                    <img class="card-img-top" t-att-src="website.image_url(product.product_id, 'image_1920')"/>
-                                    <div class="card-body">
-                                        <h3 class="card-title o_default_snippet_text">
-
-                                            <a itemprop="display_name" t-attf-href="#" t-att-content="product.product_id.display_name" t-field="product.product_id.display_name"/>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </t>
-</template>
-
-<template id="grpd__inherited" inherit_id="odoo_gdpr.config_odoo_grpd">
-    <xpath expr="//div[hasclass('wrap')]" position="before">
-        <div class="wrap">
-            <t t-set="pageName" t-value="'grpd'"/>
-            <t t-call="website_argos.vue_ensemble"/>
-            <div class="row o_portal_details" style="border: none">
-                <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                    <h1 style="text-align: center; margin-top: 80px;">Mes données personnelles</h1>
-                </div>
-            </div>
-        </div>
-    </xpath>
-</template>
-
-
-
-<template id="order_inherited" inherit_id="sale.portal_my_orders">
-    <xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
-        <t t-call="portal.frontend_layout">
-            <t t-set="pageName" t-value="'order'"/>
-            <t t-call="website_argos.vue_ensemble"/>
-            <div class="row o_portal_details" style="border: none">
-                <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                    <h1 style="text-align: center; margin-top: 80px;">Mes commandes</h1>
-                </div>
-            </div>
-
-            <div id="wrap" class='o_portal_wrap'>
-                <div class="container mt64 mb64">
-                    <t t-set="breadcrumbs_searchbar" t-value="True"/>
-
-                    <t t-call="portal.portal_searchbar">
-                        <t t-set="title">Sales Orders</t>
-                    </t>
-                    <t t-if="orders" t-call="portal.portal_table">
-                        <thead>
-                            <tr class="active">
-                                <th>
-                                    <span class='d-none d-md-inline'>Bon de commande #</span>
-                                    <span class='d-block d-md-none'>Ref.</span>
-                                </th>
-                                <th class="text-right">Date</th>
-                                <th class="text-center"/>
-                                <th class="text-right">Total</th>
-                            </tr>
-                        </thead>
-                        <t t-foreach="orders" t-as="order">
-                            <tr>
-                                <td>
-                                    <a t-att-href="order.get_portal_url()">
-                                        <t t-esc="order.name"/>
-                                    </a>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="order.date_order" t-options="{'widget': 'date'}"/>
-&amp;nbsp;
-                                    <span class='d-none d-md-inline' t-field="order.date_order" t-options="{'time_only': True}"/>
-                                </td>
-                                <td class="text-center">
-                                    <span t-if="order.state == 'done'" class="badge badge-pill badge-success">
-                                        <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>
-Done
-                                    </span>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="order.amount_total"/>
-                                </td>
-                            </tr>
-                        </t>
-                    </t>
-                </div>
-            </div>
-        </t>
-    </xpath>
-</template>
-
-<template id="wishlist_inherited" inherit_id="website_sale_wishlist.product_wishlist">
-    <xpath expr="//div[@id='oe_structure_website_sale_wishlist_product_wishlist_1']" position="before">
-        <t t-set="pageName" t-value="'wishlist'"/>
-        <t t-call="website_argos.vue_ensemble"/>
-        <div class="row o_portal_details" style="border: none">
-            <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                <h1 style="text-align: center; margin-top: 80px;">Mes produits favoris</h1>
-            </div>
-        </div>
-    </xpath>
-</template>
-
-<template id="payment_method_inherited_2" inherit_id="payment.pay_methods">
-    <xpath expr="//div[hasclass('wrap')]" position="before">
-        <t t-set="pageName" t-value="'payment'"/>
-        <t t-call="website_argos.vue_ensemble"/>
-        <div class="row o_portal_details" style="border: none">
-            <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                <h1 style="text-align: center; margin-top: 80px;">Mes cartes bancaires</h1>
-            </div>
-        </div>
-    </xpath>
-</template>
-
-<template id="portal_my_details_inherited" inherit_id="portal.portal_my_details">
-    <xpath expr="//t" position="replace">
-        <t t-call="website.layout">
-            <div id="wrap" class='o_portal_wrap'>
-                <t t-set="pageName" t-value="'address'"/>
-                <t t-call="website_argos.vue_ensemble"/>
-                <div class="row o_portal_details" style="border: none">
-                    <div class="col-lg-12 heading" style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
-                        <h1 style="text-align: center; margin-top: 80px;">Mon adresse</h1>
-                    </div>
-                </div>
-                <div id="portal_disclaimer_container"/>
-                <div class="container">
-                    <form action="/my/account" method="post">
-                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <div class="row" style="border: none">
-                            <div class="col-lg-8 offset-lg-2 mt16 mb32">
-                                <div class="row contact-argos">
-                                    <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
-                                        <label class="col-form-label" for="name">Prénom</label>
-                                        <input type="text" name="firstname" t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}" t-att-value="lastname or partner.firstname" required="true"/>
-                                    </div>
-                                    <div class="col-md-1"/>
-                                    <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
-                                        <label class="col-form-label" for="name">Nom</label>
-                                        <input type="text" name="lastname" t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}" t-att-value="lastname or partner.lastname" required="true"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-4 email o_website_form_required_custom">
-                                        <label class="col-form-label" for="email">Adresse Email</label>
-                                        <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" required="true"/>
-                                    </div>
-                                    <div class="col-md-1"/>
-                                    <div t-attf-class="form-group col-md-4 phoneo_website_form_required_custom">
-                                        <label class="col-form-label" for="phone">N° de téléphone *</label>
-                                        <input type="tel" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone or partner.phone" required="True"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-12 street o_website_form_required_custom">
-                                        <label class="col-form-label" for="street">Adresse</label>
-                                        <input type="text" name="street" t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" t-att-value="street or partner.street" required="True"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-12 street2">
-                                        <label class="col-form-label" for="street">Complément d'adresse</label>
-                                        <input type="text" name="street2" t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}" t-att-value="street2 or partner.street2"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-3 div_zip o_website_form_required_custom">
-                                        <label class="col-form-label" for="zip">Code postal</label>
-                                        <input type="text" name="zipcode" t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}" t-att-value="zipcode or partner.zip" required="True"/>
-                                    </div>
-                                    <div t-attf-class="form-group col-md-5 div_city o_website_form_required_custom">
-                                        <label class="col-form-label" for="city">Ville</label>
-                                        <input type="text" name="city" t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}" t-att-value="city or partner.city" required="True"/>
-                                    </div>
-                                    <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
-                                        <label class="col-form-label" for="country_id">Pays</label>
-                                        <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}" required="True">
-                                            <option value="">Pays...</option>
-                                            <t t-foreach="countries or []" t-as="country">
-                                                <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
-                                                    <t t-esc="country.name"/>
-                                                </option>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <a class="btn btn-primary btn-lg d-none d-md-block d-sm-block"
+                                                   href="/my/orders">Gérer mes commandes
+                                                </a>
                                             </t>
-                                        </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-12 mt16 mb32">
-                                        <button type="button" class="btn btn-primary float-right mb32 o_job_post_submit my_account_submit">
-                                                Enregistrer mes modifications
+                                </div>
+
+                                <div class="col-md-4 o-2">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MON PROCHAIN RDV</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/my-appointment">Voir tout</a>
+                                            </div>
+                                        </div>
+                                        <t t-call="website_argos.my_appointment_template">
+                                            <t t-set="record" t-value="next_appointment_id"/>
+                                            <t t-set="add_to_my_calendar" t-value="True"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-4">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-6 col-6 text-left">
+                                                <strong>MA CLINIQUE</strong>
+                                            </div>
+                                        </div>
+
+                                        <t t-if="request.env.user.partner_id.clinic_shortlisted_ids">
+                                            <div class="mb40">
+                                                <div class="row mt24 ma-clinique">
+                                                    <div class="col-md-6 col-6">
+                                                        <img class="img img-fluid" id="banner-img"
+                                                             t-att-src="website.image_url(request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id, 'clinic_banner')"/>
+                                                    </div>
+                                                    <div class="col-md-6 col-6">
+                                                        <strong>
+                                                            <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.name"/>
+                                                        </strong>
+                                                        <p>
+                                                            <span class="street">
+                                                                <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.street"/>
+                                                            </span>
+                                                            <span>,</span>
+                                                            <span class="zip">
+                                                                <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.zip"/>
+                                                            </span>
+                                                            <span>,</span>
+                                                            <span class="city">
+                                                                <t t-esc="request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.city"/>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a role="button" id="buy_now"
+                                               class="btn btn-primary btn-lg d-block d-sm-none"
+                                               t-attf-href="tel:{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.phone}}">
+                                                <img src="/website_argos/static/src/img/phone-white.svg" class="mr8"/>
+                                                <span>Appeler</span>
+                                            </a>
+                                            <a role="button" class="btn btn-primary btn-lg d-none d-md-block d-sm-block"
+                                               t-attf-href="/ma-clinique-favorite/clinique/{{request.env.user.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id}}">
+                                                <span>Voir la fiche</span>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-5">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mon adresse</strong>
+                                            </div>
+                                        </div>
+                                        <div class="nom-address row" t-if="partner">
+                                            <div class="col-md-2 col-2">
+                                                <img src="/website_argos/static/src/img/location.svg"
+                                                     class="img img-fluid mr-2"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <p>
+                                                    <strong class="display-block" t-field="partner.name"/>
+                                                    <t t-if="partner.street">
+                                                        <span class="display-block" t-field="partner.street"/>
+                                                    </t>
+                                                    <t t-if="partner.street2">
+                                                        <span class="display-block" t-field="partner.street2"/>
+                                                    </t>
+                                                    <t t-if="partner.zip or partner.city">
+                                                        <span class="display-block"
+                                                              t-esc='"%s, %s" %(partner.zip, partner.city)'/>
+                                                    </t>
+                                                    <t t-if="partner.country_id">
+                                                        <span class="display-block" t-field="partner.country_id.name"/>
+                                                    </t>
+                                                    <t t-if="partner.phone">
+                                                        <span class="display-block" t-field="partner.phone"/>
+                                                    </t>
+                                                    <t t-if="partner.email">
+                                                        <strong class="display-block email" t-field="partner.email"/>
+                                                    </t>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <a role="button" href="/my/account"
+                                           class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Modifier mon
+                                            adresse
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-3">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MON PRECEDENT RDV</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/my-appointment">Voir tout</a>
+                                            </div>
+                                        </div>
+                                        <t t-call="website_argos.my_appointment_template">
+                                            <t t-set="record" t-value="pervious_appointment_id"/>
+                                            <t t-set="add_to_my_calendar" t-value="False"/>
+                                        </t>
+                                        <a role="button" href="/prendre-rendez-vous"
+                                           class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Prendre un
+                                            rendez-vous
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-6">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-8 col-8 text-left">
+                                                <strong>MES PRODUITS FAVORIS</strong>
+                                            </div>
+                                            <div class="col-md-4 col-4 text-right">
+                                                <a href="/shop/wishlist">Voir tout</a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <t t-if="product_wishlist_ids">
+                                                <div id="fav-product-carousel"
+                                                     class="mes-product carousel bs-slider slide  control-round indicators-line mt24"
+                                                     data-ride="carousel" data-pause="hover" data-interval="7000">
+                                                    <div class="carousel-inner" role="listbox">
+                                                        <t t-set="count" t-value="0"/>
+                                                        <t t-foreach="product_wishlist_ids" t-as="fav_pro">
+                                                            <t t-if="count == 0">
+                                                                <div class="carousel-item active">
+                                                                    <form id="update_address" action="/add-product-cart"
+                                                                          method="post" enctype="multipart">
+                                                                        <input type="hidden" name="csrf_token"
+                                                                               t-att-value="request.csrf_token()"/>
+
+                                                                        <div class="row mt24 mes-product">
+                                                                            <div class="col-md-6 col-6">
+                                                                                <span t-field="fav_pro.product_id.image_1920"
+                                                                                      t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                                      class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-6">
+                                                                                <t t-if="fav_pro.product_id.public_categ_ids">
+                                                                                    <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
+                                                                                </t>
+                                                                                <strong>
+                                                                                    <t t-esc="fav_pro.product_id.name"/>
+                                                                                </strong>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input name="product_id"
+                                                                               t-att-value="fav_pro.product_id.id"
+                                                                               type="hidden"/>
+                                                                        <button type="submit" id="form_submit"
+                                                                                class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add">
+                                                                            <img src="/website_argos/static/src/img/white-cart.png"
+                                                                                 class="img img-fluid mr8"/>
+                                                                            Ajouter
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <div class="carousel-item">
+                                                                    <form id="update_address" action="/add-product-cart"
+                                                                          method="post" enctype="multipart">
+                                                                        <input type="hidden" name="csrf_token"
+                                                                               t-att-value="request.csrf_token()"/>
+
+                                                                        <div class="row mt24 mes-product">
+                                                                            <div class="col-md-6 col-6">
+                                                                                <span t-field="fav_pro.product_id.image_1920"
+                                                                                      t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256'}"
+                                                                                      class="wishlist-product-img d-flex h-100 justify-content-center align-items-center"/>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-6">
+                                                                                <t t-if="fav_pro.product_id.public_categ_ids">
+                                                                                    <p t-esc="fav_pro.product_id.public_categ_ids.name"/>
+                                                                                </t>
+                                                                                <strong>
+                                                                                    <t t-esc="fav_pro.product_id.name"/>
+                                                                                </strong>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input name="product_id"
+                                                                               t-att-value="fav_pro.product_id.id"
+                                                                               type="hidden"/>
+                                                                        <button type="submit" id="form_submit"
+                                                                                class="btn btn-primary w-100 btn-lg d-block mt-5 o_wish_add">
+                                                                            <img src="/website_argos/static/src/img/white-cart.png"
+                                                                                 class="img img-fluid mr8"/>
+                                                                            Ajouter
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </t>
+                                                            <t t-set="count" t-value="count + 1"/>
+                                                        </t>
+                                                    </div>
+                                                    <div class="slider-control">
+                                                        <a class="left carousel-control-prev font-14"
+                                                           data-target="#fav-product-carousel" role="button"
+                                                           data-slide="prev">
+                                                            <img src="/website_argos/static/src/img/left.svg"/>
+                                                            <b class="sr-only font-normal o_default_snippet_text">
+                                                                Previous
+                                                            </b>
+                                                        </a>
+                                                        <a class="right carousel-control-next font-14"
+                                                           data-target="#fav-product-carousel" role="button"
+                                                           data-slide="next">
+                                                            <img src="/website_argos/static/src/img/right.svg"/>
+                                                            <b class="sr-only font-normal o_default_snippet_text">Next
+                                                            </b>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-7">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes préférences de contact</strong>
+                                            </div>
+                                        </div>
+                                        <div class="mes-prefernces" t-if="partner">
+                                            <input id="last_send_letter" type="hidden"
+                                                   t-att-value="partner.send_letter"/>
+                                            <input id="last_send_email" type="hidden" t-att-value="partner.send_email"/>
+                                            <input id="last_send_sms" type="hidden" t-att-value="partner.send_sms"/>
+                                            <input id="last_to_call" type="hidden" t-att-value="partner.to_call"/>
+                                            <div class="row">
+                                                <div class="col-md-10 col-10">
+                                                    <input type="checkbox" name="send_letter" id="send_letter"
+                                                           t-att-checked="partner.send_letter"/>
+                                                    <label for="send_letter"></label>
+                                                    <label for="send_letter"
+                                                           t-att-class="'opacity-50' if partner.send_letter else ''"
+                                                           id="label_send_letter">Courrier
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <script>
+                                            </script>
+                                            <div class="row">
+                                                <div class="col-md-10 col-10">
+                                                    <input type="checkbox" name="send_email" id="send_email"
+                                                           t-att-checked="partner.send_email"/>
+                                                    <label for="send_email"></label>
+                                                    <label for="send_email"
+                                                           t-att-class="'opacity-50' if partner.send_email else ''"
+                                                           id="label_send_email">E-mail
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-10">
+                                                    <input type="checkbox" name="send_sms" id="send_sms"
+                                                           t-att-checked="partner.send_sms"/>
+                                                    <label for="send_sms"></label>
+                                                    <label for="send_sms"
+                                                           t-att-class="'opacity-50' if partner.send_sms else ''"
+                                                           id="label_send_sms">SMS
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-10">
+                                                    <input type="checkbox" name="to_call" id="to_call"
+                                                           t-att-checked="partner.to_call"/>
+                                                    <label for="to_call"></label>
+                                                    <label for="to_call"
+                                                           t-att-class="'opacity-50' if partner.to_call else ''"
+                                                           id="label_to_call">Téléphone
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button href="#" id="update_my_preference"
+                                                class="disabled btn btn-primary mt-auto btn-lg d-block d-sm-block">
+                                            Mettre à jour
                                         </button>
                                     </div>
                                 </div>
+                                <div class="col-md-4 o-8">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes moyens de paiements</strong>
+                                            </div>
+                                        </div>
+                                        <div class="mes-cartes row" t-if="partner">
+                                            <div class="col-md-2 col-2">
+                                                <img src="/website_argos/static/src/img/ico-20-px-credit-card.svg"
+                                                     class="img img-fluid mr-2"/>
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <p style="font-size: 14px;">
+                                                    <t t-foreach="partner.payment_token_ids" t-as="py">
+                                                        <span t-esc="py.name" class="display-block"/>
+                                                    </t>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <a role="button" href="/my/payment_method"
+                                           class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes
+                                            cartes bancaires
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 o-8">
+                                    <div class="col-md-12" style="height: 10px;background-color: white;"/>
+                                    <div class="card p-3">
+                                        <div class="row title-row">
+                                            <div class="col-md-12 col-12 text-left">
+                                                <strong>Mes données personnelles</strong>
+                                            </div>
+                                        </div>
+                                        <span class="mt32">
+                                            <p>Nous respectons vos droits à la confidentialité et vous fournissons un
+                                                accès aux données personnelles que vous avez pu fournir via notre site
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 o-9">
+                                    <div class="card p-3">
+                                        <a role="button" href="/my/personal_details"
+                                           class="btn btn-primary mt-auto btn-lg d-block d-sm-inline-block">Gérer mes
+                                            données personnelles
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </t>
-    </xpath>
-</template>
+    </template>
 
-<template id="payment_tokens_list_inherited" inherit_id="payment.payment_tokens_list" name="Payment Tokens list">
-    <!--
-        Variables description:
-            - 'submit_txt' the text displayed inside the submit button
-            - 'submit_class' the css classes to style the submit button
-            - 'icon_class' font awesome class (e.g. 'fa-trash', 'fa-lock')
-            - 'form_action' the URI to the page that will handle the form values given for server2server
-            - 'pms' the tokens
-            - 'checked_pm_id' the payment token that should be checked (for radio buttons)
-            - 'mode' can take two values, either 'payment' or 'manage'. 'manage' displays the add a new card and delete buttons. 'payment'
-                display a form that is used to pay and send the information to the form action url.
-            - 'acquirers' the list of both server2server and form payment acquirers
-            - 'verify_validity' if we need to verify if the payment method is valid when adding a new one
-            - 'prepare_tx_url' the url of the route which will handle the creation of a transaction for a form base payment (handles if the transaction is form or form_save)
-            - 'show_manage_btn' if True, a button is added in the footer to manage payment methods
-        -->
-    <xpath expr="//form" position="replace">
-        <form t-if="pms or acquirers" method="post" class="o_payment_form mt-3 clearfix" t-att-action="form_action if form_action else '#'" t-att-data-success-url="success_url or ''" t-att-data-error-url="error_url or ''" t-att-data-access-token="access_token or ''" t-att-data-partner-id="partner_id" t-att-data-callback-method="callback_method or ''" t-att-data-order-id="order_id or ''" t-att-data-mode="mode">
-            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <input type="hidden" t-if="prepare_tx_url" name="prepare_tx_url" t-att-value="prepare_tx_url"/>
-            <input type="hidden" t-if="order_id" name="order_id" t-att-value="order_id"/>
-            <input type="hidden" t-if="access_token" name="access_token" t-att-value="access_token"/>
-            <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
-            <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
-            <input type="hidden" t-if="callback_method" name="callback_method" t-att-value="callback_method"/>
-            <div class="card mt32" style="border: none" id="mes_paiements">
-                <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
-                <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
-                <t t-set="MAX_BRAND_LINE" t-value="3"/>
-                <t t-foreach="acquirers" t-as="acq">
-                    <div class="card-body o_payment_acquirer_select" style="border: none">
-                        <label>
-                            <t t-if="acq.payment_flow == 'form'">
-                                <input type="radio" t-att-data-acquirer-id="acq.id" t-att-data-form-payment="true" t-att-data-provider="acq.provider" t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''" name="pm_id" t-attf-value="form_{{acq.id}}" t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
-                            </t>
-                            <t t-else="acq.payment_flow == 's2s'">
-                                <input type="radio" t-att-data-acquirer-id="acq.id" t-att-data-s2s-payment="true" t-att-data-provider="acq.provider" name="pm_id" t-attf-value="new_{{acq.id}}" t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''" t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
-                            </t>
-                            <span class="payment_option_name">
-                                <t t-esc="acq.display_as or acq.name"/>
-                                <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right" style="margin-left:5px">
-                                Test Mode
+
+    <template id="clinic_shortlisted_template" name="Clinic Shortlisted">
+        <t t-set="pageName" t-value="'clinic'"/>
+        <t t-call="website.layout">
+            <div id="wrap" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <t t-foreach="clinic_shortlisted_ids" t-as="clinic">
+                                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
+                                    <div class="card bg-white">
+                                        <img class="card-img-top"
+                                             t-att-src="website.image_url(clinic.favorite_clinic_id, 'clinic_banner')"/>
+                                        <div class="card-body">
+                                            <h3 class="card-title o_default_snippet_text">
+                                                <a itemprop="display_name"
+                                                   t-attf-href="/nos-cliniques-veterinaires-2/clinique/#{clinic.favorite_clinic_id.id}"
+                                                   t-att-content="clinic.favorite_clinic_id.display_name"
+                                                   t-field="clinic.favorite_clinic_id.display_name"/>
+                                            </h3>
+
+                                            <p class="Clinique-actuellemen">
+                                                <i class="fa fa-circle"></i>
+                                                <span>Etablissement actuellement ouvert</span>
+                                            </p>
+
+                                            <div class="clinic-link d-flex">
+                                                <div class="image-l">
+                                                    <img src="/website_argos/static/src/img/location.svg"/>
+                                                </div>
+                                                <div class="link">
+                                                    <span class="Avenue-Pasteur">
+                                                        <span class="street"
+                                                              t-field="clinic.favorite_clinic_id.street"/>
+                                                        <span>,</span>
+                                                        <span class="zip" t-field="clinic.favorite_clinic_id.zip"/>
+                                                        <span>,</span>
+                                                        <span class="city" t-field="clinic.favorite_clinic_id.city"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="">
+                                                <a role="button" target=""
+                                                   t-attf-href="tel:{{clinic.favorite_clinic_id.phone}}"
+                                                   class="btn btn-outline-primary mb16 mt16 d-none d-xl-inline-block mr-2">
+                                                    <img src="/website_argos/static/src/img/phone.svg"
+                                                         class="img img-fluid mr-2"/>
+                                                    <span class="">Appeler</span>
+                                                </a>
+                                                <a role="button" target="_blank" href="#"
+                                                   class="btn btn-primary mb16 mt16 d-none d-xl-inline-block">
+                                                    <span class="">Prendre RDV</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </span>
-                            <t t-if="acq_extra_fees and acq_extra_fees.get(acq)">
-                                <span class="badge badge-pill badge-secondary"> +                                    <t t-esc="acq_extra_fees[acq]" t-options='{"widget": "monetary", "display_currency": acq_extra_fees["currency_id"]}'/>
- Fee </span>
                             </t>
-                            <t t-elif="acq.fees_active">
-                                <small class="text-muted">(Some fees may apply)</small>
-                            </t>
-                        </label>
-                        <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                        </div>
                     </div>
-                    <t t-if="acq.payment_flow == 'form'">
-                        <div t-attf-id="o_payment_form_acq_{{acq.id}}" t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
-                            <label t-if="acq.save_token == 'ask'">
-                                <input type="checkbox" name="o_payment_form_save_token" data-remove-me=""/>
-                                Save my payment data
-                            </label>
-                            <t t-if="acq.save_token == 'always'">
-                                <input type="checkbox" name="o_payment_form_save_token" checked="'checked'" class="o_hidden" data-remove-me=""/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="wishlist_product_template" name="wishlist product">
+        <t t-call="website.layout">
+            <div id="wrap" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <t t-foreach="product_wishlist_ids" t-as="product">
+                                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid">
+                                    <div class="card bg-white">
+                                        <img class="card-img-top"
+                                             t-att-src="website.image_url(product.product_id, 'image_1920')"/>
+                                        <div class="card-body">
+                                            <h3 class="card-title o_default_snippet_text">
+
+                                                <a itemprop="display_name" t-attf-href="#"
+                                                   t-att-content="product.product_id.display_name"
+                                                   t-field="product.product_id.display_name"/>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </t>
                         </div>
-                    </t>
-                    <t t-else="acq.payment_flow == 's2s'">
-                        <div t-attf-id="o_payment_add_token_acq_{{acq.id}}" t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
-                            <div class="clearfix">
-                                <input type="hidden" t-if="(verify_validity==True or mode == 'manage') and acq.check_validity" name="verify_validity" t-att-value="acq.check_validity"/>
-                                <t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
-                                    <t t-set="id" t-value="acq.id"/>
-                                    <t t-set="partner_id" t-value="partner_id"/>
-                                    <t t-if="not return_url" t-set="return_url" t-value="''"/>
-                                </t>
-                            </div>
-                        </div>
-                    </t>
-                </t>
-                <div class="float-right mt-2">
-                    <t t-if="show_manage_btn">
-                        <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
-                    </t>
-                    <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))" type="submit" id="o_payment_form_add_pm" class="float-right btn btn-primary btn-lg mb8 mt8">
-                        Enregistrer la carte
-                    </button>
-                </div>
-                <t t-if="pms">
-                    <div class="mt32 mb32">
-                        <h3>Vos cartes bancaires enregistrées</h3>
                     </div>
-                    <t t-foreach="pms" t-as="pm">
-                        <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
-                            <div class="card-body o_payment_acquirer_select">
-                                <label>
-                                    <img style="width: 40px;" src="/website_argos/static/src/img/ico-20-px-credit-card.svg" class="img img-fluid mt0 mr-2"/>
-                                    <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id" t-att-checked="checked_pm_id == pm.id"/>
-                                    <span class="payment_option_name" t-esc="pm.name[0:4]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[4:8]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[8:12]"/>
-                                    <span class="payment_option_name" t-esc="pm.name[12:16]"/>
-                                    <t t-if="pm.verified">
-                                        <i class="fa fa-check text-success" title="This payment method is verified by our system." role="img" aria-label="Ok"></i>
-                                    </t>
-                                    <t t-else="">
-                                        <i class="fa fa-check text-muted" title="This payment method has not been verified by our system." role="img" aria-label="Not verified"></i>
-                                    </t>
-                                </label>
-                                <button t-if="mode == 'manage'" name="delete_pm" t-att-value="int(pm.id)" class="btn btn-primary btn-sm float-right d-none" id="deletepm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                                <button class="btn btn-dpm float-right" onclick="clickdelete();">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                                <script>
-function clickdelete() {
-    var delete_pm = document.getElementById('deletepm');
-    delete_pm.click();
-}
-                                </script>
-                            </div>
-                        </t>
-                    </t>
-                </t>
-            </div>
-            <div class="d-none d-md-block">
-                <div t-if='back_button_txt' class="float-left mt-2">
-                    <a role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
-                        <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
-                        <t t-esc="back_button_txt"/>
-                    </a>
-                </div>
-                <div class="float-right mt-2">
-                    <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 float-right mt-2'" disabled="true">
-                        <t t-if="submit_txt">
-                            <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
-                            <t t-esc="submit_txt"/>
-                            <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
-                        </t>
-                        <t t-else="">
-                            <i class="fa fa-lock"/>
- Pay
-                        </t>
-                    </button>
                 </div>
             </div>
-            <div class="d-md-none align-items-center">
-                <div class="mt-2">
-                    <button style="width: 100%" t-if="mode == 'payment'" id="o_payment_form_pay" type="submit" t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 mt-2'" disabled="true">
-                        <t t-if="submit_txt">
-                            <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
-                            <t t-esc="submit_txt"/>
-                            <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
-                        </t>
-                        <t t-else="">
-                            <i class="fa fa-lock"/>
- Pay
-                        </t>
-                    </button>
-                </div>
-                <div t-if='back_button_txt' class="mt-2">
-                    <a style="width: 100%" role="button" t-att-href="back_button_link or '#'" t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
-                        <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
-                        <t t-esc="back_button_txt"/>
-                    </a>
-                </div>
-            </div>
-        </form>
+        </t>
+    </template>
 
-    </xpath>
-</template>
+    <template id="grpd__inherited" inherit_id="odoo_gdpr.config_odoo_grpd">
+        <xpath expr="//div[hasclass('wrap')]" position="before">
+            <div class="wrap">
+                <t t-set="pageName" t-value="'grpd'"/>
+                <t t-call="website_argos.vue_ensemble"/>
+                <div class="row o_portal_details" style="border: none">
+                    <div class="col-lg-12 heading"
+                         style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                        <h1 style="text-align: center; margin-top: 80px;">Mes données personnelles</h1>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
 
-<template id="pay_methods_inherit" inherit_id="payment.pay_methods" name="Payment Methods">
-    <xpath expr="//div[hasclass('wrap')]" position="replace">
-        <div class="wrap">
-            <div class="container">
-                <!--div class="row">
-                        <div class="col-md-6">
-                            <ol class="breadcrumb mt8">
-                                <li class="breadcrumb-item"><a href="/my/home"><i class="fa fa-home" role="img" aria-label="Home" title="Home"/></a></li>
-                                <li class="breadcrumb-item">Payment Methods</li>
-                            </ol>
+
+    <template id="order_inherited" inherit_id="sale.portal_my_orders">
+        <xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+            <t t-call="portal.frontend_layout">
+                <t t-set="pageName" t-value="'order'"/>
+                <t t-call="website_argos.vue_ensemble"/>
+                <div class="row o_portal_details" style="border: none">
+                    <div class="col-lg-12 heading"
+                         style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                        <h1 style="text-align: center; margin-top: 80px;">Mes commandes</h1>
+                    </div>
+                </div>
+
+                <div id="wrap" class='o_portal_wrap'>
+                    <div class="container mt64 mb64">
+                        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                        <t t-call="portal.portal_searchbar">
+                            <t t-set="title">Sales Orders</t>
+                        </t>
+                        <t t-if="orders" t-call="portal.portal_table">
+                            <thead>
+                                <tr class="active">
+                                    <th>
+                                        <span class='d-none d-md-inline'>Bon de commande #</span>
+                                        <span class='d-block d-md-none'>Ref.</span>
+                                    </th>
+                                    <th class="text-right">Date</th>
+                                    <th class="text-center"/>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="orders" t-as="order">
+                                <tr>
+                                    <td>
+                                        <a t-att-href="order.get_portal_url()">
+                                            <t t-esc="order.name"/>
+                                        </a>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="order.date_order" t-options="{'widget': 'date'}"/>
+                                        &amp;nbsp;
+                                        <span class='d-none d-md-inline' t-field="order.date_order"
+                                              t-options="{'time_only': True}"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-if="order.state == 'done'" class="badge badge-pill badge-success">
+                                            <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>
+                                            Done
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="order.amount_total"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="wishlist_inherited" inherit_id="website_sale_wishlist.product_wishlist">
+        <xpath expr="//div[@id='oe_structure_website_sale_wishlist_product_wishlist_1']" position="before">
+            <t t-set="pageName" t-value="'wishlist'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+            <div class="row o_portal_details" style="border: none">
+                <div class="col-lg-12 heading"
+                     style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                    <h1 style="text-align: center; margin-top: 80px;">Mes produits favoris</h1>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="payment_method_inherited_2" inherit_id="payment.pay_methods">
+        <xpath expr="//div[hasclass('wrap')]" position="before">
+            <t t-set="pageName" t-value="'payment'"/>
+            <t t-call="website_argos.vue_ensemble"/>
+            <div class="row o_portal_details" style="border: none">
+                <div class="col-lg-12 heading"
+                     style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                    <h1 style="text-align: center; margin-top: 80px;">Mes cartes bancaires</h1>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_my_details_inherited" inherit_id="portal.portal_my_details">
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <div id="wrap" class='o_portal_wrap'>
+                    <t t-set="pageName" t-value="'address'"/>
+                    <t t-call="website_argos.vue_ensemble"/>
+                    <div class="row o_portal_details" style="border: none">
+                        <div class="col-lg-12 heading"
+                             style="height: 200px; background-color: rgba(99, 186, 233, 0.04); border: none;">
+                            <h1 style="text-align: center; margin-top: 80px;">Mon adresse</h1>
                         </div>
-                    </div-->
-                <div class="clearfix" id="mes_paiements">
+                    </div>
+                    <div id="portal_disclaimer_container"/>
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-2 d-none d-md-block"/>
-                            <div class="col-md-8 col-xs-12">
-                                <div class="mt32 mb32 d-none d-md-block">
-                                    <h3>Ajouter une carte bancaire
-                                        <img src="/website_argos/static/src/img/vsa.png" class="float-right img img-fluid"/>
-                                        <img src="/website_argos/static/src/img/mastercard.png" class="float-right img img-fluid"/>
-                                    </h3>
-                                </div>
-                                <div class="mt32 d-md-none">
-                                    <h3>Ajouter une carte bancaire</h3>
-                                </div>
-                                <div class="mt8 mb32 d-md-none">
-                                    <img src="/website_argos/static/src/img/vsa.png" class="mt8 img img-fluid"/>
-                                    <img src="/website_argos/static/src/img/mastercard.png" class="mt8 img img-fluid"/>
-
+                        <form action="/my/account" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="row" style="border: none">
+                                <div class="col-lg-8 offset-lg-2 mt16 mb32">
+                                    <div class="row contact-argos">
+                                        <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
+                                            <label class="col-form-label" for="name">Prénom</label>
+                                            <input type="text" name="firstname"
+                                                   t-attf-class="form-control #{error.get('firstname') and 'is-invalid' or ''}"
+                                                   t-att-value="lastname or partner.firstname" required="true"/>
+                                        </div>
+                                        <div class="col-md-1"/>
+                                        <div t-attf-class="form-group col-md-4 div_name o_website_form_required_custom">
+                                            <label class="col-form-label" for="name">Nom</label>
+                                            <input type="text" name="lastname"
+                                                   t-attf-class="form-control #{error.get('lastname') and 'is-invalid' or ''}"
+                                                   t-att-value="lastname or partner.lastname" required="true"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-4 email o_website_form_required_custom">
+                                            <label class="col-form-label" for="email">Adresse Email</label>
+                                            <input type="email" name="email"
+                                                   t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}"
+                                                   t-att-value="email or partner.email" required="true"/>
+                                        </div>
+                                        <div class="col-md-1"/>
+                                        <div t-attf-class="form-group col-md-4 phoneo_website_form_required_custom">
+                                            <label class="col-form-label" for="phone">N° de téléphone *</label>
+                                            <input type="tel" name="phone"
+                                                   t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}"
+                                                   t-att-value="phone or partner.phone" required="True"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-12 street o_website_form_required_custom">
+                                            <label class="col-form-label" for="street">Adresse</label>
+                                            <input type="text" name="street"
+                                                   t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}"
+                                                   t-att-value="street or partner.street" required="True"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-12 street2">
+                                            <label class="col-form-label" for="street">Complément d'adresse</label>
+                                            <input type="text" name="street2"
+                                                   t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}"
+                                                   t-att-value="street2 or partner.street2"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-3 div_zip o_website_form_required_custom">
+                                            <label class="col-form-label" for="zip">Code postal</label>
+                                            <input type="text" name="zipcode"
+                                                   t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                   t-att-value="zipcode or partner.zip" required="True"/>
+                                        </div>
+                                        <div t-attf-class="form-group col-md-5 div_city o_website_form_required_custom">
+                                            <label class="col-form-label" for="city">Ville</label>
+                                            <input type="text" name="city"
+                                                   t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
+                                                   t-att-value="city or partner.city" required="True"/>
+                                        </div>
+                                        <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-md-4">
+                                            <label class="col-form-label" for="country_id">Pays</label>
+                                            <select name="country_id"
+                                                    t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}"
+                                                    required="True">
+                                                <option value="">Pays...</option>
+                                                <t t-foreach="countries or []" t-as="country">
+                                                    <option t-att-value="country.id"
+                                                            t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                                        <t t-esc="country.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 mt16 mb32">
+                                            <button type="button"
+                                                    class="btn btn-primary float-right mb32 o_job_post_submit my_account_submit">
+                                                Enregistrer mes modifications
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 d-none d-md-block"/>
-                            <div class="col-md-8">
-                                <t t-call="payment.payment_tokens_list">
-                                    <t t-set="acquirers" t-value="acquirers"/>
-                                    <t t-set="mode" t-value="'manage'"/>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="payment_tokens_list_inherited" inherit_id="payment.payment_tokens_list" name="Payment Tokens list">
+        <!--
+            Variables description:
+                - 'submit_txt' the text displayed inside the submit button
+                - 'submit_class' the css classes to style the submit button
+                - 'icon_class' font awesome class (e.g. 'fa-trash', 'fa-lock')
+                - 'form_action' the URI to the page that will handle the form values given for server2server
+                - 'pms' the tokens
+                - 'checked_pm_id' the payment token that should be checked (for radio buttons)
+                - 'mode' can take two values, either 'payment' or 'manage'. 'manage' displays the add a new card and delete buttons. 'payment'
+                    display a form that is used to pay and send the information to the form action url.
+                - 'acquirers' the list of both server2server and form payment acquirers
+                - 'verify_validity' if we need to verify if the payment method is valid when adding a new one
+                - 'prepare_tx_url' the url of the route which will handle the creation of a transaction for a form base payment (handles if the transaction is form or form_save)
+                - 'show_manage_btn' if True, a button is added in the footer to manage payment methods
+            -->
+        <xpath expr="//form" position="replace">
+            <form t-if="pms or acquirers" method="post" class="o_payment_form mt-3 clearfix"
+                  t-att-action="form_action if form_action else '#'" t-att-data-success-url="success_url or ''"
+                  t-att-data-error-url="error_url or ''" t-att-data-access-token="access_token or ''"
+                  t-att-data-partner-id="partner_id" t-att-data-callback-method="callback_method or ''"
+                  t-att-data-order-id="order_id or ''" t-att-data-mode="mode">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" t-if="prepare_tx_url" name="prepare_tx_url" t-att-value="prepare_tx_url"/>
+                <input type="hidden" t-if="order_id" name="order_id" t-att-value="order_id"/>
+                <input type="hidden" t-if="access_token" name="access_token" t-att-value="access_token"/>
+                <input type="hidden" t-if="success_url" name="success_url" t-att-value="success_url"/>
+                <input type="hidden" t-if="error_url" name="error_url" t-att-value="error_url"/>
+                <input type="hidden" t-if="callback_method" name="callback_method" t-att-value="callback_method"/>
+                <div class="card mt32" style="border: none" id="mes_paiements">
+                    <t t-set="acquirers_count" t-value="len(acquirers) if acquirers else 0"/>
+                    <t t-set="pms_count" t-value="len(pms) if pms else 0"/>
+                    <t t-set="MAX_BRAND_LINE" t-value="3"/>
+                    <t t-foreach="acquirers" t-as="acq">
+                        <div class="card-body o_payment_acquirer_select" style="border: none">
+                            <label>
+                                <t t-if="acq.payment_flow == 'form'">
+                                    <input type="radio" t-att-data-acquirer-id="acq.id" t-att-data-form-payment="true"
+                                           t-att-data-provider="acq.provider"
+                                           t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                           name="pm_id" t-attf-value="form_{{acq.id}}"
+                                           t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
                                 </t>
+                                <t t-else="acq.payment_flow == 's2s'">
+                                    <input type="radio" t-att-data-acquirer-id="acq.id" t-att-data-s2s-payment="true"
+                                           t-att-data-provider="acq.provider" name="pm_id" t-attf-value="new_{{acq.id}}"
+                                           t-att-class="'d-none' if (acquirers_count==1 and pms_count==0) else ''"
+                                           t-att-checked="acquirers_count==1 and pms_count==0 or acquirers[0] == acq"/>
+                                </t>
+                                <span class="payment_option_name">
+                                    <t t-esc="acq.display_as or acq.name"/>
+                                    <div t-if="acq.state == 'test'" class="badge-pill badge-warning float-right"
+                                         style="margin-left:5px">
+                                        Test Mode
+                                    </div>
+                                </span>
+                                <t t-if="acq_extra_fees and acq_extra_fees.get(acq)">
+                                    <span class="badge badge-pill badge-secondary">+
+                                        <t t-esc="acq_extra_fees[acq]"
+                                           t-options='{"widget": "monetary", "display_currency": acq_extra_fees["currency_id"]}'/>
+                                        Fee
+                                    </span>
+                                </t>
+                                <t t-elif="acq.fees_active">
+                                    <small class="text-muted">(Some fees may apply)</small>
+                                </t>
+                            </label>
+                            <div t-raw="acq.pre_msg" class="text-muted ml-3"/>
+                        </div>
+                        <t t-if="acq.payment_flow == 'form'">
+                            <div t-attf-id="o_payment_form_acq_{{acq.id}}"
+                                 t-attf-class="d-none {{'card-footer' if acq.save_token == 'ask' else ''}}">
+                                <label t-if="acq.save_token == 'ask'">
+                                    <input type="checkbox" name="o_payment_form_save_token" data-remove-me=""/>
+                                    Save my payment data
+                                </label>
+                                <t t-if="acq.save_token == 'always'">
+                                    <input type="checkbox" name="o_payment_form_save_token" checked="'checked'"
+                                           class="o_hidden" data-remove-me=""/>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-else="acq.payment_flow == 's2s'">
+                            <div t-attf-id="o_payment_add_token_acq_{{acq.id}}"
+                                 t-attf-class="card-footer {{'d-none' if(acquirers_count &gt; 1 and pms_count==0 and acquirers[0]!=acq) else 'd-none' if pms_count &gt;0 else ''}}">
+                                <div class="clearfix">
+                                    <input type="hidden"
+                                           t-if="(verify_validity==True or mode == 'manage') and acq.check_validity"
+                                           name="verify_validity" t-att-value="acq.check_validity"/>
+                                    <t t-call="{{acq.sudo().get_s2s_form_xml_id()}}">
+                                        <t t-set="id" t-value="acq.id"/>
+                                        <t t-set="partner_id" t-value="partner_id"/>
+                                        <t t-if="not return_url" t-set="return_url" t-value="''"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                    <div class="float-right mt-2">
+                        <t t-if="show_manage_btn">
+                            <a class="btn btn-link mb8 mt8" href="/my/payment_method">Manage your payment methods</a>
+                        </t>
+                        <button t-if="mode == 'manage' and list(filter(lambda x: x.payment_flow == 's2s', acquirers))"
+                                type="submit" id="o_payment_form_add_pm"
+                                class="float-right btn btn-primary btn-lg mb8 mt8">
+                            Enregistrer la carte
+                        </button>
+                    </div>
+                    <t t-if="pms">
+                        <div class="mt32 mb32">
+                            <h3>Vos cartes bancaires enregistrées</h3>
+                        </div>
+                        <t t-foreach="pms" t-as="pm">
+                            <t t-if="not verify_validity or (pm.acquirer_id.check_validity and pm.verified) or not pm.acquirer_id.check_validity">
+                                <div class="card-body o_payment_acquirer_select">
+                                    <label>
+                                        <img style="width: 40px;"
+                                             src="/website_argos/static/src/img/ico-20-px-credit-card.svg"
+                                             class="img img-fluid mt0 mr-2"/>
+                                        <input t-if="mode == 'payment'" type="radio" name="pm_id" t-att-value="pm.id"
+                                               t-att-checked="checked_pm_id == pm.id"/>
+                                        <span class="payment_option_name" t-esc="pm.name[0:4]"/>
+                                        <span class="payment_option_name" t-esc="pm.name[4:8]"/>
+                                        <span class="payment_option_name" t-esc="pm.name[8:12]"/>
+                                        <span class="payment_option_name" t-esc="pm.name[12:16]"/>
+                                        <t t-if="pm.verified">
+                                            <i class="fa fa-check text-success"
+                                               title="This payment method is verified by our system." role="img"
+                                               aria-label="Ok"></i>
+                                        </t>
+                                        <t t-else="">
+                                            <i class="fa fa-check text-muted"
+                                               title="This payment method has not been verified by our system."
+                                               role="img" aria-label="Not verified"></i>
+                                        </t>
+                                    </label>
+                                    <button t-if="mode == 'manage'" name="delete_pm" t-att-value="int(pm.id)"
+                                            class="btn btn-primary btn-sm float-right d-none" id="deletepm">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-dpm float-right" onclick="clickdelete();">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    <script>
+                                        function clickdelete() {
+                                        var delete_pm = document.getElementById('deletepm');
+                                        delete_pm.click();
+                                        }
+                                    </script>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+                <div class="d-none d-md-block">
+                    <div class="custom-control custom-checkbox mt-2 oe_accept_cgv_button">
+                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                        <label for="checkbox_cgv" class="custom-control-label">
+                            I agree to the
+                            <a target="_BLANK" href="/conditions-generales-de-vente">terms &amp; conditions</a>
+                        </label>
+                    </div>
+                    <div t-if='back_button_txt' class="float-left mt-2">
+                        <a role="button" t-att-href="back_button_link or '#'"
+                           t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
+                            <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
+                            <t t-esc="back_button_txt"/>
+                        </a>
+                    </div>
+                    <div class="float-right mt-2">
+                        <br></br>
+                        <button t-if="mode == 'payment'" id="o_payment_form_pay" type="submit"
+                                t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 float-right mt-2'"
+                                disabled="true">
+                            <t t-if="submit_txt">
+                                <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
+                                <t t-esc="submit_txt"/>
+                                <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+                            </t>
+                            <t t-else="">
+                                <i class="fa fa-lock"/>
+                                Pay
+                            </t>
+                        </button>
+                    </div>
+                </div>
+                <div class="d-md-none align-items-center">
+                     <div class="custom-control custom-checkbox mt-2 oe_accept_cgv_button">
+                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
+                        <label for="checkbox_cgv" class="custom-control-label">
+                            I agree to the
+                            <a target="_BLANK" href="/conditions-generales-de-vente">terms &amp; conditions</a>
+                        </label>
+                    </div>
+                    <div class="mt-2">
+                        <button style="width: 100%" t-if="mode == 'payment'" id="o_payment_form_pay" type="submit"
+                                t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 mt-2'"
+                                disabled="true">
+                            <t t-if="submit_txt">
+                                <i t-if="icon_class and not icon_right" t-attf-class="fa {{icon_class}}"/>
+                                <t t-esc="submit_txt"/>
+                                <i t-if="icon_class and icon_right" t-attf-class="fa {{icon_class}}"/>
+                            </t>
+                            <t t-else="">
+                                <i class="fa fa-lock"/>
+                                Pay
+                            </t>
+                        </button>
+                    </div>
+                    <div t-if='back_button_txt' class="mt-2">
+                        <a style="width: 100%" role="button" t-att-href="back_button_link or '#'"
+                           t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
+                            <i t-if="back_button_icon_class" t-attf-class="fa {{back_button_icon_class}}"/>
+                            <t t-esc="back_button_txt"/>
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+        </xpath>
+    </template>
+
+    <template id="pay_methods_inherit" inherit_id="payment.pay_methods" name="Payment Methods">
+        <xpath expr="//div[hasclass('wrap')]" position="replace">
+            <div class="wrap">
+                <div class="container">
+                    <!--div class="row">
+                            <div class="col-md-6">
+                                <ol class="breadcrumb mt8">
+                                    <li class="breadcrumb-item"><a href="/my/home"><i class="fa fa-home" role="img" aria-label="Home" title="Home"/></a></li>
+                                    <li class="breadcrumb-item">Payment Methods</li>
+                                </ol>
+                            </div>
+                        </div-->
+                    <div class="clearfix" id="mes_paiements">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2 d-none d-md-block"/>
+                                <div class="col-md-8 col-xs-12">
+                                    <div class="mt32 mb32 d-none d-md-block">
+                                        <h3>Ajouter une carte bancaire
+                                            <img src="/website_argos/static/src/img/vsa.png"
+                                                 class="float-right img img-fluid"/>
+                                            <img src="/website_argos/static/src/img/mastercard.png"
+                                                 class="float-right img img-fluid"/>
+                                        </h3>
+                                    </div>
+                                    <div class="mt32 d-md-none">
+                                        <h3>Ajouter une carte bancaire</h3>
+                                    </div>
+                                    <div class="mt8 mb32 d-md-none">
+                                        <img src="/website_argos/static/src/img/vsa.png" class="mt8 img img-fluid"/>
+                                        <img src="/website_argos/static/src/img/mastercard.png"
+                                             class="mt8 img img-fluid"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 d-none d-md-block"/>
+                                <div class="col-md-8">
+                                    <t t-call="payment.payment_tokens_list">
+                                        <t t-set="acquirers" t-value="acquirers"/>
+                                        <t t-set="mode" t-value="'manage'"/>
+                                    </t>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </xpath>
-</template>
+        </xpath>
+    </template>
 
-<template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
-    <xpath expr="//div[hasclass('card-footer')]" position="replace">
-        <div class="card-footer bg-white small text-center text-muted d-none"/>
-    </xpath>
-</template>
+    <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
+        <xpath expr="//div[hasclass('card-footer')]" position="replace">
+            <div class="card-footer bg-white small text-center text-muted d-none"/>
+        </xpath>
+    </template>
 
-<template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries" inherit_id="portal.portal_my_home" priority="15">
-</template>
+    <template id="website_crm_partner_assign.portal_my_home_lead" active="False" name="Portal My Home : lead entries"
+              inherit_id="portal.portal_my_home" priority="15">
+    </template>
 
 </odoo>
