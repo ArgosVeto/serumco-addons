@@ -1077,14 +1077,14 @@
                         </t>
                     </t>
                 </div>
-                <div class="d-none d-md-block">
-                    <div class="custom-control custom-checkbox mt-2 oe_accept_cgv_button">
+                <div class="custom-control custom-checkbox mt-2 oe_accept_cgv_button">
                         <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
                         <label for="checkbox_cgv" class="custom-control-label">
                             I agree to the
                             <a target="_BLANK" href="/conditions-generales-de-vente">terms &amp; conditions</a>
                         </label>
-                    </div>
+                </div>
+                <div class="d-none d-md-block">
                     <div t-if='back_button_txt' class="float-left mt-2">
                         <a role="button" t-att-href="back_button_link or '#'"
                            t-att-class="back_button_class or 'btn btn-lg btn-secondary'">
@@ -1110,13 +1110,6 @@
                     </div>
                 </div>
                 <div class="d-md-none align-items-center">
-                     <div class="custom-control custom-checkbox mt-2 oe_accept_cgv_button">
-                        <input type="checkbox" id="checkbox_cgv" class="custom-control-input"/>
-                        <label for="checkbox_cgv" class="custom-control-label">
-                            I agree to the
-                            <a target="_BLANK" href="/conditions-generales-de-vente">terms &amp; conditions</a>
-                        </label>
-                    </div>
                     <div class="mt-2">
                         <button style="width: 100%" t-if="mode == 'payment'" id="o_payment_form_pay" type="submit"
                                 t-att-class="submit_class if submit_class else 'btn btn-primary btn-lg mb8 mt8 mt-2'"
