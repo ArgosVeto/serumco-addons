@@ -29,7 +29,7 @@ except ImportError:
 _logger = logging.getLogger(__name__)
 
 
-class AuthSignupHomeSS(AuthSignupHome):
+class AuthSignupHomeSS(PasswordSecurityHome):
     def check_password(self, passwd):
         special_sym = ['?', '!', '@', '#', '$', '%', '^', '&', '(', ')', '~', '{', '}', '*']
         val = True
@@ -195,7 +195,7 @@ class AuthSignupHomeSS(AuthSignupHome):
         return super(AuthSignupHomeSS, self)._signup_with_values(token, values)
 
 AuthSignupHome.do_signup = AuthSignupHomeSS.do_signup
-
+AuthSignupHome.check_password = AuthSignupHomeSS.check_password
 
 class CustomerPortal(CustomerPortal):
 
