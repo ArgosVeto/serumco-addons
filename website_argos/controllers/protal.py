@@ -139,6 +139,7 @@ class AuthSignupHomeSS(AuthSignupHome):
                                 'auth_login': user_sudo.email
                             }),
                         ).send_mail(user_sudo.id, force_send=True)
+                    _logger.info("Web signup : new signup registered")
                 return super(AuthSignupHome, self).web_login(*args, **kw)
             except UserError as e:
                 qcontext['error'] = e.name or e.value
@@ -193,7 +194,7 @@ class AuthSignupHomeSS(AuthSignupHome):
             values['lang'] = lang_fr.code
         return super(AuthSignupHomeSS, self)._signup_with_values(token, values)
 
-PasswordSecurityHome.do_signup = AuthSignupHomeSS.do_signup
+AuthSignupHome.do_signup = AuthSignupHomeSS.do_signup
 
 
 class CustomerPortal(CustomerPortal):
