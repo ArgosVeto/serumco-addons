@@ -28,7 +28,7 @@ msgstr "Réinitialiser"
 #. module: website_argos
 #: model_terms:ir.ui.view,arch_db:website_argos.payment_tokens_list_inherited
 msgid "I agree to the"
-msgstr "J'accèpte les "
+msgstr "J'accepte les "
 
 #. module: website_argos
 #: model_terms:ir.ui.view,arch_db:website_argos.payment_tokens_list_inherited
