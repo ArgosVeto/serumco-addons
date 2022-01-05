@@ -20,6 +20,7 @@ import base64
 from datetime import datetime
 from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
+from odoo.addons.password_security.controllers.main import PasswordSecurityHome
 try:
     import phonenumbers
 except ImportError:
@@ -27,9 +28,10 @@ except ImportError:
 
 _logger = logging.getLogger(__name__)
 
+
 class AuthSignupHomeSS(AuthSignupHome):
     def check_password(self, passwd):
-        special_sym = ['!', '@', '#', '$', '%', '^', '&', '*']
+        special_sym = ['?', '!', '@', '#', '$', '%', '^', '&', '(', ')', '~', '{', '}', '*']
         val = True
         if len(passwd) < 10:
             val = False
@@ -44,42 +46,55 @@ class AuthSignupHomeSS(AuthSignupHome):
         return val
 
     def do_signup(self, qcontext):
-        vals_qcontext = {}
-        if qcontext:
-            vals_qcontext = dict(qcontext)
-        values = {key: qcontext.get(key) for key in (
-            'login', 'name', 'password', 'firstname', 'lastname', 'phone', 'country_id')}
-        chk_password = True
+        values = {key: qcontext.get(key) for key in
+                  ('login', 'name', 'password', 'firstname', 'lastname', 'phone', 'country_id', 'operating_unit_id',
+                   'delivery_operating_unit_id', 'send_letter', 'send_email', 'send_sms', 'to_call')}
         if not values:
             raise UserError(_("The form was not properly filled in."))
-        passwd = values.get('password')
-        if values.get('password'):
-            passwd = values.get('password')
-            chk_password = self.check_password(passwd)
+        passwd = values.get('password', '')
+        chk_password = self.check_password(passwd)
         if not chk_password:
-            raise UserError(
-                _("Your password must have at least 10 characters minimum, 1 uppercase, 1 lowercase, 1 special character, 1 figure "))
+            raise UserError(_(
+                "Your password must have at least 10 characters minimum, 1 uppercase, 1 lowercase, 1 special character, 1 figure "))
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
-        supported_lang_codes = [code for code,
-                                _ in request.env['res.lang'].get_installed()]
+        supported_lang_codes = [code for code, _ in request.env['res.lang'].get_installed()]
         lang = request.context.get('lang', '').split('_')[0]
         if lang in supported_lang_codes:
             values['lang'] = lang
-        phone = qcontext.get('phone')
-        if values.get('country_id'):
-            country_id = qcontext.get('country_id')
+        country_code = 'FR'
+        if values.get('country_id', False):
+            country_id = qcontext.get('country_id', False)
             country = ''.join(x for x in country_id if x.isdigit())
-            update_country_id = request.env['res.country'].sudo().browse(
-                        int(country))
+            update_country_id = request.env['res.country'].sudo().browse(int(country))
             country_code = update_country_id.code.upper()
-            values.update({'country_id': int(country_id)})
-
-        if values.get('phone'):
-            res_parse = phonenumbers.parse(phone, country_code)
-            phone = phonenumbers.format_number(res_parse, phonenumbers.PhoneNumberFormat.E164)
+            if update_country_id:
+                values.update({'country_id': update_country_id.id})
+        if values.get('operating_unit_id', False):
+            operating_unit_id = qcontext.get('operating_unit_id', False)
+            operating_unit = ''.join(x for x in operating_unit_id if x.isdigit())
+            update_operating_id = request.env['operating.unit'].sudo().browse(int(operating_unit))
+            if update_operating_id:
+                values.update({'operating_unit_id': update_operating_id.id})
+        if values.get('delivery_operating_unit_id', False):
+            delivery_operating_unit_id = qcontext.get('delivery_operating_unit_id', False)
+            delivery_operating_unit = ''.join(x for x in delivery_operating_unit_id if x.isdigit())
+            update_delivery_operating_id = request.env['operating.unit'].sudo().browse(int(delivery_operating_unit))
+            if update_delivery_operating_id:
+                values.update({'delivery_operating_unit_id': update_delivery_operating_id.id})
+        if values.get('phone', ''):
+            phone = qcontext.get('phone')
+            parse_phone = phonenumbers.parse(phone, country_code)
+            phone = phonenumbers.format_number(parse_phone, phonenumbers.PhoneNumberFormat.E164)
             values.update({'phone': phone})
-
+        if values.get('send_letter', False):
+            values.update({'send_letter': qcontext.get('send_letter', False)})
+        if values.get('send_email', False):
+            values.update({'send_email': qcontext.get('send_email', False)})
+        if values.get('send_sms', False):
+            values.update({'send_sms': qcontext.get('send_sms', False)})
+        if values.get('to_call', False):
+            values.update({'to_call': qcontext.get('to_call', False)})
         self._signup_with_values(qcontext.get('token'), values)
         request.env.cr.commit()
 
@@ -171,6 +186,14 @@ class AuthSignupHomeSS(AuthSignupHome):
         response = request.render('auth_signup.reset_password', qcontext)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
+
+    def _signup_with_values(self, token, values):
+        lang_fr = request.env.ref('base.lang_fr', raise_if_not_found=False)
+        if lang_fr:
+            values['lang'] = lang_fr.code
+        return super(AuthSignupHomeSS, self)._signup_with_values(token, values)
+
+PasswordSecurityHome.do_signup = AuthSignupHomeSS.do_signup
 
 
 class CustomerPortal(CustomerPortal):
