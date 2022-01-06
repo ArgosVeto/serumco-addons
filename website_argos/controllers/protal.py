@@ -20,6 +20,7 @@ import base64
 from datetime import datetime
 from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
+
 try:
     import phonenumbers
 except ImportError:
@@ -100,7 +101,7 @@ class AuthSignupHomeSS(AuthSignupHome):
 
     def do_signup_password(self, qcontext):
         """ Shared helper that creates a res.partner out of a token """
-        values = { key: qcontext.get(key) for key in ('login', 'name', 'password') }
+        values = {key: qcontext.get(key) for key in ('login', 'name', 'password')}
         if not values:
             raise UserError(_("The form was not properly filled in."))
         if values.get('password') != qcontext.get('confirm_password'):
@@ -118,7 +119,10 @@ class AuthSignupHomeSS(AuthSignupHome):
         qcontext = self.get_auth_signup_qcontext()
         qcontext['states'] = request.env['res.country.state'].sudo().search([])
         qcontext['countries'] = request.env['res.country'].sudo().search([])
-
+        qcontext.update(
+            {key: kw.get(key) for key in ('firstname', 'lastname', 'phone', 'operating_unit_id',
+                                          'delivery_operating_unit_id', 'send_letter', 'send_email', 'send_sms', 'to_call')})
+        
         if not qcontext.get('token') and not qcontext.get('signup_enabled'):
             raise werkzeug.exceptions.NotFound()
 
@@ -196,7 +200,6 @@ class AuthSignupHomeSS(AuthSignupHome):
 
 
 class CustomerPortal(CustomerPortal):
-
     MANDATORY_BILLING_FIELDS = ["firstname", "lastname", "phone",
                                 "email", "street", "zipcode", "city", "country_id", "street2"]
     OPTIONAL_BILLING_FIELDS = ["state_id", "vat", "company_name"]
@@ -237,18 +240,18 @@ class CustomerPortal(CustomerPortal):
                 values.update({'zip': values.pop('zipcode', '')})
 
                 if 'country_id' in post and post['country_id']:
-                        country = ''.join(x for x in post['country_id'] if x.isdigit())
-                        update_country_id = request.env['res.country'].sudo().browse(
-                            int(country))
-                        country_code = update_country_id.code.upper()
+                    country = ''.join(x for x in post['country_id'] if x.isdigit())
+                    update_country_id = request.env['res.country'].sudo().browse(
+                        int(country))
+                    country_code = update_country_id.code.upper()
 
                 if 'phone' in post and post['phone']:
-                        res_parse = phonenumbers.parse(
-                            post['phone'], country_code)
-                        phone = phonenumbers.format_number(
-                            res_parse, phonenumbers.PhoneNumberFormat.E164)
-                        values.update({'phone': phone})
- 
+                    res_parse = phonenumbers.parse(
+                        post['phone'], country_code)
+                    phone = phonenumbers.format_number(
+                        res_parse, phonenumbers.PhoneNumberFormat.E164)
+                    values.update({'phone': phone})
+
                 partner.sudo().write(values)
                 if redirect:
                     return request.redirect(redirect)
@@ -293,7 +296,7 @@ class PortalContent(http.Controller):
                 'name': post['file_name'],
                 'datas': file_datas[1],
                 'type': 'binary',
-                'datas_fname':  post['file_upload'],
+                'datas_fname': post['file_upload'],
                 'mimetype': str(post['mimetype']),
             })
         return ir_attachment.id
@@ -370,5 +373,3 @@ class PortalContent(http.Controller):
             partner.sudo().write(vals)
 
         return werkzeug.utils.redirect('/my-content')
-
-
