@@ -20,7 +20,6 @@ import base64
 from datetime import datetime
 from odoo.http import route, content_disposition
 from odoo.exceptions import UserError
-from odoo.addons.password_security.controllers.main import PasswordSecurityHome
 try:
     import phonenumbers
 except ImportError:
@@ -29,7 +28,7 @@ except ImportError:
 _logger = logging.getLogger(__name__)
 
 
-class AuthSignupHomeSS(PasswordSecurityHome):
+class AuthSignupHomeSS(AuthSignupHome):
     def check_password(self, passwd):
         special_sym = ['?', '!', '@', '#', '$', '%', '^', '&', '(', ')', '~', '{', '}', '*']
         val = True
@@ -45,7 +44,7 @@ class AuthSignupHomeSS(PasswordSecurityHome):
             val = False
         return val
 
-    def _do_signup(self, qcontext):
+    def do_signup(self, qcontext):
         values = {key: qcontext.get(key) for key in
                   ('login', 'name', 'password', 'firstname', 'lastname', 'phone', 'country_id', 'operating_unit_id',
                    'delivery_operating_unit_id', 'send_letter', 'send_email', 'send_sms', 'to_call')}
