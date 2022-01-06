@@ -20,3 +20,15 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     clinic_shortlisted_ids = fields.One2many('clinic.favorite', 'rel_partner_id', string='Contact')
+
+    @api.model
+    def create(self, vals):
+        res = super(ResPartner, self).create(vals)
+        print(""" Debugging on staging (def create):""")
+        print(vals)
+        return res
+
+    def write(self, vals):
+        print(""" Debugging on staging (def write):""")
+        print(vals)
+        super(ResPartner, self).write(vals)
