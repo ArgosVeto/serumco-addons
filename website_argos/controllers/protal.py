@@ -45,6 +45,7 @@ class AuthSignupHomeSS(AuthSignupHome):
         return val
 
     def do_signup(self, qcontext):
+        _logger.info("Web signup : signup in progress, adding numerous fields")
         values = {key: qcontext.get(key) for key in
                   ('login', 'name', 'password', 'firstname', 'lastname', 'phone', 'country_id', 'operating_unit_id',
                    'delivery_operating_unit_id', 'send_letter', 'send_email', 'send_sms', 'to_call')}
@@ -124,6 +125,7 @@ class AuthSignupHomeSS(AuthSignupHome):
         if 'error' not in qcontext and request.httprequest.method == 'POST':
             try:
                 self.do_signup(qcontext)
+                _logger.info("Web signup : new signup registered")
                 # Send an account creation confirmation email
                 if qcontext.get('token'):
                     user_sudo = request.env['res.users'].sudo().search(
@@ -138,7 +140,6 @@ class AuthSignupHomeSS(AuthSignupHome):
                                 'auth_login': user_sudo.email
                             }),
                         ).send_mail(user_sudo.id, force_send=True)
-                    _logger.info("Web signup : new signup registered")
                 return super(AuthSignupHome, self).web_login(*args, **kw)
             except UserError as e:
                 qcontext['error'] = e.name or e.value
