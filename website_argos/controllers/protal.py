@@ -45,7 +45,7 @@ class AuthSignupHomeSS(PasswordSecurityHome):
             val = False
         return val
 
-    def do_signup(self, qcontext):
+    def _do_signup(self, qcontext):
         values = {key: qcontext.get(key) for key in
                   ('login', 'name', 'password', 'firstname', 'lastname', 'phone', 'country_id', 'operating_unit_id',
                    'delivery_operating_unit_id', 'send_letter', 'send_email', 'send_sms', 'to_call')}
@@ -194,8 +194,6 @@ class AuthSignupHomeSS(PasswordSecurityHome):
             values['lang'] = lang_fr.code
         return super(AuthSignupHomeSS, self)._signup_with_values(token, values)
 
-AuthSignupHome.do_signup = AuthSignupHomeSS.do_signup
-AuthSignupHome.check_password = AuthSignupHomeSS.check_password
 
 class CustomerPortal(CustomerPortal):
 
