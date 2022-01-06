@@ -3,6 +3,9 @@
 # See LICENSE file for full copyright and licensing details
 
 from odoo import api, fields, models, _
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class ResUsers(models.Model):
     _inherit = 'res.users'
@@ -24,11 +27,11 @@ class ResPartner(models.Model):
     @api.model
     def create(self, vals):
         res = super(ResPartner, self).create(vals)
-        print(""" Debugging on staging (def create):""")
-        print(vals)
+        _logger.info(""" Debugging on staging (def create):""")
+        _logger.info(vals)
         return res
 
     def write(self, vals):
-        print(""" Debugging on staging (def write):""")
-        print(vals)
+        _logger.info(""" Debugging on staging (def write):""")
+        _logger.info(vals)
         super(ResPartner, self).write(vals)
