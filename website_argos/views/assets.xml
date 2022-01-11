@@ -68,6 +68,7 @@
       <script src="/website_argos/static/src/js/chatter.js"/>
       <script src="/website_argos/static/src/js/portal_chatter.js"/>
       <script src="/website_argos/static/src/js/resume_upload.js"/>
+      <script src="/website_argos/static/src/js/sale_variant_mixin.js"/>
 
 
     </xpath>

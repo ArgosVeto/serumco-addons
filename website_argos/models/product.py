@@ -23,6 +23,14 @@ class ProductTemplate(models.Model):
     tag_ids = fields.Many2many("product.tag",string="Tag")
     tab_ids = fields.Many2many('product.tab','product_tab_table','tab_ids','product_ids',string="Tab")
 
+    def _get_combination_info(self, combination=False, product_id=False, add_qty=1, pricelist=False, parent_combination=False,
+                              only_template=False):
+        res = super(ProductTemplate, self)._get_combination_info(combination, product_id, add_qty, pricelist, parent_combination,
+                                                                 only_template)
+        res['price_total'] = res['price'] * add_qty
+        return res
+
+
 class ProductCategoryTemplate(models.Model):
     _inherit = 'product.public.category'
 
