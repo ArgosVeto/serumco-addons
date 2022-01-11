@@ -7,11 +7,11 @@
 				<div class="se-btn">
 					<button type="submit" class="btn btn-primary oe_search_button" aria-label="Search" title="Search">Rechercher</button>
 				</div>
-				<!--div class="">
+				<div id="planning_find_my_position">
                    <a role="button" target="" href="#" class="btn btn-outline-primary  ml-4">
                        <img src="/website_argos/static/src/img/location.svg" class="img img-fluid mr-2"/><span class="">Autour de moi</span>
                    </a>
-                </div-->
+                </div>
 			</form>
 		</div>
 	</template>
@@ -197,7 +197,7 @@
 			<section class="s_text_block pt32 pb16 s_blog_banner service-tt  d-none d-md-block">
 				<div class="container">
 					<div class="row">
-						<div class="search_by_service mr-2">
+						<div class="search_by_service mr-2 d-none">
 							<t t-call="website_argos.agglomeration_search_tmp"/>
 						</div>
 						<div class="search_by_service mr-2">
@@ -236,7 +236,7 @@
 								<label class="custom-control-label" for="customSwitch1">Voir La Carte</label>
 							</div>
 						</div-->
-						<div class="clear-search mt8 ml8 clinic-type-b">
+						<div class="clear-search clinic-type-b">
 							<a t-attf-href="/nos-cliniques-veterinaires-2?clear_search=1" class=" badge badge-pill badge-light">
 								<span>Réinitialiser</span>
 							</a>
@@ -244,6 +244,8 @@
 					</div>
 				</div>
 			</section>
+			<div id="planning_operating_unit_map"
+				 style="width: 50%; height: 250px; display: block; position: relative; overflow: hidden; margin-left: 20%"></div>
 			<t t-call="website_argos.clinic_grid"/>
 			<div class="clearfix"/>
 			<div class="oe_structure">
@@ -316,7 +318,7 @@
 					</div>
 					<ul class="nav navbar-nav align-items-md-center" id="top_menu">
 						<li class="nav-item dropdown  position-static">
-							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle">
+							<a data-toggle="dropdown" href="#" class="btn-sidebar nav-link dropdown-toggle o_mega_menu_toggle d-none">
 								<span data-oe-model="website.menu" data-oe-id="37" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">AGGLOMERATION</span>
 							</a>
 							<div data-oe-model="website.menu" data-oe-id="37" data-oe-field="mega_menu_content" data-oe-type="html" data-oe-expression="submenu.mega_menu_content" data-name="Mega Menu" class="dropdown-menu o_mega_menu dropdown-menu-left">
