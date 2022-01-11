@@ -109,7 +109,7 @@
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                     <div class="js_product js_main_product">
                         <div id="product_option_block" class="d-none"/>
-                        <t t-if="product" t-call="website_sale.product_price" />
+                        <t t-if="product" t-call="website_argos.associated_products" />
                         <!--p t-field="product.description_sale" class=" mt-3 description" placeholder="A short description that will also appear on documents." /-->
                         <div class="line mt16 mb16"/>
                         <div class="ml-auto d-block d-md-none">
