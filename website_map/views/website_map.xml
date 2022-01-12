@@ -89,7 +89,7 @@
 
 	<template id="clinic_grid_inherit" inherit_id="website_argos.clinic_grid">
 		<xpath expr="//div/div/div/t/t/div[@class='col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck']" position="replace">
-			<div id="clinic_grid" class="clinic_grid col-lg-4 s_col_no_bgcolor pt16 pb16 clinic-grid card-deck">
+			<div id="clinic_grid" class="clinic_grid col-lg-6 s_col_no_bgcolor pb16 clinic-grid card-deck">
 				<div class="card bg-white">
 					<img class="card-img-top" t-att-src="website.image_url(operating_unit, 'clinic_banner')"/>
 					<t t-ignore="true" t-if="not user_id._is_public()">
