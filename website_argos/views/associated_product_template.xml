@@ -6,11 +6,11 @@
 				<t t-set="combination" t-value="alt_product._get_first_possible_combination()"/>
 				<t t-set="price_info"
 				   t-value="alt_product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)['price']"/>
-				<a t-att-href="alt_product.website_url">
+				<!--<a t-att-href="alt_product.website_url">-->
 					<div class="custom-control custom-radio">
 						<input type="radio" t-att-id="alt_product.id" t-attf-name="alt-{{alt_product.id}}" class="custom-control-input"
 						       t-att-checked="product.id == alt_product.id"/>
-						<label t-att-for="alt_product.id" class="custom-control-label">
+						<label t-att-for="alt_product.id" class="alt_product_radio custom-control-label" t-att-data-url="alt_product.website_url">
 							<span t-field="alt_product.name"/>
 							
 							<span class="badge badge-pill badge-secondary" t-if="price_info">
@@ -23,7 +23,7 @@
 							</span>
 						</label>
 					</div>
-				</a>
+				<!--</a>-->
 			</t>
 		
 		</t>
