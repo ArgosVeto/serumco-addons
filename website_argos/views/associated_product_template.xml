@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="associated_products">
+		<t t-foreach="product._get_alternative_product_ids()" t-as="alt_products">
+			<t t-foreach="alt_products" t-as="alt_product">
+				<t t-set="combination" t-value="alt_product._get_first_possible_combination()"/>
+				<t t-set="price_info"
+				   t-value="alt_product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)['price']"/>
+				<a t-att-href="alt_product.website_url">
+					<div class="custom-control custom-radio">
+						<input type="radio" t-att-id="alt_product.id" t-attf-name="alt-{{alt_product.id}}" class="custom-control-input"
+						       t-att-checked="product.id == alt_product.id"/>
+						<label t-att-for="alt_product.id" class="custom-control-label">
+							<span t-field="alt_product.name"/>
+							
+							<span class="badge badge-pill badge-secondary" t-if="price_info">
+								<span t-esc="abs(price_info)" class="variant_price_extra" style="white-space: nowrap;"
+								      t-options='{
+                                                              "widget": "monetary",
+                                                              "from_currency": product.currency_id,
+                                                              "display_currency": (pricelist or product).currency_id
+                                                          }'/>
+							</span>
+						</label>
+					</div>
+				</a>
+			</t>
+		
+		</t>
+	</template>
+</odoo>
