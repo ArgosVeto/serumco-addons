@@ -30,6 +30,10 @@ class ProductTemplate(models.Model):
         res['price_total'] = res['price'] * add_qty
         return res
 
+    def _get_alternative_product_ids(self):
+        if self.alternative_product_ids:
+            return (self | self.alternative_product_ids).sorted('id')
+        return self.browse()
 
 class ProductCategoryTemplate(models.Model):
     _inherit = 'product.public.category'
