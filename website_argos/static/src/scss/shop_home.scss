@@ -102,3 +102,74 @@
 		}
 	}
 }
+
+#planning_operating_unit_map {
+    margin: 0 !important;
+    width: 100% !important;
+    border-radius: 10px;
+}
+@media screen and (min-width:768px){
+    .clinic-fixBloc {
+        max-height: 490px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-top: 0 !important;
+        margin-top: 16px;
+        margin-bottom: 20px;
+    }
+    .clinic-fixBloc .row.d-flex.align-items-stretch {
+        width: 113% !important;
+    }
+    #planning_operating_unit_map {
+        border-radius: 10px;
+        top: 15px !important;
+        height: 479px !important;
+    }
+}
+.clinic-fixBloc .card.bg-white {
+    margin-right: 0;
+}
+.clinic-fixBloc .card-footer {
+    display: flex;
+}
+.clinic-fixBloc .card-footer {
+    display: flex;
+    padding: 0 4px !important;
+}
+.clinic-fixBloc .card-footer a {
+    padding: 4px 12px;
+    margin: 0 3px;
+    font-size: 14px;
+    width: 50%;
+}
+.clinic-fixBloc .card-body {
+    padding-bottom: 10px;
+}
+.marker.argos-marker > b {
+    font-size: 17px;
+    color: #de1c47;
+    display: block;
+}
+.argos-Caddress {
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 15px;
+}
+.marker.argos-marker button {
+    color: #fff;
+    width: 100%;
+    border: none;
+    background-color: #63bae9;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.marker.argos-marker {
+    padding: 13px;
+}
+#planning_operating_unit_map button.gm-ui-hover-effect {
+    position: relative;
+    top: 0 !important;
+    right: 0 !important;
+}
