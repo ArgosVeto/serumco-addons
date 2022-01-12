@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="add_to_cart_modal" name="Add to cart">
+    <div>
+      <div role="dialog" class="modal" id="modal_confirm_add_to_cart">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <header class="modal-header border-0">
+              <h4 class="modal-title">Product added to cart successfully</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="false">×</span>
+              </button>
+            </header>
+            <main class="modal-body">
+              <p id="modal-content">
+                If you decide to change your Argos Click&amp;Collect collection clinic, we will be required to reload
+                the
+                site to keep stocks up to date. Your basket will then be automatically emptied. Do you want to continue
+                ?
+              </p>
+            </main>
+            <footer class="modal-footer">
+              <a type="button" class="btn btn-default " href="/shop">Continue my purchase</a>
+              <a type="button" class="btn btn-primary" id="command_cart" href="/shop/cart">
+                <img src="/website_argos/static/src/img/white-cart.png" class="img img-fluid"/>
+                <span class="text-white ml-1 mr-1 text-bold"> Command </span>
+              </a>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</odoo>

@@ -89,6 +89,7 @@
         'views/clinic_template.xml',
         'views/clinic_detail_template.xml',
         'views/associated_product_template.xml',
+        'views/add_to_cart_modal.xml',
         'views/product_page_template.xml',
         'views/rating_template.xml',
         'views/gdpr_template.xml',

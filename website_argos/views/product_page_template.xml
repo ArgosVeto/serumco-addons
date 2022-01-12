@@ -106,6 +106,7 @@
                 </div>
                 <span itemprop="url" style="display:none;" t-esc="product.website_url"/>
                 <form t-if="product._is_add_to_cart_possible()" action="/shop/cart/update" method="POST">
+                    <t t-call="website_argos.add_to_cart_modal"/>
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                     <div class="js_product js_main_product">
                         <div id="product_option_block" class="d-none"/>
