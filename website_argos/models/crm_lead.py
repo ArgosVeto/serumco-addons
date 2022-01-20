@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
     @api.model
     def create(self, vals):
         res = super(SaleOrder, self).create(vals)
-        if res.partner_id and res.partner_id.clinic_shortlisted_ids:
+        if res.partner_id and res.partner_id.clinic_shortlisted_ids and res.website_id:
             res.operating_unit_id = res.partner_id.clinic_shortlisted_ids[0].favorite_clinic_id.id
             res.fav_clinic = True
         return res
